@@ -1,0 +1,4 @@
+<!-- insert_before 'div:contains("title_action")' -->
+<%= title_actions "<h2>ForemanAnsible</h2>" %>
+
+<!-- vim: set ft=eruby : -->

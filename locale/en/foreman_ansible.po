@@ -1,0 +1,19 @@
+# foreman_ansible
+#
+# This file is distributed under the same license as foreman_ansible.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: version 0.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-20 08:46+0100\n"
+"PO-Revision-Date: 2014-08-20 08:54+0100\n"
+"Last-Translator: Foreman Team <foreman-dev@googlegroups.com>\n"
+"Language-Team: Foreman Team <foreman-dev@googlegroups.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
