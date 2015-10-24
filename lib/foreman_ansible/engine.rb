@@ -12,5 +12,13 @@ module ForemanAnsible
         requires_foreman '>= 1.6'
       end
     end
+
+    config.to_prepare do
+      begin
+      ::FactImporter.register_fact_importer(:foreman_salt, ForemanAnsible::FactImporter)
+      rescue => e
+        puts "ForemanAnsible: skipping engine hook (#{e.to_s})"
+      end
+    end
   end
 end
