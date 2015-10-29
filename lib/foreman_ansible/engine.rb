@@ -7,7 +7,7 @@ module ForemanAnsible
     config.autoload_paths += Dir["#{config.root}/app/overrides"]
     config.autoload_paths += Dir["#{config.root}/app/services"]
 
-    initializer 'foreman_ansible.register_plugin', after: :finisher_hook do |_app|
+    initializer 'foreman_ansible.register_plugin', after: :finisher_hook do
       Foreman::Plugin.register :foreman_ansible do
         requires_foreman '>= 1.6'
       end
@@ -15,9 +15,11 @@ module ForemanAnsible
 
     config.to_prepare do
       begin
-      ::FactImporter.register_fact_importer(:foreman_salt, ForemanAnsible::FactImporter)
+        ::FactImporter.register_fact_importer(:ansible,
+                                              ForemanAnsible::FactImporter)
+        ::FactParser.register_fact_parser(:ansible, ForemanAnsible::FactParser)
       rescue => e
-        puts "ForemanAnsible: skipping engine hook (#{e.to_s})"
+        puts "ForemanAnsible: skipping engine hook (#{e})"
       end
     end
   end
