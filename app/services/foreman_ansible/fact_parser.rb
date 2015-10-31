@@ -79,7 +79,7 @@ module ForemanAnsible
 
     def os_minor
       _, minor = os_release.split('.')
-      minor
+      minor || ''
     end
 
     def os_description

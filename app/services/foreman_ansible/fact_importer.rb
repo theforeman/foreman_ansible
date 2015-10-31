@@ -6,7 +6,7 @@ module ForemanAnsible
 
     def initialize(host, facts = {})
       @host = host
-      @facts = normalize(facts['ansible_facts'])
+      @facts = normalize(facts[:ansible_facts])
       @counters = {}
     end
   end
