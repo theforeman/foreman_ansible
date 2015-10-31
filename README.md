@@ -1,8 +1,33 @@
-# Foreman Ansible
+# Foreman Ansible :arrow_forward:
 
 [Foreman](http://theforeman.org) integration with Ansible. For now, it's just importing facts and not meant for general use.
 
-## Usage
+** Warning - this project hasn't been released yet, and might change significantly. Please don't use in production. **
+
+## Basic usage
+
+Deploy `extras/foreman_callback.py` as a callback on your Ansible installation. For instance, put in your `ansible.cfg`:
+
+```
+callback_plugins = ~/.ansible/plugins/callback_plugins/
+bin_ansible_callbacks = True
+```
+
+And copy `extras/foreman_callback.py` from this repo to `~/.ansible/plugins/callback_plugins/`. That's it!
+
+Now, every time you run `ansible -m setup $HOSTNAME`, Ansible will automatically submit facts for $HOSTNAME to Foreman.
+
+#### Demo
+
+![demo gif](http://i.imgur.com/mlnVFJj.gif)
+
+### Extra
+
+If the Foreman setting 'create_new_host_when_facts_are_uploaded' is true, and $HOSTNAME doesn't exist in Foreman, it will autocreate that host in Foreman. If it already exists, it will update the facts.
+
+Similarly, the Foreman setting 'ignore_puppet_facts_for_provisioning' is set to false, facts related to interfaces will update the interfaces of $HOSTNAME in Foreman.
+
+### Devs
 
 Send a POST request to /api/v2/hosts/facts with the format you can see [in the API docs](http://theforeman.org/api/1.9/apidoc/v2/hosts/facts.html).
 
