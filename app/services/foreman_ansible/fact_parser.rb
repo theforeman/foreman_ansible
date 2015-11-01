@@ -22,17 +22,17 @@ module ForemanAnsible
     end
 
     def model
-      name = facts[:facter_virtual] if facts[:facter_is_virtual] == "true"
       name ||= facts[:ansible_product_name] ||
-        facts[:facter_productname] ||
-        facts[:facter_model]
+               facts[:facter_virtual] ||
+               facts[:facter_productname] ||
+               facts[:facter_model]
       Model.where(:name => name.strip).first_or_create unless name.blank?
     end
 
     def domain
       name = facts[:ansible_domain] ||
-        facts[:facter_domain] ||
-        facts[:ohai_domain]
+             facts[:facter_domain] ||
+             facts[:ohai_domain]
       Domain.where(:name => name).first_or_create unless name.blank?
     end
 
