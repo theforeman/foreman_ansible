@@ -1,51 +1,97 @@
 import os
 from datetime import datetime
+from collections import defaultdict
 import json
 import uuid
 import requests
 
-FOREMAN_URL = 'http://localhost:3000'
+FOREMAN_URL = "http://localhost:3000"
 FOREMAN_HEADERS = {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json'
+    "Content-Type": "application/json",
+    "Accept": "application/json"
 }
 TIME_FORMAT="%Y-%m-%d_%H%M%S_%f"
-FILE_NAME_FORMAT="%(now)s-%(host)s.json"
-MSG_FORMAT='{"name":"%(host)s","_timestamp":"%(now)s","category":"%(category)s", "facts": %(data)s}' + "\n"
-LOG_DIR="/tmp/ansible/events"
-AGGREGATION_KEY = uuid.uuid4().hex
-
-if not os.path.exists(LOG_DIR):
-    os.makedirs(LOG_DIR)
+FACTS_FORMAT="""
+{
+  "name":"%(host)s",
+  "_timestamp":"%(now)s",
+  "facts": %(data)s
+}
+"""
+REPORT_FORMAT="""{
+"report":
+  {
+    "host":"%(host)s",
+    "reported_at":"%(now)",
+    "status":"",
+    "metrics":"",
+    "logs":""
+  }
+}
+"""
 
 class CallbackModule(object):
 
     """
-    logs playbook results, per host, in LOG_DIR
-    sends request to Foreman with ansible setup module facts
+    Sends Ansible facts (if ansible -m setup ran) and reports
     """
 
     def log(self, host, category, data):
         if type(data) != dict:
             data = dict(msg=data)
-        if not 'ansible_facts' in data:
-            return
+        data['category'] = category
+        if 'ansible_facts' in data:
+            self.send_facts(host, data)
+
+        self.send_report(host, data)
+
+    """
+    Sends facts to Foreman, to be parsed by foreman_ansible fact parser.
+    The default fact importer should import these facts properly.
+    """
+
+    def send_facts(self, host, data):
         data["_type"] = "ansible"
         data = json.dumps(data)
-        dir_path = os.path.join(LOG_DIR, AGGREGATION_KEY)
-        if not os.path.exists(dir_path):
-            os.makedirs(dir_path)
-        now = datetime.now().strftime(TIME_FORMAT)
-        path = os.path.join(dir_path, FILE_NAME_FORMAT % dict(now=now, host=host))
-        facts_json = MSG_FORMAT % dict(host=host, now=now, category=category, data=data)
-        fd = open(path, "w")
-        fd.write(facts_json)
-        fd.close()
+        facts_json = FACTS_FORMAT % dict(host=host,
+            now=datetime.now().strftime(TIME_FORMAT),
+            data=data)
+        print facts_json
         requests.post(url=FOREMAN_URL + '/api/v2/hosts/facts',
                       data=facts_json,
                       headers=FOREMAN_HEADERS,
                       verify=False)
 
+    """
+    TODO
+    Send reports to Foreman, to be parsed by Foreman config report importer.
+    I want to follow chef-handler-foreman strategy here and massage the data
+    to get a report json that Foreman can handle without writing another
+    report importer.
+    """
+
+    def send_report(self, host, data):
+        status = defaultdict(lambda:0)
+        failed_report_category = ["FAILED", "UNREACHABLE", "ASYNC_FAILED"]
+        success_report_category = ["OK", "SKIPPED", "ASYNC_OK"]
+        if data['category'] in failed_report_category:
+            status['failed'] = 1
+        if data['category'] in success_report_category:
+            status['failed'] = 1
+        if data['changed'] == 'true':
+            status['changed'] = 1
+#        print data
+#        data = json.dumps(data)
+#        report_json = REPORT_FORMAT % dict(host=host,
+#            now=datetime.now().strftime(TIME_FORMAT),
+#            status=status,
+#            metrics=metrics,
+#            logs=logs)
+#        requests.post(url=FOREMAN_URL + '/api/v2/reports',
+#                      data=report_json,
+#                      headers=FOREMAN_HEADERS,
+#                      verify=False)
+#
     def on_any(self, *args, **kwargs):
         pass
 
