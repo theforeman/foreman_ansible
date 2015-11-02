@@ -6,6 +6,8 @@
 
 ## Basic usage
 
+Install `foreman_ansible` on your Foreman host. See the [Foreman manual: installing plugin from gems](http://www.theforeman.org/plugins/#2.3AdvancedInstallationfromGems)
+
 Deploy `extras/foreman_callback.py` as a callback on your Ansible installation. For instance, put in your `ansible.cfg`:
 
 ```
