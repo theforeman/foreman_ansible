@@ -1,5 +1,3 @@
-require 'deface'
-
 module ForemanAnsible
   class Engine < ::Rails::Engine
     engine_name 'foreman_ansible'
