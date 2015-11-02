@@ -17,6 +17,8 @@ And copy `extras/foreman_callback.py` from this repo to `~/.ansible/plugins/call
 
 Now, every time you run `ansible -m setup $HOSTNAME`, Ansible will automatically submit facts for $HOSTNAME to Foreman.
 
+In Foreman, you should add whatever Ansible hosts you want to submit facts from to the Setting (Administer > Settings, Puppet tab - I know..)) 'trusted_puppetmaster_hosts'.
+
 #### Demo
 
 ![demo gif](http://i.imgur.com/mlnVFJj.gif)
