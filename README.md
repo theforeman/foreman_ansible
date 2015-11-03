@@ -23,7 +23,7 @@ Now, every time you run `ansible -m setup $HOSTNAME`, Ansible will automatically
 ![sign up gif](http://i.imgur.com/mlnVFJj.gif)
 
 ##### Host with failed and successful reports
-![reports](http://i.imgur.com/d6rVaQF.png)
+![reports](http://i.imgur.com/FVb7s8z.png)
 
 ### Extra information
 
