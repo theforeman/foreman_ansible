@@ -10,22 +10,21 @@ FOREMAN_HEADERS = {
     "Content-Type": "application/json",
     "Accept": "application/json"
 }
-TIME_FORMAT="%Y-%m-%d_%H%M%S_%f"
+TIME_FORMAT="%Y-%m-%d %H:%M:%S %f"
 FACTS_FORMAT="""
 {
   "name":"%(host)s",
-  "_timestamp":"%(now)s",
   "facts": %(data)s
 }
 """
-REPORT_FORMAT="""{
+REPORT_FORMAT="""
+{
 "report":
   {
     "host":"%(host)s",
-    "reported_at":"%(now)",
-    "status":"",
-    "metrics":"",
-    "logs":""
+    "reported_at":"%(now)s",
+    "metrics": %(metrics)s,
+    "status": %(status)s
   }
 }
 """
@@ -52,46 +51,50 @@ class CallbackModule(object):
 
     def send_facts(self, host, data):
         data["_type"] = "ansible"
+        data["_timestamp"] = datetime.now().strftime(TIME_FORMAT)
         data = json.dumps(data)
-        facts_json = FACTS_FORMAT % dict(host=host,
-            now=datetime.now().strftime(TIME_FORMAT),
-            data=data)
-        print facts_json
+        facts_json = FACTS_FORMAT % dict(host=host, data=data)
         requests.post(url=FOREMAN_URL + '/api/v2/hosts/facts',
                       data=facts_json,
                       headers=FOREMAN_HEADERS,
                       verify=False)
 
     """
-    TODO
     Send reports to Foreman, to be parsed by Foreman config report importer.
-    I want to follow chef-handler-foreman strategy here and massage the data
-    to get a report json that Foreman can handle without writing another
-    report importer.
+    I massage the data get a report json that Foreman can handle without
+    writing another report importer.
+
+    Currently it just sets the status. It's missing:
+      - logs, which we can get from 'data'
+      - metrics, which we can get from data, except for runtime
+      - proper count for playbook tasks, currently it's 1 no matter how
+        many modules have run
     """
 
     def send_report(self, host, data):
         status = defaultdict(lambda:0)
         failed_report_category = ["FAILED", "UNREACHABLE", "ASYNC_FAILED"]
         success_report_category = ["OK", "SKIPPED", "ASYNC_OK"]
-        if data['category'] in failed_report_category:
-            status['failed'] = 1
-        if data['category'] in success_report_category:
-            status['failed'] = 1
-        if data['changed'] == 'true':
-            status['changed'] = 1
-#        print data
-#        data = json.dumps(data)
-#        report_json = REPORT_FORMAT % dict(host=host,
-#            now=datetime.now().strftime(TIME_FORMAT),
-#            status=status,
-#            metrics=metrics,
-#            logs=logs)
-#        requests.post(url=FOREMAN_URL + '/api/v2/reports',
-#                      data=report_json,
-#                      headers=FOREMAN_HEADERS,
-#                      verify=False)
-#
+        if data["category"] in failed_report_category:
+            status["failed"] = 1
+        if data["category"] in success_report_category:
+            status["applied"] = 1
+        if data["changed"] == "True":
+            status["changed"] = 1
+        status = json.dumps(status)
+        metrics = json.dumps(data)
+        report_json = REPORT_FORMAT % dict(host=host,
+            now=datetime.now().strftime(TIME_FORMAT),
+            metrics=metrics,
+            status=status)
+#       To be changed to /api/v2/config_reports in 1.11.
+#       Maybe we could make a GET request to get the Foreman version & do this
+#       automatically.
+        requests.post(url=FOREMAN_URL + '/api/v2/reports',
+                      data=report_json,
+                      headers=FOREMAN_HEADERS,
+                      verify=False)
+
     def on_any(self, *args, **kwargs):
         pass
 
