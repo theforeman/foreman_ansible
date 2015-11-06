@@ -24,7 +24,8 @@ REPORT_FORMAT="""
     "host":"%(host)s",
     "reported_at":"%(now)s",
     "metrics": %(metrics)s,
-    "status": %(status)s
+    "status": %(status)s,
+    "logs" : [{ "log" : %(log)s }]
   }
 }
 """
@@ -41,7 +42,6 @@ class CallbackModule(object):
         data['category'] = category
         if 'ansible_facts' in data:
             self.send_facts(host, data)
-
         self.send_report(host, data)
 
     """
@@ -65,7 +65,6 @@ class CallbackModule(object):
     writing another report importer.
 
     Currently it just sets the status. It's missing:
-      - logs, which we can get from 'data'
       - metrics, which we can get from data, except for runtime
       - proper count for playbook tasks, currently it's 1 no matter how
         many modules have run
@@ -73,20 +72,32 @@ class CallbackModule(object):
 
     def send_report(self, host, data):
         status = defaultdict(lambda:0)
+        log = { 'messages' : { 'message' : '' },
+                'sources' :  { 'source' : ''} }
+        if 'msg' in data:
+          log['messages']['message'] += (data['msg'] + ' ')
+        if 'results' in data:
+          log['messages']['message'] += json.dumps(data['results'])
+        if 'invocation' in data:
+          log['sources']['source'] = data['invocation']['module_name'] + ' ' + data['invocation']['module_args']
         failed_report_category = ["FAILED", "UNREACHABLE", "ASYNC_FAILED"]
         success_report_category = ["OK", "SKIPPED", "ASYNC_OK"]
-        if data["category"] in failed_report_category:
+#       Set runtime if this comes from Ansible setup, other modules we can't test.
+#        if 'ansible_facts' in data:
+#            metrics['time'] = {'total': }
+        if 'category' in data and data["category"] in failed_report_category:
             status["failed"] = 1
-        if data["category"] in success_report_category:
+            log['level'] = 'err'
+        if 'category' in data and data["category"] in success_report_category:
             status["applied"] = 1
-        if data["changed"] == "True":
+            log['level'] = 'notice'
+        if 'changed' in data and data["changed"] == "True":
             status["changed"] = 1
-        status = json.dumps(status)
-        metrics = json.dumps(data)
         report_json = REPORT_FORMAT % dict(host=host,
             now=datetime.now().strftime(TIME_FORMAT),
-            metrics=metrics,
-            status=status)
+            metrics=json.dumps(data),
+            status=json.dumps(status),
+            log=json.dumps(log))
 #       To be changed to /api/v2/config_reports in 1.11.
 #       Maybe we could make a GET request to get the Foreman version & do this
 #       automatically.
