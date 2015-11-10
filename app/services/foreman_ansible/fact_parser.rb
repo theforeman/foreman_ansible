@@ -41,7 +41,13 @@ module ForemanAnsible
     end
 
     def get_interfaces
-      facts[:ansible_interfaces]
+      # Move ansibles default interface first in the list of interfaces since
+      # Foreman picks the first one that is usable. If ansible has no
+      # preference otherwise at least sort the list.
+      pref = facts[:ansible_default_ipv4] &&
+                facts[:ansible_default_ipv4]['interface']
+      pref ? (facts[:ansible_interfaces] - [pref]).unshift(pref) :
+                facts[:ansible_interfaces].sort
     end
 
     def get_facts_for_interface(interface)
