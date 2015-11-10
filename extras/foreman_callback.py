@@ -25,7 +25,7 @@ REPORT_FORMAT="""
     "reported_at":"%(now)s",
     "metrics": %(metrics)s,
     "status": %(status)s,
-    "logs" : [{ "log" : %(log)s }]
+    "logs" : %(log)s
   }
 }
 """
@@ -35,6 +35,8 @@ class CallbackModule(object):
     """
     Sends Ansible facts (if ansible -m setup ran) and reports
     """
+    def __init__(self):
+        self.items = defaultdict(list)
 
     def log(self, host, category, data):
         if type(data) != dict:
@@ -60,6 +62,24 @@ class CallbackModule(object):
                       headers=FOREMAN_HEADERS,
                       verify=False)
 
+
+    def _build_log(self, data):
+        logs = []
+        for entry in data:
+            if 'failed' in entry:
+                level = 'err'
+            else:
+                level = 'notice' if 'changed' in entry and entry['changed'] else 'info'
+            source = json.dumps(entry['invocation'])
+            msg = json.dumps(entry)
+            logs.append({ "log": {
+                'sources'  : { 'source' : source },
+                'messages' : { 'message': msg },
+                'level':     level
+                }})
+        return logs
+
+
     def send_reports(self, stats):
         """
         Send reports to Foreman, to be parsed by Foreman config report
@@ -70,8 +90,6 @@ class CallbackModule(object):
           - metrics, which we can get from data, except for runtime
         """
         status = defaultdict(lambda:0)
-        log = { 'messages' : { 'message' : '' },
-                'sources' :  { 'source' : 'ansible'} }
         metrics = {}
 
         for host in stats.processed.keys():
@@ -79,8 +97,9 @@ class CallbackModule(object):
             status["applied"] = sum['changed']
             status["failed"] = sum['failures'] + sum['unreachable']
             status["skipped"] = sum['skipped']
+            log = self._build_log(self.items[host])
+            self.items[host] = []
 
-            log['level'] = 'err' if status["failed"] else 'notice'
             report_json = REPORT_FORMAT % dict(host=host,
                 now=datetime.now().strftime(TIME_FORMAT),
                 metrics=json.dumps(metrics),
@@ -98,17 +117,19 @@ class CallbackModule(object):
         pass
 
     def runner_on_failed(self, host, res, ignore_errors=False):
-        pass
+        self.items[host].append(res)
 
     def runner_on_ok(self, host, res):
         if res['invocation']['module_name'] == 'setup':
             self.send_facts(host, res)
+        else:
+            self.items[host].append(res)
 
     def runner_on_skipped(self, host, item=None):
         pass
 
     def runner_on_unreachable(self, host, res):
-        pass
+        self.items[host].append(res)
 
     def runner_on_no_hosts(self):
         pass
@@ -117,10 +138,10 @@ class CallbackModule(object):
         pass
 
     def runner_on_async_ok(self, host, res, jid):
-        pass
+        self.items[host].append(res)
 
     def runner_on_async_failed(self, host, res, jid):
-        pass
+        self.items[host].append(res)
 
     def playbook_on_start(self):
         pass
