@@ -60,7 +60,7 @@ class CallbackModule(object):
                       headers=FOREMAN_HEADERS,
                       verify=False)
 
-    def send_report(self, host, data):
+    def send_reports(self, stats):
         """
         Send reports to Foreman, to be parsed by Foreman config report
         importer.  I massage the data get a report json that Foreman
@@ -68,60 +68,47 @@ class CallbackModule(object):
 
         Currently it just sets the status. It's missing:
           - metrics, which we can get from data, except for runtime
-          - proper count for playbook tasks, currently it's 1 no
-            matter how many modules have run
         """
-
-
         status = defaultdict(lambda:0)
         log = { 'messages' : { 'message' : '' },
-                'sources' :  { 'source' : ''} }
-        if 'msg' in data:
-          log['messages']['message'] += (data['msg'] + ' ')
-        if 'results' in data:
-          log['messages']['message'] += json.dumps(data['results'])
-        if 'invocation' in data:
-          log['sources']['source'] = data['invocation']['module_name'] + ' ' + data['invocation']['module_args']
-        failed_report_category = ["FAILED", "UNREACHABLE", "ASYNC_FAILED"]
-        success_report_category = ["OK", "SKIPPED", "ASYNC_OK"]
-#       Set runtime if this comes from Ansible setup, other modules we can't test.
-#        if 'ansible_facts' in data:
-#            metrics['time'] = {'total': }
-        if 'category' in data and data["category"] in failed_report_category:
-            status["failed"] = 1
-            log['level'] = 'err'
-        if 'category' in data and data["category"] in success_report_category:
-            status["applied"] = 1
-            log['level'] = 'notice'
-        if 'changed' in data and data["changed"] == "True":
-            status["changed"] = 1
-        report_json = REPORT_FORMAT % dict(host=host,
-            now=datetime.now().strftime(TIME_FORMAT),
-            metrics=json.dumps(data),
-            status=json.dumps(status),
-            log=json.dumps(log))
-#       To be changed to /api/v2/config_reports in 1.11.
-#       Maybe we could make a GET request to get the Foreman version & do this
-#       automatically.
-        requests.post(url=FOREMAN_URL + '/api/v2/reports',
-                      data=report_json,
-                      headers=FOREMAN_HEADERS,
-                      verify=False)
+                'sources' :  { 'source' : 'ansible'} }
+        metrics = {}
+
+        for host in stats.processed.keys():
+            sum = stats.summarize(host)
+            status["applied"] = sum['changed']
+            status["failed"] = sum['failures'] + sum['unreachable']
+            status["skipped"] = sum['skipped']
+
+            log['level'] = 'err' if status["failed"] else 'notice'
+            report_json = REPORT_FORMAT % dict(host=host,
+                now=datetime.now().strftime(TIME_FORMAT),
+                metrics=json.dumps(metrics),
+                status=json.dumps(status),
+                log=json.dumps(log))
+#           To be changed to /api/v2/config_reports in 1.11.
+#           Maybe we could make a GET request to get the Foreman version & do this
+#           automatically.
+            requests.post(url=FOREMAN_URL + '/api/v2/reports',
+                          data=report_json,
+                          headers=FOREMAN_HEADERS,
+                          verify=False)
 
     def on_any(self, *args, **kwargs):
         pass
 
     def runner_on_failed(self, host, res, ignore_errors=False):
-        self.log(host, 'FAILED', res)
+        pass
 
     def runner_on_ok(self, host, res):
-        self.log(host, 'OK', res)
+        if res['invocation']['module_name'] == 'setup':
+            self.send_facts(host, res)
 
     def runner_on_skipped(self, host, item=None):
-        self.log(host, 'SKIPPED', '...')
+        pass
 
     def runner_on_unreachable(self, host, res):
-        self.log(host, 'UNREACHABLE', res)
+        pass
 
     def runner_on_no_hosts(self):
         pass
@@ -130,10 +117,10 @@ class CallbackModule(object):
         pass
 
     def runner_on_async_ok(self, host, res, jid):
-        self.log(host, 'ASYNC_OK', res)
+        pass
 
     def runner_on_async_failed(self, host, res, jid):
-        self.log(host, 'ASYNC_FAILED', res)
+        pass
 
     def playbook_on_start(self):
         pass
@@ -157,14 +144,13 @@ class CallbackModule(object):
         pass
 
     def playbook_on_import_for_host(self, host, imported_file):
-        self.log(host, 'IMPORTED', imported_file)
+        pass
 
     def playbook_on_not_import_for_host(self, host, missing_file):
-        self.log(host, 'NOTIMPORTED', missing_file)
+        pass
 
     def playbook_on_play_start(self, name):
         pass
 
     def playbook_on_stats(self, stats):
-        pass
-
+        self.send_reports(stats)
