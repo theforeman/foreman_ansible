@@ -44,12 +44,13 @@ class CallbackModule(object):
             self.send_facts(host, data)
         self.send_report(host, data)
 
-    """
-    Sends facts to Foreman, to be parsed by foreman_ansible fact parser.
-    The default fact importer should import these facts properly.
-    """
 
     def send_facts(self, host, data):
+        """
+        Sends facts to Foreman, to be parsed by foreman_ansible fact
+        parser.  The default fact importer should import these facts
+        properly.
+        """
         data["_type"] = "ansible"
         data["_timestamp"] = datetime.now().strftime(TIME_FORMAT)
         data = json.dumps(data)
@@ -59,18 +60,19 @@ class CallbackModule(object):
                       headers=FOREMAN_HEADERS,
                       verify=False)
 
-    """
-    Send reports to Foreman, to be parsed by Foreman config report importer.
-    I massage the data get a report json that Foreman can handle without
-    writing another report importer.
-
-    Currently it just sets the status. It's missing:
-      - metrics, which we can get from data, except for runtime
-      - proper count for playbook tasks, currently it's 1 no matter how
-        many modules have run
-    """
-
     def send_report(self, host, data):
+        """
+        Send reports to Foreman, to be parsed by Foreman config report
+        importer.  I massage the data get a report json that Foreman
+        can handle without writing another report importer.
+
+        Currently it just sets the status. It's missing:
+          - metrics, which we can get from data, except for runtime
+          - proper count for playbook tasks, currently it's 1 no
+            matter how many modules have run
+        """
+
+
         status = defaultdict(lambda:0)
         log = { 'messages' : { 'message' : '' },
                 'sources' :  { 'source' : ''} }
