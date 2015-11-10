@@ -64,17 +64,17 @@ module ForemanAnsible
 
     def os_name
       facts[:ansible_distribution] ||
-        facts[:ansible_lsb]['id']
+        facts[:ansible_lsb] && facts[:ansible_lsb]['id']
     end
 
     def os_major
       facts[:ansible_distribution_major_version] ||
-        facts[:ansible_lsb]['major_release']
+        facts[:ansible_lsb] && facts[:ansible_lsb]['major_release']
     end
 
     def os_release
       facts[:ansible_distribution_version] ||
-        facts[:ansible_lsb]['release']
+        facts[:ansible_lsb] && facts[:ansible_lsb]['release']
     end
 
     def os_minor
@@ -83,7 +83,7 @@ module ForemanAnsible
     end
 
     def os_description
-      facts[:ansible_lsb]['description']
+      facts[:ansible_lsb] && facts[:ansible_lsb]['description']
     end
   end
 end
