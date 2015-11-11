@@ -5,6 +5,12 @@ import json
 import uuid
 import requests
 
+try:
+    from ansible.plugins.callback import CallbackBase
+    parent_class = CallbackBase
+except ImportError:
+    parent_class = object
+
 FOREMAN_URL = "http://localhost:3000"
 FOREMAN_HEADERS = {
     "Content-Type": "application/json",
@@ -30,7 +36,7 @@ REPORT_FORMAT="""
 }
 """
 
-class CallbackModule(object):
+class CallbackModule(parent_class):
 
     """
     Sends Ansible facts (if ansible -m setup ran) and reports
@@ -66,15 +72,19 @@ class CallbackModule(object):
     def _build_log(self, data):
         logs = []
         for entry in data:
-            if 'failed' in entry:
+            if isinstance(entry, tuple):
+                # v2 plugins have the task name
+                source, msg = entry
+            else:
+                source = json.dumps(entry['invocation'])
+                msg = entry
+            if 'failed' in msg:
                 level = 'err'
             else:
-                level = 'notice' if 'changed' in entry and entry['changed'] else 'info'
-            source = json.dumps(entry['invocation'])
-            msg = json.dumps(entry)
+                level = 'notice' if 'changed' in msg and msg['changed'] else 'info'
             logs.append({ "log": {
                 'sources'  : { 'source' : source },
-                'messages' : { 'message': msg },
+                'messages' : { 'message': json.dumps(msg) },
                 'level':     level
                 }})
         return logs
@@ -175,3 +185,22 @@ class CallbackModule(object):
 
     def playbook_on_stats(self, stats):
         self.send_reports(stats)
+
+    # v2 callback API
+    def v2_runner_on_ok(self, result):
+        res = result._result
+        host = result._host.get_name()
+        try:
+            module = res['invocation']['module_name']
+        except KeyError:
+            module = None
+        if module == 'setup':
+            self.send_facts(host, res)
+        else:
+            name = result._task.get_name()
+            self.items[host].append((name, res))
+
+    def v2_runner_on_failed(self, result, ignore_errors=False):
+        name = result._task.get_name()
+        host = result._host.get_name()
+        self.items[host].append((name, result._result))
