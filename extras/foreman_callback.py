@@ -4,6 +4,7 @@ from collections import defaultdict
 import json
 import uuid
 import requests
+import time
 
 try:
     from ansible.plugins.callback import CallbackBase
@@ -43,6 +44,7 @@ class CallbackModule(parent_class):
     """
     def __init__(self):
         self.items = defaultdict(list)
+        self.start_time = int(time.time())
 
     def log(self, host, category, data):
         if type(data) != dict:
@@ -108,6 +110,7 @@ class CallbackModule(parent_class):
             status["failed"] = sum['failures'] + sum['unreachable']
             status["skipped"] = sum['skipped']
             log = self._build_log(self.items[host])
+            metrics["time"] = { "total": int(time.time()) - self.start_time }
             self.items[host] = []
 
             report_json = REPORT_FORMAT % dict(host=host,
