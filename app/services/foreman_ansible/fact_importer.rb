@@ -7,7 +7,7 @@ module ForemanAnsible
     def initialize(host, facts = {})
       @host = host
       @facts = normalize(facts[:ansible_facts])
-      @original_facts = Sparser.unsparse(facts[:ansible_facts])
+      @original_facts = FactSparser.unsparse(facts[:ansible_facts])
       @counters = {}
     end
 
@@ -15,7 +15,7 @@ module ForemanAnsible
 
     def add_new_facts
       @counters[:added] = 0
-      add_missing_facts(Sparser.unsparse(@original_facts))
+      add_missing_facts(FactSparser.unsparse(@original_facts))
       logger.debug("Merging facts for '#{host}': added #{@counters[:added]} facts")
     end
 
@@ -44,7 +44,7 @@ module ForemanAnsible
     end
 
     def missing_facts
-      @missing_facts ||= (facts.keys + Sparser.sparse(@original_facts).keys) - db_facts.keys
+      @missing_facts ||= (facts.keys + FactSparser.sparse(@original_facts).keys) - db_facts.keys
     end
 
     # Returns pairs [id, fact_name]
@@ -71,27 +71,5 @@ module ForemanAnsible
       @counters[:added] += 1
     end
 
-    class Sparser
-      class << self
-        def sparse(hash, options = {} )
-          hash.map do |k, v|
-            prefix = options.fetch(:prefix, []) + [k]
-            next sparse(v, options.merge(:prefix => prefix)) if v.is_a? Hash
-            { prefix.join(options.fetch(:separator, FactName::SEPARATOR)) => v }
-          end.reduce(:merge) || Hash.new
-        end
-
-        def unsparse(hash, options={})
-          ret = Hash.new
-          sparse(hash).each do |k, v|
-            current = ret
-            key = k.to_s.split(options.fetch(:separator, FactName::SEPARATOR))
-            current = (current[key.shift] ||= Hash.new) until key.size <= 1
-            current[key.first] = v
-          end
-          ret
-        end
-      end
-    end
   end
 end
