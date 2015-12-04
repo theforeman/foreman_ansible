@@ -1,4 +1,7 @@
 module ForemanAnsible
+  # Override methods from Foreman app/services/fact_importer so that Ansible
+  # facts are recognized in Foreman as ForemanAnsible facts. It supports
+  # nested facts.
   class FactImporter < ::FactImporter
     def fact_name_class
       ForemanAnsible::FactName
@@ -16,11 +19,12 @@ module ForemanAnsible
     def add_new_facts
       @counters[:added] = 0
       add_missing_facts(FactSparser.unsparse(@original_facts))
-      logger.debug("Merging facts for '#{host}': added #{@counters[:added]} facts")
+      logger.debug(
+        "Merging facts for '#{host}': added #{@counters[:added]} facts")
     end
 
     def add_missing_facts(imported_facts, parent = nil, prefix = '')
-      imported_facts.select! { |fact_name, fact_value| !fact_value.nil? }
+      imported_facts.select! { |_fact_name, fact_value| !fact_value.nil? }
 
       imported_facts.each do |imported_name, imported_value|
         fact_fqn = fact_fqn(imported_name, prefix)
@@ -44,7 +48,9 @@ module ForemanAnsible
     end
 
     def missing_facts
-      @missing_facts ||= (facts.keys + FactSparser.sparse(@original_facts).keys) - db_facts.keys
+      @missing_facts ||= facts.keys +
+                         FactSparser.sparse(@original_facts).keys -
+                         db_facts.keys
     end
 
     # Returns pairs [id, fact_name]
@@ -70,6 +76,5 @@ module ForemanAnsible
       host.fact_values.send(method, :value => value, :fact_name => fact_name)
       @counters[:added] += 1
     end
-
   end
 end

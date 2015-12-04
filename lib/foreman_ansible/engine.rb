@@ -1,4 +1,5 @@
 module ForemanAnsible
+  # This engine connects ForemanAnsible with Foreman core
   class Engine < ::Rails::Engine
     engine_name 'foreman_ansible'
 

@@ -1,4 +1,6 @@
 module ForemanAnsible
+  # Override methods from Foreman app/services/fact_parser so that facts
+  # representing host properties are understood when they come from Ansible.
   class FactParser < ::FactParser
     attr_reader :facts
 
@@ -38,18 +40,24 @@ module ForemanAnsible
       true
     end
 
-    def get_interfaces
-      # Move ansibles default interface first in the list of interfaces since
-      # Foreman picks the first one that is usable. If ansible has no
-      # preference otherwise at least sort the list.
+    # Move ansible's default interface first in the list of interfaces since
+    # Foreman picks the first one that is usable. If ansible has no
+    # preference otherwise at least sort the list.
+    #
+    # This method overrides app/services/fact_parser.rb on Foreman and returns
+    # an array of interface names, ['eth0', 'wlan1', etc...]
+    def get_interfaces # rubocop:disable Style/AccessorMethodName
       pref = facts[:ansible_default_ipv4] &&
-                facts[:ansible_default_ipv4]['interface']
-      pref ? (facts[:ansible_interfaces] - [pref]).unshift(pref) :
-                facts[:ansible_interfaces].sort
+             facts[:ansible_default_ipv4]['interface']
+      if pref.present?
+        (facts[:ansible_interfaces] - [pref]).unshift(pref)
+      else
+        facts[:ansible_interfaces].sort
+      end
     end
 
     def get_facts_for_interface(interface)
-      interface.gsub!(/-/, '_') # virbr1-nic -> virbr1_nic
+      interface.tr!(/-/, '_') # virbr1-nic -> virbr1_nic
       interface_facts = facts[:"ansible_#{interface}"]
       ipaddress = ip_from_interface(interface)
       HashWithIndifferentAccess[interface_facts.merge(:ipaddress => ipaddress)]

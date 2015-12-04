@@ -4,7 +4,6 @@ require 'date'
 Gem::Specification.new do |s|
   s.name        = 'foreman_ansible'
   s.version     = ForemanAnsible::VERSION
-  s.date        = Date.today.to_s
   s.authors     = ['Daniel Lobato Garcia']
   s.email       = ['elobatocs@gmail.com']
   s.homepage    = 'https://github.com/theforeman/foreman_ansible'
@@ -13,7 +12,7 @@ Gem::Specification.new do |s|
   s.licenses    = ['GPL-3']
 
   s.files = Dir['{app,config,db,lib,locale}/**/*'] +
-    ['LICENSE', 'Rakefile', 'README.md']
+            ['LICENSE', 'Rakefile', 'README.md']
   s.test_files = Dir['test/**/*']
 
   s.add_development_dependency 'rubocop'
