@@ -12,9 +12,7 @@ module ForemanAnsible
         Operatingsystem.create!(args.merge(:description => os_description))
     end
 
-    def environment
-      # Don't do anything
-    end
+    def environment; end # Don't do anything as there's no env in Ansible
 
     def architecture
       name = facts[:ansible_architecture] || facts[:facter_architecture]
@@ -57,9 +55,7 @@ module ForemanAnsible
       HashWithIndifferentAccess[interface_facts.merge(:ipaddress => ipaddress)]
     end
 
-    def ipmi_interface
-      # ?
-    end
+    def ipmi_interface; end
 
     private
 
