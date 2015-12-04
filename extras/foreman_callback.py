@@ -13,6 +13,9 @@ except ImportError:
     parent_class = object
 
 FOREMAN_URL = "http://localhost:3000"
+# Substitute by a real SSL certificate and key if your Foreman uses HTTPS
+FOREMAN_SSL_CERT = ("/path/cert.pem", "/path/key.pem")
+FOREMAN_SSL_VERIFY = False
 FOREMAN_HEADERS = {
     "Content-Type": "application/json",
     "Accept": "application/json"
@@ -68,7 +71,8 @@ class CallbackModule(parent_class):
         requests.post(url=FOREMAN_URL + '/api/v2/hosts/facts',
                       data=facts_json,
                       headers=FOREMAN_HEADERS,
-                      verify=False)
+                      cert=FOREMAN_SSL_CERT,
+                      verify=FOREMAN_SSL_VERIFY)
 
 
     def _build_log(self, data):
@@ -124,7 +128,8 @@ class CallbackModule(parent_class):
             requests.post(url=FOREMAN_URL + '/api/v2/reports',
                           data=report_json,
                           headers=FOREMAN_HEADERS,
-                          verify=False)
+                          cert=FOREMAN_SSL_CERT,
+                          verify=FOREMAN_SSL_VERIFY)
 
     def on_any(self, *args, **kwargs):
         pass
