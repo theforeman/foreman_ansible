@@ -17,13 +17,13 @@ bin_ansible_callbacks = True
 
 And copy `extras/foreman_callback.py` from this repo to `~/.ansible/plugins/callback_plugins/`. That's it!
 
-Now, every time you run `ansible -m setup $HOSTNAME`, Ansible will automatically submit facts and a small report for $HOSTNAME to Foreman. See 'Extra information' below if you find any error.
+Now, every time you run a playbook or  `ansible -m setup $HOSTNAME`, Ansible will automatically submit facts and a small report for $HOSTNAME to Foreman. See 'Extra information' below if you find any error.
 
 ##### Registering a new host in Foreman
 ![sign up gif](http://i.imgur.com/mlnVFJj.gif)
 
 ##### Host with failed and successful reports
-![reports](http://i.imgur.com/FVb7s8z.png)
+![reports](http://i.imgur.com/1ySO4sh.png)
 
 ### Extra information
 
