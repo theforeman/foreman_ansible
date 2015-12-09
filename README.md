@@ -1,8 +1,9 @@
 # Foreman Ansible :arrow_forward:
 
-[Foreman](http://theforeman.org) integration with Ansible. For now, it's just importing facts and not meant for general use.
-
-**Warning - this project hasn't been released yet, and might change significantly. Please don't use in production**
+## Features
+* Import facts
+* Monitor playbook and ansible runs runtime
+* Sends Ansible reports to Foreman that contain what changed on your system after an ansible run.
 
 ## Basic usage
 
