@@ -22,17 +22,13 @@ module ForemanAnsible
     end
 
     def model
-      name ||= facts[:ansible_product_name] ||
-               facts[:facter_virtual] ||
-               facts[:facter_productname] ||
-               facts[:facter_model]
+      name = detect_fact([:ansible_product_name, :facter_virtual,
+                          :facter_productname, :facter_model])
       Model.where(:name => name.strip).first_or_create unless name.blank?
     end
 
     def domain
-      name = facts[:ansible_domain] ||
-             facts[:facter_domain] ||
-             facts[:ohai_domain]
+      name = detect_fact([:ansible_domain, :facter_domain, :ohai_domain])
       Domain.where(:name => name).first_or_create unless name.blank?
     end
 
@@ -94,6 +90,15 @@ module ForemanAnsible
 
     def os_description
       facts[:ansible_lsb] && facts[:ansible_lsb]['description']
+    end
+
+    # Returns first non-empty fact. Needed to check for empty strings.
+    def detect_fact(fact_names)
+      facts[
+        fact_names.detect do |fact_name|
+          facts[fact_name].present?
+        end
+      ]
     end
   end
 end
