@@ -20,13 +20,13 @@ module ForemanAnsible
       #   operatingsystem::name: 'fedora' }
       # into
       # { operatingsystem : { major: 20, name: 'fedora' } }
-      def unsparse(hash, options = {})
+      def unsparse(facts_hash)
         ret = {}
-        sparse(hash).each do |k, v|
+        sparse(facts_hash).each do |full_name, value|
           current = ret
-          key = k.to_s.split(options.fetch(:separator, FactName::SEPARATOR))
-          current = (current[key.shift] ||= {}) until key.size <= 1
-          current[key.first] = v
+          fact_name = full_name.to_s.split(FactName::SEPARATOR)
+          current = (current[fact_name.shift] ||= {}) until fact_name.size <= 1
+          current[fact_name.first] = value
         end
         ret
       end
