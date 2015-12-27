@@ -53,7 +53,7 @@ module ForemanAnsible
     end
 
     def get_facts_for_interface(interface)
-      interface.tr!(/-/, '_') # virbr1-nic -> virbr1_nic
+      interface.tr!('-', '_') # virbr1-nic -> virbr1_nic
       interface_facts = facts[:"ansible_#{interface}"]
       ipaddress = ip_from_interface(interface)
       HashWithIndifferentAccess[interface_facts.merge(:ipaddress => ipaddress)]

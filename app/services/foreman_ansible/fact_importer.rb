@@ -28,9 +28,7 @@ module ForemanAnsible
 
       imported_facts.each do |imported_name, imported_value|
         fact_fqn = fact_fqn(imported_name, prefix)
-        next unless missing_facts.include?(fact_fqn)
-        fact_name = find_fact_name(fact_fqn, parent)
-
+        fact_name = find_or_create_fact_name(fact_fqn, parent, imported_value)
         add_fact_value(imported_value, fact_name)
         add_compose_fact(imported_value, fact_name, fact_fqn)
       end
@@ -55,7 +53,7 @@ module ForemanAnsible
 
     # Returns pairs [id, fact_name]
     def fact_names
-      @fact_names ||= fact_name_class.maximum(:id, :group => 'name')
+      @fact_names ||= fact_name_class.group('name').maximum(:id)
     end
 
     # Fact fully qualified name contains an unambiguous name for a fact
@@ -64,17 +62,24 @@ module ForemanAnsible
       prefix.empty? ? name : prefix + FactName::SEPARATOR + name
     end
 
-    def find_fact_name(name, parent)
-      return FactName.find(fact_names[name]) if fact_names[name].present?
+    def find_or_create_fact_name(name, parent, fact_value)
+      return fact_name_class.find(fact_names[name]) if fact_names[name].present?
       fact_name_class.create!(:name => name,
                               :parent => parent,
-                              :compose => compose)
+                              :compose => compose?(fact_value))
     end
 
     def add_fact_value(value, fact_name)
+      return unless missing_facts.include?(fact_name.name)
       method = host.new_record? ? :build : :create!
-      host.fact_values.send(method, :value => value, :fact_name => fact_name)
+      #value = nil if compose?(value)
+      host.fact_values.send(method, :value => value.to_s, :fact_name => fact_name)
       @counters[:added] += 1
+    end
+
+    def compose?(fact_value)
+      fact_value.is_a?(Hash) ||
+        fact_value.is_a?(Array) && fact_value.first.is_a?(Hash)
     end
   end
 end
