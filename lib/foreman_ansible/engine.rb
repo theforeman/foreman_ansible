@@ -1,14 +1,17 @@
+require 'deface'
 module ForemanAnsible
   # This engine connects ForemanAnsible with Foreman core
   class Engine < ::Rails::Engine
     engine_name 'foreman_ansible'
 
+    config.autoload_paths += Dir["#{config.root}/app/helpers"]
     config.autoload_paths += Dir["#{config.root}/app/overrides"]
     config.autoload_paths += Dir["#{config.root}/app/services"]
+    config.autoload_paths += Dir["#{config.root}/app/views"]
 
-    initializer 'foreman_ansible.register_plugin', :after => :finisher_hook do
+    initializer 'foreman_ansible.register_plugin', :before => :finisher_hook do
       Foreman::Plugin.register :foreman_ansible do
-        requires_foreman '>= 1.6'
+        requires_foreman '>= 1.11'
       end
     end
 
