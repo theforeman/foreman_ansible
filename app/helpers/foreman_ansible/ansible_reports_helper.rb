@@ -1,4 +1,6 @@
 module ForemanAnsible
+  # This module takes the config reports stored in Foreman for Ansible and
+  # modifies them to be properly presented in views
   module AnsibleReportsHelper
     def module_name(log)
       JSON.parse(log.source.value)['module_name']

@@ -1,0 +1,12 @@
+AllCops:
+  RunRailsCops: true
+
+# Just so it looks like core Foreman
+Style/HashSyntax:
+  EnforcedStyle: hash_rockets
+
+Style/DotPosition:
+  EnforcedStyle: 'trailing'
+
+Rails/ActionFilter:
+  EnforcedStyle: filter

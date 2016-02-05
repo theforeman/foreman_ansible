@@ -72,8 +72,9 @@ module ForemanAnsible
     def add_fact_value(value, fact_name)
       return unless missing_facts.include?(fact_name.name)
       method = host.new_record? ? :build : :create!
-      #value = nil if compose?(value)
-      host.fact_values.send(method, :value => value.to_s, :fact_name => fact_name)
+      host.fact_values.send(method,
+                            :value => value.to_s,
+                            :fact_name => fact_name)
       @counters[:added] += 1
     end
 
