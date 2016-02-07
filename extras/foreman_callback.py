@@ -14,7 +14,7 @@ except ImportError:
 
 FOREMAN_URL = "http://localhost:3000"
 # Substitute by a real SSL certificate and key if your Foreman uses HTTPS
-FOREMAN_SSL_CERT = ("/path/cert.pem", "/path/key.pem")
+FOREMAN_SSL_CERT = ("/etc/foreman/client_cert.pem", "/etc/foreman/client_key.pem")
 FOREMAN_SSL_VERIFY = False
 FOREMAN_HEADERS = {
     "Content-Type": "application/json",
