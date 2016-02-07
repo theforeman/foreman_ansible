@@ -53,7 +53,7 @@ module ForemanAnsible
 
     # Returns pairs [id, fact_name]
     def fact_names
-      @fact_names ||= fact_name_class.group('name').maximum(:id)
+      fact_name_class.group('name').maximum(:id)
     end
 
     # Fact fully qualified name contains an unambiguous name for a fact
