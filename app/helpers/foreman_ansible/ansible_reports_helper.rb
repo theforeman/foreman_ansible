@@ -17,5 +17,11 @@ module ForemanAnsible
         "<p style=#{paragraph_style}>#{name}: #{value}</p>"
       end.join.html_safe
     end
+
+    def ansible_report?(log)
+      module_name(log).present?
+    rescue # Failures when parsing the log indicates it's not an Ansible report
+      false
+    end
   end
 end
