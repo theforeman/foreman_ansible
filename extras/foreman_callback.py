@@ -46,6 +46,7 @@ class CallbackModule(parent_class):
     Sends Ansible facts (if ansible -m setup ran) and reports
     """
     def __init__(self):
+        super(CallbackModule, self).__init__()
         self.items = defaultdict(list)
         self.start_time = int(time.time())
 
@@ -56,7 +57,6 @@ class CallbackModule(parent_class):
         if 'ansible_facts' in data:
             self.send_facts(host, data)
         self.send_report(host, data)
-
 
     def send_facts(self, host, data):
         """
