@@ -15,8 +15,19 @@ Deploy `extras/foreman_callback.py` as a callback on your Ansible installation. 
 callback_plugins = ~/.ansible/plugins/callback_plugins/
 bin_ansible_callbacks = True
 ```
+And copy `extras/foreman_callback.py` from this repo to `~/.ansible/plugins/callback_plugins/`.
 
-And copy `extras/foreman_callback.py` from this repo to `~/.ansible/plugins/callback_plugins/`. That's it!
+You can configure it via the following environment variables:
+
+* FOREMAN_URL: the URL of your Foreman installation (default "http://localhost:3000")
+* FOREMAN_SSL_CERT: The public key when using SSL client certificates (default "/etc/foreman/client_cert.pem")
+* FOREMAN_SSL_KEY: The private key when using SSL client certificates (default  "/etc/foreman/client_key.pem")
+* FOREMAN_SSL_VERIFY: wether to verify SSL certificates. Use *False*
+  to disable certificate checks. You can also set it to CA bundle (default is "True").
+
+See the [python-requests documentation](http://docs.python-requests.org/en/master/user/advanced/#ssl-cert-verification) on the details of certificate setup.
+
+That's it!
 
 Now, every time you run a playbook or  `ansible -m setup $HOSTNAME`, Ansible will automatically submit facts and a small report for $HOSTNAME to Foreman. See 'Extra information' below if you find any error.
 
@@ -62,3 +73,6 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+
