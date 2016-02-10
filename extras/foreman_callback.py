@@ -12,10 +12,11 @@ try:
 except ImportError:
     parent_class = object
 
-FOREMAN_URL = "http://localhost:3000"
+FOREMAN_URL = os.getenv('FOREMAN_URL', "http://localhost:3000")
 # Substitute by a real SSL certificate and key if your Foreman uses HTTPS
-FOREMAN_SSL_CERT = ("/etc/foreman/client_cert.pem", "/etc/foreman/client_key.pem")
-FOREMAN_SSL_VERIFY = False
+FOREMAN_SSL_CERT = (os.getenv('FOREMAN_SSL_CERT', "/etc/foreman/client_cert.pem"),
+                    os.getenv('FOREMAN_SSL_KEY', "/etc/foreman/client_key.pem"))
+FOREMAN_SSL_VERIFY = os.getenv('FOREMAN_SSL_VERIFY', True)
 FOREMAN_HEADERS = {
     "Content-Type": "application/json",
     "Accept": "application/json"
@@ -49,6 +50,7 @@ class CallbackModule(parent_class):
         super(CallbackModule, self).__init__()
         self.items = defaultdict(list)
         self.start_time = int(time.time())
+        self.ssl_verify = self._ssl_verify()
 
     def log(self, host, category, data):
         if type(data) != dict:
@@ -57,6 +59,17 @@ class CallbackModule(parent_class):
         if 'ansible_facts' in data:
             self.send_facts(host, data)
         self.send_report(host, data)
+
+    def _ssl_verify(self):
+        if FOREMAN_SSL_VERIFY.lower() in [ "1", "true", "on" ]:
+            verify = True
+        elif FOREMAN_SSL_VERIFY.lower() in [ "0", "false", "off" ]:
+            requests.packages.urllib3.disable_warnings()
+            self._display.warning("plugin %s: SSL verification of %s disabled" % (os.path.basename(__file__), FOREMAN_URL))
+            verify = False
+        else:  # Set ta a CA bundle:
+            verify = FOREMAN_SSL_VERIFY
+        return verify
 
     def send_facts(self, host, data):
         """
@@ -68,11 +81,13 @@ class CallbackModule(parent_class):
         data["_timestamp"] = datetime.now().strftime(TIME_FORMAT)
         data = json.dumps(data)
         facts_json = FACTS_FORMAT % dict(host=host, data=data)
+
+
         requests.post(url=FOREMAN_URL + '/api/v2/hosts/facts',
                       data=facts_json,
                       headers=FOREMAN_HEADERS,
                       cert=FOREMAN_SSL_CERT,
-                      verify=FOREMAN_SSL_VERIFY)
+                      verify=self.ssl_verify)
 
 
     def _build_log(self, data):
@@ -129,7 +144,7 @@ class CallbackModule(parent_class):
                           data=report_json,
                           headers=FOREMAN_HEADERS,
                           cert=FOREMAN_SSL_CERT,
-                          verify=FOREMAN_SSL_VERIFY)
+                          verify=self.ssl_verify)
 
     def on_any(self, *args, **kwargs):
         pass
