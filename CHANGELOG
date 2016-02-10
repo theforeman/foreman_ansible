@@ -1,0 +1,84 @@
+2016-02-10	Guido Günther <agx@sigxcpu.org>
+	* Make connection parameters configurable via environment variables
+
+2016-02-08	Daniel Lobato <elobatocs@gmail.com>
+	* Tests for FactImporter
+
+2016-02-07	Daniel Lobato <elobatocs@gmail.com>
+	* Reports page now detects Ansible vs other kind of reports
+	* Remove Gemfile.lock
+	* Callback SSL certs default to Foreman SSL certs files
+
+2016-02-05	Daniel Lobato <elobatocs@gmail.com>
+	* Fix rubocop errors
+	* Override default report output page
+	* Release 0.2.2
+
+2015-12-27	Daniel Lobato <elobatocs@gmail.com>
+	* Refactor fact importer and parser to support Rails 4
+
+2015-12-17	Daniel Lobato <elobatocs@gmail.com>
+	* Add fact sparser tests
+
+2015-12-13	Daniel Lobato <elobatocs@gmail.com>
+	* Ansible FactParser tests
+
+2015-12-09	Daniel Lobato García <me@daniellobato.me>
+	* Remove warning that it only import facts and add features to README
+
+2015-12-04	Daniel Lobato <elobatocs@gmail.com>
+	* Remove rubocop warnings
+	* Release 0.2.1 with nested facts support
+	* Add FOREMAN_SSL_CERT and VERIFY options to callback
+	* Move FactSparser to a separate class
+	* Nested facts support
+
+2015-12-04	Guido Günther <agx@sigxcpu.org>
+	* Record runtime as well
+	* Use v2 API to extract the task name if available
+	* Add parsed tasks as log entries
+	* Send reports only when playbook finished
+	* Move docstrings past method declaration
+	* Move ansible's default interface to front of interface list
+
+2015-12-04	Daniel Lobato García <me@daniellobato.me>
+	* Add info about playbooks and better screenshot
+
+2015-11-10	Guido Günther <agx@sigxcpu.org>
+	* Don't fail on empty facts[:ansible_lsb]
+
+2015-11-06	Daniel Lobato <elobatocs@gmail.com>
+	* Add reports logs and source
+
+2015-11-03	Daniel Lobato García <me@daniellobato.me>
+	* Use a better reports screenshot
+
+2015-11-03	Daniel Lobato <elobatocs@gmail.com>
+	* Update docs to include reports info
+	* Add basic Report support & timestamp for facts
+
+2015-11-02	Daniel Lobato <elobatocs@gmail.com>
+	* Bump version to 0.1.1
+	* Remove deface dependency
+	* Add installation from gem instructions
+	* Update docs with trusted_puppetmaster_hosts setting
+
+2015-11-01	Daniel Lobato <elobatocs@gmail.com>
+	* Small refactor of callback - sketch reports support
+	* Fix some rubocop warnings
+
+2015-10-31	Daniel Lobato <elobatocs@gmail.com>
+	* Documentation for callback plugin
+	* Callback plugin for Ansible
+
+2015-10-30	Daniel Lobato <elobatocs@gmail.com>
+	* Update README with usage instructions and demo
+	* Support interfaces and OS in the fact parser
+
+2015-10-29	Daniel Lobato <elobatocs@gmail.com>
+	* Fact parser without interfaces & non-nested facts
+
+2015-10-24	Daniel Lobato <elobatocs@gmail.com>
+	* Remove non used boilerplate
+	* Initial Ansible plugin template
+
