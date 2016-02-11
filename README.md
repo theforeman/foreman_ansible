@@ -1,5 +1,7 @@
 # Foreman Ansible :arrow_forward:
 
+*Looking for an Ansible dynamic inventory for Foreman? Use [foreman_ansible_inventory](https://github.com/agx/foreman_ansible_inventory/)*
+
 ## Features
 * Import facts
 * Monitor playbook and ansible runs runtime
