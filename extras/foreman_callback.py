@@ -65,7 +65,7 @@ class CallbackModule(parent_class):
             verify = True
         elif FOREMAN_SSL_VERIFY.lower() in [ "0", "false", "off" ]:
             requests.packages.urllib3.disable_warnings()
-            self._display.warning("plugin %s: SSL verification of %s disabled" % (os.path.basename(__file__), FOREMAN_URL))
+            print ("plugin %s: SSL verification of %s disabled" % (os.path.basename(__file__), FOREMAN_URL))
             verify = False
         else:  # Set ta a CA bundle:
             verify = FOREMAN_SSL_VERIFY
