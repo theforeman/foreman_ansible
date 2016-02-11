@@ -16,7 +16,7 @@ FOREMAN_URL = os.getenv('FOREMAN_URL', "http://localhost:3000")
 # Substitute by a real SSL certificate and key if your Foreman uses HTTPS
 FOREMAN_SSL_CERT = (os.getenv('FOREMAN_SSL_CERT', "/etc/foreman/client_cert.pem"),
                     os.getenv('FOREMAN_SSL_KEY', "/etc/foreman/client_key.pem"))
-FOREMAN_SSL_VERIFY = os.getenv('FOREMAN_SSL_VERIFY', True)
+FOREMAN_SSL_VERIFY = os.getenv('FOREMAN_SSL_VERIFY', "1")
 FOREMAN_HEADERS = {
     "Content-Type": "application/json",
     "Accept": "application/json"
