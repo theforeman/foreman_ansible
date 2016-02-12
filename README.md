@@ -26,6 +26,8 @@ You can configure it via the following environment variables:
 * FOREMAN_SSL_KEY: The private key when using SSL client certificates (default  "/etc/foreman/client_key.pem")
 * FOREMAN_SSL_VERIFY: wether to verify SSL certificates. Use *False*
   to disable certificate checks. You can also set it to CA bundle (default is "True").
+  
+(To obtain a valid certificate for your proxy host follow the procedure as described [here](http://theforeman.org/manuals/1.1/index.html#4.3.6SSL).)
 
 See the [python-requests documentation](http://docs.python-requests.org/en/master/user/advanced/#ssl-cert-verification) on the details of certificate setup.
 
@@ -46,6 +48,10 @@ In Foreman, you should add whatever Ansible hosts you want to submit facts from 
 If the Foreman setting 'create_new_host_when_facts_are_uploaded' is true, and $HOSTNAME doesn't exist in Foreman, it will autocreate that host in Foreman. If it already exists, it will update the facts.
 
 Similarly, the Foreman setting 'ignore_puppet_facts_for_provisioning' is set to false, facts related to interfaces will update the interfaces of $HOSTNAME in Foreman.
+
+### Troubleshooting
+In case of problems you can always check foreman's log file under ```/var/log/foreman/production.log```.
+
 
 ### Devs
 
