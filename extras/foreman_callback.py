@@ -97,7 +97,10 @@ class CallbackModule(parent_class):
                 # v2 plugins have the task name
                 source, msg = entry
             else:
-                source = json.dumps(entry['invocation'])
+                if 'invocation' in entry:
+                    source = json.dumps(entry['invocation'])
+                else:
+                    source = json.dumps({"encrypted": "true"})                    
                 msg = entry
             if 'failed' in msg:
                 level = 'err'
@@ -153,7 +156,7 @@ class CallbackModule(parent_class):
         self.items[host].append(res)
 
     def runner_on_ok(self, host, res):
-        if res['invocation']['module_name'] == 'setup':
+        if 'invocation' in res and res['invocation']['module_name'] == 'setup':
             self.send_facts(host, res)
         else:
             self.items[host].append(res)
