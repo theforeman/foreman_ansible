@@ -15,6 +15,13 @@ module ForemanAnsible
       end
     end
 
+    # Add any db migrations
+    initializer 'foreman_remote_execution.load_app_instance_data' do |app|
+      ForemanAnsible::Engine.paths['db/migrate'].existent.each do |path|
+        app.config.paths['db/migrate'] << path
+      end
+    end
+
     config.to_prepare do
       begin
         ::FactImporter.register_fact_importer(:ansible,
