@@ -1,5 +1,3 @@
-require 'test_plugin_helper'
-
 module ForemanAnsible
   # Tests for checking if FactSparser can sparse a hash and unsparse it
   class FactSparserTest < ActiveSupport::TestCase

@@ -2,6 +2,7 @@ require 'deface'
 require 'fast_gettext'
 require 'gettext_i18n_rails'
 require 'foreman_ansible_core'
+require 'foreman_ansible/remote_execution'
 
 module ForemanAnsible
   # This engine connects ForemanAnsible with Foreman core
