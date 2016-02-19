@@ -20,10 +20,6 @@ module Actions
           continuous_output.humanize
         end
 
-        def continuous_output_providers
-          super << self
-        end
-
         def fill_continuous_output(continuous_output)
           delegated_output.fetch('result', []).each do |raw_output|
             continuous_output.add_raw_output(raw_output)

@@ -6,6 +6,8 @@ module ForemanAnsibleCore
   # Implements ForemanTasksCore::Runner::Base interface for running
   # Ansible playbooks, used by the Foreman Ansible plugin and Ansible proxy
   class PlaybookRunner < ForemanTasksCore::Runner::CommandRunner
+    attr_reader :command_out, :command_in, :command_pid
+
     def initialize(inventory, playbook, options = {})
       super
       @inventory = inventory

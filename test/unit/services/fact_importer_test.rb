@@ -1,5 +1,3 @@
-require 'test_plugin_helper'
-
 module ForemanAnsible
   # Test for the facts importer - only verify that given
   # a set of facts it's able to import them
