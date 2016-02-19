@@ -1,5 +1,3 @@
-require 'test_plugin_helper'
-
 module ForemanAnsible
   class FactSparserTest < ActiveSupport::TestCase
     setup do

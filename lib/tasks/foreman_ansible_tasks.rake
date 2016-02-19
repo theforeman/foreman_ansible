@@ -1,6 +1,6 @@
 # Tests
 namespace :test do
-  desc 'Test ForemanAnsible'
+  desc 'Foreman Ansible plugin tests'
   Rake::TestTask.new(:foreman_ansible) do |t|
     test_dir = File.join(File.dirname(__FILE__), '../..', 'test')
     t.libs << ['test', test_dir]

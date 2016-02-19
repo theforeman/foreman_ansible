@@ -1,4 +1,5 @@
 require 'deface'
+require 'foreman_ansible/remote_execution'
 module ForemanAnsible
   # This engine connects ForemanAnsible with Foreman core
   class Engine < ::Rails::Engine
@@ -12,13 +13,6 @@ module ForemanAnsible
     initializer 'foreman_ansible.register_plugin', :before => :finisher_hook do
       Foreman::Plugin.register :foreman_ansible do
         requires_foreman '>= 1.9'
-      end
-    end
-
-    # Add any db migrations
-    initializer 'foreman_remote_execution.load_app_instance_data' do |app|
-      ForemanAnsible::Engine.paths['db/migrate'].existent.each do |path|
-        app.config.paths['db/migrate'] << path
       end
     end
 

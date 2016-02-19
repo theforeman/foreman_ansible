@@ -1,5 +1,3 @@
-require 'test_plugin_helper'
-
 module ForemanAnsible
   class FactImporterTest < ActiveSupport::TestCase
     setup do
@@ -39,9 +37,5 @@ module ForemanAnsible
         end
       end
     end
-
-    test 'add_fact_value works for hosts that have not been created yet' do
-    end
   end
 end
-
