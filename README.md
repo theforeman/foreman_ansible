@@ -7,7 +7,7 @@
 Reporting and facts import from Ansible to Foreman.
 
 * Main website: [theforeman.org](http://theforeman.org)
-* Plugin manual: [foreman_ansible manual](http://theforeman.org/plugins/foreman_ansible/0.x/index.html)
+* Plugin manual: [foreman_ansible manual](http://theforeman.org/plugins/foreman_ansible/1.x/index.html)
 * ServerFault tag: [Foreman](http://serverfault.com/questions/tagged/foreman)
 * Issues: [foreman ansible on Redmine](http://projects.theforeman.org/projects/ansible/issues)
 * Community and support: [#theforeman](https://kiwiirc.com/client/irc.freenode.net/?#theforeman) for general support, [#theforeman-dev](https://kiwiirc.com/client/irc.freenode.net/?#theforeman-dev) for development chat in [Freenode](irc.freenode.net)
@@ -19,16 +19,30 @@ Reporting and facts import from Ansible to Foreman.
 * Import facts
 * Monitor playbook and Ansible runs runtime
 * Sends Ansible reports to Foreman that contain what changed on your system after an ansible run.
+* Stores a list of roles applicable to your hosts and 'plays' them
 * Looking for an Ansible dynamic inventory for Foreman? Use [foreman_ansible_inventory](https://github.com/theforeman/foreman_ansible_inventory/)
 
 ## Documentation (installation and configuration)
-Check out the official manual at [theforeman.org](http://theforeman.org/plugins/foreman_ansible/0.x/index.html)
+Check out the official manual at [theforeman.org](http://theforeman.org/plugins/foreman_ansible/1.x/index.html)
 
 ##### Registering a new host in Foreman
 ![sign up gif](http://i.imgur.com/mlnVFJj.gif)
 
 ##### Host with failed and successful reports
 ![reports](http://i.imgur.com/1ySO4sh.png)
+
+##### Assigning roles to a host and 'playing' them
+![role list](http://i.imgur.com/UyeZIq8.png)
+![role play](http://i.imgur.com/eU4RENK.png)
+![multiple role play](http://i.imgur.com/uoIiKJ5.png)
+
+
+## Compatibility
+
+| Foreman | Plugin |
+| ---------------:| --------------:|
+| >= 1.9         | 0 - 0.3         |
+| >= 1.12        | 1.0 - TBD       |
 
 ### Devs
 
