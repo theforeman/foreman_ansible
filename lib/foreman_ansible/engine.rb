@@ -4,6 +4,7 @@ module ForemanAnsible
   class Engine < ::Rails::Engine
     engine_name 'foreman_ansible'
 
+    config.autoload_paths += Dir["#{config.root}/app/controllers/concerns"]
     config.autoload_paths += Dir["#{config.root}/app/helpers"]
     config.autoload_paths += Dir["#{config.root}/app/overrides"]
     config.autoload_paths += Dir["#{config.root}/app/services"]
@@ -11,7 +12,8 @@ module ForemanAnsible
 
     initializer 'foreman_ansible.register_plugin', :before => :finisher_hook do
       Foreman::Plugin.register :foreman_ansible do
-        requires_foreman '>= 1.9'
+        # We need ActiveJob, only available post-1.12 because of Rails 4.2
+        requires_foreman '>= 1.12'
       end
     end
 
@@ -27,6 +29,10 @@ module ForemanAnsible
         ::FactImporter.register_fact_importer(:ansible,
                                               ForemanAnsible::FactImporter)
         ::FactParser.register_fact_parser(:ansible, ForemanAnsible::FactParser)
+        ::Host::Managed.send(:include, ForemanAnsible::HostManagedExtensions)
+        ::HostsHelper.send(:include, ForemanAnsible::HostsHelperExtensions)
+        ::HostsController.send(
+          :include, ForemanAnsible::Concerns::HostsControllerExtensions)
       rescue => e
         Rails.logger "Foreman Ansible: skipping engine hook (#{e})"
       end
