@@ -1,3 +1,32 @@
+2016-07-08	Daniel Lobato <elobatocs@gmail.com>
+	* Fixes #14263 - Run Ansible roles for one/multiple hosts
+
+2016-02-17	Daniel Lobato <elobatocs@gmail.com>
+	* Add Ansible smart-proxy feature seed
+
+2016-02-16	Dmitry Kireev <dmitry.kireev@delphix.com>
+	* Add a check if 'invocation' key is present in and entry
+
+2016-02-16	Daniel Lobato García <me@daniellobato.me>
+	* Point to correct inventory URL
+
+2016-02-16	Daniel Lobato <elobatocs@gmail.com>
+	* Update README to point to manual
+
+2016-02-15	Guido Günther <agx@sigxcpu.org>
+	* Add python setup script
+
+2016-02-15	Gert Leenders <leenders.gert@gmail.com>
+	* Documentation updates
+
+2016-02-11	Daniel Lobato García <me@daniellobato.me>
+	* Add foreman_ansible_inventory to README
+	* SSL_VERIFY default to string, not boolean
+	* Remove _display (undefined on Tower) and use print for warnings
+
+2016-02-10	Daniel Lobato <elobatocs@gmail.com>
+	* Release 0.3
+
 2016-02-10	Guido Günther <agx@sigxcpu.org>
 	* Make connection parameters configurable via environment variables
 
