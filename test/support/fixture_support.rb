@@ -10,9 +10,9 @@ module ForemanAnsible
     end
 
     def self.copy_plugin_fixtures(new_fixture_path)
-      FIXTURE_MAPPING.each  do |key, value|
+      FIXTURE_MAPPING.each do |key, value|
         fixture_path = "#{ForemanAnsible::Engine.root}/test/fixtures/#{key}.yml"
-        return unless File.exists?(fixture_path)
+        break unless File.exist?(fixture_path)
         File.open("#{new_fixture_path}/#{value}.yml", 'a') do |file|
           File.open(fixture_path, 'r').each do |line|
             next if line =~ /---/

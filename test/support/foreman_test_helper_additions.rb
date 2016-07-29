@@ -6,7 +6,7 @@ module AnsiblePermissionTestCase
   included do
     extend ActiveRecord::TestFixtures
 
-    new_fixture_path = Dir.mktmpdir("ansible_fixtures")
+    new_fixture_path = Dir.mktmpdir('ansible_fixtures')
     self.fixture_path = new_fixture_path
     ForemanAnsible::PluginFixtures.add_fixtures(new_fixture_path)
     fixtures(:all)

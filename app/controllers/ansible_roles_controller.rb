@@ -50,6 +50,6 @@ class AnsibleRolesController < ::ApplicationController
   end
 
   def create_importer
-    @importer = ForemanAnsible::RolesImporter.new(@proxy)
+    @importer = ForemanAnsible::UiRolesImporter.new(@proxy)
   end
 end
