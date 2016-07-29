@@ -32,13 +32,16 @@ module ForemanAnsible
                      { :hosts => [:play_roles, :multiple_play_roles] },
                      :resource_type => 'Host::Managed'
           permission :view_ansible_roles,
-                     { :ansible_roles => [:index] },
+                     { :ansible_roles => [:index],
+                       :'api/v2/ansible_roles' => [:index, :show] },
                      :resource_type => 'AnsibleRole'
           permission :destroy_ansible_roles,
-                     { :ansible_roles => [:destroy] },
+                     { :ansible_roles => [:destroy],
+                       :'api/v2/ansible_roles' => [:destroy, :obsolete] },
                      :resource_type => 'AnsibleRole'
           permission :import_ansible_roles,
-                     { :ansible_roles => [:import, :confirm_import] },
+                     { :ansible_roles => [:import, :confirm_import],
+                       :'api/v2/ansible_roles' => [:import] },
                      :resource_type => 'AnsibleRole'
         end
 
