@@ -18,8 +18,9 @@ module ForemanAnsible
 
     test 'missing_facts returns facts we do not have in the database' do
       @fact_importer = FactImporter.new(@host, facts_json)
-      @fact_importer.expects(:db_facts).returns('ansible_cmd' => 'fakevalue')
-      refute @fact_importer.send(:missing_facts).include?('ansible_cmd')
+      @fact_importer.expects(:db_facts).
+        returns('ansible_cmdline' => 'fakevalue')
+      refute @fact_importer.send(:missing_facts).include?('ansible_cmdline')
     end
 
     describe '#add_fact_value' do

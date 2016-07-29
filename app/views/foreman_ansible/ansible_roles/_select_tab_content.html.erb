@@ -1,8 +1,6 @@
 <div class='tab-pane' id='ansible_roles'>
-  <%= multiple_selects(f, :ansible_roles, ansible_roles, f.object.all_ansible_roles.map(&:id),
+  <%= multiple_selects(f, :ansible_roles, AnsibleRole, f.object.all_ansible_roles.map(&:id),
                            {:disabled => f.object.inherited_ansible_roles.map(&:id),
                             :label => _('Available roles')},
                            { 'data-inheriteds' => f.object.inherited_ansible_roles.map(&:id).to_json }) %>
 </div>
-
-
