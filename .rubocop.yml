@@ -15,3 +15,6 @@ Style/DotPosition:
 
 Rails/ActionFilter:
   EnforcedStyle: action
+
+Style/RaiseArgs:
+  EnforcedStyle: compact
