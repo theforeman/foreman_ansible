@@ -9,3 +9,7 @@ build/
 dist/
 *.egg-info/
 extras/*.pyc
+locale/*/*.edit.po
+locale/*/*.po.time_stamp
+locale/*/*.pox
+locale/*/LC_MESSAGES
