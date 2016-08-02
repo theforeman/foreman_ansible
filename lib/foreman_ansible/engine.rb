@@ -1,4 +1,7 @@
 require 'deface'
+require 'fast_gettext'
+require 'gettext_i18n_rails'
+
 module ForemanAnsible
   # This engine connects ForemanAnsible with Foreman core
   class Engine < ::Rails::Engine
@@ -9,6 +12,13 @@ module ForemanAnsible
     config.autoload_paths += Dir["#{config.root}/app/overrides"]
     config.autoload_paths += Dir["#{config.root}/app/services"]
     config.autoload_paths += Dir["#{config.root}/app/views"]
+
+    initializer 'foreman_ansible.register_gettext', :after => :load_config_initializers do
+      locale_dir = File.join(File.expand_path('../../..', __FILE__), 'locale')
+      locale_domain = 'foreman_ansible'
+
+      Foreman::Gettext::Support.add_text_domain locale_domain, locale_dir
+    end
 
     initializer 'foreman_ansible.register_plugin', :before => :finisher_hook do
       Foreman::Plugin.register :foreman_ansible do
