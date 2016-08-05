@@ -5,5 +5,9 @@ module ForemanAnsible
       ForemanAnsible::RolesImporter.import!
       AnsibleRole.all
     end
+
+    def available_ansible_roles(target)
+      ansible_roles.where.not(:id => target.parent_ansible_roles.map(&:id))
+    end
   end
 end

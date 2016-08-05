@@ -1,0 +1,6 @@
+<div class='tab-pane' id='ansible_roles'>
+
+  <%= render 'foreman_ansible/ansible_roles/included_roles', :object => @hostgroup %>
+
+  <%= multiple_checkboxes f, :ansible_roles, @hostgroup, available_ansible_roles(@hostgroup), :label => _('Available roles') %>
+</div>
