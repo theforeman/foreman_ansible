@@ -9,7 +9,7 @@ module ForemanAnsible
     end
 
     def play
-      return if host.ansible_roles.empty?
+      return if host.all_ansible_roles.empty?
       inventory_tempfile = InventoryCreator.new([host]).tempfile
       RunPlaybookJob.new(create_playbook.path,
                          inventory_tempfile.path).enqueue
@@ -20,7 +20,7 @@ module ForemanAnsible
     def create_playbook
       PlaybookCreator.new(
         host.fqdn,
-        host.ansible_roles.map(&:name)).roles_tempfile
+        host.all_ansible_roles.map(&:name)).roles_tempfile
     end
   end
 end

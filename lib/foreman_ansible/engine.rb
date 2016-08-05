@@ -32,7 +32,8 @@ module ForemanAnsible
                      :resource_type => 'Host::Managed'
         end
 
-        parameter_filter Host::Managed, :ansible_role_ids, :ansible_roles
+        parameter_filter Host::Managed, :ansible_role_ids => [], :ansible_roles => []
+        parameter_filter Hostgroup, :ansible_role_ids => [], :ansible_roles => []
       end
     end
 
@@ -49,6 +50,7 @@ module ForemanAnsible
                                               ForemanAnsible::FactImporter)
         ::FactParser.register_fact_parser(:ansible, ForemanAnsible::FactParser)
         ::Host::Managed.send(:include, ForemanAnsible::HostManagedExtensions)
+        ::Hostgroup.send(:include, ForemanAnsible::HostgroupExtensions)
         ::HostsHelper.send(:include, ForemanAnsible::HostsHelperExtensions)
         ::HostsController.send(
           :include, ForemanAnsible::Concerns::HostsControllerExtensions)

@@ -8,7 +8,7 @@ module ForemanAnsible
         find_resource
         RolePlayer.new(@host).play
         notice(_('Ansible roles running on background: ') +
-               @host.ansible_roles.map(&:name).join(', '))
+               @host.all_ansible_roles.map(&:name).join(', '))
         redirect_to :back
       end
 
