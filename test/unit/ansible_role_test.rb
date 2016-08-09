@@ -1,4 +1,4 @@
- require 'test_plugin_helper'
+require 'test_plugin_helper'
 
 class AnsibleRoleTest < ActiveSupport::TestCase
   should have_many(:host_ansible_roles)

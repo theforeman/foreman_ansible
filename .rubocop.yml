@@ -9,4 +9,4 @@ Style/DotPosition:
   EnforcedStyle: 'trailing'
 
 Rails/ActionFilter:
-  EnforcedStyle: filter
+  EnforcedStyle: action
