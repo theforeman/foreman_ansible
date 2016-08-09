@@ -13,7 +13,8 @@ module ForemanAnsible
     config.autoload_paths += Dir["#{config.root}/app/services"]
     config.autoload_paths += Dir["#{config.root}/app/views"]
 
-    initializer 'foreman_ansible.register_gettext', :after => :load_config_initializers do
+    initializer 'foreman_ansible.register_gettext',
+                :after => :load_config_initializers do
       locale_dir = File.join(File.expand_path('../../..', __FILE__), 'locale')
       locale_domain = 'foreman_ansible'
 
@@ -24,6 +25,14 @@ module ForemanAnsible
       Foreman::Plugin.register :foreman_ansible do
         # We need ActiveJob, only available post-1.12 because of Rails 4.2
         requires_foreman '>= 1.12'
+
+        security_block :ansible do
+          permission :play_roles,
+                     { :hosts => [:play_roles, :multiple_play_roles] },
+                     :resource_type => 'Host::Managed'
+        end
+
+        parameter_filter Host::Managed, :ansible_role_ids, :ansible_roles
       end
     end
 

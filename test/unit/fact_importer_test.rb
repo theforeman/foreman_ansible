@@ -3,21 +3,21 @@ require 'test_plugin_helper'
 module ForemanAnsible
   class FactImporterTest < ActiveSupport::TestCase
     setup do
-      @host = FactoryGirl.build_stubbed(:host)
+      @host = FactoryGirl.build(:host)
     end
 
     test 'add new facts adds all fact names in the fixture' do
       @fact_importer = FactImporter.new(@host, facts_json)
       facts_to_be_added = FactSparser.sparse(facts_json[:ansible_facts]).keys +
-        FactSparser.unsparse(facts_json[:ansible_facts]).keys
+                          FactSparser.unsparse(facts_json[:ansible_facts]).keys
       @fact_importer.send(:add_new_facts)
-      assert (facts_to_be_added - FactName.all.map(&:name)).empty?
+      assert((facts_to_be_added - FactName.all.map(&:name)).empty?)
     end
 
     test 'missing_facts returns facts we do not have in the database' do
       @fact_importer = FactImporter.new(@host, facts_json)
-      @fact_importer.expects(:db_facts).returns('ansible_cmdline' => 'fakevalue')
-      refute @fact_importer.send(:missing_facts).include?('ansible_cmdline')
+      @fact_importer.expects(:db_facts).returns('ansible_cmd' => 'fakevalue')
+      refute @fact_importer.send(:missing_facts).include?('ansible_cmd')
     end
 
     describe '#add_fact_value' do
@@ -36,12 +36,12 @@ module ForemanAnsible
         @fact_importer.counters[:added] = 0
         assert_difference('@host.fact_values.count', 1) do
           @fact_importer.send(:add_fact_value, 'missing_value', missing_fact)
+          @host.save
+          # We have to save the host in order to ensure @host.fact_values.count
+          # resolves properly (otherwise) :add_fact_value just won't save the
+          # relation
         end
       end
     end
-
-    test 'add_fact_value works for hosts that have not been created yet' do
-    end
   end
 end
-
