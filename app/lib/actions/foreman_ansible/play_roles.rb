@@ -18,7 +18,7 @@ module Actions
         grouped.map do |proxy, hosts|
           trigger(RunProxyAction, proxy,
                   :inventory => inventory(hosts),
-                  :proxy_action_name => '::Proxy::Ansible::Command::Playbook::Action')
+                  :proxy_action_name => '::Proxy::Ansible::Command::Playbook::PlayRoles')
         end
       end
 
@@ -34,7 +34,7 @@ module Actions
 
       def determine_proxy(host, load_balancer)
         host_proxies = host.ansible_proxies
-        strategies = [:subnet, :fallback, :global]
+        strategies = [:fallback, :global]
         proxy = nil
 
         strategies.each do |strategy|
@@ -46,8 +46,8 @@ module Actions
       end
 
       def inventory(hosts)
-        hosts.reduce({}) do |acc, cur|
-          acc.merge(cur.fqdn => cur.ansible_roles.map(&:name))
+        hosts.reduce({}) do |acc, host|
+          acc.merge(host.fqdn => host.ansible_roles.map(&:name))
         end
       end
     end
