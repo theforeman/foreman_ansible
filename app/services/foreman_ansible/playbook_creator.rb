@@ -1,15 +1,14 @@
 module ForemanAnsible
   # Service to generate a playbook given roles and a list of hosts
   class PlaybookCreator
-    attr_reader :fqdn, :role_names
+    attr_reader :role_names
 
-    def initialize(fqdn, role_names)
-      @fqdn = fqdn
+    def initialize(role_names)
       @role_names = role_names
     end
 
     def roles_playbook
-      playbook = ['hosts' => fqdn, 'roles' => role_names]
+      playbook = ['hosts' => 'all', 'roles' => role_names]
       playbook.to_yaml
     end
 

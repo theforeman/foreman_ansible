@@ -3,23 +3,18 @@ module ForemanAnsible
     # Extra methods to enforce Ansible roles on a host or multiple hosts
     module HostsControllerExtensions
       extend ActiveSupport::Concern
+      include ForemanTasks::Triggers
 
       def play_roles
         find_resource
-        RolePlayer.new(@host).play
-        notice(_('Ansible roles running in the background: %s') %
-               @host.all_ansible_roles.map(&:name).join(', '))
-        redirect_to :back
+        task = async_task(::Actions::ForemanAnsible::PlayHostRoles, @host)
+        redirect_to task
       end
 
       def multiple_play_roles
         find_multiple
-        @hosts.each do |host|
-          RolePlayer.new(host).play
-        end
-        notice(_('Ansible roles running in the background for hosts: %s') %
-               @hosts.map(&:name).join(', '))
-        redirect_to :hosts
+        task = async_task(::Actions::ForemanAnsible::PlayHostsRoles, @hosts)
+        redirect_to task
       end
 
       private
