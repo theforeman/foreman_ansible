@@ -9,18 +9,9 @@ module ForemanAnsible
     end
 
     def play
-      return if host.ansible_roles.empty?
-      inventory_tempfile = InventoryCreator.new([host]).tempfile
-      RunPlaybookJob.new(create_playbook.path,
-                         inventory_tempfile.path).enqueue
-    end
-
-    private
-
-    def create_playbook
-      PlaybookCreator.new(
-        host.fqdn,
-        host.ansible_roles.map(&:name)).roles_tempfile
+      hosts = Array(@host) unless @host.kind_of? Array
+      # TODO: Add action which would divide hosts by proxies and trigger playbook runs as subtasks
+      ForemanTasks.async_task(::Actions::Ansible::RunPlaybook, hosts, nil)
     end
   end
 end
