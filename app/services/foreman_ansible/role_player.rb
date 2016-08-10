@@ -4,14 +4,12 @@ module ForemanAnsible
   class RolePlayer
     attr_reader :host
 
-    def initialize(host)
-      @host = host
+    def initialize(hosts)
+      @hosts = [hosts].flatten
     end
 
     def play
-      hosts = Array(@host) unless @host.kind_of? Array
-      # TODO: Add action which would divide hosts by proxies and trigger playbook runs as subtasks
-      ForemanTasks.async_task(::Actions::Ansible::RunPlaybook, hosts, nil)
+      ForemanTasks.async_task(::Actions::Ansible::PlayRoles, @hosts)
     end
   end
 end
