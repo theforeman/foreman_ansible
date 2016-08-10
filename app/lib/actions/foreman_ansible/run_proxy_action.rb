@@ -15,6 +15,13 @@ module Actions
         data['exit_code'] != 0
       end
 
+      def humanized_name
+        _('Play Ansible roles on ')
+      end
+
+      def humanized_input
+        input['inventory'].keys.join(', ')
+      end
     end
   end
 end

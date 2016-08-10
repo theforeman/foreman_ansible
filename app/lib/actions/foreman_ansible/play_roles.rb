@@ -26,7 +26,7 @@ module Actions
         ::Dynflow::Action::Rescue::Fail
       end
 
-      def humanized_input
+      def humanized_name
         _("Play Ansible roles")
       end
 
