@@ -18,7 +18,7 @@ module Actions
         grouped.map do |proxy, hosts|
           trigger(RunProxyAction, proxy,
                   :inventory => inventory(hosts),
-                  :proxy_action_name => '::Proxy::Ansible::Command::Playbook::PlayRoles')
+                  :proxy_action_name => '::Proxy::Ansible::Core::Command::Playbook::PlayRoles')
         end
       end
 
