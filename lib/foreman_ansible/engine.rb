@@ -37,8 +37,8 @@ module ForemanAnsible
     end
 
     initializer 'foreman_ansible.require_dynflow', :before => 'foreman_tasks.initialize_dynflow' do |app|
-      ForemanTasks.dynflow.require!
-      ForemanTasks.dynflow.config.eager_load_paths << File.join(ForemanAnsible::Engine.root, 'app/lib/actions')
+      ::ForemanTasks.dynflow.require!
+      ::ForemanTasks.dynflow.config.eager_load_paths << File.join(ForemanAnsible::Engine.root, 'app/lib/actions')
     end
 
     # Add any db migrations
