@@ -4,23 +4,12 @@ module ForemanAnsible
   class RolePlayer
     attr_reader :host
 
-    def initialize(host)
-      @host = host
+    def initialize(hosts)
+      @hosts = [hosts].flatten
     end
 
     def play
-      return if host.ansible_roles.empty?
-      inventory_tempfile = InventoryCreator.new([host]).tempfile
-      RunPlaybookJob.new(create_playbook.path,
-                         inventory_tempfile.path).enqueue
-    end
-
-    private
-
-    def create_playbook
-      PlaybookCreator.new(
-        host.fqdn,
-        host.ansible_roles.map(&:name)).roles_tempfile
+      ForemanTasks.async_task(::Actions::Ansible::PlayRoles, @hosts)
     end
   end
 end

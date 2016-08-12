@@ -14,9 +14,7 @@ module ForemanAnsible
 
       def multiple_play_roles
         find_multiple
-        @hosts.each do |host|
-          RolePlayer.new(host).play
-        end
+        RolePlayer.new(@hosts).play
         notice(_('Ansible roles running on background for hosts: ') +
                @hosts.map(&:name).join(', '))
         redirect_to :hosts
