@@ -1,0 +1,5 @@
+<%= multiple_selects(f, :ansible_roles, ansible_roles, object.all_ansible_roles.map(&:id),
+                         {:disabled => object.parent_ansible_roles.map(&:id),
+                          :label => _('Available roles')},
+                         { 'data-inheriteds' => object.parent_ansible_roles.map(&:id).to_json }) %>
+
