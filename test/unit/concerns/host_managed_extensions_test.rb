@@ -22,14 +22,14 @@ class HostManagedExtensionsTest < ActiveSupport::TestCase
     end
   end
 
-  describe '#parent_ansible_roles' do
+  describe '#inherited_ansible_roles' do
     test 'returns empty array for host without hostgroup' do
-      @host.parent_ansible_roles.must_equal []
+      @host.inherited_ansible_roles.must_equal []
     end
 
     test 'returns roles inherited from a hostgroup' do
       @host.hostgroup = @hostgroup
-      @host.parent_ansible_roles.must_equal [@role2]
+      @host.inherited_ansible_roles.must_equal [@role2]
     end
   end
 end

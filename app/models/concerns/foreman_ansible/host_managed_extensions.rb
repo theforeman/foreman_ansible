@@ -7,12 +7,9 @@ module ForemanAnsible
       has_many :host_ansible_roles, :foreign_key => :host_id
       has_many :ansible_roles, :through => :host_ansible_roles,
                                :dependent => :destroy
+      include ForemanAnsible::HasManyAnsibleRoles
 
-      def all_ansible_roles
-        (ansible_roles + parent_ansible_roles).uniq
-      end
-
-      def parent_ansible_roles
+      def inherited_ansible_roles
         return [] unless hostgroup
         hostgroup.all_ansible_roles
       end

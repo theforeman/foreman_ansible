@@ -1,4 +1,4 @@
-# Displays Ansible roles tab on Host form
+# Displays Ansible roles tab on Hostgroup form
 Deface::Override.new(
   :virtual_path => 'hostgroups/_form',
   :name => 'hostgroup_ansible_roles_tab',
