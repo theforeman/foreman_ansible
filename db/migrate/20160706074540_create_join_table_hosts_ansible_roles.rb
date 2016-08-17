@@ -1,3 +1,4 @@
+# Defines the relation between Host and AnsibleRole
 class CreateJoinTableHostsAnsibleRoles < ActiveRecord::Migration
   def change
     create_join_table :ansible_roles, :hosts do |t|

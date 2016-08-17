@@ -1,6 +1,7 @@
 require 'test_plugin_helper'
 
 module ForemanAnsible
+  # Tests for checking if FactSparser can sparse a hash and unsparse it
   class FactSparserTest < ActiveSupport::TestCase
     setup do
       @original_os_facts = { 'operatingsystem' => { 'major' => 20, 'minor' => 1,

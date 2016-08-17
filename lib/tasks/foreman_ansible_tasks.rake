@@ -27,14 +27,10 @@ namespace :foreman_ansible do
   end
 end
 
-Rake::Task[:test].enhance do
-  Rake::Task['test:foreman_ansible'].invoke
-end
+Rake::Task[:test].enhance ['test:foreman_ansible']
 
 load 'tasks/jenkins.rake'
 if Rake::Task.task_defined?(:'jenkins:unit')
-  Rake::Task['jenkins:unit'].enhance do
-    Rake::Task['test:foreman_ansible'].invoke
-    Rake::Task['foreman_ansible:rubocop'].invoke
-  end
+  Rake::Task['jenkins:unit'].enhance ['test:foreman_ansible',
+                                      'foreman_ansible:rubocop']
 end

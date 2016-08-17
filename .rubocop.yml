@@ -1,5 +1,10 @@
+Rails:
+  Enabled: true
+
 AllCops:
-  RunRailsCops: true
+  Exclude:
+    - 'extras/**/*'
+    - 'locale/**/*'
 
 # Just so it looks like core Foreman
 Style/HashSyntax:

@@ -20,7 +20,8 @@ module ForemanAnsible
       @counters[:added] = 0
       add_missing_facts(FactSparser.unsparse(@original_facts))
       logger.debug(
-        "Merging facts for '#{host}': added #{@counters[:added]} facts")
+        "Merging facts for '#{host}': added #{@counters[:added]} facts"
+      )
     end
 
     def add_missing_facts(imported_facts, parent = nil, prefix = '')

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   scope :ansible, :path => '/ansible', :as => 'ansible' do
-    constraints(:id => /[^\/]+/) do
+    constraints(:id => %r{[^\/]+}) do
       resources :hosts, :only => [] do
         member do
           get :play_roles
