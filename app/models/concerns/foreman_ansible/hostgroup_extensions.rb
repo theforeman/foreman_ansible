@@ -10,7 +10,9 @@ module ForemanAnsible
       include ForemanAnsible::HasManyAnsibleRoles
 
       def inherited_ansible_roles
-        ancestors.inject([]) { |roles, hostgroup| roles + hostgroup.ansible_roles }.uniq
+        ancestors.reduce([]) do |roles, hostgroup|
+          roles + hostgroup.ansible_roles
+        end.uniq
       end
     end
   end

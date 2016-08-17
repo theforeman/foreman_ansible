@@ -20,7 +20,8 @@ module ForemanAnsible
     def create_playbook
       PlaybookCreator.new(
         host.fqdn,
-        host.all_ansible_roles.map(&:name)).roles_tempfile
+        host.all_ansible_roles.map(&:name)
+      ).roles_tempfile
     end
   end
 end

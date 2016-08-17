@@ -1,3 +1,4 @@
+# Renames join table between Host and Ansible Roles
 class CreateHostAnsibleRoles < ActiveRecord::Migration
   def change
     rename_table :ansible_roles_hosts, :host_ansible_roles

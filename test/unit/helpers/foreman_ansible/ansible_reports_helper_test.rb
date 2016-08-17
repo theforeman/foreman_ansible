@@ -2,6 +2,7 @@ require 'test_plugin_helper'
 
 module ForemanAnsible
   module Helpers
+    # Tests for the view helper that concerns the Ansible reports styles
     class AnsibleReportsHelperTest < ActiveSupport::TestCase
       include ForemanAnsible::AnsibleReportsHelper
 

@@ -32,8 +32,10 @@ module ForemanAnsible
                      :resource_type => 'Host::Managed'
         end
 
-        parameter_filter Host::Managed, :ansible_role_ids => [], :ansible_roles => []
-        parameter_filter Hostgroup, :ansible_role_ids => [], :ansible_roles => []
+        role_assignment_params = { :ansible_role_ids => [],
+                                   :ansible_roles => [] }
+        parameter_filter Host::Managed, role_assignment_params
+        parameter_filter Hostgroup, role_assignment_params
       end
     end
 
@@ -53,7 +55,8 @@ module ForemanAnsible
         ::Hostgroup.send(:include, ForemanAnsible::HostgroupExtensions)
         ::HostsHelper.send(:include, ForemanAnsible::HostsHelperExtensions)
         ::HostsController.send(
-          :include, ForemanAnsible::Concerns::HostsControllerExtensions)
+          :include, ForemanAnsible::Concerns::HostsControllerExtensions
+        )
       rescue => e
         Rails.logger.warn "Foreman Ansible: skipping engine hook (#{e})"
       end

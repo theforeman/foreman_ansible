@@ -13,7 +13,8 @@ module ForemanAnsible
         icon_text('play', ' ' + _('Ansible roles'), :kind => 'fa'),
         play_roles_ansible_host_path(:id => args.first.id),
         :id => :ansible_roles_button,
-        :class => 'btn btn-default')
+        :class => 'btn btn-default'
+      )
       title_actions(button_group(button)) if args.first.ansible_roles.present?
       host_title_actions_without_run_ansible_roles(*args)
     end

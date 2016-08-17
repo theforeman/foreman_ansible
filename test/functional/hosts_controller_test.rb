@@ -1,5 +1,6 @@
 require 'test_plugin_helper'
 
+# Ensure Hosts controller can CRUD ansible roles
 class HostsControllerExtensionsTest < ActionController::TestCase
   tests ::HostsController
 

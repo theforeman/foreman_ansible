@@ -12,10 +12,12 @@ module ForemanAnsible
 
     def ansible_module_message(log)
       paragraph_style = 'margin:0px;font-family:Menlo,Monaco,Consolas,monospace'
-      JSON.parse(log.message.value).except('invocation').map do |name, value|
-        next if value.blank?
-        "<p style=#{paragraph_style}>#{name}: #{value}</p>"
-      end.join.html_safe
+      safe_join(
+        JSON.parse(log.message.value).except('invocation').map do |name, value|
+          next if value.blank?
+          content_tag(:p, "#{name}: #{value}", :style => paragraph_style)
+        end
+      )
     end
 
     def ansible_report?(log)
