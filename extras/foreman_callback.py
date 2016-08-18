@@ -1,8 +1,24 @@
+# (C) 2015, 2016 Daniel Lobato <elobatocs@gmail.com>
+
+# This file is part of Ansible
+#
+# Ansible is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Ansible is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
+
 import os
 from datetime import datetime
 from collections import defaultdict
 import json
-import uuid
 import requests
 import time
 
@@ -61,11 +77,11 @@ class CallbackModule(parent_class):
         self.send_report(host, data)
 
     def _ssl_verify(self):
-        if FOREMAN_SSL_VERIFY.lower() in [ "1", "true", "on" ]:
+        if FOREMAN_SSL_VERIFY.lower() in ["1", "true", "on"]:
             verify = True
-        elif FOREMAN_SSL_VERIFY.lower() in [ "0", "false", "off" ]:
+        elif FOREMAN_SSL_VERIFY.lower() in ["0", "false", "off"]:
             requests.packages.urllib3.disable_warnings()
-            print ("plugin %s: SSL verification of %s disabled" % (os.path.basename(__file__), FOREMAN_URL))
+            print("plugin %s: SSL verification of %s disabled" % (os.path.basename(__file__), FOREMAN_URL))
             verify = False
         else:  # Set ta a CA bundle:
             verify = FOREMAN_SSL_VERIFY
@@ -82,13 +98,11 @@ class CallbackModule(parent_class):
         data = json.dumps(data)
         facts_json = FACTS_FORMAT % dict(host=host, data=data)
 
-
         requests.post(url=FOREMAN_URL + '/api/v2/hosts/facts',
                       data=facts_json,
                       headers=FOREMAN_HEADERS,
                       cert=FOREMAN_SSL_CERT,
                       verify=self.ssl_verify)
-
 
     def _build_log(self, data):
         logs = []
@@ -100,15 +114,15 @@ class CallbackModule(parent_class):
                 if 'invocation' in entry:
                     source = json.dumps(entry['invocation'])
                 else:
-                    source = json.dumps({"encrypted": "true"})                    
+                    source = json.dumps({"encrypted": "true"})
                 msg = entry
             if 'failed' in msg:
                 level = 'err'
             else:
                 level = 'notice' if 'changed' in msg and msg['changed'] else 'info'
-            logs.append({ "log": {
-                'sources'  : { 'source' : source },
-                'messages' : { 'message': json.dumps(msg) },
+            logs.append({"log": {
+                'sources': {'source': source},
+                'messages': {'message': json.dumps(msg)},
                 'level':     level
                 }})
         return logs
@@ -123,7 +137,7 @@ class CallbackModule(parent_class):
         Currently it just sets the status. It's missing:
           - metrics, which we can get from data, except for runtime
         """
-        status = defaultdict(lambda:0)
+        status = defaultdict(lambda: 0)
         metrics = {}
 
         for host in stats.processed.keys():
@@ -132,7 +146,7 @@ class CallbackModule(parent_class):
             status["failed"] = sum['failures'] + sum['unreachable']
             status["skipped"] = sum['skipped']
             log = self._build_log(self.items[host])
-            metrics["time"] = { "total": int(time.time()) - self.start_time }
+            metrics["time"] = {"total": int(time.time()) - self.start_time}
             self.items[host] = []
 
             report_json = REPORT_FORMAT % dict(host=host,
@@ -140,9 +154,9 @@ class CallbackModule(parent_class):
                 metrics=json.dumps(metrics),
                 status=json.dumps(status),
                 log=json.dumps(log))
-#           To be changed to /api/v2/config_reports in 1.11.
-#           Maybe we could make a GET request to get the Foreman version & do this
-#           automatically.
+            # To be changed to /api/v2/config_reports in 1.11.  Maybe we
+            # could make a GET request to get the Foreman version & do
+            # this automatically.
             requests.post(url=FOREMAN_URL + '/api/v2/reports',
                           data=report_json,
                           headers=FOREMAN_HEADERS,
