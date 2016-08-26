@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foreman_ansible 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-02 17:12-0400\n"
-"PO-Revision-Date: 2016-08-02 17:12-0400\n"
+"POT-Creation-Date: 2016-08-26 10:12-0400\n"
+"PO-Revision-Date: 2016-08-26 10:12-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -18,22 +18,164 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
+#: ../app/controllers/ansible_roles_controller.rb:28
+msgid "No changes in roles detected on %s."
+msgstr ""
+
+#: ../app/controllers/ansible_roles_controller.rb:30
+msgid "No changes in roles detected."
+msgstr ""
+
+#: ../app/controllers/ansible_roles_controller.rb:41
+msgid "Import of roles successfully finished."
+msgstr ""
+
 #:
 #: ../app/controllers/foreman_ansible/concerns/hosts_controller_extensions.rb:10
-msgid "Ansible roles running on background: "
+msgid "Ansible roles running in the background: %s"
 msgstr ""
 
 #:
 #: ../app/controllers/foreman_ansible/concerns/hosts_controller_extensions.rb:20
-msgid "Ansible roles running on background for hosts: "
+msgid "Ansible roles running in the background for hosts: %s"
+msgstr ""
+
+#: ../app/helpers/foreman_ansible/ansible_roles_helper.rb:6
+msgid "Import from %s"
+msgstr ""
+
+#: ../app/helpers/foreman_ansible/ansible_roles_helper.rb:10
+msgid "Import from Foreman host"
+msgstr ""
+
+#: ../app/helpers/foreman_ansible/ansible_roles_helper.rb:16
+msgid "Import"
+msgstr ""
+
+#: ../app/helpers/foreman_ansible/ansible_roles_helper.rb:20
+msgid "%s ago"
 msgstr ""
 
 #: ../app/helpers/foreman_ansible/hosts_helper_extensions.rb:13
 msgid "Ansible roles"
 msgstr ""
 
-#: ../app/helpers/foreman_ansible/hosts_helper_extensions.rb:23
+#: ../app/helpers/foreman_ansible/hosts_helper_extensions.rb:24
 msgid "Play Ansible roles"
+msgstr ""
+
+#: ../app/lib/proxy_api/ansible.rb:25
+msgid "Unable to get roles from Ansible"
+msgstr ""
+
+#: ../app/services/foreman_ansible/roles_importer.rb:50
+msgid "Proxy not found"
+msgstr ""
+
+#: ../app/views/ansible_roles/import.html.erb:1
+msgid "Changed Ansible roles"
+msgstr ""
+
+#: ../app/views/ansible_roles/import.html.erb:3
+msgid "Select the changes you want to realize in Foreman"
+msgstr ""
+
+#: ../app/views/ansible_roles/import.html.erb:5
+msgid "Toggle"
+msgstr ""
+
+#: ../app/views/ansible_roles/import.html.erb:6
+msgid "New"
+msgstr ""
+
+#: ../app/views/ansible_roles/import.html.erb:8
+msgid "Check/Uncheck new"
+msgstr ""
+
+#: ../app/views/ansible_roles/import.html.erb:9
+msgid "Obsolete"
+msgstr ""
+
+#: ../app/views/ansible_roles/import.html.erb:11
+msgid "Check/Uncheck obsolete"
+msgstr ""
+
+#: ../app/views/ansible_roles/import.html.erb:19
+msgid "Check/Uncheck all"
+msgstr ""
+
+#: ../app/views/ansible_roles/import.html.erb:21
+msgid "Name"
+msgstr ""
+
+#: ../app/views/ansible_roles/import.html.erb:22
+msgid "Hosts count"
+msgstr ""
+
+#: ../app/views/ansible_roles/import.html.erb:23
+msgid "Hostgroups count"
+msgstr ""
+
+#: ../app/views/ansible_roles/import.html.erb:24
+msgid "Operation"
+msgstr ""
+
+#: ../app/views/ansible_roles/import.html.erb:35
+msgid "Check/Uncheck all %s changes"
+msgstr ""
+
+#: ../app/views/ansible_roles/import.html.erb:40
+msgid "Add"
+msgstr ""
+
+#: ../app/views/ansible_roles/import.html.erb:40
+msgid "Remove"
+msgstr ""
+
+#: ../app/views/ansible_roles/import.html.erb:48
+msgid "Cancel"
+msgstr ""
+
+#: ../app/views/ansible_roles/import.html.erb:49
+msgid "Update"
+msgstr ""
+
+#: ../app/views/ansible_roles/index.html.erb:1
+#: ../app/views/ansible_roles/welcome.html.erb:1
+#: ../app/views/ansible_roles/welcome.html.erb:6
+#: ../app/views/foreman_ansible/ansible_roles/_select_tab_title.html.erb:1
+msgid "Ansible Roles"
+msgstr ""
+
+#: ../app/views/ansible_roles/index.html.erb:8
+msgid "Role|Name"
+msgstr ""
+
+#: ../app/views/ansible_roles/index.html.erb:9
+msgid "Imported at"
+msgstr ""
+
+#: ../app/views/ansible_roles/index.html.erb:10
+msgid "Actions"
+msgstr ""
+
+#: ../app/views/ansible_roles/index.html.erb:21
+msgid "Delete %s?"
+msgstr ""
+
+#: ../app/views/ansible_roles/welcome.html.erb:7
+msgid ""
+"No ansible roles were found in Foreman. If you want to assign roles to your ho"
+"sts,\n"
+"             you have to import them first."
+msgstr ""
+
+#: ../app/views/ansible_roles/welcome.html.erb:10
+msgid "Learn more about this in the documentation."
+msgstr ""
+
+#: ../app/views/foreman_ansible/ansible_roles/_select_tab_content.html.erb:4
+msgid "Available roles"
 msgstr ""
 
 #: ../app/views/foreman_ansible/config_reports/_ansible.html.erb:4
@@ -56,12 +198,12 @@ msgstr ""
 msgid "Nothing to show"
 msgstr ""
 
-#: ../app/views/foreman_ansible/hosts/_tab_content.html.erb:3
-msgid "Roles"
+#: ../lib/foreman_ansible/engine.rb:50
+msgid "Ansible"
 msgstr ""
 
-#: ../app/views/foreman_ansible/hosts/_tab_title.html.erb:1
-msgid "Ansible Roles"
+#: ../lib/foreman_ansible/engine.rb:52
+msgid "Roles"
 msgstr ""
 
 #: gemspec.rb:2

@@ -15,22 +15,82 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+msgid "%s ago"
+msgstr ""
+
+msgid "Actions"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Ansible"
+msgstr ""
+
 msgid "Ansible Roles"
 msgstr ""
 
 msgid "Ansible roles"
 msgstr ""
 
-msgid "Ansible roles running on background for hosts: "
+msgid "Ansible roles running in the background for hosts: %s"
 msgstr ""
 
-msgid "Ansible roles running on background: "
+msgid "Ansible roles running in the background: %s"
 msgstr ""
 
 msgid "Ansible support in Foreman"
 msgstr ""
 
 msgid "Arguments"
+msgstr ""
+
+msgid "Available roles"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Changed Ansible roles"
+msgstr ""
+
+msgid "Check/Uncheck all"
+msgstr ""
+
+msgid "Check/Uncheck all %s changes"
+msgstr ""
+
+msgid "Check/Uncheck new"
+msgstr ""
+
+msgid "Check/Uncheck obsolete"
+msgstr ""
+
+msgid "Delete %s?"
+msgstr ""
+
+msgid "Hostgroups count"
+msgstr ""
+
+msgid "Hosts count"
+msgstr ""
+
+msgid "Import"
+msgstr ""
+
+msgid "Import from %s"
+msgstr ""
+
+msgid "Import from Foreman host"
+msgstr ""
+
+msgid "Import of roles successfully finished."
+msgstr ""
+
+msgid "Imported at"
+msgstr ""
+
+msgid "Learn more about this in the documentation."
 msgstr ""
 
 msgid "Level"
@@ -42,11 +102,55 @@ msgstr ""
 msgid "Module"
 msgstr ""
 
+msgid "Name"
+msgstr ""
+
+msgid "New"
+msgstr ""
+
+msgid ""
+"No ansible roles were found in Foreman. If you want to assign roles to your hosts,\n"
+"             you have to import them first."
+msgstr ""
+
+msgid "No changes in roles detected on %s."
+msgstr ""
+
+msgid "No changes in roles detected."
+msgstr ""
+
 msgid "Nothing to show"
+msgstr ""
+
+msgid "Obsolete"
+msgstr ""
+
+msgid "Operation"
 msgstr ""
 
 msgid "Play Ansible roles"
 msgstr ""
 
+msgid "Proxy not found"
+msgstr ""
+
+msgid "Remove"
+msgstr ""
+
 msgid "Roles"
+msgstr ""
+
+msgid "Role|Name"
+msgstr ""
+
+msgid "Select the changes you want to realize in Foreman"
+msgstr ""
+
+msgid "Toggle"
+msgstr ""
+
+msgid "Unable to get roles from Ansible"
+msgstr ""
+
+msgid "Update"
 msgstr ""

@@ -7,7 +7,7 @@ module ForemanAnsible
       def play_roles
         find_resource
         RolePlayer.new(@host).play
-        notice(_('Ansible roles running on background: ') +
+        notice(_('Ansible roles running in the background: %s') %
                @host.all_ansible_roles.map(&:name).join(', '))
         redirect_to :back
       end
@@ -17,7 +17,7 @@ module ForemanAnsible
         @hosts.each do |host|
           RolePlayer.new(host).play
         end
-        notice(_('Ansible roles running on background for hosts: ') +
+        notice(_('Ansible roles running in the background for hosts: %s') %
                @hosts.map(&:name).join(', '))
         redirect_to :hosts
       end

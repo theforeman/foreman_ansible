@@ -24,8 +24,11 @@ class AnsibleRolesController < ::ApplicationController
   def import
     changed = @importer.import!
     if changed.values.all?(&:empty?)
-      msg = _('No changes in roles detected')
-      msg += (_(' on %s.') % @proxy.name) if @proxy
+      if @proxy
+        msg = _('No changes in roles detected on %s.') % proxy.name
+      else
+        msg = _('No changes in roles detected.')
+      end
       notice msg
       redirect_to ansible_roles_path
     else
