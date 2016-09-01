@@ -1,0 +1,31 @@
+require 'test_plugin_helper'
+# unit tests for UiRolesImporter
+class UiRolesImporterTest < ActiveSupport::TestCase
+  setup do
+    changed_roles
+    @importer = ForemanAnsible::UiRolesImporter.new
+  end
+
+  test 'should create new role' do
+    refute AnsibleRole.find_by(:name => @new_role[:name])
+    @importer.create_new_roles(@changes['new'])
+    assert AnsibleRole.find_by(:name => @new_role[:name])
+  end
+
+  test 'should delete old roles' do
+    assert AnsibleRole.find_by(:name => @role.name)
+    @importer.delete_old_roles(@changes['obsolete'])
+    refute AnsibleRole.find_by(:name => @role.name)
+  end
+
+  private
+
+  def changed_roles
+    @role = FactoryGirl.create(:ansible_role)
+    new_role_name = 'test_role.foreman'
+    @new_role = { :id => nil, :name => new_role_name }
+    @changes = { 'new' => { 'test_role.foreman' => @new_role.to_json },
+                 'obsolete' => { @role.name => @role.to_json }
+               }
+  end
+end

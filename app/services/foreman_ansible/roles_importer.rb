@@ -7,7 +7,7 @@ module ForemanAnsible
       @ansible_proxy = proxy
     end
 
-    def import!
+    def import_role_names
       return import_roles remote_roles if ansible_proxy
       import_roles local_roles
     end
@@ -17,24 +17,6 @@ module ForemanAnsible
         ::AnsibleRole.find_or_initialize_by(:name => role_name)
       end
       detect_changes imported
-    end
-
-    def finish_import(changes)
-      return unless  changes.present?
-      create_new_roles changes['new'] if changes['new']
-      delete_old_roles changes['obsolete'] if changes['obsolete']
-    end
-
-    def create_new_roles(changes)
-      changes.values.each do |new_role|
-        ::AnsibleRole.create(JSON.parse(new_role))
-      end
-    end
-
-    def delete_old_roles(changes)
-      changes.values.each do |old_role|
-        ::AnsibleRole.find(JSON.parse(old_role)['id']).destroy
-      end
     end
 
     def detect_changes(imported)

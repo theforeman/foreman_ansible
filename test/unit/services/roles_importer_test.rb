@@ -14,28 +14,4 @@ class RolesImporterTest < ActiveSupport::TestCase
     assert_equal role.name, changes[:new].first.name
     assert_equal @role.name, changes[:obsolete].first.name
   end
-
-  test 'should create new role' do
-    changed_roles
-    refute AnsibleRole.find_by(:name => @new_role[:name])
-    @importer.create_new_roles(@changes['new'])
-    assert AnsibleRole.find_by(:name => @new_role[:name])
-  end
-
-  test 'should delete old roles' do
-    changed_roles
-    assert AnsibleRole.find_by(:name => @role.name)
-    @importer.delete_old_roles(@changes['obsolete'])
-    refute AnsibleRole.find_by(:name => @role.name)
-  end
-
-  private
-
-  def changed_roles
-    new_role_name = 'test_role.foreman'
-    @new_role = { :id => nil, :name => new_role_name }
-    @changes = { 'new' => { 'test_role.foreman' => @new_role.to_json },
-                 'obsolete' => { @role.name => @role.to_json }
-               }
-  end
 end

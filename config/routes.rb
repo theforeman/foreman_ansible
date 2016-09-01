@@ -17,5 +17,21 @@ Rails.application.routes.draw do
         post :confirm_import
       end
     end
+
+    namespace :api do
+      scope '(:apiv)',
+            :module      => :v2,
+            :defaults    => { :apiv => 'v2' },
+            :apiv        => /v1|v2/,
+            :constraints => ApiConstraints.new(:version => 2) do
+
+        resources :ansible_roles, :only => [:show, :index, :destroy] do
+          collection do
+            put :import
+            put :obsolete
+          end
+        end
+      end
+    end
   end
 end
