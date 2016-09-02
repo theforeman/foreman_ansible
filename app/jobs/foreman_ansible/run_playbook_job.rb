@@ -14,8 +14,8 @@ module ForemanAnsible
 
     def perform(playbook_path, inventory_path)
       @pid = spawn("ansible-playbook -i #{inventory_path} #{playbook_path}",
-                   :out => log_file,
-                   :err => log_file)
+                   :out => [log_file, 'a'],
+                   :err => [log_file, 'a'])
     end
 
     private
