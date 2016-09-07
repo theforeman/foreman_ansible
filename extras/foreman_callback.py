@@ -99,7 +99,7 @@ class CallbackModule(parent_class):
         facts_json = FACTS_FORMAT % dict(host=host, data=data)
 
         requests.post(url=FOREMAN_URL + '/api/v2/hosts/facts',
-                      data=facts_json,
+                      data=facts_json.encode('utf-8'),
                       headers=FOREMAN_HEADERS,
                       cert=FOREMAN_SSL_CERT,
                       verify=self.ssl_verify)
