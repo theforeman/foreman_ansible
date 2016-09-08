@@ -1,6 +1,7 @@
 require 'deface'
 require 'fast_gettext'
 require 'gettext_i18n_rails'
+require 'foreman_ansible_core'
 
 module ForemanAnsible
   # This engine connects ForemanAnsible with Foreman core
@@ -24,7 +25,6 @@ module ForemanAnsible
 
     initializer 'foreman_ansible.register_plugin', :before => :finisher_hook do
       Foreman::Plugin.register :foreman_ansible do
-        # We need ActiveJob, only available post-1.12 because of Rails 4.2
         requires_foreman '>= 1.12'
 
         security_block :foreman_ansible do
@@ -58,8 +58,15 @@ module ForemanAnsible
       end
     end
 
+    initializer('foreman_ansible.require_dynflow',
+                :before => 'foreman_tasks.initialize_dynflow') do
+      ::ForemanTasks.dynflow.require!
+      actions_path = File.join(ForemanAnsible::Engine.root, 'app/lib/actions')
+      ::ForemanTasks.dynflow.config.eager_load_paths << actions_path
+    end
+
     # Add any db migrations
-    initializer 'foreman_remote_execution.load_app_instance_data' do |app|
+    initializer 'foreman_ansible.load_app_instance_data' do |app|
       ForemanAnsible::Engine.paths['db/migrate'].existent.each do |path|
         app.config.paths['db/migrate'] << path
       end
