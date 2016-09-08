@@ -2,6 +2,7 @@ require 'deface'
 require 'fast_gettext'
 require 'gettext_i18n_rails'
 require 'foreman_ansible_core'
+require 'foreman_ansible_exporter'
 
 module ForemanAnsible
   # This engine connects ForemanAnsible with Foreman core
@@ -80,6 +81,7 @@ module ForemanAnsible
         ::Host::Managed.send(:include, ForemanAnsible::HostManagedExtensions)
         ::Hostgroup.send(:include, ForemanAnsible::HostgroupExtensions)
         ::HostsHelper.send(:include, ForemanAnsible::HostsHelperExtensions)
+        ::SmartProxy.send(:include, ForemanAnsible::SmartProxyExtensions)
         ::HostsController.send(
           :include, ForemanAnsible::Concerns::HostsControllerExtensions
         )

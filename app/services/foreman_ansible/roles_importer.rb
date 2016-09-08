@@ -1,22 +1,27 @@
 module ForemanAnsible
-  # imports roles from smart proxy
-  class RolesImporter
-    attr_reader :ansible_proxy
+  # imports roles from source
+  class RolesImporter < AnsibleImporter
 
-    def initialize(proxy = nil)
-      @ansible_proxy = proxy
+    def import_roles
+      process_roles source.roles
     end
 
-    def import_role_names
-      return import_roles remote_roles if ansible_proxy
-      import_roles local_roles
-    end
-
-    def import_roles(roles)
-      imported = roles.map do |role_name|
-        ::AnsibleRole.find_or_initialize_by(:name => role_name)
+    def process_roles(roles_hash)
+      imported = roles_hash.map do |role_name, folders|
+        role = AnsibleRole.find_or_initialize_by(:name => role_name)
+        role.ansible_files = process_files role, folders
+        role.ansible_proxy = ansible_proxy
+        role
       end
       detect_changes imported
+    end
+
+    def process_files(role, folders)
+      folders.flat_map do |folder, files|
+        files.flat_map do |file|
+          AnsibleFile.find_or_initialize_by(:name => file, :dir => folder, :ansible_role_id => role.id)
+        end
+      end
     end
 
     def detect_changes(imported)
@@ -24,28 +29,6 @@ module ForemanAnsible
       old, changes[:new] = imported.partition { |role| role.id.present? }
       changes[:obsolete] = ::AnsibleRole.where.not(:id => old.map(&:id))
       changes
-    end
-
-    private
-
-    def find_proxy_api
-      raise ::Foreman::Exception.new(N_('Proxy not found')) unless ansible_proxy
-      @proxy_api = ::ProxyAPI::Ansible.new(:url => ansible_proxy.url)
-    end
-
-    def proxy_api
-      return @proxy_api if @proxy_api
-      find_proxy_api
-    end
-
-    def local_roles
-      Dir.glob('/etc/ansible/roles/*').map do |path|
-        path.split('/').last
-      end
-    end
-
-    def remote_roles
-      proxy_api.roles
     end
   end
 end
