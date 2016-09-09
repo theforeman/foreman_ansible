@@ -1,7 +1,7 @@
 require 'foreman_tasks_core'
 
-# Core parts for the Foreman Ansinble, usable by both Foreman and
-# Foreman proxy
+# Core actions for Foreman Ansible, used by both Foreman and Foreman proxy
+# This comprises running playbooks for the moment
 module ForemanAnsibleCore
   extend ForemanTasksCore::SettingsLoader
   register_settings(:ansible, :ansible_dir => '/etc/ansible',
