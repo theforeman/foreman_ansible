@@ -9,12 +9,18 @@ module ForemanAnsible
         find_resource
         task = async_task(::Actions::ForemanAnsible::PlayHostRoles, @host)
         redirect_to task
+      rescue Foreman::Exception => e
+        error e.message
+        redirect_to host_path(@host)
       end
 
       def multiple_play_roles
         find_multiple
         task = async_task(::Actions::ForemanAnsible::PlayHostsRoles, @hosts)
         redirect_to task
+      rescue Foreman::Exception => e
+        error e.message
+        redirect_to hosts_path
       end
 
       private

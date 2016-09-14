@@ -1,10 +1,9 @@
 require 'foreman_tasks_core/runner/command_runner'
 require 'tmpdir'
-require 'securerandom'
 
 module ForemanAnsibleCore
   # Implements ForemanTasksCore::Runner::Base interface for running
-  # Ansible playbooks
+  # Ansible playbooks, used by the Foreman Ansible plugin and Ansible proxy
   class PlaybookRunner < ForemanTasksCore::Runner::CommandRunner
     def initialize(inventory, playbook)
       super
@@ -72,18 +71,26 @@ module ForemanAnsibleCore
       path
     end
 
-    # rubocop:disable Metrics/MethodLength
     def initialize_dirs
       settings = ForemanAnsibleCore.settings
-      @ansible_dir = settings[:ansible_dir]
-      unless File.exist?(@ansible_dir)
-        raise "Ansible dir #{@ansible_dir} does not exist"
-      end
-      if ForemanAnsibleCore.settings[:working_dir]
-        @working_dir = File.expand_path(settings[:working_dir])
+      initialize_working_dir(settings[:working_dir])
+      initialize_ansible_dir(settings[:ansible_dir])
+    end
+
+    def initialize_working_dir(working_dir)
+      if working_dir.present?
+        @working_dir = File.expand_path(working_dir)
       else
         @working_dir = Dir.mktmpdir
         @tmp_working_dir = true
+      end
+    end
+
+    def initialize_ansible_dir(ansible_dir)
+      if File.exist?(ansible_dir)
+        @ansible_dir = ansible_dir
+      else
+        raise "Ansible dir #{ansible_dir} does not exist"
       end
     end
   end
