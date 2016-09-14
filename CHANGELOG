@@ -1,4 +1,50 @@
+2016-09-14	Daniel Lobato García <me@daniellobato.me>
+	* Fixes #16537 - Tests to ensure play_roles work
+
+2016-09-08	Ivan Necas <inecas@redhat.com>
+	* Fixes #15856 - support running playbook via proxy (#40)
+
+2016-09-08	Michael Hofer <karras@users.noreply.github.com>
+	* Fixes #16477 - Ansible callback plugin - buf must be a byte string (#46)
+
+2016-09-06	Daniel Lobato García <me@daniellobato.me>
+	* Fixes #16442 - Importing from proxy cannot show 'no changes' (#45)
+
+2016-09-01	Ondrej Prazak <oprazak@redhat.com>
+	* Fixes #15979 - Add API for Ansible roles
+
+2016-09-01	Bryan Kearney <bkearney@redhat.com>
+	* Fixes #16335 - Improve the strings for translators
+
+2016-08-24	Ondrej Prazak <oprazak@redhat.com>
+	* Fixes #15836 - Import roles from smart proxy
+
+2016-08-22	Guido Günther <agx@sigxcpu.org>
+	* fixes #16176 - Some PEP8 cleanups
+
+2016-08-17	Ivan Nečas <inecas@redhat.com>
+	* Fixes #16147 - set index names explicitly
+
+2016-08-17	Daniel Lobato <elobatocs@gmail.com>
+	* Fixes #16136 - Rubocop fixes & task
+
+2016-08-16	Tomas Strachota <tstrachota@redhat.com>
+	* Fixes #15837 - Allow roles assignment to hostgroups
+
+2016-08-11	Daniel Lobato <elobatocs@gmail.com>
+	* Fixes #16062 - Shoulda-matchers 3.x compat
+
+2016-08-09	Daniel Lobato <elobatocs@gmail.com>
+	* Fixes #16013 - Fix tests from core
+
+2016-08-04	Bryan Kearney <bkearney@redhat.com>
+	* Fixes #15948 - Add in the engine initializer to extract strings
+
+2016-07-21	Dominic Cleal <dominic@cleal.org>
+	* Fix missing logger method name
+
 2016-07-08	Daniel Lobato <elobatocs@gmail.com>
+	* Add Contributors & CHANGELOG for 1.0
 	* Fixes #14263 - Run Ansible roles for one/multiple hosts
 
 2016-02-17	Daniel Lobato <elobatocs@gmail.com>
