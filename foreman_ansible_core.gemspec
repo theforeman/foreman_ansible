@@ -12,9 +12,9 @@ Gem::Specification.new do |s|
 Ansible integration with Foreman - core parts for dealing with Ansible concepts,
 usable by foreman_ansible or smart_proxy_ansible to delegate the execution.
 DESC
-  s.licenses    = ['GPL-3']
+  s.licenses    = ['GPL-3.0']
 
-  s.files = Dir['lib/foreman_ansible_core/**/*'] +
+  s.files = Dir['lib/foreman_ansible_core/**/*', 'LICENSE'] +
             ['lib/foreman_ansible_core.rb', 'bin/json_inventory.sh']
 
   s.add_development_dependency 'rubocop', '~> 0.42'
