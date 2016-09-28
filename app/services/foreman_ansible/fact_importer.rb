@@ -47,9 +47,16 @@ module ForemanAnsible
     end
 
     def missing_facts
+      db_fact_names = if db_facts.is_a? Hash
+                        db_facts.keys
+                      else
+                        db_facts
+                      end
+      # In Foreman versions prior to 1.14, the db_facts key
+      # used to be a hash. Now it's an ActiveRecord::AssociationRelation
       @missing_facts ||= facts.keys +
                          FactSparser.sparse(@original_facts).keys -
-                         db_facts.keys
+                         db_fact_names
     end
 
     # Returns pairs [id, fact_name]

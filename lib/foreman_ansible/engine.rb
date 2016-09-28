@@ -72,6 +72,12 @@ module ForemanAnsible
       end
     end
 
+    initializer 'foreman_ansible.apipie' do
+      Apipie.configuration.api_controllers_matcher <<
+        "#{ForemanAnsible::Engine.root}/app/controllers/api/v2/*.rb"
+      Apipie.configuration.checksum_path += ['/foreman_ansible/api/']
+    end
+
     config.to_prepare do
       begin
         ::FactImporter.register_fact_importer(:ansible,
