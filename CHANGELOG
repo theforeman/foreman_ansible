@@ -1,3 +1,13 @@
+2016-09-28	Daniel Lobato García <me@daniellobato.me>
+	* Fixes #16714 - Add apipie initializer
+	* Fixes #16656 - Set origin from fact name
+
+2016-09-22	Daniel Lobato Garcia <me@daniellobato.me>
+	* Fixes #16651 - Add license to foreman_ansible_core gem
+
+2016-09-14	Daniel Lobato Garcia <me@daniellobato.me>
+	* Release 1.1
+
 2016-09-14	Daniel Lobato García <me@daniellobato.me>
 	* Fixes #16537 - Tests to ensure play_roles work
 
