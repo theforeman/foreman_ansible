@@ -1,3 +1,9 @@
+2016-10-03	Daniel Lobato Garcia <me@daniellobato.me>
+	* Refs #16714 - Fix apipie initializer
+
+2016-09-28	Daniel Lobato Garcia <me@daniellobato.me>
+	* Release 1.2
+
 2016-09-28	Daniel Lobato García <me@daniellobato.me>
 	* Fixes #16714 - Add apipie initializer
 	* Fixes #16656 - Set origin from fact name
