@@ -55,6 +55,9 @@ module ForemanAnsible
              :caption => N_('Roles'),
              :url_hash => { :controller => :ansible_roles, :action => :index },
              :parent => :configure_menu
+
+        apipie_documented_controllers [
+          "#{ForemanAnsible::Engine.root}/app/controllers/api/v2/*.rb"]
       end
     end
 
