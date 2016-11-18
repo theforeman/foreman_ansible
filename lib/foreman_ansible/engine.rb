@@ -57,7 +57,8 @@ module ForemanAnsible
              :parent => :configure_menu
 
         apipie_documented_controllers [
-          "#{ForemanAnsible::Engine.root}/app/controllers/api/v2/*.rb"]
+          "#{ForemanAnsible::Engine.root}/app/controllers/api/v2/*.rb"
+        ]
       end
     end
 
@@ -83,8 +84,17 @@ module ForemanAnsible
 
     config.to_prepare do
       begin
-        ::FactImporter.register_fact_importer(:ansible,
-                                              ForemanAnsible::FactImporter)
+        foreman_version = ::Foreman::Version.new
+        if Rails.env.test? ||
+           foreman_version.major.to_i == 1 && foreman_version.minor.to_i < 13
+          ::FactImporter.register_fact_importer(:ansible,
+                                                ForemanAnsible::FactImporter)
+        else
+          ::FactImporter.register_fact_importer(
+            :ansible,
+            ForemanAnsible::StructuredFactImporter
+          )
+        end
         ::FactParser.register_fact_parser(:ansible, ForemanAnsible::FactParser)
         ::Host::Managed.send(:include, ForemanAnsible::HostManagedExtensions)
         ::Hostgroup.send(:include, ForemanAnsible::HostgroupExtensions)
