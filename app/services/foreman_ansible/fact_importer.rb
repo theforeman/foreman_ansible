@@ -2,6 +2,8 @@ module ForemanAnsible
   # Override methods from Foreman app/services/fact_importer so that Ansible
   # facts are recognized in Foreman as ForemanAnsible facts. It supports
   # nested facts.
+  #
+  # Only relevant for 1.12 and lower versions
   class FactImporter < ::FactImporter
     def fact_name_class
       ForemanAnsible::FactName
