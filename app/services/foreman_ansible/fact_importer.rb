@@ -10,7 +10,10 @@ module ForemanAnsible
     end
 
     def initialize(host, facts = {})
-      @host = host
+      # Try to assign these facts to the correct host as per the facts say
+      # If that host isn't created yet, the host parameter will contain it
+      @host = Host.find_by(:name => facts[:ansible_facts][:ansible_fqdn]) ||
+              host
       @facts = normalize(facts[:ansible_facts])
       @original_facts = FactSparser.unsparse(facts[:ansible_facts])
       @counters = {}
