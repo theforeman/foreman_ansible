@@ -9,6 +9,7 @@ module ForemanAnsible
     engine_name 'foreman_ansible'
 
     config.autoload_paths += Dir["#{config.root}/app/controllers/concerns"]
+    config.autoload_paths += Dir["#{config.root}/app/models"]
     config.autoload_paths += Dir["#{config.root}/app/helpers"]
     config.autoload_paths += Dir["#{config.root}/app/overrides"]
     config.autoload_paths += Dir["#{config.root}/app/services"]
@@ -30,7 +31,7 @@ module ForemanAnsible
         security_block :foreman_ansible do
           permission :play_roles,
                      { :hosts => [:play_roles, :multiple_play_roles] },
-                     :resource_type => 'Host::Managed'
+                     :resource_type => 'Host'
           permission :view_ansible_roles,
                      { :ansible_roles => [:index],
                        :'api/v2/ansible_roles' => [:index, :show] },
@@ -44,6 +45,10 @@ module ForemanAnsible
                        :'api/v2/ansible_roles' => [:import] },
                      :resource_type => 'AnsibleRole'
         end
+
+        role "Ansible Roles Manager",
+          [:play_roles, :view_ansible_roles, :destroy_ansible_roles,
+           :import_ansible_roles]
 
         role_assignment_params = { :ansible_role_ids => [],
                                    :ansible_roles => [] }
