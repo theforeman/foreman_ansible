@@ -78,16 +78,16 @@ module ForemanAnsibleCore
     end
 
     def initialize_working_dir(working_dir)
-      if working_dir.present?
-        @working_dir = File.expand_path(working_dir)
-      else
+      if working_dir.nil?
         @working_dir = Dir.mktmpdir
         @tmp_working_dir = true
+      else
+        @working_dir = File.expand_path(working_dir)
       end
     end
 
     def initialize_ansible_dir(ansible_dir)
-      if File.exist?(ansible_dir)
+      if !ansible_dir.nil? && File.exist?(ansible_dir)
         @ansible_dir = ansible_dir
       else
         raise "Ansible dir #{ansible_dir} does not exist"

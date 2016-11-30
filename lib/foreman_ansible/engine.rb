@@ -46,9 +46,9 @@ module ForemanAnsible
                      :resource_type => 'AnsibleRole'
         end
 
-        role "Ansible Roles Manager",
-          [:play_roles, :view_ansible_roles, :destroy_ansible_roles,
-           :import_ansible_roles]
+        role 'Ansible Roles Manager',
+             [:play_roles, :view_ansible_roles, :destroy_ansible_roles,
+              :import_ansible_roles]
 
         role_assignment_params = { :ansible_role_ids => [],
                                    :ansible_roles => [] }
