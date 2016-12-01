@@ -17,16 +17,34 @@ module ForemanAnsible
     # with all hosts.
     def to_hash
       { 'all' => { 'hosts' => hosts.map(&:fqdn) },
-        '_meta' => { 'hostvars' => host_vars } }
+        '_meta' => { 'hostvars' => hosts_vars } }
     end
 
-    def host_vars
+    def hosts_vars
       hosts.reduce({}) do |hash, host|
-        hash.update(host.fqdn =>
-                    { 'foreman' => host_attributes(host),
-                      'foreman_params' => host_params(host),
-                      'foreman_ansible_roles' => host_roles(host) })
+        hash.update(host.fqdn => host_vars(host))
       end
+    end
+
+    def host_vars(host)
+      {
+        'foreman' => host_attributes(host),
+        'foreman_params' => host_params(host),
+        'foreman_ansible_roles' => host_roles(host)
+      }.merge(connection_params(host))
+    end
+
+    def connection_params(host)
+      params = {
+        'ansible_port' => host_port(host),
+        'ansible_user' => host_user(host),
+        'ansible_ssh_pass' => host_ssh_pass(host)
+      }
+
+      #Backward compatibility for Ansible 1.x
+      params['ansible_ssh_port'] = params['ansible_port']
+      params['ansible_ssh_user'] = params['ansible_user']
+      params
     end
 
     def host_roles(host)
@@ -39,6 +57,18 @@ module ForemanAnsible
 
     def host_params(host)
       host.host_params
+    end
+
+    def host_port(host)
+      host.host_params['ansible_port'] || Setting[:ansible_port]
+    end
+
+    def host_user(host)
+      host.host_params['ansible_user'] || Setting[:ansible_user]
+    end
+
+    def host_ssh_pass(host)
+      host.host_params['ansible_ssh_port'] || Setting[:ansible_ssh_pass]
     end
 
     private
