@@ -28,7 +28,8 @@ module ForemanAnsible
     end
 
     def domain
-      name = detect_fact([:ansible_domain, :facter_domain, :ohai_domain, :domain])
+      name = detect_fact([:ansible_domain, :facter_domain,
+                          :ohai_domain, :domain])
       Domain.where(:name => name).first_or_create unless name.blank?
     end
 
@@ -75,7 +76,7 @@ module ForemanAnsible
 
     def os_major
       facts[:ansible_distribution_major_version] ||
-        facts[:ansible_lsb] && facts[:ansible_lsb]['major_release'] || 
+        facts[:ansible_lsb] && facts[:ansible_lsb]['major_release'] ||
         (facts[:version].split('R')[0] if os_name == 'junos')
     end
 
