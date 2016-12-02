@@ -1,4 +1,26 @@
+2016-12-02	Ganesh Nalawade <ganesh634@gmail.com>
+	* fixes #17558 Add support to import junos facts in Foreman.
+
+2016-12-01	Tomer Brisker <tbrisker@users.noreply.github.com>
+	* Fixes #17150 - Allow setting some ansible connection parameters
+
+2016-11-30	Daniel Lobato García <me@daniellobato.me>
+	* Fixes #17536 - Return user-friendly message when working_dir not set
+
+2016-11-23	Daniel Lobato García <me@daniellobato.me>
+	* Fixes #17459 - Provide Ansible manager role
+
+2016-11-22	Tomer Brisker <tbrisker@users.noreply.github.com>
+	* Fixes #17443 - correctly set timestamps on ansible roles
+
+2016-11-21	Daniel Lobato García <me@daniellobato.me>
+	* Fixes #16873 - Use ansible_fqdn to find facts submitter
+
+2016-11-18	Daniel Lobato García <me@daniellobato.me>
+	* Fixes #17397 - Use StructuredFactImporter on 1.13+
+
 2016-10-03	Daniel Lobato Garcia <me@daniellobato.me>
+	* Release 1.2.1
 	* Refs #16714 - Fix apipie initializer
 
 2016-09-28	Daniel Lobato Garcia <me@daniellobato.me>
