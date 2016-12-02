@@ -23,12 +23,13 @@ module ForemanAnsible
 
     def model
       name = detect_fact([:ansible_product_name, :facter_virtual,
-                          :facter_productname, :facter_model])
+                          :facter_productname, :facter_model, :model])
       Model.where(:name => name.strip).first_or_create unless name.blank?
     end
 
     def domain
-      name = detect_fact([:ansible_domain, :facter_domain, :ohai_domain])
+      name = detect_fact([:ansible_domain, :facter_domain,
+                          :ohai_domain, :domain])
       Domain.where(:name => name).first_or_create unless name.blank?
     end
 
@@ -48,7 +49,7 @@ module ForemanAnsible
       if pref.present?
         (facts[:ansible_interfaces] - [pref]).unshift(pref)
       else
-        facts[:ansible_interfaces].sort
+        (facts[:ansible_interfaces].sort unless facts[:ansible_interfaces].nil?) || []
       end
     end
 
@@ -75,7 +76,8 @@ module ForemanAnsible
 
     def os_major
       facts[:ansible_distribution_major_version] ||
-        facts[:ansible_lsb] && facts[:ansible_lsb]['major_release']
+        facts[:ansible_lsb] && facts[:ansible_lsb]['major_release'] ||
+        (facts[:version].split('R')[0] if os_name == 'junos')
     end
 
     def os_release
@@ -84,7 +86,8 @@ module ForemanAnsible
     end
 
     def os_minor
-      _, minor = os_release.split('.')
+      _, minor = (os_release.split('.') unless os_release.nil?) ||
+                 (facts[:version].split('R') if os_name == 'junos')
       minor || ''
     end
 

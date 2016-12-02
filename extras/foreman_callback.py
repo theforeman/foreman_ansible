@@ -21,6 +21,7 @@ from collections import defaultdict
 import json
 import requests
 import time
+import re
 
 try:
     from ansible.plugins.callback import CallbackBase
@@ -67,12 +68,14 @@ class CallbackModule(parent_class):
         self.items = defaultdict(list)
         self.start_time = int(time.time())
         self.ssl_verify = self._ssl_verify()
+        self.modules = ['setup']
+        self.network_modules = ['junos_get_facts', 'junos_facts']
 
     def log(self, host, category, data):
         if type(data) != dict:
             data = dict(msg=data)
         data['category'] = category
-        if 'ansible_facts' in data:
+        if 'ansible_facts' in data or 'facts' in  data:
             self.send_facts(host, data)
         self.send_report(host, data)
 
@@ -95,6 +98,10 @@ class CallbackModule(parent_class):
         """
         data["_type"] = "ansible"
         data["_timestamp"] = datetime.now().strftime(TIME_FORMAT)
+        if re.search(r'^junos', data['invocation']['module_name']):
+            if 'facts' in data:
+                data['ansible_facts'] = data.pop('facts')
+            data['ansible_facts']['ansible_distribution'] = 'junos'
         data = json.dumps(data)
         facts_json = FACTS_FORMAT % dict(host=host, data=data)
 
@@ -170,7 +177,7 @@ class CallbackModule(parent_class):
         self.items[host].append(res)
 
     def runner_on_ok(self, host, res):
-        if 'invocation' in res and res['invocation']['module_name'] == 'setup':
+        if 'invocation' in res and res['invocation']['module_name'] in (self.modules + self.network_modules):
             self.send_facts(host, res)
         else:
             self.items[host].append(res)
