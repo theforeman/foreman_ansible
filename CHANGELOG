@@ -1,3 +1,9 @@
+2016-12-19	Daniel Kuffner <dkuffner@chilicat.net>
+	* Update inventory_creator.rb
+
+2016-12-02	Daniel Lobato Garcia <me@daniellobato.me>
+	* Release 1.3.0
+
 2016-12-02	Ganesh Nalawade <ganesh634@gmail.com>
 	* fixes #17558 Add support to import junos facts in Foreman.
 
