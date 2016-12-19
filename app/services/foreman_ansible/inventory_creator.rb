@@ -68,7 +68,7 @@ module ForemanAnsible
     end
 
     def host_ssh_pass(host)
-      host.host_params['ansible_ssh_port'] || Setting[:ansible_ssh_pass]
+      host.host_params['ansible_ssh_pass'] || Setting[:ansible_ssh_pass]
     end
 
     private
