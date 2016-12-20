@@ -1,0 +1,15 @@
+<td>
+    <%=
+      if hostgroup.all_ansible_roles.empty?
+        'N/A'
+      else
+        button = link_to(
+          icon_text('play', ' ' + _('Ansible roles'), :kind => 'fa'),
+          play_roles_hostgroup_path(:id => hostgroup.id),
+          :id => :ansible_roles_button,
+          :class => 'btn btn-default',
+          :'data-no-turbolink' => true
+        )
+      end
+    %>
+</td>

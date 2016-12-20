@@ -9,6 +9,11 @@ Rails.application.routes.draw do
           get :multiple_play_roles
         end
       end
+      resources :hostgroups, :only => [] do
+        member do
+          get :play_roles
+        end
+      end
     end
 
     resources :ansible_roles, :only => [:index, :destroy] do
@@ -24,6 +29,10 @@ Rails.application.routes.draw do
             :defaults    => { :apiv => 'v2' },
             :apiv        => /v1|v2/,
             :constraints => ApiConstraints.new(:version => 2) do
+
+        post 'play_roles_on_host', :to => 'play_roles#play_roles_on_host'
+        post 'play_roles_on_hostgroup',
+              :to => 'play_roles#play_roles_on_hostgroup'
 
         resources :ansible_roles, :only => [:show, :index, :destroy] do
           collection do
