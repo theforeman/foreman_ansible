@@ -29,6 +29,13 @@ module ForemanAnsibleCore
       command
     end
 
+    def kill
+      publish_data('== TASK ABORTED BY USER ==', 'stdout')
+      publish_exit_status(1)
+      ::Process.kill('SIGTERM', @command_pid)
+      close
+    end
+
     def close
       super
       FileUtils.remove_entry(@working_dir) if @tmp_working_dir
