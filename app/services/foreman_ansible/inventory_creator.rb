@@ -38,13 +38,23 @@ module ForemanAnsible
       params = {
         'ansible_port' => host_port(host),
         'ansible_user' => host_user(host),
-        'ansible_ssh_pass' => host_ssh_pass(host)
+        'ansible_ssh_pass' => host_ssh_pass(host),
+        'ansible_connection' => connection_type(host),
+        'ansible_winrm_server_cert_validation' => winrm_cert_validation(host)
       }
-
-      #Backward compatibility for Ansible 1.x
+      # Backward compatibility for Ansible 1.x
       params['ansible_ssh_port'] = params['ansible_port']
       params['ansible_ssh_user'] = params['ansible_user']
       params
+    end
+
+    def winrm_cert_validation(host)
+      host.host_params['ansible_winrm_server_cert_validation'] ||
+        Setting['ansible_winrm_server_cert_validation']
+    end
+
+    def connection_type(host)
+      host.host_params['ansible_connection'] || Setting['ansible_connection']
     end
 
     def host_roles(host)
