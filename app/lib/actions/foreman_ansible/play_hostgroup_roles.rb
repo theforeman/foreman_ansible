@@ -1,14 +1,14 @@
 module Actions
   module ForemanAnsible
-    # Actions that initiaztes the playbook run for roles assigned to
-    # the host. It doest that either locally or via a proxy when available.
+    # Action that initiates the playbook run for roles assigned to
+    # the hostgroup. It does that either locally or via a proxy when available.
     class PlayHostgroupRoles < Actions::EntryAction
       include ::Actions::Helpers::WithContinuousOutput
       include ::Actions::Helpers::WithDelegatedAction
 
       def plan(hostgroup, proxy_selector = ::ForemanAnsible::ProxySelector.new)
         if hostgroup.hosts.empty?
-          raise ::Foreman::Exception.new(N_('hostgroup is empty'))
+          raise ::Foreman::Exception.new(N_('host group is empty'))
         end
         input[:hostgroup] = { :id => hostgroup.id, :name => hostgroup.name }
         proxy = proxy_selector.determine_proxy(hostgroup.hosts[0])
@@ -37,7 +37,7 @@ module Actions
       end
 
       def humanized_input
-        _('on hostgroup %{name}') %
+        _('on host group %{name}') %
           { :name => input.fetch(:hostgroup, {})[:name] }
       end
 

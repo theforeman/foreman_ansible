@@ -6,8 +6,8 @@ module ForemanAnsible
       include ForemanTasks::Triggers
 
       def play_roles
-        hostgroup = Hostgroup.find(params[:id])
-        task = async_task(::Actions::ForemanAnsible::PlayHostgroupRoles, hostgroup)
+        find_resource
+        task = async_task(::Actions::ForemanAnsible::PlayHostgroupRoles, @hostgroup)
         redirect_to task
       rescue Foreman::Exception => e
         error e.message
