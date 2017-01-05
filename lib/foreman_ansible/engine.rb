@@ -114,13 +114,13 @@ module ForemanAnsible
           :include, ForemanAnsible::Concerns::HostsControllerExtensions
         )
         ::Api::V2::HostsController.send(
-          :include, Api::V2::HostsControllerExtensions
+          :include, ForemanAnsible::Api::V2::HostsControllerExtensions
         )
         ::HostgroupsController.send(
           :include, ForemanAnsible::Concerns::HostgroupsControllerExtensions
         )
         ::Api::V2::HostgroupsController.send(
-          :include, Api::V2::HostgroupsControllerExtensions
+          :include, ForemanAnsible::Api::V2::HostgroupsControllerExtensions
         )
       rescue => e
         Rails.logger.warn "Foreman Ansible: skipping engine hook (#{e})"
