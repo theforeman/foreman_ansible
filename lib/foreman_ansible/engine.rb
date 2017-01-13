@@ -35,9 +35,16 @@ module ForemanAnsible
         requires_foreman '>= 1.12'
 
         security_block :foreman_ansible do
-          permission :play_roles,
-                     { :hosts => [:play_roles, :multiple_play_roles] },
+          permission :play_roles_on_host,
+                     { :hosts => [:play_roles, :multiple_play_roles],
+                       :'api/v2/hosts' => [:play_roles,
+                                           :multiple_play_roles] },
                      :resource_type => 'Host'
+          permission :play_roles_on_hostgroup,
+                     { :hostgroups => [:play_roles],
+                       :'api/v2/hostgroups' => [:play_roles,
+                                                :multiple_play_roles] },
+                     :resource_type => 'Hostgroup'
           permission :view_ansible_roles,
                      { :ansible_roles => [:index],
                        :'api/v2/ansible_roles' => [:index, :show] },
@@ -53,7 +60,8 @@ module ForemanAnsible
         end
 
         role 'Ansible Roles Manager',
-             [:play_roles, :view_ansible_roles, :destroy_ansible_roles,
+             [:play_roles_on_host, :play_roles_on_hostgroup,
+              :view_ansible_roles, :destroy_ansible_roles,
               :import_ansible_roles]
 
         role_assignment_params = { :ansible_role_ids => [],
@@ -112,6 +120,15 @@ module ForemanAnsible
         ::HostsHelper.send(:include, ForemanAnsible::HostsHelperExtensions)
         ::HostsController.send(
           :include, ForemanAnsible::Concerns::HostsControllerExtensions
+        )
+        ::Api::V2::HostsController.send(
+          :include, ForemanAnsible::Api::V2::HostsControllerExtensions
+        )
+        ::HostgroupsController.send(
+          :include, ForemanAnsible::Concerns::HostgroupsControllerExtensions
+        )
+        ::Api::V2::HostgroupsController.send(
+          :include, ForemanAnsible::Api::V2::HostgroupsControllerExtensions
         )
       rescue => e
         Rails.logger.warn "Foreman Ansible: skipping engine hook (#{e})"

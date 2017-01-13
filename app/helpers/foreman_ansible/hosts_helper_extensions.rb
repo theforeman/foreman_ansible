@@ -9,13 +9,17 @@ module ForemanAnsible
     end
 
     def host_title_actions_with_run_ansible_roles(*args)
-      button = link_to(
-        icon_text('play', ' ' + _('Ansible roles'), :kind => 'fa'),
-        play_roles_host_path(:id => args.first.id),
-        :id => :ansible_roles_button,
-        :class => 'btn btn-default'
-      )
-      title_actions(button_group(button)) if args.first.ansible_roles.present?
+      if args.first.ansible_roles.present? ||
+         args.first.inherited_ansible_roles.present?
+        button = link_to(
+          icon_text('play', ' ' + _('Ansible roles'), :kind => 'fa'),
+          play_roles_host_path(:id => args.first.id),
+          :id => :ansible_roles_button,
+          :class => 'btn btn-default',
+          :'data-no-turbolink' => true
+        )
+        title_actions(button_group(button))
+      end
       host_title_actions_without_run_ansible_roles(*args)
     end
 

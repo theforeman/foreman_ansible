@@ -1,7 +1,7 @@
 module Actions
   module ForemanAnsible
-    # Actions that initiaztes the playbook run for roles assigned to
-    # the host. It doest that either locally or via a proxy when available.
+    # Action that initiates the playbook run for roles assigned to
+    # the host. It does that either locally or via a proxy when available.
     class PlayHostRoles < Actions::EntryAction
       include ::Actions::Helpers::WithContinuousOutput
       include ::Actions::Helpers::WithDelegatedAction
