@@ -30,20 +30,39 @@ module ForemanAnsible
       Foreman::Gettext::Support.add_text_domain locale_domain, locale_dir
     end
 
+    assets_to_precompile =
+      Dir.chdir(root) do
+        Dir['app/assets/javascripts/**/**/*'].map do |f|
+          f.split(File::SEPARATOR, 4).last
+        end
+      end
+
+    initializer 'foreman_ansible.assets.precompile' do |app|
+      app.config.assets.precompile += assets_to_precompile
+    end
+
+    initializer 'foreman_ansible.configure_assets', :group => :assets do
+      SETTINGS[:foreman_ansible] =
+        { :assets => { :precompile => assets_to_precompile } }
+    end
+
     initializer 'foreman_ansible.register_plugin', :before => :finisher_hook do
       Foreman::Plugin.register :foreman_ansible do
         requires_foreman '>= 1.12'
 
         security_block :foreman_ansible do
           permission :play_roles_on_host,
-                     { :hosts => [:play_roles, :multiple_play_roles],
+                     { :hosts => [:play_roles, :multiple_play_roles,
+                                  :play_ad_hoc_role],
                        :'api/v2/hosts' => [:play_roles,
-                                           :multiple_play_roles] },
+                                           :multiple_play_roles,
+                                           :play_ad_hoc_role] },
                      :resource_type => 'Host'
           permission :play_roles_on_hostgroup,
-                     { :hostgroups => [:play_roles],
+                     { :hostgroups => [:play_roles, :play_ad_hoc_role],
                        :'api/v2/hostgroups' => [:play_roles,
-                                                :multiple_play_roles] },
+                                                :multiple_play_roles,
+                                                :play_ad_hoc_role] },
                      :resource_type => 'Hostgroup'
           permission :view_ansible_roles,
                      { :ansible_roles => [:index],
@@ -93,18 +112,6 @@ module ForemanAnsible
       ForemanAnsible::Engine.paths['db/migrate'].existent.each do |path|
         app.config.paths['db/migrate'] << path
       end
-    end
-
-    initializer 'foreman_ansible.assets.precompile' do |app|
-      app.config.assets.precompile += %w(foreman_ansible/Ansible.png)
-    end
-
-    initializer 'foreman_ansible.configure_assets', :group => :assets do
-      SETTINGS[:foreman_ansible] = {
-        :assets => {
-          :precompile => ['foreman_ansible/Ansible.png']
-        }
-      }
     end
 
     initializer 'foreman_ansible.apipie' do

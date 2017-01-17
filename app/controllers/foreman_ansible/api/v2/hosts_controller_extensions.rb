@@ -6,6 +6,9 @@ module ForemanAnsible
         extend ActiveSupport::Concern
         include ForemanTasks::Triggers
 
+        # Included blocks shouldn't be bound by length, as otherwise concerns
+        # cannot extend the method properly.
+        # rubocop:disable BlockLength
         included do
           api :POST, '/hosts/:id/play_roles', N_('Plays Ansible roles on hosts')
           param :id, String, :required => true
@@ -36,13 +39,36 @@ module ForemanAnsible
 
             render_message @result
           end
+
+          api :POST, '/hosts/:id/play_ad_hoc_role',
+              N_('Plays an Ansible role ad hoc')
+          param :id, String, :required => true
+          param :the_role_id, String, :required => true
+
+          def play_ad_hoc_role
+            # FIXME: When using just role_id, find resource will throw an
+            # exception: "undefined method `name' for nil:NilClass"
+            find_ansible_role(params.require(:the_role_id))
+            @result = {
+              :host => @host, :role => @ansible_role,
+              :foreman_tasks => async_task(
+                ::Actions::ForemanAnsible::PlayHostRole, @host, @ansible_role
+              )
+            }
+
+            render_message @result
+          end
         end
 
         private
 
+        def find_ansible_role(id)
+          @ansible_role = AnsibleRole.find(id)
+        end
+
         def action_permission
           case params[:action]
-          when 'play_roles', 'multiple_play_roles'
+          when 'play_roles', 'multiple_play_roles', 'play_ad_hoc_role'
             :view
           else
             super

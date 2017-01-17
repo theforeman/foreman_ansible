@@ -13,22 +13,34 @@ module ForemanAnsible
         host.inherited_ansible_roles.present?
     end
 
+    def ad_hoc_role_button
+      [link_to_function(
+        icon_text('play', ' ' + _('Ad hoc Ansible role'), :kind => 'fa'),
+        'show_ad_hoc_role_modal()',
+        :id => :ansible_ad_hoc_role_button,
+        :class => 'btn btn-default'
+      )]
+    end
+
     def ansible_roles_button(host)
-      link_to(
-        icon_text('play', ' ' + _('Ansible roles'), :kind => 'fa'),
-        play_roles_host_path(:id => host.id),
-        :id => :ansible_roles_button,
-        :class => 'btn btn-default',
-        :'data-no-turbolink' => true
-      )
+      if ansible_roles_present?(host)
+        [link_to(
+          icon_text('play', ' ' + _('Ansible roles'), :kind => 'fa'),
+          play_roles_host_path(:id => host.id),
+          :id => :ansible_roles_button, :class => 'btn btn-default',
+          :'data-no-turbolink' => true
+        )]
+      else
+        []
+      end
     end
 
     def host_title_actions_with_run_ansible_roles(*args)
-      host = args.first
-      if ansible_roles_present?(host)
-        button = ansible_roles_button(host)
-        title_actions(button_group(button))
-      end
+      buttons = ad_hoc_role_button
+      buttons += ansible_roles_button(args.first)
+
+      title_actions(button_group(buttons))
+
       host_title_actions_without_run_ansible_roles(*args)
     end
 

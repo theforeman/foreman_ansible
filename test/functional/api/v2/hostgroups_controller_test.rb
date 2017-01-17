@@ -9,6 +9,7 @@ module Api
       setup do
         @host1 = FactoryGirl.create(:host, :with_hostgroup)
         @host2 = FactoryGirl.create(:host, :with_hostgroup)
+        @role = FactoryGirl.create(:ansible_role)
       end
 
       after do
@@ -43,6 +44,21 @@ module Api
         response = JSON.parse(@response.body)
 
         assert response['message'].length == 2, 'should trigger two tasks'
+        assert_response :success
+      end
+
+      test 'should trigger an ad hoc role' do
+        post :play_ad_hoc_role,
+             :id => @host1.hostgroup.id, :the_role_id => @role.id
+        response = JSON.parse(@response.body)
+
+        assert response['message']['foreman_tasks'].key?('id'),
+               'task id not contained in response'
+        assert response['message']['role'].key?('id'),
+               'role id not contained in response'
+        assert_equal response['message']['hostgroup']['name'],
+                     @host1.hostgroup.name,
+                     'host group name not contained in response'
         assert_response :success
       end
     end
