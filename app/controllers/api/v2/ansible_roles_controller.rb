@@ -10,8 +10,7 @@ module Api
 
       api :GET, '/ansible/ansible_roles/:id', N_('Show role')
       param :id, :identifier, :required => true
-      def show
-      end
+      def show; end
 
       api :GET, '/ansible/ansible_roles', N_('List Ansible roles')
       param_group :search_and_pagination, ::Api::V2::BaseController

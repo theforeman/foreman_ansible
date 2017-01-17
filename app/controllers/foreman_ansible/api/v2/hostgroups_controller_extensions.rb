@@ -6,8 +6,12 @@ module ForemanAnsible
         extend ActiveSupport::Concern
         include ForemanTasks::Triggers
 
+        # Included blocks shouldn't be bound by length, as otherwise concerns
+        # cannot extend the method properly.
+        # rubocop:disable BlockLength
         included do
-          api :POST, '/hostgroups/play_roles', N_('Plays Ansible roles on hostgroups')
+          api :POST, '/hostgroups/play_roles',
+              N_('Plays Ansible roles on hostgroups')
           param :id, Array, :required => true
 
           def play_roles
@@ -22,7 +26,8 @@ module ForemanAnsible
             render_message @result
           end
 
-          api :POST, '/hostgroups/play_roles', N_('Plays Ansible roles on hostgroups')
+          api :POST, '/hostgroups/play_roles',
+              N_('Plays Ansible roles on hostgroups')
           param :id, Array, :required => true
 
           def multiple_play_roles
@@ -43,8 +48,6 @@ module ForemanAnsible
         end
 
         private
-
-        # TODO: A better implementation of find_multiple should be available in hostgroups_controller
 
         def find_multiple
           hostgroup_ids = params.fetch(:hostgroup_ids, [])

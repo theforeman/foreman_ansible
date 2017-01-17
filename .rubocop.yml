@@ -5,6 +5,7 @@ AllCops:
   Exclude:
     - 'extras/**/*'
     - 'locale/**/*'
+    - 'test/**/*'
 
 # Just so it looks like core Foreman
 Style/HashSyntax:
