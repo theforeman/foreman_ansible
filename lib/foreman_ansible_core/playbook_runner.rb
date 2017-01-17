@@ -26,6 +26,7 @@ module ForemanAnsibleCore
       command << 'ansible-playbook'
       command.concat(['-i', json_inventory_script])
       command << playbook_file
+      append_verbosity(command)
       command
     end
 
@@ -99,6 +100,18 @@ module ForemanAnsibleCore
       else
         raise "Ansible dir #{ansible_dir} does not exist"
       end
+    end
+
+    def append_verbosity(command)
+      verbosity_level = Setting['ansible_verbosity'].to_i
+      if verbosity_level > 0
+        verbosity = '-'
+        verbosity_level.times do
+          verbosity += 'v'
+        end
+        command << verbosity
+      end
+      command
     end
   end
 end

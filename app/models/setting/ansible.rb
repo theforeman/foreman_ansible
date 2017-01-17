@@ -7,7 +7,8 @@ class Setting::Ansible < ::Setting
         self.set('ansible_user', N_('Foreman will try to connect as this user to hosts when running Ansible playbooks.'), 'root', N_('Default user')),
         self.set('ansible_ssh_pass', N_('Foreman will use this password when running Ansible playbooks.'), 'ansible', N_('Default password')),
         self.set('ansible_connection', N_('Foreman will use configured connection type when running Ansible playbooks.'), 'ssh', N_('Default Connection Type')),
-        self.set('ansible_winrm_server_cert_validation', N_('Foreman will enable/disable WinRM server certificate validation when running Ansible playbooks.'), 'validate', N_('Default WinRM Cert Validation'))
+        self.set('ansible_winrm_server_cert_validation', N_('Foreman will enable/disable WinRM server certificate validation when running Ansible playbooks.'), 'validate', N_('Default WinRM Cert Validation')),
+        self.set('ansible_verbosity', N_('Foreman will add the this level of verbosity for additional debugging output when running Ansible playbooks.'), '0', N_('Default verbosity level'))
       ].compact.each { |s| self.create s.update(:category => 'Setting::Ansible') }
     end
 
