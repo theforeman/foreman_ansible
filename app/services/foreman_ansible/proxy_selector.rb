@@ -8,6 +8,14 @@ module ForemanAnsible
       proxies
     end
 
+    def determine_proxy(*args)
+      result = super
+      return result unless result == :not_available
+      # Always run roles in some way, even if there are no proxies, Foreman
+      # should take that role in that case.
+      :not_defined
+    end
+
     private
 
     def proxy_scope(host)

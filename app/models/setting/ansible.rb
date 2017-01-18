@@ -1,21 +1,76 @@
-class Setting::Ansible < ::Setting
-  def self.load_defaults
-    return unless super
-    self.transaction do
-      [
-        self.set('ansible_port', N_('Foreman will use this port to ssh into hosts for running playbooks'), 22, N_('Default port')),
-        self.set('ansible_user', N_('Foreman will try to connect as this user to hosts when running Ansible playbooks.'), 'root', N_('Default user')),
-        self.set('ansible_ssh_pass', N_('Foreman will use this password when running Ansible playbooks.'), 'ansible', N_('Default password')),
-        self.set('ansible_connection', N_('Foreman will use configured connection type when running Ansible playbooks.'), 'ssh', N_('Default Connection Type')),
-        self.set('ansible_winrm_server_cert_validation', N_('Foreman will enable/disable WinRM server certificate validation when running Ansible playbooks.'), 'validate', N_('Default WinRM Cert Validation')),
-        self.set('ansible_verbosity', N_('Foreman will add the this level of verbosity for additional debugging output when running Ansible playbooks.'), '0', N_('Default verbosity level'))
-      ].compact.each { |s| self.create s.update(:category => 'Setting::Ansible') }
+class Setting
+  # Provide settings related with Ansible
+  class Ansible < ::Setting
+    class << self
+      # It would be more disadvantages than advantages to split up
+      # load_defaults into multiple methods, this way it's already very
+      # manageable.
+      # rubocop:disable AbcSize
+      # rubocop:disable MethodLength
+      # rubocop:disable BlockLength
+      def load_defaults
+        return unless super
+        transaction do
+          [
+            set(
+              'ansible_port',
+              N_('Use this port to connect to hosts '\
+                 'and run Ansible. You can override this on hosts'\
+                ' by adding a parameter "ansible_port"'),
+              22,
+              N_('Port')
+            ),
+            set(
+              'ansible_user',
+              N_('Foreman will try to connect to hosts as this user by default'\
+                 ' when running Ansible playbooks. You can override this '\
+                 ' on hosts by adding a parameter "ansible_user"'),
+              'root',
+              N_('User')
+            ),
+            set(
+              'ansible_ssh_pass',
+              N_('Use this password by default when running Ansible '\
+                 'playbooks. You can override this on hosts '\
+                 'by adding a parameter "ansible_ssh_pass"'),
+              'ansible',
+              N_('Password')
+            ),
+            set(
+              'ansible_connection',
+              N_('Use this connection type by default when running '\
+                 'Ansible playbooks. You can override this on hosts by '\
+                 'adding a parameter "ansible_connection"'),
+              'ssh',
+              N_('Connection type')
+            ),
+            set(
+              'ansible_winrm_server_cert_validation',
+              N_('Enable/disable WinRM server certificate '\
+                 'validation when running Ansible playbooks. You can override '\
+                 'this on hosts by adding a parameter '\
+                 '"ansible_winrm_server_cert_validation"'),
+              'validate',
+              N_('WinRM cert Validation')
+            ),
+            set(
+              'ansible_verbosity',
+              N_('Foreman will add the this level of verbosity for '\
+                 'additional debugging output when running Ansible playbooks.'),
+              '0',
+              N_('Default verbosity level')
+            )
+          ].compact.each do |s|
+            create(s.update(:category => 'Setting::Ansible'))
+          end
+        end
+
+        true
+      end
+
+      def humanized_category
+        N_('Ansible')
+      end
     end
-
-    true
-  end
-
-  def self.humanized_category
-    N_('Ansible')
   end
 end

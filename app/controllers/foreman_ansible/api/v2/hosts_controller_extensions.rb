@@ -24,7 +24,6 @@ module ForemanAnsible
           param :id, Array, :required => true
 
           def multiple_play_roles
-            # TODO: How to prevent that find_resource is triggered by hosts_controller?
             @result = []
 
             @host.each do |item|

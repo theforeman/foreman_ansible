@@ -8,16 +8,25 @@ module ForemanAnsible
       alias_method_chain(:multiple_actions, :run_ansible_roles)
     end
 
+    def ansible_roles_present?(host)
+      host.ansible_roles.present? ||
+        host.inherited_ansible_roles.present?
+    end
+
+    def ansible_roles_button(host)
+      link_to(
+        icon_text('play', ' ' + _('Ansible roles'), :kind => 'fa'),
+        play_roles_host_path(:id => host.id),
+        :id => :ansible_roles_button,
+        :class => 'btn btn-default',
+        :'data-no-turbolink' => true
+      )
+    end
+
     def host_title_actions_with_run_ansible_roles(*args)
-      if args.first.ansible_roles.present? ||
-         args.first.inherited_ansible_roles.present?
-        button = link_to(
-          icon_text('play', ' ' + _('Ansible roles'), :kind => 'fa'),
-          play_roles_host_path(:id => args.first.id),
-          :id => :ansible_roles_button,
-          :class => 'btn btn-default',
-          :'data-no-turbolink' => true
-        )
+      host = args.first
+      if ansible_roles_present?(host)
+        button = ansible_roles_button(host)
         title_actions(button_group(button))
       end
       host_title_actions_without_run_ansible_roles(*args)

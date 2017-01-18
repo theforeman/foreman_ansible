@@ -49,7 +49,7 @@ module ForemanAnsible
       if pref.present?
         (facts[:ansible_interfaces] - [pref]).unshift(pref)
       else
-        (facts[:ansible_interfaces].sort unless facts[:ansible_interfaces].nil?) || []
+        ansible_interfaces
       end
     end
 
@@ -63,6 +63,11 @@ module ForemanAnsible
     def ipmi_interface; end
 
     private
+
+    def ansible_interfaces
+      return [] unless facts[:ansible_interfaces].present?
+      facts[:ansible_interfaces].sort
+    end
 
     def ip_from_interface(interface)
       return unless facts[:"ansible_#{interface}"]['ipv4'].present?

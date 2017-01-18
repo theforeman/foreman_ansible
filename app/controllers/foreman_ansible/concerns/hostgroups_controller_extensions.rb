@@ -7,7 +7,10 @@ module ForemanAnsible
 
       def play_roles
         find_resource
-        task = async_task(::Actions::ForemanAnsible::PlayHostgroupRoles, @hostgroup)
+        task = async_task(
+          ::Actions::ForemanAnsible::PlayHostgroupRoles,
+          @hostgroup
+        )
         redirect_to task
       rescue Foreman::Exception => e
         error e.message
