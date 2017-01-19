@@ -6,6 +6,7 @@ module Actions
       module PlayRolesDescription
         def running_proxy_name
           proxy = input.fetch(:host, {})[:proxy_used]
+          proxy ||= input.fetch(:hostgroup, {})[:proxy_used]
           if [:not_defined, 'Foreman'].include? proxy
             _('Foreman')
           else
