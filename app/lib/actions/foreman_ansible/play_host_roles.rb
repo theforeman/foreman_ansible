@@ -8,15 +8,17 @@ module Actions
       include Helpers::PlayRolesDescription
       include Helpers::HostCommon
 
-      def plan(host, proxy_selector = ::ForemanAnsible::ProxySelector.new)
+      def plan(host, proxy_selector = ::ForemanAnsible::ProxySelector.new,
+               options = {})
         proxy = find_host_and_proxy(host, proxy_selector)
-        inventory_creator = ::ForemanAnsible::InventoryCreator.new([host])
         role_names = host.all_ansible_roles.map(&:name)
+        inventory_creator = ::ForemanAnsible::InventoryCreator.new([host])
         playbook_creator = ::ForemanAnsible::PlaybookCreator.new(role_names)
         plan_delegated_action(proxy,
                               ::ForemanAnsibleCore::Actions::RunPlaybook,
                               :inventory => inventory_creator.to_hash.to_json,
-                              :playbook => playbook_creator.roles_playbook)
+                              :playbook => playbook_creator.roles_playbook,
+                              :options => find_options.merge(options))
         plan_self
       end
 

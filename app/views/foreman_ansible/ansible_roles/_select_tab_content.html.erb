@@ -1,6 +1,16 @@
 <div class='tab-pane' id='ansible_roles'>
-  <%= multiple_selects(f, :ansible_roles, AnsibleRole, f.object.all_ansible_roles.map(&:id),
-                           {:disabled => f.object.inherited_ansible_roles.map(&:id),
-                            :label => _('Available roles')},
-                           { 'data-inheriteds' => f.object.inherited_ansible_roles.map(&:id).to_json }) %>
+  <%= multiple_selects(
+    f,
+    :ansible_roles,
+    AnsibleRole,
+    f.object.all_ansible_roles.map(&:id),
+    {
+      :disabled => f.object.inherited_ansible_roles.map(&:id),
+      :label => _('Available roles'),
+      :help_inline => popover('' ,
+          _('This list of roles will be applied when the host finishes '\
+            'provisioning. Users can also play these roles through the API '\
+            'or by clicking on the Play Roles button on the Host page '))
+    },
+    { 'data-inheriteds' => f.object.inherited_ansible_roles.map(&:id).to_json }) %>
 </div>
