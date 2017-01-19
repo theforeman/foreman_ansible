@@ -5,17 +5,18 @@ module ForemanAnsibleCore
   # Implements ForemanTasksCore::Runner::Base interface for running
   # Ansible playbooks, used by the Foreman Ansible plugin and Ansible proxy
   class PlaybookRunner < ForemanTasksCore::Runner::CommandRunner
-    def initialize(inventory, playbook)
+    def initialize(inventory, playbook, options = {})
       super
       @inventory = inventory
-      @playbook = playbook
+      @playbook  = playbook
+      @options   = options
       initialize_dirs
     end
 
     def start
       write_inventory
       write_playbook
-      logger.debug('initalizing runner')
+      logger.debug('Initializing Ansible Runner')
       Dir.chdir(@ansible_dir) do
         initialize_command(*command)
       end
@@ -25,8 +26,12 @@ module ForemanAnsibleCore
       command = [{ 'JSON_INVENTORY_FILE' => inventory_file }]
       command << 'ansible-playbook'
       command.concat(['-i', json_inventory_script])
+      if !@options[:verbosity_level].nil? && !@options[:verbosity_level].empty?
+        command.concat([setup_verbosity])
+      end
+      command.concat(['-T', @options[:timeout]]) unless @options[:timeout].nil?
       command << playbook_file
-      append_verbosity(command)
+      logger.debug("Running command #{command}")
       command
     end
 
@@ -102,16 +107,16 @@ module ForemanAnsibleCore
       end
     end
 
-    def append_verbosity(command)
-      verbosity_level = Setting['ansible_verbosity'].to_i
+    def setup_verbosity
+      verbosity_level = @options[:verbosity_level].to_i
+      logger.debug("Setting Ansible verbosity level to #{verbosity_level}")
       if verbosity_level > 0
         verbosity = '-'
         verbosity_level.times do
           verbosity += 'v'
         end
-        command << verbosity
       end
-      command
+      verbosity
     end
   end
 end

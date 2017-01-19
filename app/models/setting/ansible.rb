@@ -59,6 +59,15 @@ class Setting
                  'additional debugging output when running Ansible playbooks.'),
               '0',
               N_('Default verbosity level')
+            ),
+            set(
+              'ansible_post_provision_timeout',
+              N_('Timeout (in seconds) to set when Foreman will trigger a '\
+                 'play Ansible roles task after a host is fully provisioned. '\
+                 'Set this to the maximum time you expect a host to take until'\
+                 ' it is ready after a reboot.'),
+              '360',
+              N_('Post-provision timeout')
             )
           ].compact.each do |s|
             create(s.update(:category => 'Setting::Ansible'))
