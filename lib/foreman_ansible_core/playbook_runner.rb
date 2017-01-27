@@ -110,11 +110,9 @@ module ForemanAnsibleCore
     def setup_verbosity
       verbosity_level = @options[:verbosity_level].to_i
       logger.debug("Setting Ansible verbosity level to #{verbosity_level}")
-      if verbosity_level > 0
-        verbosity = '-'
-        verbosity_level.times do
-          verbosity += 'v'
-        end
+      verbosity = '-'
+      verbosity_level.times do
+        verbosity += 'v'
       end
       verbosity
     end
