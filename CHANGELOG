@@ -1,4 +1,9 @@
+2017-01-30	Daniel Lobato García <me@daniellobato.me>
+	* Fixes #18278 - Validate verbosity levels
+
 2017-01-19	Daniel Lobato Garcia <me@daniellobato.me>
+	* Release 1.4.1
+	* Release 1.4.0
 	* Refs #18114 - Display hostgroup proxy info in roles task
 
 2017-01-19	Daniel Lobato García <me@daniellobato.me>
