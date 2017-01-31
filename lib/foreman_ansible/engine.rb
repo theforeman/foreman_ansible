@@ -95,6 +95,18 @@ module ForemanAnsible
       end
     end
 
+    initializer 'foreman_ansible.assets.precompile' do |app|
+      app.config.assets.precompile += %w(foreman_ansible/Ansible.png)
+    end
+
+    initializer 'foreman_ansible.configure_assets', :group => :assets do
+      SETTINGS[:foreman_ansible] = {
+        :assets => {
+          :precompile => ['foreman_ansible/Ansible.png']
+        }
+      }
+    end
+
     initializer 'foreman_ansible.apipie' do
       Apipie.configuration.api_controllers_matcher <<
         "#{ForemanAnsible::Engine.root}/app/controllers/api/v2/*.rb"
