@@ -5,9 +5,17 @@
 <table class="<%= table_css_classes 'table-fixed' %>">
   <thead>
     <tr>
-      <th class="col-md-3"><%= sort :name, :as => s_("Role|Name") %></th>
-      <th class="col-md-3"><%= _("Imported at") %></th>
-      <th class="col-md-1"><%= _("Actions") %></th>
+       <th class="col-md-3"><%= sort :name, :as => s_("Role|Name") %></th>
+       <th class="col-md-2"><%= _("Imported at") %></th>
+       <th class="col-md-2"><%= _("Imported from") %></th>
+       <th class="col-md-1"><%= _("Tasks") %></th>
+       <th class="col-md-1"><%= _("Templates") %></th>
+       <th class="col-md-1"><%= _("Vars") %></th>
+       <th class="col-md-1"><%= _("Handlers") %></th>
+       <th class="col-md-1"><%= _("Defaults") %></th>
+       <th class="col-md-1"><%= _("Meta") %></th>
+       <th class="col-md-1"><%= _("Files") %></th>
+       <th class="col-md-1"><%= _("Actions") %></th>
     </tr>
   </thead>
   <tbody>
@@ -15,10 +23,19 @@
       <tr>
         <td class="ellipsis"><%= role.name %></td>
         <td class="ellipsis"><%= import_time role %></td>
+        <td class="ellipsis"><%= link_to_import_source role %></td>
+        <td><%= link_to_ansible_files role, "tasks" %></td>
+        <td><%= link_to_ansible_files role, "templates" %></td>
+        <td><%= link_to_ansible_files role, "vars" %></td>
+        <td><%= link_to_ansible_files role, "handlers" %></td>
+        <td><%= link_to_ansible_files role, "defaults" %></td>
+        <td><%= link_to_ansible_files role, "meta" %></td>
+        <td><%= link_to_ansible_files role, "files" %></td>
         <td>
           <%
             links = [display_delete_if_authorized(hash_for_ansible_role_path(:id => role).merge(:auth_object => role, :authorizer => authorizer),
-                      :data => { :confirm => _("Delete %s?") % role.name }, :action => :delete)]
+                      :data => { :confirm => _("Delete %s?") % role.name }, :action => :delete),
+                    link_to_if_authorized(_("New file"), hash_for_new_ansible_file_path(:role_id => role.id))]
           %>
           <%= action_buttons(*links) %>
         </td>

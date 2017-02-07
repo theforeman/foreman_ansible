@@ -29,7 +29,8 @@
         <% roles.each do |role| %>
           <tr>
             <td>
-              <%= check_box_tag "changed[#{kind}][#{role}]", role.to_json, false, :class => "role_select_boxes role_select_boxes_#{kind} role_select_boxes_role_#{role}" %>
+              <% role_json = role.new_record? ? role.to_json(:include => :ansible_files) : role.to_json %>
+              <%= check_box_tag "changed[#{kind}][#{role}]", role_json, false, :class => "role_select_boxes role_select_boxes_#{kind} role_select_boxes_role_#{role}" %>
             </td>
             <td>
               <%= link_to_function("#{role}", "toggleCheckboxesBySelector('.role_select_boxes_role_#{role}')", :title => _("Check/Uncheck all %s changes") % role) %>

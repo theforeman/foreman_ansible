@@ -25,6 +25,15 @@ namespace :foreman_ansible do
 
     Rake::Task['rubocop_foreman_ansible'].invoke
   end
+
+  task :update_roles, [:proxy] => [:environment] do |task, args|
+    require 'foreman_ansible/update_roles'
+    puts 'Updating Ansible Roles, from #{args[:proxy] ? args[:proxy] : Foreman host} please wait...'
+    migration = ForemanAnsible::UpdateRoles.new(args[:proxy])
+    abort('Foreman and proxy with Ansible feature should be up for this migration') unless migration.has_available_proxy?
+    migration.run
+    puts 'Migration successfully finished.'
+  end
 end
 
 Rake::Task[:test].enhance ['test:foreman_ansible']

@@ -19,5 +19,18 @@ module ForemanAnsible
     def import_time(role)
       _('%s ago') % time_ago_in_words(role.updated_at)
     end
+
+    def files_for_role(role, dirname)
+      "ansible_role = #{role} && dir = #{dirname}"
+    end
+
+    def link_to_ansible_files(role, dirname)
+      link_to_if_authorized(role.file_count(dirname), hash_for_ansible_files_path(:search => files_for_role(role, dirname)))
+    end
+
+    def link_to_import_source(role)
+      return link_to_if_authorized(role.ansible_proxy.name, hash_for_smart_proxy_path(:id => role.proxy_id)) if role.ansible_proxy
+      _("Foreman host")
+    end
   end
 end

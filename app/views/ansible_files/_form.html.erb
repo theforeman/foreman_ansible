@@ -1,0 +1,29 @@
+<%= form_for @ansible_file, :url => form_url(@ansible_file), :html => { :multipart => true, :onsubmit => 'submit_code();' } do |f| %>
+  <%= base_errors_for @ansible_file %>
+  <div class="tab-content">
+      <div class='form-group'>
+        <div class="col-md-12">
+          <label class="control-label"  for="file"><%= _("File editor") %></label>
+          <% if @ansible_file.new_record? %>
+            <%= text_f f, :name %>
+            <%= f.hidden_field :ansible_role_id %>
+            <%= select_f f, :dir, admissible_file_type(@ansible_file), :to_s, :to_s, { :include_blank => true }, :label => _('Directory') %>
+          <% end %>
+
+          <div class="editor-container">
+            <%= render :partial => 'editor/toolbar', :locals => { :show_preview => false } %>
+
+            <%= textarea_f f, :content, :class => "editor_source", :label =>:none, :size => "max",
+                            :'data-file-name' => @ansible_file.name %>
+          </div>
+        </div>
+      </div>
+
+      <%= file_field_f f, :content, :class => "editor_file_source",:size => "col-md-10", :id => 'ansible_file_content',
+                       :help_block  => _("Selecting a file will override the editor and load the file instead") %>
+
+      <%= submit_or_cancel f, false, :cancel_path => form_cancel_url(@ansible_file) %>
+  </div>
+  <input type="hidden" id="old" value="<%= @ansible_file.content %>" />
+  <input type="hidden" id="new" value="<%= @ansible_file.content %>" />
+<% end %>

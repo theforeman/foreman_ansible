@@ -23,6 +23,12 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :ansible_files, :only => [:index, :edit, :update, :destroy, :new, :create] do
+      collection do
+        get 'auto_complete_search'
+      end
+    end
+
     namespace :api do
       scope '(:apiv)',
             :module      => :v2,
