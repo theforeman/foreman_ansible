@@ -4,7 +4,7 @@ module ForemanAnsible
   # in the fact values table (/fact_values)
   class FactName < ::FactName
     def origin
-      'Ansible'
+      'foreman_ansible/Ansible'
     end
   end
 end
