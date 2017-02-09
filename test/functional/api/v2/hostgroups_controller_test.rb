@@ -1,4 +1,5 @@
 require 'test_plugin_helper'
+require 'dynflow/testing'
 
 module Api
   module V2
