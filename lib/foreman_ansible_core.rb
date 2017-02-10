@@ -6,6 +6,7 @@ module ForemanAnsibleCore
   extend ForemanTasksCore::SettingsLoader
   register_settings(:ansible, :ansible_dir => '/etc/ansible',
                               :working_dir => nil)
+  require 'foreman_ansible_core/exception'
 
   if ForemanTasksCore.dynflow_present?
     require 'foreman_tasks_core/runner'
@@ -13,5 +14,6 @@ module ForemanAnsibleCore
     require 'foreman_ansible_core/actions'
   end
 
+  require 'foreman_ansible_core/roles_reader'
   require 'foreman_ansible_core/version'
 end

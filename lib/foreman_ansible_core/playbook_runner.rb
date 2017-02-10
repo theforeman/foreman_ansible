@@ -16,7 +16,7 @@ module ForemanAnsibleCore
     def start
       write_inventory
       write_playbook
-      logger.debug('Initializing Ansible Runner')
+      logger.debug('[foreman_ansible] - Initializing Ansible Runner')
       Dir.chdir(@ansible_dir) do
         initialize_command(*command)
       end
@@ -31,7 +31,7 @@ module ForemanAnsibleCore
       end
       command.concat(['-T', @options[:timeout]]) unless @options[:timeout].nil?
       command << playbook_file
-      logger.debug("Running command #{command}")
+      logger.debug("[foreman_ansible] - Running command #{command}")
       command
     end
 
@@ -109,7 +109,8 @@ module ForemanAnsibleCore
 
     def setup_verbosity
       verbosity_level = @options[:verbosity_level].to_i
-      logger.debug("Setting Ansible verbosity level to #{verbosity_level}")
+      logger.debug('[foreman_ansible] - Setting Ansible verbosity level to'\
+                   "#{verbosity_level}")
       verbosity = '-'
       verbosity_level.times do
         verbosity += 'v'

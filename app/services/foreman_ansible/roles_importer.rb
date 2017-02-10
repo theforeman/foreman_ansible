@@ -1,5 +1,5 @@
 module ForemanAnsible
-  # imports roles from smart proxy
+  # Imports roles from smart proxy
   class RolesImporter
     attr_reader :ansible_proxy
 
@@ -39,9 +39,7 @@ module ForemanAnsible
     end
 
     def local_roles
-      Dir.glob('/etc/ansible/roles/*').map do |path|
-        path.split('/').last
-      end
+      ::ForemanAnsibleCore::RolesReader.list_roles
     end
 
     def remote_roles
