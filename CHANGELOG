@@ -1,3 +1,15 @@
+2017-02-10	Daniel Lobato García <me@daniellobato.me>
+	* Fixes #18311 - Read /etc/ansible/ansible.cfg roles_path
+
+2017-02-08	Michael Moll <kvedulv@kvedulv.de>
+	* Fixes #18359 - add assets initializers (#76)
+
+2017-02-08	thomasmckay <thomasmckay@redhat.com>
+	* fixes #18309 - handle run verbosity zero
+
+2017-01-30	Daniel Lobato Garcia <me@daniellobato.me>
+	* Release 1.4.2
+
 2017-01-30	Daniel Lobato García <me@daniellobato.me>
 	* Fixes #18278 - Validate verbosity levels
 
