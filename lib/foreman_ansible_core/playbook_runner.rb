@@ -26,7 +26,7 @@ module ForemanAnsibleCore
       command = [{ 'JSON_INVENTORY_FILE' => inventory_file }]
       command << 'ansible-playbook'
       command.concat(['-i', json_inventory_script])
-      if is_verbose?
+      if verbose?
         command.concat([setup_verbosity])
       end
       command.concat(['-T', @options[:timeout]]) unless @options[:timeout].nil?
@@ -117,12 +117,12 @@ module ForemanAnsibleCore
       end
       verbosity
     end
-    
-    def is_verbose?
+
+    def verbose?
       verbosity_level = @options[:verbosity_level]
       !verbosity_level.nil? && !verbosity_level.empty? &&
-         verbosity_level.to_i > 0
+        verbosity_level.to_i > 0
     end
-    
+
   end
 end
