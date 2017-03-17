@@ -7,8 +7,10 @@ module Api
       include ::Dynflow::Testing
 
       setup do
+        @role = FactoryGirl.create(:ansible_role)
         @host1 = FactoryGirl.create(:host, :with_hostgroup)
         @host2 = FactoryGirl.create(:host, :with_hostgroup)
+        @host1.hostgroup.ansible_roles = [@role]
       end
 
       after do
@@ -43,6 +45,33 @@ module Api
         response = JSON.parse(@response.body)
 
         assert response['message'].length == 2, 'should trigger two tasks'
+        assert_response :success
+      end
+
+      test 'should list assigned role on host group' do
+        get :list_ansible_roles, :id => @host1.hostgroup.id
+        response = JSON.parse(@response.body)
+
+        assert_equal response['message']['roles'][0]['id'],
+                     @role.id
+                     'assigned role not in role list'
+        assert_response :success
+      end
+
+      test 'unassign and assign a role to a host group' do
+        post :ansible_roles, :id => @host1.hostgroup.id, :roles => []
+        response = JSON.parse(@response.body)
+
+        assert response['message']['roles'].empty?,
+               'host group role could not be unassigned'
+        assert_response :success
+
+        post :ansible_roles, :id => @host1.hostgroup.id, :roles => [@role.id]
+        response = JSON.parse(@response.body)
+
+        assert_equal response['message']['roles'][0]['id'],
+                     @role.id
+                     'host group role could not be assigned'
         assert_response :success
       end
     end

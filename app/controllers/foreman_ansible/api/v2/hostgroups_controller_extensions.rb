@@ -10,6 +10,8 @@ module ForemanAnsible
         # cannot extend the method properly.
         # rubocop:disable BlockLength
         included do
+          before_action :find_ansible_roles, :only => [:ansible_roles]
+
           api :POST, '/hostgroups/play_roles',
               N_('Plays Ansible roles on hostgroups')
           param :id, Array, :required => true
@@ -45,9 +47,62 @@ module ForemanAnsible
 
             render_message @result
           end
+
+          api :GET, '/hostgroups/:id/list_ansible_roles',
+              N_('Lists assigned Ansible roles')
+          param :id, :identifier, :required => true
+
+          def list_ansible_roles
+            find_resource
+
+            @result = {
+              :roles => @hostgroup.all_ansible_roles
+            }
+
+            render_message @result
+          end
+
+          api :POST, '/hostgroups/:id/ansible_roles',
+              N_('Assigns Ansible roles to a host group')
+          param :id, :identifier, :required => true
+          param :roles, Array, :required => true
+
+          def ansible_roles
+            find_resource
+
+            @hostgroup.ansible_roles = @roles - \
+                                       @hostgroup.inherited_ansible_roles
+
+            @result = {
+              :roles => @roles,
+              :hostgroup => @hostgroup
+            }
+
+            render_message @result
+          end
         end
 
         private
+
+        def find_ansible_roles
+          role_ids = params.fetch(:roles, [])
+          # rails transforms empty arrays to nil but we want to be able
+          # to remove all role assignments as well with an empty array
+          role_ids = [] if role_ids.nil?
+
+          @roles = []
+          role_ids.uniq.each do |role_id|
+            begin
+              @roles.append(find_ansible_role(role_id))
+            rescue ActiveRecord::RecordNotFound => e
+              return not_found(e.message)
+            end
+          end
+        end
+
+        def find_ansible_role(id)
+          @ansible_role = AnsibleRole.find(id)
+        end
 
         def find_multiple
           hostgroup_ids = params.fetch(:hostgroup_ids, [])
@@ -64,7 +119,7 @@ module ForemanAnsible
 
         def action_permission
           case params[:action]
-          when 'play_roles'
+          when 'play_roles', 'ansible_roles', 'list_ansible_roles'
             :view
           else
             super

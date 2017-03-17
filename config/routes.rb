@@ -34,6 +34,8 @@ Rails.application.routes.draw do
           resources :hosts, :only => [] do
             member do
               post :play_roles
+              get :list_ansible_roles
+              post :ansible_roles
             end
             collection do
               post :multiple_play_roles
@@ -43,6 +45,8 @@ Rails.application.routes.draw do
           resources :hostgroups, :only => [] do
             member do
               post :play_roles
+              get :list_ansible_roles
+              post :ansible_roles
             end
             collection do
               post :multiple_play_roles
