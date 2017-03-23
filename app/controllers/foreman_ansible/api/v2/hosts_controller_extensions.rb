@@ -5,6 +5,7 @@ module ForemanAnsible
       module HostsControllerExtensions
         extend ActiveSupport::Concern
         include ForemanTasks::Triggers
+        include Api::V2::Concerns::ApiCommon
 
         # Included blocks shouldn't be bound by length, as otherwise concerns
         # cannot extend the method properly.
@@ -62,8 +63,7 @@ module ForemanAnsible
           param :roles, Array, :required => true
 
           def ansible_roles
-            # we do not want to store inherited roles twice
-            @host.ansible_roles = @roles - @host.inherited_ansible_roles
+            @host.ansible_roles = @roles
 
             @result = {
               :roles => @roles,
@@ -75,26 +75,6 @@ module ForemanAnsible
         end
 
         private
-
-        def find_ansible_roles
-          role_ids = params.fetch(:roles, [])
-          # rails transforms empty arrays to nil but we want to be able
-          # to remove all role assignments as well with an empty array
-          role_ids = [] if role_ids.nil?
-
-          @roles = []
-          role_ids.uniq.each do |role_id|
-            begin
-              @roles.append(find_ansible_role(role_id))
-            rescue ActiveRecord::RecordNotFound => e
-              return not_found(e.message)
-            end
-          end
-        end
-
-        def find_ansible_role(id)
-          @ansible_role = AnsibleRole.find(id)
-        end
 
         def action_permission
           case params[:action]

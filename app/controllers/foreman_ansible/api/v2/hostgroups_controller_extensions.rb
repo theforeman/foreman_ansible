@@ -5,20 +5,23 @@ module ForemanAnsible
       module HostgroupsControllerExtensions
         extend ActiveSupport::Concern
         include ForemanTasks::Triggers
+        include Api::V2::Concerns::ApiCommon
 
         # Included blocks shouldn't be bound by length, as otherwise concerns
         # cannot extend the method properly.
         # rubocop:disable BlockLength
         included do
           before_action :find_ansible_roles, :only => [:ansible_roles]
+          before_action :find_resource, :only => [:play_roles,
+                                                  :list_ansible_roles,
+                                                  :ansible_roles]
+          before_action :find_multiple, :only => [:multiple_play_roles]
 
           api :POST, '/hostgroups/play_roles',
               N_('Plays Ansible roles on hostgroups')
           param :id, Array, :required => true
 
           def play_roles
-            find_resource
-
             @result = {
               :hostgroup => @hostgroup, :foreman_tasks => async_task(
                 ::Actions::ForemanAnsible::PlayHostgroupRoles, @hostgroup
@@ -33,8 +36,6 @@ module ForemanAnsible
           param :id, Array, :required => true
 
           def multiple_play_roles
-            find_multiple
-
             @result = []
 
             @hostgroups.uniq.each do |hostgroup|
@@ -53,8 +54,6 @@ module ForemanAnsible
           param :id, :identifier, :required => true
 
           def list_ansible_roles
-            find_resource
-
             @result = {
               :roles => @hostgroup.all_ansible_roles
             }
@@ -68,10 +67,7 @@ module ForemanAnsible
           param :roles, Array, :required => true
 
           def ansible_roles
-            find_resource
-
-            @hostgroup.ansible_roles = @roles - \
-                                       @hostgroup.inherited_ansible_roles
+            @hostgroup.ansible_roles = @roles
 
             @result = {
               :roles => @roles,
@@ -83,26 +79,6 @@ module ForemanAnsible
         end
 
         private
-
-        def find_ansible_roles
-          role_ids = params.fetch(:roles, [])
-          # rails transforms empty arrays to nil but we want to be able
-          # to remove all role assignments as well with an empty array
-          role_ids = [] if role_ids.nil?
-
-          @roles = []
-          role_ids.uniq.each do |role_id|
-            begin
-              @roles.append(find_ansible_role(role_id))
-            rescue ActiveRecord::RecordNotFound => e
-              return not_found(e.message)
-            end
-          end
-        end
-
-        def find_ansible_role(id)
-          @ansible_role = AnsibleRole.find(id)
-        end
 
         def find_multiple
           hostgroup_ids = params.fetch(:hostgroup_ids, [])
