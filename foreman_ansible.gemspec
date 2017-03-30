@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'rubocop', '~> 0.42'
   s.add_dependency 'deface', '< 2.0'
-  s.add_dependency 'foreman-tasks', '~> 0.8.1'
+  s.add_dependency 'foreman-tasks', '~> 0.8'
   s.add_dependency 'dynflow', '~> 0.8.14'
   s.add_dependency 'foreman_ansible_core', '~> 1.0'
 end

@@ -18,5 +18,5 @@ DESC
             ['lib/foreman_ansible_core.rb', 'bin/json_inventory.sh']
 
   s.add_development_dependency 'rubocop', '~> 0.42'
-  s.add_dependency 'foreman-tasks-core', '~> 0.1.0'
+  s.add_dependency 'foreman-tasks-core', '~> 0.1'
 end

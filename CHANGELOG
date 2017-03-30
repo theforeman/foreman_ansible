@@ -1,3 +1,9 @@
+2017-03-22	Daniel Kuffner <chilicat@users.noreply.github.com>
+	* Fixes #18731 - Ansible Run fails with internal error
+
+2017-02-13	Daniel Lobato Garcia <me@daniellobato.me>
+	* Release 1.4.3 Ansible - 1.1.0 AnsibleCore
+
 2017-02-10	Daniel Lobato García <me@daniellobato.me>
 	* Fixes #18311 - Read /etc/ansible/ansible.cfg roles_path
 
