@@ -7,10 +7,9 @@
     {
       :disabled => f.object.inherited_ansible_roles.map(&:id),
       :label => _('Available roles'),
-      :help_inline => popover('' ,
-          _('This list of roles will be applied when the host finishes '\
-            'provisioning. Users can also play these roles through the API '\
-            'or by clicking on the Play Roles button on the Host page '))
+      :label_help => _('This list of roles will be applied when the host finishes<br/> '\
+            'provisioning. Users can also play these roles through the API<br/>'\
+            'or by clicking on the Play Roles button on the Host page ').html_safe
     },
     { 'data-inheriteds' => f.object.inherited_ansible_roles.map(&:id).to_json }) %>
 </div>
