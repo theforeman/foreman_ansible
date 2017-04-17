@@ -64,6 +64,8 @@ module ForemanAnsible
               :view_ansible_roles, :destroy_ansible_roles,
               :import_ansible_roles]
 
+        add_all_permissions_to_default_roles
+
         role_assignment_params = { :ansible_role_ids => [],
                                    :ansible_roles => [] }
         parameter_filter Host::Managed, role_assignment_params
