@@ -32,7 +32,7 @@ module ForemanAnsible
 
     initializer 'foreman_ansible.register_plugin', :before => :finisher_hook do
       Foreman::Plugin.register :foreman_ansible do
-        requires_foreman '>= 1.12'
+        requires_foreman '>= 1.15'
 
         security_block :foreman_ansible do
           permission :play_roles_on_host,
