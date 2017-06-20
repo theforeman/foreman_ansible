@@ -30,6 +30,7 @@ except ImportError:
     parent_class = object
 
 FOREMAN_URL = os.getenv('FOREMAN_URL', "http://localhost:3000")
+FOREMAN_EXCLUDE_HOSTS = os.getenv('FOREMAN_EXCLUDE_HOSTS', "localhost").split(':')
 # Substitute by a real SSL certificate and key if your Foreman uses HTTPS
 FOREMAN_SSL_CERT = (os.getenv('FOREMAN_SSL_CERT', "/etc/foreman/client_cert.pem"),
                     os.getenv('FOREMAN_SSL_KEY', "/etc/foreman/client_key.pem"))
@@ -96,6 +97,8 @@ class CallbackModule(parent_class):
         parser.  The default fact importer should import these facts
         properly.
         """
+        if host in FOREMAN_EXCLUDE_HOSTS:
+            return
         data["_type"] = "ansible"
         data["_timestamp"] = datetime.now().strftime(TIME_FORMAT)
         if re.search(r'^junos', data['invocation']['module_name']):
@@ -148,6 +151,8 @@ class CallbackModule(parent_class):
         metrics = {}
 
         for host in stats.processed.keys():
+            if host in FOREMAN_EXCLUDE_HOSTS:
+                continue
             sum = stats.summarize(host)
             status["applied"] = sum['changed']
             status["failed"] = sum['failures'] + sum['unreachable']
