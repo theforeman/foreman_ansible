@@ -7,7 +7,7 @@ module ForemanAnsible
         include ForemanTasks::Triggers
 
         included do
-          api :POST, '/hosts/:id/play_roles', N_('Plays Ansible roles on hosts')
+          api :POST, '/hosts/:id/play_roles', N_('Plays Ansible roles on a host')
           param :id, String, :required => true
 
           def play_roles
