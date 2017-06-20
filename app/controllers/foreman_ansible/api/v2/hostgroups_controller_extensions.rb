@@ -10,9 +10,9 @@ module ForemanAnsible
         # cannot extend the method properly.
         # rubocop:disable BlockLength
         included do
-          api :POST, '/hostgroups/play_roles',
-              N_('Plays Ansible roles on hostgroups')
-          param :id, Array, :required => true
+          api :POST, '/hostgroups/:id/play_roles',
+              N_('Plays Ansible roles on a hostgroup')
+          param :id, String, :required => true
 
           def play_roles
             find_resource
