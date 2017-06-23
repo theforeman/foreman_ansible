@@ -70,8 +70,12 @@ module ForemanAnsible
     end
 
     def ip_from_interface(interface)
-      return unless facts[:"ansible_#{interface}"]['ipv4'].present?
-      facts[:"ansible_#{interface}"]['ipv4']['address']
+     return unless facts[:"ansible_#{interface}"]['ipv4'].present?
+     if facts[:"ansible_#{interface}"]['ipv4'].kind_of?(Array)
+       facts[:"ansible_#{interface}"]['ipv4'][0]['address']
+     else
+       facts[:"ansible_#{interface}"]['ipv4']['address']
+     end
     end
 
     def os_name
