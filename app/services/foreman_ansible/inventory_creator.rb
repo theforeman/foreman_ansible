@@ -44,7 +44,7 @@ module ForemanAnsible
       }
       # Check if private_key is defined, if it is use that. Otherwise
       # use ssh_pass
-      if not host.host_params['ansible_ssh_private_key_file'].empty? or not Setting[:private_key].empty?
+      if ! host.host_params['ansible_ssh_private_key_file'].empty? || ! Setting[:private_key].empty?
         params['ansible_ssh_private_key_file'] = host_private_key_file(host)
       else
         params['ansible_ssh_pass'] = host_ssh_pass(host)
