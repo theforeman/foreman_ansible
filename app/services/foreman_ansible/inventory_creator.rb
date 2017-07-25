@@ -58,7 +58,7 @@ module ForemanAnsible
 
     def winrm_cert_validation(host)
       host.host_params['ansible_winrm_server_cert_validation'] ||
-          Setting['ansible_winrm_server_cert_validation']
+        Setting['ansible_winrm_server_cert_validation']
     end
 
     def connection_type(host)
@@ -94,7 +94,8 @@ module ForemanAnsible
     end
 
     def host_private_key_file(host)
-      host.host_params['ansible_ssh_private_key_file'] || Setting[:ansible_ssh_private_key_file]
+      host.host_params['ansible_ssh_private_key_file'] ||
+        Setting[:ansible_ssh_private_key_file]
     end
 
     private

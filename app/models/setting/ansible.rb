@@ -42,7 +42,7 @@ class Setting
               N_('Use this password by default when running Ansible '\
                  'playbooks. You can override this on hosts '\
                  'by adding a parameter "ansible_ssh_pass"'),
-                 'ansible',
+              'ansible',
               N_('Password')
             ),
             set(
