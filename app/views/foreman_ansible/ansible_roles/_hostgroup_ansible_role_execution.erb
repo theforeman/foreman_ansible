@@ -1,0 +1,11 @@
+<%=
+args = []
+args.append(display_link_if_authorized(_('Nest'),    hash_for_nest_hostgroup_path(:id => hostgroup)))
+args.append(display_link_if_authorized(_('Clone'),   hash_for_clone_hostgroup_path(:id => hostgroup)))
+if !hostgroup.all_ansible_roles.empty?
+  args.append(display_link_if_authorized(_('Play Roles'),   hash_for_play_roles_hostgroup_path(:id => hostgroup),   :'data-no-turbolink' => true))
+end
+args.append(link_to_function_if_authorized(_('Ad hoc Ansible role'),   "show_ad_hoc_role_modal(%s)" % hostgroup.id))
+args.append(display_delete_if_authorized(hash_for_hostgroup_path(:id => hostgroup).merge(:auth_object => hostgroup, :authorizer => authorizer), :data => { :confirm => warning_message(hostgroup) }))
+action_buttons(args)
+%>

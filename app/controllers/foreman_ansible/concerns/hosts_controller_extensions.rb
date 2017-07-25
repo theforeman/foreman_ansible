@@ -27,11 +27,24 @@ module ForemanAnsible
         redirect_to hosts_path
       end
 
+      def play_ad_hoc_role
+        find_resource
+        @ansible_role = AnsibleRole.find(params[:ansible_role][:id])
+        task = async_task(
+          ::Actions::ForemanAnsible::PlayHostRole,
+          @host, @ansible_role
+        )
+        redirect_to task
+      rescue Foreman::Exception => e
+        error e.message
+        redirect_to host_path(@host)
+      end
+
       private
 
       def action_permission_with_ansible
         case params[:action]
-        when 'multiple_play_roles', 'play_roles'
+        when 'multiple_play_roles', 'play_roles', 'play_ad_hoc_role'
           :view
         else
           action_permission_without_ansible

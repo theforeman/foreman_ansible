@@ -1,0 +1,24 @@
+<!-- ad hoc role modal window -->
+<% javascript 'foreman_ansible/show_ad_hoc_role_modal' %>
+<div class="modal fade" id="adHocRoleModal" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" onclick="close_ad_hoc_role_modal(); return false;"><span aria-hidden="true">&times;</span><span class="sr-only"><%= _('Close') %></span></button>
+        <h4 class="modal-title"><%= _('Ad Hoc Ansible Role Execution') %></h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for :ansible_role, :url => play_ad_hoc_role_host_path() do |f| -%>
+        <p><%= _('Select the role you want to execute on host %s via Ansible.') % @host.name %></p>
+        <%= all_ansible_roles = AnsibleRole.find_each rescue []
+            selectable_f f, :id, options_for_select(all_ansible_roles.collect { | role | [role.name, role.id] }), {},
+            {:label => _("Ansible role"), :disabled => all_ansible_roles.map { |e| e.name }.empty?, :style => "width:400px"} %>
+      </div>
+      <div class="modal-footer">
+        <%= submit_tag _("Play role"), :class => "btn btn-primary" %>
+        <% end -%>
+        <button type="button" class="btn btn btn-default" onclick="close_ad_hoc_role_modal(); return false;"><%= _('Cancel') %></button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,20 +1,20 @@
 module Actions
   module ForemanAnsible
-    # Action that initiates the playbook run for roles assigned to
-    # the hostgroup. It does that either locally or via a proxy when available.
-    class PlayHostgroupRoles < Actions::EntryAction
+    # Action that initiates the playbook run for an Ansible role of a
+    # hostgroup. It does that either locally or via a proxy when available.
+    class PlayHostgroupRole < Actions::EntryAction
       include ::Actions::Helpers::WithContinuousOutput
       include ::Actions::Helpers::WithDelegatedAction
       include Helpers::PlayRolesDescription
       include Helpers::HostCommon
 
-      def plan(hostgroup, proxy_selector = ::ForemanAnsible::ProxySelector.new,
-               options = {})
+      def plan(hostgroup, ansible_role, proxy_selector = ::ForemanAnsible::
+               ProxySelector.new, options = {})
         proxy = find_hostgroup_and_proxy(hostgroup, proxy_selector)
         inventory_creator = ::ForemanAnsible::
           InventoryCreator.new(hostgroup.hosts)
         playbook_creator = ::ForemanAnsible::
-          PlaybookCreator.new(hostgroup_ansible_roles(hostgroup))
+          PlaybookCreator.new([ansible_role.name])
         plan_delegated_action(proxy, ::ForemanAnsibleCore::Actions::RunPlaybook,
                               :inventory => inventory_creator.to_hash.to_json,
                               :playbook => playbook_creator.roles_playbook,
@@ -29,14 +29,8 @@ module Actions
         }
       end
 
-      private
-
-      def hostgroup_ansible_roles(hostgroup)
-        role_names = []
-        hostgroup.hostgroup_ansible_roles.each do |ansible_role|
-          role_names.append(ansible_role.ansible_role_name)
-        end
-        role_names
+      def humanized_name
+        _('Play ad hoc Ansible role')
       end
     end
   end
