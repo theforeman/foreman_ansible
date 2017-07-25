@@ -80,10 +80,10 @@ class Setting
               nil,
               :collection => lambda do
                 { '' => N_('Disabled'),
-                 '1' => N_('Level 1 (-v)'),
-                 '2' => N_('Level 2 (-vv)'),
-                 '3' => N_('Level 3 (-vvv)'),
-                 '4' => N_('Level 4 (-vvvv)') }
+                  '1' => N_('Level 1 (-v)'),
+                  '2' => N_('Level 2 (-vv)'),
+                  '3' => N_('Level 3 (-vvv)'),
+                  '4' => N_('Level 4 (-vvvv)') }
               end
             ),
             set(
