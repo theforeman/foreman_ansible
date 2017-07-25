@@ -5,6 +5,10 @@ module ForemanAnsible
       extend ActiveSupport::Concern
       include ForemanTasks::Triggers
 
+      included do
+        alias_method_chain :action_permission, :ansible
+      end
+
       def play_roles
         find_resource
         task = async_task(::Actions::ForemanAnsible::PlayHostRoles, @host)
@@ -25,12 +29,12 @@ module ForemanAnsible
 
       private
 
-      def action_permission
+      def action_permission_with_ansible
         case params[:action]
         when 'multiple_play_roles', 'play_roles'
           :view
         else
-          super
+          action_permission_without_ansible
         end
       end
     end
