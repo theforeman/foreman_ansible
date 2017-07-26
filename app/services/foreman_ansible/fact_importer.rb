@@ -31,7 +31,7 @@ module ForemanAnsible
     end
 
     def add_missing_facts(imported_facts, parent = nil, prefix = '')
-      imported_facts.select! { |_fact_name, fact_value| !fact_value.nil? }
+      imported_facts.reject! { |_fact_name, fact_value| fact_value.nil? }
 
       imported_facts.each do |imported_name, imported_value|
         fact_fqn = fact_fqn(imported_name, prefix)

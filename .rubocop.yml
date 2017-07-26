@@ -19,3 +19,9 @@ Rails/ActionFilter:
 
 Style/RaiseArgs:
   EnforcedStyle: compact
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Style/FormatStringToken:
+  EnforcedStyle: template

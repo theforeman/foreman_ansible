@@ -1,5 +1,5 @@
 # Simple model to store basic info about the Ansible role
-class AnsibleRole < ActiveRecord::Base
+class AnsibleRole < ApplicationRecord
   include Authorizable
 
   self.include_root_in_json = false

@@ -1,5 +1,5 @@
 # Join model that hosts the connection between hostgroups and ansible_roles
-class HostgroupAnsibleRole < ActiveRecord::Base
+class HostgroupAnsibleRole < ApplicationRecord
   belongs_to :hostgroup
   belongs_to :ansible_role
 

@@ -5,6 +5,7 @@ require 'foreman_ansible_core'
 
 module ForemanAnsible
   # This engine connects ForemanAnsible with Foreman core
+  # rubocop:disable ClassLength
   class Engine < ::Rails::Engine
     engine_name 'foreman_ansible'
 
@@ -30,6 +31,7 @@ module ForemanAnsible
       Foreman::Gettext::Support.add_text_domain locale_domain, locale_dir
     end
 
+    # rubocop:disable BlockLength
     initializer 'foreman_ansible.register_plugin', :before => :finisher_hook do
       Foreman::Plugin.register :foreman_ansible do
         requires_foreman '>= 1.15'
@@ -98,7 +100,7 @@ module ForemanAnsible
     end
 
     initializer 'foreman_ansible.assets.precompile' do |app|
-      app.config.assets.precompile += %w(foreman_ansible/Ansible.png)
+      app.config.assets.precompile += %w[foreman_ansible/Ansible.png]
     end
 
     initializer 'foreman_ansible.configure_assets', :group => :assets do
