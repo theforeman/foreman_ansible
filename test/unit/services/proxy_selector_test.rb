@@ -1,5 +1,6 @@
 require 'test_plugin_helper'
 
+# Tests for the Proxy Selector service
 class ProxySelectorTest < ActiveSupport::TestCase
   setup do
     @host = FactoryGirl.create(:host)

@@ -9,6 +9,7 @@ class HostsControllerExtensionsTest < ActionController::TestCase
 
   tests ::HostsController
 
+  # rubocop:disable Metrics/BlockLength
   context 'role assignment' do
     setup do
       @role = FactoryGirl.create(:ansible_role)

@@ -1,5 +1,6 @@
 module Support
   module ForemanTasks
+    # Stubbing for foreman tasks
     module Task
       def stub_tasks!
         @controller.stubs(:sync_task).returns(build_task_stub)
