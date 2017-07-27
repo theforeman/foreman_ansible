@@ -34,7 +34,7 @@ class Setting
               N_('Foreman will use the sudo command to run roles on hosts '\
                  'You can override this on hosts by adding a parameter '\
                  '"ansible_become"'),
-              'True',
+              'true',
               N_('Become')
             ),
             set(
@@ -49,9 +49,9 @@ class Setting
               'ansible_ssh_private_key_file',
               N_('Use this to supply a path to an SSH Private Key '\
                  'that Ansible will use in lieu of a password '\
-                 'Override with "ansible_ssh_private_key_file"'\
+                 'Override with "ansible_ssh_private_key_file" '\
                  'host parameter'),
-              '/tmp/private_key_file',
+              '',
               N_('Private Key Path')
             ),
             set(
