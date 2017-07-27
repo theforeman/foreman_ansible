@@ -34,7 +34,7 @@ class Setting
               N_('Foreman will use the sudo command to run roles on hosts '\
                  'You can override this on hosts by adding a parameter '\
                  '"ansible_become"'),
-              'true',
+              true,
               N_('Become')
             ),
             set(
