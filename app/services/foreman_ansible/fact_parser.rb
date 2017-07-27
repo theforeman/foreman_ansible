@@ -79,10 +79,28 @@ module ForemanAnsible
         facts[:ansible_lsb] && facts[:ansible_lsb]['id']
     end
 
+    def debian_os_major_sid
+      case facts[:ansible_distribution_major_version]
+      when /wheezy/i
+        '7'
+      when /jessie/i
+        '8'
+      when /stretch/i
+        '9'
+      when /buster/i
+        '10'
+      end
+    end
+
     def os_major
-      facts[:ansible_distribution_major_version] ||
-        facts[:ansible_lsb] && facts[:ansible_lsb]['major_release'] ||
-        (facts[:version].split('R')[0] if os_name == 'junos')
+      if os_name == 'Debian' &&
+         facts[:ansible_distribution_major_version][%r{\/sid}i]
+        debian_os_major_sid
+      else
+        facts[:ansible_distribution_major_version] ||
+          facts[:ansible_lsb] && facts[:ansible_lsb]['major_release'] ||
+          (facts[:version].split('R')[0] if os_name == 'junos')
+      end
     end
 
     def os_release
