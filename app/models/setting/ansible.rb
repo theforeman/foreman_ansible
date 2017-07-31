@@ -99,7 +99,7 @@ class Setting
             create(s.update(:category => 'Setting::Ansible'))
           end
         end
-
+        Setting::BLANK_ATTRS.push('ansible_ssh_private_key_file')
         true
       end
 
