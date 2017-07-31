@@ -35,26 +35,11 @@ module ForemanAnsible
     end
 
     def connection_params(host)
-      params = {
-        'ansible_port' => host_port(host),
-        'ansible_user' => host_user(host),
-        'ansible_ssh_pass' => host_ssh_pass(host),
-        'ansible_connection' => connection_type(host),
-        'ansible_winrm_server_cert_validation' => winrm_cert_validation(host)
-      }
+      params = ansible_settings.merge ansible_extra_options(host)
       # Backward compatibility for Ansible 1.x
       params['ansible_ssh_port'] = params['ansible_port']
       params['ansible_ssh_user'] = params['ansible_user']
       params
-    end
-
-    def winrm_cert_validation(host)
-      host.host_params['ansible_winrm_server_cert_validation'] ||
-        Setting['ansible_winrm_server_cert_validation']
-    end
-
-    def connection_type(host)
-      host.host_params['ansible_connection'] || Setting['ansible_connection']
     end
 
     def host_roles(host)
@@ -69,16 +54,19 @@ module ForemanAnsible
       host.host_params
     end
 
-    def host_port(host)
-      host.host_params['ansible_port'] || Setting[:ansible_port]
+    def ansible_settings
+      Hash[
+        %w[port user ssh_pass connection
+           winrm_server_cert_validation].map do |setting|
+          ["ansible_#{setting}", Setting["ansible_#{setting}"]]
+        end
+      ]
     end
 
-    def host_user(host)
-      host.host_params['ansible_user'] || Setting[:ansible_user]
-    end
-
-    def host_ssh_pass(host)
-      host.host_params['ansible_ssh_pass'] || Setting[:ansible_ssh_pass]
+    def ansible_extra_options(host)
+      host.host_params.select do |key, _|
+        /ansible_/.match(key) || Setting[key]
+      end
     end
 
     private

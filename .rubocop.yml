@@ -2,7 +2,7 @@ Rails:
   Enabled: true
 
 AllCops:
-  TargetRubyVersion: 2.0
+  TargetRubyVersion: 2.1
   TargetRailsVersion: 4.2
   Exclude:
     - 'extras/**/*'
