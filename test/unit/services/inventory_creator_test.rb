@@ -23,6 +23,9 @@ module ForemanAnsible
 
     test 'settings are respected if param cannot be found' do
       extra_options = { 'ansible_user' => 'someone', 'ansible_port' => 2000 }
+      Setting.expects(:[]).with('ansible_become').returns(nil).at_least_once
+      Setting.expects(:[]).with('ansible_ssh_private_key_file').
+        returns(nil).at_least_once
       Setting.expects(:[]).with('ansible_port').returns(nil).at_least_once
       Setting.expects(:[]).with('ansible_user').returns(nil).at_least_once
       Setting.expects(:[]).with('ansible_ssh_pass').

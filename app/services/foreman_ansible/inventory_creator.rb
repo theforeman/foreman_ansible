@@ -57,6 +57,7 @@ module ForemanAnsible
     def ansible_settings
       Hash[
         %w[port user ssh_pass connection
+           ssh_private_key_file become
            winrm_server_cert_validation].map do |setting|
           ["ansible_#{setting}", Setting["ansible_#{setting}"]]
         end
