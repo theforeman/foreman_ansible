@@ -40,15 +40,9 @@ module ForemanAnsible
         'ansible_user' => host_user(host),
         'ansible_become' => host_become(host),
         'ansible_connection' => connection_type(host),
+        'ansible_ssh_pass' => host_ssh_pass(host),
         'ansible_winrm_server_cert_validation' => winrm_cert_validation(host)
       }
-      # Check if private_key is defined, if it is use that. Otherwise
-      # use ssh_pass
-      if !host_private_key_file.empty?
-        params['ansible_ssh_private_key_file'] = host_private_key_file(host)
-      else
-        params['ansible_ssh_pass'] = host_ssh_pass(host)
-      end
       # Backward compatibility for Ansible 1.x
       params['ansible_ssh_port'] = params['ansible_port']
       params['ansible_ssh_user'] = params['ansible_user']
@@ -84,17 +78,8 @@ module ForemanAnsible
       host.host_params['ansible_user'] || Setting[:ansible_user]
     end
 
-    def host_become(host)
-      host.host_params['ansible_become'] || Setting[:ansible_become]
-    end
-
     def host_ssh_pass(host)
       host.host_params['ansible_ssh_pass'] || Setting[:ansible_ssh_pass]
-    end
-
-    def host_private_key_file(host)
-      host.host_params['ansible_ssh_private_key_file'] ||
-        Setting[:ansible_ssh_private_key_file]
     end
 
     private
