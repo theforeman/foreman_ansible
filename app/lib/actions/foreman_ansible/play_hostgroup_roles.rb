@@ -23,10 +23,9 @@ module Actions
       end
 
       def humanized_input
-        _('on host group %{name} through proxy %{proxy}') % {
-          :name => input.fetch(:hostgroup, {})[:name],
-          :proxy => running_proxy_name
-        }
+        format(_('on host group %{name} through proxy %{proxy}'),
+               :name => input.fetch(:hostgroup, {})[:name],
+               :proxy => running_proxy_name)
       end
 
       private

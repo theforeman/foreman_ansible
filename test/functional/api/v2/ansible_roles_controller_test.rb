@@ -2,6 +2,7 @@ require 'test_plugin_helper'
 
 module Api
   module V2
+    # Tests for the controller to CRUD Ansible Roles
     class AnsibleRolesControllerTest < ActionController::TestCase
       setup do
         @role = FactoryGirl.create(:ansible_role)

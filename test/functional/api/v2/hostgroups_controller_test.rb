@@ -3,6 +3,7 @@ require 'dynflow/testing'
 
 module Api
   module V2
+    # Tests for the extra methods to play roles on Hostgroup
     class HostgroupsControllerTest < ActionController::TestCase
       include ::Dynflow::Testing
 

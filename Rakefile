@@ -6,7 +6,7 @@ rescue LoadError
 end
 
 require 'rake/testtask'
-Rake::TestTask.new("test:core") do |test|
+Rake::TestTask.new('test:core') do |test|
   test_dir = File.join(File.dirname(__FILE__), 'test/lib')
   test.pattern = "#{test_dir}/**/*_test.rb"
   test.libs << test_dir

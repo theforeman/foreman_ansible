@@ -1,5 +1,7 @@
 require 'test_helper'
 
+# Playbook Runner - this class uses foreman_tasks_core
+# to run playbooks
 class PlaybookRunnerTest < ActiveSupport::TestCase
   context 'roles dir' do
     test 'reads default when none provided' do

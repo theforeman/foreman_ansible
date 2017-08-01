@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/theforeman/foreman_ansible'
   s.summary     = 'Ansible integration with Foreman (theforeman.org): core bits'
   s.description = <<DESC
-Ansible integration with Foreman - core parts for dealing with Ansible concepts,
-usable by foreman_ansible or smart_proxy_ansible to delegate the execution.
+    Ansible integration with Foreman - core parts for dealing with Ansible concepts,
+    usable by foreman_ansible or smart_proxy_ansible to delegate the execution.
 DESC
   s.licenses    = ['GPL-3.0']
 

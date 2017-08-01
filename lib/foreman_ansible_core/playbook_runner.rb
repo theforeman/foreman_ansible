@@ -1,4 +1,5 @@
 require 'foreman_tasks_core/runner/command_runner'
+require_relative 'command_creator'
 require 'tmpdir'
 
 module ForemanAnsibleCore
@@ -16,23 +17,14 @@ module ForemanAnsibleCore
     def start
       write_inventory
       write_playbook
+      command = CommandCreator.new(inventory_file,
+                                   playbook_file,
+                                   @options).command
       logger.debug('[foreman_ansible] - Initializing Ansible Runner')
       Dir.chdir(@ansible_dir) do
         initialize_command(*command)
+        logger.debug("[foreman_ansible] - Running command #{command}")
       end
-    end
-
-    def command
-      command = [{ 'JSON_INVENTORY_FILE' => inventory_file }]
-      command << 'ansible-playbook'
-      command.concat(['-i', json_inventory_script])
-      if verbose?
-        command.concat([setup_verbosity])
-      end
-      command.concat(['-T', @options[:timeout]]) unless @options[:timeout].nil?
-      command << playbook_file
-      logger.debug("[foreman_ansible] - Running command #{command}")
-      command
     end
 
     def kill
@@ -45,10 +37,6 @@ module ForemanAnsibleCore
     def close
       super
       FileUtils.remove_entry(@working_dir) if @tmp_working_dir
-    end
-
-    def json_inventory_script
-      File.expand_path('../../bin/json_inventory.sh', File.dirname(__FILE__))
     end
 
     private
@@ -100,29 +88,9 @@ module ForemanAnsibleCore
     end
 
     def initialize_ansible_dir(ansible_dir)
-      if !ansible_dir.nil? && File.exist?(ansible_dir)
-        @ansible_dir = ansible_dir
-      else
-        raise "Ansible dir #{ansible_dir} does not exist"
-      end
+      raise "Ansible dir #{ansible_dir} does not exist" unless
+        !ansible_dir.nil? && File.exist?(ansible_dir)
+      @ansible_dir = ansible_dir
     end
-
-    def setup_verbosity
-      verbosity_level = @options[:verbosity_level].to_i
-      logger.debug('[foreman_ansible] - Setting Ansible verbosity level to'\
-                   "#{verbosity_level}")
-      verbosity = '-'
-      verbosity_level.times do
-        verbosity += 'v'
-      end
-      verbosity
-    end
-
-    def verbose?
-      verbosity_level = @options[:verbosity_level]
-      !verbosity_level.nil? && !verbosity_level.empty? &&
-        verbosity_level.to_i > 0
-    end
-
   end
 end

@@ -1,11 +1,15 @@
 module ForemanAnsible
+  # Allow to add fixtures to plugins
   module PluginFixtures
     FIXTURE_MAPPING = {
       :ansible_permissions => :permissions
     }.freeze
 
     def self.add_fixtures(new_fixture_path)
-      FileUtils.cp(Dir.glob("#{Rails.root}/test/fixtures/*"), new_fixture_path)
+      FileUtils.cp(
+        Dir.glob(Rails.root.join('test', 'fixtures', '*')),
+        new_fixture_path
+      )
       copy_plugin_fixtures new_fixture_path
     end
 

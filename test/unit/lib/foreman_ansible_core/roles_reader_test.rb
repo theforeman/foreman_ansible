@@ -1,5 +1,7 @@
 require 'test_plugin_helper'
 
+# Tests for the Roles Reader service of ansible core,
+# this class simply reads roles from its path in ansible.cfg
 class RolesReaderTest < ActiveSupport::TestCase
   CONFIG_PATH = '/etc/ansible/ansible.cfg'.freeze
   ROLES_PATH = '/etc/ansible/roles'.freeze

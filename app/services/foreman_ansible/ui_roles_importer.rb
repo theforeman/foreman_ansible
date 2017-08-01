@@ -6,7 +6,7 @@ module ForemanAnsible
     end
 
     def finish_import(changes)
-      return unless changes.present?
+      return if changes.blank?
       create_new_roles changes['new'] if changes['new']
       delete_old_roles changes['obsolete'] if changes['obsolete']
     end

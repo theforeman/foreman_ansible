@@ -18,19 +18,19 @@ module ForemanAnsible
 
     def architecture
       name = facts[:ansible_architecture] || facts[:facter_architecture]
-      Architecture.where(:name => name).first_or_create unless name.blank?
+      Architecture.where(:name => name).first_or_create if name.present?
     end
 
     def model
       name = detect_fact([:ansible_product_name, :facter_virtual,
                           :facter_productname, :facter_model, :model])
-      Model.where(:name => name.strip).first_or_create unless name.blank?
+      Model.where(:name => name.strip).first_or_create if name.present?
     end
 
     def domain
       name = detect_fact([:ansible_domain, :facter_domain,
                           :ohai_domain, :domain])
-      Domain.where(:name => name).first_or_create unless name.blank?
+      Domain.where(:name => name).first_or_create if name.present?
     end
 
     def support_interfaces_parsing?
@@ -65,12 +65,12 @@ module ForemanAnsible
     private
 
     def ansible_interfaces
-      return [] unless facts[:ansible_interfaces].present?
+      return [] if facts[:ansible_interfaces].blank?
       facts[:ansible_interfaces].sort
     end
 
     def ip_from_interface(interface)
-      return unless facts[:"ansible_#{interface}"]['ipv4'].present?
+      return if facts[:"ansible_#{interface}"]['ipv4'].blank?
       facts[:"ansible_#{interface}"]['ipv4']['address']
     end
 
@@ -79,10 +79,28 @@ module ForemanAnsible
         facts[:ansible_lsb] && facts[:ansible_lsb]['id']
     end
 
+    def debian_os_major_sid
+      case facts[:ansible_distribution_major_version]
+      when /wheezy/i
+        '7'
+      when /jessie/i
+        '8'
+      when /stretch/i
+        '9'
+      when /buster/i
+        '10'
+      end
+    end
+
     def os_major
-      facts[:ansible_distribution_major_version] ||
-        facts[:ansible_lsb] && facts[:ansible_lsb]['major_release'] ||
-        (facts[:version].split('R')[0] if os_name == 'junos')
+      if os_name == 'Debian' &&
+         facts[:ansible_distribution_major_version][%r{\/sid}i]
+        debian_os_major_sid
+      else
+        facts[:ansible_distribution_major_version] ||
+          facts[:ansible_lsb] && facts[:ansible_lsb]['major_release'] ||
+          (facts[:version].split('R')[0] if os_name == 'junos')
+      end
     end
 
     def os_release

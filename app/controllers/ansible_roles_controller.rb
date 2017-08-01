@@ -49,7 +49,7 @@ class AnsibleRolesController < ::ApplicationController
   end
 
   def no_changed_roles_message
-    return _('No changes in roles detected.') unless @proxy.present?
+    return _('No changes in roles detected.') if @proxy.blank?
     _('No changes in roles detected on %s.') % @proxy.name
   end
 end
