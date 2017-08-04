@@ -241,7 +241,7 @@ class CallbackModule(parent_class):
             module = res['invocation']['module_name']
         except KeyError:
             module = None
-        if module == 'setup':
+        if module == 'setup' or 'ansible_facts' in res:
             self.send_facts(host, res)
         else:
             name = result._task.get_name()
