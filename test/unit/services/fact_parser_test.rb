@@ -54,12 +54,13 @@ module ForemanAnsible
   class DebianFactParserTest < ActiveSupport::TestCase
     setup do
       @facts_parser = ForemanAnsible::FactParser.new(
-        {'_type': 'ansible',
-         '_timestamp': '2015-10-29 20:01:51 +0100',
-         'ansible_facts': {
-                            'ansible_distribution_major_version': 'buster/sid',
-                            'ansible_distribution': 'Debian'
-                          }
+        {'_type' => 'ansible',
+         '_timestamp' => '2015-10-29 20 =>01 =>51 +0100',
+         'ansible_facts' =>
+         {
+           'ansible_distribution_major_version' => 'buster/sid',
+           'ansible_distribution' => 'Debian'
+         }
         })
     end
 
