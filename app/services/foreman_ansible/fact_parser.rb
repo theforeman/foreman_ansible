@@ -92,6 +92,7 @@ module ForemanAnsible
       end
     end
 
+    # rubocop:disable AbcSize, CyclomaticComplexity, PerceivedComplexity
     def os_major
       if os_name == 'Debian' &&
          facts[:ansible_distribution_major_version][%r{\/sid}i]
