@@ -15,7 +15,7 @@ module ForemanAnsible
 
     def ansible_roles_button(host)
       link_to(
-        icon_text('play', ' ' + _('Ansible roles'), :kind => 'fa'),
+        _('Run Ansible roles'),
         play_roles_host_path(:id => host.id),
         :id => :ansible_roles_button,
         :class => 'btn btn-default',
