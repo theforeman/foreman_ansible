@@ -13,5 +13,5 @@ def facts_json
 end
 
 plugin_factories_path = File.join(File.dirname(__FILE__), 'factories')
-FactoryGirl.definition_file_paths << plugin_factories_path
-FactoryGirl.reload
+FactoryGirl.definition_file_paths = [plugin_factories_path]
+FactoryGirl.find_definitions
