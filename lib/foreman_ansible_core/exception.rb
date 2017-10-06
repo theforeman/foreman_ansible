@@ -30,6 +30,6 @@ module ForemanAnsibleCore
     end
   end
 
-  class ReadConfigFileException < ForemanAnsibleCore::Exception
-  end
+  class ReadConfigFileException < ForemanAnsibleCore::Exception; end
+  class ReadRolesException < ForemanAnsibleCore::Exception; end
 end
