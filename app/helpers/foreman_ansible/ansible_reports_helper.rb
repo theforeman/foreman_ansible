@@ -21,8 +21,9 @@ module ForemanAnsible
     end
 
     def ansible_report?(log)
-      module_name(log).present?
-    rescue # Failures when parsing the log indicates it's not an Ansible report
+      module_name(log).p
+      # Failures when parsing the log indicates it's not an Ansible report
+    rescue StandardError
       false
     end
   end

@@ -28,7 +28,7 @@ module Actions
           delegated_output.fetch('result', []).each do |raw_output|
             continuous_output.add_raw_output(raw_output)
           end
-        rescue => e
+        rescue StandardError => e
           continuous_output.add_exception(_('Error loading data from proxy'), e)
         end
 

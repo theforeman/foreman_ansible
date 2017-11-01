@@ -14,7 +14,8 @@ module ForemanAnsible
         Operatingsystem.create!(args.merge(:description => os_description))
     end
 
-    def environment; end # Don't do anything as there's no env in Ansible
+    # Don't do anything as there's no env in Ansible
+    def environment; end
 
     def architecture
       name = facts[:ansible_architecture] || facts[:facter_architecture]
@@ -43,7 +44,7 @@ module ForemanAnsible
     #
     # This method overrides app/services/fact_parser.rb on Foreman and returns
     # an array of interface names, ['eth0', 'wlan1', etc...]
-    def get_interfaces # rubocop:disable Style/AccessorMethodName
+    def get_interfaces # rubocop:disable Naming/AccessorMethodName
       pref = facts[:ansible_default_ipv4] &&
              facts[:ansible_default_ipv4]['interface']
       if pref.present?
