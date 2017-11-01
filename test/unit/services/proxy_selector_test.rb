@@ -3,7 +3,7 @@ require 'test_plugin_helper'
 # Tests for the Proxy Selector service
 class ProxySelectorTest < ActiveSupport::TestCase
   setup do
-    @host = FactoryGirl.create(:host)
+    @host = FactoryBot.create(:host)
   end
 
   test 'reuses proxies already assigned to host' do
@@ -17,10 +17,10 @@ class ProxySelectorTest < ActiveSupport::TestCase
 
   test 'only finds proxies that are within host taxonomies' do
     @host.organization = taxonomies(:organization1)
-    @ansible_proxy = FactoryGirl.create(:smart_proxy, :with_ansible,
+    @ansible_proxy = FactoryBot.create(:smart_proxy, :with_ansible,
                                         :organizations => [@host.organization])
     # Unreachable proxy, because of the organizations mismatch with Host
-    FactoryGirl.create(:smart_proxy, :with_ansible, :organizations => [])
+    FactoryBot.create(:smart_proxy, :with_ansible, :organizations => [])
     proxy_selector = ForemanAnsible::ProxySelector.new
     setup_user('view', 'smart_proxies')
     assert_equal [@ansible_proxy],

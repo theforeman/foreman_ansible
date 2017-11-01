@@ -5,7 +5,7 @@ module Api
     # Tests for the controller to CRUD Ansible Roles
     class AnsibleRolesControllerTest < ActionController::TestCase
       setup do
-        @role = FactoryGirl.create(:ansible_role)
+        @role = FactoryBot.create(:ansible_role)
       end
 
       test 'should get index' do

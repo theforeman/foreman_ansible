@@ -12,7 +12,7 @@ class HostsControllerExtensionsTest < ActionController::TestCase
   # rubocop:disable Metrics/BlockLength
   context 'role assignment' do
     setup do
-      @role = FactoryGirl.create(:ansible_role)
+      @role = FactoryBot.create(:ansible_role)
     end
 
     test 'create a host with ansible roles' do
@@ -25,7 +25,7 @@ class HostsControllerExtensionsTest < ActionController::TestCase
     end
 
     test 'update a host with ansible roles' do
-      host = FactoryGirl.create(:host, :managed => false)
+      host = FactoryBot.create(:host, :managed => false)
       post :update, { :id => host.id,
                       :host => { :ansible_role_ids => [@role.id] } },
            set_session_user
@@ -34,7 +34,7 @@ class HostsControllerExtensionsTest < ActionController::TestCase
     end
 
     test 'delete a host with ansible roles' do
-      host = FactoryGirl.create(:host,
+      host = FactoryBot.create(:host,
                                 :managed => false,
                                 :ansible_roles => [@role])
       assert_include @role.hosts, host
@@ -46,7 +46,7 @@ class HostsControllerExtensionsTest < ActionController::TestCase
 
   context 'playing roles' do
     setup do
-      @host = FactoryGirl.create(:host, :managed => false)
+      @host = FactoryBot.create(:host, :managed => false)
     end
 
     test 'redirect to task if successful' do

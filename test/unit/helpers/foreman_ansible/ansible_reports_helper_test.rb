@@ -11,11 +11,11 @@ module ForemanAnsible
       end
 
       test 'ansible_report? returns false when log is from Puppet' do
-        refute ansible_report?(FactoryGirl.build(:log))
+        refute ansible_report?(FactoryBot.build(:log))
       end
 
       test 'ansible_report? returns true when log contains module_name' do
-        log = FactoryGirl.build(:log)
+        log = FactoryBot.build(:log)
         log.source.value = '{ "module_name" : "foo" }'
         assert ansible_report?(log)
       end

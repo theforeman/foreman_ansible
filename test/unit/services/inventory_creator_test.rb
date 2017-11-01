@@ -5,7 +5,7 @@ module ForemanAnsible
   # inventory variables and connection options
   class InventoryCreatorTest < ActiveSupport::TestCase
     setup do
-      @host = FactoryGirl.build(:host)
+      @host = FactoryBot.build(:host)
     end
 
     test 'ansible_ parameters get turned into host variables' do
