@@ -2,12 +2,12 @@ require 'test_plugin_helper'
 # unit tests for RolesImporter
 class RolesImporterTest < ActiveSupport::TestCase
   setup do
-    @role = FactoryGirl.create(:ansible_role)
+    @role = FactoryBot.create(:ansible_role)
     @importer = ForemanAnsible::RolesImporter.new
   end
 
   test 'should detect changes when importing roles' do
-    role = FactoryGirl.build(:ansible_role)
+    role = FactoryBot.build(:ansible_role)
     changes = @importer.detect_changes [role]
     assert_equal 1, changes[:new].length
     assert_equal 1, changes[:obsolete].length

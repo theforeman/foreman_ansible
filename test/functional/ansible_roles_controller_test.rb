@@ -2,7 +2,7 @@ require 'test_plugin_helper'
 # functional tests for AnsibleRolesController
 class AnsibleRolesControllerTest < ActionController::TestCase
   setup do
-    @role = FactoryGirl.create(:ansible_role)
+    @role = FactoryBot.create(:ansible_role)
   end
 
   basic_index_test

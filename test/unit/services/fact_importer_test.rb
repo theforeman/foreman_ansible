@@ -5,7 +5,7 @@ module ForemanAnsible
   # a set of facts it's able to import them
   class FactImporterTest < ActiveSupport::TestCase
     setup do
-      @host = FactoryGirl.build(:host)
+      @host = FactoryBot.build(:host)
     end
 
     test 'add new facts adds all fact names in the fixture' do
@@ -28,13 +28,13 @@ module ForemanAnsible
         @fact_importer = FactImporter.new(@host, :ansible_facts => {})
       end
       test 'does not add existing facts' do
-        existing_fact = FactoryGirl.build(:fact_name)
+        existing_fact = FactoryBot.build(:fact_name)
         @fact_importer.expects(:missing_facts).returns([])
         assert_nil @fact_importer.send(:add_fact_value, nil, existing_fact)
       end
 
       test 'adds missing facts' do
-        missing_fact = FactoryGirl.build(:fact_name)
+        missing_fact = FactoryBot.build(:fact_name)
         @fact_importer.expects(:missing_facts).returns([missing_fact.name])
         @fact_importer.counters[:added] = 0
         assert_difference('@host.fact_values.count', 1) do

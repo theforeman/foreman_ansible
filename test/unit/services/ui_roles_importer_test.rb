@@ -21,7 +21,7 @@ class UiRolesImporterTest < ActiveSupport::TestCase
   private
 
   def changed_roles
-    @role = FactoryGirl.create(:ansible_role)
+    @role = FactoryBot.create(:ansible_role)
     new_role_name = 'test_role.foreman'
     @new_role = { :id => nil, :name => new_role_name }
     @changes = { 'new' => { 'test_role.foreman' => @new_role.to_json },
