@@ -1,3 +1,4 @@
+# rubocop:disable BlockLength
 Rails.application.routes.draw do
   scope '/ansible' do
     constraints(:id => %r{[^\/]+}) do

@@ -1,7 +1,15 @@
+inherit_from:
+  - .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 2.2
+
 Rails:
   Enabled: true
 
 AllCops:
+  TargetRubyVersion: 2.1
+  TargetRailsVersion: 4.2
   Exclude:
     - 'extras/**/*'
     - 'locale/**/*'
@@ -11,7 +19,7 @@ AllCops:
 Style/HashSyntax:
   EnforcedStyle: hash_rockets
 
-Style/DotPosition:
+Layout/DotPosition:
   EnforcedStyle: 'trailing'
 
 Rails/ActionFilter:
@@ -19,3 +27,9 @@ Rails/ActionFilter:
 
 Style/RaiseArgs:
   EnforcedStyle: compact
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Style/FormatStringToken:
+  EnforcedStyle: template

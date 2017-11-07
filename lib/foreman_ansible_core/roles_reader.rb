@@ -3,31 +3,18 @@ module ForemanAnsibleCore
   class RolesReader
     class << self
       DEFAULT_CONFIG_FILE = '/etc/ansible/ansible.cfg'.freeze
+      DEFAULT_ROLES_PATH = '/etc/ansible/roles'.freeze
 
       def list_roles
-        logger.info('[foreman_ansible] - Reading roles from '\
-                    '/etc/ansible/ansible.cfg roles_path')
-        Dir.glob("#{roles_path}/*").map do |path|
-          path.split('/').last
-        end
-      rescue Errno::ENOENT, Errno::EACCES => e
-        logger.debug("[foreman_ansible] - #{e.backtrace}")
-        exception_message = '[foreman_ansible] - Could not read Ansible config'\
-          " file #{DEFAULT_CONFIG_FILE} - #{e.message}"
-        raise ReadConfigFileException.new(exception_message)
+        roles_path.split(':').map { |path| read_roles(path) }.flatten
       end
 
-      def roles_path(ansible_config_file = DEFAULT_CONFIG_FILE)
-        default_path = '/etc/ansible/roles'
-        roles_line = File.readlines(ansible_config_file).select do |line|
-          line =~ /roles_path/
-        end
+      def roles_path(roles_line = roles_path_from_config)
         # Default to /etc/ansible/roles if none found
-        return default_path if roles_line.empty?
+        return DEFAULT_ROLES_PATH if roles_line.empty?
         roles_path_key = roles_line.first.split('=').first.strip
         # In case of commented roles_path key "#roles_path", return default
-        return default_path unless roles_path_key == 'roles_path'
-        # In case roles_path is there, and is not commented, return the value
+        return DEFAULT_ROLES_PATH unless roles_path_key == 'roles_path'
         roles_line.first.split('=').last.strip
       end
 
@@ -39,6 +26,35 @@ module ForemanAnsibleCore
         else
           ::Proxy::LogBuffer::Decorator.instance
         end
+      end
+
+      private
+
+      def read_roles(roles_path)
+        rescue_and_raise_file_exception ReadRolesException,
+                                        roles_path, 'roles' do
+          Dir.glob("#{roles_path}/*").map do |path|
+            path.split('/').last
+          end
+        end
+      end
+
+      def roles_path_from_config
+        rescue_and_raise_file_exception ReadConfigFileException,
+                                        DEFAULT_CONFIG_FILE, 'config file' do
+          File.readlines(DEFAULT_CONFIG_FILE).select do |line|
+            line =~ /roles_path/
+          end
+        end
+      end
+
+      def rescue_and_raise_file_exception(exception, path, type)
+        yield
+      rescue Errno::ENOENT, Errno::EACCES => e
+        logger.debug(e.backtrace)
+        exception_message = "Could not read Ansible #{type} "\
+                            "#{path} - #{e.message}"
+        raise exception.new(exception_message)
       end
     end
   end

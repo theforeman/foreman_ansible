@@ -3,13 +3,13 @@ require 'test_plugin_helper'
 # Tests for the behavior of Hostgroup with roles, checks inheritance, etc
 class HostgroupExtensionsTest < ActiveSupport::TestCase
   before do
-    @role1 = FactoryGirl.create(:ansible_role)
-    @role2 = FactoryGirl.create(:ansible_role)
-    @role3 = FactoryGirl.create(:ansible_role)
+    @role1 = FactoryBot.create(:ansible_role)
+    @role2 = FactoryBot.create(:ansible_role)
+    @role3 = FactoryBot.create(:ansible_role)
 
-    @hostgroup_parent = FactoryGirl.create(:hostgroup,
+    @hostgroup_parent = FactoryBot.create(:hostgroup,
                                            :ansible_roles => [@role2])
-    @hostgroup = FactoryGirl.create(:hostgroup, :ansible_roles => [@role1])
+    @hostgroup = FactoryBot.create(:hostgroup, :ansible_roles => [@role1])
   end
 
   describe '#all_ansible_roles' do

@@ -1,3 +1,48 @@
+2017-10-06	Sebastian Gräßl <bastilian@users.noreply.github.com>
+	* Fixes #21005 - Better wording for roles import button
+	* Fixes #20884 - Allow importing roles from multiple paths
+
+2017-10-04	Sebastian Gräßl <bastilian@users.noreply.github.com>
+	* Fixes #21008 - Improve button to run ansible roles
+
+2017-09-11	Daniel Lobato Garcia <me@daniellobato.me>
+	* Fix rubocop os_major
+	* Fix hash in test to be indifferent access
+	* Updating to use hashrockets
+
+2017-08-04	Marek Hulán <ares@users.noreply.github.com>
+	* Fix callback facts sending
+
+2017-08-01	Daniel Lobato Garcia <me@daniellobato.me>
+	* Refs #20407 - Adds ssh_private_key and become to InventoryCreator
+
+2017-08-01	mriedel-pgdx <mriedel@personalgenome.com>
+	* fixes #20407 - adds two new options
+
+2017-08-01	Daniel Lobato García <me@daniellobato.me>
+	* Fixes #20464 - Allow arbitrary connection options host param
+
+2017-07-27	Guido Günther <agx@sigxcpu.org>
+	* Fixes #20389 - debian: unbreak adding debian/sid
+
+2017-07-26	Daniel Lobato Garcia <me@daniellobato.me>
+	* More rubocop fixes
+	* Fix rubocop issues
+
+2017-07-25	Marek Hulán <ares@users.noreply.github.com>
+	* Fixes #20397 - fix the permission override
+
+2017-06-20	Tomer Brisker <tbrisker@users.noreply.github.com>
+	* Fixes #20060 - correct apidoc for single hostgroup run roles
+
+2017-04-17	Marek Hulán <ares@users.noreply.github.com>
+	* Fixes #17957 - add plugin permissions to core roles
+	* Fixes #19240 - fix the inline help icon position
+
+2017-03-30	Daniel Lobato Garcia <me@daniellobato.me>
+	* Release foreman_ansible 1.4.5
+	* Release foreman_ansible 1.4.4, core 1.1.1
+
 2017-03-22	Daniel Kuffner <chilicat@users.noreply.github.com>
 	* Fixes #18731 - Ansible Run fails with internal error
 

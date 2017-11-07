@@ -14,7 +14,7 @@ module ForemanAnsible
     end
 
     test 'if host is in Foreman, use hostname provided by Ansible' do
-      ansible_fqdn_host = FactoryGirl.build(:host)
+      ansible_fqdn_host = FactoryBot.build(:host)
       ansible_fqdn_host.name = facts_json[:ansible_facts][:ansible_fqdn]
       ansible_fqdn_host.save
       importer = ForemanAnsible::StructuredFactImporter.new(

@@ -2,12 +2,13 @@ require 'test_plugin_helper'
 
 module Api
   module V2
+    # Tests for the extra methods to play roles on a Host
     class HostsControllerTest < ActionController::TestCase
       include ::Dynflow::Testing
 
       setup do
-        @host1 = FactoryGirl.create(:host)
-        @host2 = FactoryGirl.create(:host)
+        @host1 = FactoryBot.create(:host)
+        @host2 = FactoryBot.create(:host)
       end
 
       after do

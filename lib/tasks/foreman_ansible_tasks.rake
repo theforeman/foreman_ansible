@@ -19,7 +19,7 @@ namespace :foreman_ansible do
                          "#{ForemanAnsible::Engine.root}/lib/**/*.rb",
                          "#{ForemanAnsible::Engine.root}/test/**/*.rb"]
       end
-    rescue
+    rescue StandardError
       puts 'Rubocop not loaded.'
     end
 

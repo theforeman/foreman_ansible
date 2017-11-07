@@ -3,12 +3,13 @@ require 'dynflow/testing'
 
 module Api
   module V2
+    # Tests for the extra methods to play roles on Hostgroup
     class HostgroupsControllerTest < ActionController::TestCase
       include ::Dynflow::Testing
 
       setup do
-        @host1 = FactoryGirl.create(:host, :with_hostgroup)
-        @host2 = FactoryGirl.create(:host, :with_hostgroup)
+        @host1 = FactoryBot.create(:host, :with_hostgroup)
+        @host2 = FactoryBot.create(:host, :with_hostgroup)
       end
 
       after do
