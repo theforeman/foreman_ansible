@@ -5,15 +5,19 @@
 <table class="<%= table_css_classes 'table-fixed' %>">
   <thead>
     <tr>
-      <th class="col-md-3"><%= sort :name, :as => s_("Role|Name") %></th>
-      <th class="col-md-3"><%= _("Imported at") %></th>
-      <th class="col-md-1"><%= _("Actions") %></th>
+      <th class="col-md-6"><%= sort :name, :as => s_("Role|Name") %></th>
+      <th class="col-md-2"><%= _("Hostgroups") %></th>
+      <th class="col-md-2"><%= _("Hosts") %></th>
+      <th class="col-md-2"><%= sort :updated_at, :as => _("Imported at") %></th>
+      <th class="col-md-2"><%= _("Actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @ansible_roles.each do |role| %>
       <tr>
         <td class="ellipsis"><%= role.name %></td>
+        <td class="ellipsis"><%= role.hostgroups.count %></td>
+        <td class="ellipsis"><%= link_to role.hosts.count, hosts_path(:search => "role = #{role.name}")%></td>
         <td class="ellipsis"><%= import_time role %></td>
         <td>
           <%
