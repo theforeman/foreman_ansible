@@ -21,7 +21,7 @@ module ForemanAnsible
     end
 
     def ansible_report?(log)
-      module_name(log).p
+      module_name(log).present?
       # Failures when parsing the log indicates it's not an Ansible report
     rescue StandardError
       false
