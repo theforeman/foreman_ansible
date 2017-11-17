@@ -9,7 +9,6 @@ class HostsControllerExtensionsTest < ActionController::TestCase
 
   tests ::HostsController
 
-  # rubocop:disable Metrics/BlockLength
   context 'role assignment' do
     setup do
       @role = FactoryBot.create(:ansible_role)
@@ -35,8 +34,8 @@ class HostsControllerExtensionsTest < ActionController::TestCase
 
     test 'delete a host with ansible roles' do
       host = FactoryBot.create(:host,
-                                :managed => false,
-                                :ansible_roles => [@role])
+                               :managed => false,
+                               :ansible_roles => [@role])
       assert_include @role.hosts, host
       delete :destroy, { :id => host.id }, set_session_user
       assert_redirected_to hosts_url

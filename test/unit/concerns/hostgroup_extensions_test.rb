@@ -8,7 +8,7 @@ class HostgroupExtensionsTest < ActiveSupport::TestCase
     @role3 = FactoryBot.create(:ansible_role)
 
     @hostgroup_parent = FactoryBot.create(:hostgroup,
-                                           :ansible_roles => [@role2])
+                                          :ansible_roles => [@role2])
     @hostgroup = FactoryBot.create(:hostgroup, :ansible_roles => [@role1])
   end
 

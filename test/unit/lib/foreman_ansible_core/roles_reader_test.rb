@@ -29,16 +29,14 @@ class RolesReaderTest < ActiveSupport::TestCase
   describe '#list_roles' do
     test 'reads roles from paths' do
       expect_content_config ["roles_path = #{ROLES_PATH}"]
-      ForemanAnsibleCore::RolesReader.expects(:read_roles)
-                                     .with(ROLES_PATH)
+      ForemanAnsibleCore::RolesReader.expects(:read_roles).with(ROLES_PATH)
       ForemanAnsibleCore::RolesReader.list_roles
     end
 
     test 'reads roles from paths' do
       roles_paths = ['/mycustom/roles/path', '/another/path']
       roles_paths.each do |path|
-        ForemanAnsibleCore::RolesReader.expects(:read_roles)
-                                       .with(path)
+        ForemanAnsibleCore::RolesReader.expects(:read_roles).with(path)
       end
       expect_content_config ["roles_path = #{roles_paths.join(':')}"]
       ForemanAnsibleCore::RolesReader.list_roles
@@ -88,6 +86,7 @@ class RolesReaderTest < ActiveSupport::TestCase
   private
 
   def expect_content_config(ansible_cfg_content)
-    ForemanAnsibleCore::RolesReader.expects(:roles_path_from_config).returns(ansible_cfg_content)
+    ForemanAnsibleCore::RolesReader.expects(:roles_path_from_config).
+      returns(ansible_cfg_content)
   end
 end

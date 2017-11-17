@@ -18,7 +18,7 @@ class ProxySelectorTest < ActiveSupport::TestCase
   test 'only finds proxies that are within host taxonomies' do
     @host.organization = taxonomies(:organization1)
     @ansible_proxy = FactoryBot.create(:smart_proxy, :with_ansible,
-                                        :organizations => [@host.organization])
+                                       :organizations => [@host.organization])
     # Unreachable proxy, because of the organizations mismatch with Host
     FactoryBot.create(:smart_proxy, :with_ansible, :organizations => [])
     proxy_selector = ForemanAnsible::ProxySelector.new

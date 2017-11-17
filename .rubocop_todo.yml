@@ -11,6 +11,10 @@
 Metrics/MethodLength:
   Max: 13
 
+Metrics/BlockLength:
+  Exclude:
+    - 'test/**/*' # context blocks can be long
+
 # Offense count: 4
 # Configuration parameters: Include.
 # Include: app/models/**/*.rb
