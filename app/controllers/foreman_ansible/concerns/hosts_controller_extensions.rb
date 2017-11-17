@@ -5,8 +5,19 @@ module ForemanAnsible
       extend ActiveSupport::Concern
       include ForemanTasks::Triggers
 
+      module Overrides
+        def action_permission
+          case params[:action]
+          when 'multiple_play_roles', 'play_roles'
+            :view
+          else
+            super
+          end
+        end
+      end
+
       included do
-        alias_method_chain :action_permission, :ansible
+        prepend Overrides
       end
 
       def play_roles
@@ -25,17 +36,6 @@ module ForemanAnsible
       rescue Foreman::Exception => e
         error e.message
         redirect_to hosts_path
-      end
-
-      private
-
-      def action_permission_with_ansible
-        case params[:action]
-        when 'multiple_play_roles', 'play_roles'
-          :view
-        else
-          action_permission_without_ansible
-        end
       end
     end
   end
