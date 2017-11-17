@@ -7,6 +7,10 @@ module ForemanAnsible
       has_many :host_ansible_roles, :foreign_key => :host_id
       has_many :ansible_roles, :through => :host_ansible_roles,
                                :dependent => :destroy
+      scoped_search :relation => :ansible_roles, :on => :name,
+                    :complete_value => true, :rename => :role,
+                    :only_explicit => true
+
       before_provision :play_ansible_roles
       include ForemanAnsible::HasManyAnsibleRoles
 

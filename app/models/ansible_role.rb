@@ -11,4 +11,5 @@ class AnsibleRole < ApplicationRecord
                         :dependent => :destroy
 
   scoped_search :on => :name, :complete_value => true
+  scoped_search :on => :updated_at
 end
