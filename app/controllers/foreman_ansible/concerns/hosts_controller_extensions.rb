@@ -5,6 +5,7 @@ module ForemanAnsible
       extend ActiveSupport::Concern
       include ForemanTasks::Triggers
 
+      # Overrides to methods in the original hosts controller
       module Overrides
         def action_permission
           case params[:action]
