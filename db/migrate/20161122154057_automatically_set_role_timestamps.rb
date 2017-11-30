@@ -1,5 +1,5 @@
 # Creation and updates timestamps for Ansible Roles
-class AutomaticallySetRoleTimestamps < ActiveRecord::Migration
+class AutomaticallySetRoleTimestamps < ActiveRecord::Migration[4.2]
   def up
     change_column :ansible_roles, :created_at, :datetime, :null => true,
                                                           :default => nil
