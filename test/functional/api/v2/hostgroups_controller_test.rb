@@ -20,14 +20,14 @@ module Api
       end
 
       test 'should return an not_found due to non-existent host_id' do
-        post :play_roles, :id => 'non-existent'
+        post :play_roles, :params => { :id => 'non-existent' }
         response = JSON.parse(@response.body)
         refute_empty response
         assert_response :not_found
       end
 
       test 'should trigger task on host group' do
-        post :play_roles, :id => @host1.hostgroup.id
+        post :play_roles, :params => { :id => @host1.hostgroup.id }
         response = JSON.parse(@response.body)
 
         assert response['message']['foreman_tasks'].key?('id'),
@@ -40,7 +40,12 @@ module Api
 
       test 'should trigger two host group tasks' do
         post :multiple_play_roles,
-             :hostgroup_names => [@host1.hostgroup.name, @host2.hostgroup.name]
+             :params => {
+               :hostgroup_names => [
+                 @host1.hostgroup.name,
+                 @host2.hostgroup.name
+               ]
+             }
         response = JSON.parse(@response.body)
 
         assert response['message'].length == 2, 'should trigger two tasks'

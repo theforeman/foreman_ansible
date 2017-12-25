@@ -18,16 +18,19 @@ class HostsControllerExtensionsTest < ActionController::TestCase
       host = { :name => 'foo',
                :managed => false,
                :ansible_role_ids => [@role.id] }
-      post :create, { :host => host }, set_session_user
+      post :create, :params => { :host => host }, :session => set_session_user
       assert_redirected_to host_url(assigns('host'))
       assert assigns('host').ansible_roles, [@role]
     end
 
     test 'update a host with ansible roles' do
       host = FactoryBot.create(:host, :managed => false)
-      post :update, { :id => host.id,
-                      :host => { :ansible_role_ids => [@role.id] } },
-           set_session_user
+      post :update,
+           :params => {
+             :id => host.id,
+             :host => { :ansible_role_ids => [@role.id] }
+           },
+           :session => set_session_user
       assert_redirected_to host_url(assigns('host'))
       assert assigns('host').ansible_roles, [@role]
     end
@@ -37,7 +40,9 @@ class HostsControllerExtensionsTest < ActionController::TestCase
                                :managed => false,
                                :ansible_roles => [@role])
       assert_include @role.hosts, host
-      delete :destroy, { :id => host.id }, set_session_user
+      delete :destroy,
+             :params => { :id => host.id },
+             :session => set_session_user
       assert_redirected_to hosts_url
       assert @role.hosts.empty?
     end
@@ -54,13 +59,17 @@ class HostsControllerExtensionsTest < ActionController::TestCase
       task_stub.stubs(:to_model).returns(task_to_redirect)
       task_to_redirect.stubs(:persisted?).returns(true)
       task_to_redirect.stubs(:id).returns(1)
-      get :play_roles, { :id => @host.id }, set_session_user
+      get :play_roles,
+          :params => { :id => @host.id },
+          :session => set_session_user
     end
 
     test 'shows errors when not successful' do
       HostsController.any_instance.expects(:async_task).
         raises(::Foreman::Exception.new('Oh foo'))
-      get :play_roles, { :id => @host.id }, set_session_user
+      get :play_roles,
+          :params => { :id => @host.id },
+          :session => set_session_user
       assert flash[:error].present?
       assert_redirected_to host_path(@host)
     end
