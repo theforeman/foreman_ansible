@@ -85,6 +85,7 @@ class Setting
                   '3' => N_('Level 3 (-vvv)'),
                   '4' => N_('Level 4 (-vvvv)') }
               end
+              # rubocop:enable BlockLength
             ),
             set(
               'ansible_post_provision_timeout',
@@ -102,6 +103,8 @@ class Setting
         Setting::BLANK_ATTRS.push('ansible_ssh_private_key_file')
         true
       end
+      # rubocop:enable AbcSize
+      # rubocop:enable MethodLength
 
       def humanized_category
         N_('Ansible')
