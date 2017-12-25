@@ -9,14 +9,16 @@ module Api
       end
 
       test 'should get index' do
-        get :index, {}, set_session_user
+        get :index, :session => set_session_user
         response = JSON.parse(@response.body)
         refute_empty response['results']
         assert_response :success
       end
 
       test 'should destroy' do
-        delete :destroy, { :id => @role.id }, set_session_user
+        delete :destroy,
+               :params => { :id => @role.id },
+               :session => set_session_user
         assert_response :ok
         refute AnsibleRole.exists?(@role.id)
       end

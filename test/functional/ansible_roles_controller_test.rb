@@ -9,7 +9,9 @@ class AnsibleRolesControllerTest < ActionController::TestCase
 
   test 'should destroy role' do
     assert_difference('AnsibleRole.count', -1) do
-      delete :destroy, { :id => @role.id }, set_session_user
+      delete :destroy,
+             :params => { :id => @role.id },
+             :session => set_session_user
     end
     assert_redirected_to ansible_roles_url
   end
