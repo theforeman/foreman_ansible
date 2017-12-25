@@ -3,9 +3,26 @@ module ForemanAnsible
   module HostsHelperExtensions
     extend ActiveSupport::Concern
 
+    module Overrides
+      def host_title_actions(*args)
+        host = args.first
+        if ansible_roles_present?(host)
+          button = ansible_roles_button(host)
+          title_actions(button_group(button))
+        end
+        super(*args)
+      end
+
+      def multiple_actions_with_run_ansible_roles
+        super +
+          [[_('Play Ansible roles'),
+            multiple_play_roles_hosts_path,
+            false]]
+      end
+    end
+
     included do
-      alias_method_chain(:host_title_actions, :run_ansible_roles)
-      alias_method_chain(:multiple_actions, :run_ansible_roles)
+      prepend Overrides
     end
 
     def ansible_roles_present?(host)
@@ -21,22 +38,6 @@ module ForemanAnsible
         :class => 'btn btn-default',
         :'data-no-turbolink' => true
       )
-    end
-
-    def host_title_actions_with_run_ansible_roles(*args)
-      host = args.first
-      if ansible_roles_present?(host)
-        button = ansible_roles_button(host)
-        title_actions(button_group(button))
-      end
-      host_title_actions_without_run_ansible_roles(*args)
-    end
-
-    def multiple_actions_with_run_ansible_roles
-      multiple_actions_without_run_ansible_roles +
-        [[_('Play Ansible roles'),
-          multiple_play_roles_hosts_path,
-          false]]
     end
   end
 end
