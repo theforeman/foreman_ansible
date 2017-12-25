@@ -1,19 +1,15 @@
 inherit_from:
   - .rubocop_todo.yml
 
-AllCops:
-  TargetRubyVersion: 2.2
-
 Rails:
   Enabled: true
 
 AllCops:
-  TargetRubyVersion: 2.1
-  TargetRailsVersion: 4.2
+  TargetRubyVersion: 2.2
+  TargetRailsVersion: 5.1
   Exclude:
     - 'extras/**/*'
     - 'locale/**/*'
-    - 'test/**/*'
 
 # Just so it looks like core Foreman
 Style/HashSyntax:
