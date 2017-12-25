@@ -38,6 +38,7 @@ module ForemanAnsibleCore
       # rubocop:disable Rails/Present
       !verbosity_level.nil? && !verbosity_level.empty? &&
         verbosity_level.to_i > 0
+      # rubocop:enable Rails/Present
     end
   end
 end

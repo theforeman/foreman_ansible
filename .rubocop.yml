@@ -11,6 +11,10 @@ AllCops:
     - 'extras/**/*'
     - 'locale/**/*'
 
+Metrics/BlockLength:
+  Exclude:
+    - 'test/**/*' # context blocks can be long
+
 # Just so it looks like core Foreman
 Style/HashSyntax:
   EnforcedStyle: hash_rockets

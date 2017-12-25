@@ -46,6 +46,7 @@ module ForemanAnsible
             render_message @result
           end
         end
+        # rubocop:enable BlockLength
 
         private
 

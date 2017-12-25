@@ -104,6 +104,7 @@ module ForemanAnsible
           (facts[:version].split('R')[0] if os_name == 'junos')
       end
     end
+    # rubocop:enable AbcSize, CyclomaticComplexity, PerceivedComplexity
 
     def os_release
       facts[:ansible_distribution_version] ||

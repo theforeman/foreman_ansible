@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
             ['lib/foreman_ansible.rb', 'LICENSE', 'Rakefile', 'README.md']
   s.test_files = Dir['test/**/*']
 
-  s.add_development_dependency 'rubocop', '~> 0.42'
+  s.add_development_dependency 'rubocop', '~> 0.52'
   s.add_dependency 'deface', '< 2.0'
   s.add_dependency 'dynflow', '~> 0.8.14'
   s.add_dependency 'foreman-tasks', '~> 0.8'
