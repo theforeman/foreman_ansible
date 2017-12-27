@@ -23,8 +23,9 @@ module ForemanAnsible
 
       def play_roles
         find_resource
-        task = async_task(::Actions::ForemanAnsible::PlayHostRoles, @host)
-        redirect_to task
+        composer = job_composer(:ansible_run_host, @host)
+        composer.trigger
+        redirect_to job_invocation_path(composer.job_invocation)
       rescue Foreman::Exception => e
         error e.message
         redirect_to host_path(@host)
@@ -37,6 +38,17 @@ module ForemanAnsible
       rescue Foreman::Exception => e
         error e.message
         redirect_to hosts_path
+      end
+
+      private
+
+      def job_composer(feature_name, target)
+        composer = ::JobInvocationComposer.for_feature(feature_name, target)
+        return composer if composer.save
+        raise ::Foreman::Exception.new(
+          format(N_('Could not run Ansible roles for %{host}'),
+                 :host => @host)
+        )
       end
     end
   end

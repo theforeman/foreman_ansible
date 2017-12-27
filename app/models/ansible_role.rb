@@ -12,4 +12,9 @@ class AnsibleRole < ApplicationRecord
 
   scoped_search :on => :name, :complete_value => true
   scoped_search :on => :updated_at
+
+  # Methods to be allowed in any template with safemode enabled
+  class Jail < Safemode::Jail
+    allow :name
+  end
 end

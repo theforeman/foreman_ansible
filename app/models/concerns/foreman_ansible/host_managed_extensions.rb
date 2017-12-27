@@ -33,3 +33,12 @@ module ForemanAnsible
     end
   end
 end
+
+module Host
+  class Managed
+    # Methods to be allowed in any template with safemode enabled
+    class Jail < Safemode::Jail
+      allow :all_ansible_roles, :ansible_roles, :inherited_ansible_roles
+    end
+  end
+end
