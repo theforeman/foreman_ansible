@@ -54,33 +54,32 @@ class HostsControllerExtensionsTest < ActionController::TestCase
     end
 
     test 'redirect to task if successful' do
-      task_stub = new_task_stub(@host)
+      load File.join(ForemanAnsible::Engine.root,
+                     '/db/seeds.d/75_job_templates.rb')
+
       task_to_redirect = ForemanTasks::Task.new
-      task_stub.stubs(:to_model).returns(task_to_redirect)
       task_to_redirect.stubs(:persisted?).returns(true)
       task_to_redirect.stubs(:id).returns(1)
+      # We don't actually want to run the job, so trigger juts returns true
+      ::JobInvocationComposer.any_instance.expects(:trigger).returns(true)
       get :play_roles,
           :params => { :id => @host.id },
           :session => set_session_user
+      assert_response :redirect
+      assert_redirected_to(:controller => 'job_invocations',
+                           :action => 'show',
+                           :id => JobInvocation.last.id)
+      assert flash['error'].empty?
     end
 
     test 'shows errors when not successful' do
-      HostsController.any_instance.expects(:async_task).
+      HostsController.any_instance.expects(:job_composer).
         raises(::Foreman::Exception.new('Oh foo'))
       get :play_roles,
           :params => { :id => @host.id },
           :session => set_session_user
       assert flash[:error].present?
       assert_redirected_to host_path(@host)
-    end
-  end
-
-  private
-
-  def new_task_stub(host)
-    assert_async_task(::Actions::ForemanAnsible::PlayHostRoles,
-                      host) do |action_host|
-      assert_equal host, action_host
     end
   end
 end

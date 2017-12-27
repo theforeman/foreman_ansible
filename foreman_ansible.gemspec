@@ -20,4 +20,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'dynflow', '~> 0.8.14'
   s.add_dependency 'foreman-tasks', '~> 0.8'
   s.add_dependency 'foreman_ansible_core', '~> 1.0'
+  s.add_dependency 'foreman_remote_execution', '>= 1.4.2', '< 2.0'
 end
