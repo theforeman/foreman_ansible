@@ -8,6 +8,7 @@ module ForemanAnsible
 
       def play_roles
         find_resource
+        check_hostgroup
         composer = job_composer(:ansible_run_host, @hostgroup.hosts)
         composer.trigger
         redirect_to job_invocation_path(composer.job_invocation)
@@ -17,6 +18,13 @@ module ForemanAnsible
       end
 
       private
+
+      def check_hostgroup
+        return unless @hostgroup.hosts.empty?
+        raise ::Foreman::Exception.new(
+          N_('Host group has no associated hosts')
+        )
+      end
 
       def action_permission
         case params[:action]
