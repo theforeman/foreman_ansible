@@ -5,10 +5,10 @@ module ForemanAnsible
       module HostgroupsControllerExtensions
         extend ActiveSupport::Concern
         include ForemanTasks::Triggers
+        include ::ForemanAnsible::Concerns::JobInvocationHelper
 
         # Included blocks shouldn't be bound by length, as otherwise concerns
         # cannot extend the method properly.
-        # rubocop:disable BlockLength
         included do
           api :POST, '/hostgroups/:id/play_roles',
               N_('Plays Ansible roles on a hostgroup')
@@ -16,14 +16,8 @@ module ForemanAnsible
 
           def play_roles
             find_resource
-
-            @result = {
-              :hostgroup => @hostgroup, :foreman_tasks => async_task(
-                ::Actions::ForemanAnsible::PlayHostgroupRoles, @hostgroup
-              )
-            }
-
-            render_message @result
+            composer = job_composer(:ansible_run_host, @hostgroup.hosts)
+            process_response composer.trigger!, composer.job_invocation
           end
 
           api :POST, '/hostgroups/play_roles',
@@ -32,21 +26,11 @@ module ForemanAnsible
 
           def multiple_play_roles
             find_multiple
-
-            @result = []
-
-            @hostgroups.uniq.each do |hostgroup|
-              @result.append(
-                :hostgroup => hostgroup, :foreman_tasks => async_task(
-                  ::Actions::ForemanAnsible::PlayHostgroupRoles, hostgroup
-                )
-              )
-            end
-
-            render_message @result
+            composer = job_composer(:ansible_run_host,
+                                    @hostgroups.map(&:hosts).flatten.uniq)
+            process_response composer.trigger!, composer.job_invocation
           end
         end
-        # rubocop:enable BlockLength
 
         private
 

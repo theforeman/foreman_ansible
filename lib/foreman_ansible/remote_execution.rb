@@ -8,6 +8,9 @@ module ForemanAnsible
         :Ansible,
         ForemanAnsible::AnsibleProvider
       )
+    end
+
+    def self.register_rex_feature
       RemoteExecutionFeature.register(
         :ansible_run_host,
         N_('Ansible: Run host roles'),

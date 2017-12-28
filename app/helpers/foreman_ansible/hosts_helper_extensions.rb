@@ -13,7 +13,7 @@ module ForemanAnsible
         super(*args)
       end
 
-      def multiple_actions_with_run_ansible_roles
+      def multiple_actions
         super +
           [[_('Play Ansible roles'),
             multiple_play_roles_hosts_path,

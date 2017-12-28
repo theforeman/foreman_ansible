@@ -1,12 +1,9 @@
 require 'test_plugin_helper'
 require 'dynflow/testing'
 Mocha::Mock.send :include, Dynflow::Testing::Mimic
-require 'support/foreman_tasks/task'
 
 # Ensure Hosts controller can CRUD ansible roles
 class HostsControllerExtensionsTest < ActionController::TestCase
-  include Support::ForemanTasks::Task
-
   tests ::HostsController
 
   context 'role assignment' do

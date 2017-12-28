@@ -4,6 +4,7 @@ module ForemanAnsible
     module HostsControllerExtensions
       extend ActiveSupport::Concern
       include ForemanTasks::Triggers
+      include JobInvocationHelper
 
       # Overrides to methods in the original hosts controller
       module Overrides
@@ -33,22 +34,12 @@ module ForemanAnsible
 
       def multiple_play_roles
         find_multiple
-        task = async_task(::Actions::ForemanAnsible::PlayHostsRoles, @hosts)
-        redirect_to task
+        composer = job_composer(:ansible_run_host, @hosts)
+        composer.trigger
+        redirect_to job_invocation_path(@composer.job_invocation)
       rescue Foreman::Exception => e
         error e.message
         redirect_to hosts_path
-      end
-
-      private
-
-      def job_composer(feature_name, target)
-        composer = ::JobInvocationComposer.for_feature(feature_name, target)
-        return composer if composer.save
-        raise ::Foreman::Exception.new(
-          format(N_('Could not run Ansible roles for %{host}'),
-                 :host => @host)
-        )
       end
     end
   end
