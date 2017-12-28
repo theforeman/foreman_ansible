@@ -4,18 +4,9 @@ module Api
   module V2
     # Tests for the extra methods to play roles on a Host
     class HostsControllerTest < ActionController::TestCase
-      include ::Dynflow::Testing
-
       setup do
         @host1 = FactoryBot.create(:host)
         @host2 = FactoryBot.create(:host)
-      end
-
-      after do
-        ::ForemanTasks::Task::DynflowTask.all.each do |task|
-          task.destroy
-          task.delete
-        end
       end
 
       test 'should return an not_found due to non-existent host_id' do
@@ -26,23 +17,24 @@ module Api
       end
 
       test 'should trigger task on host' do
-        post :play_roles, :params => { :id => @host1.id }
+        load File.join(ForemanAnsible::Engine.root,
+                       '/db/seeds.d/75_job_templates.rb')
+        ::JobInvocationComposer.any_instance.expects(:trigger!).returns(true)
+        targets = @host1.id
+        post :play_roles, :params => { :id => targets }
         response = JSON.parse(@response.body)
-
-        assert response['message']['foreman_tasks'].key?('id'),
-               'task id not contained in response'
-        assert_equal response['message']['host']['name'],
-                     @host1.name,
-                     'host name not contained in response'
-        assert_response :success
+        assert_job_invocation_is_ok(response, targets)
       end
 
       test 'should trigger two host tasks' do
-        post :multiple_play_roles, :params => { :id => [@host1.id, @host2.id] }
-        response = JSON.parse(@response.body)
+        load File.join(ForemanAnsible::Engine.root,
+                       '/db/seeds.d/75_job_templates.rb')
+        ::JobInvocationComposer.any_instance.expects(:trigger!).returns(true)
+        targets = [@host1.id, @host2.id]
 
-        assert response['message'].length == 2, 'should trigger two tasks'
-        assert_response :success
+        post :multiple_play_roles, :params => { :id => targets }
+        response = JSON.parse(@response.body)
+        assert_job_invocation_is_ok(response, targets)
       end
     end
   end

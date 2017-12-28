@@ -4,14 +4,13 @@ module ForemanAnsible
     module HostgroupsControllerExtensions
       extend ActiveSupport::Concern
       include ForemanTasks::Triggers
+      include ::ForemanAnsible::Concerns::JobInvocationHelper
 
       def play_roles
         find_resource
-        task = async_task(
-          ::Actions::ForemanAnsible::PlayHostgroupRoles,
-          @hostgroup
-        )
-        redirect_to task
+        composer = job_composer(:ansible_run_host, @hostgroup.hosts)
+        composer.trigger
+        redirect_to job_invocation_path(composer.job_invocation)
       rescue Foreman::Exception => e
         error e.message
         redirect_to hostgroups_path

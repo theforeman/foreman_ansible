@@ -5,18 +5,9 @@ module Api
   module V2
     # Tests for the extra methods to play roles on Hostgroup
     class HostgroupsControllerTest < ActionController::TestCase
-      include ::Dynflow::Testing
-
       setup do
         @host1 = FactoryBot.create(:host, :with_hostgroup)
         @host2 = FactoryBot.create(:host, :with_hostgroup)
-      end
-
-      after do
-        ::ForemanTasks::Task::DynflowTask.all.each do |task|
-          task.destroy
-          task.delete
-        end
       end
 
       test 'should return an not_found due to non-existent host_id' do
@@ -27,29 +18,25 @@ module Api
       end
 
       test 'should trigger task on host group' do
-        post :play_roles, :params => { :id => @host1.hostgroup.id }
+        load File.join(ForemanAnsible::Engine.root,
+                       '/db/seeds.d/75_job_templates.rb')
+        ::JobInvocationComposer.any_instance.expects(:trigger!).returns(true)
+        target = @host1
+        post :play_roles, :params => { :id => target.hostgroup.id }
         response = JSON.parse(@response.body)
-
-        assert response['message']['foreman_tasks'].key?('id'),
-               'task id not contained in response'
-        assert_equal response['message']['hostgroup']['name'],
-                     @host1.hostgroup.name,
-                     'host group name not contained in response'
-        assert_response :success
+        assert_job_invocation_is_ok(response, target.id)
       end
 
       test 'should trigger two host group tasks' do
-        post :multiple_play_roles,
-             :params => {
-               :hostgroup_names => [
-                 @host1.hostgroup.name,
-                 @host2.hostgroup.name
-               ]
-             }
+        load File.join(ForemanAnsible::Engine.root,
+                       '/db/seeds.d/75_job_templates.rb')
+        ::JobInvocationComposer.any_instance.expects(:trigger!).returns(true)
+        target = [@host1, @host2]
+        post :multiple_play_roles, :params => {
+          :hostgroup_ids => target.map(&:hostgroup_id)
+        }
         response = JSON.parse(@response.body)
-
-        assert response['message'].length == 2, 'should trigger two tasks'
-        assert_response :success
+        assert_job_invocation_is_ok(response, target.map(&:id))
       end
     end
   end

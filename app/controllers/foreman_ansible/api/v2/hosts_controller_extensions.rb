@@ -5,6 +5,7 @@ module ForemanAnsible
       module HostsControllerExtensions
         extend ActiveSupport::Concern
         include ForemanTasks::Triggers
+        include ::ForemanAnsible::Concerns::JobInvocationHelper
 
         included do
           api :POST, '/hosts/:id/play_roles',
@@ -12,30 +13,16 @@ module ForemanAnsible
           param :id, String, :required => true
 
           def play_roles
-            @result = {
-              :host => @host, :foreman_tasks => async_task(
-                ::Actions::ForemanAnsible::PlayHostRoles, @host
-              )
-            }
-
-            render_message @result
+            composer = job_composer(:ansible_run_host, @host)
+            process_response composer.trigger!, composer.job_invocation
           end
 
           api :POST, '/hosts/play_roles', N_('Plays Ansible roles on hosts')
           param :id, Array, :required => true
 
           def multiple_play_roles
-            @result = []
-
-            @host.each do |item|
-              @result.append(
-                :host => item, :foreman_tasks => async_task(
-                  ::Actions::ForemanAnsible::PlayHostRoles, item
-                )
-              )
-            end
-
-            render_message @result
+            composer = job_composer(:ansible_run_host, @host)
+            process_response composer.trigger!, composer.job_invocation
           end
         end
 

@@ -6,7 +6,6 @@ require 'foreman_ansible/remote_execution'
 
 module ForemanAnsible
   # This engine connects ForemanAnsible with Foreman core
-  # rubocop:disable ClassLength
   class Engine < ::Rails::Engine
     engine_name 'foreman_ansible'
 
@@ -32,60 +31,9 @@ module ForemanAnsible
       Foreman::Gettext::Support.add_text_domain locale_domain, locale_dir
     end
 
-    # rubocop:disable BlockLength
     initializer 'foreman_ansible.register_plugin', :before => :finisher_hook do
-      Foreman::Plugin.register :foreman_ansible do
-        requires_foreman '>= 1.15'
-
-        security_block :foreman_ansible do
-          permission :play_roles_on_host,
-                     { :hosts => [:play_roles, :multiple_play_roles],
-                       :'api/v2/hosts' => [:play_roles,
-                                           :multiple_play_roles] },
-                     :resource_type => 'Host'
-          permission :play_roles_on_hostgroup,
-                     { :hostgroups => [:play_roles],
-                       :'api/v2/hostgroups' => [:play_roles,
-                                                :multiple_play_roles] },
-                     :resource_type => 'Hostgroup'
-          permission :view_ansible_roles,
-                     { :ansible_roles => [:index],
-                       :'api/v2/ansible_roles' => [:index, :show] },
-                     :resource_type => 'AnsibleRole'
-          permission :destroy_ansible_roles,
-                     { :ansible_roles => [:destroy],
-                       :'api/v2/ansible_roles' => [:destroy, :obsolete] },
-                     :resource_type => 'AnsibleRole'
-          permission :import_ansible_roles,
-                     { :ansible_roles => [:import, :confirm_import],
-                       :'api/v2/ansible_roles' => [:import] },
-                     :resource_type => 'AnsibleRole'
-        end
-
-        role 'Ansible Roles Manager',
-             [:play_roles_on_host, :play_roles_on_hostgroup,
-              :view_ansible_roles, :destroy_ansible_roles,
-              :import_ansible_roles]
-
-        add_all_permissions_to_default_roles
-
-        role_assignment_params = { :ansible_role_ids => [],
-                                   :ansible_roles => [] }
-        parameter_filter Host::Managed, role_assignment_params
-        parameter_filter Hostgroup, role_assignment_params
-
-        divider :top_menu, :caption => N_('Ansible'), :parent => :configure_menu
-        menu :top_menu, :ansible_roles,
-             :caption => N_('Roles'),
-             :url_hash => { :controller => :ansible_roles, :action => :index },
-             :parent => :configure_menu
-
-        apipie_documented_controllers [
-          "#{ForemanAnsible::Engine.root}/app/controllers/api/v2/*.rb"
-        ]
-      end
+      require 'foreman_ansible/register'
     end
-    # rubocop:enable BlockLength
 
     initializer('foreman_ansible.require_dynflow',
                 :before => 'foreman_tasks.initialize_dynflow') do
@@ -154,6 +102,11 @@ module ForemanAnsible
       end
     end
     # rubocop:enable BlockLength
+
+    rake_tasks do
+      Rake::Task['db:seed'].enhance do
+        ForemanAnsible::Engine.load_seed
+      end
+    end
   end
-  # rubocop:enable ClassLength
 end
