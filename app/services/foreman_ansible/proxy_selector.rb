@@ -3,6 +3,7 @@ module ForemanAnsible
   class ProxySelector < ::ForemanTasks::ProxySelector
     def available_proxies(host)
       proxies = {}
+      proxies[:subnet] = host.execution_interface.subnet.remote_execution_proxies.with_features(provider) if execution_interface && execution_interface.subnet
       proxies[:fallback] = host.smart_proxies.with_features('Ansible')
       proxies[:global] = proxy_scope(host).authorized.with_features('Ansible')
       proxies
