@@ -17,6 +17,13 @@ module ForemanAnsible
         :description => N_('Runs an Ansible playbook which contains all'\
                            ' the roles defined for a host')
       )
+      RemoteExecutionFeature.register(
+        :ansible_run_insights_plan,
+        N_('Ansible: Run Insights maintenance plan'),
+        :description => N_('Runs a given maintenance plan from Red Hat '\
+                           'Access Insights given an ID.'),
+        :provided_inputs => %w[organization_id plan_id]
+      )
     end
   end
 end
