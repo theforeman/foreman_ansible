@@ -33,6 +33,8 @@ Foreman::Plugin.register :foreman_ansible do
         :import_ansible_roles]
 
   add_all_permissions_to_default_roles
+  extend_template_helpers ForemanAnsible::RendererMethods
+  allowed_template_helpers :insights_remediation
 
   role_assignment_params = { :ansible_role_ids => [],
                              :ansible_roles => [] }
