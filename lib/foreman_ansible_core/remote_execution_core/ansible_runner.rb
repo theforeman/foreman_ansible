@@ -1,6 +1,7 @@
 if defined? ::ForemanRemoteExecutionCore
   module ForemanAnsibleCore
     module RemoteExecutionCore
+      # Takes an inventory and runs it through REXCore CommandRunner
       class AnsibleRunner < ::ForemanTasksCore::Runner::CommandRunner
         DEFAULT_REFRESH_INTERVAL = 1
 
@@ -15,8 +16,11 @@ if defined? ::ForemanRemoteExecutionCore
 
         def start
           @playbook_runner.start
-        rescue => e
-          logger.error("error while initalizing command #{e.class} #{e.message}:\n #{e.backtrace.join("\n")}")
+        rescue StandardError => e
+          logger.error(
+            'error while initalizing command'\
+            " #{e.class} #{e.message}:\n #{e.backtrace.join("\n")}"
+          )
           publish_exception('Error initializing command', e)
         end
 

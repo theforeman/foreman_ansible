@@ -1,5 +1,7 @@
 module ForemanAnsibleCore
   module RemoteExecutionCore
+    # Ensure the Ansible provider is used whenever a JobTemplate using this
+    # provider is called.
     module SettingsOverride
       def initiate_runner
         return super unless input['ansible_inventory']
