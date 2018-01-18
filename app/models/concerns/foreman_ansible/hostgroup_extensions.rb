@@ -14,6 +14,10 @@ module ForemanAnsible
           roles + hostgroup.ansible_roles
         end.uniq
       end
+
+      def host_ansible_roles
+        hosts.all.includes(:ansible_roles).flat_map(&:ansible_roles)
+      end
     end
   end
 end
