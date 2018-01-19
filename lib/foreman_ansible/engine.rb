@@ -109,4 +109,5 @@ module ForemanAnsible
       end
     end
   end
+  # rubocop:enable ClassLength
 end
