@@ -1,11 +1,15 @@
 require 'test_helper'
 require 'facets'
 
+def ansible_fixture_file(filename)
+  File.join(
+    ForemanAnsible::Engine.root, 'test', 'fixtures', filename
+  )
+end
+
 def sample_facts_file
   File.read(
-    File.join(
-      ForemanAnsible::Engine.root, 'test', 'fixtures', 'sample_facts.json'
-    )
+    ansible_fixture_file('sample_facts.json')
   )
 end
 

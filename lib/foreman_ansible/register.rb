@@ -48,5 +48,10 @@ Foreman::Plugin.register :foreman_ansible do
   apipie_documented_controllers [
     "#{ForemanAnsible::Engine.root}/app/controllers/api/v2/*.rb"
   ]
+
+  # For backwards compatiblity with 1.17
+  if respond_to?(:register_report_scanner)
+    register_report_scanner ForemanAnsible::AnsibleReportScanner
+  end
 end
 # rubocop:enable BlockLength

@@ -1,0 +1,26 @@
+{
+  "reported_at":"2018-01-15 17:31:36 521275",
+  "metrics": {
+    "time":
+      { "total":37 }
+  },
+  "host": "io.local",
+  "status": {
+    "applied": 0,
+    "failed": 0,
+    "skipped": 0
+  },
+  "logs": [
+    {
+      "log": {
+        "sources": {
+          "source": "common : Install Common packages"
+        },
+        "messages": {
+          "message": "{\"msg\": \"All items completed\", \"changed\": false, \"results\": [{\"_ansible_parsed\": true, \"changed\": false, \"_ansible_no_log\": false, \"cache_updated\": false, \"_ansible_item_result\": true, \"failed\": false, \"item\": \"git\", \"invocation\": {\"module_args\": {\"dpkg_options\": \"force-confdef,force-confold\", \"upgrade\": null, \"force\": false, \"force_apt_get\": false, \"package\": [\"git\"], \"autoclean\": false, \"name\": \"git\", \"purge\": false, \"allow_unauthenticated\": false, \"state\": \"present\", \"autoremove\": false, \"update_cache\": null, \"default_release\": null, \"only_upgrade\": false, \"cache_valid_time\": 0, \"deb\": null, \"install_recommends\": null}}, \"_ansible_ignore_errors\": null, \"cache_update_time\": 1515797094}, {\"_ansible_parsed\": true, \"changed\": false, \"_ansible_no_log\": false, \"cache_updated\": false, \"_ansible_item_result\": true, \"failed\": false, \"item\": \"htop\", \"invocation\": {\"module_args\": {\"dpkg_options\": \"force-confdef,force-confold\", \"upgrade\": null, \"force\": false, \"force_apt_get\": false, \"package\": [\"htop\"], \"autoclean\": false, \"name\": \"htop\", \"purge\": false, \"allow_unauthenticated\": false, \"state\": \"present\", \"autoremove\": false, \"update_cache\": null, \"default_release\": null, \"only_upgrade\": false, \"cache_valid_time\": 0, \"deb\": null, \"install_recommends\": null}}, \"_ansible_ignore_errors\": null, \"cache_update_time\": 1515797094}, {\"_ansible_parsed\": true, \"changed\": false, \"_ansible_no_log\": false, \"cache_updated\": false, \"_ansible_item_result\": true, \"failed\": false, \"item\": \"zsh\", \"invocation\": {\"module_args\": {\"dpkg_options\": \"force-confdef,force-confold\", \"upgrade\": null, \"force\": false, \"force_apt_get\": false, \"package\": [\"zsh\"], \"autoclean\": false, \"name\": \"zsh\", \"purge\": false, \"allow_unauthenticated\": false, \"state\": \"present\", \"autoremove\": false, \"update_cache\": null, \"default_release\": null, \"only_upgrade\": false, \"cache_valid_time\": 0, \"deb\": null, \"install_recommends\": null}}, \"_ansible_ignore_errors\": null, \"cache_update_time\": 1515797094}]}"},"level":"info"}},{"log":{"sources":{"source":"common : Copy default motd"},"messages":{"message":"{\"_ansible_parsed\": true, \"group\": \"root\", \"uid\": 0, \"checksum\": \"0a381ff6a86081af6dc957a77c7e2017a3244c4c\", \"changed\": false, \"owner\": \"root\", \"state\": \"file\", \"gid\": 0, \"mode\": \"0644\", \"diff\": {\"after\": {\"path\": \"/etc/motd\"}, \"before\": {\"path\": \"/etc/motd\"}}, \"invocation\": {\"module_args\": {\"directory_mode\": null, \"force\": false, \"remote_src\": null, \"path\": \"/etc/motd\", \"owner\": \"root\", \"follow\": false, \"group\": \"root\", \"unsafe_writes\": null, \"state\": \"file\", \"content\": null, \"serole\": null, \"diff_peek\": null, \"setype\": null, \"dest\": \"/etc/motd\", \"selevel\": null, \"original_basename\": \"motd.txt\", \"regexp\": null, \"validate\": null, \"src\": \"motd.txt\", \"seuser\": null, \"recurse\": false, \"delimiter\": null, \"mode\": null, \"attributes\": null, \"backup\": null}}, \"path\": \"/etc/motd\", \"size\": 1090, \"_ansible_no_log\": false}"
+        },
+        "level": "info"
+      }
+    }
+  ]
+}
