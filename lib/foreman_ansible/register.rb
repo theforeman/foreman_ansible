@@ -54,6 +54,7 @@ Foreman::Plugin.register :foreman_ansible do
   # For backwards compatiblity with 1.17
   if respond_to?(:register_report_scanner)
     register_report_scanner ForemanAnsible::AnsibleReportScanner
+    register_report_origin 'Ansible', 'ConfigReport'
   end
 end
 # rubocop:enable BlockLength
