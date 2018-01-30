@@ -72,6 +72,12 @@ class Setting
                  'foreman_params["host_parameter"] in the playbooks.'),
               true,
               N_('Top level Ansible variables')
+            ),
+	    set(
+              'ansible_interval',
+              N_('Timeout (in minutes) when hosts should have reported.'),
+              '30',
+              N_('Ansible report timeout')
             )
           ].compact.each do |s|
             create(s.update(:category => 'Setting::Ansible'))
