@@ -36,7 +36,7 @@ module ForemanAnsible
         find_multiple
         composer = job_composer(:ansible_run_host, @hosts)
         composer.trigger
-        redirect_to job_invocation_path(@composer.job_invocation)
+        redirect_to job_invocation_path(composer.job_invocation)
       rescue Foreman::Exception => e
         error e.message
         redirect_to hosts_path
