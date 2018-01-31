@@ -16,13 +16,13 @@ module ForemanAnsible
     # more advanced cases). Therefore we have only the 'all' group
     # with all hosts.
     def to_hash
-      { 'all' => { 'hosts' => hosts.map(&:fqdn) },
+      { 'all' => { 'hosts' => hosts.map { |h| RemoteExecutionProvider.find_ip_or_hostname(h) } },
         '_meta' => { 'hostvars' => hosts_vars } }
     end
 
     def hosts_vars
       hosts.reduce({}) do |hash, host|
-        hash.update(host.fqdn => host_vars(host))
+        hash.update(RemoteExecutionProvider.find_ip_or_hostname(host) => host_vars(host))
       end
     end
 
