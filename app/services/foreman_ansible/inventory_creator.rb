@@ -16,7 +16,7 @@ module ForemanAnsible
     # more advanced cases). Therefore we have only the 'all' group
     # with all hosts.
     def to_hash
-      hosts = hosts.map do |h|
+      hosts = @hosts.map do |h|
         RemoteExecutionProvider.find_ip_or_hostname(h)
       end
       { 'all' => { 'hosts' => hosts },
