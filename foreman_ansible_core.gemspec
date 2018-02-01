@@ -19,4 +19,5 @@ DESC
 
   s.add_development_dependency 'rubocop', '~> 0.52'
   s.add_dependency 'foreman-tasks-core', '~> 0.1'
+  s.add_dependency 'foreman_remote_execution_core', '~> 1.1'
 end
