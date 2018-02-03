@@ -16,7 +16,7 @@ module ForemanAnsible
         'ansible_user' => 'someone'
       }
       @host.expects(:host_params).returns(extra_options).at_least_once
-      inventory = ForemanAnsible::InventoryCreator.new(@host)
+      inventory = ForemanAnsible::InventoryCreator.new(@host, nil)
 
       assert_empty extra_options.to_a - inventory.connection_params(@host).to_a
     end
@@ -35,7 +35,7 @@ module ForemanAnsible
       Setting.expects(:[]).with('ansible_connection').
         returns('ssh').at_least_once
       @host.expects(:host_params).returns(extra_options).at_least_once
-      inventory = ForemanAnsible::InventoryCreator.new(@host)
+      inventory = ForemanAnsible::InventoryCreator.new(@host, nil)
       connection_params = inventory.connection_params(@host)
       assert_empty extra_options.to_a - inventory.connection_params(@host).to_a
       assert_equal Setting['ansible_connection'],
@@ -44,6 +44,32 @@ module ForemanAnsible
                    connection_params['ansible_ssh_pass']
       assert_equal Setting['ansible_winrm_server_cert_validation'],
                    connection_params['ansible_winrm_server_cert_validation']
+    end
+
+    test 'template invocation inputs are sent as Ansible variables' do
+      job_template = FactoryBot.build(
+        :job_template,
+        :template => 'service restart {{service_name}}'
+      )
+      job_invocation = FactoryBot.create(:job_invocation)
+      job_template.template_inputs << FactoryBot.build(:template_input,
+                                                       :name => 'service_name',
+                                                       :input_type => 'user',
+                                                       :required => true)
+      template_invocation = FactoryBot.build(:template_invocation,
+                                             :template => job_template,
+                                             :job_invocation => job_invocation)
+      input_value = FactoryBot.create(
+        :template_invocation_input_value,
+        :template_invocation => template_invocation,
+        :template_input => job_template.template_inputs.first,
+        :value => 'foreman'
+      )
+      template_invocation.input_values << input_value
+      inventory = ForemanAnsible::InventoryCreator.new([@host],
+                                                       template_invocation)
+      assert_equal({ 'service_name' => 'foreman' },
+                   inventory.to_hash['all']['vars'])
     end
   end
 end

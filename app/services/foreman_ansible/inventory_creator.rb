@@ -4,8 +4,9 @@ module ForemanAnsible
   class InventoryCreator
     attr_reader :hosts
 
-    def initialize(hosts)
+    def initialize(hosts, template_invocation)
       @hosts = hosts
+      @template_invocation = template_invocation
     end
 
     # It returns a hash in a format that Ansible understands.
@@ -19,7 +20,8 @@ module ForemanAnsible
       hosts = @hosts.map do |h|
         RemoteExecutionProvider.find_ip_or_hostname(h)
       end
-      { 'all' => { 'hosts' => hosts },
+      { 'all' => { 'hosts' => hosts,
+                   'vars'  => template_inputs(@template_invocation) },
         '_meta' => { 'hostvars' => hosts_vars } }
     end
 
@@ -73,6 +75,14 @@ module ForemanAnsible
       host.host_params.select do |key, _|
         /ansible_/.match(key) || Setting[key]
       end
+    end
+
+    def template_inputs(template_invocation)
+      input_values = template_invocation.input_values
+      result = input_values.each_with_object({}) do |input, vars_hash|
+        vars_hash[input.template_input.name] = input.value
+      end
+      result
     end
 
     private
