@@ -18,8 +18,9 @@ if defined? ForemanRemoteExecution
 
         def proxy_command_options(template_invocation, host)
           super(template_invocation, host).merge(
-            'ansible_inventory' =>
-              ::ForemanAnsible::InventoryCreator.new([host]).to_hash.to_json
+            'ansible_inventory' => ::ForemanAnsible::InventoryCreator.new(
+              [host], template_invocation
+            ).to_hash.to_json
           )
         end
       end

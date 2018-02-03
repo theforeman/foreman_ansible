@@ -25,7 +25,6 @@ module ForemanAnsible
       @host.expects(:host_params).returns(extra_options).at_least_once
       inventory = ForemanAnsible::InventoryCreator.new(@host,
                                                        @template_invocation)
-
       assert_empty extra_options.to_a - inventory.connection_params(@host).to_a
     end
 
