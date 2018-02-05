@@ -1,5 +1,6 @@
 class Setting
   # Provide settings related with Ansible
+  # rubocop:disable ClassLength
   class Ansible < ::Setting
     class << self
       # It would be more disadvantages than advantages to split up
@@ -95,6 +96,16 @@ class Setting
                  ' it is ready after a reboot.'),
               '360',
               N_('Post-provision timeout')
+            ),
+            set(
+              'top_level_ansible_vars',
+              N_('Whether to put Ansible parameters in the "hostvars" '\
+                 'top-level key of the inventory. By default it is true, so '\
+                 'that Host Parameters can be used directly in the playbooks.'\
+                 'When false, Host Parameters can only be accessed through'\
+                 'foreman_params["host_parameter"] in the playbooks.'),
+              true,
+              N_('Top level Ansible variables')
             )
           ].compact.each do |s|
             create(s.update(:category => 'Setting::Ansible'))
@@ -111,4 +122,5 @@ class Setting
       end
     end
   end
+  # rubocop:enable ClassLength
 end

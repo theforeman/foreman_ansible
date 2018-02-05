@@ -20,6 +20,7 @@ module ForemanAnsible
       hosts = @hosts.map do |h|
         RemoteExecutionProvider.find_ip_or_hostname(h)
       end
+
       { 'all' => { 'hosts' => hosts,
                    'vars'  => template_inputs(@template_invocation) },
         '_meta' => { 'hostvars' => hosts_vars } }
@@ -34,11 +35,15 @@ module ForemanAnsible
     end
 
     def host_vars(host)
-      {
+      result = {
         'foreman' => host_attributes(host),
         'foreman_params' => host_params(host),
         'foreman_ansible_roles' => host_roles(host)
       }.merge(connection_params(host))
+      if Setting['top_level_ansible_vars']
+        result = result.merge(host_params(host))
+      end
+      result
     end
 
     def connection_params(host)

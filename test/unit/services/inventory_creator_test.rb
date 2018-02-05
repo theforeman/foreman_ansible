@@ -71,5 +71,33 @@ module ForemanAnsible
       assert_equal({ 'service_name' => 'foreman' },
                    inventory.to_hash['all']['vars'])
     end
+
+    context 'top-level parameters sent as variables' do
+      setup do
+        # Fetching the Host parameters requires this Setting, since
+        # this plugin does not provide fixtures
+        Setting.create(:name => 'top_level_ansible_vars',
+                       :description => 'sample description',
+                       :default => true)
+        @template_invocation = OpenStruct.new(:input_values => [])
+      end
+
+      test 'parameters are passed as top-level "hostvars" by default' do
+        @host.expects(:host_params).returns('hello' => 'foreman').at_least_once
+        inventory = ForemanAnsible::InventoryCreator.new([@host],
+                                                         @template_invocation)
+        hostvar = inventory.to_hash['_meta']['hostvars'][@host.name]['hello']
+        assert_equal 'foreman', hostvar
+      end
+
+      test 'parameters NOT passed as top-level "hostvars" if false' do
+        Setting['top_level_ansible_vars'] = false
+        @host.expects(:host_params).returns('hello' => 'foreman').at_least_once
+        inventory = ForemanAnsible::InventoryCreator.new([@host],
+                                                         @template_invocation)
+        hostvar = inventory.to_hash['_meta']['hostvars'][@host.name]['hello']
+        refute_equal 'foreman', hostvar
+      end
+    end
   end
 end
