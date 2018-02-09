@@ -1,0 +1,61 @@
+<%#
+name: Service Action - Ansible Default
+job_category: Ansible Service
+description_format: "%{state} service %{name}"
+snippet: false
+template_inputs:
+- name: state
+  required: true
+  input_type: user
+  description: started/stopped are idempotent actions that will not run commands unless
+    necessary. restarted will always bounce the service. reloaded will always reload.
+    At least one of state and enabled are required. Note that reloaded will start
+    the service if it is not already started, even if your chosen init system wouldn't
+    normally.
+  options: "started\r\nstopped\r\nrestarted\r\nreloaded"
+  advanced: false
+- name: name
+  required: true
+  input_type: user
+  description: Name of the service.
+  advanced: false
+- name: pattern
+  required: false
+  input_type: user
+  description: If the service does not respond to the status command, name a substring
+    to look for as would be found in the output of the ps command as a stand-in for
+    a status result. If the string is found, the service will be assumed to be running.
+  advanced: true
+- name: sleep
+  required: false
+  input_type: user
+  description: If the service is being restarted then sleep this many seconds between
+    the stop and start command. This helps to workaround badly behaving init scripts
+    that exit immediately after signaling a process to stop.
+  advanced: true
+- name: enabled
+  required: false
+  input_type: user
+  description: Whether the service should start on boot.
+  advanced: true
+- name: args
+  required: false
+  input_type: user
+  description: Additional arguments provided on the command line
+  advanced: true
+provider_type: Ansible
+kind: job_template
+model: JobTemplate
+%>
+
+# For Windows targets, we should use win_service
+---
+- hosts: all
+  tasks:
+  - service:
+      name: "{{ name }}"
+      state: "{{ state }}"
+      <% if input('enabled').present? %>enabled: "{{ enabled }}"<% end %>
+      <% if input('args').present? %>args: "{{ args }}"<% end %>
+      <% if input('pattern').present? %>pattern: "{{ pattern }}"<% end %>
+      <% if input('sleep').present? %>sleep: "{{ sleep }}"<% end %>

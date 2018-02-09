@@ -1,0 +1,21 @@
+<%#
+name: Run Command - Ansible Default
+job_category: Ansible Commands
+description_format: Run %{command}
+snippet: false
+template_inputs:
+- name: command
+  required: true
+  input_type: user
+  description: Command to run on the host
+  advanced: false
+provider_type: Ansible
+kind: job_template
+model: JobTemplate
+%>
+
+---
+- hosts: all
+  tasks:
+    - command: "{{ command }}"
+    - debug: msg="Running {{ command }}"

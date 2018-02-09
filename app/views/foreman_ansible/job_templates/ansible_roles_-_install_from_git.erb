@@ -1,0 +1,29 @@
+<%#
+name: Ansible Roles - Install from git
+job_category: Ansible Roles Installation
+description_format: Clone roles from git repositories to %{location}
+snippet: false
+template_inputs:
+- name: location
+  required: true
+  input_type: user
+  description: By default, '/etc/ansible/roles' . Look at '/etc/ansible/ansible.cfg'
+    roles_path option to find where exactly it is.
+  advanced: false
+- name: git_repositories_list
+  required: true
+  input_type: user
+  description: "URLs to the git repositories containing the roles, separated by line
+    breaks, e.g:\r\n\r\nhttps://github.com/theforeman/foreman_role_1\r\nhttps://github.com/theforeman/foreman_role_2"
+  advanced: false
+provider_type: Ansible
+kind: job_template
+model: JobTemplate
+%>
+
+---
+- hosts: all
+  tasks:
+    - command: git clone {{ item }} {{ location }}
+      with_items:
+        - "{{ git_repositories }}"

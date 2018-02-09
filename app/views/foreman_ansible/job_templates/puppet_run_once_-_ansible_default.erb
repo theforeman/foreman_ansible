@@ -1,0 +1,21 @@
+<%#
+name: Puppet Run Once - Ansible Default
+job_category: Puppet
+description_format: "%{action} host"
+snippet: false
+template_inputs:
+- name: puppet_options
+  required: false
+  input_type: user
+  options: Additional options to pass to Puppet
+  advanced: false
+provider_type: Ansible
+kind: job_template
+model: JobTemplate
+%>
+
+---
+- hosts: all
+  tasks:
+    - command: |
+        puppet agent --onetime --no-usecacheonfailure --no-daemonize <%= input("puppet_options") %>
