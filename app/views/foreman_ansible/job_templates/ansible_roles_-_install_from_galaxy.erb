@@ -1,0 +1,23 @@
+<%#
+name: Ansible Roles - Install from Galaxy
+job_category: Ansible Galaxy
+description_format: Install roles %{ansible_roles_list} from Galaxy
+snippet: false
+template_inputs:
+- name: ansible_roles_list
+  required: true
+  input_type: user
+  description: 'List of roles in Ansible Galaxy to install, separated by commas, e.g:
+    "mysql, nginx"'
+  advanced: false
+provider_type: Ansible
+kind: job_template
+model: JobTemplate
+%>
+
+---
+- hosts: all
+  tasks:
+    - command: ansible-galaxy install {{ item }}
+      with_items:
+        - "{{ ansible_roles_list }}"

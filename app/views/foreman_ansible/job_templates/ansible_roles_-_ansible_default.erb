@@ -1,16 +1,18 @@
 <%#
-kind: job_template
 name: Ansible Roles - Ansible Default
 job_category: Ansible Playbook
-description_format: 'Run Ansible roles for host'
+description_format: Run Ansible roles
 feature: ansible_run_host
+snippet: false
 provider_type: Ansible
+kind: job_template
+model: JobTemplate
 %>
 
 ---
-- hosts: <%= @host.name %>
+- hosts: all
   tasks:
-    - debug: msg=These are the parameters "{{ foreman_params }}"
+    - debug: msg="Parameters provided: {{ foreman_params }}"
   roles:
     <% if @host.all_ansible_roles.present? -%>
     - <%= @host.all_ansible_roles.map { |role| role.name.strip }.join("\n    - ") %>
