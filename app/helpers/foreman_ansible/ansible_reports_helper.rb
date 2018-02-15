@@ -58,14 +58,19 @@ module ForemanAnsible
 
     def remove_keys(hash, keys = nil)
       hash.each do |key, value|
-        if value.is_a? Array
+        case value
+        when Array
           value.each { |h| remove_keys(h, keys) }
-        elsif value.is_a? Hash
+        when Hash
           remove_keys(value, keys)
-        elsif (keys || ANSIBLE_META_KEYS).include? key
-          hash.delete(key)
+        else
+          hash.delete(key) if should_delete_key?(key, keys)
         end
       end
+    end
+
+    def should_delete_key?(key, keys)
+      (keys || ANSIBLE_META_KEYS).include?(key)
     end
 
     def parsed_message_json(log)
