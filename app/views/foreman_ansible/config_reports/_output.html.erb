@@ -3,7 +3,6 @@ We parse a few parts of the report log, to check if it's an Ansible report
 An alternative to this would be to subclass Ansible < ConfigReport and change
 the API endpoint at api/v2/config_reports to accept a :type argument with the
 config management system type.
-
 However, that solution breaks compatibility of this plugin with older versions
 of Foreman that do not have that endpoint.
 -->
