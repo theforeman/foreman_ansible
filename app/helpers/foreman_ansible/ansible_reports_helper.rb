@@ -4,10 +4,10 @@ module ForemanAnsible
   module AnsibleReportsHelper
     ANSIBLE_META_KEYS = %w[
       _ansible_parsed _ansible_no_log _ansible_item_result
-      _ansible_ignore_errors _ansible_verbose_always
+      _ansible_ignore_errors _ansible_verbose_always _ansible_verbose_override
     ].freeze
     ANSIBLE_HIDDEN_KEYS = %w[
-      invocation module_args results
+      invocation module_args results ansible_facts
     ].freeze
 
     def module_name(log)
