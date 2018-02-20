@@ -8,6 +8,7 @@ module ForemanAnsible
     ].freeze
     ANSIBLE_HIDDEN_KEYS = %w[
       invocation module_args results
+      stdout stderr
     ].freeze
 
     def module_name(log)
