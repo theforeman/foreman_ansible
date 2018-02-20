@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'securerandom'
 module ForemanAnsible
   # Service to list an inventory to be passed to the ansible-playbook binary
@@ -47,10 +49,16 @@ module ForemanAnsible
     end
 
     def connection_params(host)
-      params = ansible_settings.merge ansible_extra_options(host)
-      # Backward compatibility for Ansible 1.x
-      params['ansible_ssh_port'] = params['ansible_port']
-      params['ansible_ssh_user'] = params['ansible_user']
+      # Preference order is:
+      # 1st option: host parameters.
+      #   - If they're set to 'ansible_whatever' we use that over anything else
+      # 2nd option: REX options.
+      #   - both settings, ssh password, effective_user can be used
+      # 3rd option:
+      #   - other settings
+      params = ansible_settings.
+               merge(remote_execution_options(host)).
+               merge(ansible_extra_options(host))
       params
     end
 
@@ -68,8 +76,7 @@ module ForemanAnsible
 
     def ansible_settings
       Hash[
-        %w[port user ssh_pass connection
-           ssh_private_key_file become
+        %w[connection ssh_private_key_file
            winrm_server_cert_validation].map do |setting|
           ["ansible_#{setting}", Setting["ansible_#{setting}"]]
         end
@@ -82,6 +89,19 @@ module ForemanAnsible
       end
     end
 
+    def remote_execution_options(host)
+      params = {
+        'ansible_become' => @template_invocation.effective_user,
+        'ansible_user' => host_setting(host, 'remote_execution_ssh_user'),
+        'ansible_ssh_pass' => rex_ssh_password(host),
+        'ansible_port' => host_setting(host, 'remote_execution_ssh_port')
+      }
+      # Backward compatibility for Ansible 1.x
+      params['ansible_ssh_port'] = params['ansible_port']
+      params['ansible_ssh_user'] = params['ansible_user']
+      params
+    end
+
     def template_inputs(template_invocation)
       input_values = template_invocation.input_values
       result = input_values.each_with_object({}) do |input, vars_hash|
@@ -90,10 +110,19 @@ module ForemanAnsible
       result
     end
 
+    def rex_ssh_password(host)
+      @template_invocation.job_invocation.password ||
+        host_setting(host, 'remote_execution_ssh_password')
+    end
+
     private
 
     def render_rabl(host, template)
       Rabl.render(host, template, :format => 'hash')
+    end
+
+    def host_setting(host, setting)
+      host.params[setting.to_s] || Setting[setting]
     end
   end
 end
