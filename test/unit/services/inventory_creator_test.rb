@@ -1,11 +1,18 @@
+# frozen_string_literal: true
+
 require 'test_plugin_helper'
 
 module ForemanAnsible
   # Test how the inventory creator service transforms host params into
   # inventory variables and connection options
+  # rubocop:disable ClassLength
   class InventoryCreatorTest < ActiveSupport::TestCase
     setup do
       @host = FactoryBot.build(:host)
+      @template_invocation = OpenStruct.new(
+        :job_invocation => OpenStruct.new(:password => 'foobar'),
+        :effective_user => 'foobar'
+      )
     end
 
     test 'ansible_ parameters get turned into host variables' do
@@ -16,34 +23,58 @@ module ForemanAnsible
         'ansible_user' => 'someone'
       }
       @host.expects(:host_params).returns(extra_options).at_least_once
-      inventory = ForemanAnsible::InventoryCreator.new(@host, nil)
+      inventory = ForemanAnsible::InventoryCreator.new(@host,
+                                                       @template_invocation)
 
       assert_empty extra_options.to_a - inventory.connection_params(@host).to_a
     end
 
     test 'settings are respected if param cannot be found' do
       extra_options = { 'ansible_user' => 'someone', 'ansible_port' => 2000 }
-      Setting.expects(:[]).with('ansible_become').returns(nil).at_least_once
+      Setting.expects(:[]).with('Enable_Smart_Variables_in_ENC').
+        returns(nil).at_least_once
       Setting.expects(:[]).with('ansible_ssh_private_key_file').
         returns(nil).at_least_once
-      Setting.expects(:[]).with('ansible_port').returns(nil).at_least_once
-      Setting.expects(:[]).with('ansible_user').returns(nil).at_least_once
-      Setting.expects(:[]).with('ansible_ssh_pass').
+      Setting.expects(:[]).with('remote_execution_ssh_port').
+        returns(2222).at_least_once
+      Setting.expects(:[]).with('remote_execution_ssh_user').
+        returns('root').at_least_once
+      Setting.expects(:[]).with('remote_execution_ssh_password').
         returns('asafepassword').at_least_once
       Setting.expects(:[]).with('ansible_winrm_server_cert_validation').
         returns(true).at_least_once
       Setting.expects(:[]).with('ansible_connection').
         returns('ssh').at_least_once
       @host.expects(:host_params).returns(extra_options).at_least_once
-      inventory = ForemanAnsible::InventoryCreator.new(@host, nil)
+      @template_invocation.job_invocation.expects(:password).
+        returns(nil).at_least_once
+      inventory = ForemanAnsible::InventoryCreator.new(@host,
+                                                       @template_invocation)
       connection_params = inventory.connection_params(@host)
       assert_empty extra_options.to_a - inventory.connection_params(@host).to_a
+      assert_equal @template_invocation.effective_user,
+                   connection_params['ansible_become']
       assert_equal Setting['ansible_connection'],
                    connection_params['ansible_connection']
-      assert_equal Setting['ansible_ssh_pass'],
+      refute_equal Setting['remote_execution_ssh_user'],
+                   connection_params['ansible_user']
+      assert_equal extra_options['ansible_user'],
+                   connection_params['ansible_user']
+      refute_equal Setting['remote_execution_ssh_port'],
+                   connection_params['ansible_port']
+      assert_equal extra_options['ansible_port'],
+                   connection_params['ansible_port']
+      assert_equal Setting['remote_execution_ssh_password'],
                    connection_params['ansible_ssh_pass']
       assert_equal Setting['ansible_winrm_server_cert_validation'],
                    connection_params['ansible_winrm_server_cert_validation']
+    end
+
+    test 'job invocation ssh password is passed when available' do
+      inventory = ForemanAnsible::InventoryCreator.new(@host,
+                                                       @template_invocation)
+      assert_equal(@template_invocation.job_invocation.password,
+                   inventory.rex_ssh_password(@host))
     end
 
     test 'template invocation inputs are sent as Ansible variables' do
@@ -59,6 +90,7 @@ module ForemanAnsible
       template_invocation = FactoryBot.build(:template_invocation,
                                              :template => job_template,
                                              :job_invocation => job_invocation)
+      job_invocation.expects(:password).returns(nil).at_least_once
       input_value = FactoryBot.create(
         :template_invocation_input_value,
         :template_invocation => template_invocation,
@@ -79,7 +111,10 @@ module ForemanAnsible
         Setting.create(:name => 'top_level_ansible_vars',
                        :description => 'sample description',
                        :default => true)
-        @template_invocation = OpenStruct.new(:input_values => [])
+        @template_invocation = OpenStruct.new(
+          :job_invocation => OpenStruct.new(:password => 'foobar'),
+          :input_values => []
+        )
       end
 
       test 'parameters are passed as top-level "hostvars" by default' do
@@ -100,4 +135,5 @@ module ForemanAnsible
       end
     end
   end
+  # rubocop:enable ClassLength
 end

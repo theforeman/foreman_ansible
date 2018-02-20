@@ -4,12 +4,16 @@ if defined? ForemanRemoteExecution
     # Read the source of other RemoteExecution providers for more.
     class AnsibleProvider < RemoteExecutionProvider
       class << self
-        def humanized_name
-          'Ansible'
+        def ssh_password(host)
+          host_setting(host, :remote_execution_ssh_password)
         end
 
-        def host_setting(host, setting)
-          host.params[setting.to_s] || Setting[setting]
+        def ssh_key_passphrase(host)
+          host_setting(host, :remote_execution_ssh_key_passphrase)
+        end
+
+        def humanized_name
+          'Ansible'
         end
 
         def proxy_command_options(template_invocation, host)
