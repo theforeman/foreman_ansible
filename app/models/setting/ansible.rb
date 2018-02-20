@@ -13,39 +13,6 @@ class Setting
         transaction do
           [
             set(
-              'ansible_port',
-              N_('Use this port to connect to hosts '\
-                 'and run Ansible. You can override this on hosts '\
-                 'by adding a parameter "ansible_port"'),
-              22,
-              N_('Port')
-            ),
-            set(
-              'ansible_user',
-              N_('Foreman will try to connect to hosts as this user by '\
-                 'default when running Ansible playbooks. You can '\
-                 'override this on hosts by adding a parameter '\
-                 '"ansible_user"'),
-              'root',
-              N_('User')
-            ),
-            set(
-              'ansible_become',
-              N_('Foreman will use the sudo command to run roles on hosts '\
-                 'You can override this on hosts by adding a parameter '\
-                 '"ansible_become"'),
-              true,
-              N_('Become')
-            ),
-            set(
-              'ansible_ssh_pass',
-              N_('Use this password by default when running Ansible '\
-                 'playbooks. You can override this on hosts '\
-                 'by adding a parameter "ansible_ssh_pass"'),
-              'ansible',
-              N_('Password')
-            ),
-            set(
               'ansible_ssh_private_key_file',
               N_('Use this to supply a path to an SSH Private Key '\
                  'that Ansible will use in lieu of a password '\
