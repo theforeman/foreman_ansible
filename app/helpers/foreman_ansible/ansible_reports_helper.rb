@@ -23,7 +23,9 @@ module ForemanAnsible
       invocations << parsed_log.delete('invocation')
       results = parsed_log.delete('results')
       invocations << results
-      invocations = invocations.compact.flatten.map { |ih| remove_keys(ih) }
+      invocations = invocations.compact.flatten.map do |ih|
+        ih.is_a?(Hash) ? remove_keys(ih) : ih
+      end
       pretty_print_hash invocations
     end
 
