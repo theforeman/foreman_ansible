@@ -14,7 +14,7 @@ ANSIBLELOG
     log.message = message
     assert_match(
       /ntp-4.2.8p10-3.fc27.x86_64 providing ntp is already installed/,
-      module_args(log)
+      module_invocations(parsed_message_json(log)).to_s
     )
   end
 
