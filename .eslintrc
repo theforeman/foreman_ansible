@@ -1,0 +1,49 @@
+{
+  "root": true,
+  "extends": "airbnb-base",
+  "plugins": [
+    "react"
+  ],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jasmine": true,
+    "jest": true
+  },
+  "globals": {
+    "document": false,
+    "escape": false,
+    "navigator": false,
+    "unescape": false,
+    "window": false,
+    "$": true,
+    "_": true,
+    "__": true
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "react/jsx-uses-vars": "error",
+    "react/jsx-uses-react": "error",
+    "no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "none"
+      }
+    ],
+    "no-underscore-dangle": "off",
+    "no-use-before-define": "off",
+    "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        // Allow importing devDependencies like @storybook
+        "devDependencies": true
+      }
+    ],
+    // Import rules off for now due to HoundCI issue
+    "import/no-unresolved": "off",
+    "import/extensions": "off"
+  }
+}
