@@ -1,3 +1,4 @@
+if defined?(RedhatAccess)
 module ForemanAnsible
   # Fetch information about a plan from RH Insights and run it
   class InsightsPlanRunner
@@ -64,4 +65,5 @@ module ForemanAnsible
       result
     end
   end
+end
 end
