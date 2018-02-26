@@ -1,0 +1,45 @@
+<%#
+name: Package Action - Ansible Default
+job_category: Ansible Packages
+description_format: 'Package %{name}: %{state}'
+snippet: false
+template_inputs:
+- name: state
+  required: true
+  input_type: user
+  description: Whether to install (present, latest), or remove (absent) a package.
+  options: "present\r\nabsent\r\nlatest"
+  advanced: false
+- name: name
+  required: true
+  input_type: user
+  description: "Package name, or package specifier with version, like name-1.0.\r\nBe
+    aware that packages are not always named the same and this module will not 'translate'
+    them per distro."
+  advanced: false
+- name: pre_script
+  description: A script to run prior to the package action
+  input_type: user
+  required: false
+  advanced: true
+- name: post_script
+  description: A script to run after the package action
+  input_type: user
+  required: false
+  advanced: true
+provider_type: Ansible
+kind: job_template
+model: JobTemplate
+%>
+
+# For Windows targets use the win_package module instead.
+---
+- hosts: all
+  pre_tasks:
+    - shell: "<%= input('pre_script') %>"
+  tasks:
+    - package:
+        name: <%= input('name') %>
+        state: <%= input('state') %>
+  post_tasks:
+    - shell: "<%= input('post_script') %>"
