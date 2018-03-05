@@ -10,6 +10,7 @@ class Setting
       # rubocop:disable BlockLength
       def load_defaults
         return unless super
+        Setting::BLANK_ATTRS.push('ansible_ssh_private_key_file')
         transaction do
           [
             set(
@@ -99,7 +100,6 @@ class Setting
             create(s.update(:category => 'Setting::Ansible'))
           end
         end
-        Setting::BLANK_ATTRS.push('ansible_ssh_private_key_file')
         true
       end
 
