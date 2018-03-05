@@ -13,6 +13,7 @@ module ForemanAnsible
 
       before_provision :play_ansible_roles
       include ForemanAnsible::HasManyAnsibleRoles
+      audit_associations :ansible_roles
 
       def inherited_ansible_roles
         return [] unless hostgroup
