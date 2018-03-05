@@ -1,5 +1,6 @@
 # Simple model to store basic info about the Ansible role
 class AnsibleRole < ApplicationRecord
+  audited
   include Authorizable
 
   self.include_root_in_json = false

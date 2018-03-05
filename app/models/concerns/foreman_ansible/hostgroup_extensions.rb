@@ -8,6 +8,7 @@ module ForemanAnsible
       has_many :ansible_roles, :through => :hostgroup_ansible_roles,
                                :dependent => :destroy
       include ForemanAnsible::HasManyAnsibleRoles
+      audit_associations :ansible_roles
 
       def inherited_ansible_roles
         ancestors.reduce([]) do |roles, hostgroup|
