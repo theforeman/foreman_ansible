@@ -2,7 +2,9 @@ module ForemanAnsible
   # General helper for foreman_ansible
   module AnsiblePluginHelper
     def ansible_doc_url
-      'http://theforeman.org/plugins/foreman_ansible/1.x/index.html'
+      major_version = ::ForemanAnsible::VERSION.split('.')[0]
+      'https://theforeman.org/plugins/foreman_ansible/'\
+        "#{major_version}.x/index.html"
     end
   end
 end
