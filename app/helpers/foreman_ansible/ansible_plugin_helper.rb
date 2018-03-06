@@ -1,3 +1,5 @@
+require "#{ForemanAnsible::Engine.root}/lib/foreman_ansible/version"
+
 module ForemanAnsible
   # General helper for foreman_ansible
   module AnsiblePluginHelper
