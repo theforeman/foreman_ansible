@@ -1,10 +1,12 @@
 begin
   require 'foreman_tasks_core'
   require 'foreman_remote_execution_core'
+# rubocop:disable Lint/HandleExceptions
 rescue LoadError
   # These gems are not available in a proxy SCLed context
-  puts 'Running Foreman Ansible Core in non-SCL context'
+  # puts 'Running Foreman Ansible Core in non-SCL context'
 end
+# rubocop:enable Lint/HandleExceptions
 
 # Core actions for Foreman Ansible, used by both Foreman and Foreman proxy
 # This comprises running playbooks for the moment
