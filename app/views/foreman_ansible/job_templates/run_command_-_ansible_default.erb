@@ -7,7 +7,7 @@ template_inputs:
 - name: command
   required: true
   input_type: user
-  description: Command to run on the host
+  description: "Command to run on the host, e.g: \r\n\r\nmkdir helloworld"
   advanced: false
 provider_type: Ansible
 kind: job_template
@@ -17,5 +17,6 @@ model: JobTemplate
 ---
 - hosts: all
   tasks:
-    - command: "{{ command }}"
-    - debug: msg="Running {{ command }}"
+    - command: <%= input('command') %>
+      register: out
+    - debug: var=out

@@ -56,7 +56,8 @@ module ForemanAnsible
     initializer 'foreman_ansible.configure_assets', :group => :assets do
       SETTINGS[:foreman_ansible] = {
         :assets => {
-          :precompile => ['foreman_ansible/Ansible.png']
+          :precompile => ['foreman_ansible/Ansible.png',
+                          'foreman_ansible/foreman-ansible.css']
         }
       }
     end

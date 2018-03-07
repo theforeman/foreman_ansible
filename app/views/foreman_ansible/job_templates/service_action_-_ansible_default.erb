@@ -53,9 +53,9 @@ model: JobTemplate
 - hosts: all
   tasks:
   - service:
-      name: "{{ name }}"
-      state: "{{ state }}"
-      <% if input('enabled').present? %>enabled: "{{ enabled }}"<% end %>
-      <% if input('args').present? %>args: "{{ args }}"<% end %>
-      <% if input('pattern').present? %>pattern: "{{ pattern }}"<% end %>
-      <% if input('sleep').present? %>sleep: "{{ sleep }}"<% end %>
+      name: <%= input('name') %>
+      state: <%= input('state') %>
+      <%= "enabled: #{input('enabled')}" if input('enabled').present? %>
+      <%= "args: #{input('args')}" if input('args').present? %>
+      <%= "pattern: #{input('pattern')}" if input('pattern').present? %>
+      <%= "sleep: #{input('sleep')}" if input('sleep').present? %>

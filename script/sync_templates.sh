@@ -10,7 +10,7 @@
 REPO=$(mktemp -d)
 trap "rm -rf $REPO" EXIT
 
-git clone -q -b $(git symbolic-ref -q HEAD --short) \
+git clone -q -b develop \
   https://github.com/theforeman/community-templates $REPO/ct
 
 # move into destination dir if run from Foreman root
