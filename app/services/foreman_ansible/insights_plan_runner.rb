@@ -23,20 +23,18 @@ if defined?(RedhatAccess)
         )
         composer.save
         composer.trigger
-      end
-
+      end 
+      
       # Fetches the playbook from the Red Hat Insights API
       def playbook
         resource = RestClient::Resource.new(
-          'https://api.access.redhat.com/r/insights/'\
-          "v3/maintenance/#{@plan_id}/playbook",
-          get_ssl_options_for_org(@organization, nil).
-          merge(:verify_ssl => OpenSSL::SSL::VERIFY_NONE)
+          "#{insights_api_host}/r/insights/v3/maintenance/#{@plan_id}/playbook",
+          get_ssl_options_for_org(@organization, nil)
         )
         response = resource.get
         YAML.safe_load(response.body)
       end
-
+      
       # This method creates a hash like this:
       #  {
       #    hostname1 => [rule1,rule2,rule3],
