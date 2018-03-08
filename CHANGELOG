@@ -1,3 +1,20 @@
+2018-03-08	Daniel Lobato Garcia <me@daniellobato.me>
+	* Refs #22784 - Require VERSION to show documentation
+
+2018-03-07	Sebastian Gräßl <bastilian@users.noreply.github.com>
+	* Fixes #21003 - Improve table for ansible roles
+
+2018-03-07	Daniel Lobato Garcia <me@daniellobato.me>
+	* Fixes #22784 - Documentation button for roles
+	* Fixes #22774 -  ssh_private_key_path setting does not show up
+	* Fixes #22791 - Pin foreman_tasks to < 0.12
+
+2018-03-07	Sebastian Gräßl <mail@bastilian.me>
+	* Fixes #22126 - Always show 'Play Roles' button for Hostgroups
+
+2017-10-06	Daniel Lobato Garcia <me@daniellobato.me>
+	* Release 1.4.6
+
 2017-10-06	Sebastian Gräßl <bastilian@users.noreply.github.com>
 	* Fixes #21005 - Better wording for roles import button
 	* Fixes #20884 - Allow importing roles from multiple paths
