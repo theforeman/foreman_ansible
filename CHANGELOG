@@ -1,3 +1,117 @@
+2018-03-08	Lindani Phiri <lphiri@redhat.com>
+	* Fixes #22677 - Use proper api host name to allow TLS mutual auth
+
+2018-03-07	Daniel Lobato Garcia <me@daniellobato.me>
+	* Refs #22784 - Require VERSION to show documentation
+	* Fixes #22774 -  ssh_private_key_path setting does not show up
+	* Refs #22378 - Rubocop fixes for Insights
+
+2018-03-07	Sebastian Gräßl <mail@bastilian.me>
+	* Refs #22125 - Use react-json-tree for report json rendering
+
+2018-03-06	Daniel Lobato Garcia <me@daniellobato.me>
+	* Fixes #22791 - Pin foreman_tasks to < 0.12
+
+2018-03-01	Daniel Lobato Garcia <me@daniellobato.me>
+	* Fixes #19149 - Check whether gem is loaded on SCL or not
+
+2018-02-26	Daniel Lobato Garcia <me@daniellobato.me>
+	* Sync from community-templates
+	* Refs #22378 - Only include RedhatAccess macro if plugin available
+
+2018-02-22	Daniel Lobato Garcia <me@daniellobato.me>
+	* Fixes #22634 - Reuse remote execution settings
+
+2018-02-21	Daniel Lobato Garcia <me@daniellobato.me>
+	* Fixes #22643 - Config strings may not be displayed
+
+2018-02-20	Daniel Lobato Garcia <me@daniellobato.me>
+	* Fixes #22378 - Insights remediation playbook macro
+
+2018-02-20	Marek Hulan <mhulan@redhat.com>
+	* Fixes #22626 - hide stdout and stderr
+	* Fixes #22625 - ignore facts in report page
+
+2018-02-20	Sebastian Gräßl <mail@bastilian.me>
+	* Fixes #22126 - Always show 'Play Roles' button for Hostgroups
+
+2018-02-19	Sebastian Gräßl <mail@bastilian.me>
+	* Fixes #22125 - Restore correct output for Ansible reports
+
+2018-02-13	Daniel Lobato Garcia <me@daniellobato.me>
+	* Fixes #22539 - Sync ansible templates
+
+2018-02-08	Daniel Lobato Garcia <me@daniellobato.me>
+	* Fixes #22512 - Pass variables without foreman_params
+	* Fixes #22507 - Pass REX inputs as inventory variables
+
+2018-02-07	Marek Hulan <mhulan@redhat.com>
+	* Fixes #22522 - add hover effect to table
+
+2018-02-01	Daniel Lobato Garcia <me@daniellobato.me>
+	* Release 2.0.2 foreman_ansible_core
+	* Release 2.0.1 foreman_ansible_core
+	* Release 2.0.1
+	* Release 2.0.0 foreman_ansible_core
+	* Release 2.0.0
+	* Specify min version REX
+	* Refs #13812 - InventoryCreator typo
+
+2018-01-31	Marek Hulan <mhulan@redhat.com>
+	* Refs #13812 - support connect by IP REX feature
+	* Refs #22019 - fixes multiaction run
+
+2018-01-31	Daniel Lobato Garcia <me@daniellobato.me>
+	* Fixes #22020 - Host group play roles using REX provider
+
+2018-01-29	Daniel Lobato Garcia <me@daniellobato.me>
+	* Fixes #22019 - PlayHostsRoles using REX provider
+	* Fixes #22018 - PlayHostRoles uses REX provider
+
+2018-01-23	Daniel Lobato Garcia <me@daniellobato.me>
+	* Fixes #22018 - PlayHostRoles uses REX provider
+
+2018-01-15	Daniel Lobato Garcia <me@daniellobato.me>
+	* Refs #13812 - Fix some cops
+	* Refs #13812 - Remove irrelevant AnsibleTemplateRendererTest
+
+2018-01-15	Daniel Lobato <elobatocs@gmail.com>
+	* Fixes #13812 - Remote execution provider
+
+2018-01-10	Daniel Lobato Garcia <me@daniellobato.me>
+	* Update fixtures and fix rubocop
+
+2017-12-26	Michael Moll <kvedulv@kvedulv.de>
+	* update rubocop to 0.52
+	* update/correct .rubocop.yml
+	* stop using HttpPositionalArguments
+
+2017-12-26	Tomer Brisker <tbrisker@gmail.com>
+	* Remove alias_method_chain from hosts helper
+
+2017-12-26	Ondrej Prazak <oprazak@redhat.com>
+	* Fixes #21818 - Add Rails 5 style migrations
+
+2017-11-20	Daniel Lobato Garcia <me@daniellobato.me>
+	* Document Overrides module (rubocop)
+
+2017-11-17	Daniel Lobato Garcia <me@daniellobato.me>
+	* Replace alias_method_chain by prepend
+	* Fix rubocop
+
+2017-11-17	Sebastian Gräßl <bastilian@users.noreply.github.com>
+	* Fixes #21003 - Improve table for ansible roles
+
+2017-11-16	Daniel Lobato Garcia <me@daniellobato.me>
+	* Fix .p to .present? - typo
+
+2017-11-02	Marek Hulán <ares@users.noreply.github.com>
+	* Fixes #21528 - start using factory bot
+	* Fixes rubocop
+
+2017-10-06	Daniel Lobato Garcia <me@daniellobato.me>
+	* Release 1.4.6
+
 2017-10-06	Sebastian Gräßl <bastilian@users.noreply.github.com>
 	* Fixes #21005 - Better wording for roles import button
 	* Fixes #20884 - Allow importing roles from multiple paths
