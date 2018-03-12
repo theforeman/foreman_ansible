@@ -19,5 +19,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'deface', '< 2.0'
   s.add_dependency 'foreman-tasks', '~> 0.8', '< 0.12'
   s.add_dependency 'dynflow', '~> 0.8.14'
-  s.add_dependency 'foreman_ansible_core', '> 2.0.2'
+  s.add_dependency 'foreman_ansible_core', '>= 2.0.2'
 end
