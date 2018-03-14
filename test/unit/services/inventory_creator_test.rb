@@ -62,6 +62,8 @@ module ForemanAnsible
                    connection_params['ansible_user']
       refute_equal Setting['remote_execution_ssh_port'],
                    connection_params['ansible_port']
+      assert_equal ForemanRemoteExecutionCore.settings[:ssh_identity_key_file],
+                   connection_params['ansible_ssh_private_key_file']
       assert_equal extra_options['ansible_port'],
                    connection_params['ansible_port']
       assert_equal Setting['remote_execution_ssh_password'],
@@ -75,6 +77,22 @@ module ForemanAnsible
                                                        @template_invocation)
       assert_equal(@template_invocation.job_invocation.password,
                    inventory.rex_ssh_password(@host))
+    end
+
+    test 'ssh private key is passed when available' do
+      host = FactoryBot.build(:host)
+      path_to_key = '/path/to/private/key'
+      inventory = ForemanAnsible::InventoryCreator.new(host,
+                                                       @template_invocation)
+      host.params.expects(:[]).with('ansible_ssh_private_key_file')
+          .returns(path_to_key)
+      host.params.expects(:[]).with('remote_execution_ssh_user')
+          .returns('root')
+      host.params.expects(:[]).with('remote_execution_ssh_port')
+          .returns('2222')
+      connection_params = inventory.connection_params(host)
+      assert_equal path_to_key,
+                   connection_params['ansible_ssh_private_key_file']
     end
 
     test 'template invocation inputs are sent as Ansible variables' do
