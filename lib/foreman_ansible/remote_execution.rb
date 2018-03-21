@@ -8,6 +8,8 @@ module ForemanAnsible
         :Ansible,
         ForemanAnsible::AnsibleProvider
       )
+
+      ForemanAnsible::Engine.register_rex_feature
     end
 
     def self.register_rex_feature
@@ -22,7 +24,8 @@ module ForemanAnsible
         N_('Ansible: Run Insights maintenance plan'),
         :description => N_('Runs a given maintenance plan from Red Hat '\
                            'Access Insights given an ID.'),
-        :provided_inputs => %w[organization_id plan_id]
+        :provided_inputs => %w[organization_id plan_id],
+        :notification_builder => ForemanAnsible::InsightsNotificationBuilder
       )
     end
   end
