@@ -1,5 +1,5 @@
 User.as_anonymous_admin do
-  if Rails.env.test? || File.basename($0) == 'rake'
+  if Rails.env.test? || File.basename($PROGRAM_NAME) == 'rake'
     # If this file tries to import a template with a REX feature in a SeedsTest,
     # it will fail - the REX feature isn't registered on SeedsTest because
     # DatabaseCleaner truncates the db before every test.

@@ -74,7 +74,7 @@ class Setting
               true,
               N_('Top level Ansible variables')
             ),
-	    set(
+            set(
               'ansible_interval',
               N_('Timeout (in minutes) when hosts should have reported.'),
               '30',
