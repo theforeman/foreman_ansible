@@ -30,16 +30,13 @@ msgstr ""
 msgid "Ansible Roles"
 msgstr ""
 
-msgid "Ansible roles"
-msgstr ""
-
-msgid "Ansible roles running in the background for hosts: %s"
-msgstr ""
-
-msgid "Ansible roles running in the background: %s"
-msgstr ""
-
 msgid "Ansible support in Foreman"
+msgstr ""
+
+msgid "Ansible: Run Insights maintenance plan"
+msgstr ""
+
+msgid "Ansible: Run host roles"
 msgstr ""
 
 msgid "Arguments"
@@ -66,10 +63,55 @@ msgstr ""
 msgid "Check/Uncheck obsolete"
 msgstr ""
 
+msgid "Clone"
+msgstr ""
+
+msgid "Connection type"
+msgstr ""
+
+msgid "Could not run Ansible roles for %{host}"
+msgstr ""
+
+msgid "Default verbosity level"
+msgstr ""
+
 msgid "Delete %s?"
 msgstr ""
 
+msgid "Deletes Ansible role"
+msgstr ""
+
+msgid "Disabled"
+msgstr ""
+
+msgid "Enable/disable WinRM server certificate validation when running Ansible playbooks. You can override this on hosts by adding a parameter \"ansible_winrm_server_cert_validation\""
+msgstr ""
+
+msgid "Error loading data from proxy"
+msgstr ""
+
+msgid "Foreman"
+msgstr ""
+
+msgid "Foreman will add the this level of verbosity for additional debugging output when running Ansible playbooks."
+msgstr ""
+
+msgid "From %s"
+msgstr ""
+
+msgid "From Foreman host"
+msgstr ""
+
+msgid "Host group has no associated hosts"
+msgstr ""
+
+msgid "Hostgroups"
+msgstr ""
+
 msgid "Hostgroups count"
+msgstr ""
+
+msgid "Hosts"
 msgstr ""
 
 msgid "Hosts count"
@@ -78,7 +120,7 @@ msgstr ""
 msgid "Import"
 msgstr ""
 
-msgid "Import from %s"
+msgid "Import Ansible roles"
 msgstr ""
 
 msgid "Import from Foreman host"
@@ -96,6 +138,21 @@ msgstr ""
 msgid "Level"
 msgstr ""
 
+msgid "Level 1 (-v)"
+msgstr ""
+
+msgid "Level 2 (-vv)"
+msgstr ""
+
+msgid "Level 3 (-vvv)"
+msgstr ""
+
+msgid "Level 4 (-vvvv)"
+msgstr ""
+
+msgid "List Ansible roles"
+msgstr ""
+
 msgid "Message"
 msgstr ""
 
@@ -103,6 +160,9 @@ msgid "Module"
 msgstr ""
 
 msgid "Name"
+msgstr ""
+
+msgid "Nest"
 msgstr ""
 
 msgid "New"
@@ -125,10 +185,37 @@ msgstr ""
 msgid "Obsolete"
 msgstr ""
 
+msgid "Obsolete Ansible roles"
+msgstr ""
+
 msgid "Operation"
 msgstr ""
 
 msgid "Play Ansible roles"
+msgstr ""
+
+msgid "Play Roles"
+msgstr ""
+
+msgid "Playbook execution failed"
+msgstr ""
+
+msgid "Plays Ansible roles on a host"
+msgstr ""
+
+msgid "Plays Ansible roles on a hostgroup"
+msgstr ""
+
+msgid "Plays Ansible roles on hostgroups"
+msgstr ""
+
+msgid "Plays Ansible roles on hosts"
+msgstr ""
+
+msgid "Post-provision timeout"
+msgstr ""
+
+msgid "Private Key Path"
 msgstr ""
 
 msgid "Proxy not found"
@@ -143,14 +230,50 @@ msgstr ""
 msgid "Role|Name"
 msgstr ""
 
+msgid "Run Ansible roles"
+msgstr ""
+
+msgid "Runs a given maintenance plan from Red Hat Access Insights given an ID."
+msgstr ""
+
+msgid "Runs an Ansible playbook which contains all the roles defined for a host"
+msgstr ""
+
 msgid "Select the changes you want to realize in Foreman"
 msgstr ""
 
+msgid "Show role"
+msgstr ""
+
+msgid "Smart Proxy to import from"
+msgstr ""
+
+msgid "This list of roles will be applied when the host finishes<br/> provisioning. Users can also play these roles through the API<br/>or by clicking on the Play Roles button on the Host page "
+msgstr ""
+
+msgid "Timeout (in seconds) to set when Foreman will trigger a play Ansible roles task after a host is fully provisioned. Set this to the maximum time you expect a host to take until it is ready after a reboot."
+msgstr ""
+
 msgid "Toggle"
+msgstr ""
+
+msgid "Top level Ansible variables"
 msgstr ""
 
 msgid "Unable to get roles from Ansible"
 msgstr ""
 
 msgid "Update"
+msgstr ""
+
+msgid "Use this connection type by default when running Ansible playbooks. You can override this on hosts by adding a parameter \"ansible_connection\""
+msgstr ""
+
+msgid "Use this to supply a path to an SSH Private Key that Ansible will use in lieu of a password Override with \"ansible_ssh_private_key_file\" host parameter"
+msgstr ""
+
+msgid "Whether to put Ansible parameters in the \"hostvars\" top-level key of the inventory. By default it is true, so that Host Parameters can be used directly in the playbooks.When false, Host Parameters can only be accessed throughforeman_params[\"host_parameter\"] in the playbooks."
+msgstr ""
+
+msgid "WinRM cert Validation"
 msgstr ""
