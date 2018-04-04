@@ -79,6 +79,12 @@ class Setting
               N_('Timeout (in minutes) when hosts should have reported.'),
               '30',
               N_('Ansible report timeout')
+            ),
+            set(
+              'ansible_out_of_sync_disabled',
+              N_("Disable host configuration status turning to out of sync for %s after report does not arrive within configured interval") % 'Ansible',
+              false,
+              N_('%s out of sync disabled') % 'Ansible'
             )
           ].compact.each do |s|
             create(s.update(:category => 'Setting::Ansible'))
