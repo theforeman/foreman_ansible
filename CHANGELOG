@@ -1,11 +1,13 @@
-2018-04-06	Sebastian Gräßl <mail@bastilian.me>
-	* Fixes #22896 - Fall back to REX private key
-
 2018-04-06	Daniel Lobato Garcia <me@daniellobato.me>
+	* Fixes #22507 - Pass REX inputs as inventory variables
+	* Release 2.0.3
 	* Fixes #22774 -  ssh_private_key_path setting does not show up
 	* Refs #22784 - Require VERSION to show documentation
 	* Fixes #22634 - Reuse remote execution settings
 	* Release 2.0.2
+
+2018-04-06	Sebastian Gräßl <mail@bastilian.me>
+	* Fixes #22896 - Fall back to REX private key
 
 2018-04-06	Justin Sherrill <jsherril@redhat.com>
 	* Fixes #23091 - remove dynflow dep
