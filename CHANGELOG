@@ -1,3 +1,68 @@
+2018-04-06	Justin Sherrill <jsherril@redhat.com>
+	* Fixes #23091 - remove dynflow dep
+
+2018-02-01	Daniel Lobato Garcia <me@daniellobato.me>
+	* Release 2.0.1
+	* Release 2.0.0 foreman_ansible_core
+	* Release 2.0.0
+	* Specify min version REX
+	* Refs #13812 - InventoryCreator typo
+
+2018-01-31	Marek Hulan <mhulan@redhat.com>
+	* Refs #13812 - support connect by IP REX feature
+	* Refs #22019 - fixes multiaction run
+
+2018-01-31	Daniel Lobato Garcia <me@daniellobato.me>
+	* Fixes #22020 - Host group play roles using REX provider
+
+2018-01-29	Daniel Lobato Garcia <me@daniellobato.me>
+	* Fixes #22019 - PlayHostsRoles using REX provider
+	* Fixes #22018 - PlayHostRoles uses REX provider
+
+2018-01-23	Daniel Lobato Garcia <me@daniellobato.me>
+	* Fixes #22018 - PlayHostRoles uses REX provider
+
+2018-01-15	Daniel Lobato Garcia <me@daniellobato.me>
+	* Refs #13812 - Fix some cops
+	* Refs #13812 - Remove irrelevant AnsibleTemplateRendererTest
+
+2018-01-15	Daniel Lobato <elobatocs@gmail.com>
+	* Fixes #13812 - Remote execution provider
+
+2018-01-10	Daniel Lobato Garcia <me@daniellobato.me>
+	* Update fixtures and fix rubocop
+
+2017-12-26	Michael Moll <kvedulv@kvedulv.de>
+	* update rubocop to 0.52
+	* update/correct .rubocop.yml
+	* stop using HttpPositionalArguments
+
+2017-12-26	Tomer Brisker <tbrisker@gmail.com>
+	* Remove alias_method_chain from hosts helper
+
+2017-12-26	Ondrej Prazak <oprazak@redhat.com>
+	* Fixes #21818 - Add Rails 5 style migrations
+
+2017-11-20	Daniel Lobato Garcia <me@daniellobato.me>
+	* Document Overrides module (rubocop)
+
+2017-11-17	Daniel Lobato Garcia <me@daniellobato.me>
+	* Replace alias_method_chain by prepend
+	* Fix rubocop
+
+2017-11-17	Sebastian Gräßl <bastilian@users.noreply.github.com>
+	* Fixes #21003 - Improve table for ansible roles
+
+2017-11-16	Daniel Lobato Garcia <me@daniellobato.me>
+	* Fix .p to .present? - typo
+
+2017-11-02	Marek Hulán <ares@users.noreply.github.com>
+	* Fixes #21528 - start using factory bot
+	* Fixes rubocop
+
+2017-10-06	Daniel Lobato Garcia <me@daniellobato.me>
+	* Release 1.4.6
+
 2017-10-06	Sebastian Gräßl <bastilian@users.noreply.github.com>
 	* Fixes #21005 - Better wording for roles import button
 	* Fixes #20884 - Allow importing roles from multiple paths
