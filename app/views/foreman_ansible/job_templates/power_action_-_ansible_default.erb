@@ -1,6 +1,6 @@
 <%#
 name: Power Action - Ansible Default
-job_category: Power
+job_category: Ansible Power
 description_format: "%{action} host"
 snippet: false
 template_inputs:
@@ -22,7 +22,7 @@ model: JobTemplate
         echo <%= input('action') %> host && sleep 3
         <%= case input('action')
           when 'restart'
-            'reboot'
+            'shutdown -r +1'
           else
             'shutdown -h now'
           end %>

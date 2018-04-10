@@ -35,11 +35,15 @@ model: JobTemplate
 # For Windows targets use the win_package module instead.
 ---
 - hosts: all
+  <%- if input('pre_script').present? -%>
   pre_tasks:
     - shell: "<%= input('pre_script') %>"
+  <%- end -%>
   tasks:
     - package:
         name: <%= input('name') %>
         state: <%= input('state') %>
+  <%- if input('post_script').present? -%>
   post_tasks:
     - shell: "<%= input('post_script') %>"
+  <%- end -%>

@@ -17,6 +17,7 @@ model: JobTemplate
 ---
 - hosts: all
   tasks:
-    - command: <%= input('command') %>
+    - shell: |
+<%=     indent(8) { input('command') } %>
       register: out
     - debug: var=out
