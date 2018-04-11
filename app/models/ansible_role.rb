@@ -13,6 +13,14 @@ class AnsibleRole < ApplicationRecord
 
   scoped_search :on => :name, :complete_value => true
   scoped_search :on => :updated_at
+  scoped_search :relation => :hosts,
+                :on => :id, :rename => :host_id, :only_explicit => true
+  scoped_search :relation => :hosts,
+                :on => :name, :rename => :host, :only_explicit => true
+  scoped_search :relation => :hostgroups,
+                :on => :id, :rename => :hostgroup_id, :only_explicit => true
+  scoped_search :relation => :hostgroups,
+                :on => :name, :rename => :hostgroup, :only_explicit => true
 
   # Methods to be allowed in any template with safemode enabled
   class Jail < Safemode::Jail
