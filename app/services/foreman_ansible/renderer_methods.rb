@@ -9,13 +9,20 @@ module ForemanAnsible
         plan_id
       )
       rules = insights_plan.playbook
+      disclaimer = insights_plan.parse_disclaimer
       hostname_rules_relation = insights_plan.hostname_rules(rules)
       global_rules = insights_plan.rules_to_hash(rules)
-      host_playbooks = hostname_rules_relation[@host.name].
-                       reduce([]) do |acc, cur|
+      host_playbooks = individual_host_playbooks(hostname_rules_relation,
+                                                 global_rules)
+      "#{disclaimer}\n#{host_playbooks.to_yaml}"
+    end
+
+    private
+
+    def individual_host_playbooks(hostname_rules_relation, global_rules)
+      hostname_rules_relation[@host.name].reduce([]) do |acc, cur|
         acc << global_rules[cur]
       end
-      host_playbooks.to_yaml
     end
   end
 end
