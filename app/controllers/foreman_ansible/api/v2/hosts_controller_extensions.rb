@@ -21,7 +21,7 @@ module ForemanAnsible
           param :id, Array, :required => true
 
           def multiple_play_roles
-            composer = job_composer(:ansible_run_host, @host)
+            composer = job_composer(:ansible_run_host, @host.pluck(:id))
             process_response composer.trigger!, composer.job_invocation
           end
         end
