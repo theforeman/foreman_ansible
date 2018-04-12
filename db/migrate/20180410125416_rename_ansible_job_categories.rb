@@ -7,15 +7,21 @@ class RenameAnsibleJobCategories < ActiveRecord::Migration[5.1]
     User.as_anonymous_admin do
       updated_templates = ['Power Action - Ansible Default',
                            'Puppet Run Once - Ansible Default']
-      JobTemplate.where(:name => updated_templates).all.each do |job_template|
+      job_templates = JobTemplate.without_auditing.where(
+        :name => updated_templates
+      ).all
+      job_templates.each do |job_template|
         next if job_template.job_category =~ /^Ansible/
         job_template.job_category = "Ansible #{job_template.job_category}"
-        job_template.save!
+        job_template.save_without_auditing
       end
 
-      if service_template = JobTemplate.where(:name => 'Service Action - Ansible Default').first
+      service_template = JobTemplate.where(
+        :name => 'Service Action - Ansible Default'
+      ).first
+      if service_template.present?
         service_template.job_category = 'Ansible Services'
-        service_template.save!
+        service_template.save_without_auditing
       end
     end
   end

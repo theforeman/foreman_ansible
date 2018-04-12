@@ -84,12 +84,12 @@ module ForemanAnsible
       path_to_key = '/path/to/private/key'
       inventory = ForemanAnsible::InventoryCreator.new(host,
                                                        @template_invocation)
-      host.params.expects(:[]).with('ansible_ssh_private_key_file')
-          .returns(path_to_key)
-      host.params.expects(:[]).with('remote_execution_ssh_user')
-          .returns('root')
-      host.params.expects(:[]).with('remote_execution_ssh_port')
-          .returns('2222')
+      host.params.expects(:[]).with('ansible_ssh_private_key_file').
+        returns(path_to_key)
+      host.params.expects(:[]).with('remote_execution_ssh_user').
+        returns('root')
+      host.params.expects(:[]).with('remote_execution_ssh_port').
+        returns('2222')
       connection_params = inventory.connection_params(host)
       assert_equal path_to_key,
                    connection_params['ansible_ssh_private_key_file']

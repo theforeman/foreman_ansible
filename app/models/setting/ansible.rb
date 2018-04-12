@@ -82,9 +82,12 @@ class Setting
             ),
             set(
               'ansible_out_of_sync_disabled',
-              N_("Disable host configuration status turning to out of sync for %s after report does not arrive within configured interval") % 'Ansible',
+              format(N_('Disable host configuration status turning to out of'\
+                 ' sync for %{cfgmgmt} after report does not arrive within'\
+                 ' configured interval'), :cfgmgmt => 'Ansible'),
               false,
-              N_('%s out of sync disabled') % 'Ansible'
+              format(N_('%{cfgmgmt} out of sync disabled'),
+                     :cfgmgmt => 'Ansible')
             )
           ].compact.each do |s|
             create(s.update(:category => 'Setting::Ansible'))

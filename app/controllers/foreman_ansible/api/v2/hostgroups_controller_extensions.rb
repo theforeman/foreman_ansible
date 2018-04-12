@@ -27,7 +27,7 @@ module ForemanAnsible
           def multiple_play_roles
             find_multiple
             composer = job_composer(:ansible_run_host,
-                                    @hostgroups.map(&:hosts).flatten.uniq)
+                                    @hostgroups.map(&:host_ids).flatten.uniq)
             process_response composer.trigger!, composer.job_invocation
           end
         end

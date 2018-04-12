@@ -25,7 +25,7 @@ module ForemanAnsible
 
     initializer 'foreman_ansible.register_gettext',
                 :after => :load_config_initializers do
-      locale_dir = File.join(File.expand_path('../../..', __FILE__), 'locale')
+      locale_dir = File.join(File.expand_path('../..', __dir__), 'locale')
       locale_domain = 'foreman_ansible'
 
       Foreman::Gettext::Support.add_text_domain locale_domain, locale_dir
@@ -110,5 +110,4 @@ module ForemanAnsible
       end
     end
   end
-  # rubocop:enable ClassLength
 end
