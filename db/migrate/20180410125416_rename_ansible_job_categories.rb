@@ -14,7 +14,7 @@ class RenameAnsibleJobCategories < ActiveRecord::Migration[5.1]
         job_templates.each do |job_template|
           next if job_template.job_category =~ /^Ansible/
           job_template.job_category = "Ansible #{job_template.job_category}"
-          job_template.save_without_auditing
+          job_template.save
         end
   
         service_template = JobTemplate.where(
