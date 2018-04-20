@@ -30,23 +30,26 @@ module Api
       end
 
       api :POST, '/ansible_roles/import', N_('Import Ansible roles')
-      param :proxy, Hash, N_('Smart Proxy to import from')
+      param :proxy_id, :identifier, N_('Smart Proxy to import from')
       def import
         @imported = @importer.import!
       end
 
       api :POST, '/ansible_roles/obsolete', N_('Obsolete Ansible roles')
-      param :proxy, Hash, N_('Smart Proxy to import from')
+      param :proxy_id, :identifier, N_('Smart Proxy to import from')
       def obsolete
         @obsoleted = @importer.obsolete!
       end
 
       private
 
+      # rubocop:disable DotPosition
       def find_proxy
-        return nil unless params[:proxy]
-        @proxy = SmartProxy.authorized(:view_smart_proxies).find(params[:proxy])
+        return nil unless params[:proxy_id]
+        @proxy = SmartProxy.authorized(:view_smart_proxies)
+                           .find(params[:proxy_id])
       end
+      # rubocop:enable DotPosition
 
       def create_importer
         @importer = ForemanAnsible::ApiRolesImporter.new(@proxy)
