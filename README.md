@@ -39,10 +39,10 @@ Check out the official manual at [theforeman.org](http://theforeman.org/plugins/
 
 ## Compatibility
 
-| Foreman | Plugin |
-| ---------------:| --------------:|
-| >= 1.9         | 0 - 0.3         |
-| >= 1.12        | 1.0 - TBD       |
+| Foreman | Plugin    |
+| ------: | --------: |
+| >= 1.9  | 0 - 0.3   |
+| >= 1.12 | 1.0 - TBD |
 
 ### Devs
 
