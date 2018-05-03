@@ -1,3 +1,56 @@
+2018-04-25	Marek Hulán <ares@users.noreply.github.com>
+	* Merge pull request #164 from dLobatog/23243
+
+2018-04-18	Marek Hulan <mhulan@redhat.com>
+	* Refs #23205 - fix the migration on existing setups
+
+2018-04-18	Daniel Lobato Garcia <me@daniellobato.me>
+	* Fixes #23243 - Display disclaimer on Insights playbook
+
+2018-04-17	Oleh Fedorenko <ofedoren@redhat.com>
+	* Fixes #22994 - Add refactor for ansible roles controller
+	* Fixes #23049 - Add IDs to the server respones
+	* Fixes #23228 - Add scoped_search on relations
+
+2018-04-16	Daniel Lobato Garcia <me@daniellobato.me>
+	* Fixes #23245 - Rubocop issues in master
+
+2018-04-12	Daniel Lobato Garcia <me@daniellobato.me>
+	* Fixes #23216 - Include package.json and webpack in gemspec
+
+2018-04-12	Sebastian Gräßl <mail@bastilian.me>
+	* Refs #23205 - Fix renaming migration for empty/unseeded DB
+	* Fixes #23205 - Prefix job template categories with "Ansible"
+
+2018-04-10	Sebastian Gräßl <mail@bastilian.me>
+	* Fixes #23114 - Add setting to disable out of sync
+
+2018-04-03	Sebastian Gräßl <mail@bastilian.me>
+	* Fixes #22896 - Fall back to REX private key
+
+2018-04-03	Justin Sherrill <jsherril@redhat.com>
+	* Fixes #23091 - remove dynflow dep
+
+2018-03-22	Marek Hulan <mhulan@redhat.com>
+	* Fixes #22973 - add custom insights notification
+
+2018-03-22	Sebastian Gräßl <bastilian@users.noreply.github.com>
+	* Merge pull request #146 from bkearney/bkearney/22860
+
+2018-03-21	Marek Hulan <mhulan@redhat.com>
+	* Fixes #22775 - add missing audits for user actions
+	* Remove tasks version limit
+	* Fixes rubocop
+
+2018-03-14	Bryan Kearney <bryan.kearney@gmail.com>
+	* Fixes #22860 - Extract the most recent strings from the plugin
+
+2018-03-12	Sebastian Gräßl <mail@bastilian.me>
+	* Fixes #22124 - Add report interval setting for Ansible
+
+2018-03-08	Daniel Lobato Garcia <me@daniellobato.me>
+	* Release 2.1.0
+
 2018-03-08	Lindani Phiri <lphiri@redhat.com>
 	* Fixes #22677 - Use proper api host name to allow TLS mutual auth
 
