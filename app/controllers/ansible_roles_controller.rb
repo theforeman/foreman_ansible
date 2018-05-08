@@ -1,11 +1,7 @@
 # UI controller for ansible roles
 class AnsibleRolesController < ::ApplicationController
   include Foreman::Controller::AutoCompleteSearch
-
-  before_action :find_resource, :only => [:destroy]
-  before_action :find_proxy, :only => [:import]
-  before_action :create_importer, :only => [:import, :confirm_import]
-  before_action :default_order, :only => [:index]
+  include ForemanAnsible::Concerns::ImportControllerHelper
 
   def index
     @ansible_roles = resource_base.search_for(params[:search],
@@ -42,11 +38,6 @@ class AnsibleRolesController < ::ApplicationController
 
   def default_order
     params[:order] ||= 'name ASC'
-  end
-
-  def find_proxy
-    return nil unless params[:proxy]
-    @proxy = SmartProxy.authorized(:view_smart_proxies).find(params[:proxy])
   end
 
   def create_importer

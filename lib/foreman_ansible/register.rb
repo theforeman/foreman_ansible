@@ -25,6 +25,18 @@ Foreman::Plugin.register :foreman_ansible do
                { :ansible_roles => [:import, :confirm_import],
                  :'api/v2/ansible_roles' => [:import] },
                :resource_type => 'AnsibleRole'
+    permission :view_ansible_variables,
+               { :ansible_variables => [:index, :auto_complete_search] },
+               :resource_type => 'AnsibleVariable'
+    permission :edit_ansible_variables,
+               { :ansible_variables => [:edit, :update] },
+               :resource_type => 'AnsibleVariable'
+    permission :destroy_ansible_variables,
+               { :ansible_variables => [:destroy] },
+               :resource_type => 'AnsibleVariable'
+    permission :import_ansible_variables,
+               { :ansible_variables => [:import, :confirm_import] },
+               :resource_type => 'AnsibleVariable'
   end
 
   role 'Ansible Roles Manager',
@@ -45,6 +57,10 @@ Foreman::Plugin.register :foreman_ansible do
   menu :top_menu, :ansible_roles,
        :caption => N_('Roles'),
        :url_hash => { :controller => :ansible_roles, :action => :index },
+       :parent => :configure_menu
+  menu :top_menu, :ansible_variables,
+       :caption => N_('Variables'),
+       :url_hash => { :controller => :ansible_variables, :action => :index },
        :parent => :configure_menu
 
   apipie_documented_controllers [

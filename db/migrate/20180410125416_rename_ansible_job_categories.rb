@@ -1,7 +1,7 @@
 class RenameAnsibleJobCategories < ActiveRecord::Migration[5.1]
   def up
-    unless User.unscoped.find_by_login(User::ANONYMOUS_ADMIN)
-      puts "No ANONYMOUS_ADMIN found. Skipping renaming Ansible jobs"
+    unless User.unscoped.find_by(:login => User::ANONYMOUS_ADMIN)
+      puts 'No ANONYMOUS_ADMIN found. Skipping renaming Ansible jobs'
       return
     end
     User.as_anonymous_admin do
@@ -16,7 +16,7 @@ class RenameAnsibleJobCategories < ActiveRecord::Migration[5.1]
           job_template.job_category = "Ansible #{job_template.job_category}"
           job_template.save
         end
-  
+
         service_template = JobTemplate.where(
           :name => 'Service Action - Ansible Default'
         ).first
