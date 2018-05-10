@@ -1,4 +1,4 @@
-<%= webpacked_plugins_js_for :foreman_ansible %>
+<%= javascript_include_tag *webpack_asset_paths('foreman_ansible', :extension => 'js'), "data-turbolinks-track" => true, 'defer' => 'defer' %>
 <%= stylesheet 'foreman_ansible/foreman-ansible' %>
 
 <table id='report_log' class="<%= table_css_classes %>">
