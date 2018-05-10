@@ -43,11 +43,11 @@ class Setting
               'ansible_verbosity',
               N_('Foreman will add the this level of verbosity for '\
                  'additional debugging output when running Ansible playbooks.'),
-              '',
+              '0,
               N_('Default verbosity level'),
               nil,
               :collection => lambda do
-                { '' => N_('Disabled'),
+                { '0' => N_('Disabled'),
                   '1' => N_('Level 1 (-v)'),
                   '2' => N_('Level 2 (-vv)'),
                   '3' => N_('Level 3 (-vvv)'),
