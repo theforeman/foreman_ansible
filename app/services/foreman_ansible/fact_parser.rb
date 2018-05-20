@@ -54,11 +54,14 @@ module ForemanAnsible
       end
     end
 
-    def get_facts_for_interface(interface)
-      interface.tr!('-', '_') # virbr1-nic -> virbr1_nic
+    def get_facts_for_interface(iface_name)
+      interface = iface_name.tr('-', '_') # virbr1-nic -> virbr1_nic
       interface_facts = facts[:"ansible_#{interface}"]
-      ipaddress = ip_from_interface(interface)
-      HashWithIndifferentAccess[interface_facts.merge(:ipaddress => ipaddress)]
+      iface_facts = HashWithIndifferentAccess[interface_facts.merge(
+        :ipaddress => ip_from_interface(interface)
+      )]
+      logger.debug { "Interface #{interface} facts: #{iface_facts.inspect}" }
+      iface_facts
     end
 
     def ipmi_interface; end
