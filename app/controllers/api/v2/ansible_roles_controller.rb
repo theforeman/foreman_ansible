@@ -29,13 +29,13 @@ module Api
         process_response @ansible_role.destroy
       end
 
-      api :POST, '/ansible_roles/import', N_('Import Ansible roles')
+      api :PUT, '/ansible_roles/import', N_('Import Ansible roles')
       param :proxy_id, :identifier, N_('Smart Proxy to import from')
       def import
         @imported = @importer.import!
       end
 
-      api :POST, '/ansible_roles/obsolete', N_('Obsolete Ansible roles')
+      api :PUT, '/ansible_roles/obsolete', N_('Obsolete Ansible roles')
       param :proxy_id, :identifier, N_('Smart Proxy to import from')
       def obsolete
         @obsoleted = @importer.obsolete!
