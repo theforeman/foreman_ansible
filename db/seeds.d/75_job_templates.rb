@@ -1,3 +1,5 @@
+organizations = Organization.unscoped.all
+locations = Location.unscoped.all
 User.as_anonymous_admin do
   RemoteExecutionFeature.without_auditing do
     if Rails.env.test? || File.basename($PROGRAM_NAME) == 'rake'
@@ -12,10 +14,12 @@ User.as_anonymous_admin do
       Dir[File.join("#{ForemanAnsible::Engine.root}/app/views/foreman_ansible/"\
                     'job_templates/**/*.erb')].each do |template|
         sync = !Rails.env.test? && Setting[:remote_execution_sync_templates]
-        JobTemplate.import_raw!(File.read(template),
-                                :default => true,
-                                :locked => true,
-                                :update => sync)
+        template = JobTemplate.import_raw!(File.read(template),
+                                           :default => true,
+                                           :locked => true,
+                                           :update => sync)
+        template.organizations = organizations if SETTINGS[:organizations_enabled] && template.present?
+        template.locations = locations if SETTINGS[:locations_enabled] && template.present?
       end
     end
   end
