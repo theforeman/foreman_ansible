@@ -24,11 +24,6 @@ module ForemanAnsible
       @new_os if @new_os.valid? && @new_os.save
     end
 
-    def os_name
-      facts[:ansible_distribution] ||
-        facts[:ansible_lsb] && facts[:ansible_lsb]['id']
-    end
-
     def debian_os_major_sid
       case facts[:ansible_distribution_major_version]
       when /wheezy/i
@@ -60,14 +55,38 @@ module ForemanAnsible
         facts[:ansible_lsb] && facts[:ansible_lsb]['release']
     end
 
+    # rubocop:disable AbcSize
     def os_minor
-      _, minor = (os_release.split('.') unless os_release.nil?) ||
+      _, minor = (os_release.split('.', 2) unless os_release.nil?) ||
                  (facts[:version].split('R') if os_name == 'junos')
+      # Until Foreman supports os.minor as something that's not a number,
+      # we should remove the extra dots in the version. E.g:
+      # '6.1.7601.65536' becomes '6.1.760165536'
+      if facts[:ansible_os_family] == 'Windows'
+        minor, patch = minor.split('.', 2)
+        patch.tr!('.', '')
+        minor = "#{minor}.#{patch}"
+      end
       minor || ''
     end
 
+    def os_name
+      if facts[:ansible_os_family] == 'Windows'
+        facts[:ansible_os_name].tr(" \n\t", '') ||
+          facts[:ansible_distribution].tr(" \n\t", '')
+      else
+        facts[:ansible_distribution] ||
+          facts[:ansible_lsb] && facts[:ansible_lsb]['id']
+      end
+    end
+    # rubocop:enable AbcSize
+
     def os_description
-      facts[:ansible_lsb] && facts[:ansible_lsb]['description']
+      if facts[:ansible_os_family] == 'Windows'
+        facts[:ansible_os_name].strip || facts[:ansible_distribution].strip
+      else
+        facts[:ansible_lsb] && facts[:ansible_lsb]['description']
+      end
     end
   end
 end
