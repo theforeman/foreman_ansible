@@ -80,4 +80,76 @@ module ForemanAnsible
       assert_equal 'Debian', os.name
     end
   end
+
+  # Tests for Windows parser
+  class WindowsFactParserTest < ActiveSupport::TestCase
+    context 'Windows 7' do
+      setup do
+        @facts_parser = ForemanAnsible::FactParser.new(
+          HashWithIndifferentAccess.new(
+            '_type' => 'ansible',
+            '_timestamp' => '2015-10-29 20:01:51 +0100',
+            'ansible_facts' => {
+              'ansible_architecture' => '32-Bit',
+              'ansible_distribution' => 'Microsoft Windows 7 Enterprise ',
+              'ansible_distribution_major_version' => '6',
+              'ansible_distribution_version' => '6.1.7601.65536',
+              'ansible_os_family' => 'Windows',
+              'ansible_os_name' => 'Microsoft Windows 7 Enterprise',
+              'ansible_product_name' => 'DS61',
+              'ansible_product_serial' => 'To be filled by O.E.M.',
+              'ansible_system' => 'Win32NT',
+              'ansible_win_rm_certificate_expires' => '2021-01-23 15:08:48',
+              'ansible_windows_domain' => 'example.com'
+            }
+          )
+        )
+      end
+
+      test 'parses Windows 7 Enterprise correctly' do
+        os = @facts_parser.operatingsystem
+        assert_equal '6', os.major
+        assert_equal '6.1.760165536', os.release
+        assert_equal '1.760165536', os.minor
+        assert_equal 'Windows', os.family
+        assert_equal 'Microsoft Windows 7 Enterprise', os.description
+        assert_equal 'MicrosoftWindows7Enterprise', os.name
+        assert os.valid?
+      end
+    end
+
+    context 'Windows Server 2016' do
+      setup do
+        @facts_parser = ForemanAnsible::FactParser.new(
+          HashWithIndifferentAccess.new(
+            '_type' => 'ansible',
+            '_timestamp' => '2015-10-29 20:01:51 +0100',
+            'ansible_facts' => {
+              'ansible_architecture' => '64-Bit',
+              'ansible_distribution' => 'Microsoft Windows Server 2016 '\
+                                        'Standard',
+              'ansible_distribution_major_version' => '10',
+              'ansible_distribution_version' => '10.0.14393.0',
+              'ansible_os_family' => 'Windows',
+              'ansible_os_name' => 'Microsoft Windows Server 2016 Standard',
+              'ansible_system' => 'Win32NT',
+              'ansible_win_rm_certificate_expires' => '2021-01-23 15:08:48',
+              'ansible_windows_domain' => 'example.com'
+            }
+          )
+        )
+      end
+
+      test 'parses Windows Server correctly' do
+        os = @facts_parser.operatingsystem
+        assert_equal '10', os.major
+        assert_equal '10.0.143930', os.release
+        assert_equal '0.143930', os.minor
+        assert_equal 'Windows', os.family
+        assert_equal 'Microsoft Windows Server 2016 Standard', os.description
+        assert_equal 'MicrosoftWindowsServer2016Standard', os.name
+        assert os.valid?
+      end
+    end
+  end
 end
