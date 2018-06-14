@@ -22,6 +22,18 @@ module Api
         assert_response :ok
         refute AnsibleRole.exists?(@role.id)
       end
+
+      test 'should import' do
+        put :import,
+            :session => set_session_user
+        assert_response :success
+      end
+
+      test 'should obsolete' do
+        put :obsolete,
+            :session => set_session_user
+        assert_response :success
+      end
     end
   end
 end
