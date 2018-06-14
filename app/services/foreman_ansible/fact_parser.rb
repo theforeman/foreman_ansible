@@ -2,16 +2,11 @@ module ForemanAnsible
   # Override methods from Foreman app/services/fact_parser so that facts
   # representing host properties are understood when they come from Ansible.
   class FactParser < ::FactParser
+    include OperatingSystemParser
     attr_reader :facts
 
     def initialize(facts)
       @facts = HashWithIndifferentAccess.new(facts[:ansible_facts])
-    end
-
-    def operatingsystem
-      args = { :name => os_name, :major => os_major, :minor => os_minor }
-      Operatingsystem.where(args).first ||
-        Operatingsystem.create!(args.merge(:description => os_description))
     end
 
     # Don't do anything as there's no env in Ansible
@@ -73,52 +68,6 @@ module ForemanAnsible
     def ip_from_interface(interface)
       return if facts[:"ansible_#{interface}"]['ipv4'].blank?
       facts[:"ansible_#{interface}"]['ipv4']['address']
-    end
-
-    def os_name
-      facts[:ansible_distribution] ||
-        facts[:ansible_lsb] && facts[:ansible_lsb]['id']
-    end
-
-    def debian_os_major_sid
-      case facts[:ansible_distribution_major_version]
-      when /wheezy/i
-        '7'
-      when /jessie/i
-        '8'
-      when /stretch/i
-        '9'
-      when /buster/i
-        '10'
-      end
-    end
-
-    # rubocop:disable AbcSize, CyclomaticComplexity, PerceivedComplexity
-    def os_major
-      if os_name == 'Debian' &&
-         facts[:ansible_distribution_major_version][%r{\/sid}i]
-        debian_os_major_sid
-      else
-        facts[:ansible_distribution_major_version] ||
-          facts[:ansible_lsb] && facts[:ansible_lsb]['major_release'] ||
-          (facts[:version].split('R')[0] if os_name == 'junos')
-      end
-    end
-    # rubocop:enable AbcSize, CyclomaticComplexity, PerceivedComplexity
-
-    def os_release
-      facts[:ansible_distribution_version] ||
-        facts[:ansible_lsb] && facts[:ansible_lsb]['release']
-    end
-
-    def os_minor
-      _, minor = (os_release.split('.') unless os_release.nil?) ||
-                 (facts[:version].split('R') if os_name == 'junos')
-      minor || ''
-    end
-
-    def os_description
-      facts[:ansible_lsb] && facts[:ansible_lsb]['description']
     end
 
     # Returns first non-empty fact. Needed to check for empty strings.

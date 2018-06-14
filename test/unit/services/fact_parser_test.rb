@@ -38,6 +38,15 @@ module ForemanAnsible
       @facts_parser.operatingsystem
     end
 
+    test 'does not fail if facts are not enough to create OS' do
+      @facts_parser.expects(:os_name).returns('fakeos').at_least_once
+      @facts_parser.expects(:os_major).returns('').at_least_once
+      @facts_parser.expects(:os_minor).returns('').at_least_once
+      @facts_parser.expects(:os_description).returns('').at_least_once
+      Operatingsystem.any_instance.expects(:valid?).returns(false)
+      assert_nil @facts_parser.operatingsystem
+    end
+
     private
 
     def expect_where(model, fact_name)
