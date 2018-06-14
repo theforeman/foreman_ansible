@@ -5,6 +5,8 @@ require 'test_helper'
 class PlaybookRunnerTest < ActiveSupport::TestCase
   context 'roles dir' do
     test 'reads default when none provided' do
+      ForemanAnsibleCore::PlaybookRunner.any_instance.stubs(:unknown_hosts).
+        returns([])
       File.expects(:exist?).with('/etc/ansible').returns(true)
       runner = ForemanAnsibleCore::PlaybookRunner.new(nil, nil)
       assert '/etc/ansible', runner.instance_variable_get('@ansible_dir')
@@ -12,6 +14,11 @@ class PlaybookRunnerTest < ActiveSupport::TestCase
   end
 
   context 'working_dir' do
+    setup do
+      ForemanAnsibleCore::PlaybookRunner.any_instance.stubs(:unknown_hosts).
+        returns([])
+    end
+
     test 'creates temp one if not provided' do
       Dir.expects(:mktmpdir)
       File.expects(:exist?).with('/etc/ansible').returns(true)
@@ -25,6 +32,44 @@ class PlaybookRunnerTest < ActiveSupport::TestCase
       Dir.expects(:mktmpdir).never
       runner = ForemanAnsibleCore::PlaybookRunner.new(nil, nil)
       assert '/foo', runner.instance_variable_get('@working_dir')
+    end
+  end
+
+  context 'TOFU policy' do # Trust On First Use
+    setup do
+      @inventory = { 'all' => { 'hosts' => ['foreman.example.com'] } }.to_json
+      @output = StringIO.new
+      logger = Logger.new(@output)
+      ForemanAnsibleCore::PlaybookRunner.any_instance.stubs(:logger).
+        returns(logger)
+    end
+
+    test 'ignores known hosts' do
+      Net::SSH::KnownHosts.expects(:search_for).
+        with('foreman.example.com').returns(['somekey'])
+      ForemanAnsibleCore::PlaybookRunner.any_instance.
+        expects(:add_to_known_hosts).never
+      ForemanAnsibleCore::PlaybookRunner.new(@inventory, nil)
+    end
+
+    test 'adds unknown hosts to known_hosts' do
+      Net::SSH::KnownHosts.expects(:search_for).
+        with('foreman.example.com').returns([])
+      ForemanAnsibleCore::PlaybookRunner.any_instance.
+        expects(:add_to_known_hosts).with('foreman.example.com')
+      ForemanAnsibleCore::PlaybookRunner.new(@inventory, nil)
+    end
+
+    test 'logs error when it cannot add to known_hosts' do
+      Net::SSH::KnownHosts.expects(:search_for).
+        with('foreman.example.com').returns([])
+      Net::SSH::Transport::Session.expects(:new).with('foreman.example.com').
+        raises(Net::Error)
+      ForemanAnsibleCore::PlaybookRunner.new(@inventory, nil)
+      assert_match(
+        /ERROR.*Failed to save host key for foreman.example.com: Net::Error/,
+        @output.string
+      )
     end
   end
 end

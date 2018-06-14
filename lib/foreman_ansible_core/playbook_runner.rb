@@ -1,6 +1,7 @@
 require 'foreman_tasks_core/runner/command_runner'
 require_relative 'command_creator'
 require 'tmpdir'
+require 'net/ssh'
 
 module ForemanAnsibleCore
   # Implements ForemanTasksCore::Runner::Base interface for running
@@ -11,6 +12,9 @@ module ForemanAnsibleCore
     def initialize(inventory, playbook, options = {})
       super
       @inventory = inventory
+      unknown_hosts.each do |host|
+        add_to_known_hosts(host)
+      end
       @playbook  = playbook
       @options   = options
       initialize_dirs
@@ -93,6 +97,23 @@ module ForemanAnsibleCore
       raise "Ansible dir #{ansible_dir} does not exist" unless
         !ansible_dir.nil? && File.exist?(ansible_dir)
       @ansible_dir = ansible_dir
+    end
+
+    def unknown_hosts
+      JSON.parse(@inventory)['all']['hosts'].select do |host|
+        Net::SSH::KnownHosts.search_for(host).empty?
+      end
+    end
+
+    def add_to_known_hosts(host)
+      logger.warn("[foreman_ansible] - Host #{host} not found in known_hosts")
+      Net::SSH::Transport::Session.new(host).host_keys.each do |host_key|
+        Net::SSH::KnownHosts.add(host, host_key)
+      end
+      logger.warn("[foreman_ansible] - Added host key #{host} to known_hosts")
+    rescue StandardError => e
+      logger.error('[foreman_ansible] - Failed to save host key for '\
+                   "#{host}: #{e}")
     end
   end
 end
