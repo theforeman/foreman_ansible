@@ -17,7 +17,7 @@ module ForemanAnsibleCore
 
   if defined? ForemanTasksCore
     extend ForemanTasksCore::SettingsLoader
-    register_settings(:ansible, :ansible_dir => '/etc/ansible',
+    register_settings(:ansible, :ansible_dir => Dir.home,
                                 :working_dir => nil)
 
     if ForemanTasksCore.dynflow_present?
