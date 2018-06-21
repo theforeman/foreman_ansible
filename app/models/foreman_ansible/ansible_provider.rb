@@ -20,8 +20,18 @@ if defined? ForemanRemoteExecution
           super(template_invocation, host).merge(
             'ansible_inventory' => ::ForemanAnsible::InventoryCreator.new(
               [host], template_invocation
-            ).to_hash.to_json
+            ).to_hash.to_json,
+            :remote_execution_command => ansible_command?(
+              template_invocation.template
+            )
           )
+        end
+
+        private
+
+        def ansible_command?(template)
+          template.remote_execution_features.
+            where(:label => 'ansible_run_host').empty?
         end
       end
     end
