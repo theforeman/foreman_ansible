@@ -7,7 +7,7 @@ class PlaybookRunnerTest < ActiveSupport::TestCase
     test 'reads default when none provided' do
       ForemanAnsibleCore::PlaybookRunner.any_instance.stubs(:unknown_hosts).
         returns([])
-      File.expects(:exist?).with('/etc/ansible').returns(true)
+      File.expects(:exist?).with(Dir.home).returns(true)
       runner = ForemanAnsibleCore::PlaybookRunner.new(nil, nil)
       assert '/etc/ansible', runner.instance_variable_get('@ansible_dir')
     end
@@ -21,7 +21,7 @@ class PlaybookRunnerTest < ActiveSupport::TestCase
 
     test 'creates temp one if not provided' do
       Dir.expects(:mktmpdir)
-      File.expects(:exist?).with('/etc/ansible').returns(true)
+      File.expects(:exist?).with(Dir.home).returns(true)
       ForemanAnsibleCore::PlaybookRunner.new(nil, nil)
     end
 
