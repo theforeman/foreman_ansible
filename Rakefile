@@ -21,6 +21,8 @@ rescue StandardError => _
   puts 'Rubocop not loaded.'
 end
 
+Bundler::GemHelper.install_tasks :name => 'foreman_ansible'
+
 task :default do
   Rake::Task['rubocop'].execute
 end
