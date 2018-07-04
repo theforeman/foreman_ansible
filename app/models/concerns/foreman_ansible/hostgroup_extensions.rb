@@ -16,6 +16,12 @@ module ForemanAnsible
         end.uniq
       end
 
+      def inherited_and_own_ansible_roles
+        path.reduce([]) do |roles, hostgroup|
+          roles + hostgroup.ansible_roles
+        end.uniq
+      end
+
       def host_ansible_roles
         hosts.all.includes(:ansible_roles).flat_map(&:ansible_roles)
       end

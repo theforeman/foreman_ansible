@@ -3,7 +3,7 @@
     f,
     :ansible_roles,
     AnsibleRole,
-    f.object.all_ansible_roles.map(&:id),
+    f.object.is_a?(Hostgroup) ? (f.object.inherited_and_own_ansible_roles).map(&:id) : f.object.all_ansible_roles.map(&:id),
     {
       :disabled => f.object.inherited_ansible_roles.map(&:id),
       :label => _('Available roles'),
