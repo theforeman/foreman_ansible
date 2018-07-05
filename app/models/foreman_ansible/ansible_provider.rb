@@ -27,6 +27,10 @@ if defined? ForemanRemoteExecution
           )
         end
 
+        def supports_effective_user?
+          true
+        end
+
         private
 
         def ansible_command?(template)

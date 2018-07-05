@@ -52,8 +52,9 @@ module ForemanAnsible
                                                        @template_invocation)
       connection_params = inventory.connection_params(@host)
       assert_empty extra_options.to_a - inventory.connection_params(@host).to_a
+      assert_equal true, connection_params['ansible_become']
       assert_equal @template_invocation.effective_user,
-                   connection_params['ansible_become']
+                   connection_params['ansible_become_user']
       assert_equal Setting['ansible_connection'],
                    connection_params['ansible_connection']
       refute_equal Setting['remote_execution_ssh_user'],
