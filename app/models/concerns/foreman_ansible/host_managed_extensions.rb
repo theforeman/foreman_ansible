@@ -1,3 +1,4 @@
+require 'ipaddress'
 module ForemanAnsible
   # Relations to make Host::Managed 'have' ansible roles
   module HostManagedExtensions
@@ -44,6 +45,16 @@ module ForemanAnsible
       # rubocop:enable Metrics/AbcSize
     end
     # rubocop:enable Metrics/BlockLength
+    # Class methods we may need to override or add
+    module ClassMethods
+      def import_host(hostname, certname = nil, deprecated_proxy = nil)
+        host = super(hostname, certname, deprecated_proxy)
+        if IPAddress.valid?(hostname) && Nic::Interface.find_by(:ip => hostname)
+          host = Nic::Interface.find_by(:ip => hostname).host
+        end
+        host
+      end
+    end
   end
 end
 
