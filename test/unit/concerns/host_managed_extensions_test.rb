@@ -34,4 +34,15 @@ class HostManagedExtensionsTest < ActiveSupport::TestCase
       @host.inherited_ansible_roles.must_equal [@role2]
     end
   end
+
+  describe 'import facts' do
+    test 'when hostname looks like an IP it finds the right host' do
+      @host = ::FactoryBot.create(:host, :ip => '192.168.128.27')
+      assert_equal @host, Host::Managed.import_host(@host.ip)
+    end
+
+    test 'when hostname looks like an IP but there is no host with that IP' do
+      assert Host::Managed.import_host('192.168.128.27').new_record?
+    end
+  end
 end
