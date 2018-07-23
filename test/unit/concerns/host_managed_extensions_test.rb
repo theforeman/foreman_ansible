@@ -11,6 +11,7 @@ class HostManagedExtensionsTest < ActiveSupport::TestCase
                                           :ansible_roles => [@role2])
     @hostgroup = FactoryBot.create(:hostgroup, :parent => @hostgroup_parent)
     @host = FactoryBot.build_stubbed(:host, :ansible_roles => [@role1])
+    @another_host = FactoryBot.build_stubbed(:host, :ansible_roles => [@role3])
   end
 
   describe '#all_ansible_roles' do

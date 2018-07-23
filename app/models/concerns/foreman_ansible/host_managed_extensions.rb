@@ -15,12 +15,11 @@ module ForemanAnsible
                     :only_explicit => true
 
       before_provision :play_ansible_roles
-      include ForemanAnsible::HasManyAnsibleRoles
       audit_associations :ansible_roles
 
       def inherited_ansible_roles
         return [] unless hostgroup
-        hostgroup.all_ansible_roles
+        hostgroup.inherited_and_own_ansible_roles
       end
 
       # This one should be fixed, disabled for the moment as we're
@@ -43,6 +42,10 @@ module ForemanAnsible
                     "#{e.message}")
       end
       # rubocop:enable Metrics/AbcSize
+
+      def all_ansible_roles
+        (ansible_roles + inherited_ansible_roles).uniq
+      end
     end
     # rubocop:enable Metrics/BlockLength
     # Class methods we may need to override or add
