@@ -47,10 +47,12 @@ module ForemanAnsible
     # rubocop:enable Metrics/BlockLength
     # Class methods we may need to override or add
     module ClassMethods
-      def import_host(hostname, certname = nil, deprecated_proxy = nil)
-        host = super(hostname, certname, deprecated_proxy)
-        if IPAddress.valid?(hostname) && Nic::Interface.find_by(:ip => hostname)
-          host = Nic::Interface.find_by(:ip => hostname).host
+      def import_host(*args)
+        host = super(*args)
+        hostname = args[0]
+        if IPAddress.valid?(hostname) &&
+           (host_nic = Nic::Interface.find_by(:ip => hostname))
+          host = host_nic.host
         end
         host
       end
