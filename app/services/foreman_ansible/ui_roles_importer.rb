@@ -12,13 +12,13 @@ module ForemanAnsible
     end
 
     def create_new_roles(changes)
-      changes.values.each do |new_role|
+      changes.each_value do |new_role|
         ::AnsibleRole.create(JSON.parse(new_role))
       end
     end
 
     def delete_old_roles(changes)
-      changes.values.each do |old_role|
+      changes.each_value do |old_role|
         ::AnsibleRole.find(JSON.parse(old_role)['id']).destroy
       end
     end
