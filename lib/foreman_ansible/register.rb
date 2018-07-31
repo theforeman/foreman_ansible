@@ -28,16 +28,25 @@ Foreman::Plugin.register :foreman_ansible do
                  :'api/v2/ansible_roles' => [:import] },
                :resource_type => 'AnsibleRole'
     permission :view_ansible_variables,
-               { :ansible_variables => [:index, :auto_complete_search] },
+               {
+                 :ansible_variables => [:index, :auto_complete_search],
+                 :'api/v2/ansible_variables' => [:index, :show]
+               },
                :resource_type => 'AnsibleVariable'
     permission :edit_ansible_variables,
                { :ansible_variables => [:edit, :update] },
                :resource_type => 'AnsibleVariable'
     permission :destroy_ansible_variables,
-               { :ansible_variables => [:destroy] },
+               {
+                 :ansible_variables => [:destroy],
+                 :'api/v2/ansible_variables' => [:destroy, :obsolete]
+               },
                :resource_type => 'AnsibleVariable'
     permission :import_ansible_variables,
-               { :ansible_variables => [:import, :confirm_import] },
+               {
+                 :ansible_variables => [:import, :confirm_import],
+                 :'api/v2/ansible_variables' => [:import]
+               },
                :resource_type => 'AnsibleVariable'
   end
 

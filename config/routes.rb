@@ -68,6 +68,13 @@ Rails.application.routes.draw do
             put :obsolete
           end
         end
+
+        resources :ansible_variables, :only => [:show, :index, :destroy] do
+          collection do
+            put :import
+            put :obsolete
+          end
+        end
       end
     end
   end

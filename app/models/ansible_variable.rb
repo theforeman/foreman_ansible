@@ -15,4 +15,9 @@ class AnsibleVariable < LookupKey
   def self.humanize_class_name
     'Ansible variable'
   end
+
+  def editable_by_user?
+    AnsibleVariable.authorized(:edit_external_parameters).
+      where(:id => id).exists?
+  end
 end
