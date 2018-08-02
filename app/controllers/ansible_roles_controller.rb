@@ -25,7 +25,7 @@ class AnsibleRolesController < ::ApplicationController
   def import
     changed = @importer.import!
     if changed.values.all?(&:empty?)
-      notice no_changed_roles_message
+      success no_changed_roles_message
       redirect_to ansible_roles_path
     else
       render :locals => { :changed => changed }
@@ -33,8 +33,8 @@ class AnsibleRolesController < ::ApplicationController
   end
 
   def confirm_import
-    @importer.finish_import(params[:changed])
-    notice _('Import of roles successfully finished.')
+    @importer.finish_import(params[:changed].to_unsafe_h)
+    success _('Import of roles successfully finished.')
     redirect_to ansible_roles_path
   end
 
