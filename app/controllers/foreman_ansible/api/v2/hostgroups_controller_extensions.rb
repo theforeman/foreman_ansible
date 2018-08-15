@@ -30,6 +30,16 @@ module ForemanAnsible
                                     @hostgroups.map(&:host_ids).flatten.uniq)
             process_response composer.trigger!, composer.job_invocation
           end
+
+          api :GET, '/hostgroups/:id/ansible_roles',
+              N_('List all Ansible roles for a hostgroup')
+          param :id, :identifier, :required => true
+
+          def ansible_roles
+            find_resource
+            return unless @hostgroup
+            @ansible_roles = @hostgroup.all_ansible_roles
+          end
         end
 
         private
@@ -49,7 +59,7 @@ module ForemanAnsible
 
         def action_permission
           case params[:action]
-          when 'play_roles'
+          when 'play_roles', 'ansible_roles'
             :view
           else
             super

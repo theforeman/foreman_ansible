@@ -9,6 +9,7 @@ module Api
         @ansible_role2 = FactoryBot.create(:ansible_role)
         @host1 = FactoryBot.create(:host)
         @host2 = FactoryBot.create(:host)
+        @host3 = FactoryBot.create(:host)
       end
 
       test 'should return an not_found due to non-existent host_id' do
@@ -61,6 +62,13 @@ module Api
              :session => set_session_user
         assert_response :success
         assert assigns('host').ansible_roles, [@ansible_role2]
+      end
+
+      test 'should list ansible roles for a host' do
+        @host3.ansible_roles = [@ansible_role1]
+        get :ansible_roles, :params => { :id => @host3.id }
+        response = JSON.parse(@response.body)
+        assert_equal @ansible_role1.id, response.first['id']
       end
     end
   end

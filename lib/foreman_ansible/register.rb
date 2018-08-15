@@ -25,6 +25,12 @@ Foreman::Plugin.register :foreman_ansible do
                { :ansible_roles => [:import, :confirm_import],
                  :'api/v2/ansible_roles' => [:import] },
                :resource_type => 'AnsibleRole'
+    permission :view_hosts,
+               { :'api/v2/hosts' => [:ansible_roles] },
+               :resource_type => 'Host'
+    permission :view_hostgroups,
+               { :'api/v2/hostgroups' => [:ansible_roles] },
+               :resource_type => 'Hostgroup'
   end
 
   role 'Ansible Roles Manager',
