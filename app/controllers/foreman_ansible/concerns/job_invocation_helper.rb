@@ -7,10 +7,14 @@ module ForemanAnsible
       def job_composer(feature_name, target)
         composer = ::JobInvocationComposer.for_feature(feature_name, target)
         return composer if composer.save
-        raise ::Foreman::Exception.new(
-          format(N_('Could not run Ansible roles for %{host}'),
-                 :host => target)
-        )
+        msg = if target.blank?
+                format(N_('There are no Ansible roles to play'),
+                       :target => target.class)
+              else
+                format(N_('Could not run Ansible roles for %{host}'),
+                       :host => target)
+              end
+        raise ::Foreman::Exception.new(msg)
       end
     end
   end
