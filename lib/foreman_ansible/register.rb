@@ -39,6 +39,12 @@ Foreman::Plugin.register :foreman_ansible do
     permission :import_ansible_variables,
                { :ansible_variables => [:import, :confirm_import] },
                :resource_type => 'AnsibleVariable'
+    permission :view_hosts,
+               { :'api/v2/hosts' => [:ansible_roles] },
+               :resource_type => 'Host'
+    permission :view_hostgroups,
+               { :'api/v2/hostgroups' => [:ansible_roles] },
+               :resource_type => 'Hostgroup'
   end
 
   role 'Ansible Roles Manager',

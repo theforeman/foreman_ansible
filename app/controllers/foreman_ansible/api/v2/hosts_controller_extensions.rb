@@ -26,13 +26,22 @@ module ForemanAnsible
             composer = job_composer(:ansible_run_host, @host.pluck(:id))
             process_response composer.trigger!, composer.job_invocation
           end
+
+          api :GET, '/hosts/:id/ansible_roles',
+              N_('List all Ansible roles for a host')
+          param :id, :identifier, :required => true
+
+          def ansible_roles
+            return unless @host
+            @ansible_roles = @host.all_ansible_roles
+          end
         end
 
         private
 
         def action_permission
           case params[:action]
-          when 'play_roles', 'multiple_play_roles'
+          when 'play_roles', 'multiple_play_roles', 'ansible_roles'
             :view
           else
             super
