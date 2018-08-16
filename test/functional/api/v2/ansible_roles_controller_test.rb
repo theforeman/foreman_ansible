@@ -34,6 +34,13 @@ module Api
             :session => set_session_user
         assert_response :success
       end
+
+      test 'should fetch' do
+        get :fetch, :session => set_session_user
+        response = JSON.parse(@response.body)
+        refute_empty response['results']
+        assert_response :success
+      end
     end
   end
 end

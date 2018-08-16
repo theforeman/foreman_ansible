@@ -55,6 +55,7 @@ Rails.application.routes.draw do
           collection do
             put :import
             put :obsolete
+            get :fetch
           end
         end
       end
