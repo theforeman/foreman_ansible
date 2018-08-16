@@ -12,7 +12,7 @@ module ForemanAnsible
         included do
           api :POST, '/hostgroups/:id/play_roles',
               N_('Plays Ansible roles on a hostgroup')
-          param :id, String, :required => true
+          param :id, :identifier, :required => true
 
           def play_roles
             find_resource
@@ -20,9 +20,10 @@ module ForemanAnsible
             process_response composer.trigger!, composer.job_invocation
           end
 
-          api :POST, '/hostgroups/play_roles',
+          api :POST, '/hostgroups/multiple_play_roles',
               N_('Plays Ansible roles on hostgroups')
-          param :id, Array, :required => true
+          param :hostgroup_ids, Array, N_('IDs of hostgroups to play roles on'),
+                :required => true
 
           def multiple_play_roles
             find_multiple
@@ -49,7 +50,7 @@ module ForemanAnsible
 
         def action_permission
           case params[:action]
-          when 'play_roles'
+          when 'play_roles', 'multiple_play_roles'
             :view
           else
             super
