@@ -8,6 +8,7 @@ module Api
       setup do
         @host1 = FactoryBot.create(:host, :with_hostgroup)
         @host2 = FactoryBot.create(:host, :with_hostgroup)
+        @ansible_role1 = FactoryBot.create(:ansible_role)
       end
 
       test 'should return an not_found due to non-existent host_id' do
@@ -37,6 +38,19 @@ module Api
         }
         response = JSON.parse(@response.body)
         assert_job_invocation_is_ok(response, target.map(&:id))
+      end
+
+      test 'should assign a role to a hostgroup' do
+        hostgroup = FactoryBot.create(:hostgroup,
+                                      :ansible_role_ids => [])
+        post :assign_ansible_roles,
+             :params => {
+               :id => hostgroup.id,
+               :ansible_role_ids => [@ansible_role1.id]
+             },
+             :session => set_session_user
+        assert_response :success
+        assert assigns('hostgroup').ansible_roles, [@ansible_role1]
       end
     end
   end
