@@ -88,8 +88,8 @@ module ForemanAnsible
     def parsed_message_json(log)
       JSON.parse(log.message.value)
     rescue StandardError => e
-      logger.error e
-      false
+      Foreman::Logging.exception('Error while parsing ansible message json', e)
+      {}
     end
   end
 end
