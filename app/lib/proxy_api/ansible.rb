@@ -24,5 +24,19 @@ module ProxyAPI
     rescue *PROXY_ERRORS => e
       raise ProxyException.new(url, e, N_('Unable to get roles from Ansible'))
     end
+
+    def all_variables
+      parse(get('roles/variables'))
+    rescue *PROXY_ERRORS => e
+      raise ProxyException.new(url, e,
+                               N_('Unable to get roles/variables from Ansible'))
+    end
+
+    def variables(role)
+      parse(get("roles/#{role}/variables"))
+    rescue *PROXY_ERRORS => e
+      raise ProxyException.new(url, e,
+                               N_('Unable to get roles/variables from Ansible'))
+    end
   end
 end

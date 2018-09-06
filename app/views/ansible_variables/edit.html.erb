@@ -1,0 +1,17 @@
+<%= breadcrumbs(
+  :items => [
+    {
+      :caption => _('Ansible Variables'),
+      :url => url_for(ansible_variables_path)
+    },
+    {
+      :caption => _('Edit %s' % @ansible_variable.key)
+    }
+  ],
+  :switchable => false
+) %>
+<% title(_('Edit Ansible Variable')) %>
+<%= form_for(@ansible_variable) do |f| %>
+    <%= render 'lookup_keys/fields', :f => f %>
+    <%= submit_or_cancel f %>
+<% end %>
