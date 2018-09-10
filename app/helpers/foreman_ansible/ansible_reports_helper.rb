@@ -14,8 +14,8 @@ module ForemanAnsible
     ].freeze
 
     def ansible_module_name(log)
-      source_value = log.source.value
-      name = source_value.split(':')[0].strip if source_value.include?(':')
+      source_value = log.source&.value
+      name = source_value.split(':')[0].strip if source_value&.include?(':')
       name
     end
 
