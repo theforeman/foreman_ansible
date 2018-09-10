@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Renames join table between Host and Ansible Roles
 class CreateHostAnsibleRoles < ActiveRecord::Migration[4.2]
   def change

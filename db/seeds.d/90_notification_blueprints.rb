@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 blueprints = [
   {
     :group => N_('Jobs'),

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Tests
 namespace :test do
   desc 'Foreman Ansible plugin tests'

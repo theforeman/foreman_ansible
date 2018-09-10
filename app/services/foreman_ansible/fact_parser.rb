@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsible
   # Override methods from Foreman app/services/fact_parser so that facts
   # representing host properties are understood when they come from Ansible.

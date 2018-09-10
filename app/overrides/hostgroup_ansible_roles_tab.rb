@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Displays Ansible roles tab on Hostgroup form
 Deface::Override.new(
   :virtual_path => 'hostgroups/_form',

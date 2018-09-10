@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_plugin_helper'
 # Unit tests for AnsibleReportImporter
 # This class is just meant to capture the config reports coming

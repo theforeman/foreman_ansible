@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsibleCore
   # Taken from Foreman core, this class creates an error code for any exception
   class Exception < ::StandardError

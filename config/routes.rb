@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # rubocop:disable BlockLength
 Rails.application.routes.draw do
   scope '/ansible' do

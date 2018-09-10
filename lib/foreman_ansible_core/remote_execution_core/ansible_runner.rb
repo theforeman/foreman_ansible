@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsibleCore
   module RemoteExecutionCore
     # Takes an inventory and runs it through REXCore CommandRunner

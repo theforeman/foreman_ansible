@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Displays Ansible roles button in host group action buttons
 Deface::Override.new(
   :virtual_path => 'hostgroups/index',

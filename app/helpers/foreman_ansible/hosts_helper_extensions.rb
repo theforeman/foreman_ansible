@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsible
   # Chained methods to extend the hosts menu with Ansible actions
   module HostsHelperExtensions

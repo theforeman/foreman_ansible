@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsible
   module Concerns
     # Extra methods to enforce Ansible roles on a host or multiple hosts

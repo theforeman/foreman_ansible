@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsible
   # Relations to make Hostgroup 'have' ansible roles
   module HostgroupExtensions

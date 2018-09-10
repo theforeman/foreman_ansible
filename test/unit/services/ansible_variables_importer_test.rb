@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_plugin_helper'
 # Unit tests for importing variables
 # This service is meant to take in essentially a string coming from

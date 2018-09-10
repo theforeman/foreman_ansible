@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Defines the relation between Hostgroup and AnsibleRole
 # rubocop:disable Metrics/LineLength
 class CreateJoinTableHostgroupAnsibleRoles < ActiveRecord::Migration[4.2]

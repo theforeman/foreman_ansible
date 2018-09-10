@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 organizations = Organization.unscoped.all
 locations = Location.unscoped.all
 User.as_anonymous_admin do

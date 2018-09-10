@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsible
   # Methods to transform variable names coming from the proxy into
   # Foreman AnsibleVariable objects

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Represents the variables used in Ansible to parameterize playbooks
 class AnsibleVariable < LookupKey
   belongs_to :ansible_role, :inverse_of => :ansible_variables

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsibleCore
   # Creates the actual command to be passed to foreman_tasks_core to run
   class CommandCreator
@@ -48,7 +50,7 @@ module ForemanAnsibleCore
       verbosity_level = @options[:verbosity_level]
       # rubocop:disable Rails/Present
       !verbosity_level.nil? && !verbosity_level.empty? &&
-        verbosity_level.to_i > 0
+        verbosity_level.to_i.positive?
       # rubocop:enable Rails/Present
     end
 

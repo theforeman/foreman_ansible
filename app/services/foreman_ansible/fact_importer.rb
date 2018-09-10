@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsible
   # Override methods from Foreman app/services/fact_importer so that Ansible
   # facts are recognized in Foreman as ForemanAnsible facts. It supports

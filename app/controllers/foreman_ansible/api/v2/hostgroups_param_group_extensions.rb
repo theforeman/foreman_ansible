@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsible
   module Api
     module V2

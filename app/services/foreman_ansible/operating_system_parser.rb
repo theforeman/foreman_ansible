@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsible
   # Methods to parse facts related to the OS
   module OperatingSystemParser
@@ -57,7 +59,7 @@ module ForemanAnsible
 
     # rubocop:disable AbcSize
     def os_minor
-      _, minor = (os_release.split('.', 2) unless os_release.nil?) ||
+      _, minor = (os_release&.split('.', 2)) ||
                  (facts[:version].split('R') if os_name == 'junos')
       # Until Foreman supports os.minor as something that's not a number,
       # we should remove the extra dots in the version. E.g:

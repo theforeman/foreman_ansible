@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # to keep track of when the roles were imported
 class AddColumnsToAnsibleRole < ActiveRecord::Migration[4.2]
   def up

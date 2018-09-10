@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # rubocop:disable BlockLength
 Foreman::Plugin.register :foreman_ansible do
   requires_foreman '>= 1.16'

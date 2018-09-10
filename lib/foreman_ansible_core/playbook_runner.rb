@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'foreman_tasks_core/runner/command_runner'
 require_relative 'command_creator'
 require 'tmpdir'

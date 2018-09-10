@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ipaddress'
 module ForemanAnsible
   # Ensures Ansible reports from hosts where the IP was used, are assigned

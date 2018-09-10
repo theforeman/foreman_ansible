@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_plugin_helper'
 # functional tests for AnsibleVariablesController
 class AnsibleVariablesControllerTest < ActionController::TestCase

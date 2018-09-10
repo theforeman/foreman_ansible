@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsible
   # This module takes the config reports stored in Foreman for Ansible and
   # modifies them to be properly presented in views

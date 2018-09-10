@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsible
   # Imports roles from smart proxy
   class RolesImporter

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # UI controller for ansible variables
 class AnsibleVariablesController < ::LookupKeysController
   include Foreman::Controller::AutoCompleteSearch
@@ -69,7 +71,7 @@ class AnsibleVariablesController < ::LookupKeysController
   def find_required_proxy
     id = params['proxy']
     @smart_proxy = SmartProxy.authorized(:view_smart_proxies).find(id)
-    unless @smart_proxy && @smart_proxy.has_feature?('Ansible')
+    unless @smart_proxy&.has_feature?('Ansible')
       not_found _('No proxy found to import variables from, ensure that the '\
                   'smart proxy has the Ansible feature enabled.')
     end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Creation and updates timestamps for Ansible Roles
 class AutomaticallySetRoleTimestamps < ActiveRecord::Migration[4.2]
   def up

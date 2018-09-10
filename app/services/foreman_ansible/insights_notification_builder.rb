@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsible
   # A class that builds custom notificaton for REX job if it's insights
   # remediation feature

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsible
   # Service to generate a playbook given roles and a list of hosts
   class PlaybookCreator

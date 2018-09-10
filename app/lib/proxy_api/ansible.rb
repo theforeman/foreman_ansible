@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ProxyAPI
   # ProxyAPI for Ansible
   class Ansible < ::ProxyAPI::Resource

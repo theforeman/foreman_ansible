@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 begin
   require 'foreman_tasks_core'
   require 'foreman_remote_execution_core'

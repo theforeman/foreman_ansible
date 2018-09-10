@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsible
   # Checks sample Ansible facts to see if it can assign them to
   # Host properties

@@ -1,3 +1,5 @@
+# frozen_string_literal: false
+
 require 'test_plugin_helper'
 
 # Tests for the behavior of Host with roles, checks inheritance, etc

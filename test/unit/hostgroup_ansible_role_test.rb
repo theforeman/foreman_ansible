@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_plugin_helper'
 
 # Tests for validators and such of the join model between Hostgroup and
