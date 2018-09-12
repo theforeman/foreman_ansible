@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsible
   # Helper methods to create a ProxyAPI object for Ansible
   module ProxyAPI

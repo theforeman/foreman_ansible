@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if defined? ForemanRemoteExecution
   module ForemanAnsible
     # Provider for RemoteExecution that allows to run Ansible playbooks.

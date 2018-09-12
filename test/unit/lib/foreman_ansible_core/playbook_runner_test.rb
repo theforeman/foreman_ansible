@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 # Playbook Runner - this class uses foreman_tasks_core

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Defines the relation between Host and AnsibleRole
 class CreateJoinTableHostsAnsibleRoles < ActiveRecord::Migration[4.2]
   def change

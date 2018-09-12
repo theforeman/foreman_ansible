@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'deface'
 require 'fast_gettext'
 require 'gettext_i18n_rails'

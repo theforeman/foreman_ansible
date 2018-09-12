@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_plugin_helper'
 require 'dynflow/testing'
 Mocha::Mock.send :include, Dynflow::Testing::Mimic

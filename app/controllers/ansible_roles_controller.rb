@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # UI controller for ansible roles
 class AnsibleRolesController < ::ApplicationController
   include Foreman::Controller::AutoCompleteSearch

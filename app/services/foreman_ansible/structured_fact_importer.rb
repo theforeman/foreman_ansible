@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsible
   # On 1.13+ , use the parser for structured facts (like Facter 2) that comes
   # from core

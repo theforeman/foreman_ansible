@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Displays Ansible roles tab on Host form
 Deface::Override.new(
   :virtual_path => 'hosts/_form',

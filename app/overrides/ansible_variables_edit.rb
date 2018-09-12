@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Deface::Override.new(
   :virtual_path => 'lookup_keys/_fields',
   :name => 'ansible_variables_edit',

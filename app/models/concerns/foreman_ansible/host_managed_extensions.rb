@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'ipaddress'
 module ForemanAnsible
   # Relations to make Host::Managed 'have' ansible roles

@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
+# Rename ansible job categories migration
 class RenameAnsibleJobCategories < ActiveRecord::Migration[5.1]
   def up
     unless User.unscoped.find_by(:login => User::ANONYMOUS_ADMIN)
-      puts 'No ANONYMOUS_ADMIN found. Skipping renaming Ansible jobs'
+      STDOUT.puts 'No ANONYMOUS_ADMIN found. Skipping renaming Ansible jobs'
       return
     end
     User.as_anonymous_admin do

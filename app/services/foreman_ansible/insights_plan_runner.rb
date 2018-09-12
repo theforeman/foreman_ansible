@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if defined?(RedhatAccess)
   module ForemanAnsible
     # Fetch information about a plan from RH Insights and run it

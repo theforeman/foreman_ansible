@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsible
   # Small convenience to list all roles in the UI
   module AnsibleRolesHelper

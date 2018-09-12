@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsible
   # Tests for checking if FactSparser can sparse a hash and unsparse it
   class FactSparserTest < ActiveSupport::TestCase

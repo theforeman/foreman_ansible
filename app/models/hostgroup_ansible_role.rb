@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Join model that hosts the connection between hostgroups and ansible_roles
 class HostgroupAnsibleRole < ApplicationRecord
   belongs_to :hostgroup

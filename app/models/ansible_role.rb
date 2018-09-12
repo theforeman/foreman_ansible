@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Simple model to store basic info about the Ansible role
 class AnsibleRole < ApplicationRecord
   audited

@@ -10,6 +10,12 @@
 # Configuration parameters: CountComments.
 Metrics/MethodLength:
   Max: 14
+  Exclude:
+    - db/migrate/20180410125416_rename_ansible_job_categories.rb 
+
+Metrics/LineLength:
+  Exclude:
+    - db/seeds.d/75_job_templates.rb
 
 # Offense count: 1
 # Configuration parameters: Include.
@@ -50,3 +56,7 @@ Style/FormatStringToken:
   Exclude:
     - 'app/controllers/ansible_roles_controller.rb'
     - 'app/helpers/foreman_ansible/ansible_roles_helper.rb'
+
+Metrics/AbcSize:
+  Exclude:
+    - db/migrate/20180410125416_rename_ansible_job_categories.rb

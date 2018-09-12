@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsible
   # imports Ansible roles through API
   class ApiRolesImporter < RolesImporter

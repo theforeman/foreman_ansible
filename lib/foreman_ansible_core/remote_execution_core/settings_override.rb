@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsibleCore
   module RemoteExecutionCore
     # Ensure the Ansible provider is used whenever a JobTemplate using this

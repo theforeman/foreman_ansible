@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require File.expand_path('../lib/foreman_ansible_core/version', __FILE__)
 require 'date'
 

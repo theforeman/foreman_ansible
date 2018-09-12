@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'foreman_tasks_core/shareable_action'
 
 module ForemanAnsibleCore

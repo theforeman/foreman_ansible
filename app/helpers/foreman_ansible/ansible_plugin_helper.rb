@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "#{ForemanAnsible::Engine.root}/lib/foreman_ansible/version"
 
 module ForemanAnsible

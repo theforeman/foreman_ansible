@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsible
   # See sparse and unsparse documentation
   class FactSparser

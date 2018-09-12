@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 # unit tests for ProxyAPI::Ansible
 class AnsibleTest < ActiveSupport::TestCase

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsible
   # Macro to fetch RH Insights plan playbook
   module RendererMethods

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanAnsible
   module Concerns
     # Helpers to compose the JobInvocation in other controllers

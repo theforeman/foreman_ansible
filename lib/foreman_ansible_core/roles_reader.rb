@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module ForemanAnsibleCore
   # Implements the logic needed to read the roles and associated information
   class RolesReader
     class << self
-      DEFAULT_CONFIG_FILE = '/etc/ansible/ansible.cfg'.freeze
-      DEFAULT_ROLES_PATH = '/etc/ansible/roles'.freeze
+      DEFAULT_CONFIG_FILE = '/etc/ansible/ansible.cfg'
+      DEFAULT_ROLES_PATH = '/etc/ansible/roles'
 
       def list_roles
         roles_path.split(':').map { |path| read_roles(path) }.flatten
