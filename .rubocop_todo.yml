@@ -9,7 +9,7 @@
 # Offense count: 1
 # Configuration parameters: CountComments.
 Metrics/MethodLength:
-  Max: 14
+  Max: 15
   Exclude:
     - db/migrate/20180410125416_rename_ansible_job_categories.rb 
 
