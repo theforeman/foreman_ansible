@@ -31,7 +31,7 @@ class AnsibleRolesController < ::ApplicationController
   end
 
   def confirm_import
-    @importer.finish_import(params[:changed].to_unsafe_h)
+    @importer.finish_import(params[:changed]&.to_unsafe_h)
     success _('Import of roles successfully finished.')
     redirect_to ansible_roles_path
   end
