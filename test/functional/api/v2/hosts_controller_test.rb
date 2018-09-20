@@ -64,6 +64,20 @@ module Api
         assert_response :success
         assert assigns('host').ansible_roles, [@ansible_role2]
       end
+
+      test 'should assign a role to a host' do
+        host = FactoryBot.create(:host,
+                                 :managed => false,
+                                 :ansible_role_ids => [])
+        post :assign_ansible_roles,
+             :params => {
+               :id => host.id,
+               :ansible_role_ids => [@ansible_role1.id]
+             },
+             :session => set_session_user
+        assert_response :success
+        assert assigns('host').ansible_roles, [@ansible_role1]
+      end
     end
   end
 end

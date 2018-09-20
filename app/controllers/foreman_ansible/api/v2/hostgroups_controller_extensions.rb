@@ -8,10 +8,14 @@ module ForemanAnsible
         extend ActiveSupport::Concern
         include ForemanTasks::Triggers
         include ::ForemanAnsible::Concerns::JobInvocationHelper
+        include ::ForemanAnsible::Concerns::ApiCommon
 
         # Included blocks shouldn't be bound by length, as otherwise concerns
         # cannot extend the method properly.
+        # rubocop:disable BlockLength
         included do
+          before_action :find_ansible_roles, :only => [:assign_ansible_roles]
+
           api :POST, '/hostgroups/:id/play_roles',
               N_('Plays Ansible roles on a hostgroup')
           param :id, String, :required => true
@@ -32,7 +36,20 @@ module ForemanAnsible
                                     @hostgroups.map(&:host_ids).flatten.uniq)
             process_response composer.trigger!, composer.job_invocation
           end
+
+          api :POST, '/hostgroups/:id/assign_ansible_roles',
+              N_('Assigns Ansible roles to a hostgroup')
+          param :id, :identifier, :required => true
+          param :ansible_role_ids, Array,
+                N_('Ansible roles to assign to a hostgroup'),
+                :required => true
+
+          def assign_ansible_roles
+            find_resource
+            process_response @hostgroup.update(:ansible_roles => @ansible_roles)
+          end
         end
+        # rubocop:enable BlockLength
 
         private
 
@@ -51,7 +68,7 @@ module ForemanAnsible
 
         def action_permission
           case params[:action]
-          when 'play_roles'
+          when 'play_roles', 'assign_ansible_roles'
             :view
           else
             super
