@@ -36,7 +36,7 @@ module Api
         ::JobInvocationComposer.any_instance.expects(:trigger!).returns(true)
         targets = [@host1.id, @host2.id]
 
-        post :multiple_play_roles, :params => { :id => targets }
+        post :multiple_play_roles, :params => { :host_ids => targets }
         response = JSON.parse(@response.body)
         assert_job_invocation_is_ok(response, targets)
       end
