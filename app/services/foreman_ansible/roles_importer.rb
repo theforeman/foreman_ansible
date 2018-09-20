@@ -14,6 +14,11 @@ module ForemanAnsible
       import_roles local_roles
     end
 
+    def fetch_role_names
+      return remote_roles if ansible_proxy
+      local_roles
+    end
+
     def import_roles(roles)
       imported = roles.map do |role_name|
         ::AnsibleRole.find_or_initialize_by(:name => role_name)
