@@ -16,6 +16,7 @@ module ForemanAnsibleCore
       end
 
       def start
+        @playbook_runner.logger = logger
         @playbook_runner.start
       rescue StandardError => e
         logger.error(
