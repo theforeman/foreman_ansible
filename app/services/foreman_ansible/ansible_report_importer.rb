@@ -15,6 +15,19 @@ module ForemanAnsible
           @host = Nic::Interface.find_by(:ip => hostname).host
         end
         super
+        partial_hostname_match(hostname)
+      end
+
+      def partial_hostname_match(hostname)
+        return @host unless @host.new_record?
+        hosts = Host.where(Host.arel_table[:name].matches("#{hostname}.%"))
+        if hosts.count > 1
+          msg = "More than 1 host found for name #{hostname}, "
+          msg += 'please use host FQDN when uploading reports'
+          Rails.logger.warn msg
+          return @host
+        end
+        @host = hosts.first || @host
       end
     end
   end
