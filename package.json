@@ -7,34 +7,67 @@
     "test": "test"
   },
   "dependencies": {
-    "react-json-tree": "^0.11.0"
+    "babel-polyfill": "^6.26.0",
+    "classnames": "^2.2.6",
+    "lodash": "4.17.10",
+    "patternfly": "^3.58.0",
+    "patternfly-react": "^2.25.4",
+    "react": "^16.6.3",
+    "react-bootstrap": "^0.32.4",
+    "react-dom": "^16.6.3",
+    "react-json-tree": "^0.11.0",
+    "seamless-immutable": "7.1.2"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
+    "babel-plugin-lodash": "^3.3.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
-    "babel-plugin-lodash": "^3.3.2",
-    "babel-plugin-transform-object-assign": "^6.22.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "enzyme-to-json": "^3.3.5",
     "eslint": "^4.18.1",
     "eslint-config-airbnb": "^16.0.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jest": "^21.2.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-react": "^7.4.0"
+    "eslint-plugin-react": "^7.4.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^23.6.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node node_modules/.bin/jest webpack",
+    "lint": "./node_modules/.bin/eslint -c .eslintrc webpack/ || exit 0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bastilian/foreman_ansible.git"
+    "url": "git+https://github.com/theforeman/foreman_ansible.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/bastilian/foreman_ansible/issues"
+    "url": "https://projects.theforeman.org/projects/ansible"
   },
-  "homepage": "https://github.com/bastilian/foreman_ansible#readme"
+  "homepage": "https://theforeman.org/plugins/foreman_ansible/",
+  "jest": {
+    "verbose": true,
+    "moduleDirectories": [
+      "node_modules",
+      "webpack"
+    ],
+    "setupFiles": [
+      "raf/polyfill",
+      "./webpack/test_setup.js"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/foreman/"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(css|scss)$": "identity-obj-proxy"
+    }
+  }
 }

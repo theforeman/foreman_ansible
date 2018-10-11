@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnsibleRole should render a role to add 1`] = `
+<ListViewItem
+  actions={
+    <button
+      className="role-add-remove-btn"
+      href="#"
+      onClick={[Function]}
+    >
+      <i
+        className="fa-2x fa fa-plus-circle"
+      />
+    </button>
+  }
+  additionalInfo={null}
+  checkboxInput={null}
+  className="listViewItem--listItemVariants "
+  compoundExpand={false}
+  compoundExpanded={false}
+  description={null}
+  heading="test.role"
+  hideCloseIcon={false}
+  id={5}
+  leftContent={null}
+  onCloseCompoundExpand={[Function]}
+  onExpand={[Function]}
+  onExpandClose={[Function]}
+  stacked={true}
+/>
+`;
+
+exports[`AnsibleRole should render a role to remove 1`] = `
+<ListViewItem
+  actions={
+    <button
+      className="role-add-remove-btn"
+      href="#"
+      onClick={[Function]}
+    >
+      <i
+        className="fa-2x fa fa-minus-circle"
+      />
+    </button>
+  }
+  additionalInfo={null}
+  checkboxInput={null}
+  className="listViewItem--listItemVariants "
+  compoundExpand={false}
+  compoundExpanded={false}
+  description={null}
+  heading="test.role"
+  hideCloseIcon={false}
+  id={5}
+  leftContent={null}
+  onCloseCompoundExpand={[Function]}
+  onExpand={[Function]}
+  onExpandClose={[Function]}
+  stacked={true}
+/>
+`;
+
+exports[`AnsibleRole should render inherited role to remove 1`] = `
+<ListViewItem
+  actions=""
+  additionalInfo={null}
+  checkboxInput={null}
+  className="listViewItem--listItemVariants ansible-role-disabled"
+  compoundExpand={false}
+  compoundExpanded={false}
+  description={null}
+  heading="test.role"
+  hideCloseIcon={false}
+  id={5}
+  leftContent={null}
+  onCloseCompoundExpand={[Function]}
+  onExpand={[Function]}
+  onExpandClose={[Function]}
+  stacked={true}
+/>
+`;

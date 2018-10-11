@@ -1,6 +1,8 @@
 {
   "root": true,
-  "extends": "airbnb-base",
+  "extends": [
+    "airbnb-base"
+  ],
   "plugins": [
     "react"
   ],

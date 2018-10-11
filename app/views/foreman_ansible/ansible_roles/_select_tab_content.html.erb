@@ -1,15 +1,28 @@
+<%= webpacked_plugins_js_for :foreman_ansible %>
+<%= webpacked_plugins_css_for :foreman_ansible %>
+
 <div class='tab-pane' id='ansible_roles'>
-  <%= multiple_selects(
-    f,
-    :ansible_roles,
-    AnsibleRole,
-    f.object.is_a?(Hostgroup) ? (f.object.inherited_and_own_ansible_roles).map(&:id) : f.object.all_ansible_roles.map(&:id),
-    {
-      :disabled => f.object.inherited_ansible_roles.map(&:id),
-      :label => _('Available roles'),
-      :label_help => _('This list of roles will be applied when the host finishes<br/> '\
-            'provisioning. Users can also play these roles through the API<br/>'\
-            'or by clicking on the Play Roles button on the Host page ').html_safe
-    },
-    { 'data-inheriteds' => f.object.inherited_ansible_roles.map(&:id).to_json }) %>
+  <% if User.current.can? :view_ansible_roles %>
+    <div id='ansible_roles_switcher'></div>
+    <% roles = f.object.is_a?(Hostgroup) ? roles_attrs(f.object.inherited_and_own_ansible_roles) : roles_attrs(f.object.all_ansible_roles) %>
+    <% class_name = f.object.is_a?(Hostgroup) ? 'Hostgroup' : 'Host' %>
+    <%= mount_react_component('AnsibleRolesSwitcher', '#ansible_roles_switcher', { :initialAssignedRoles => roles,
+                                                                                   :inheritedRoleIds => f.object.inherited_ansible_roles.map(&:id),
+                                                                                   :availableRolesUrl => ui_ansible_roles_path,
+                                                                                   :resourceId => f.object.id,
+                                                                                   :resourceName => class_name
+                                                                                    }.to_json) %>
+  <% else %>
+    <div class="blank-slate-pf">
+      <div class="blank-slate-pf-icon">
+        <%= icon_text("lock", "", :kind => "fa") %>
+      </div>
+      <h1><%= _("Permission denied") %></h1>
+      <p>
+        <%= _("You are not authorized to perform this action.") %></br>
+        <%= _("Please request one of the required permissions listed below from a Foreman administrator:") %></br>
+        <%= content_tag(:ul, 'view_ansible_roles', class: 'list-unstyled') %>
+      </p>
+    </div>
+  <% end %>
 </div>

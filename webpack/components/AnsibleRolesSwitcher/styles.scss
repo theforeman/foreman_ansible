@@ -1,0 +1,25 @@
+@import '~patternfly/dist/sass/patternfly/_color-variables';
+@import '~patternfly/dist/sass/patternfly/_variables';
+@import '~patternfly/dist/sass/patternfly/_loading-state';
+
+#ansibleRolesSwitcher {
+  .list-view-pf {
+    .list-group-item.ansible-role-disabled {
+      background-color: $color-pf-black-200;
+      color: $color-pf-black-500;
+      border-left-color: $color-pf-black-200;
+      border-right-color: $color-pf-black-200;
+    }
+  }
+
+  .loading-state-pf {
+    padding-top: 5%;
+    background-color: $color-pf-white;
+  }
+
+  .role-add-remove-btn {
+    background-color: initial;
+    border: none;
+    color: #0388ce;
+  }
+}

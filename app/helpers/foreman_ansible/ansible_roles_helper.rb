@@ -20,5 +20,9 @@ module ForemanAnsible
     def import_time(role)
       _('%s ago') % time_ago_in_words(role.updated_at)
     end
+
+    def roles_attrs(roles)
+      roles.map { |item| ({ :id => item.id, :name => item.name }) }
+    end
   end
 end

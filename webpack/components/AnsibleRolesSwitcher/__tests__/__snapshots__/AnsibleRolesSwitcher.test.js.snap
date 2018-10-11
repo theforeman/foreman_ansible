@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnsibleRolesSwitcher should render 1`] = `
+<Grid
+  bsClass="container-fluid"
+  componentClass="div"
+  fluid={false}
+  id="ansibleRolesSwitcher"
+>
+  <Row
+    bsClass="row"
+    className="row-eq-height"
+    componentClass="div"
+  >
+    <Col
+      bsClass="col"
+      className="available-roles-container"
+      componentClass="div"
+      sm={6}
+    >
+      <div
+        className="available-roles-header"
+      >
+        <h2>
+          Available Ansible Roles
+        </h2>
+      </div>
+      <AvailableRolesList
+        itemCount={20}
+        loading={false}
+        onAddRole={[Function]}
+        onListingChange={[Function]}
+        pagination={
+          Object {
+            "page": 1,
+            "perPage": 12,
+          }
+        }
+        unassignedRoles={Array []}
+      />
+    </Col>
+    <Col
+      bsClass="col"
+      className="assigned-roles-container"
+      componentClass="div"
+      sm={6}
+    >
+      <div
+        className="assigned-roles-header"
+      >
+        <h2>
+          Assigned Ansible Roles
+        </h2>
+      </div>
+      <AssignedRolesList
+        assignedRoles={Array []}
+        itemCount={2}
+        onPaginationChange={[Function]}
+        onRemoveRole={[Function]}
+        pagination={
+          Object {
+            "page": 1,
+            "perPage": 12,
+          }
+        }
+        resourceName="host"
+      />
+    </Col>
+  </Row>
+</Grid>
+`;
