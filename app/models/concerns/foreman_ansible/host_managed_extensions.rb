@@ -18,6 +18,8 @@ module ForemanAnsible
 
         before_provision :play_ansible_roles
         audit_associations :ansible_roles
+
+        alias_method :parent, :hostgroup
       end
 
       base.singleton_class.prepend ClassMethods

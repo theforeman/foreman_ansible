@@ -94,6 +94,8 @@ Foreman::Plugin.register :foreman_ansible do
   parameter_filter Host::Managed, role_assignment_params
   parameter_filter Hostgroup, role_assignment_params
 
+  register_global_js_file 'fills'
+
   divider :top_menu, :caption => N_('Ansible'), :parent => :configure_menu
   menu :top_menu, :ansible_roles,
        :caption => N_('Roles'),

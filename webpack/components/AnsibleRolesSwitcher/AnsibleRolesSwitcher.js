@@ -7,7 +7,7 @@ import { translate as __ } from 'foremanReact/common/I18n';
 import AvailableRolesList from './components/AvailableRolesList';
 import AssignedRolesList from './components/AssignedRolesList';
 import AnsibleRolesSwitcherError from './components/AnsibleRolesSwitcherError';
-import { excludeAssignedRolesSearch } from './AnsibleRolesSwitcherHelpers';
+import { excludeAssignedRolesSearch, rolesByIdSearch } from './AnsibleRolesSwitcherHelpers';
 
 class AnsibleRolesSwitcher extends React.Component {
   componentDidMount() {
@@ -17,7 +17,11 @@ class AnsibleRolesSwitcher extends React.Component {
       inheritedRoleIds,
       resourceId,
       resourceName,
+      parentId,
+      variablesUrl,
     } = this.props.data;
+
+    this.props.initFormObjectAttrs({ resourceName, resourceId, parentId });
 
     this.props.getAnsibleRoles(
       availableRolesUrl,
@@ -27,6 +31,14 @@ class AnsibleRolesSwitcher extends React.Component {
       resourceName,
       { page: 1, perPage: 10 },
       excludeAssignedRolesSearch(initialAssignedRoles)
+    );
+
+    this.props.getAnsibleVariables(
+      variablesUrl,
+      rolesByIdSearch(inheritedRoleIds.concat(initialAssignedRoles.map(role => role.id))),
+      resourceName,
+      resourceId,
+      parentId,
     );
   }
 
@@ -52,6 +64,7 @@ class AnsibleRolesSwitcher extends React.Component {
       inheritedRoleIds,
       resourceId,
       resourceName,
+      variablesUrl,
     } = this.props.data;
 
     const onListingChange = paginationArgs =>
@@ -80,6 +93,9 @@ class AnsibleRolesSwitcher extends React.Component {
               onListingChange={onListingChange}
               onAddRole={addAnsibleRole}
               loading={loading}
+              resourceName={resourceName}
+              resourceId={resourceId}
+              variablesUrl={variablesUrl}
             />
           </Col>
 
