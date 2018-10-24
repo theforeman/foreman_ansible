@@ -10,8 +10,7 @@ module ForemanAnsible
         composer = ::JobInvocationComposer.for_feature(feature_name, target)
         return composer if composer.save
         msg = if target.blank?
-                format(N_('There are no Ansible roles to play'),
-                       :target => target.class)
+                N_('There are no Ansible roles to play')
               else
                 format(N_('Could not run Ansible roles for %{host}'),
                        :host => target)

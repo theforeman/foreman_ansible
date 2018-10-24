@@ -11,6 +11,7 @@ module ForemanAnsible
 
         # Included blocks shouldn't be bound by length, as otherwise concerns
         # cannot extend the method properly.
+        # rubocop:disable BlockLength
         included do
           api :POST, '/hostgroups/:id/play_roles',
               N_('Plays Ansible roles on a hostgroup')
@@ -44,6 +45,7 @@ module ForemanAnsible
             @ansible_roles = @hostgroup.all_ansible_roles
           end
         end
+        # rubocop:enable BlockLength
 
         private
 

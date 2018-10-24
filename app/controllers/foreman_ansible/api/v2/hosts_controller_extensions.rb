@@ -9,6 +9,9 @@ module ForemanAnsible
         include ForemanTasks::Triggers
         include ::ForemanAnsible::Concerns::JobInvocationHelper
 
+        # Included blocks shouldn't be bound by length, as otherwise concerns
+        # cannot extend the method properly.
+        # rubocop:disable BlockLength
         included do
           def find_resource
             return true if params[:action] == 'multiple_play_roles'
@@ -44,6 +47,7 @@ module ForemanAnsible
             @ansible_roles = @host.all_ansible_roles
           end
         end
+        # rubocop:enable BlockLength
 
         private
 
