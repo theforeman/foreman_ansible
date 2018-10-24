@@ -25,16 +25,26 @@ module Api
         refute AnsibleRole.exists?(@role.id)
       end
 
-      test 'should import' do
-        put :import,
-            :session => set_session_user
-        assert_response :success
-      end
+      context 'proxy API calls' do
+        setup do
+          roles = ['some_role.some_author', 'test_role.test_author']
+          ProxyAPI::Ansible.any_instance.expects(:roles).returns(roles)
+          @proxy = FactoryBot.create(:smart_proxy, :with_ansible)
+        end
 
-      test 'should obsolete' do
-        put :obsolete,
-            :session => set_session_user
-        assert_response :success
+        test 'should import' do
+          put :import, :params => {
+            :proxy_id => @proxy.id
+          }, :session => set_session_user
+          assert_response :success
+        end
+
+        test 'should obsolete' do
+          put :obsolete, :params => {
+            :proxy_id => @proxy.id
+          }, :session => set_session_user
+          assert_response :success
+        end
       end
     end
   end

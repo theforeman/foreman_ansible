@@ -10,8 +10,7 @@ module ForemanAnsible
     end
 
     def import_role_names
-      return import_roles remote_roles if @ansible_proxy.present?
-      import_roles local_roles
+      import_roles remote_roles if @ansible_proxy.present?
     end
 
     def import_roles(roles)
@@ -29,10 +28,6 @@ module ForemanAnsible
     end
 
     private
-
-    def local_roles
-      ::ForemanAnsibleCore::RolesReader.list_roles
-    end
 
     def remote_roles
       proxy_api.roles
