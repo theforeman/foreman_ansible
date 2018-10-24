@@ -75,12 +75,14 @@ module ForemanAnsible
 
     def delete_old_variables(old)
       removed = []
-      old.each_value do |variable_properties|
-        variable = AnsibleVariable.find(
-          JSON.parse(variable_properties)['ansible_variable']['id']
-        )
-        removed << variable.key
-        variable.destroy
+      old.each_value do |variables|
+        variables.each_value do |variable|
+          variable = AnsibleVariable.find(
+            JSON.parse(variable)['ansible_variable']['id']
+          )
+          removed << variable.key
+          variable.destroy
+        end
       end
       removed
     end
