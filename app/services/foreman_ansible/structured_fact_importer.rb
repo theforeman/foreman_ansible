@@ -8,6 +8,10 @@ module ForemanAnsible
       ForemanAnsible::FactName
     end
 
+    def self.authorized_smart_proxy_features
+      'Ansible'
+    end
+
     def initialize(host, facts = {})
       # Try to assign these facts to the correct host as per the facts say
       # If that host isn't created yet, the host parameter will contain it
