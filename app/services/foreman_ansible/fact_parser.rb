@@ -55,7 +55,11 @@ module ForemanAnsible
       interface.tr!('-', '_') # virbr1-nic -> virbr1_nic
       interface_facts = facts[:"ansible_#{interface}"]
       ipaddress = ip_from_interface(interface)
-      HashWithIndifferentAccess[interface_facts.merge(:ipaddress => ipaddress)]
+      ipaddress6 = ipv6_from_interface(interface)
+      HashWithIndifferentAccess[
+        interface_facts.merge(:ipaddress => ipaddress,
+                              :ipaddress6 => ipaddress6)
+      ]
     end
 
     def ipmi_interface; end
@@ -70,6 +74,12 @@ module ForemanAnsible
     def ip_from_interface(interface)
       return if facts[:"ansible_#{interface}"]['ipv4'].blank?
       facts[:"ansible_#{interface}"]['ipv4']['address']
+    end
+
+    def ipv6_from_interface(interface)
+      return if facts[:"ansible_#{interface}"]['ipv6'].blank?
+
+      facts[:"ansible_#{interface}"]['ipv6'].first['address']
     end
 
     # Returns first non-empty fact. Needed to check for empty strings.
