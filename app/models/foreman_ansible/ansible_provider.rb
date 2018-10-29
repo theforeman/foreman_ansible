@@ -33,6 +33,10 @@ if defined? ForemanRemoteExecution
           true
         end
 
+        def proxy_feature_name
+          'ansible-runner'
+        end
+
         private
 
         def ansible_command?(template)
