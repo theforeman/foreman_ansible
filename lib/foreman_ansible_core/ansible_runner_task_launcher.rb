@@ -5,7 +5,7 @@ module ForemanAnsibleCore
     class AnsibleRunnerRunner < ForemanTasksCore::Runner::Parent
       include ForemanTasksCore::Runner::CommandRunner
 
-      def initialize(input)
+      def initialize(suspended_action, input)
         super
         @inventory = rebuild_inventory(input)
         @playbook = input.values.first[:input][:action_input][:script]
