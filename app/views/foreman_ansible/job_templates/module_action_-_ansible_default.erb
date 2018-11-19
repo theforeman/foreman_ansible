@@ -1,0 +1,52 @@
+<%#
+kind: job_template
+name: Module Action - Ansible Default
+model: JobTemplate
+job_category: Ansible Modules
+description_format: "Module %{action} %{module_spec}"
+provider_type: Ansible
+template_inputs:
+- name: pre_script
+  description: A script to run prior to the module action
+  input_type: user
+  required: false
+  advanced: true
+- name: action
+  description: 'The module action enable, install etc'
+  input_type: user
+  required: true
+  options: "\nlist\ninfo\nenable\ndisable\ninstall\nupdate\nremove\nprovides\nreset"
+- name: module_spec
+  description: The module specification. module:stream/profile
+  input_type: user
+  required: false
+- name: options
+  description: Other optional flags for the action
+  input_type: user
+  required: false
+- name: post_script
+  description: A script to run after the module action
+  input_type: user
+  required: false
+  advanced: true
+%>
+
+<% command = "dnf -y module #{input(:action)} #{input(:module_spec)} #{input(:options)}" %>
+
+---
+- hosts: all
+  <%- if input('pre_script').present? -%>
+  pre_tasks:
+    - shell: "<%= input('pre_script') %>"
+  <%- end -%>
+  tasks:
+    - shell: |
+<%=     indent(8) { command } %>
+      register: out
+      args:
+        warn: false
+    - debug: var=out
+  <%- if input('post_script').present? -%>
+  post_tasks:
+    - shell: "<%= input('post_script') %>"
+  <%- end -%>
