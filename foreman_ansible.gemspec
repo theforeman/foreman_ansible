@@ -19,9 +19,10 @@ Gem::Specification.new do |s|
   s.test_files = Dir['test/**/*']
 
   s.add_development_dependency 'rubocop', '~> 0.52'
+  # Kept as a dev dependency so tests can run together
+  s.add_development_dependency 'foreman_ansible_core', '~> 2.0'
   s.add_dependency 'deface', '< 2.0'
   s.add_dependency 'foreman-tasks', '~> 0.8'
-  s.add_dependency 'foreman_ansible_core', '~> 2.0'
   s.add_dependency 'foreman_remote_execution', '>= 1.6.3', '< 2.0'
   s.add_dependency 'ipaddress', '>= 0.8.0', '< 1.0'
 end
