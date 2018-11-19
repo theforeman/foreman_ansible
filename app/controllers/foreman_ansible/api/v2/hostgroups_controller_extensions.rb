@@ -11,10 +11,11 @@ module ForemanAnsible
 
         # Included blocks shouldn't be bound by length, as otherwise concerns
         # cannot extend the method properly.
+        # rubocop:disable BlockLength
         included do
           api :POST, '/hostgroups/:id/play_roles',
               N_('Plays Ansible roles on a hostgroup')
-          param :id, String, :required => true
+          param :id, :identifier, :required => true
 
           def play_roles
             find_resource
@@ -22,9 +23,10 @@ module ForemanAnsible
             process_response composer.trigger!, composer.job_invocation
           end
 
-          api :POST, '/hostgroups/play_roles',
+          api :POST, '/hostgroups/multiple_play_roles',
               N_('Plays Ansible roles on hostgroups')
-          param :id, Array, :required => true
+          param :hostgroup_ids, Array, N_('IDs of hostgroups to play roles on'),
+                :required => true
 
           def multiple_play_roles
             find_multiple
@@ -32,7 +34,18 @@ module ForemanAnsible
                                     @hostgroups.map(&:host_ids).flatten.uniq)
             process_response composer.trigger!, composer.job_invocation
           end
+
+          api :GET, '/hostgroups/:id/ansible_roles',
+              N_('List all Ansible roles for a hostgroup')
+          param :id, :identifier, :required => true
+
+          def ansible_roles
+            find_resource
+            return unless @hostgroup
+            @ansible_roles = @hostgroup.all_ansible_roles
+          end
         end
+        # rubocop:enable BlockLength
 
         private
 
@@ -51,7 +64,7 @@ module ForemanAnsible
 
         def action_permission
           case params[:action]
-          when 'play_roles'
+          when 'play_roles', 'multiple_play_roles', 'ansible_roles'
             :view
           else
             super

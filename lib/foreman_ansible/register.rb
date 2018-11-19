@@ -17,7 +17,7 @@ Foreman::Plugin.register :foreman_ansible do
                :resource_type => 'Hostgroup'
     permission :view_ansible_roles,
                { :ansible_roles => [:index],
-                 :'api/v2/ansible_roles' => [:index, :show] },
+                 :'api/v2/ansible_roles' => [:index, :show, :fetch] },
                :resource_type => 'AnsibleRole'
     permission :destroy_ansible_roles,
                { :ansible_roles => [:destroy],
@@ -48,6 +48,12 @@ Foreman::Plugin.register :foreman_ansible do
                  :'api/v2/ansible_variables' => [:import]
                },
                :resource_type => 'AnsibleVariable'
+    permission :view_hosts,
+               { :'api/v2/hosts' => [:ansible_roles] },
+               :resource_type => 'Host'
+    permission :view_hostgroups,
+               { :'api/v2/hostgroups' => [:ansible_roles] },
+               :resource_type => 'Hostgroup'
   end
 
   role 'Ansible Roles Manager',

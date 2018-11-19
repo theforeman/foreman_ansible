@@ -8,8 +8,10 @@ module Api
     # Tests for the extra methods to play roles on Hostgroup
     class HostgroupsControllerTest < ActionController::TestCase
       setup do
+        @ansible_role1 = FactoryBot.create(:ansible_role)
         @host1 = FactoryBot.create(:host, :with_hostgroup)
         @host2 = FactoryBot.create(:host, :with_hostgroup)
+        @host3 = FactoryBot.create(:host, :with_hostgroup)
       end
 
       test 'should return an not_found due to non-existent host_id' do
@@ -39,6 +41,13 @@ module Api
         }
         response = JSON.parse(@response.body)
         assert_job_invocation_is_ok(response, target.map(&:id))
+      end
+
+      test 'should list ansible roles for a host group' do
+        @host3.hostgroup.ansible_roles = [@ansible_role1]
+        get :ansible_roles, :params => { :id => @host3.hostgroup.id }
+        response = JSON.parse(@response.body)
+        assert_equal @ansible_role1.id, response.first['id']
       end
     end
   end
