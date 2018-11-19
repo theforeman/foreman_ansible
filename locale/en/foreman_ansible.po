@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 2.2.6\n"
+"Project-Id-Version: foreman_ansible 2.2.9\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2014-08-20 08:54+0100\n"
 "Last-Translator: Foreman Team <foreman-dev@googlegroups.com>\n"
@@ -33,19 +33,13 @@ msgstr ""
 msgid "Ansible"
 msgstr ""
 
-msgid "Ansible Role"
-msgstr ""
-
 msgid "Ansible Roles"
-msgstr ""
-
-msgid "Ansible Variables"
 msgstr ""
 
 msgid "Ansible report timeout"
 msgstr ""
 
-msgid "Ansible role"
+msgid "Ansible role names to import"
 msgstr ""
 
 msgid "Ansible support in Foreman"
@@ -63,16 +57,10 @@ msgstr ""
 msgid "Available roles"
 msgstr ""
 
-msgid "Before including these variables on your playbooks, Foreman will validate that your variables comply with the validation."
-msgstr ""
-
 msgid "Cancel"
 msgstr ""
 
 msgid "Changed Ansible roles"
-msgstr ""
-
-msgid "Changed Ansible variables"
 msgstr ""
 
 msgid "Check/Uncheck all"
@@ -105,25 +93,19 @@ msgstr ""
 msgid "Deletes Ansible role"
 msgstr ""
 
-msgid "Deletes Ansible variable"
-msgstr ""
-
 msgid "Disable host configuration status turning to out of sync for %{cfgmgmt} after report does not arrive within configured interval"
 msgstr ""
 
 msgid "Disabled"
 msgstr ""
 
-msgid "Edit %s"
-msgstr ""
-
-msgid "Edit Ansible Variable"
-msgstr ""
-
 msgid "Enable/disable WinRM server certificate validation when running Ansible playbooks. You can override this on hosts by adding a parameter \"ansible_winrm_server_cert_validation\""
 msgstr ""
 
 msgid "Error loading data from proxy"
+msgstr ""
+
+msgid "Fetch Ansible roles available to be imported"
 msgstr ""
 
 msgid "Foreman"
@@ -153,16 +135,16 @@ msgstr ""
 msgid "IDs of associated ansible roles"
 msgstr ""
 
-msgid "If ERB is used in a parameter value, the validation of the value will happen during the ENC request. If the value is invalid, the ENC request will fail."
+msgid "IDs of hostgroups to play roles on"
+msgstr ""
+
+msgid "IDs of hosts to play roles on"
 msgstr ""
 
 msgid "Import"
 msgstr ""
 
 msgid "Import Ansible roles"
-msgstr ""
-
-msgid "Import Ansible variables. This will only import variables for already existing roles, it will not import any new roles"
 msgstr ""
 
 msgid "Import Puppet classes"
@@ -172,12 +154,6 @@ msgid "Import facts"
 msgstr ""
 
 msgid "Import of roles successfully finished."
-msgstr ""
-
-msgid ""
-"Import of variables successfully finished.\n"
-"Added: #{results[:added].join(', ')} \n"
-" Removed: #{results[:obsolete].join(', ')}"
 msgstr ""
 
 msgid "Imported at"
@@ -213,7 +189,10 @@ msgstr ""
 msgid "List Ansible roles"
 msgstr ""
 
-msgid "List Ansible variables"
+msgid "List all Ansible roles for a host"
+msgstr ""
+
+msgid "List all Ansible roles for a hostgroup"
 msgstr ""
 
 msgid "Message"
@@ -242,9 +221,6 @@ msgstr ""
 msgid "No changes in roles detected."
 msgstr ""
 
-msgid "No proxy found to import variables from, ensure that the smart proxy has the Ansible feature enabled."
-msgstr ""
-
 msgid "Nothing to show"
 msgstr ""
 
@@ -252,9 +228,6 @@ msgid "Obsolete"
 msgstr ""
 
 msgid "Obsolete Ansible roles"
-msgstr ""
-
-msgid "Obsolete Ansible variables. This will only obsolete variables for already existing roles, it will not delete any old roles"
 msgstr ""
 
 msgid "Operation"
@@ -320,10 +293,13 @@ msgstr ""
 msgid "Show role"
 msgstr ""
 
-msgid "Show variable"
+msgid "Smart Proxy to fetch from"
 msgstr ""
 
 msgid "Smart Proxy to import from"
+msgstr ""
+
+msgid "There are no Ansible roles to play"
 msgstr ""
 
 msgid "This list of roles will be applied when the host finishes<br/> provisioning. Users can also play these roles through the API<br/>or by clicking on the Play Roles button on the Host page "
@@ -341,13 +317,7 @@ msgstr ""
 msgid "Top level Ansible variables"
 msgstr ""
 
-msgid "Type"
-msgstr ""
-
 msgid "Unable to get roles from Ansible"
-msgstr ""
-
-msgid "Unable to get roles/variables from Ansible"
 msgstr ""
 
 msgid "Update"
@@ -357,15 +327,6 @@ msgid "Use this connection type by default when running Ansible playbooks. You c
 msgstr ""
 
 msgid "Use this to supply a path to an SSH Private Key that Ansible will use in lieu of a password Override with \"ansible_ssh_private_key_file\" host parameter"
-msgstr ""
-
-msgid "Variables"
-msgstr ""
-
-msgid "Variable|Name"
-msgstr ""
-
-msgid "Variable|Role"
 msgstr ""
 
 msgid "Whether to put Ansible parameters in the \"hostvars\" top-level key of the inventory. By default it is true, so that Host Parameters can be used directly in the playbooks.When false, Host Parameters can only be accessed throughforeman_params[\"host_parameter\"] in the playbooks."
