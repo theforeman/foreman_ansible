@@ -20,4 +20,17 @@ class AnsibleReportImporterTest < ActiveSupport::TestCase
     ForemanAnsible::AnsibleReportScanner.expects(:ansible_report?).returns(true)
     assert @importer.host.new_record?
   end
+
+  test 'finds host when given partially qualified name' do
+    host = ::FactoryBot.create(:host, :hostname => 'ansible-host.example.com')
+    ForemanAnsible::AnsibleReportScanner.expects(:ansible_report?).returns(true)
+    assert_equal host, ::ConfigReportImporter.new({ 'host' => 'ansible-host' }).host
+  end
+
+  test 'creates a new host when multiple hosts for partially qualified name are found' do
+    ::FactoryBot.create(:host, :hostname => 'ansible-host.example.com')
+    ::FactoryBot.create(:host, :hostname => 'ansible-host.dummy.org')
+    ForemanAnsible::AnsibleReportScanner.expects(:ansible_report?).returns(true)
+    assert ::ConfigReportImporter.new({ 'host' => 'ansible-host' }).host.new_record?
+  end
 end
