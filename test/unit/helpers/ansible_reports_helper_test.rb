@@ -9,7 +9,7 @@ class AnsibleReportsHelperTest < ActiveSupport::TestCase
   test 'is able to print a string instead of a hash' do
     log_value = <<-ANSIBLELOG.strip_heredoc
   {"_ansible_parsed": true, "_ansible_no_log": false, "changed": false, "results": ["ntp-4.2.8p10-3.fc27.x86_64 providing ntp is already installed"], "rc": 0, "invocation": {"module_args": {"allow_downgrade": false, "name": ["ntp"], "list": null, "disable_gpg_check": false, "conf_file": null, "install_repoquery": true, "state": "installed", "disablerepo": null, "update_cache": false, "enablerepo": null, "exclude": null, "security": false, "validate_certs": true, "installroot": "/", "skip_broken": false}}, "msg": ""}
-ANSIBLELOG
+    ANSIBLELOG
     message = FactoryBot.build(:message)
     message.value = log_value
     log = FactoryBot.build(:log)

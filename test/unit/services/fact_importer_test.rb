@@ -20,7 +20,7 @@ module ForemanAnsible
       @fact_importer = FactImporter.new(@host, facts_json)
       @fact_importer.expects(:db_facts).
         returns('ansible_cmdline' => 'fakevalue').twice
-      refute @fact_importer.send(:missing_facts).include?('ansible_cmdline')
+      assert_not @fact_importer.send(:missing_facts).include?('ansible_cmdline')
     end
 
     describe '#add_fact_value' do

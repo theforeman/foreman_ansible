@@ -9,6 +9,7 @@ module ForemanAnsible
       def job_composer(feature_name, target)
         composer = ::JobInvocationComposer.for_feature(feature_name, target)
         return composer if composer.save
+
         msg = if target.blank?
                 N_('There are no Ansible roles to play')
               else

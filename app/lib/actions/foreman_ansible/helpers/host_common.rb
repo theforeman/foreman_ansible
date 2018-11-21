@@ -7,6 +7,7 @@ module Actions
       module HostCommon
         def finalize
           return unless delegated_output[:exit_status].to_s != '0'
+
           error! _('Playbook execution failed')
         end
 

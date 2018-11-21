@@ -57,12 +57,12 @@ module ForemanAnsible
                    connection_params['ansible_become_user']
       assert_equal Setting['ansible_connection'],
                    connection_params['ansible_connection']
-      refute_equal Setting['remote_execution_ssh_user'],
-                   connection_params['ansible_user']
+      assert_not_equal Setting['remote_execution_ssh_user'],
+                       connection_params['ansible_user']
       assert_equal extra_options['ansible_user'],
                    connection_params['ansible_user']
-      refute_equal Setting['remote_execution_ssh_port'],
-                   connection_params['ansible_port']
+      assert_not_equal Setting['remote_execution_ssh_port'],
+                       connection_params['ansible_port']
       assert_equal ForemanRemoteExecutionCore.settings[:ssh_identity_key_file],
                    connection_params['ansible_ssh_private_key_file']
       assert_equal extra_options['ansible_port'],
@@ -150,7 +150,7 @@ module ForemanAnsible
         inventory = ForemanAnsible::InventoryCreator.new([@host],
                                                          @template_invocation)
         hostvar = inventory.to_hash['_meta']['hostvars'][@host.name]['hello']
-        refute_equal 'foreman', hostvar
+        assert_not_equal 'foreman', hostvar
       end
     end
   end

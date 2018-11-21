@@ -13,7 +13,7 @@ module Api
       test 'should get index' do
         get :index, :session => set_session_user
         response = JSON.parse(@response.body)
-        refute_empty response['results']
+        assert_not_empty response['results']
         assert_response :success
       end
 
@@ -22,7 +22,7 @@ module Api
                :params => { :id => @role.id },
                :session => set_session_user
         assert_response :ok
-        refute AnsibleRole.exists?(@role.id)
+        assert_not AnsibleRole.exists?(@role.id)
       end
 
       context 'proxy API calls' do
@@ -50,7 +50,7 @@ module Api
       test 'should fetch' do
         get :fetch, :session => set_session_user
         response = JSON.parse(@response.body)
-        refute_empty response['results']
+        assert_not_empty response['results']
         assert_response :success
       end
     end

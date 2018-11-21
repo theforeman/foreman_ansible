@@ -42,6 +42,7 @@ module ForemanAnsible
           def ansible_roles
             find_resource
             return unless @hostgroup
+
             @ansible_roles = @hostgroup.all_ansible_roles
           end
         end

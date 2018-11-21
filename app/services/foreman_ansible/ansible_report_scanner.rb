@@ -14,6 +14,7 @@ module ForemanAnsible
 
       def ansible_report?(logs)
         return false if logs.blank?
+
         logs.any? do |log|
           log['log'].fetch('messages', {}).
             fetch('message', '') =~ /"_ansible_parsed"/

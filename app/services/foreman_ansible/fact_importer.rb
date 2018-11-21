@@ -49,6 +49,7 @@ module ForemanAnsible
       elsif imported_values.is_a?(Array)
         imported_values.each do |imported_value|
           next unless imported_value.is_a?(Hash)
+
           add_missing_facts(imported_value, fact_name, fact_fqn)
         end
       end
@@ -80,6 +81,7 @@ module ForemanAnsible
 
     def find_or_create_fact_name(name, parent, fact_value)
       return fact_name_class.find(fact_names[name]) if fact_names[name].present?
+
       fact_name_class.create!(:name => name,
                               :parent => parent,
                               :compose => compose?(fact_value))
@@ -87,6 +89,7 @@ module ForemanAnsible
 
     def add_fact_value(value, fact_name)
       return unless missing_facts.include?(fact_name.name)
+
       method = host.new_record? ? :build : :create!
       host.fact_values.send(method,
                             :value => value.to_s,

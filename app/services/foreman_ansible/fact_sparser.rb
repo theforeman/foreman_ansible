@@ -13,6 +13,7 @@ module ForemanAnsible
         hash.map do |k, v|
           prefix = options.fetch(:prefix, []) + [k]
           next sparse(v, options.merge(:prefix => prefix)) if v.is_a? Hash
+
           { prefix.join(options.fetch(:separator, FactName::SEPARATOR)) => v }
         end.reduce(:merge) || {}
       end

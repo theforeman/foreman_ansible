@@ -21,6 +21,7 @@ module ForemanAnsible
 
       def inherited_ansible_roles
         return [] unless hostgroup
+
         hostgroup.inherited_and_own_ansible_roles
       end
 
@@ -30,6 +31,7 @@ module ForemanAnsible
       def play_ansible_roles
         return true unless ansible_roles.present? ||
                            inherited_ansible_roles.present?
+
         composer = job_composer(:ansible_run_host, self)
         composer.triggering.mode = :future
         composer.triggering.start_at = (

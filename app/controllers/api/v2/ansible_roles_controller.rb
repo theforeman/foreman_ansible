@@ -68,6 +68,7 @@ module Api
       # rubocop:disable DotPosition
       def find_proxy
         return nil unless params[:proxy_id]
+
         @proxy = SmartProxy.authorized(:view_smart_proxies)
                            .find(params[:proxy_id])
       end

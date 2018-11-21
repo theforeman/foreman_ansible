@@ -15,6 +15,7 @@ module ForemanAnsible
         included do
           def find_resource
             return true if params[:action] == 'multiple_play_roles'
+
             super
           end
 
@@ -44,6 +45,7 @@ module ForemanAnsible
 
           def ansible_roles
             return unless @host
+
             @ansible_roles = @host.all_ansible_roles
           end
         end

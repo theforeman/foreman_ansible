@@ -9,7 +9,7 @@ class UiRolesImporterTest < ActiveSupport::TestCase
   end
 
   test 'should create new role' do
-    refute AnsibleRole.find_by(:name => @new_role[:name])
+    assert_not AnsibleRole.find_by(:name => @new_role[:name])
     @importer.create_new_roles(@changes['new'])
     assert AnsibleRole.find_by(:name => @new_role[:name])
   end
@@ -17,7 +17,7 @@ class UiRolesImporterTest < ActiveSupport::TestCase
   test 'should delete old roles' do
     assert AnsibleRole.find_by(:name => @role.name)
     @importer.delete_old_roles(@changes['obsolete'])
-    refute AnsibleRole.find_by(:name => @role.name)
+    assert_not AnsibleRole.find_by(:name => @role.name)
   end
 
   private

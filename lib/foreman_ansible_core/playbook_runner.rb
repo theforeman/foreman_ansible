@@ -98,6 +98,7 @@ module ForemanAnsibleCore
     def initialize_ansible_dir(ansible_dir)
       raise "Ansible dir #{ansible_dir} does not exist" unless
         !ansible_dir.nil? && File.exist?(ansible_dir)
+
       @ansible_dir = ansible_dir
     end
 

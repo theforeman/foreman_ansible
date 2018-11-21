@@ -17,7 +17,7 @@ module Api
       test 'should return an not_found due to non-existent host_id' do
         post :play_roles, :params => { :id => 'non-existent' }
         response = JSON.parse(@response.body)
-        refute_empty response
+        assert_not_empty response
         assert_response :not_found
       end
 

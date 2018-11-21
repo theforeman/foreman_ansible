@@ -23,6 +23,7 @@ module ForemanAnsible
 
       def check_hostgroup
         return unless @hostgroup.hosts.empty?
+
         raise ::Foreman::Exception.new(
           N_('Host group has no associated hosts')
         )

@@ -24,7 +24,7 @@ class ApiRolesImporterTest < ActiveSupport::TestCase
     @test_roles.map(&:save)
     res = @importer.obsolete!
     assert_equal 2, res.count
-    refute AnsibleRole.find_by :name => @test_roles.first.name
-    refute AnsibleRole.find_by :name => @test_roles.last.name
+    assert_not AnsibleRole.find_by :name => @test_roles.first.name
+    assert_not AnsibleRole.find_by :name => @test_roles.last.name
   end
 end

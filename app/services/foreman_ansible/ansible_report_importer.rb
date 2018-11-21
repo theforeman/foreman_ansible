@@ -20,6 +20,7 @@ module ForemanAnsible
 
       def partial_hostname_match(hostname)
         return @host unless @host.new_record?
+
         hosts = Host.where(Host.arel_table[:name].matches("#{hostname}.%"))
         if hosts.count > 1
           msg = "More than 1 host found for name #{hostname}, "

@@ -68,11 +68,13 @@ module ForemanAnsible
 
     def ansible_interfaces
       return [] if facts[:ansible_interfaces].blank?
+
       facts[:ansible_interfaces].sort
     end
 
     def ip_from_interface(interface)
       return if facts[:"ansible_#{interface}"]['ipv4'].blank?
+
       facts[:"ansible_#{interface}"]['ipv4']['address']
     end
 

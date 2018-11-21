@@ -24,7 +24,7 @@ module ForemanAnsible
     end
 
     test 'does not set environment' do
-      refute @facts_parser.environment
+      assert_not @facts_parser.environment
     end
 
     test 'creates operatingsystem from operating system options' do
@@ -70,23 +70,23 @@ module ForemanAnsible
           'ansible_facts' =>
           {
             'ansible_interfaces' => [
-                'eth0'
+              'eth0'
             ],
             'ansible_eth0' => {
               'active' => true,
               'device' => 'eth0',
-              "macaddress" => '52:54:00:04:55:37',
+              'macaddress' => '52:54:00:04:55:37',
               'ipv4' => {
-                  'address' => '10.10.0.10',
-                  'netmask' => '255.255.0.0',
-                  'network' => '10.10.0.0'
+                'address' => '10.10.0.10',
+                'netmask' => '255.255.0.0',
+                'network' => '10.10.0.0'
               },
               'ipv6' => [
-                  {
-                      'address' => 'fd00::5054:00ff:fe04:5537',
-                      'prefix' => '64',
-                      'scope' => 'host'
-                  }
+                {
+                  'address' => 'fd00::5054:00ff:fe04:5537',
+                  'prefix' => '64',
+                  'scope' => 'host'
+                }
               ],
               'mtu' => 1500,
               'promisc' => false,
@@ -98,7 +98,7 @@ module ForemanAnsible
     end
 
     test 'Parses IPv4 & IPv6 addresses correctly' do
-      iut = 'eth0'.dup
+      iut = +'eth0'
       interface = @facts_parser.get_facts_for_interface(iut)
       assert_equal '10.10.0.10', interface['ipaddress']
       assert_equal 'fd00::5054:00ff:fe04:5537', interface['ipaddress6']

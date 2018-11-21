@@ -15,6 +15,7 @@ module ForemanAnsible
 
     def fetch_role_names
       return remote_roles if ansible_proxy
+
       local_roles
     end
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require File.expand_path('../lib/foreman_ansible_core/version', __FILE__)
+require File.expand_path('lib/foreman_ansible_core/version', __dir__)
 require 'date'
 
 Gem::Specification.new do |s|

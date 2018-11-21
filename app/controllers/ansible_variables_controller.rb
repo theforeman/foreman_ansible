@@ -58,6 +58,7 @@ class AnsibleVariablesController < ::LookupKeysController
 
   def import_new_roles
     return if new_vars.blank?
+
     new_vars.each_key do |role_name|
       ::AnsibleRole.find_or_create_by(:name => role_name)
     end

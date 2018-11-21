@@ -13,7 +13,7 @@ module Api
       test 'should get index' do
         get :index, :session => set_session_user
         response = JSON.parse(@response.body)
-        refute_empty response['results']
+        assert_not_empty response['results']
         assert_response :success
       end
 
@@ -22,7 +22,7 @@ module Api
                :params => { :id => @variable.id },
                :session => set_session_user
         assert_response :ok
-        refute AnsibleVariable.exists?(@variable.id)
+        assert_not AnsibleVariable.exists?(@variable.id)
       end
 
       test 'should import' do

@@ -12,6 +12,7 @@ module ForemanAnsible
 
     def import_variable_names(new_roles)
       return import_variables(remote_variables, new_roles) if @ansible_proxy
+
       import_variables(local_variables, new_roles)
     end
 
@@ -20,6 +21,7 @@ module ForemanAnsible
         role_variables.map do |role_name, variables|
           role = import_new_role(role_name, new_roles)
           next if role.blank?
+
           initialize_variables(variables, role)
         end.select(&:present?).flatten.compact
       )

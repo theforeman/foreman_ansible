@@ -17,6 +17,7 @@ module ForemanAnsible
 
       def find_proxy
         return nil unless params[:proxy]
+
         @proxy = SmartProxy.authorized(:view_smart_proxies).find(params[:proxy])
       end
     end

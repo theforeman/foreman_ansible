@@ -7,6 +7,7 @@ module ForemanAnsible
       args = { :name => os_name, :major => os_major, :minor => os_minor }
       return @local_os if local_os(args).present?
       return @new_os if new_os(args).present?
+
       logger.debug do
         'Ansible facts parser: No OS could be created with '\
         "os_name='#{os_name}' os_major='#{os_major}' "\
@@ -22,6 +23,7 @@ module ForemanAnsible
 
     def new_os(args)
       return @new_os if @new_os.present?
+
       @new_os = Operatingsystem.new(args.merge(:description => os_description))
       @new_os if @new_os.valid? && @new_os.save
     end
