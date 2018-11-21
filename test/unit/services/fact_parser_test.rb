@@ -60,6 +60,51 @@ module ForemanAnsible
     end
   end
 
+  # Tests for Network parser
+  class NetworkFactParserTest < ActiveSupport::TestCase
+    setup do
+      @facts_parser = ForemanAnsible::FactParser.new(
+        HashWithIndifferentAccess.new(
+          '_type' => 'ansible',
+          '_timestamp' => '2018-10-29 20:01:51 +0100',
+          'ansible_facts' =>
+          {
+            'ansible_interfaces' => [
+                'eth0'
+            ],
+            'ansible_eth0' => {
+              'active' => true,
+              'device' => 'eth0',
+              "macaddress" => '52:54:00:04:55:37',
+              'ipv4' => {
+                  'address' => '10.10.0.10',
+                  'netmask' => '255.255.0.0',
+                  'network' => '10.10.0.0'
+              },
+              'ipv6' => [
+                  {
+                      'address' => 'fd00::5054:00ff:fe04:5537',
+                      'prefix' => '64',
+                      'scope' => 'host'
+                  }
+              ],
+              'mtu' => 1500,
+              'promisc' => false,
+              'type' => 'ether'
+            }
+          }
+        )
+      )
+    end
+
+    test 'Parses IPv4 & IPv6 addresses correctly' do
+      iut = 'eth0'.dup
+      interface = @facts_parser.get_facts_for_interface(iut)
+      assert_equal '10.10.0.10', interface['ipaddress']
+      assert_equal 'fd00::5054:00ff:fe04:5537', interface['ipaddress6']
+    end
+  end
+
   # Tests for Debian parser
   class DebianFactParserTest < ActiveSupport::TestCase
     setup do
