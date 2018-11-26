@@ -37,6 +37,8 @@ if defined? ForemanRemoteExecution
           'ansible-runner'
         end
 
+        def find_ip(_host, _interfaces); end
+
         private
 
         def ansible_command?(template)

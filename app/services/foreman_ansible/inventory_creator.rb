@@ -135,6 +135,10 @@ module ForemanAnsible
       end
     end
 
+    def find_ip_or_hostname(host)
+      host.name
+    end
+
     private
 
     def render_rabl(host, template)
