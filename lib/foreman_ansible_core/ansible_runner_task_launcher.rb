@@ -38,7 +38,7 @@ module ForemanAnsibleCore
       def handle_event_file(event_file)
         event = JSON.parse(File.read(event_file))
         stdout = event['stdout']
-        if (hostname = event['event_data']['hostname'])
+        if (hostname = event['event_data']['host'])
           publish_data_for(hostname, stdout, 'stdout')
         else
           broadcast_data(stdout, 'stdout')
@@ -96,6 +96,12 @@ module ForemanAnsibleCore
         else
           File.expand_path(dir)
         end
+      end
+    end
+
+    def group_runner_input(input)
+      super(input).reduce({}) do |acc, (_id, data)|
+        acc.merge(data[:input]['action_input']['hostname'] => data)
       end
     end
 
