@@ -27,8 +27,7 @@ module ForemanAnsibleCore
             job_event_dir = File.join(@root, 'artifacts', @uuid, 'job_events')
             event = Dir["#{job_event_dir}/#{@counter}-*"].first
             return if event.nil?
-            handle_event_file(event)
-            @counter += 1
+            @counter += 1 if handle_event_file(event)
           end
         end
       end
@@ -36,12 +35,29 @@ module ForemanAnsibleCore
       private
 
       def handle_event_file(event_file)
-        event = JSON.parse(File.read(event_file))
-        stdout = event['stdout']
-        if (hostname = event['event_data']['host'])
-          publish_data_for(hostname, stdout, 'stdout')
+        begin
+          event = JSON.parse(File.read(event_file))
+          stdout = event['stdout']
+          if (hostname = event['event_data']['host'])
+            publish_data_for(hostname, stdout, 'stdout')
+          else
+            handle_broadcast_data(event)
+          end
+          true
+        rescue JSON::ParserError
+          nil
+        end
+      end
+
+      def handle_broadcast_data(event)
+        if event['event'] == 'playbook_on_stats'
+          header, *rows = event['stdout'].strip.lines.map(&:chomp)
+          rows.each do |row|
+            hostname, _ = row.split(':')
+            publish_data_for(hostname.strip, [header, row].join("\n"), 'stdout')
+          end
         else
-          broadcast_data(stdout, 'stdout')
+          broadcast_data(event['stdout'], 'stdout')
         end
       end
 
