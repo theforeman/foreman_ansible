@@ -106,11 +106,11 @@ module ForemanAnsibleCore
       def working_dir
         return @root if @root
         dir = ForemanAnsibleCore.settings[:working_dir]
+        @tmp_working_dir = true
         if dir.nil?
-          @tmp_working_dir = true
           Dir.mktmpdir
         else
-          File.expand_path(dir)
+          Dir.mktmpdir(nil, File.expand_path(dir))
         end
       end
     end
