@@ -22,7 +22,7 @@ module ForemanAnsible
     end
 
     def roles_attrs(roles)
-      roles.map { |item| ({ :id => item.id, :name => item.name }) }
+      roles.map { |item| { :id => item.id, :name => item.name } }
     end
   end
 end

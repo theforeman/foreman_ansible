@@ -8,20 +8,23 @@ exports[`AnsibleRole should render a role to add 1`] = `
       href="#"
       onClick={[Function]}
     >
-      <i
-        className="fa-2x fa fa-plus-circle"
+      <Icon
+        className="fa-2x"
+        name="fa fa-plus-circle"
+        type="fa"
       />
     </button>
   }
   additionalInfo={null}
   checkboxInput={null}
-  className="listViewItem--listItemVariants "
+  className="listViewItem--listItemVariants"
   compoundExpand={false}
   compoundExpanded={false}
   description={null}
   heading="test.role"
   hideCloseIcon={false}
   id={5}
+  initExpanded={false}
   leftContent={null}
   onCloseCompoundExpand={[Function]}
   onExpand={[Function]}
@@ -38,20 +41,23 @@ exports[`AnsibleRole should render a role to remove 1`] = `
       href="#"
       onClick={[Function]}
     >
-      <i
-        className="fa-2x fa fa-minus-circle"
+      <Icon
+        className="fa-2x"
+        name="fa fa-minus-circle"
+        type="fa"
       />
     </button>
   }
   additionalInfo={null}
   checkboxInput={null}
-  className="listViewItem--listItemVariants "
+  className="listViewItem--listItemVariants"
   compoundExpand={false}
   compoundExpanded={false}
   description={null}
   heading="test.role"
   hideCloseIcon={false}
   id={5}
+  initExpanded={false}
   leftContent={null}
   onCloseCompoundExpand={[Function]}
   onExpand={[Function]}
@@ -72,6 +78,7 @@ exports[`AnsibleRole should render inherited role to remove 1`] = `
   heading="test.role"
   hideCloseIcon={false}
   id={5}
+  initExpanded={false}
   leftContent={null}
   onCloseCompoundExpand={[Function]}
   onExpand={[Function]}
