@@ -13,7 +13,7 @@ module ForemanAnsibleCore
 
     attr_reader :command_out, :command_in, :command_pid
 
-    def initialize(inventory, playbook, options = {})
+    def initialize(suspended_action, inventory, playbook, options = {})
       super
       @inventory = inventory
       unknown_hosts.each do |host|
