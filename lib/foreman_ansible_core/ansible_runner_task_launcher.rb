@@ -37,15 +37,24 @@ module ForemanAnsibleCore
       def handle_event_file(event_file)
         begin
           event = JSON.parse(File.read(event_file))
-          stdout = event['stdout']
           if (hostname = event['event_data']['host'])
-            publish_data_for(hostname, stdout, 'stdout')
+            handle_host_event(hostname, event)
           else
             handle_broadcast_data(event)
           end
           true
         rescue JSON::ParserError
           nil
+        end
+      end
+
+      def handle_host_event(hostname, event)
+        publish_data_for(hostname, event['stdout'], 'stdout')
+        case event['event']
+        when 'runner_on_unreachable'
+          publish_exit_status_for(hostname, 1)
+        when 'runner_on_failed'
+          publish_exit_status_for(hostname, 2) if event['ignore_errors'].nil?
         end
       end
 
