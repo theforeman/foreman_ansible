@@ -121,7 +121,7 @@ module ForemanAnsibleCore
       end
     end
 
-    def feature
+    def operation
       'ansible-runner'
     end
 
