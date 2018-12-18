@@ -39,6 +39,22 @@ module ForemanAnsibleCore
         @command_in = @playbook_runner.command_in
         @command_pid = @playbook_runner.command_pid
         super
+        kill if unknown_host_key_fingerprint?
+      end
+
+      def kill
+        publish_exit_status(1)
+        ::Process.kill('SIGTERM', @command_pid)
+        close
+      end
+
+      private
+
+      def unknown_host_key_fingerprint?
+        last_output = @continuous_output.raw_outputs.last
+        return if last_output.nil?
+        last_output_raw = last_output['output']
+        return last_output_raw && last_output_raw.lines.last == 'Are you sure you want to continue connecting (yes/no)? '
       end
     end
   end
