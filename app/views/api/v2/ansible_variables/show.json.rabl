@@ -1,10 +1,11 @@
 object @ansible_variable
 
 attribute :parameter
-attributes :id, :ansible_role, :description, :override, :parameter_type,
-           :hidden_value?, :omit, :required, :validator_type, :validator_rule,
-           :merge_overrides, :merge_default, :avoid_duplicates,
-           :override_value_order, :created_at, :updated_at
+attributes :id, :variable, :ansible_role, :ansible_role_id, :description, :override,
+           :variable_type, :hidden_value?, :validator_type,
+           :validator_rule, :merge_overrides, :merge_default,
+           :avoid_duplicates, :override_value_order, :created_at, :updated_at,
+           :default_value
 
 node do |ansible_variable|
   {
