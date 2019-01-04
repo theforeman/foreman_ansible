@@ -23,7 +23,7 @@ Reporting and facts import from Ansible to Foreman.
 * Looking for an Ansible dynamic inventory for Foreman? Use [foreman_ansible_inventory](https://github.com/theforeman/foreman_ansible_inventory/)
 
 ## Documentation (installation and configuration)
-Check out the official manual at [theforeman.org](http://theforeman.org/plugins/foreman_ansible/1.x/index.html)
+Check out the official manual at [theforeman.org](http://theforeman.org/plugins/foreman_ansible/2.x/index.html)
 
 ##### Registering a new host in Foreman
 ![sign up gif](http://i.imgur.com/mlnVFJj.gif)
@@ -41,12 +41,14 @@ Check out the official manual at [theforeman.org](http://theforeman.org/plugins/
 
 | Foreman | Plugin |
 | ---------------:| --------------:|
-| >= 1.9         | 0 - 0.3         |
-| >= 1.12        | 1.0 - TBD       |
+| >= 1.15        | 1.4             |
+| >= 1.16        | 2.0             |
+| >= 1.18        | 2.2             |
+| >= 1.21        | 2.3             |
 
 ### Devs
 
-The callback sends a POST request to /api/v2/hosts/facts with the format you can see [in the API docs](http://theforeman.org/api/1.9/apidoc/v2/hosts/facts.html).
+The callback sends a POST request to /api/v2/hosts/facts with the format you can see [in the API docs](http://theforeman.org/api/1.20/apidoc/v2/hosts/facts.html).
 
 Facts must contain the output of `ansible -m setup $HOSTNAME`, plus a '_type' and '_timestamp' keys. You can see an example on test/fixtures/sample_facts.json in this repository.
 
