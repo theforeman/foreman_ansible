@@ -5,6 +5,7 @@ module ForemanAnsibleCore
     # Takes an inventory and runs it through REXCore CommandRunner
     class AnsibleRunner < ::ForemanTasksCore::Runner::CommandRunner
       DEFAULT_REFRESH_INTERVAL = 1
+      CONNECTION_PROMPT = 'Are you sure you want to continue connecting (yes/no)? '
 
       def initialize(options)
         super(options)
@@ -53,8 +54,7 @@ module ForemanAnsibleCore
       def unknown_host_key_fingerprint?
         last_output = @continuous_output.raw_outputs.last
         return if last_output.nil?
-        last_output_raw = last_output['output']
-        return last_output_raw && last_output_raw.lines.last == 'Are you sure you want to continue connecting (yes/no)? '
+        last_output['output']&.lines&.last == CONNECTION_PROMPT
       end
     end
   end
