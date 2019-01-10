@@ -45,13 +45,14 @@ module Api
           }, :session => set_session_user
           assert_response :success
         end
-      end
-
-      test 'should fetch' do
-        get :fetch, :session => set_session_user
-        response = JSON.parse(@response.body)
-        refute_empty response['results']
-        assert_response :success
+        test 'should fetch' do
+          get :fetch, :params => {
+            :proxy_id => @proxy.id
+          }, :session => set_session_user
+          response = JSON.parse(@response.body)
+          assert_not_empty response['results']
+          assert_response :success
+        end
       end
     end
   end

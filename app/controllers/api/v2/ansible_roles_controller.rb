@@ -46,7 +46,8 @@ module Api
 
       api :GET, '/ansible_roles/fetch',
           N_('Fetch Ansible roles available to be imported')
-      param :proxy_id, :identifier, N_('Smart Proxy to fetch from')
+      param :proxy_id, :identifier, N_('Smart Proxy to fetch from'),
+            :required => true
       def fetch
         fetched = []
         @importer.fetch!.each do |role_name|
