@@ -33,3 +33,6 @@ Style/SymbolArray:
 
 Style/FormatStringToken:
   EnforcedStyle: template
+
+Metrics:
+  Enabled: false

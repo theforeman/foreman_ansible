@@ -36,15 +36,6 @@ Lint/UnneededCopDisableDirective:
   Enabled: false
 
 # Offense count: 1
-Metrics/AbcSize:
-  Max: 18
-
-# Offense count: 9
-# Configuration parameters: CountComments, ExcludedMethods.
-Metrics/MethodLength:
-  Max: 25
-
-# Offense count: 1
 Performance/UnfreezeString:
   Enabled: false
 
@@ -113,9 +104,3 @@ Style/IfUnlessModifier:
 # SupportedStyles: single_quotes, double_quotes
 Style/StringLiterals:
   Enabled: false
-
-# Offense count: 6
-# Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
-# URISchemes: http, https
-Metrics/LineLength:
-  Max: 103
