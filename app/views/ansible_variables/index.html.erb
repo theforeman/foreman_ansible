@@ -26,7 +26,7 @@
           variable.ansible_role.name,
           hash_for_ansible_variables_path(:search => "ansible_role = #{variable.ansible_role}")
         ) %></td>
-        <td class="ellipsis"><%= "String" %></td>
+        <td class="ellipsis"><%= variable.key_type || 'string' %></td>
         <td class="ellipsis">
           <% links = [
             display_delete_if_authorized(
