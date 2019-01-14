@@ -5,13 +5,14 @@ module Api
     # API controller for Ansible Variables
     class AnsibleVariablesController < ::Api::V2::BaseController
       include ::Api::Version2
+      include Foreman::Controller::Parameters::VariableLookupKey
 
       resource_description do
         api_version 'v2'
         api_base_url '/ansible/api'
       end
 
-      before_action :find_resource, :only => [:show, :destroy]
+      before_action :find_resource, :only => [:show, :destroy, :update]
       before_action :find_proxy, :only => [:import, :obsolete]
       before_action :create_importer, :only => [:import, :obsolete]
 
@@ -28,13 +29,40 @@ module Api
       api :DELETE, '/ansible_variables/:id', N_('Deletes Ansible variable')
       param :id, :identifier, :required => true
       def destroy
-        process_response @ansible_variable.destroy
+        @ansible_variable.destroy
+        render 'api/v2/ansible_variables/destroy'
+      end
+
+      def_param_group :ansible_variable do
+        param :ansible_variable, Hash, :required => true, :action_aware => true do
+          param :variable, String, :required => true, :desc => N_("Name of variable")
+          param :ansible_role_id, :number, :desc => N_("Role ID")
+          param :default_value, :any_type, :of => LookupKey::KEY_TYPES, :desc => N_("Default value of variable")
+          param :hidden_value, :bool, :desc => N_("When enabled the parameter is hidden in the UI")
+          param :override_value_order, String, :desc => N_("The order in which values are resolved")
+          param :description, String, :desc => N_("Description of variable")
+          param :validator_type, LookupKey::VALIDATOR_TYPES, :desc => N_("Types of validation values")
+          param :validator_rule, String, :desc => N_("Used to enforce certain values for the parameter values")
+          param :variable_type, LookupKey::KEY_TYPES, :desc => N_("Types of variable values")
+          param :merge_overrides, :bool, :desc => N_("Merge all matching values (only array/hash type)")
+          param :merge_default, :bool, :desc => N_("Include default value when merging all matching values")
+          param :avoid_duplicates, :bool, :desc => N_("Remove duplicate values (only array type)")
+        end
+      end
+
+      api :PUT, '/ansible_variables/:id', N_('Updates Ansible variable')
+      param :id, :identifier, :required => true
+      param_group :ansible_variable, :as => :update
+
+      def update
+        @ansible_variable.update!(variable_lookup_key_params)
+        render 'api/v2/ansible_variables/show'
       end
 
       api :PUT, '/ansible_variables/import',
           N_('Import Ansible variables. This will only import variables '\
              'for already existing roles, it will not import any new roles')
-      param :proxy_id, :identifier, N_('Smart Proxy to import from')
+      param :proxy_id, :identifier, N_('Smart Proxy to import from'), :required => true
       def import
         new_variables = @importer.import_variable_names([])[:new]
         new_variables.map(&:save)
@@ -44,7 +72,7 @@ module Api
       api :PUT, '/ansible_variables/obsolete',
           N_('Obsolete Ansible variables. This will only obsolete variables '\
              'for already existing roles, it will not delete any old roles')
-      param :proxy_id, :identifier, N_('Smart Proxy to import from')
+      param :proxy_id, :identifier, N_('Smart Proxy to import from'), :required => true
       def obsolete
         old_variables = @importer.import_variable_names([])[:obsolete]
         old_variables.map(&:destroy)

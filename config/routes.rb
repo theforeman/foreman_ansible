@@ -79,12 +79,14 @@ Rails.application.routes.draw do
           end
         end
 
-        resources :ansible_variables, :only => [:show, :index, :destroy] do
+        resources :ansible_variables, :only => [:show, :index, :destroy, :update] do
           collection do
             put :import
             put :obsolete
           end
         end
+
+        resources :ansible_override_values, :only => [:create, :destroy]
       end
     end
   end
