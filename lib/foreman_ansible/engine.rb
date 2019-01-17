@@ -85,7 +85,7 @@ module ForemanAnsible
           )
         end
         ::FactParser.register_fact_parser(:ansible, ForemanAnsible::FactParser)
-        ::Host::Managed.send(:include, ForemanAnsible::HostManagedExtensions)
+        ::Host::Managed.send(:prepend, ForemanAnsible::HostManagedExtensions)
         ::Hostgroup.send(:include, ForemanAnsible::HostgroupExtensions)
         ::HostsHelper.send(:include, ForemanAnsible::HostsHelperExtensions)
         ::HostsController.send(
