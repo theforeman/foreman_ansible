@@ -41,10 +41,12 @@ const initAssignedRoles = (state, initialAssignedRoles, inheritedRoleIds) => {
 };
 
 const ansibleRoleAdd = (state, payload) =>
-  state.set('assignedRoles', addItem(state.assignedRoles, payload.role));
+  state.set('assignedRoles', addItem(state.assignedRoles, payload.role))
+       .set('itemCount', state.itemCount - 1);
 
 const ansibleRoleRemove = (state, payload) =>
-  state.set('assignedRoles', removeItem(state.assignedRoles, payload.role));
+  state.set('assignedRoles', removeItem(state.assignedRoles, payload.role))
+       .set('itemCount', state.itemCount + 1);
 
 const addItem = (list, item) => ([...(list || []), item]);
 
