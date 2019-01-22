@@ -5,6 +5,7 @@ module ForemanAnsible
   module OperatingSystemParser
     def operatingsystem
       args = { :name => os_name, :major => os_major, :minor => os_minor }
+      args[:release_name] = os_release_name if os_name == 'Debian'
       return @local_os if local_os(args).present?
       return @new_os if new_os(args).present?
       logger.debug do
@@ -37,6 +38,15 @@ module ForemanAnsible
       when /buster/i
         '10'
       end
+    end
+
+    def deb_release_map
+      { '7' => 'wheezy', '8' => 'jessie', '9' => 'stretch', '10' => 'buster' }
+    end
+
+    def os_release_name
+      return '' unless os_name == 'Debian'
+      deb_release_map[debian_os_major_sid]
     end
 
     # rubocop:disable AbcSize, CyclomaticComplexity, PerceivedComplexity
