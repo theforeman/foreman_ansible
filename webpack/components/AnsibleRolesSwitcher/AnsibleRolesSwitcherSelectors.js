@@ -7,3 +7,17 @@ export const assignedRolesPage = (assignedRoles, assignedPagination) => {
 
   return slice(assignedRoles, offset, offset + assignedPagination.perPage);
 };
+
+export const removeItemNewState = (state, role) => ({
+  assignedRoles: removeItem(state.assignedRoles, role),
+  itemCount: state.itemCount + 1,
+});
+
+export const addItemNewState = (state, role) => ({
+  assignedRoles: addItem(state.assignedRoles, role),
+  itemCount: state.itemCount - 1,
+});
+
+const addItem = (list, item) => ([...(list || []), item]);
+
+const removeItem = (list, item) => list.filter(listItem => item.id !== listItem.id);

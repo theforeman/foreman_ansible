@@ -1,5 +1,6 @@
 import { includes } from 'lodash';
 import Immutable from 'seamless-immutable';
+import { addItemNewState, removeItemNewState } from './AnsibleRolesSwitcherSelectors';
 
 import {
   ANSIBLE_ROLES_REQUEST,
@@ -20,11 +21,12 @@ const ansibleRolesSuccess = (state, payload) => {
     inheritedRoleIds,
   } = payload;
 
-  return initAssignedRoles(state, initialAssignedRoles, inheritedRoleIds)
-    .set('loading', false)
-    .set('itemCount', Number(subtotal))
-    .set('pagination', { page: Number(page), perPage: Number(perPage) })
-    .set('results', results);
+  return initAssignedRoles(state, initialAssignedRoles, inheritedRoleIds).merge({
+    loading: false,
+    itemCount: Number(subtotal),
+    pagination: { page: Number(page), perPage: Number(perPage) },
+    results,
+  });
 };
 
 const initAssignedRoles = (state, initialAssignedRoles, inheritedRoleIds) => {
@@ -35,22 +37,16 @@ const initAssignedRoles = (state, initialAssignedRoles, inheritedRoleIds) => {
         role
     ));
 
-    return state.set('assignedRoles', assignedRoles).set('initialized', true);
+    return state.merge({ assignedRoles, initialized: true });
   }
   return state;
 };
 
 const ansibleRoleAdd = (state, payload) =>
-  state.set('assignedRoles', addItem(state.assignedRoles, payload.role))
-       .set('itemCount', state.itemCount - 1);
+  state.merge(addItemNewState(state, payload.role));
 
 const ansibleRoleRemove = (state, payload) =>
-  state.set('assignedRoles', removeItem(state.assignedRoles, payload.role))
-       .set('itemCount', state.itemCount + 1);
-
-const addItem = (list, item) => ([...(list || []), item]);
-
-const removeItem = (list, item) => list.filter(listItem => item.id !== listItem.id);
+  state.merge(removeItemNewState(state, payload.role));
 
 export const initialState = Immutable({
   initialized: false,

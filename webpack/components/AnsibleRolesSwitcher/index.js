@@ -1,71 +1,30 @@
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { lowerCase } from 'lodash';
+import React from 'react';
+import { EmptyStatePattern as EmptyState } from 'foremanReact/components/common/EmptyState';
 
-import AnsibleRolesSwitcher from './AnsibleRolesSwitcher';
-import * as AnsibleRolesSwitcherActions from './AnsibleRolesSwitcherActions';
-import { calculateUnassignedRoles, assignedRolesPage } from './AnsibleRolesSwitcherSelectors';
+import AnsibleRolesSwitcher from './AnsibleRolesSwitcherConnected';
 
-const mapStateToProps = ({ foreman_ansible: { ansibleRolesSwitcher } }, ownProps) => {
-  const {
-    results,
-    pagination,
-    itemCount,
-    assignedRoles,
-    loading,
-    assignedPagination,
-    error,
-  } = ansibleRolesSwitcher;
+const PermissionDenied = (props) => {
+  const description = (
+    <span>
+      { __('You are not authorized to perform this action.') }<br/>
+      { __('Please request one of the required permissions listed below from a Foreman administrator:') }<br/>
+    </span>
+  );
 
-  const { data: { resourceName = '', initialAssignedRoles } } = ownProps;
+  const doc = (
+    <ul className='list-unstyled'>
+      <li>{ 'view_ansible_roles' }</li>
+    </ul>
+  );
 
-  return ({
-    results,
-    pagination,
-    itemCount,
-    loading,
-    error,
-    initialAssignedRoles,
-    assignedPagination,
-    assignedRolesCount: assignedRoles.length,
-    resourceName: lowerCase(resourceName),
-    assignedRoles: assignedRolesPage(
-      ansibleRolesSwitcher.assignedRoles,
-      ansibleRolesSwitcher.assignedPagination,
-    ),
-    unassignedRoles: calculateUnassignedRoles(ansibleRolesSwitcher),
-  });
+  return (<EmptyState iconType='fa'
+                      icon='lock'
+                      header={__('Permission Denied')}
+                      description={description}
+                      documentation={doc} />);
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  const {
-    data: {
-      availableRolesUrl,
-      initialAssignedRoles,
-      inheritedRoleIds,
-      resourceId,
-      resourceName,
-    },
-  } = ownProps;
-
-  return {
-    getAnsibleRoles: bindActionCreators(
-      AnsibleRolesSwitcherActions.getAnsibleRoles,
-      dispatch,
-    )(
-      availableRolesUrl,
-      initialAssignedRoles,
-      inheritedRoleIds,
-      resourceId,
-      resourceName,
-    ),
-    addAnsibleRole: bindActionCreators(AnsibleRolesSwitcherActions.addAnsibleRole, dispatch),
-    removeAnsibleRole: bindActionCreators(AnsibleRolesSwitcherActions.removeAnsibleRole, dispatch),
-    changeAssignedPage: bindActionCreators(
-      AnsibleRolesSwitcherActions.changeAssignedPage,
-      dispatch,
-    ),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AnsibleRolesSwitcher);
+export default props =>
+  ((props.data && props.data.canView) ?
+    <AnsibleRolesSwitcher {...props} /> :
+    <PermissionDenied />);
