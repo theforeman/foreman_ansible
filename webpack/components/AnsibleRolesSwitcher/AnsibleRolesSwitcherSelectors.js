@@ -1,23 +1,62 @@
-import { differenceBy, slice } from 'lodash';
+import { differenceBy, slice, includes, uniq } from 'lodash';
+import Immutable from 'seamless-immutable';
+import { createSelector } from 'reselect';
 
-export const calculateUnassignedRoles = state => differenceBy(state.results, state.assignedRoles, 'id');
-
-export const assignedRolesPage = (assignedRoles, assignedPagination) => {
-  const offset = (assignedPagination.page - 1) * assignedPagination.perPage;
-
-  return slice(assignedRoles, offset, offset + assignedPagination.perPage);
+const compare = (a, b) => {
+  if (a.name < b.name) {
+    return -1;
+  }
+  if (a.name > b.name) {
+    return 1;
+  }
+  return 0;
 };
 
-export const removeItemNewState = (state, role) => ({
-  assignedRoles: removeItem(state.assignedRoles, role),
-  itemCount: state.itemCount + 1,
-});
+const switcherState = state => state.foremanAnsible.ansibleRolesSwitcher;
 
-export const addItemNewState = (state, role) => ({
-  assignedRoles: addItem(state.assignedRoles, role),
-  itemCount: state.itemCount - 1,
-});
+const markInheritedRoles = (roles, inheritedRoleIds) => roles.map(role => (
+  includes(inheritedRoleIds, role.id) ?
+    { ...role, inherited: true } :
+    role
+));
 
-const addItem = (list, item) => ([...(list || []), item]);
+export const selectResults = state =>
+  Immutable.asMutable(uniq(switcherState(state).results)).sort(compare);
 
-const removeItem = (list, item) => list.filter(listItem => item.id !== listItem.id);
+export const selectItemCount = state => switcherState(state).itemCount;
+
+export const selectAssignedRoles = state =>
+  Immutable.asMutable(markInheritedRoles(
+    switcherState(state).assignedRoles,
+    switcherState(state).inheritedRoleIds,
+  )).sort(compare);
+
+export const selectAssignedRolesCount = state => selectAssignedRoles(state).length;
+export const selectLoading = state => switcherState(state).loading;
+export const selectAssignedPagination = state => switcherState(state).assignedPagination;
+export const selectError = state => switcherState(state).error;
+export const selectPagination = state => switcherState(state).pagination;
+
+export const selectPaginationMemoized = createSelector(
+  selectPagination,
+  selectResults,
+  (pagination, results) =>
+    (results.length > pagination.perPage ? { ...pagination, perPage: results.length } : pagination),
+);
+
+export const selectUnassignedRoles = createSelector(
+  selectResults,
+  selectAssignedRoles,
+  (results, assignedRoles) =>
+    differenceBy(results, assignedRoles, 'id'),
+);
+
+export const selectAssignedRolesPage = createSelector(
+  selectAssignedPagination,
+  selectAssignedRoles,
+  (assignedPagination, assignedRoles) => {
+    const offset = (assignedPagination.page - 1) * assignedPagination.perPage;
+
+    return slice(assignedRoles, offset, offset + assignedPagination.perPage);
+  },
+);

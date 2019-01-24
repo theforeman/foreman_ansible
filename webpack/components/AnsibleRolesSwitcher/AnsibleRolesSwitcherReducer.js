@@ -1,6 +1,4 @@
-import { includes } from 'lodash';
 import Immutable from 'seamless-immutable';
-import { addItemNewState, removeItemNewState } from './AnsibleRolesSwitcherSelectors';
 
 import {
   ANSIBLE_ROLES_REQUEST,
@@ -21,26 +19,30 @@ const ansibleRolesSuccess = (state, payload) => {
     inheritedRoleIds,
   } = payload;
 
-  return initAssignedRoles(state, initialAssignedRoles, inheritedRoleIds).merge({
+  return state.merge({
     loading: false,
     itemCount: Number(subtotal),
     pagination: { page: Number(page), perPage: Number(perPage) },
     results,
+    assignedRoles: initialAssignedRoles,
+    inheritedRoleIds,
   });
 };
 
-const initAssignedRoles = (state, initialAssignedRoles, inheritedRoleIds) => {
-  if (!state.initialized) {
-    const assignedRoles = initialAssignedRoles.map(role => (
-      includes(inheritedRoleIds, role.id) ?
-        { ...role, inherited: true } :
-        role
-    ));
+const addItem = (list, item) => ([...(list || []), item]);
 
-    return state.merge({ assignedRoles, initialized: true });
-  }
-  return state;
-};
+const removeItem = (list, item) => list.filter(listItem => item.id !== listItem.id);
+
+const removeItemNewState = (state, role) => ({
+  assignedRoles: removeItem(state.assignedRoles, role),
+  results: addItem(state.results, role),
+  itemCount: state.itemCount + 1,
+});
+
+const addItemNewState = (state, role) => ({
+  assignedRoles: addItem(state.assignedRoles, role),
+  itemCount: state.itemCount - 1,
+});
 
 const ansibleRoleAdd = (state, payload) =>
   state.merge(addItemNewState(state, payload.role));
@@ -49,7 +51,6 @@ const ansibleRoleRemove = (state, payload) =>
   state.merge(removeItemNewState(state, payload.role));
 
 export const initialState = Immutable({
-  initialized: false,
   loading: false,
   itemCount: 0,
   pagination: {
@@ -57,6 +58,7 @@ export const initialState = Immutable({
     perPage: 20,
   },
   assignedRoles: [],
+  inheritedRoleIds: [],
   results: [],
   assignedPagination: {
     page: 1,
@@ -74,7 +76,7 @@ const ansibleRoles = (state = initialState, action) => {
     case ANSIBLE_ROLES_SUCCESS:
       return ansibleRolesSuccess(state, payload);
     case ANSIBLE_ROLES_FAILURE:
-      return state.set('error', payload.error).set('loading', false);
+      return state.merge({ error: payload.error, loading: false });
     case ANSIBLE_ROLES_ADD:
       return ansibleRoleAdd(state, payload);
     case ANSIBLE_ROLES_REMOVE:

@@ -3,17 +3,16 @@
 exports[`AnsibleRole should render a role to add 1`] = `
 <ListViewItem
   actions={
-    <button
-      className="role-add-remove-btn"
-      href="#"
+    <AnsibleRoleActionButton
+      icon="fa fa-plus-circle"
       onClick={[Function]}
-    >
-      <Icon
-        className="fa-2x"
-        name="fa fa-plus-circle"
-        type="fa"
-      />
-    </button>
+      role={
+        Object {
+          "id": 5,
+          "name": "test.role",
+        }
+      }
+    />
   }
   additionalInfo={null}
   checkboxInput={null}
@@ -36,17 +35,16 @@ exports[`AnsibleRole should render a role to add 1`] = `
 exports[`AnsibleRole should render a role to remove 1`] = `
 <ListViewItem
   actions={
-    <button
-      className="role-add-remove-btn"
-      href="#"
+    <AnsibleRoleActionButton
+      icon="fa fa-minus-circle"
       onClick={[Function]}
-    >
-      <Icon
-        className="fa-2x"
-        name="fa fa-minus-circle"
-        type="fa"
-      />
-    </button>
+      role={
+        Object {
+          "id": 5,
+          "name": "test.role",
+        }
+      }
+    />
   }
   additionalInfo={null}
   checkboxInput={null}

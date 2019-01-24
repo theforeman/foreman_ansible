@@ -12,6 +12,14 @@ exports[`AnsibleRolesSwitcher should render 1`] = `
     className="row-eq-height"
     componentClass="div"
   >
+    <AnsibleRolesSwitcherError
+      error={
+        Object {
+          "errorMsg": "",
+          "statusText": "",
+        }
+      }
+    />
     <Col
       bsClass="col"
       className="available-roles-container"
@@ -63,7 +71,7 @@ exports[`AnsibleRolesSwitcher should render 1`] = `
             "perPage": 12,
           }
         }
-        resourceName="host"
+        resourceName=""
       />
     </Col>
   </Row>

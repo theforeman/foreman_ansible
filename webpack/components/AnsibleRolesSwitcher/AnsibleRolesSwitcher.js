@@ -1,17 +1,31 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
-import { Alert } from 'patternfly-react';
-import { isEmpty } from 'lodash';
+import { Grid, Row, Col } from 'patternfly-react';
+import { lowerCase } from 'lodash';
 
-import AvailableRolesList from './AvailableRolesList';
-import AssignedRolesList from './AssignedRolesList';
-
-const excludeAssignedRolesSearch = assignedRoles =>
-  ({ search: `id !^ (${assignedRoles.map(role => role.id).join(', ')})` });
+import AvailableRolesList from './components/AvailableRolesList';
+import AssignedRolesList from './components/AssignedRolesList';
+import AnsibleRolesSwitcherError from './components/AnsibleRolesSwitcherError';
+import { excludeAssignedRolesSearch } from './AnsibleRolesSwitcherHelpers';
 
 class AnsibleRolesSwitcher extends React.Component {
   componentDidMount() {
-    this.props.getAnsibleRoles({}, excludeAssignedRolesSearch(this.props.initialAssignedRoles));
+    const {
+      initialAssignedRoles,
+      availableRolesUrl,
+      inheritedRoleIds,
+      resourceId,
+      resourceName,
+    } = this.props.data;
+
+    this.props.getAnsibleRoles(
+      availableRolesUrl,
+      initialAssignedRoles,
+      inheritedRoleIds,
+      resourceId,
+      resourceName,
+      {},
+      excludeAssignedRolesSearch(initialAssignedRoles),
+    );
   }
 
   render() {
@@ -27,31 +41,31 @@ class AnsibleRolesSwitcher extends React.Component {
       assignedRolesCount,
       assignedRoles,
       unassignedRoles,
-      resourceName,
       error,
     } = this.props;
 
-    const onListingChange = args =>
-      getAnsibleRoles(args, excludeAssignedRolesSearch(assignedRoles));
+    const {
+      availableRolesUrl,
+      inheritedRoleIds,
+      resourceId,
+      resourceName,
+    } = this.props.data;
 
-    const errorMsg = (err) => {
-      const status = err.statusText ? `${err.statusText}: ` : '';
-      return `${status}${err.errorMsg}`;
-    };
-
-    const showError = err => (
-      isEmpty(err.errorMsg) ? '' : (
-        <Col sm={12} >
-          <Alert type='error'>
-            { errorMsg(error) }
-          </Alert>
-        </Col>
-      ));
+    const onListingChange = paginationArgs =>
+      getAnsibleRoles(
+        availableRolesUrl,
+        assignedRoles,
+        inheritedRoleIds,
+        resourceId,
+        resourceName,
+        paginationArgs,
+        excludeAssignedRolesSearch(assignedRoles),
+      );
 
     return (
       <Grid bsClass="container-fluid" id="ansibleRolesSwitcher">
           <Row className="row-eq-height">
-            { showError(error) }
+            <AnsibleRolesSwitcherError error={error} />
             <Col sm={6} className="available-roles-container">
               <div className="available-roles-header">
                 <h2>{__('Available Ansible Roles')}</h2>
@@ -73,7 +87,7 @@ class AnsibleRolesSwitcher extends React.Component {
                                     itemCount={assignedRolesCount}
                                     onPaginationChange={changeAssignedPage}
                                     onRemoveRole={removeAnsibleRole}
-                                    resourceName={resourceName} />
+                                    resourceName={lowerCase(resourceName || '')} />
             </Col>
           </Row>
       </Grid>

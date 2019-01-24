@@ -1,30 +1,40 @@
-import React from 'react';
-import { EmptyStatePattern as EmptyState } from 'foremanReact/components/common/EmptyState';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import AnsibleRolesSwitcher from './AnsibleRolesSwitcherConnected';
+import AnsibleRolesSwitcher from './AnsibleRolesSwitcher';
+import * as AnsibleRolesSwitcherActions from './AnsibleRolesSwitcherActions';
+import AnsiblePermissionDenied from './components/AnsiblePermissionDenied';
+import withProtectedView from './components/withProtectedView';
+import {
+  selectUnassignedRoles,
+  selectAssignedRolesPage,
+  selectAssignedRolesCount,
+  selectResults,
+  selectPaginationMemoized,
+  selectItemCount,
+  selectLoading,
+  selectAssignedPagination,
+  selectError,
+} from './AnsibleRolesSwitcherSelectors';
 
-const PermissionDenied = (props) => {
-  const description = (
-    <span>
-      { __('You are not authorized to perform this action.') }<br/>
-      { __('Please request one of the required permissions listed below from a Foreman administrator:') }<br/>
-    </span>
-  );
 
-  const doc = (
-    <ul className='list-unstyled'>
-      <li>{ 'view_ansible_roles' }</li>
-    </ul>
-  );
+const mapStateToProps = state => ({
+  results: selectResults(state),
+  pagination: selectPaginationMemoized(state),
+  itemCount: selectItemCount(state),
+  loading: selectLoading(state),
+  error: selectError(state),
+  assignedPagination: selectAssignedPagination(state),
+  assignedRolesCount: selectAssignedRolesCount(state),
+  assignedRoles: selectAssignedRolesPage(state),
+  unassignedRoles: selectUnassignedRoles(state),
+});
 
-  return (<EmptyState iconType='fa'
-                      icon='lock'
-                      header={__('Permission Denied')}
-                      description={description}
-                      documentation={doc} />);
-};
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(AnsibleRolesSwitcherActions, dispatch);
 
-export default props =>
-  ((props.data && props.data.canView) ?
-    <AnsibleRolesSwitcher {...props} /> :
-    <PermissionDenied />);
+export default withProtectedView(
+  connect(mapStateToProps, mapDispatchToProps)(AnsibleRolesSwitcher),
+  AnsiblePermissionDenied,
+  props => (props.data && props.data.canView),
+);

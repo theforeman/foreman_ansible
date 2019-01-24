@@ -1,35 +1,38 @@
-import { calculateUnassignedRoles, assignedRolesPage } from '../AnsibleRolesSwitcherSelectors';
+import { testSelectorsSnapshotWithFixtures } from 'react-redux-test-utils';
 
-import { ansibleRolesShort, AnsibleRolesLong } from '../__fixtures__/ansibleRolesData.fixtures';
+import { selectUnassignedRoles, selectAssignedRolesPage } from '../AnsibleRolesSwitcherSelectors';
+import { ansibleRolesShort, ansibleRolesLong } from '../__fixtures__/ansibleRolesData.fixtures';
 
-describe('calculateUnassignedRoles', () => {
-  it('should return unassigned roles', () => {
-    const assignedRoles = [
-      { id: 2 },
-      { id: 4 },
-    ];
+const stateFactory = obj => (
+  {
+    foremanAnsible: {
+      ansibleRolesSwitcher: obj,
+    },
+  }
+);
 
-    expect(() => {
-      calculateUnassignedRoles({ ansibleRolesShort, assignedRoles }).toEqual([
-        { id: 1, name: 'sthirugn.motd' },
-        { id: 3, name: 'rvm.ruby' },
-      ]);
-    });
-  });
+const state1 = {
+  results: ansibleRolesShort,
+  assignedRoles: [
+    { id: 2 },
+    { id: 4 },
+  ],
+};
 
-  it('should return all roles when no roles assigned', () => {
-    expect(() => {
-      calculateUnassignedRoles({ results: ansibleRolesShort, assignedRoles: [] })
-        .toEqual(ansibleRolesShort);
-    });
-  });
-});
+const state2 = {
+  results: ansibleRolesShort,
+  assignedRoles: [],
+};
 
-describe('assignedRolesPage', () => {
-  it('should return requested page', () => {
-    expect(() => {
-      assignedRolesPage(AnsibleRolesLong, { page: 2, perPage: 5 })
-        .toEqual(AnsibleRolesLong.slice(5, 10));
-    });
-  });
-});
+const state3 = {
+  assignedRoles: ansibleRolesLong,
+  assignedPagination: { page: 2, perPage: 5 },
+};
+
+const fixtures = {
+  'should return unassigned roles': () => selectUnassignedRoles(stateFactory(state1)),
+  'should return all roles when no roles assigned': () => selectUnassignedRoles(stateFactory(state2)),
+  'should return requested page': () => selectAssignedRolesPage(stateFactory(state3)),
+};
+
+describe('AnsibleRolesSwitcherSelectors', () => testSelectorsSnapshotWithFixtures(fixtures));

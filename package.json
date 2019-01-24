@@ -16,6 +16,7 @@
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.6.3",
     "react-json-tree": "^0.11.0",
+    "reselect": "^4.0.0",
     "seamless-immutable": "7.1.2"
   },
   "devDependencies": {
@@ -36,7 +37,11 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^23.6.0"
+    "jest": "^23.6.0",
+    "react-redux": "^6.0.0",
+    "react-redux-test-utils": "^0.1.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "test": "node node_modules/.bin/jest webpack",

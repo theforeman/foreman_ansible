@@ -12,7 +12,6 @@ export const successPayload = {
 };
 
 export const successState = Immutable({
-  initialized: true,
   loading: false,
   itemCount: 11,
   pagination: {

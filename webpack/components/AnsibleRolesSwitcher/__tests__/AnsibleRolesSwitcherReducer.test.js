@@ -1,12 +1,13 @@
-import reducer, { initialState } from '../AnsibleRolesSwitcherReducer';
+import { testReducerSnapshotWithFixtures } from 'react-redux-test-utils';
 
+import reducer, { initialState } from '../AnsibleRolesSwitcherReducer';
 import { ansibleRolesLong } from '../__fixtures__/ansibleRolesData.fixtures';
 
 import {
   successPayload,
   successState,
   errorPayload,
-} from '../__fixtures__/AnsibleRolesSwitcherReducer.fixtures';
+} from '../__fixtures__/ansibleRolesSwitcherReducer.fixtures';
 
 import {
   ANSIBLE_ROLES_REQUEST,
@@ -17,57 +18,55 @@ import {
   ANSIBLE_ROLES_ASSIGNED_PAGE_CHANGE,
 } from '../AnsibleRolesSwitcherConstants';
 
-describe('AnsibleRolesSwitcherReducer', () => {
-  it('should return the initial state', () => {
-    expect(reducer(undefined, {})).toEqual(initialState);
-  });
+const fixtures = {
+  'should return initial state': {
+    state: initialState,
+    action: {
+      type: undefined,
+      payload: {},
+    },
+  },
+  'should start loading on Ansible roles request': {
+    state: initialState,
+    action: {
+      type: ANSIBLE_ROLES_REQUEST,
+    },
+  },
+  'should stop loading on Ansible roles success': {
+    state: initialState.set('loading', true),
+    action: {
+      type: ANSIBLE_ROLES_SUCCESS,
+      payload: successPayload,
+    },
+  },
+  'should stop loading on Ansible roles error': {
+    state: initialState.set('loading', true),
+    action: {
+      type: ANSIBLE_ROLES_FAILURE,
+      payload: { error: errorPayload },
+    },
+  },
+  'should add Ansible role to assigned': {
+    state: successState,
+    action: {
+      type: ANSIBLE_ROLES_ADD,
+      payload: { role: ansibleRolesLong[8] },
+    },
+  },
+  'should remove Ansible role from assigned': {
+    state: successState,
+    action: {
+      type: ANSIBLE_ROLES_REMOVE,
+      payload: { role: ansibleRolesLong[5] },
+    },
+  },
+  'should change pagination for assigned roles': {
+    state: successState,
+    action: {
+      type: ANSIBLE_ROLES_ASSIGNED_PAGE_CHANGE,
+      payload: { pagination: { page: 20, perPage: 5 } },
+    },
+  },
+};
 
-  it('should start loading on Ansible roles request', () => {
-    expect(reducer(initialState, { type: ANSIBLE_ROLES_REQUEST }).loading).toBe(true);
-  });
-
-  it('should stop loading on Ansible roles success', () => {
-    expect(reducer(
-      initialState.set('loading', true),
-      { type: ANSIBLE_ROLES_SUCCESS, payload: successPayload },
-    )).toEqual(successState);
-  });
-
-  it('should stop loading on Ansible roles error', () => {
-    const newState = reducer(
-      initialState.set('loading', true),
-      { type: ANSIBLE_ROLES_FAILURE, payload: { error: errorPayload } },
-    );
-    expect(newState.error.errorMsg).toBe(errorPayload.errorMsg);
-    expect(newState.error.statusText).toBe(errorPayload.statusText);
-  });
-
-  it('should add Ansible role to assigned', () => {
-    const newState = reducer(
-      successState,
-      { type: ANSIBLE_ROLES_ADD, payload: { role: ansibleRolesLong[8] } },
-    );
-
-    expect(newState.assignedRoles).toEqual([...successState.assignedRoles, ansibleRolesLong[8]]);
-  });
-
-  it('should remove Ansible role from assigned', () => {
-    const newState = reducer(
-      successState,
-      { type: ANSIBLE_ROLES_REMOVE, payload: { role: ansibleRolesLong[5] } },
-    );
-
-    expect(newState.assignedRoles).not.toContain(ansibleRolesLong[5]);
-  });
-
-  it('should change pagination for assigned roles', () => {
-    const newPagination = { page: 20, perPage: 5 };
-
-    const newState = reducer(
-      successState,
-      { type: ANSIBLE_ROLES_ASSIGNED_PAGE_CHANGE, payload: { pagination: newPagination } },
-    );
-
-    expect(newState.assignedPagination).toEqual(newPagination);
-  });
-});
+describe('AnsibleRolesSwitcherReducer', () => testReducerSnapshotWithFixtures(reducer, fixtures));

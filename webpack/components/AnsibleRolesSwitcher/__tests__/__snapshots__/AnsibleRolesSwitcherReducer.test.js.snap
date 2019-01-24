@@ -1,0 +1,399 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnsibleRolesSwitcherReducer should add Ansible role to assigned 1`] = `
+Object {
+  "assignedPagination": Object {
+    "page": 1,
+    "perPage": 20,
+  },
+  "assignedRoles": Array [
+    Object {
+      "id": 4,
+      "inherited": true,
+      "name": "geerlingguy.java",
+    },
+    Object {
+      "id": 5,
+      "name": "naftulikay.golang",
+    },
+    Object {
+      "id": 6,
+      "name": "theforeman.foreman_scap_client",
+    },
+    Object {
+      "id": 9,
+      "name": "chef.chef",
+    },
+  ],
+  "error": Object {
+    "errorMsg": "",
+    "status": "",
+    "statusText": "",
+  },
+  "itemCount": 10,
+  "loading": false,
+  "pagination": Object {
+    "page": 1,
+    "perPage": 5,
+  },
+  "results": Array [
+    Object {
+      "id": 1,
+      "name": "sthirugn.motd",
+    },
+    Object {
+      "id": 2,
+      "name": "jtyr.ntp",
+    },
+    Object {
+      "id": 3,
+      "name": "rvm.ruby",
+    },
+    Object {
+      "id": 4,
+      "name": "geerlingguy.java",
+    },
+    Object {
+      "id": 5,
+      "name": "naftulikay.golang",
+    },
+    Object {
+      "id": 6,
+      "name": "theforeman.foreman_scap_client",
+    },
+    Object {
+      "id": 7,
+      "name": "ansible.ansible",
+    },
+    Object {
+      "id": 8,
+      "name": "puppet.puppet",
+    },
+    Object {
+      "id": 9,
+      "name": "chef.chef",
+    },
+    Object {
+      "id": 10,
+      "name": "salt.salt",
+    },
+    Object {
+      "id": 11,
+      "name": "anonymous.something",
+    },
+  ],
+}
+`;
+
+exports[`AnsibleRolesSwitcherReducer should change pagination for assigned roles 1`] = `
+Object {
+  "assignedPagination": Object {
+    "page": 20,
+    "perPage": 5,
+  },
+  "assignedRoles": Array [
+    Object {
+      "id": 4,
+      "inherited": true,
+      "name": "geerlingguy.java",
+    },
+    Object {
+      "id": 5,
+      "name": "naftulikay.golang",
+    },
+    Object {
+      "id": 6,
+      "name": "theforeman.foreman_scap_client",
+    },
+  ],
+  "error": Object {
+    "errorMsg": "",
+    "status": "",
+    "statusText": "",
+  },
+  "itemCount": 11,
+  "loading": false,
+  "pagination": Object {
+    "page": 1,
+    "perPage": 5,
+  },
+  "results": Array [
+    Object {
+      "id": 1,
+      "name": "sthirugn.motd",
+    },
+    Object {
+      "id": 2,
+      "name": "jtyr.ntp",
+    },
+    Object {
+      "id": 3,
+      "name": "rvm.ruby",
+    },
+    Object {
+      "id": 4,
+      "name": "geerlingguy.java",
+    },
+    Object {
+      "id": 5,
+      "name": "naftulikay.golang",
+    },
+    Object {
+      "id": 6,
+      "name": "theforeman.foreman_scap_client",
+    },
+    Object {
+      "id": 7,
+      "name": "ansible.ansible",
+    },
+    Object {
+      "id": 8,
+      "name": "puppet.puppet",
+    },
+    Object {
+      "id": 9,
+      "name": "chef.chef",
+    },
+    Object {
+      "id": 10,
+      "name": "salt.salt",
+    },
+    Object {
+      "id": 11,
+      "name": "anonymous.something",
+    },
+  ],
+}
+`;
+
+exports[`AnsibleRolesSwitcherReducer should remove Ansible role from assigned 1`] = `
+Object {
+  "assignedPagination": Object {
+    "page": 1,
+    "perPage": 20,
+  },
+  "assignedRoles": Array [
+    Object {
+      "id": 4,
+      "inherited": true,
+      "name": "geerlingguy.java",
+    },
+    Object {
+      "id": 5,
+      "name": "naftulikay.golang",
+    },
+  ],
+  "error": Object {
+    "errorMsg": "",
+    "status": "",
+    "statusText": "",
+  },
+  "itemCount": 12,
+  "loading": false,
+  "pagination": Object {
+    "page": 1,
+    "perPage": 5,
+  },
+  "results": Array [
+    Object {
+      "id": 1,
+      "name": "sthirugn.motd",
+    },
+    Object {
+      "id": 2,
+      "name": "jtyr.ntp",
+    },
+    Object {
+      "id": 3,
+      "name": "rvm.ruby",
+    },
+    Object {
+      "id": 4,
+      "name": "geerlingguy.java",
+    },
+    Object {
+      "id": 5,
+      "name": "naftulikay.golang",
+    },
+    Object {
+      "id": 6,
+      "name": "theforeman.foreman_scap_client",
+    },
+    Object {
+      "id": 7,
+      "name": "ansible.ansible",
+    },
+    Object {
+      "id": 8,
+      "name": "puppet.puppet",
+    },
+    Object {
+      "id": 9,
+      "name": "chef.chef",
+    },
+    Object {
+      "id": 10,
+      "name": "salt.salt",
+    },
+    Object {
+      "id": 11,
+      "name": "anonymous.something",
+    },
+    Object {
+      "id": 6,
+      "name": "theforeman.foreman_scap_client",
+    },
+  ],
+}
+`;
+
+exports[`AnsibleRolesSwitcherReducer should return initial state 1`] = `
+Object {
+  "assignedPagination": Object {
+    "page": 1,
+    "perPage": 20,
+  },
+  "assignedRoles": Array [],
+  "error": Object {
+    "errorMsg": "",
+    "status": "",
+    "statusText": "",
+  },
+  "inheritedRoleIds": Array [],
+  "itemCount": 0,
+  "loading": false,
+  "pagination": Object {
+    "page": 1,
+    "perPage": 20,
+  },
+  "results": Array [],
+}
+`;
+
+exports[`AnsibleRolesSwitcherReducer should start loading on Ansible roles request 1`] = `
+Object {
+  "assignedPagination": Object {
+    "page": 1,
+    "perPage": 20,
+  },
+  "assignedRoles": Array [],
+  "error": Object {
+    "errorMsg": "",
+    "status": "",
+    "statusText": "",
+  },
+  "inheritedRoleIds": Array [],
+  "itemCount": 0,
+  "loading": true,
+  "pagination": Object {
+    "page": 1,
+    "perPage": 20,
+  },
+  "results": Array [],
+}
+`;
+
+exports[`AnsibleRolesSwitcherReducer should stop loading on Ansible roles error 1`] = `
+Object {
+  "assignedPagination": Object {
+    "page": 1,
+    "perPage": 20,
+  },
+  "assignedRoles": Array [],
+  "error": Object {
+    "errorMsg": "Failed to fetch Ansible Roles from server.",
+    "statusText": "500",
+  },
+  "inheritedRoleIds": Array [],
+  "itemCount": 0,
+  "loading": false,
+  "pagination": Object {
+    "page": 1,
+    "perPage": 20,
+  },
+  "results": Array [],
+}
+`;
+
+exports[`AnsibleRolesSwitcherReducer should stop loading on Ansible roles success 1`] = `
+Object {
+  "assignedPagination": Object {
+    "page": 1,
+    "perPage": 20,
+  },
+  "assignedRoles": Array [
+    Object {
+      "id": 4,
+      "name": "geerlingguy.java",
+    },
+    Object {
+      "id": 5,
+      "name": "naftulikay.golang",
+    },
+    Object {
+      "id": 6,
+      "name": "theforeman.foreman_scap_client",
+    },
+  ],
+  "error": Object {
+    "errorMsg": "",
+    "status": "",
+    "statusText": "",
+  },
+  "inheritedRoleIds": Array [
+    4,
+  ],
+  "itemCount": 11,
+  "loading": false,
+  "pagination": Object {
+    "page": 1,
+    "perPage": 5,
+  },
+  "results": Array [
+    Object {
+      "id": 1,
+      "name": "sthirugn.motd",
+    },
+    Object {
+      "id": 2,
+      "name": "jtyr.ntp",
+    },
+    Object {
+      "id": 3,
+      "name": "rvm.ruby",
+    },
+    Object {
+      "id": 4,
+      "name": "geerlingguy.java",
+    },
+    Object {
+      "id": 5,
+      "name": "naftulikay.golang",
+    },
+    Object {
+      "id": 6,
+      "name": "theforeman.foreman_scap_client",
+    },
+    Object {
+      "id": 7,
+      "name": "ansible.ansible",
+    },
+    Object {
+      "id": 8,
+      "name": "puppet.puppet",
+    },
+    Object {
+      "id": 9,
+      "name": "chef.chef",
+    },
+    Object {
+      "id": 10,
+      "name": "salt.salt",
+    },
+    Object {
+      "id": 11,
+      "name": "anonymous.something",
+    },
+  ],
+}
+`;

@@ -8,4 +8,4 @@ import reducer from './reducer';
 componentRegistry.register({ name: 'ReportJsonViewer', type: ReportJsonViewer });
 componentRegistry.register({ name: 'AnsibleRolesSwitcher', type: AnsibleRolesSwitcher });
 
-injectReducer('foreman_ansible', reducer);
+injectReducer('foremanAnsible', reducer);
