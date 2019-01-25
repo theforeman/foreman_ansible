@@ -25,7 +25,7 @@ module Api
 
       def create
         @ansible_variable = AnsibleVariable.authorized(:edit_external_variables).
-          find_by_id(params[:ansible_variable_id].to_i)
+                            find_by(:id => params[:ansible_variable_id].to_i)
         @override_value = @ansible_variable.lookup_values.create!(lookup_value_params['override_value'])
         @ansible_variable.update_attribute(:override, true)
         render 'api/v2/ansible_override_values/show'
@@ -35,7 +35,7 @@ module Api
       param :id, :identifier, :required => true
 
       def destroy
-        @override_value = LookupValue.find_by_id(params[:id])
+        @override_value = LookupValue.find_by(:id => params[:id])
         if @override_value
           @ansible_variable = AnsibleVariable.where(:id => @override_value.lookup_key_id)
           @override_value.destroy

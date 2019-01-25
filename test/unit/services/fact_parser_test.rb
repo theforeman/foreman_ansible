@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'test_plugin_helper'
 
 module ForemanAnsible
@@ -115,18 +116,23 @@ module ForemanAnsible
           '_timestamp' => '2015-10-29 20:01:51 +0100',
           'ansible_facts' =>
           {
-            'ansible_distribution_major_version' => 'buster/sid',
-            'ansible_distribution' => 'Debian'
+            "ansible_distribution" => "Debian",
+            "ansible_distribution_file_parsed" => true,
+            "ansible_distribution_file_path" => "/etc/os-release",
+            "ansible_distribution_file_variety" => "Debian",
+            "ansible_distribution_major_version" => "8",
+            "ansible_distribution_release" => "jessie",
+            "ansible_distribution_version" => "8.7"
           }
         )
       )
     end
 
-    test 'Parses debian unstable aka sid correctly' do
+    test 'Parses debian jessie correctly' do
       as_admin do
         os = @facts_parser.operatingsystem
 
-        assert_equal '10', os.major
+        assert_equal '8', os.major
         assert_equal 'Debian', os.name
       end
     end
