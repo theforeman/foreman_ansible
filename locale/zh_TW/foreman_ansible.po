@@ -50,6 +50,9 @@ msgstr ""
 msgid "Ansible role"
 msgstr ""
 
+msgid "Ansible role names to import"
+msgstr ""
+
 msgid "Ansible support in Foreman"
 msgstr ""
 
@@ -98,6 +101,12 @@ msgstr ""
 msgid "Could not run Ansible roles for %{host}"
 msgstr ""
 
+msgid "Create an override value for a specific ansible variable"
+msgstr ""
+
+msgid "Default value of variable"
+msgstr ""
+
 msgid "Default verbosity level"
 msgstr ""
 
@@ -108,6 +117,12 @@ msgid "Deletes Ansible role"
 msgstr ""
 
 msgid "Deletes Ansible variable"
+msgstr ""
+
+msgid "Description of variable"
+msgstr ""
+
+msgid "Destroy an override value"
 msgstr ""
 
 msgid "Disable host configuration status turning to out of sync for %{cfgmgmt} after report does not arrive within configured interval"
@@ -126,6 +141,9 @@ msgid "Enable/disable WinRM server certificate validation when running Ansible p
 msgstr ""
 
 msgid "Error loading data from proxy"
+msgstr ""
+
+msgid "Fetch Ansible roles available to be imported"
 msgstr ""
 
 msgid "Foreman"
@@ -153,6 +171,12 @@ msgid "Hosts count"
 msgstr ""
 
 msgid "IDs of associated ansible roles"
+msgstr ""
+
+msgid "IDs of hostgroups to play roles on"
+msgstr ""
+
+msgid "IDs of hosts to play roles on"
 msgstr ""
 
 msgid "If ERB is used in a parameter value, the validation of the value will happen during the ENC request. If the value is invalid, the ENC request will fail."
@@ -183,6 +207,9 @@ msgid ""
 msgstr ""
 
 msgid "Imported at"
+msgstr ""
+
+msgid "Include default value when merging all matching values"
 msgstr ""
 
 msgid "Insights remediation on %{hosts_count} host(s) has finished successfully"
@@ -218,6 +245,15 @@ msgstr ""
 msgid "List Ansible variables"
 msgstr ""
 
+msgid "List all Ansible roles for a host"
+msgstr ""
+
+msgid "List all Ansible roles for a hostgroup"
+msgstr ""
+
+msgid "Merge all matching values (only array/hash type)"
+msgstr ""
+
 msgid "Message"
 msgstr ""
 
@@ -225,6 +261,9 @@ msgid "Module"
 msgstr ""
 
 msgid "Name"
+msgstr ""
+
+msgid "Name of variable"
 msgstr ""
 
 msgid "Nest"
@@ -260,6 +299,12 @@ msgid "Obsolete Ansible variables. This will only obsolete variables for already
 msgstr ""
 
 msgid "Operation"
+msgstr ""
+
+msgid "Override match"
+msgstr ""
+
+msgid "Override value, required if omit is false"
 msgstr ""
 
 msgid "Play Ansible roles"
@@ -301,6 +346,12 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
+msgid "Remove duplicate values (only array type)"
+msgstr ""
+
+msgid "Role ID"
+msgstr ""
+
 msgid "Roles"
 msgstr ""
 
@@ -325,7 +376,16 @@ msgstr ""
 msgid "Show variable"
 msgstr ""
 
+msgid "Smart Proxy to fetch from"
+msgstr ""
+
 msgid "Smart Proxy to import from"
+msgstr ""
+
+msgid "The order in which values are resolved"
+msgstr ""
+
+msgid "There are no Ansible roles to play"
 msgstr ""
 
 msgid "This list of roles will be applied when the host finishes<br/> provisioning. Users can also play these roles through the API<br/>or by clicking on the Play Roles button on the Host page "
@@ -346,6 +406,12 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
+msgid "Types of validation values"
+msgstr ""
+
+msgid "Types of variable values"
+msgstr ""
+
 msgid "Unable to get roles from Ansible"
 msgstr ""
 
@@ -355,10 +421,16 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
+msgid "Updates Ansible variable"
+msgstr ""
+
 msgid "Use this connection type by default when running Ansible playbooks. You can override this on hosts by adding a parameter \"ansible_connection\""
 msgstr ""
 
 msgid "Use this to supply a path to an SSH Private Key that Ansible will use in lieu of a password Override with \"ansible_ssh_private_key_file\" host parameter"
+msgstr ""
+
+msgid "Used to enforce certain values for the parameter values"
 msgstr ""
 
 msgid "Variables"
@@ -370,7 +442,10 @@ msgstr ""
 msgid "Variable|Role"
 msgstr ""
 
-msgid "Whether to put Ansible parameters in the \"hostvars\" top-level key of the inventory. By default it is true, so that Host Parameters can be used directly in the playbooks.When false, Host Parameters can only be accessed throughforeman_params[\"host_parameter\"] in the playbooks."
+msgid "When enabled the parameter is hidden in the UI"
+msgstr ""
+
+msgid "Whether to put Ansible parameters in the \"hostvars\" top-level key of the inventory. By default it is true, so that Host Parameters can be used directly in the playbooks. When false, Host Parameters can only be accessed through foreman_params[\"host_parameter\"] in the playbooks."
 msgstr ""
 
 msgid "WinRM cert Validation"
