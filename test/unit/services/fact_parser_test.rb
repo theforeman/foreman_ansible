@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'test_plugin_helper'
 
 module ForemanAnsible
   # Checks sample Ansible facts to see if it can assign them to
@@ -122,9 +123,12 @@ module ForemanAnsible
     end
 
     test 'Parses debian unstable aka sid correctly' do
-      os = @facts_parser.operatingsystem
-      assert_equal '10', os.major
-      assert_equal 'Debian', os.name
+      as_admin do
+        os = @facts_parser.operatingsystem
+
+        assert_equal '10', os.major
+        assert_equal 'Debian', os.name
+      end
     end
   end
 
