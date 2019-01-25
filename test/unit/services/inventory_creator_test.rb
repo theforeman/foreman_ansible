@@ -10,7 +10,8 @@ module ForemanAnsible
     setup do
       @host = FactoryBot.build(:host)
       @template_invocation = OpenStruct.new(
-        :job_invocation => OpenStruct.new(:password => 'foobar'),
+        :job_invocation => OpenStruct.new(:password => 'foobar',
+					 :sudo_password => 'foobar'),
         :effective_user => 'foobar'
       )
     end
@@ -41,6 +42,8 @@ module ForemanAnsible
         returns('root').at_least_once
       Setting.expects(:[]).with('remote_execution_ssh_password').
         returns('asafepassword').at_least_once
+      Setting.expects(:[]).with('remote_execution_sudo_password').
+        returns('foobar').at_least_once
       Setting.expects(:[]).with('ansible_winrm_server_cert_validation').
         returns(true).at_least_once
       Setting.expects(:[]).with('ansible_connection').
@@ -69,6 +72,8 @@ module ForemanAnsible
                    connection_params['ansible_port']
       assert_equal Setting['remote_execution_ssh_password'],
                    connection_params['ansible_ssh_pass']
+      assert_equal Setting['remote_execution_sudo_password'],
+                   connection_params['ansible_sudo_pass']
       assert_equal Setting['ansible_winrm_server_cert_validation'],
                    connection_params['ansible_winrm_server_cert_validation']
     end
@@ -78,6 +83,13 @@ module ForemanAnsible
                                                        @template_invocation)
       assert_equal(@template_invocation.job_invocation.password,
                    inventory.rex_ssh_password(@host))
+    end
+
+    test 'job invocation sudo password is passed when available' do
+      inventory = ForemanAnsible::InventoryCreator.new(@host,
+                                                       @template_invocation)
+      assert_equal(@template_invocation.job_invocation.sudo_password,
+                   inventory.rex_sudo_password(@host))
     end
 
     test 'ssh private key is passed when available' do
