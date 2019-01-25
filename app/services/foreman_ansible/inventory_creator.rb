@@ -19,9 +19,7 @@ module ForemanAnsible
     # more advanced cases). Therefore we have only the 'all' group
     # with all hosts.
     def to_hash
-      hosts = @hosts.map do |h|
-        RemoteExecutionProvider.find_ip_or_hostname(h)
-      end
+      hosts = @hosts.map(&:name)
 
       { 'all' => { 'hosts' => hosts,
                    'vars'  => template_inputs(@template_invocation) },
@@ -31,7 +29,7 @@ module ForemanAnsible
     def hosts_vars
       hosts.reduce({}) do |hash, host|
         hash.update(
-          RemoteExecutionProvider.find_ip_or_hostname(host) => host_vars(host)
+          host.name => host_vars(host)
         )
       end
     end
@@ -95,7 +93,8 @@ module ForemanAnsible
         'ansible_user' => host_setting(host, 'remote_execution_ssh_user'),
         'ansible_ssh_pass' => rex_ssh_password(host),
         'ansible_ssh_private_key_file' => ansible_or_rex_ssh_private_key(host),
-        'ansible_port' => host_setting(host, 'remote_execution_ssh_port')
+        'ansible_port' => host_setting(host, 'remote_execution_ssh_port'),
+        'ansible_host' => AnsibleProvider.find_ip_or_hostname(host)
       }
       params['ansible_become'] = true if params['ansible_become_user'].present?
       # Backward compatibility for Ansible 1.x

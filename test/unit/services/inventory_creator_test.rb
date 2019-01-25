@@ -30,6 +30,7 @@ module ForemanAnsible
     end
 
     test 'settings are respected if param cannot be found' do
+      AnsibleProvider.stubs(:find_ip_or_hostname).with(@host).returns(@host.name)
       extra_options = { 'ansible_user' => 'someone', 'ansible_port' => 2000 }
       Setting.expects(:[]).with('Enable_Smart_Variables_in_ENC').
         returns(nil).at_least_once
@@ -82,6 +83,7 @@ module ForemanAnsible
 
     test 'ssh private key is passed when available' do
       host = FactoryBot.build(:host)
+      AnsibleProvider.stubs(:find_ip_or_hostname).with(host).returns(host.name)
       path_to_key = '/path/to/private/key'
       inventory = ForemanAnsible::InventoryCreator.new(host,
                                                        @template_invocation)
