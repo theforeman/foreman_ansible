@@ -23,6 +23,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'foreman_ansible_core', '~> 2.0'
   s.add_dependency 'deface', '< 2.0'
   s.add_dependency 'foreman-tasks', '~> 0.8'
-  s.add_dependency 'foreman_remote_execution', '>= 1.6.3', '< 2.0'
+  s.add_dependency 'foreman_remote_execution', '>= 1.7.0', '< 2.0'
   s.add_dependency 'ipaddress', '>= 0.8.0', '< 1.0'
 end
