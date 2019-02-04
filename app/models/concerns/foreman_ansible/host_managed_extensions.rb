@@ -53,21 +53,6 @@ module ForemanAnsible
       (ansible_roles + inherited_ansible_roles).uniq
     end
 
-    def host_params_hash
-      values = AnsibleVariable.where(:ansible_role_id => all_ansible_roles.pluck(:id)).
-               values_hash(self).raw.values
-      transformed = values.each_with_object({}) do |item, memo|
-        item.map do |name, hash|
-          variable = AnsibleVariable.find_by :key => name
-          safe_value = variable.hidden_value? ? variable.safe_value : hash[:value]
-          memo[name] = { :value => hash[:value], :safe_value => safe_value, :source => 'global' }
-        end
-        memo
-      end
-
-      super.merge transformed
-    end
-
     # rubocop:enable Metrics/BlockLength
     # Class methods we may need to override or add
     module ClassMethods
