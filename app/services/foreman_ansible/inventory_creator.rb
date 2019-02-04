@@ -43,7 +43,7 @@ module ForemanAnsible
       if Setting['top_level_ansible_vars']
         result = result.merge(host_params(host))
       end
-      result
+      result.merge(ansible_params(host))
     end
 
     def connection_params(host)
@@ -66,6 +66,10 @@ module ForemanAnsible
 
     def host_attributes(host)
       render_rabl(host, 'api/v2/hosts/main')
+    end
+
+    def ansible_params(host)
+      ForemanAnsible::AnsibleInfo.new(host).ansible_params
     end
 
     def host_params(host)

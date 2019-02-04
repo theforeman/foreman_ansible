@@ -86,6 +86,8 @@ Foreman::Plugin.register :foreman_ansible do
     "#{ForemanAnsible::Engine.root}/app/controllers/api/v2/*.rb"
   ]
 
+  register_info_provider ForemanAnsible::AnsibleInfo
+
   # For backwards compatiblity with 1.17
   if respond_to?(:register_report_scanner)
     register_report_scanner ForemanAnsible::AnsibleReportScanner
