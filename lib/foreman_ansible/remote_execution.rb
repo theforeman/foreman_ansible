@@ -17,9 +17,10 @@ module ForemanAnsible
     def self.register_rex_feature
       RemoteExecutionFeature.register(
         :ansible_run_host,
-        N_('Ansible: Run host roles'),
+        N_('Run Ansible roles'),
         :description => N_('Runs an Ansible playbook which contains all'\
-                           ' the roles defined for a host')
+                           ' the roles defined for a host'),
+        :host_action_button => true
       )
       RemoteExecutionFeature.register(
         :ansible_run_insights_plan,
