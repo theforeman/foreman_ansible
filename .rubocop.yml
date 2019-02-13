@@ -34,5 +34,8 @@ Style/SymbolArray:
 Style/FormatStringToken:
   EnforcedStyle: template
 
+Rails/SkipsModelValidations:
+  Enabled: false
+
 Metrics:
   Enabled: false
