@@ -50,6 +50,7 @@ Rails.application.routes.draw do
       collection do
         get :import
         post :confirm_import
+        get 'auto_complete_search'
       end
     end
 
