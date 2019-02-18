@@ -8,13 +8,17 @@ module ForemanAnsible
         extend ActiveSupport::Concern
         include ForemanTasks::Triggers
         include ::ForemanAnsible::Concerns::JobInvocationHelper
+        include ::ForemanAnsible::Concerns::ApiCommon
 
         # Included blocks shouldn't be bound by length, as otherwise concerns
         # cannot extend the method properly.
-        # rubocop:disable BlockLength
+        # rubocop:disable BlockLength, Rails/LexicallyScopedActionFilter
         included do
+          before_action :find_ansible_roles, :only => [:assign_ansible_roles]
+
           def find_resource
             return true if params[:action] == 'multiple_play_roles'
+
             super
           end
 
@@ -44,16 +48,29 @@ module ForemanAnsible
 
           def ansible_roles
             return unless @host
+
             @ansible_roles = @host.all_ansible_roles
           end
+
+          api :POST, '/hosts/:id/assign_ansible_roles',
+              N_('Assigns Ansible roles to a host')
+          param :id, :identifier, :required => true
+          param :ansible_role_ids, Array,
+                N_('Ansible roles to assign to a host'),
+                :required => true
+
+          def assign_ansible_roles
+            process_response @host.update(:ansible_roles => @ansible_roles)
+          end
         end
-        # rubocop:enable BlockLength
+        # rubocop:enable BlockLength, Rails/LexicallyScopedActionFilter
 
         private
 
         def action_permission
           case params[:action]
-          when 'play_roles', 'multiple_play_roles', 'ansible_roles'
+          when 'play_roles', 'multiple_play_roles', 'ansible_roles',
+               'assign_ansible_roles'
             :view
           else
             super
