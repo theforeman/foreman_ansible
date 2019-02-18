@@ -7,7 +7,7 @@ blueprints = [
     :message => N_('Insights remediation on %{hosts_count}' \
                    ' host(s) has finished successfully'),
     :level => 'success',
-    :actions =>           {
+    :actions => {
       :links => [
         :path_method => :job_invocation_path,
         :title => N_('Job Details')

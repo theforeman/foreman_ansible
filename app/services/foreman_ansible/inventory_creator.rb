@@ -22,7 +22,7 @@ module ForemanAnsible
       hosts = @hosts.map(&:name)
 
       { 'all' => { 'hosts' => hosts,
-                   'vars'  => template_inputs(@template_invocation) },
+                   'vars' => template_inputs(@template_invocation) },
         '_meta' => { 'hostvars' => hosts_vars } }
     end
 

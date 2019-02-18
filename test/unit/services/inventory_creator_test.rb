@@ -11,7 +11,7 @@ module ForemanAnsible
       @host = FactoryBot.build(:host)
       @template_invocation = OpenStruct.new(
         :job_invocation => OpenStruct.new(:password => 'foobar',
-					 :sudo_password => 'foobar'),
+                                          :sudo_password => 'foobar'),
         :effective_user => 'foobar'
       )
     end
