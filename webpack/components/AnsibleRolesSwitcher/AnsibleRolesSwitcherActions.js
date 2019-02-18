@@ -1,5 +1,6 @@
 import { snakeCase, camelCase } from 'lodash';
 import api from 'foremanReact/API';
+import { propsToSnakeCase, propsToCamelCase } from 'foremanReact/common/helpers';
 
 import {
   ANSIBLE_ROLES_REQUEST,
@@ -42,23 +43,6 @@ export const getAnsibleRoles = (
 const errorHandler = (msg, err) => {
   const error = { errorMsg: 'Failed to fetch Ansible Roles from server.', statusText: err.response.statusText };
   return ({ type: msg, payload: { error } });
-};
-
-//  stolen from katello/webpack/services/index.js and modified
-const propsToSnakeCase = ob =>
-  propsToCase(snakeCase, 'propsToSnakeCase only takes objects', ob);
-
-const propsToCamelCase = ob =>
-  propsToCase(camelCase, 'propsToCamelCase only takes objects', ob);
-
-const propsToCase = (casingFn, errorMsg, ob) => {
-  if (typeof (ob) !== 'object') throw Error(errorMsg);
-
-  return Object.keys(ob).reduce((memo, key) => {
-    // eslint-disable-next-line no-param-reassign
-    memo[casingFn(key)] = ob[key];
-    return memo;
-  }, {});
 };
 
 export const addAnsibleRole = role =>
