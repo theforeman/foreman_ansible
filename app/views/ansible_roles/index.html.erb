@@ -18,7 +18,7 @@
       <tr>
         <td class="ellipsis"><%= role.name %></td>
         <td class="ellipsis"><%= role.hostgroups.count %></td>
-        <td class="ellipsis"><%= link_to role.hosts.count, hosts_path(:search => "role = #{role.name}")%></td>
+        <td class="ellipsis"><%= link_to role.hosts.count, hosts_path(:search => "ansible_role = #{role.name}")%></td>
         <td class="ellipsis"><%= import_time role %></td>
         <td>
           <%
