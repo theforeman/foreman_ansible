@@ -12,6 +12,6 @@
 ) %>
 <% title(_('Edit Ansible Variable')) %>
 <%= form_for(@ansible_variable) do |f| %>
-    <%= render 'lookup_keys/fields', :f => f %>
+    <%= render 'fields', :f => f %>
     <%= submit_or_cancel f %>
 <% end %>
