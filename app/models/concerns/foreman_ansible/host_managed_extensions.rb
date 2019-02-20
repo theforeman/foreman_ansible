@@ -13,7 +13,7 @@ module ForemanAnsible
         has_many :ansible_roles, :through => :host_ansible_roles,
                                  :dependent => :destroy
         scoped_search :relation => :ansible_roles, :on => :name,
-                      :complete_value => true, :rename => :role,
+                      :complete_value => true, :rename => :ansible_role,
                       :only_explicit => true
 
         before_provision :play_ansible_roles
