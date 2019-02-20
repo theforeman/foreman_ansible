@@ -1,5 +1,0 @@
-<% if f.object.is_a? ::AnsibleVariable %>
-  <h6><%= _('Before including these variables on your playbooks, Foreman will validate that your variables comply with the validation.') %></h6>
-<% else %>
-  <h6><%= _('If ERB is used in a parameter value, the validation of the value will happen during the ENC request. If the value is invalid, the ENC request will fail.') %></h6>
-<% end %>
