@@ -14,7 +14,7 @@ Foreman::Plugin.register :foreman_ansible do
                                           :multiple_play_roles] },
                :resource_type => 'Hostgroup'
     permission :view_ansible_roles,
-               { :ansible_roles => [:index],
+               { :ansible_roles => [:index, :auto_complete_search],
                  :'api/v2/ansible_roles' => [:index, :show, :fetch] },
                :resource_type => 'AnsibleRole'
     permission :destroy_ansible_roles,
