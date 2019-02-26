@@ -49,6 +49,19 @@ module Api
         response = JSON.parse(@response.body)
         assert_equal @ansible_role1.id, response.first['id']
       end
+
+      test 'should assign a role to a hostgroup' do
+        hostgroup = FactoryBot.create(:hostgroup,
+                                      :ansible_role_ids => [])
+        post :assign_ansible_roles,
+             :params => {
+               :id => hostgroup.id,
+               :ansible_role_ids => [@ansible_role1.id]
+             },
+             :session => set_session_user
+        assert_response :success
+        assert assigns('hostgroup').ansible_roles, [@ansible_role1]
+      end
     end
   end
 end

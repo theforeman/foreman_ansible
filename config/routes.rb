@@ -14,6 +14,7 @@ Rails.application.routes.draw do
           member do
             post :play_roles
             get :ansible_roles
+            post :assign_ansible_roles
           end
           collection do
             post :multiple_play_roles
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
           member do
             post :play_roles
             get :ansible_roles
+            post :assign_ansible_roles
           end
           collection do
             post :multiple_play_roles

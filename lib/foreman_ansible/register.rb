@@ -56,6 +56,12 @@ Foreman::Plugin.register :foreman_ansible do
     permission :view_hostgroups,
                { :'api/v2/hostgroups' => [:ansible_roles] },
                :resource_type => 'Hostgroup'
+    permission :edit_hosts,
+               { :'api/v2/hosts' => [:assign_ansible_roles] },
+               :resource_type => 'Host'
+    permission :edit_hostgroups,
+               { :'api/v2/hostgroups' => [:assign_ansible_roles] },
+               :resource_type => 'Hostgroup'
   end
 
   role 'Ansible Roles Manager',
