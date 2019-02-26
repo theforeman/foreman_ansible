@@ -29,27 +29,6 @@ const ansibleRolesSuccess = (state, payload) => {
   });
 };
 
-const addItem = (list, item) => ([...(list || []), item]);
-
-const removeItem = (list, item) => list.filter(listItem => item.id !== listItem.id);
-
-const removeItemNewState = (state, role) => ({
-  assignedRoles: removeItem(state.assignedRoles, role),
-  results: addItem(state.results, role),
-  itemCount: state.itemCount + 1,
-});
-
-const addItemNewState = (state, role) => ({
-  assignedRoles: addItem(state.assignedRoles, role),
-  itemCount: state.itemCount - 1,
-});
-
-const ansibleRoleAdd = (state, payload) =>
-  state.merge(addItemNewState(state, payload.role));
-
-const ansibleRoleRemove = (state, payload) =>
-  state.merge(removeItemNewState(state, payload.role));
-
 export const initialState = Immutable({
   loading: false,
   itemCount: 0,
@@ -78,9 +57,16 @@ const ansibleRoles = (state = initialState, action) => {
     case ANSIBLE_ROLES_FAILURE:
       return state.merge({ error: payload.error, loading: false });
     case ANSIBLE_ROLES_ADD:
-      return ansibleRoleAdd(state, payload);
+      return state.merge({
+        assignedRoles: state.assignedRoles.concat([payload.role]),
+        itemCount: state.itemCount - 1,
+      });
     case ANSIBLE_ROLES_REMOVE:
-      return ansibleRoleRemove(state, payload);
+      return state.merge({
+        assignedRoles: Immutable.flatMap(state.assignedRoles, (item) => item.id === payload.role.id ? [] : item),
+        results: state.results.concat([payload.role]),
+        itemCount: state.itemCount + 1,
+      });
     case ANSIBLE_ROLES_ASSIGNED_PAGE_CHANGE:
       return state.set('assignedPagination', payload.pagination);
     default:

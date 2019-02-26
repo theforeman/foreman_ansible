@@ -21,7 +21,7 @@ const markInheritedRoles = (roles, inheritedRoleIds) => roles.map(role => (
 ));
 
 export const selectResults = state =>
-  Immutable.asMutable(uniq(switcherState(state).results)).sort(compare);
+  Immutable(Immutable.asMutable(uniq(switcherState(state).results)).sort(compare));
 
 export const selectItemCount = state => switcherState(state).itemCount;
 
