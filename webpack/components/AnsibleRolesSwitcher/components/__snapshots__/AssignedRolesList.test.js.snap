@@ -25,6 +25,7 @@ exports[`AssignedRolesList should render 1`] = `
       icon="fa fa-minus-circle"
       key="1"
       onClick={[Function]}
+      resourceName="host"
       role={
         Object {
           "id": 1,
@@ -36,6 +37,7 @@ exports[`AssignedRolesList should render 1`] = `
       icon="fa fa-minus-circle"
       key="2"
       onClick={[Function]}
+      resourceName="host"
       role={
         Object {
           "id": 2,

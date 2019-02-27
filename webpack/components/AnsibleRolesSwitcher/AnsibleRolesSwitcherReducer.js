@@ -9,26 +9,6 @@ import {
   ANSIBLE_ROLES_ASSIGNED_PAGE_CHANGE,
 } from './AnsibleRolesSwitcherConstants';
 
-const ansibleRolesSuccess = (state, payload) => {
-  const {
-    page,
-    perPage,
-    subtotal,
-    results,
-    initialAssignedRoles,
-    inheritedRoleIds,
-  } = payload;
-
-  return state.merge({
-    loading: false,
-    itemCount: Number(subtotal),
-    pagination: { page: Number(page), perPage: Number(perPage) },
-    results,
-    assignedRoles: initialAssignedRoles,
-    inheritedRoleIds,
-  });
-};
-
 export const initialState = Immutable({
   loading: false,
   itemCount: 0,
@@ -53,7 +33,14 @@ const ansibleRoles = (state = initialState, action) => {
     case ANSIBLE_ROLES_REQUEST:
       return state.set('loading', true);
     case ANSIBLE_ROLES_SUCCESS:
-      return ansibleRolesSuccess(state, payload);
+      return state.merge({
+        loading: false,
+        itemCount: Number(payload.subtotal),
+        pagination: { page: Number(payload.page), perPage: Number(payload.perPage) },
+        results: payload.results,
+        assignedRoles: payload.initialAssignedRoles,
+        inheritedRoleIds: payload.inheritedRoleIds
+      });
     case ANSIBLE_ROLES_FAILURE:
       return state.merge({ error: payload.error, loading: false });
     case ANSIBLE_ROLES_ADD:

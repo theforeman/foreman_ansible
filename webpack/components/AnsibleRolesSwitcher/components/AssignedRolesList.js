@@ -33,7 +33,8 @@ class AssignedRolesList extends React.Component {
           { assignedRoles.map(role => <AnsibleRole key={role.id}
                                                    role={role}
                                                    icon='fa fa-minus-circle'
-                                                   onClick={onRemoveRole}/>) }
+                                                   onClick={onRemoveRole}
+                                                   resourceName={resourceName} />) }
         </ListView>
         <div>
           { directlyAssignedRoles.map(role => <input key={role.id}
