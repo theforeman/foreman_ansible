@@ -40,6 +40,7 @@ class AnsibleRolesSwitcher extends React.Component {
       assignedPagination,
       assignedRolesCount,
       assignedRoles,
+      allAssignedRoles,
       unassignedRoles,
       error,
     } = this.props;
@@ -54,12 +55,12 @@ class AnsibleRolesSwitcher extends React.Component {
     const onListingChange = paginationArgs =>
       getAnsibleRoles(
         availableRolesUrl,
-        assignedRoles,
+        allAssignedRoles,
         inheritedRoleIds,
         resourceId,
         resourceName,
         paginationArgs,
-        excludeAssignedRolesSearch(assignedRoles),
+        excludeAssignedRolesSearch(allAssignedRoles),
       );
 
     return (

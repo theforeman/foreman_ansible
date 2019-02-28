@@ -8,6 +8,7 @@ import withProtectedView from './components/withProtectedView';
 import {
   selectUnassignedRoles,
   selectAssignedRolesPage,
+  selectAssignedRoles,
   selectAssignedRolesCount,
   selectResults,
   selectPaginationMemoized,
@@ -27,6 +28,7 @@ const mapStateToProps = state => ({
   assignedPagination: selectAssignedPagination(state),
   assignedRolesCount: selectAssignedRolesCount(state),
   assignedRoles: selectAssignedRolesPage(state),
+  allAssignedRoles: selectAssignedRoles(state),
   unassignedRoles: selectUnassignedRoles(state),
 });
 
