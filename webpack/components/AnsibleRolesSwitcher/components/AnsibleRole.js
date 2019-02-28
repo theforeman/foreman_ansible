@@ -5,10 +5,15 @@ import classNames from 'classnames';
 import AnsibleRoleActionButton from './AnsibleRoleActionButton';
 import '../AnsibleRolesSwitcher.scss';
 
-const AnsibleRole = ({ role, icon, onClick, resourceName }) => {
+const AnsibleRole = ({
+  role,
+  icon,
+  onClick,
+  resourceName,
+}) => {
   const text = resourceName === 'hostgroup' ?
     __('This Ansible role is inherited from parent host group') :
-    __('This Ansible role is inherited from host group')
+    __('This Ansible role is inherited from host group');
 
   const tooltip = (
     <Tooltip id={role.id}>
@@ -26,7 +31,10 @@ const AnsibleRole = ({ role, icon, onClick, resourceName }) => {
   const listItem = (click = undefined) => (
     <ListView.Item
       id={role.id}
-      className={classNames('listViewItem--listItemVariants', { 'ansible-role-disabled': role.inherited })}
+      className={classNames(
+        'listViewItem--listItemVariants',
+        { 'ansible-role-disabled': role.inherited, 'ansible-role-movable': !role.inherited },
+      )}
       heading={role.name}
       actions={role.inherited ?
                '' :
@@ -45,6 +53,6 @@ const AnsibleRole = ({ role, icon, onClick, resourceName }) => {
   }
 
   return listItem(clickHandler);
-}
+};
 
 export default AnsibleRole;

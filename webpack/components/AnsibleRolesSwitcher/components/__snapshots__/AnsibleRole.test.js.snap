@@ -15,7 +15,7 @@ exports[`AnsibleRole should render a role to add 1`] = `
   }
   additionalInfo={null}
   checkboxInput={null}
-  className="listViewItem--listItemVariants"
+  className="listViewItem--listItemVariants ansible-role-movable"
   compoundExpand={false}
   compoundExpanded={false}
   description={null}
@@ -47,7 +47,7 @@ exports[`AnsibleRole should render a role to remove 1`] = `
   }
   additionalInfo={null}
   checkboxInput={null}
-  className="listViewItem--listItemVariants"
+  className="listViewItem--listItemVariants ansible-role-movable"
   compoundExpand={false}
   compoundExpanded={false}
   description={null}

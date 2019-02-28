@@ -23,7 +23,7 @@ class AnsibleRolesSwitcher extends React.Component {
       inheritedRoleIds,
       resourceId,
       resourceName,
-      {},
+      { page: 1, perPage: 10 },
       excludeAssignedRolesSearch(initialAssignedRoles),
     );
   }

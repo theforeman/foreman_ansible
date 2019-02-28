@@ -16,7 +16,7 @@
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.6.3",
     "react-json-tree": "^0.11.0",
-    "reselect": "^4.0.0",
+    "reselect": "^3.0.1",
     "seamless-immutable": "7.1.2"
   },
   "devDependencies": {

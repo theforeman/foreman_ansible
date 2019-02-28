@@ -14,14 +14,14 @@ export const initialState = Immutable({
   itemCount: 0,
   pagination: {
     page: 1,
-    perPage: 20,
+    perPage: 10,
   },
   assignedRoles: [],
   inheritedRoleIds: [],
   results: [],
   assignedPagination: {
     page: 1,
-    perPage: 20,
+    perPage: 10,
   },
   error: { errorMsg: '', status: '', statusText: '' },
 });
@@ -39,7 +39,7 @@ const ansibleRoles = (state = initialState, action) => {
         pagination: { page: Number(payload.page), perPage: Number(payload.perPage) },
         results: payload.results,
         assignedRoles: payload.initialAssignedRoles,
-        inheritedRoleIds: payload.inheritedRoleIds
+        inheritedRoleIds: payload.inheritedRoleIds,
       });
     case ANSIBLE_ROLES_FAILURE:
       return state.merge({ error: payload.error, loading: false });
@@ -50,7 +50,10 @@ const ansibleRoles = (state = initialState, action) => {
       });
     case ANSIBLE_ROLES_REMOVE:
       return state.merge({
-        assignedRoles: Immutable.flatMap(state.assignedRoles, (item) => item.id === payload.role.id ? [] : item),
+        assignedRoles: Immutable.flatMap(
+          state.assignedRoles,
+          item => (item.id === payload.role.id ? [] : item),
+        ),
         results: state.results.concat([payload.role]),
         itemCount: state.itemCount + 1,
       });

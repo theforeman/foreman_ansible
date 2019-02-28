@@ -10,6 +10,10 @@
       border-left-color: $color-pf-black-200;
       border-right-color: $color-pf-black-200;
     }
+
+    .list-group-item.ansible-role-movable:hover {
+      cursor: pointer;
+    }
   }
 
   .loading-state-pf {
@@ -35,5 +39,7 @@
 
   .list-group-item-heading {
     margin-bottom: 0;
+    font-size: 12px;
+    font-weight: normal;
   }
 }

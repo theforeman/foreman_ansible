@@ -251,7 +251,7 @@ exports[`AnsibleRolesSwitcherReducer should return initial state 1`] = `
 Object {
   "assignedPagination": Object {
     "page": 1,
-    "perPage": 20,
+    "perPage": 10,
   },
   "assignedRoles": Array [],
   "error": Object {
@@ -264,7 +264,7 @@ Object {
   "loading": false,
   "pagination": Object {
     "page": 1,
-    "perPage": 20,
+    "perPage": 10,
   },
   "results": Array [],
 }
@@ -274,7 +274,7 @@ exports[`AnsibleRolesSwitcherReducer should start loading on Ansible roles reque
 Object {
   "assignedPagination": Object {
     "page": 1,
-    "perPage": 20,
+    "perPage": 10,
   },
   "assignedRoles": Array [],
   "error": Object {
@@ -287,7 +287,7 @@ Object {
   "loading": true,
   "pagination": Object {
     "page": 1,
-    "perPage": 20,
+    "perPage": 10,
   },
   "results": Array [],
 }
@@ -297,7 +297,7 @@ exports[`AnsibleRolesSwitcherReducer should stop loading on Ansible roles error 
 Object {
   "assignedPagination": Object {
     "page": 1,
-    "perPage": 20,
+    "perPage": 10,
   },
   "assignedRoles": Array [],
   "error": Object {
@@ -309,7 +309,7 @@ Object {
   "loading": false,
   "pagination": Object {
     "page": 1,
-    "perPage": 20,
+    "perPage": 10,
   },
   "results": Array [],
 }
@@ -319,7 +319,7 @@ exports[`AnsibleRolesSwitcherReducer should stop loading on Ansible roles succes
 Object {
   "assignedPagination": Object {
     "page": 1,
-    "perPage": 20,
+    "perPage": 10,
   },
   "assignedRoles": Array [
     Object {

@@ -1,4 +1,3 @@
-import { snakeCase, camelCase } from 'lodash';
 import api from 'foremanReact/API';
 import { propsToSnakeCase, propsToCamelCase } from 'foremanReact/common/helpers';
 
