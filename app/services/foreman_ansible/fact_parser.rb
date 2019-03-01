@@ -56,9 +56,11 @@ module ForemanAnsible
       interface_facts = facts[:"ansible_#{interface}"]
       ipaddress = ip_from_interface(interface)
       ipaddress6 = ipv6_from_interface(interface)
+      macaddress = mac_from_interface(interface)
       iface_facts = HashWithIndifferentAccess[
         interface_facts.merge(:ipaddress => ipaddress,
-                              :ipaddress6 => ipaddress6)
+                              :ipaddress6 => ipaddress6,
+                              :macaddress => macaddress)
       ]
       logger.debug { "Ansible interface #{interface} facts: #{iface_facts.inspect}" }
       iface_facts
@@ -71,6 +73,10 @@ module ForemanAnsible
     def ansible_interfaces
       return [] if facts[:ansible_interfaces].blank?
       facts[:ansible_interfaces].sort
+    end
+
+    def mac_from_interface(interface)
+      facts[:"ansible_#{interface}"]['perm_macaddress'].presence || facts[:"ansible_#{interface}"]['macaddress']
     end
 
     def ip_from_interface(interface)
