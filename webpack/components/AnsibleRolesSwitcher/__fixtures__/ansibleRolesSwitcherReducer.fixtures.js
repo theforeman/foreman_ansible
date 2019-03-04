@@ -18,7 +18,10 @@ export const successState = Immutable({
     page: 1,
     perPage: 5,
   },
-  assignedRoles: [{ ...ansibleRolesLong[3], inherited: true }, ...ansibleRolesLong.slice(4, 6)],
+  assignedRoles: [
+    { ...ansibleRolesLong[3], inherited: true },
+    ...ansibleRolesLong.slice(4, 6),
+  ],
   results: ansibleRolesLong,
   assignedPagination: {
     page: 1,

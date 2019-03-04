@@ -1,22 +1,23 @@
 import { testSelectorsSnapshotWithFixtures } from 'react-redux-test-utils';
 
-import { selectUnassignedRoles, selectAssignedRolesPage } from '../AnsibleRolesSwitcherSelectors';
-import { ansibleRolesShort, ansibleRolesLong } from '../__fixtures__/ansibleRolesData.fixtures';
+import {
+  selectUnassignedRoles,
+  selectAssignedRolesPage,
+} from '../AnsibleRolesSwitcherSelectors';
+import {
+  ansibleRolesShort,
+  ansibleRolesLong,
+} from '../__fixtures__/ansibleRolesData.fixtures';
 
-const stateFactory = obj => (
-  {
-    foremanAnsible: {
-      ansibleRolesSwitcher: obj,
-    },
-  }
-);
+const stateFactory = obj => ({
+  foremanAnsible: {
+    ansibleRolesSwitcher: obj,
+  },
+});
 
 const state1 = {
   results: ansibleRolesShort,
-  assignedRoles: [
-    { id: 2 },
-    { id: 4 },
-  ],
+  assignedRoles: [{ id: 2 }, { id: 4 }],
 };
 
 const state2 = {
@@ -30,9 +31,13 @@ const state3 = {
 };
 
 const fixtures = {
-  'should return unassigned roles': () => selectUnassignedRoles(stateFactory(state1)),
-  'should return all roles when no roles assigned': () => selectUnassignedRoles(stateFactory(state2)),
-  'should return requested page': () => selectAssignedRolesPage(stateFactory(state3)),
+  'should return unassigned roles': () =>
+    selectUnassignedRoles(stateFactory(state1)),
+  'should return all roles when no roles assigned': () =>
+    selectUnassignedRoles(stateFactory(state2)),
+  'should return requested page': () =>
+    selectAssignedRolesPage(stateFactory(state3)),
 };
 
-describe('AnsibleRolesSwitcherSelectors', () => testSelectorsSnapshotWithFixtures(fixtures));
+describe('AnsibleRolesSwitcherSelectors', () =>
+  testSelectorsSnapshotWithFixtures(fixtures));

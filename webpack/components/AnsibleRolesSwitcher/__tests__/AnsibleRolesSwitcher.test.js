@@ -26,4 +26,5 @@ const fixtures = {
   },
 };
 
-describe('AnsibleRolesSwitcher', () => testComponentSnapshotsWithFixtures(AnsibleRolesSwitcher, fixtures));
+describe('AnsibleRolesSwitcher', () =>
+  testComponentSnapshotsWithFixtures(AnsibleRolesSwitcher, fixtures));

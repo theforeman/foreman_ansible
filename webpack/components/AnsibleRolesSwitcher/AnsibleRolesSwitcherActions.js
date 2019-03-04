@@ -1,5 +1,8 @@
 import api from 'foremanReact/API';
-import { propsToSnakeCase, propsToCamelCase } from 'foremanReact/common/helpers';
+import {
+  propsToSnakeCase,
+  propsToCamelCase,
+} from 'foremanReact/common/helpers';
 
 import {
   ANSIBLE_ROLES_REQUEST,
@@ -17,8 +20,8 @@ export const getAnsibleRoles = (
   resourceId,
   resourceName,
   pagination,
-  search,
-) => (dispatch) => {
+  search
+) => dispatch => {
   dispatch({ type: ANSIBLE_ROLES_REQUEST });
 
   const params = {
@@ -27,28 +30,40 @@ export const getAnsibleRoles = (
     ...propsToSnakeCase({ resourceId, resourceName }),
   };
 
-  return api.get(url, {}, params)
-    .then(({ data }) => dispatch({
-      type: ANSIBLE_ROLES_SUCCESS,
-      payload: {
-        initialAssignedRoles,
-        inheritedRoleIds,
-        ...propsToCamelCase(data),
-      },
-    }))
+  return api
+    .get(url, {}, params)
+    .then(({ data }) =>
+      dispatch({
+        type: ANSIBLE_ROLES_SUCCESS,
+        payload: {
+          initialAssignedRoles,
+          inheritedRoleIds,
+          ...propsToCamelCase(data),
+        },
+      })
+    )
     .catch(error => dispatch(errorHandler(ANSIBLE_ROLES_FAILURE, error)));
 };
 
 const errorHandler = (msg, err) => {
-  const error = { errorMsg: 'Failed to fetch Ansible Roles from server.', statusText: err.response.statusText };
-  return ({ type: msg, payload: { error } });
+  const error = {
+    errorMsg: 'Failed to fetch Ansible Roles from server.',
+    statusText: err.response.statusText,
+  };
+  return { type: msg, payload: { error } };
 };
 
-export const addAnsibleRole = role =>
-  ({ type: ANSIBLE_ROLES_ADD, payload: { role } });
+export const addAnsibleRole = role => ({
+  type: ANSIBLE_ROLES_ADD,
+  payload: { role },
+});
 
-export const removeAnsibleRole = role =>
-  ({ type: ANSIBLE_ROLES_REMOVE, payload: { role } });
+export const removeAnsibleRole = role => ({
+  type: ANSIBLE_ROLES_REMOVE,
+  payload: { role },
+});
 
-export const changeAssignedPage = pagination =>
-  ({ type: ANSIBLE_ROLES_ASSIGNED_PAGE_CHANGE, payload: { pagination } });
+export const changeAssignedPage = pagination => ({
+  type: ANSIBLE_ROLES_ASSIGNED_PAGE_CHANGE,
+  payload: { pagination },
+});

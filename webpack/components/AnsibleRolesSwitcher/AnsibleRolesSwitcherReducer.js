@@ -36,7 +36,10 @@ const ansibleRoles = (state = initialState, action) => {
       return state.merge({
         loading: false,
         itemCount: Number(payload.subtotal),
-        pagination: { page: Number(payload.page), perPage: Number(payload.perPage) },
+        pagination: {
+          page: Number(payload.page),
+          perPage: Number(payload.perPage),
+        },
         results: payload.results,
         assignedRoles: payload.initialAssignedRoles,
         inheritedRoleIds: payload.inheritedRoleIds,
@@ -50,9 +53,8 @@ const ansibleRoles = (state = initialState, action) => {
       });
     case ANSIBLE_ROLES_REMOVE:
       return state.merge({
-        assignedRoles: Immutable.flatMap(
-          state.assignedRoles,
-          item => (item.id === payload.role.id ? [] : item),
+        assignedRoles: Immutable.flatMap(state.assignedRoles, item =>
+          item.id === payload.role.id ? [] : item
         ),
         results: state.results.concat([payload.role]),
         itemCount: state.itemCount + 1,

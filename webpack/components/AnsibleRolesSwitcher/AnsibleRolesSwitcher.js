@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Row, Col } from 'patternfly-react';
 import { lowerCase } from 'lodash';
+import PropTypes from 'prop-types';
 
 import AvailableRolesList from './components/AvailableRolesList';
 import AssignedRolesList from './components/AssignedRolesList';
@@ -24,7 +25,7 @@ class AnsibleRolesSwitcher extends React.Component {
       resourceId,
       resourceName,
       { page: 1, perPage: 10 },
-      excludeAssignedRolesSearch(initialAssignedRoles),
+      excludeAssignedRolesSearch(initialAssignedRoles)
     );
   }
 
@@ -60,40 +61,80 @@ class AnsibleRolesSwitcher extends React.Component {
         resourceId,
         resourceName,
         paginationArgs,
-        excludeAssignedRolesSearch(allAssignedRoles),
+        excludeAssignedRolesSearch(allAssignedRoles)
       );
 
     return (
       <Grid bsClass="container-fluid" id="ansibleRolesSwitcher">
-          <Row className="row-eq-height">
-            <AnsibleRolesSwitcherError error={error} />
-            <Col sm={6} className="available-roles-container">
-              <div className="available-roles-header">
-                <h2>{__('Available Ansible Roles')}</h2>
-              </div>
-               <AvailableRolesList unassignedRoles={unassignedRoles}
-                                   pagination={pagination}
-                                   itemCount={itemCount}
-                                   onListingChange={onListingChange}
-                                   onAddRole={addAnsibleRole}
-                                   loading={loading} />
-            </Col>
+        <Row className="row-eq-height">
+          <AnsibleRolesSwitcherError error={error} />
+          <Col sm={6} className="available-roles-container">
+            <div className="available-roles-header">
+              <h2>{__('Available Ansible Roles')}</h2>
+            </div>
+            <AvailableRolesList
+              unassignedRoles={unassignedRoles}
+              pagination={pagination}
+              itemCount={itemCount}
+              onListingChange={onListingChange}
+              onAddRole={addAnsibleRole}
+              loading={loading}
+            />
+          </Col>
 
-            <Col sm={6} className="assigned-roles-container">
-              <div className="assigned-roles-header">
-                <h2>{__('Assigned Ansible Roles')}</h2>
-              </div>
-                 <AssignedRolesList assignedRoles={assignedRoles}
-                                    pagination={assignedPagination}
-                                    itemCount={assignedRolesCount}
-                                    onPaginationChange={changeAssignedPage}
-                                    onRemoveRole={removeAnsibleRole}
-                                    resourceName={lowerCase(resourceName || '')} />
-            </Col>
-          </Row>
+          <Col sm={6} className="assigned-roles-container">
+            <div className="assigned-roles-header">
+              <h2>{__('Assigned Ansible Roles')}</h2>
+            </div>
+            <AssignedRolesList
+              assignedRoles={assignedRoles}
+              pagination={assignedPagination}
+              itemCount={assignedRolesCount}
+              onPaginationChange={changeAssignedPage}
+              onRemoveRole={removeAnsibleRole}
+              resourceName={lowerCase(resourceName || '')}
+            />
+          </Col>
+        </Row>
       </Grid>
     );
   }
 }
+
+AnsibleRolesSwitcher.propTypes = {
+  data: PropTypes.shape({
+    initialAssignedRoles: PropTypes.arrayOf(PropTypes.object),
+    availableRolesUrl: PropTypes.string,
+    inheritedRoleIds: PropTypes.arrayOf(PropTypes.number),
+    resourceId: PropTypes.number,
+    resourceName: PropTypes.string,
+  }).isRequired,
+  getAnsibleRoles: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  pagination: PropTypes.shape({
+    page: PropTypes.number,
+    perPage: PropTypes.number,
+  }).isRequired,
+  itemCount: PropTypes.number.isRequired,
+  addAnsibleRole: PropTypes.func.isRequired,
+  removeAnsibleRole: PropTypes.func.isRequired,
+  changeAssignedPage: PropTypes.func.isRequired,
+  assignedPagination: PropTypes.shape({
+    page: PropTypes.number,
+    perPage: PropTypes.number,
+  }).isRequired,
+  assignedRolesCount: PropTypes.number.isRequired,
+  assignedRoles: PropTypes.arrayOf(PropTypes.object).isRequired,
+  allAssignedRoles: PropTypes.arrayOf(PropTypes.object).isRequired,
+  unassignedRoles: PropTypes.arrayOf(PropTypes.object).isRequired,
+  error: PropTypes.shape({
+    errorMsg: PropTypes.string,
+    statusText: PropTypes.string,
+  }),
+};
+
+AnsibleRolesSwitcher.defaultProps = {
+  error: {},
+};
 
 export default AnsibleRolesSwitcher;

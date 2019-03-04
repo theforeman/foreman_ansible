@@ -69,4 +69,5 @@ const fixtures = {
   },
 };
 
-describe('AnsibleRolesSwitcherReducer', () => testReducerSnapshotWithFixtures(reducer, fixtures));
+describe('AnsibleRolesSwitcherReducer', () =>
+  testReducerSnapshotWithFixtures(reducer, fixtures));

@@ -2,49 +2,66 @@ import React from 'react';
 import { ListView } from 'patternfly-react';
 import PaginationWrapper from 'foremanReact/components/Pagination/PaginationWrapper';
 import { reject } from 'lodash';
+import PropTypes from 'prop-types';
 
 import AnsibleRole from './AnsibleRole';
 
-class AssignedRolesList extends React.Component {
-  render() {
-    const {
-      assignedRoles,
-      pagination,
-      itemCount,
-      onPaginationChange,
-      onRemoveRole,
-      resourceName,
-    } = this.props;
+const AssignedRolesList = ({
+  assignedRoles,
+  pagination,
+  itemCount,
+  onPaginationChange,
+  onRemoveRole,
+  resourceName,
+}) => {
+  const directlyAssignedRoles = reject(assignedRoles, role => role.inherited);
 
-    const directlyAssignedRoles = reject(assignedRoles, role => role.inherited);
-
-    return (
-      <div>
-        <ListView>
-          <div className="sticky-pagination sticky-pagination-grey">
-            <PaginationWrapper
-              viewType="list"
-              itemCount={itemCount}
-              pagination={pagination}
-              onChange={onPaginationChange}
-              dropdownButtonId='assigned-ansible-roles-pagination-row-dropdown'
-            />
-          </div>
-          { assignedRoles.map(role => <AnsibleRole key={role.id}
-                                                   role={role}
-                                                   icon='fa fa-minus-circle'
-                                                   onClick={onRemoveRole}
-                                                   resourceName={resourceName} />) }
-        </ListView>
-        <div>
-          { directlyAssignedRoles.map(role => <input key={role.id}
-                                                     type="hidden"
-                                                     name={`${resourceName}[ansible_role_ids][]`}
-                                                     value={role.id} />) }
+  return (
+    <div>
+      <ListView>
+        <div className="sticky-pagination sticky-pagination-grey">
+          <PaginationWrapper
+            viewType="list"
+            itemCount={itemCount}
+            pagination={pagination}
+            onChange={onPaginationChange}
+            dropdownButtonId="assigned-ansible-roles-pagination-row-dropdown"
+          />
         </div>
+        {assignedRoles.map(role => (
+          <AnsibleRole
+            key={role.id}
+            role={role}
+            icon="fa fa-minus-circle"
+            onClick={onRemoveRole}
+            resourceName={resourceName}
+          />
+        ))}
+      </ListView>
+      <div>
+        {directlyAssignedRoles.map(role => (
+          <input
+            key={role.id}
+            type="hidden"
+            name={`${resourceName}[ansible_role_ids][]`}
+            value={role.id}
+          />
+        ))}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+AssignedRolesList.propTypes = {
+  assignedRoles: PropTypes.arrayOf(PropTypes.object).isRequired,
+  pagination: PropTypes.shape({
+    page: PropTypes.number,
+    perPage: PropTypes.number,
+  }).isRequired,
+  itemCount: PropTypes.number.isRequired,
+  onPaginationChange: PropTypes.func.isRequired,
+  onRemoveRole: PropTypes.func.isRequired,
+  resourceName: PropTypes.string.isRequired,
+};
 
 export default AssignedRolesList;

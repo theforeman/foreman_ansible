@@ -15,4 +15,5 @@ const fixtures = {
   },
 };
 
-describe('AssignedRolesList', () => testComponentSnapshotsWithFixtures(AssignedRolesList, fixtures));
+describe('AssignedRolesList', () =>
+  testComponentSnapshotsWithFixtures(AssignedRolesList, fixtures));
