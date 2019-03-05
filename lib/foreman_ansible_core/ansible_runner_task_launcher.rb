@@ -61,9 +61,9 @@ module ForemanAnsibleCore
       def handle_broadcast_data(event)
         if event['event'] == 'playbook_on_stats'
           header, *rows = event['stdout'].strip.lines.map(&:chomp)
-          rows.each do |row|
-            hostname, _ = row.split(':')
-            publish_data_for(hostname.strip, [header, row].join("\n"), 'stdout')
+          @outputs.keys.select { |key| key.is_a? String }.each do |host|
+            line = rows.find { |row| row =~ /#{host}/ }
+            publish_data_for(host, [header, line].join("\n"), 'stdout')
           end
         else
           broadcast_data(event['stdout'], 'stdout')
@@ -103,7 +103,7 @@ module ForemanAnsibleCore
       # containing all the hosts.
       def rebuild_inventory(input)
         action_inputs = input.values.map { |hash| hash[:input][:action_input] }
-        hostnames = action_inputs.map { |hash| hash[:hostname] }
+        hostnames = action_inputs.map { |hash| hash[:name] }
         inventories = action_inputs.map { |hash| JSON.parse(hash[:ansible_inventory]) }
         host_vars = inventories.map { |i| i['_meta']['hostvars'] }.reduce(&:merge)
 
@@ -126,7 +126,7 @@ module ForemanAnsibleCore
 
     def group_runner_input(input)
       super(input).reduce({}) do |acc, (_id, data)|
-        acc.merge(data[:input]['action_input']['hostname'] => data)
+        acc.merge(data[:input]['action_input']['name'] => data)
       end
     end
 
