@@ -27,11 +27,12 @@ class AnsibleVariablesController < ::LookupKeysController
   end
 
   def confirm_import
-    results = @importer.finish_import(new_vars, old_vars)
-    info _(
+    results = @importer.finish_import(new_vars, old_vars, updated_vars)
+    success _(
       "Import of variables successfully finished.\n"\
-      "Added: #{results[:added].join(', ')} \n "\
-      "Removed: #{results[:obsolete].join(', ')}"
+      "Added: #{results[:added].count} \n "\
+      "Removed: #{results[:obsolete].count} \n"\
+      "Updated: #{results[:updated].count}"
     )
     redirect_to ansible_variables_path
   end
@@ -49,11 +50,19 @@ class AnsibleVariablesController < ::LookupKeysController
   end
 
   def new_vars
-    params[:changed] ? params[:changed][:new].as_json : {}
+    fetch_vars :new
   end
 
   def old_vars
-    params[:changed] ? params[:changed][:obsolete].as_json : {}
+    fetch_vars :obsolete
+  end
+
+  def updated_vars
+    fetch_vars :update
+  end
+
+  def fetch_vars(key)
+    params.fetch(:changed, {}).fetch(key, {}).try(:as_json) || {}
   end
 
   def import_new_roles

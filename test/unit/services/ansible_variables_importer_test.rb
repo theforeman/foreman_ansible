@@ -12,8 +12,8 @@ class AnsibleVariablesImporterTest < ActiveSupport::TestCase
     already_existing = FactoryBot.create(:ansible_variable)
     new_role = FactoryBot.create(:ansible_role)
     api_response = {
-      new_role.name => ['new_var'],
-      already_existing.ansible_role.name => [already_existing.key]
+      new_role.name => { 'new_var' => 'new value' },
+      already_existing.ansible_role.name => { already_existing.key => already_existing.default_value }
     }
     changes = @importer.import_variables(api_response, [new_role.name])
     assert_not_empty changes['new']
@@ -34,6 +34,17 @@ class AnsibleVariablesImporterTest < ActiveSupport::TestCase
 
   test 'does not do anything if response is empty' do
     changes = @importer.import_variables({}, [])
-    assert_equal({ 'new' => [], 'obsolete' => [] }, changes)
+    assert_equal({ 'new' => [], 'obsolete' => [], 'update' => [] }, changes)
+  end
+
+  test 'do not update changed defaults' do
+    role = FactoryBot.create(:ansible_role)
+    variable = FactoryBot.create(:ansible_variable, :default_value => 'default value', :ansible_role_id => role.id)
+    api_response = {
+      role.name => { variable.key => 'changed value', 'new_variable' => 'new value' }
+    }
+    changes = @importer.import_variables(api_response, [])
+    assert_empty changes['update']
+    assert_equal 'new_variable', changes['new'].first.key
   end
 end
