@@ -32,7 +32,8 @@ if defined?(RedhatAccess)
         resource = RestClient::Resource.new(
           "#{insights_api_host}/r/insights/"\
           "v3/maintenance/#{@plan_id}/playbook",
-          get_ssl_options_for_org(@organization, nil)
+          get_ssl_options_for_org(@organization, nil).\
+            merge(:proxy => get_portal_http_proxy)
         )
         @raw_playbook = resource.get.body
         YAML.safe_load(@raw_playbook)
