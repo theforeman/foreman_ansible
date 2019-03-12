@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnsibleRole should render a role to add 1`] = `
+<ListViewItem
+  actions={
+    <AnsibleRoleActionButton
+      icon="fa fa-plus-circle"
+      role={
+        Object {
+          "id": 5,
+          "name": "test.role",
+        }
+      }
+    />
+  }
+  additionalInfo={null}
+  checkboxInput={null}
+  className="listViewItem--listItemVariants ansible-role-movable"
+  compoundExpand={false}
+  compoundExpanded={false}
+  description={null}
+  heading="test.role"
+  hideCloseIcon={false}
+  id={5}
+  initExpanded={false}
+  leftContent={null}
+  onClick={[Function]}
+  onCloseCompoundExpand={[Function]}
+  onExpand={[Function]}
+  onExpandClose={[Function]}
+  stacked={true}
+/>
+`;
+
+exports[`AnsibleRole should render a role to remove 1`] = `
+<ListViewItem
+  actions={
+    <AnsibleRoleActionButton
+      icon="fa fa-minus-circle"
+      role={
+        Object {
+          "id": 5,
+          "name": "test.role",
+        }
+      }
+    />
+  }
+  additionalInfo={null}
+  checkboxInput={null}
+  className="listViewItem--listItemVariants ansible-role-movable"
+  compoundExpand={false}
+  compoundExpanded={false}
+  description={null}
+  heading="test.role"
+  hideCloseIcon={false}
+  id={5}
+  initExpanded={false}
+  leftContent={null}
+  onClick={[Function]}
+  onCloseCompoundExpand={[Function]}
+  onExpand={[Function]}
+  onExpandClose={[Function]}
+  stacked={true}
+/>
+`;
+
+exports[`AnsibleRole should render inherited role to remove 1`] = `
+<OverlayTrigger
+  defaultOverlayShown={false}
+  overlay={
+    <Tooltip
+      bsClass="tooltip"
+      id={5}
+      placement="right"
+    >
+      <span>
+        This Ansible role is inherited from host group
+      </span>
+    </Tooltip>
+  }
+  placement="top"
+  trigger={
+    Array [
+      "hover",
+      "focus",
+    ]
+  }
+>
+  <ListViewItem
+    actions=""
+    additionalInfo={null}
+    checkboxInput={null}
+    className="listViewItem--listItemVariants ansible-role-disabled"
+    compoundExpand={false}
+    compoundExpanded={false}
+    description={null}
+    heading="test.role"
+    hideCloseIcon={false}
+    id={5}
+    initExpanded={false}
+    leftContent={null}
+    onCloseCompoundExpand={[Function]}
+    onExpand={[Function]}
+    onExpandClose={[Function]}
+    stacked={true}
+  />
+</OverlayTrigger>
+`;

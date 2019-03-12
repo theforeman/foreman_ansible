@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnsiblePermissionDenied should render 1`] = `
+<EmptyStatePattern
+  description={
+    <span>
+      You are not authorized to perform this action.
+      <br />
+      Please request one of the required permissions listed below from a Foreman administrator:
+      <br />
+    </span>
+  }
+  documentation={
+    <ul
+      className="list-unstyled"
+    >
+      <li>
+        view_ansible_roles
+      </li>
+    </ul>
+  }
+  header="Permission Denied"
+  icon="lock"
+  iconType="fa"
+/>
+`;

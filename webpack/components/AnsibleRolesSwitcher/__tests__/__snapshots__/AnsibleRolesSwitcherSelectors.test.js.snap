@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnsibleRolesSwitcherSelectors should return all roles when no roles assigned 1`] = `
+Array [
+  Object {
+    "id": 4,
+    "name": "geerlingguy.java",
+  },
+  Object {
+    "id": 2,
+    "name": "jtyr.ntp",
+  },
+  Object {
+    "id": 3,
+    "name": "rvm.ruby",
+  },
+  Object {
+    "id": 1,
+    "name": "sthirugn.motd",
+  },
+]
+`;
+
+exports[`AnsibleRolesSwitcherSelectors should return requested page 1`] = `
+Array [
+  Object {
+    "id": 5,
+    "name": "naftulikay.golang",
+  },
+  Object {
+    "id": 8,
+    "name": "puppet.puppet",
+  },
+  Object {
+    "id": 3,
+    "name": "rvm.ruby",
+  },
+  Object {
+    "id": 10,
+    "name": "salt.salt",
+  },
+  Object {
+    "id": 1,
+    "name": "sthirugn.motd",
+  },
+]
+`;
+
+exports[`AnsibleRolesSwitcherSelectors should return unassigned roles 1`] = `
+Array [
+  Object {
+    "id": 3,
+    "name": "rvm.ruby",
+  },
+  Object {
+    "id": 1,
+    "name": "sthirugn.motd",
+  },
+]
+`;

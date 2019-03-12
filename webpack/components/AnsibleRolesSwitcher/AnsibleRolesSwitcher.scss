@@ -1,0 +1,45 @@
+@import '~patternfly/dist/sass/patternfly/_color-variables';
+@import '~patternfly/dist/sass/patternfly/_variables';
+@import '~patternfly/dist/sass/patternfly/_loading-state';
+
+#ansibleRolesSwitcher {
+  .list-view-pf {
+    .list-group-item.ansible-role-disabled {
+      background-color: $color-pf-black-200;
+      color: $color-pf-black-500;
+      border-left-color: $color-pf-black-200;
+      border-right-color: $color-pf-black-200;
+    }
+
+    .list-group-item.ansible-role-movable:hover {
+      cursor: pointer;
+    }
+  }
+
+  .loading-state-pf {
+    padding-top: 5%;
+    background-color: $color-pf-white;
+  }
+
+  .role-add-remove-btn {
+    background-color: initial;
+    border: none;
+    color: #0388ce;
+  }
+
+  .list-view-pf-main-info {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .list-view-pf-actions {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .list-group-item-heading {
+    margin-bottom: 0;
+    font-size: 12px;
+    font-weight: normal;
+  }
+}

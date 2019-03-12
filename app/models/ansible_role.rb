@@ -17,6 +17,7 @@ class AnsibleRole < ApplicationRecord
                                :class_name => 'AnsibleVariable'
 
   scoped_search :on => :name, :complete_value => true
+  scoped_search :on => :id, :complete_value => false
   scoped_search :on => :updated_at
   scoped_search :relation => :hosts,
                 :on => :id, :rename => :host_id, :only_explicit => true

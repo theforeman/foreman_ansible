@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AvailableRolesList should render 1`] = `
+<ListView
+  className=""
+>
+  <div
+    className="sticky-pagination"
+  >
+    <PaginationWrapper
+      dropdownButtonId="available-ansible-roles-pagination-row-dropdown"
+      itemCount={2}
+      onChange={[Function]}
+      pagination={
+        Object {
+          "page": 1,
+          "perPage": 25,
+        }
+      }
+      viewType="list"
+    />
+  </div>
+  <LoadingState
+    additionalClasses=""
+    loading={false}
+    loadingText="Loading"
+    size="lg"
+    timeout={300}
+  >
+    <AnsibleRole
+      icon="fa fa-plus-circle"
+      key="1"
+      onClick={[Function]}
+      role={
+        Object {
+          "id": 1,
+          "name": "fake.role",
+        }
+      }
+    />
+    <AnsibleRole
+      icon="fa fa-plus-circle"
+      key="2"
+      onClick={[Function]}
+      role={
+        Object {
+          "id": 2,
+          "name": "test.role",
+        }
+      }
+    />
+  </LoadingState>
+</ListView>
+`;
