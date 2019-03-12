@@ -3,9 +3,7 @@
 module ForemanAnsibleCore
   module RemoteExecutionCore
     # Takes an inventory and runs it through REXCore CommandRunner
-    class AnsibleRunner < ::ForemanTasksCore::Runner::Base
-      include ForemanTasksCore::Runner::CommandRunner
-
+    class AnsibleRunner < ::ForemanTasksCore::Runner::CommandRunner
       DEFAULT_REFRESH_INTERVAL = 1
       CONNECTION_PROMPT = 'Are you sure you want to continue connecting (yes/no)? '
 

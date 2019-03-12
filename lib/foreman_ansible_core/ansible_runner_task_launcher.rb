@@ -3,10 +3,10 @@ require 'fileutils'
 module ForemanAnsibleCore
   class AnsibleRunnerTaskLauncher < ForemanTasksCore::TaskLauncher::AbstractGroup
     class AnsibleRunnerRunner < ForemanTasksCore::Runner::Parent
-      include ForemanTasksCore::Runner::CommandRunner
+      include ForemanTasksCore::Runner::Command
 
-      def initialize(suspended_action, input)
-        super
+      def initialize(input, suspended_action:)
+        super input, suspended_action: suspended_action
         @inventory = rebuild_inventory(input)
         @playbook = input.values.first[:input][:action_input][:script]
         @root = working_dir
