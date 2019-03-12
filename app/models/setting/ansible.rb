@@ -90,6 +90,16 @@ class Setting
               false,
               format(N_('%{cfgmgmt} out of sync disabled'),
                      :cfgmgmt => 'Ansible')
+            ),
+            set(
+              'ansible_implementation',
+              N_('Foreman will run Ansible playbooks using this implementation'),
+              'ansible-playbook',
+              N_('Implementation for running Ansible'),
+              nil,
+              :collection => lambda do
+                Hash[%w(ansible-playbook ansible-runner).map { |x| [x, x] }]
+              end
             )
           ].compact.each do |s|
             create(s.update(:category => 'Setting::Ansible'))

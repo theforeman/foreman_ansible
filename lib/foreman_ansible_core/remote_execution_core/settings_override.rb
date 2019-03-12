@@ -12,7 +12,8 @@ module ForemanAnsibleCore
           :uuid => execution_plan_id
         }
         ::ForemanAnsibleCore::RemoteExecutionCore::AnsibleRunner.new(
-          input.merge(additional_options)
+          input.merge(additional_options),
+          suspended_action: suspended_action
         )
       end
     end

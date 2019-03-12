@@ -11,8 +11,8 @@ module ForemanAnsibleCore
   class PlaybookRunner < ForemanTasksCore::Runner::CommandRunner
     attr_reader :command_out, :command_in, :command_pid
 
-    def initialize(suspended_action, inventory, playbook, options = {})
-      super
+    def initialize(inventory, playbook, options = {}, suspended_action:)
+      super suspended_action: suspended_action
       @inventory = inventory
       unknown_hosts.each do |host|
         add_to_known_hosts(host)

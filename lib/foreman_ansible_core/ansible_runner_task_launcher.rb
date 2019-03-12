@@ -160,4 +160,6 @@ end
 if defined?(SmartProxyDynflowCore)
   SmartProxyDynflowCore::TaskLauncherRegistry.register('ansible-runner',
                                                        ForemanAnsibleCore::AnsibleRunnerTaskLauncher)
+  SmartProxyDynflowCore::TaskLauncherRegistry.register('ansible-playbook',
+                                                       ForemanTasksCore::TaskLauncher::Batch)
 end

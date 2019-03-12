@@ -35,7 +35,7 @@ if defined? ForemanRemoteExecution
         end
 
         def proxy_operation_name
-          'ansible-runner'
+          Setting::Ansible[:ansible_implementation]
         end
 
         private
