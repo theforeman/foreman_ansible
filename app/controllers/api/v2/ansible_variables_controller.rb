@@ -6,6 +6,7 @@ module Api
     class AnsibleVariablesController < ::Api::V2::BaseController
       include ::Api::Version2
       include Foreman::Controller::Parameters::VariableLookupKey
+      include Foreman::Controller::Parameters::AnsibleVariable
 
       resource_description do
         api_version 'v2'
@@ -36,7 +37,7 @@ module Api
       def_param_group :ansible_variable do
         param :ansible_variable, Hash, :required => true, :action_aware => true do
           param :variable, String, :required => true, :desc => N_("Name of variable")
-          param :ansible_role_id, :number, :desc => N_("Role ID")
+          param :ansible_role_id, :number, :required => true, :desc => N_("Role ID")
           param :default_value, :any_type, :of => LookupKey::KEY_TYPES, :desc => N_("Default value of variable")
           param :hidden_value, :bool, :desc => N_("When enabled the parameter is hidden in the UI")
           param :override_value_order, String, :desc => N_("The order in which values are resolved")
@@ -48,6 +49,13 @@ module Api
           param :merge_default, :bool, :desc => N_("Include default value when merging all matching values")
           param :avoid_duplicates, :bool, :desc => N_("Remove duplicate values (only array type)")
         end
+      end
+
+      api :POST, '/ansible_variables', N_('Create Ansible variable')
+      param_group :ansible_variable, :as => :create
+      def create
+        @ansible_variable = AnsibleVariable.new(ansible_variable_params.merge(:imported => false))
+        process_response @ansible_variable.save
       end
 
       api :PUT, '/ansible_variables/:id', N_('Updates Ansible variable')

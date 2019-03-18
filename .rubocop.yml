@@ -10,6 +10,7 @@ AllCops:
   Exclude:
     - 'extras/**/*'
     - 'locale/**/*'
+    - 'node_modules/**/*'
 
 Metrics/BlockLength:
   Exclude:

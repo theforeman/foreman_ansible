@@ -36,6 +36,16 @@ module Api
             :session => set_session_user
         assert_response :success
       end
+
+      test 'should create' do
+        params = { :key => 'test name', :ansible_role_id => FactoryBot.create(:ansible_role).id }
+        post :create,
+             :params => params,
+             :session => set_session_user
+        assert_response :success
+        res = JSON.parse(@response.body)
+        refute res['imported']
+      end
     end
   end
 end

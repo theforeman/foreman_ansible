@@ -1,10 +1,16 @@
 <div id='<%= f.object.to_param %>' class='tab-pane fields'>
   <fieldset>
     <h2><%= _("Ansible Variable Details") %></h2>
-    <%= text_f f, :key, :disabled => true, :size => "col-md-8" %>
-    <%= f.hidden_field :key %>
+    <%= text_f f, :key, :disabled => f.object.persisted?, :size => "col-md-8" %>
     <%= textarea_f f, :description, :rows => :auto, :size => "col-md-8", :class => "no-stretch" %>
-    <%= select_f f, :ansible_role_id, [f.object.ansible_role], :id, :to_label, {}, :label => _("Ansible Role"), :disabled => true %>
+    <%= ansible_role_select f, f.object.persisted? %>
+    <% is_imported = f.object.new_record? ? false : f.object.imported %>
+    <%= f.hidden_field :imported, :value => is_imported %>
+    <%= variable_imported_field f,
+                                :imported,
+                                :label => _('Imported?'),
+                                :checked => is_imported,
+                                :label_help => _('Whether this variable was imported from smart proxy rather than created in Foreman as a custom variable') %>
   </fieldset>
   <fieldset>
     <h2><%= _("Default Behavior") %></h2>

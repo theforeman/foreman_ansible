@@ -62,7 +62,7 @@ module ForemanAnsible
       changes = {}.with_indifferent_access
       persisted, changes[:new] = imported.partition { |role| role.id.present? }
       changes[:update], _old = persisted.partition(&:changed?)
-      changes[:obsolete] = AnsibleVariable.where.not(:id => persisted.pluck(:id))
+      changes[:obsolete] = AnsibleVariable.where.not(:id => persisted.pluck(:id), :imported => false)
       changes
     end
 

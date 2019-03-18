@@ -1,0 +1,17 @@
+<%= breadcrumbs(
+  :items => [
+    {
+      :caption => _('Ansible Variables'),
+      :url => url_for(ansible_variables_path)
+    },
+    {
+      :caption => _('Create Ansible Variable')
+    }
+  ],
+  :switchable => false
+) %>
+<% title(_('Create Ansible Variable')) %>
+<%= form_for(@ansible_variable) do |f| %>
+    <%= render 'fields', :f => f %>
+    <%= submit_or_cancel f %>
+<% end %>
