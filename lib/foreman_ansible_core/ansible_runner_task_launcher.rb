@@ -23,11 +23,16 @@ module ForemanAnsibleCore
         if super
           @counter ||= 1
           @uuid ||= File.basename(Dir["#{@root}/artifacts/*"].first)
+          job_event_dir = File.join(@root, 'artifacts', @uuid, 'job_events')
           loop do
-            job_event_dir = File.join(@root, 'artifacts', @uuid, 'job_events')
-            event = Dir["#{job_event_dir}/#{@counter}-*"].first
-            return if event.nil?
-            @counter += 1 if handle_event_file(event)
+            files_with_nums = Dir["#{job_event_dir}/*.json"].map do |file|
+              num = File.basename(file)[/\A\d+/].to_i unless file.include?('partial')
+              [file, num]
+            end.select { |(_, num)| num && num >= @counter }.sort_by(&:last)
+            break if files_with_nums.empty?
+            logger.debug("[foreman_ansible] - processing event files: #{files_with_nums.map(&:first).inspect}}")
+            files_with_nums.map(&:first).each { |event_file| handle_event_file(event_file) }
+            @counter = files_with_nums.last.last + 1
           end
         end
       end
@@ -35,6 +40,7 @@ module ForemanAnsibleCore
       private
 
       def handle_event_file(event_file)
+        logger.debug("[foreman_ansible] - parsing event file #{event_file}")
         begin
           event = JSON.parse(File.read(event_file))
           if (hostname = event['event_data']['host'])
@@ -43,13 +49,15 @@ module ForemanAnsibleCore
             handle_broadcast_data(event)
           end
           true
-        rescue JSON::ParserError
-          nil
+        rescue JSON::ParserError => e
+          logger.error("[foreman_ansible] - Error parsing runner event at #{event_file}: #{e.class}: #{e.message}")
+          logger.debug(e.backtrace.join("\n"))
         end
       end
 
       def handle_host_event(hostname, event)
-        publish_data_for(hostname, event['stdout'], 'stdout')
+        log_event("for host: #{hostname.inspect}", event)
+        publish_data_for(hostname, event['stdout'], 'stdout') if event['stdout']
         case event['event']
         when 'runner_on_unreachable'
           publish_exit_status_for(hostname, 1)
@@ -59,6 +67,7 @@ module ForemanAnsibleCore
       end
 
       def handle_broadcast_data(event)
+        log_event("broadcast", event)
         if event['event'] == 'playbook_on_stats'
           header, *rows = event['stdout'].strip.lines.map(&:chomp)
           @outputs.keys.select { |key| key.is_a? String }.each do |host|
@@ -88,7 +97,8 @@ module ForemanAnsibleCore
 
       def start_ansible_runner
         command = ['ansible-runner', 'run', @root, '-p', 'playbook.yml']
-        initialize_command *command
+        initialize_command(*command)
+        logger.debug("[foreman_ansible] - Running command '#{command.join(' ')}'")
       end
 
       def prepare_directory_structure
@@ -96,6 +106,12 @@ module ForemanAnsibleCore
         ([@root] + inner).each do |path|
           FileUtils.mkdir_p path
         end
+      end
+
+      def log_event(description, event)
+        # TODO: replace this ugly code with block variant once https://github.com/Dynflow/dynflow/pull/323
+        # arrives in production
+        logger.debug("[foreman_ansible] - handling event #{description}: #{JSON.pretty_generate(event)}") if logger.level <= ::Logger::DEBUG
       end
 
       # Each per-host task has inventory only for itself, we must

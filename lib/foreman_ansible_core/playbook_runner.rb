@@ -31,7 +31,7 @@ module ForemanAnsibleCore
       logger.debug('[foreman_ansible] - Initializing Ansible Runner')
       Dir.chdir(@ansible_dir) do
         initialize_command(*command)
-        logger.debug("[foreman_ansible] - Running command #{command}")
+        logger.debug("[foreman_ansible] - Running command '#{command.join(' ')}'")
       end
     end
 
