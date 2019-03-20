@@ -1,12 +1,7 @@
-# frozen_string_literal: true
-
 module ForemanAnsibleCore
-  module RemoteExecutionCore
-    # Ensure the Ansible provider is used whenever a JobTemplate using this
-    # provider is called.
-    module SettingsOverride
+  class PlaybookTaskLauncher < ForemanTasksCore::TaskLauncher::Batch
+    class PlaybookRunnerAction < ForemanTasksCore::Runner::Action
       def initiate_runner
-        return super unless input['ansible_inventory']
         additional_options = {
           :step_id => run_step_id,
           :uuid => execution_plan_id
@@ -16,6 +11,11 @@ module ForemanAnsibleCore
           suspended_action: suspended_action
         )
       end
+    end
+
+    def child_launcher(parent)
+      ForemanTasksCore::TaskLauncher::Single.new(world, callback, :parent => parent,
+                                                 :action_class_override => PlaybookRunnerAction)
     end
   end
 end

@@ -21,10 +21,13 @@ module ForemanAnsibleCore
 
   require 'foreman_remote_execution_core/actions'
   require 'foreman_ansible_core/remote_execution_core/ansible_runner'
-  require 'foreman_ansible_core/remote_execution_core/settings_override'
+  require 'foreman_ansible_core/playbook_task_launcher'
   require 'foreman_ansible_core/ansible_runner_task_launcher'
-  ForemanRemoteExecutionCore::Actions::RunScript.send(
-    :prepend,
-    ForemanAnsibleCore::RemoteExecutionCore::SettingsOverride
-  )
+
+  if defined?(SmartProxyDynflowCore)
+    SmartProxyDynflowCore::TaskLauncherRegistry.register('ansible-runner',
+                                                         ForemanAnsibleCore::AnsibleRunnerTaskLauncher)
+    SmartProxyDynflowCore::TaskLauncherRegistry.register('ansible-playbook',
+                                                         ForemanAnsibleCore::PlaybookTaskLauncher)
+  end
 end
