@@ -70,6 +70,10 @@ Foreman::Plugin.register :foreman_ansible do
         :view_ansible_roles, :destroy_ansible_roles,
         :import_ansible_roles]
 
+  role 'Ansible Tower Inventory Reader',
+       [:view_hosts, :view_hostgroups, :view_facts],
+       'Permissions required for the user which is used by Ansible Tower Dynamic Inventory Item'
+
   add_all_permissions_to_default_roles
   extend_template_helpers ForemanAnsible::RendererMethods
   allowed_template_helpers :insights_remediation
