@@ -15,7 +15,8 @@ module ForemanAnsibleCore
 
   if ForemanTasksCore.dynflow_present?
     require 'foreman_tasks_core/runner'
-    require 'foreman_ansible_core/playbook_runner'
+    require 'foreman_ansible_core/runner/playbook'
+    require 'foreman_ansible_core/runner/ansible_runner'
     require 'foreman_ansible_core/actions'
   end
 

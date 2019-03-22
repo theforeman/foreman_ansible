@@ -9,7 +9,7 @@ module ForemanAnsibleCore
 
       def initialize(options, suspended_action:)
         super(options, suspended_action: suspended_action)
-        @playbook_runner = ForemanAnsibleCore::PlaybookRunner.new(
+        @playbook_runner = ForemanAnsibleCore::Runner::Playbook.new(
           options['ansible_inventory'],
           options['script'],
           options,

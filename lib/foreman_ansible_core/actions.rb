@@ -8,7 +8,7 @@ module ForemanAnsibleCore
     # to execute the playbook run
     class RunPlaybook < ForemanTasksCore::Runner::Action
       def initiate_runner
-        ForemanAnsibleCore::PlaybookRunner.new(
+        ForemanAnsibleCore::Runner::Playbook.new(
           input[:inventory],
           input[:playbook],
           input[:options]
