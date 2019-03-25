@@ -12,7 +12,13 @@
     <%= checkbox_f(f, :override, :onchange => 'toggleOverrideValue(this)', :size => "col-md-8",
                    :label_help => _('Mark the variable to be managed by Foreman. When the Ansible role of this variable is assigned to a host, the default value will be added to Ansible inventory as a host variable. Specify matchers to set a different value for such variable.')
         ) %>
-    <%= param_type_selector(f, false, :onchange => 'keyTypeChange(this)', :disabled => !f.object.override) %>
+
+    <% version = Foreman::Version.new %>
+    <% if version.major.to_i >= 1 && version.minor.to_i >= 22 %>
+      <%= param_type_selector(f, false, :onchange => 'keyTypeChange(this)', :disabled => !f.object.override) %>
+    <% else %>
+      <%= param_type_selector(f, :onchange => 'keyTypeChange(this)', :disabled => !f.object.override) %>
+    <% end %>
     <%= textarea_f f, :default_value, :value => f.object.default_value_before_type_cast, :size => "col-md-8",
                    :disabled => (!f.object.override || f.object.omit),
                    :input_group_btn => fullscreen_input,
