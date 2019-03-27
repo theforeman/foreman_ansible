@@ -137,35 +137,86 @@ module ForemanAnsible
                    inventory.to_hash['all']['vars'])
     end
 
-    context 'top-level parameters sent as variables' do
-      setup do
-        # Fetching the Host parameters requires this Setting, since
-        # this plugin does not provide fixtures
-        Setting.create(:name => 'top_level_ansible_vars',
-                       :description => 'sample description',
-                       :default => true)
-        @template_invocation = OpenStruct.new(
-          :job_invocation => OpenStruct.new(:password => 'foobar'),
-          :input_values => []
-        )
+    test 'parameters are passed as top-level "hostvars"' do
+      @host.expects(:host_params).returns('hello' => 'foreman').at_least_once
+      inventory = ForemanAnsible::InventoryCreator.new([@host],
+                                                       @template_invocation)
+      hostvar = inventory.to_hash['_meta']['hostvars'][@host.name]['hello']
+      assert_equal 'foreman', hostvar
+    end
+
+    test 'ansible_roles are passed as top-level "hostvars"' do
+      roles = [].tap do |array|
+        2.times { array << FactoryBot.create(:ansible_role) }
       end
 
-      test 'parameters are passed as top-level "hostvars" by default' do
-        @host.expects(:host_params).returns('hello' => 'foreman').at_least_once
-        inventory = ForemanAnsible::InventoryCreator.new([@host],
-                                                         @template_invocation)
-        hostvar = inventory.to_hash['_meta']['hostvars'][@host.name]['hello']
-        assert_equal 'foreman', hostvar
+      host = FactoryBot.create(:host, :ansible_roles => roles)
+      inventory = ForemanAnsible::InventoryCreator.new([host]).to_hash
+      inventory_roles = inventory['_meta']['hostvars'][host.name]['foreman_ansible_roles']
+      assert_equal 2, inventory_roles.count
+      assert_includes inventory_roles, roles.first.name
+    end
+
+    test 'inventory can be generated without template invocation' do
+      inventory = ForemanAnsible::InventoryCreator.new([@host]).to_hash
+      assert_equal({}, inventory['all']['vars'])
+      assert_equal(@host.name, inventory['all']['hosts'].first)
+    end
+
+    test 'ansible variables are passed as top-level "hostvars"' do
+      role = FactoryBot.create :ansible_role
+      variables = [].tap do |array|
+        2.times do |num|
+          array << FactoryBot.create(:ansible_variable,
+                                     :ansible_role_id => role.id,
+                                     :default_value => "value_#{num}",
+                                     :override => true)
+        end
       end
 
-      test 'parameters NOT passed as top-level "hostvars" if false' do
-        Setting['top_level_ansible_vars'] = false
-        @host.expects(:host_params).returns('hello' => 'foreman').at_least_once
-        inventory = ForemanAnsible::InventoryCreator.new([@host],
-                                                         @template_invocation)
-        hostvar = inventory.to_hash['_meta']['hostvars'][@host.name]['hello']
-        refute_equal 'foreman', hostvar
+      host = FactoryBot.create(:host, :ansible_roles => [role])
+      inventory = ForemanAnsible::InventoryCreator.new([host]).to_hash
+      host_inventory = inventory['_meta']['hostvars'][host.name]
+      assert host_inventory[variables.first.key]
+      assert host_inventory[variables.last.key]
+    end
+
+    test 'ansible variables are not passed in "foreman"' do
+      role = FactoryBot.create :ansible_role
+      variables = [].tap do |array|
+        2.times do |num|
+          array << FactoryBot.create(:ansible_variable,
+                                     :ansible_role_id => role.id,
+                                     :default_value => "value_#{num}",
+                                     :override => true)
+        end
       end
+
+      host = FactoryBot.create(:host, :ansible_roles => [role])
+      inventory = ForemanAnsible::InventoryCreator.new([host]).to_hash
+      inventory_roles = inventory['_meta']['hostvars'][host.name]['foreman']
+      refute inventory_roles[variables.first.key]
+      refute inventory_roles[variables.last.key]
+    end
+
+    test 'ansible variables can override host params' do
+      role = FactoryBot.create :ansible_role
+      FactoryBot.create(:ansible_variable,
+                        :key => 'test_var',
+                        :ansible_role_id => role.id,
+                        :default_value => "variable value",
+                        :override => true)
+      host = FactoryBot.create(:host, :ansible_roles => [role])
+      host.expects(:host_params).returns('test_var' => 'param value').at_least_once
+      inventory = ForemanAnsible::InventoryCreator.new([host]).to_hash
+      assert_equal 'variable value', inventory['_meta']['hostvars'][host.name]['test_var']
+    end
+
+    test 'params from host info have correct nesting' do
+      org = FactoryBot.create(:organization)
+      host = FactoryBot.create(:host, :organization => org)
+      inventory = ForemanAnsible::InventoryCreator.new([host]).to_hash
+      assert_equal org.name, inventory['_meta']['hostvars'][host.name]['foreman']['organization']
     end
   end
   # rubocop:enable ClassLength

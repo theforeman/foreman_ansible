@@ -6,7 +6,7 @@ module ForemanAnsible
   class InventoryCreator
     attr_reader :hosts
 
-    def initialize(hosts, template_invocation)
+    def initialize(hosts, template_invocation = nil)
       @hosts = hosts
       @template_invocation = template_invocation
     end
@@ -35,15 +35,12 @@ module ForemanAnsible
     end
 
     def host_vars(host)
-      result = {
-        'foreman' => host_attributes(host),
-        'foreman_params' => host_params(host),
+      {
+        'foreman' => reduced_host_info(host).fetch('parameters', {}),
         'foreman_ansible_roles' => host_roles(host)
-      }.merge(connection_params(host))
-      if Setting['top_level_ansible_vars']
-        result = result.merge(host_params(host))
-      end
-      result.merge(ansible_params(host))
+      }.merge(connection_params(host)).
+        merge(host_params(host)).
+        merge(ansible_params(host))
     end
 
     def connection_params(host)
@@ -54,22 +51,29 @@ module ForemanAnsible
       #   - both settings, ssh password, effective_user can be used
       # 3rd option:
       #   - other settings
-      params = ansible_settings.
-               merge(remote_execution_options(host)).
-               merge(ansible_extra_options(host))
-      params
+
+      return {} unless @template_invocation
+      ansible_settings.
+        merge(remote_execution_options(host)).
+        merge(ansible_extra_options(host))
     end
 
     def host_roles(host)
       host.all_ansible_roles.map(&:name)
     end
 
-    def host_attributes(host)
-      render_rabl(host, 'api/v2/hosts/main')
-    end
-
     def ansible_params(host)
       ForemanAnsible::AnsibleInfo.new(host).ansible_params
+    end
+
+    def reduced_host_info(host)
+      HostInfo.providers.each_with_object({}) do |provider_class, memo|
+        next memo if [HostInfoProviders::HostParamsInfo, ForemanAnsible::AnsibleInfo].include? provider_class
+        provider = provider_class.new(host)
+        info = provider.host_info
+        memo.deep_merge! info if info
+        memo
+      end
     end
 
     def host_params(host)
@@ -109,6 +113,7 @@ module ForemanAnsible
     end
 
     def template_inputs(template_invocation)
+      return {} unless template_invocation&.input_values
       input_values = template_invocation.input_values
       result = input_values.each_with_object({}) do |input, vars_hash|
         vars_hash[input.template_input.name] = input.value
@@ -136,10 +141,6 @@ module ForemanAnsible
     end
 
     private
-
-    def render_rabl(host, template)
-      Rabl.render(host, template, :format => 'hash')
-    end
 
     def host_setting(host, setting)
       host.params[setting.to_s] || Setting[setting]

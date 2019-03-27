@@ -67,16 +67,6 @@ class Setting
               N_('Post-provision timeout')
             ),
             set(
-              'top_level_ansible_vars',
-              N_('Whether to put Ansible parameters in the "hostvars" '\
-                 'top-level key of the inventory. By default it is true, so '\
-                 'that Host Parameters can be used directly in the '\
-                 'playbooks. When false, Host Parameters can only be accessed '\
-                 'through foreman_params["host_parameter"] in the playbooks.'),
-              true,
-              N_('Top level Ansible variables')
-            ),
-            set(
               'ansible_interval',
               N_('Timeout (in minutes) when hosts should have reported.'),
               '30',
