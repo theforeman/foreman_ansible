@@ -42,6 +42,8 @@ module ForemanAnsible
       }.merge(connection_params(host))
       if Setting['top_level_ansible_vars']
         result = result.merge(host_params(host))
+        result = result.merge(host_attributes(host))
+        result = result.merge(host_roles(host))
       end
       result.merge(ansible_params(host))
     end
