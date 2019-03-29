@@ -33,4 +33,14 @@ class AnsibleVariablesControllerTest < ActionController::TestCase
         :session => set_session_user
     assert_response :success
   end
+
+  test 'should create ansible variable' do
+    params = { :ansible_variable => { :key => 'great name', :ansible_role_id => FactoryBot.create(:ansible_role).id } }
+    assert_difference('AnsibleVariable.count', 1) do
+      post :create,
+           :params => params,
+           :session => set_session_user
+    end
+    assert_redirected_to ansible_variables_url
+  end
 end

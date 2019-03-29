@@ -18,6 +18,19 @@ class AnsibleVariablesController < ::LookupKeysController
                                   :per_page => params[:per_page])
   end
 
+  def new
+    @ansible_variable = AnsibleVariable.new
+  end
+
+  def create
+    @ansible_variable = AnsibleVariable.new(ansible_variable_params.merge(:imported => false))
+    if @ansible_variable.save
+      process_success
+    else
+      process_error
+    end
+  end
+
   def import
     import_roles = @importer_roles.import_role_names
     import_roles[:new_roles] = import_roles[:new]

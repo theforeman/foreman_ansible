@@ -45,6 +45,12 @@ Foreman::Plugin.register :foreman_ansible do
                  :'api/v2/ansible_variables' => [:destroy, :obsolete]
                },
                :resource_type => 'AnsibleVariable'
+    permission :create_ansible_variables,
+               {
+                 :ansible_variables => [:new, :create],
+                 :'api/v2/ansible_variables' => [:create]
+               },
+               :resource_type => 'AnsibleVariable'
     permission :import_ansible_variables,
                {
                  :ansible_variables => [:import, :confirm_import],

@@ -47,4 +47,10 @@ class AnsibleVariablesImporterTest < ActiveSupport::TestCase
     assert_empty changes['update']
     assert_equal 'new_variable', changes['new'].first.key
   end
+
+  test 'should ignore custom variables' do
+    FactoryBot.create(:ansible_variable, :imported => false)
+    changes = @importer.import_variables({}, [])
+    assert_empty changes['obsolete']
+  end
 end

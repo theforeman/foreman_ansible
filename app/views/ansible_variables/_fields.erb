@@ -1,10 +1,11 @@
 <div id='<%= f.object.to_param %>' class='tab-pane fields'>
   <fieldset>
-    <h2><%= _("Ansible Variable Details") %></h2>
-    <%= text_f f, :key, :disabled => true, :size => "col-md-8" %>
-    <%= f.hidden_field :key %>
+    <% is_imported = f.object.new_record? ? false : f.object.imported %>
+    <h2><%= is_imported ? _("Ansible Variable Details (Imported)") : _("Ansible Variable Details")%></h2>
+    <%= text_f f, :key, :disabled => f.object.persisted?, :size => "col-md-8" %>
     <%= textarea_f f, :description, :rows => :auto, :size => "col-md-8", :class => "no-stretch" %>
-    <%= select_f f, :ansible_role_id, [f.object.ansible_role], :id, :to_label, {}, :label => _("Ansible Role"), :disabled => true %>
+    <%= ansible_role_select f, f.object.persisted? %>
+
   </fieldset>
   <fieldset>
     <h2><%= _("Default Behavior") %></h2>

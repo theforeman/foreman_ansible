@@ -11,7 +11,8 @@ module Foreman
         class_methods do
           def ansible_variable_params_filter
             Foreman::ParameterFilter.new(::AnsibleVariable).tap do |filter|
-              filter.permit :ansible_roles => [], :ansible_role_ids => [],
+              filter.permit :imported, :ansible_role_id,
+                            :ansible_roles => [], :ansible_role_ids => [],
                             :ansible_role_names => [],
                             :param_classes => [], :param_classes_ids => [],
                             :param_classes_names => []

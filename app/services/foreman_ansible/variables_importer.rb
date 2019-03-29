@@ -51,7 +51,8 @@ module ForemanAnsible
         )
         if variable.new_record?
           variable.assign_attributes(:default_value => variable_default,
-                                     :key_type => infer_key_type(variable_default))
+                                     :key_type => infer_key_type(variable_default),
+                                     :imported => true)
         end
         variable.ansible_role = role
         variable.valid? ? variable : nil
@@ -62,7 +63,7 @@ module ForemanAnsible
       changes = {}.with_indifferent_access
       persisted, changes[:new] = imported.partition { |role| role.id.present? }
       changes[:update], _old = persisted.partition(&:changed?)
-      changes[:obsolete] = AnsibleVariable.where.not(:id => persisted.pluck(:id))
+      changes[:obsolete] = AnsibleVariable.where.not(:id => persisted.pluck(:id), :imported => false)
       changes
     end
 
