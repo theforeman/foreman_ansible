@@ -38,11 +38,5 @@ module ForemanAnsible
     def roles_attrs(roles)
       roles.map { |item| { :id => item.id, :name => item.name } }
     end
-
-    def variable_imported_field(f, attr, options)
-      field(f, attr, options) do
-        checked_icon(options[:checked]) || ''
-      end
-    end
   end
 end

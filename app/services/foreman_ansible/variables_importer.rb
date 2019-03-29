@@ -51,7 +51,8 @@ module ForemanAnsible
         )
         if variable.new_record?
           variable.assign_attributes(:default_value => variable_default,
-                                     :key_type => infer_key_type(variable_default))
+                                     :key_type => infer_key_type(variable_default),
+                                     :imported => true)
         end
         variable.ansible_role = role
         variable.valid? ? variable : nil

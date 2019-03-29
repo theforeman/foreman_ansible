@@ -23,7 +23,7 @@ class AnsibleVariablesController < ::LookupKeysController
   end
 
   def create
-    @ansible_variable = AnsibleVariable.new(ansible_variable_params)
+    @ansible_variable = AnsibleVariable.new(ansible_variable_params.merge(:imported => false))
     if @ansible_variable.save
       process_success
     else
