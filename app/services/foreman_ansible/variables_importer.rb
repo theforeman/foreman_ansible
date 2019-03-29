@@ -6,6 +6,17 @@ module ForemanAnsible
   class VariablesImporter
     include ::ForemanAnsible::ProxyAPI
 
+    VARIABLE_TYPES = {
+      'TrueClass' => 'boolean',
+      'FalseClass' => 'boolean',
+      'Integer' => 'integer',
+      'Fixnum' => 'integer',
+      'Float' => 'real',
+      'Array' => 'array',
+      'Hash' => 'hash',
+      'String' => 'string'
+    }.freeze
+
     def initialize(proxy = nil)
       @ansible_proxy = proxy
     end
@@ -34,11 +45,14 @@ module ForemanAnsible
     end
 
     def initialize_variables(variables, role)
-      variables.map do |variable|
+      variables.map do |variable_name, variable_default|
         variable = AnsibleVariable.find_or_initialize_by(
-          :key => variable
-          # :key_type, :default_value, :required
+          :key => variable_name
         )
+        if variable.new_record?
+          variable.assign_attributes(:default_value => variable_default,
+                                     :key_type => infer_key_type(variable_default))
+        end
         variable.ansible_role = role
         variable.valid? ? variable : nil
       end
@@ -46,45 +60,48 @@ module ForemanAnsible
 
     def detect_changes(imported)
       changes = {}.with_indifferent_access
-      old, changes[:new] = imported.partition { |role| role.id.present? }
-      changes[:obsolete] = AnsibleVariable.where.not(:id => old.map(&:id))
+      persisted, changes[:new] = imported.partition { |role| role.id.present? }
+      changes[:update], _old = persisted.partition(&:changed?)
+      changes[:obsolete] = AnsibleVariable.where.not(:id => persisted.pluck(:id))
       changes
     end
 
-    def finish_import(new, obsolete)
-      results = { :added => [], :obsolete => [] }
+    def finish_import(new, obsolete, update)
+      results = { :added => [], :obsolete => [], :updated => [] }
       results[:added] = create_new_variables(new) if new.present?
       results[:obsolete] = delete_old_variables(obsolete) if obsolete.present?
+      results[:updated] = update_variables(update) if update.present?
       results
     end
 
-    def create_new_variables(new)
-      added = []
-      new.each do |role, variables|
-        variables.each_value do |variable_properties|
-          variable = AnsibleVariable.new(
-            JSON.parse(variable_properties)['ansible_variable']
-          )
-          variable.ansible_role = ::AnsibleRole.find_by(:name => role)
-          variable.save
-          added << variable.key
-        end
+    def create_new_variables(variables)
+      iterate_over_variables(variables) do |role, memo, attrs|
+        variable = AnsibleVariable.new(
+          JSON.parse(attrs)['ansible_variable']
+        )
+        variable.ansible_role = ::AnsibleRole.find_by(:name => role)
+        variable.save
+        memo << variable
       end
-      added
     end
 
-    def delete_old_variables(old)
-      removed = []
-      old.each_value do |variables|
-        variables.each_value do |variable|
-          variable = AnsibleVariable.find(
-            JSON.parse(variable)['ansible_variable']['id']
-          )
-          removed << variable.key
-          variable.destroy
-        end
+    def update_variables(variables)
+      iterate_over_variables(variables) do |_role, memo, attrs|
+        attributes = JSON.parse(attrs)['ansible_variable']
+        var = AnsibleVariable.find attributes['id']
+        var.update(attributes)
+        memo << var
       end
-      removed
+    end
+
+    def delete_old_variables(variables)
+      iterate_over_variables(variables) do |_role, memo, attrs|
+        variable = AnsibleVariable.find(
+          JSON.parse(attrs)['ansible_variable']['id']
+        )
+        memo << variable.key
+        variable.destroy
+      end
     end
 
     private
@@ -95,6 +112,19 @@ module ForemanAnsible
 
     def remote_variables
       proxy_api.all_variables
+    end
+
+    def infer_key_type(value)
+      VARIABLE_TYPES[value.class.to_s] || 'string'
+    end
+
+    def iterate_over_variables(variables)
+      variables.reduce([]) do |memo, (role, vars)|
+        vars.map do |_key, attrs|
+          yield role, memo, attrs if block_given?
+          memo
+        end
+      end
     end
   end
 end
