@@ -12,7 +12,7 @@
       <th class='col-md-6'><%= sort :name, :as => s_('Variable|Name') %></th>
       <th class='col-md-2'><%= sort :ansible_role, :as => s_('Variable|Role') %></th>
       <th class='col-md-1'><%= _('Type') %></th>
-      <th class='col-md-1'><%= _('Imported?') %></th>
+      <th class='col-md-1'><%= sort :imported, :as => _('Imported?') %></th>
       <th class='col-md-2'><%= _('Actions') %></th>
     </tr>
   </thead>

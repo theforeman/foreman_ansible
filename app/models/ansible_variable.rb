@@ -5,6 +5,7 @@ class AnsibleVariable < LookupKey
   belongs_to :ansible_role, :inverse_of => :ansible_variables
   validates :ansible_role_id, :presence => true
   scoped_search :on => :key, :aliases => [:name], :complete_value => true
+  scoped_search :on => :imported, :complete_value => { :true => true, :false => false }
   scoped_search :relation => :ansible_role, :on => :name,
                 :complete_value => true, :rename => :ansible_role
 
