@@ -55,7 +55,7 @@ module ForemanAnsibleCore
 
       def handle_host_event(hostname, event)
         log_event("for host: #{hostname.inspect}", event)
-        publish_data_for(hostname, event['stdout'], 'stdout') if event['stdout']
+        publish_data_for(hostname, event['stdout'] + "\n", 'stdout') if event['stdout']
         case event['event']
         when 'runner_on_unreachable'
           publish_exit_status_for(hostname, 1)
@@ -73,7 +73,7 @@ module ForemanAnsibleCore
             publish_data_for(host, [header, line].join("\n"), 'stdout')
           end
         else
-          broadcast_data(event['stdout'], 'stdout')
+          broadcast_data(event['stdout'] + "\n", 'stdout')
         end
       end
 
