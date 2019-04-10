@@ -20,7 +20,7 @@ DESC
             ['lib/foreman_ansible_core.rb', 'bin/json_inventory.sh']
 
   s.add_development_dependency 'rubocop', '~> 0.52'
-  s.add_dependency 'foreman-tasks-core', '~> 0.1'
+  s.add_dependency 'foreman-tasks-core', '~> 0.3.2'
   s.add_dependency 'foreman_remote_execution_core', '~> 1.1'
   s.add_dependency 'net-ssh'
 end
