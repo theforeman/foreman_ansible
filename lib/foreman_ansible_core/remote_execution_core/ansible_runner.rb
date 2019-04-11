@@ -7,12 +7,13 @@ module ForemanAnsibleCore
       DEFAULT_REFRESH_INTERVAL = 1
       CONNECTION_PROMPT = 'Are you sure you want to continue connecting (yes/no)? '
 
-      def initialize(options)
-        super(options)
-        @playbook_runner = ForemanAnsibleCore::PlaybookRunner.new(
+      def initialize(options, suspended_action:)
+        super(options, :suspended_action => suspended_action)
+        @playbook_runner = ForemanAnsibleCore::Runner::Playbook.new(
           options['ansible_inventory'],
           options['script'],
-          options
+          options,
+          :suspended_action => suspended_action
         )
       end
 

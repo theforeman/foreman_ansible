@@ -25,12 +25,17 @@ if defined? ForemanRemoteExecution
             ).to_hash.to_json,
             :remote_execution_command => ansible_command?(
               template_invocation.template
-            )
+            ),
+            :name => host.name
           )
         end
 
         def supports_effective_user?
           true
+        end
+
+        def proxy_operation_name
+          Setting::Ansible[:ansible_implementation]
         end
 
         private

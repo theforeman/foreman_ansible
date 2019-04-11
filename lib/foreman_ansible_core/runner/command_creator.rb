@@ -34,7 +34,7 @@ module ForemanAnsibleCore
     end
 
     def json_inventory_script
-      File.expand_path('../../bin/json_inventory.sh', File.dirname(__FILE__))
+      File.expand_path('../../../bin/json_inventory.sh', File.dirname(__FILE__))
     end
 
     def setup_verbosity
