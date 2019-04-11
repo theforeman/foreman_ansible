@@ -4,7 +4,7 @@ module ForemanAnsibleCore
       include ForemanTasksCore::Runner::Command
 
       def initialize(input, suspended_action:)
-        super input, suspended_action: suspended_action
+        super input, :suspended_action => suspended_action
         @inventory = rebuild_inventory(input)
         @playbook = input.values.first[:input][:action_input][:script]
         @root = working_dir
@@ -18,20 +18,20 @@ module ForemanAnsibleCore
       end
 
       def refresh
-        if super
-          @counter ||= 1
-          @uuid ||= File.basename(Dir["#{@root}/artifacts/*"].first)
-          job_event_dir = File.join(@root, 'artifacts', @uuid, 'job_events')
-          loop do
-            files_with_nums = Dir["#{job_event_dir}/*.json"].map do |file|
-              num = File.basename(file)[/\A\d+/].to_i unless file.include?('partial')
-              [file, num]
-            end.select { |(_, num)| num && num >= @counter }.sort_by(&:last)
-            break if files_with_nums.empty?
-            logger.debug("[foreman_ansible] - processing event files: #{files_with_nums.map(&:first).inspect}}")
-            files_with_nums.map(&:first).each { |event_file| handle_event_file(event_file) }
-            @counter = files_with_nums.last.last + 1
+        return unless super
+        @counter ||= 1
+        @uuid ||= File.basename(Dir["#{@root}/artifacts/*"].first)
+        job_event_dir = File.join(@root, 'artifacts', @uuid, 'job_events')
+        loop do
+          files = Dir["#{job_event_dir}/*.json"].map do |file|
+            num = File.basename(file)[/\A\d+/].to_i unless file.include?('partial')
+            [file, num]
           end
+          files_with_nums = files.select { |(_, num)| num && num >= @counter }.sort_by(&:last)
+          break if files_with_nums.empty?
+          logger.debug("[foreman_ansible] - processing event files: #{files_with_nums.map(&:first).inspect}}")
+          files_with_nums.map(&:first).each { |event_file| handle_event_file(event_file) }
+          @counter = files_with_nums.last.last + 1
         end
       end
 
@@ -78,15 +78,15 @@ module ForemanAnsibleCore
       end
 
       def write_inventory
-        inventory_script = <<~EOF
+        inventory_script = <<~INVENTORY_SCRIPT
           #!/bin/sh
           cat <<-EOS
           #{JSON.dump(@inventory)}
           EOS
-        EOF
+        INVENTORY_SCRIPT
         path = File.join(@root, 'inventory', 'hosts')
         File.write(path, inventory_script)
-        File.chmod(0755, path)
+        File.chmod(0o0755, path)
       end
 
       def write_playbook
@@ -100,7 +100,7 @@ module ForemanAnsibleCore
       end
 
       def prepare_directory_structure
-        inner = %w(inventory project).map { |part| File.join(@root, part) }
+        inner = %w[inventory project].map { |part| File.join(@root, part) }
         ([@root] + inner).each do |path|
           FileUtils.mkdir_p path
         end
@@ -121,9 +121,9 @@ module ForemanAnsibleCore
         inventories = action_inputs.map { |hash| JSON.parse(hash[:ansible_inventory]) }
         host_vars = inventories.map { |i| i['_meta']['hostvars'] }.reduce(&:merge)
 
-        { 'all' => { 'hosts' => hostnames,
-          'vars' => inventories.first['all']['vars'] },
-          '_meta' => { 'hostvars' => host_vars } }
+        { '_meta' => { 'hostvars' => host_vars },
+          'all' => { 'hosts' => hostnames,
+                     'vars' => inventories.first['all']['vars'] } }
       end
 
       def working_dir
@@ -137,6 +137,5 @@ module ForemanAnsibleCore
         end
       end
     end
-
   end
 end

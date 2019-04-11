@@ -9,14 +9,14 @@ module ForemanAnsibleCore
           }
           ::ForemanAnsibleCore::RemoteExecutionCore::AnsibleRunner.new(
             input.merge(additional_options),
-            suspended_action: suspended_action
+            :suspended_action => suspended_action
           )
         end
       end
 
       def child_launcher(parent)
         ForemanTasksCore::TaskLauncher::Single.new(world, callback, :parent => parent,
-          :action_class_override => PlaybookRunnerAction)
+                                                                    :action_class_override => PlaybookRunnerAction)
       end
     end
   end

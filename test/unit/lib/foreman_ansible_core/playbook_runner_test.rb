@@ -10,7 +10,7 @@ class PlaybookRunnerTest < ActiveSupport::TestCase
       ForemanAnsibleCore::Runner::Playbook.any_instance.stubs(:unknown_hosts).
         returns([])
       File.expects(:exist?).with(Dir.home).returns(true)
-      runner = ForemanAnsibleCore::Runner::Playbook.new(nil, nil, suspended_action: nil)
+      runner = ForemanAnsibleCore::Runner::Playbook.new(nil, nil, :suspended_action => nil)
       assert '/etc/ansible', runner.instance_variable_get('@ansible_dir')
     end
   end
@@ -24,7 +24,7 @@ class PlaybookRunnerTest < ActiveSupport::TestCase
     test 'creates temp one if not provided' do
       Dir.expects(:mktmpdir)
       File.expects(:exist?).with(Dir.home).returns(true)
-      ForemanAnsibleCore::Runner::Playbook.new(nil, nil, suspended_action: nil)
+      ForemanAnsibleCore::Runner::Playbook.new(nil, nil, :suspended_action => nil)
     end
 
     test 'reads it when provided' do
@@ -32,7 +32,7 @@ class PlaybookRunnerTest < ActiveSupport::TestCase
       ForemanAnsibleCore.expects(:settings).returns(settings)
       File.expects(:exist?).with(settings[:ansible_dir]).returns(true)
       Dir.expects(:mktmpdir).never
-      runner = ForemanAnsibleCore::Runner::Playbook.new(nil, nil, suspended_action: nil)
+      runner = ForemanAnsibleCore::Runner::Playbook.new(nil, nil, :suspended_action => nil)
       assert '/foo', runner.instance_variable_get('@working_dir')
     end
   end
@@ -51,7 +51,7 @@ class PlaybookRunnerTest < ActiveSupport::TestCase
         with('foreman.example.com').returns(['somekey'])
       ForemanAnsibleCore::Runner::Playbook.any_instance.
         expects(:add_to_known_hosts).never
-      ForemanAnsibleCore::Runner::Playbook.new(@inventory, nil, suspended_action: nil)
+      ForemanAnsibleCore::Runner::Playbook.new(@inventory, nil, :suspended_action => nil)
     end
 
     test 'adds unknown hosts to known_hosts' do
@@ -59,7 +59,7 @@ class PlaybookRunnerTest < ActiveSupport::TestCase
         with('foreman.example.com').returns([])
       ForemanAnsibleCore::Runner::Playbook.any_instance.
         expects(:add_to_known_hosts).with('foreman.example.com')
-      ForemanAnsibleCore::Runner::Playbook.new(@inventory, nil, suspended_action: nil)
+      ForemanAnsibleCore::Runner::Playbook.new(@inventory, nil, :suspended_action => nil)
     end
 
     test 'logs error when it cannot add to known_hosts' do
@@ -67,7 +67,7 @@ class PlaybookRunnerTest < ActiveSupport::TestCase
         with('foreman.example.com').returns([])
       Net::SSH::Transport::Session.expects(:new).with('foreman.example.com').
         raises(Net::Error)
-      ForemanAnsibleCore::Runner::Playbook.new(@inventory, nil, suspended_action: nil)
+      ForemanAnsibleCore::Runner::Playbook.new(@inventory, nil, :suspended_action => nil)
       assert_match(
         /ERROR.*Failed to save host key for foreman.example.com: Net::Error/,
         @output.string

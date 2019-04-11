@@ -98,7 +98,7 @@ class Setting
               N_('Implementation for running Ansible'),
               nil,
               :collection => lambda do
-                Hash[%w(ansible-playbook ansible-runner).map { |x| [x, x] }]
+                Hash[%w[ansible-playbook ansible-runner].map { |x| [x, x] }]
               end
             )
           ].compact.each do |s|
