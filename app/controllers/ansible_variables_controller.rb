@@ -35,8 +35,13 @@ class AnsibleVariablesController < ::LookupKeysController
     import_roles = @importer_roles.import_role_names
     import_roles[:new_roles] = import_roles[:new]
     import_variables = @importer.import_variable_names(import_roles[:new_roles])
-    render 'ansible_variables/import',
-           :locals => { :changed => import_variables }
+    if import_variables.values.all?(&:empty?)
+      success(_('No changes in variables detected on %s.') % @proxy.name)
+      redirect_to ansible_variables_path
+    else
+      render 'ansible_variables/import',
+             :locals => { :changed => import_variables }
+    end
   end
 
   def confirm_import

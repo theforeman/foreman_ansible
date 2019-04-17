@@ -5,6 +5,7 @@ require 'test_plugin_helper'
 class AnsibleVariablesControllerTest < ActionController::TestCase
   setup do
     @model = FactoryBot.create(:ansible_variable)
+    @proxy = FactoryBot.create(:smart_proxy, :with_ansible)
   end
 
   basic_index_test
@@ -27,9 +28,23 @@ class AnsibleVariablesControllerTest < ActionController::TestCase
     ForemanAnsible::UiRolesImporter.any_instance.
       expects(:import_role_names).returns({})
 
-    proxy = FactoryBot.create(:smart_proxy, :with_ansible)
     get :import,
-        :params => { :proxy => proxy.id },
+        :params => { :proxy => @proxy.id },
+        :session => set_session_user
+    assert_redirected_to ansible_variables_url
+  end
+
+  test 'should show import page' do
+    ForemanAnsible::UiRolesImporter.any_instance.
+      expects(:import_role_names).returns({})
+
+    ForemanAnsible::VariablesImporter.any_instance.
+      expects(:import_variable_names).returns({
+        :obsolete => [@model]
+      })
+
+    get :import,
+        :params => { :proxy => @proxy.id },
         :session => set_session_user
     assert_response :success
   end
