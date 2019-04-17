@@ -93,7 +93,6 @@ module ForemanAnsible
 
     def remote_execution_options(host)
       params = {
-        'ansible_become_user' => @template_invocation.effective_user,
         'ansible_user' => host_setting(host, 'remote_execution_ssh_user'),
         'ansible_ssh_pass' => rex_ssh_password(host),
         'ansible_sudo_pass' => rex_sudo_password(host),
@@ -101,7 +100,10 @@ module ForemanAnsible
         'ansible_port' => host_setting(host, 'remote_execution_ssh_port'),
         'ansible_host' => AnsibleProvider.find_ip_or_hostname(host)
       }
-      params['ansible_become'] = true if params['ansible_become_user'].present?
+      if @template_invocation.effective_user.present?
+        params['ansible_become_user'] = @template_invocation.effective_user
+        params['ansible_become'] = true
+      end
       # Backward compatibility for Ansible 1.x
       params['ansible_ssh_port'] = params['ansible_port']
       params['ansible_ssh_user'] = params['ansible_user']
