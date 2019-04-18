@@ -2,7 +2,7 @@
 
 # rubocop:disable BlockLength
 Foreman::Plugin.register :foreman_ansible do
-  requires_foreman '>= 1.21'
+  requires_foreman '>= 1.22'
 
   security_block :foreman_ansible do
     permission :play_roles_on_host,
