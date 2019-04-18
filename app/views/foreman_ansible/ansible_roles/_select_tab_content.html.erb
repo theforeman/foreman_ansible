@@ -1,7 +1,7 @@
 <%= webpacked_plugins_js_for :foreman_ansible %>
 <%= webpacked_plugins_css_for :foreman_ansible %>
 
-<div class='tab-pane' id='ansible_roles'>
+<div class='tab-pane react_mounted' id='ansible_roles'>
   <div id='ansible_roles_switcher'></div>
   <% roles = f.object.is_a?(Hostgroup) ? roles_attrs(f.object.inherited_and_own_ansible_roles) : roles_attrs(f.object.all_ansible_roles) %>
   <% class_name = f.object.is_a?(Hostgroup) ? 'Hostgroup' : 'Host' %>
