@@ -6,3 +6,4 @@ file_filter = locale/<lang>/foreman_ansible.edit.po
 source_file = locale/foreman_ansible.pot
 source_lang = en
 type = PO
+
