@@ -2,14 +2,22 @@
 <%= webpacked_plugins_css_for :foreman_ansible %>
 
 <div class='tab-pane' id='ansible_roles'>
-  <div id='ansible_roles_switcher'></div>
   <% roles = f.object.is_a?(Hostgroup) ? roles_attrs(f.object.inherited_and_own_ansible_roles) : roles_attrs(f.object.all_ansible_roles) %>
   <% class_name = f.object.is_a?(Hostgroup) ? 'Hostgroup' : 'Host' %>
-  <%= mount_react_component('AnsibleRolesSwitcher', '#ansible_roles_switcher', { :initialAssignedRoles => roles,
-                                                                                 :inheritedRoleIds => f.object.inherited_ansible_roles.map(&:id),
-                                                                                 :availableRolesUrl => ui_ansible_roles_path,
-                                                                                 :resourceId => f.object.id,
-                                                                                 :resourceName => class_name,
-                                                                                 :canView => User.current.can?(:view_ansible_roles)
-                                                                                }.to_json) %>
+  <%= content_tag(:div, '',
+                  :id => 'ansible_roles_switcher',
+                  'data-roles' => {
+                    :initialAssignedRoles => roles,
+                    :inheritedRoleIds => f.object.inherited_ansible_roles.map(&:id),
+                    :availableRolesUrl => ui_ansible_roles_path,
+                    :resourceId => f.object.id,
+                    :resourceName => class_name,
+                    :canView => User.current.can?(:view_ansible_roles)
+                  }.to_json
+  ) %>
+  <% unless request.xhr? %>
+    <script type="text/javascript">
+      tfm.initAnsibleRoleSwitcher();
+    </script>
+  <% end %>
 </div>
