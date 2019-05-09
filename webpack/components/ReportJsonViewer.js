@@ -1,6 +1,5 @@
 import React from 'react';
 import JSONTree from 'react-json-tree';
-import PropTypes from 'prop-types';
 
 const theme = {
   scheme: 'foreman',
@@ -8,14 +7,11 @@ const theme = {
   base00: 'rgba(0, 0, 0, 0)',
 };
 
-const ReportJsonViewer = ({ data }) => (
-  <div className="report-json-viewer">
-    <JSONTree data={this.props.data} hideRoot theme={theme} />
-  </div>
-);
-
-ReportJsonViewer.propTypes = {
-  data: PropTypes.object.isRequired,
-};
-
+class ReportJsonViewer extends React.Component {
+  render() {
+    return <div className="report-json-viewer">
+      <JSONTree data={this.props.data} hideRoot theme={theme} />
+    </div>;
+  }
+}
 export default ReportJsonViewer;
