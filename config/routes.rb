@@ -58,7 +58,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :ansible_variables, :except => [:show, :new, :create] do
+    resources :ansible_variables, :except => [:show] do
       resources :lookup_values, :only => [:index, :create, :update, :destroy]
       collection do
         get :import
