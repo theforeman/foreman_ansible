@@ -11,7 +11,7 @@ model: JobTemplate
 
 ---
 - hosts: all
-  tasks:
+  pre_tasks:
     - name: Display all parameters known for the Foreman host
       debug:
         var: foreman_params
