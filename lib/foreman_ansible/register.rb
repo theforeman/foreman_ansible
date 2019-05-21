@@ -74,7 +74,10 @@ Foreman::Plugin.register :foreman_ansible do
   role 'Ansible Roles Manager',
        [:play_roles_on_host, :play_roles_on_hostgroup,
         :view_ansible_roles, :destroy_ansible_roles,
-        :import_ansible_roles]
+        :import_ansible_roles,
+        :view_ansible_variables,
+        :create_ansible_variables, :import_ansible_variables,
+        :edit_ansible_variables, :destroy_ansible_variables]
 
   role 'Ansible Tower Inventory Reader',
        [:view_hosts, :view_hostgroups, :view_facts],
