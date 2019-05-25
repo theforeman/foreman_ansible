@@ -5,6 +5,6 @@ FactoryBot.define do
     sequence(:key) { |n| "ansible_variable_#{n}" }
     sequence(:default_value) { |n| "default_value_#{n}" }
     ansible_role
-    imported true
+    imported { true }
   end
 end
