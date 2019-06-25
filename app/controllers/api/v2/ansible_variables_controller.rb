@@ -23,6 +23,7 @@ module Api
 
       api :GET, '/ansible_variables', N_('List Ansible variables')
       param_group :search_and_pagination, ::Api::V2::BaseController
+      add_scoped_search_description_for(AnsibleVariable)
       def index
         @ansible_variables = resource_scope_for_index
       end
