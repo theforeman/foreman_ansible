@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foreman_ansible 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-30 20:53+0200\n"
-"PO-Revision-Date: 2019-04-30 20:53+0200\n"
+"POT-Creation-Date: 2019-06-27 17:00+0200\n"
+"PO-Revision-Date: 2019-06-27 17:00+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -48,6 +48,26 @@ msgid ""
 "nsible feature enabled."
 msgstr ""
 
+#: ../app/controllers/api/v2/ansible_inventories_controller.rb:7
+#: ../app/controllers/api/v2/ansible_inventories_controller.rb:12
+msgid "Show Ansible inventory for hosts"
+msgstr ""
+
+#: ../app/controllers/api/v2/ansible_inventories_controller.rb:8
+#: ../app/controllers/api/v2/ansible_inventories_controller.rb:13
+msgid "IDs of hosts included in inventory"
+msgstr ""
+
+#: ../app/controllers/api/v2/ansible_inventories_controller.rb:17
+#: ../app/controllers/api/v2/ansible_inventories_controller.rb:22
+msgid "Show Ansible inventory for hostgroups"
+msgstr ""
+
+#: ../app/controllers/api/v2/ansible_inventories_controller.rb:18
+#: ../app/controllers/api/v2/ansible_inventories_controller.rb:23
+msgid "IDs of hostgroups included in inventory"
+msgstr ""
+
 #: ../app/controllers/api/v2/ansible_override_values_controller.rb:17
 msgid "Override match"
 msgstr ""
@@ -72,35 +92,39 @@ msgstr ""
 msgid "List Ansible roles"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_roles_controller.rb:28
+#: ../app/controllers/api/v2/ansible_roles_controller.rb:29
 msgid "Deletes Ansible role"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_roles_controller.rb:34
+#: ../app/controllers/api/v2/ansible_roles_controller.rb:35
 msgid "Import Ansible roles"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_roles_controller.rb:35
-#: ../app/controllers/api/v2/ansible_roles_controller.rb:42
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:73
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:83
+#: ../app/controllers/api/v2/ansible_roles_controller.rb:36
+#: ../app/controllers/api/v2/ansible_roles_controller.rb:43
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:75
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:85
 msgid "Smart Proxy to import from"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_roles_controller.rb:36
+#: ../app/controllers/api/v2/ansible_roles_controller.rb:37
 msgid "Ansible role names to import"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_roles_controller.rb:41
+#: ../app/controllers/api/v2/ansible_roles_controller.rb:42
 msgid "Obsolete Ansible roles"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_roles_controller.rb:48
+#: ../app/controllers/api/v2/ansible_roles_controller.rb:49
 msgid "Fetch Ansible roles available to be imported"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_roles_controller.rb:49
+#: ../app/controllers/api/v2/ansible_roles_controller.rb:50
 msgid "Smart Proxy to fetch from"
+msgstr ""
+
+#: ../app/controllers/api/v2/ansible_roles_controller.rb:73
+msgid "Smart proxy id is required"
 msgstr ""
 
 #: ../app/controllers/api/v2/ansible_variables_controller.rb:20
@@ -111,73 +135,77 @@ msgstr ""
 msgid "List Ansible variables"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:30
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:31
 msgid "Deletes Ansible variable"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:39
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:40
 msgid "Name of variable"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:40
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:41
 msgid "Role ID"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:41
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:42
 msgid "Default value of variable"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:42
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:43
 msgid "When enabled the parameter is hidden in the UI"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:43
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:44
 msgid "The order in which values are resolved"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:44
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:45
 msgid "Description of variable"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:45
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:46
 msgid "Types of validation values"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:46
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:47
 msgid "Used to enforce certain values for the parameter values"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:47
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:48
 msgid "Types of variable values"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:48
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:49
 msgid "Merge all matching values (only array/hash type)"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:49
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:50
 msgid "Include default value when merging all matching values"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:50
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:51
 msgid "Remove duplicate values (only array type)"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:54
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:52
+msgid "Whether to override variable or not"
+msgstr ""
+
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:56
 msgid "Create Ansible variable"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:61
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:63
 msgid "Updates Ansible variable"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:71
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:73
 msgid ""
 "Import Ansible variables. This will only import variables for already existing"
 " roles, it will not import any new roles"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:81
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:83
 msgid ""
 "Obsolete Ansible variables. This will only obsolete variables for already exis"
 "ting roles, it will not delete any old roles"
@@ -396,7 +424,7 @@ msgstr ""
 msgid "Implementation for running Ansible"
 msgstr ""
 
-#: ../app/models/setting/ansible.rb:104 ../lib/foreman_ansible/register.rb:92
+#: ../app/models/setting/ansible.rb:104 ../lib/foreman_ansible/register.rb:97
 msgid "Ansible"
 msgstr ""
 
@@ -528,7 +556,7 @@ msgid "Actions"
 msgstr ""
 
 #: ../app/views/ansible_roles/index.html.erb:27
-#: ../lib/foreman_ansible/register.rb:98
+#: ../lib/foreman_ansible/register.rb:103
 msgid "Variables"
 msgstr ""
 
@@ -736,7 +764,7 @@ msgstr ""
 msgid "Insights remediation on %{hosts_count} host(s) has finished successfully"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:94
+#: ../lib/foreman_ansible/register.rb:99
 msgid "Roles"
 msgstr ""
 

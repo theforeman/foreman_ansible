@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 3.0.0\n"
+"Project-Id-Version: foreman_ansible 3.0.2\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2014-08-20 08:54+0100\n"
 "Last-Translator: Foreman Team <foreman-dev@googlegroups.com>\n"
@@ -207,7 +207,13 @@ msgstr ""
 msgid "IDs of associated ansible roles"
 msgstr ""
 
+msgid "IDs of hostgroups included in inventory"
+msgstr ""
+
 msgid "IDs of hostgroups to play roles on"
+msgstr ""
+
+msgid "IDs of hosts included in inventory"
 msgstr ""
 
 msgid "IDs of hosts to play roles on"
@@ -444,6 +450,12 @@ msgstr ""
 msgid "Set the order in which values are resolved."
 msgstr ""
 
+msgid "Show Ansible inventory for hostgroups"
+msgstr ""
+
+msgid "Show Ansible inventory for hosts"
+msgstr ""
+
 msgid "Show role"
 msgstr ""
 
@@ -454,6 +466,9 @@ msgid "Smart Proxy to fetch from"
 msgstr ""
 
 msgid "Smart Proxy to import from"
+msgstr ""
+
+msgid "Smart proxy id is required"
 msgstr ""
 
 msgid "Specify Matchers"
@@ -520,6 +535,9 @@ msgid "Variable|Role"
 msgstr ""
 
 msgid "When enabled the parameter is hidden in the UI"
+msgstr ""
+
+msgid "Whether to override variable or not"
 msgstr ""
 
 msgid "WinRM cert Validation"
