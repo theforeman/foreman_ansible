@@ -33,7 +33,7 @@ module Api
       end
 
       api :PUT, '/ansible_roles/import', N_('Import Ansible roles')
-      param :proxy_id, :identifier, N_('Smart Proxy to import from')
+      param :proxy_id, :identifier, :required => true, :desc => N_('Smart Proxy to import from')
       param :role_names, Array, N_('Ansible role names to import')
       def import
         @imported = @importer.import!(role_names)
@@ -69,7 +69,10 @@ module Api
 
       # rubocop:disable DotPosition
       def find_proxy
-        return nil unless params[:proxy_id]
+        unless params[:proxy_id]
+          msg = _('Smart proxy id is required')
+          return render_error('custom_error', :status => :unprocessable_entity, :locals => { :message => msg })
+        end
         @proxy = SmartProxy.authorized(:view_smart_proxies)
                            .find(params[:proxy_id])
       end
