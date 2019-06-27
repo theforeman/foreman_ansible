@@ -58,10 +58,12 @@ Foreman::Plugin.register :foreman_ansible do
                },
                :resource_type => 'AnsibleVariable'
     permission :view_hosts,
-               { :'api/v2/hosts' => [:ansible_roles] },
+               { :'api/v2/hosts' => [:ansible_roles],
+                 :'api/v2/ansible_inventories' => [:hosts] },
                :resource_type => 'Host'
     permission :view_hostgroups,
-               { :'api/v2/hostgroups' => [:ansible_roles] },
+               { :'api/v2/hostgroups' => [:ansible_roles],
+                 :'api/v2/ansible_inventories' => [:hostgroups] },
                :resource_type => 'Hostgroup'
     permission :edit_hosts,
                { :'api/v2/hosts' => [:assign_ansible_roles] },

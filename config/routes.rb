@@ -92,6 +92,15 @@ Rails.application.routes.draw do
         end
 
         resources :ansible_override_values, :only => [:create, :destroy]
+
+        resources :ansible_inventories, :only => [] do
+          collection do
+            post :hosts
+            get :hosts
+            post :hostgroups
+            get :hostgroups
+          end
+        end
       end
     end
   end
