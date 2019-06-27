@@ -49,6 +49,7 @@ module Api
           param :merge_overrides, :bool, :desc => N_("Merge all matching values (only array/hash type)")
           param :merge_default, :bool, :desc => N_("Include default value when merging all matching values")
           param :avoid_duplicates, :bool, :desc => N_("Remove duplicate values (only array type)")
+          param :override, :bool, :desc => N_("Whether to override variable or not")
         end
       end
 
