@@ -21,6 +21,7 @@ module Api
 
       api :GET, '/ansible_roles', N_('List Ansible roles')
       param_group :search_and_pagination, ::Api::V2::BaseController
+      add_scoped_search_description_for(AnsibleRole)
       def index
         @ansible_roles = resource_scope_for_index
       end
