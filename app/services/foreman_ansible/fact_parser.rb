@@ -68,6 +68,10 @@ module ForemanAnsible
 
     def ipmi_interface; end
 
+    def boot_timestamp
+      Time.zone.now.to_i - facts['ansible_uptime_seconds'].to_i
+    end
+
     private
 
     def ansible_interfaces
