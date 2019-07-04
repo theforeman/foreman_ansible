@@ -23,6 +23,7 @@ if defined? ForemanRemoteExecution
             'ansible_inventory' => ::ForemanAnsible::InventoryCreator.new(
               [host], template_invocation
             ).to_hash.to_json,
+            :verbosity_level => Setting[:ansible_verbosity],
             :remote_execution_command => ansible_command?(
               template_invocation.template
             ),

@@ -29,10 +29,6 @@ module Actions
         rescue StandardError => e
           continuous_output.add_exception(_('Error loading data from proxy'), e)
         end
-
-        def find_options
-          { :verbosity_level => Setting[:ansible_verbosity] }
-        end
       end
     end
   end
