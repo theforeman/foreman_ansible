@@ -57,6 +57,8 @@ module ForemanAnsibleCore
         log_event("for host: #{hostname.inspect}", event)
         publish_data_for(hostname, event['stdout'] + "\n", 'stdout') if event['stdout']
         case event['event']
+        when 'runner_on_ok'
+          publish_exit_status_for(hostname, 0) if @exit_statuses[hostname].nil?
         when 'runner_on_unreachable'
           publish_exit_status_for(hostname, 1)
         when 'runner_on_failed'
