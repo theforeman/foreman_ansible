@@ -1,7 +1,7 @@
 import React from 'react';
 import { ListView } from 'patternfly-react';
 import PaginationWrapper from 'foremanReact/components/Pagination/PaginationWrapper';
-import { reject } from 'lodash';
+import { isEmpty } from 'lodash';
 import PropTypes from 'prop-types';
 
 import AnsibleRole from './AnsibleRole';
@@ -14,7 +14,29 @@ const AssignedRolesList = ({
   onRemoveRole,
   resourceName,
 }) => {
-  const directlyAssignedRoles = reject(assignedRoles, role => role.inherited);
+  const directlyAssignedRoles = assignedRoles.filter(role => !role.inherited);
+
+  const inputFields = (directlyAssignedRoles, resourceName) => {
+    let result;
+    if (isEmpty(directlyAssignedRoles)) {
+       result = <input type="hidden" name={`${resourceName}[ansible_role_ids][]`} value=""/>
+    } else {
+      result = directlyAssignedRoles.map(role => (
+        <input
+          key={role.id}
+          type="hidden"
+          name={`${resourceName}[ansible_role_ids][]`}
+          value={role.id}
+        />
+      ))
+    }
+
+    return (
+      <div>
+        { result }
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -38,16 +60,7 @@ const AssignedRolesList = ({
           />
         ))}
       </ListView>
-      <div>
-        {directlyAssignedRoles.map(role => (
-          <input
-            key={role.id}
-            type="hidden"
-            name={`${resourceName}[ansible_role_ids][]`}
-            value={role.id}
-          />
-        ))}
-      </div>
+      { inputFields(directlyAssignedRoles, resourceName) }
     </div>
   );
 };
