@@ -90,13 +90,6 @@ class Setting
               :collection => lambda do
                 Hash[%w[ansible-playbook ansible-runner].map { |x| [x, x] }]
               end
-            ),
-            set(
-              'ansible_parameterized_roles_in_enc',
-              N_('Ansible variables are parameterized under roles in ENC '\
-                 'output rather than flattened into host parameters.'),
-              false,
-              N_('Parameterized roles in ENC')
             )
           ].compact.each do |s|
             create(s.update(:category => 'Setting::Ansible'))
