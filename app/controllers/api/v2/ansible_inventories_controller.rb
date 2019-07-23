@@ -4,22 +4,22 @@ module Api
       include ::Api::Version2
 
       api :POST, '/ansible_inventories/hosts',
-      N_('Show Ansible inventory for hosts')
+          N_('Show Ansible inventory for hosts')
       param :host_ids, Array, N_('IDs of hosts included in inventory'),
             :required => true
 
       api :GET, '/ansible_inventories/hosts',
-      N_('Show Ansible inventory for hosts')
+          N_('Show Ansible inventory for hosts')
       param :host_ids, Array, N_('IDs of hosts included in inventory'),
             :required => true
 
       api :POST, '/ansible_inventories/hostgroups',
-      N_('Show Ansible inventory for hostgroups')
+          N_('Show Ansible inventory for hostgroups')
       param :hostgroup_ids, Array, N_('IDs of hostgroups included in inventory'),
             :required => true
 
       api :GET, '/ansible_inventories/hostgroups',
-      N_('Show Ansible inventory for hostgroups')
+          N_('Show Ansible inventory for hostgroups')
       param :hostgroup_ids, Array, N_('IDs of hostgroups included in inventory'),
             :required => true
 
