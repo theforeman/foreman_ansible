@@ -3,7 +3,14 @@
   "plugins": [
     "transform-class-properties",
     "transform-object-rest-spread",
-    "transform-object-assign",
-    "lodash"
-  ]
+    "transform-object-assign"
+  ],
+  "env": {
+    "test": {
+      "presets": ["@theforeman/vendor-dev/babel.preset.js"]
+    },
+    "storybook": {
+      "presets": ["@theforeman/vendor-dev/babel.preset.js"]
+    }
+  }
 }
