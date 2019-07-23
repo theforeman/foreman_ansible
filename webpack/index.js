@@ -1,10 +1,11 @@
+import $ from 'jquery';
 import componentRegistry from 'foremanReact/components/componentRegistry';
 import injectReducer from 'foremanReact/redux/reducers/registerReducer';
 import ReportJsonViewer from './components/ReportJsonViewer';
 import AnsibleRolesSwitcher from './components/AnsibleRolesSwitcher';
-import $ from 'jquery';
-
 import reducer from './reducer';
+
+const { tfm } = window;
 
 componentRegistry.register({
   name: 'ReportJsonViewer',
@@ -17,7 +18,7 @@ componentRegistry.register({
 
 injectReducer('foremanAnsible', reducer);
 
-window.tfm.initAnsibleRoleSwitcher = () => {
+tfm.initAnsibleRoleSwitcher = () => {
   $(document).on('ContentLoad', evt => {
     tfm.reactMounter.mount(
       'AnsibleRolesSwitcher',
@@ -25,4 +26,4 @@ window.tfm.initAnsibleRoleSwitcher = () => {
       $('#ansible_roles_switcher').data('roles')
     );
   });
-}
+};

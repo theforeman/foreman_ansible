@@ -1,6 +1,7 @@
 import React from 'react';
 import { ListView, Tooltip, OverlayTrigger } from 'patternfly-react';
 import classNames from 'classnames';
+import { translate as __ } from 'foremanReact/common/I18n';
 
 import AnsibleRoleActionButton from './AnsibleRoleActionButton';
 import '../AnsibleRolesSwitcher.scss';

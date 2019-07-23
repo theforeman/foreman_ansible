@@ -9,6 +9,7 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "classnames": "^2.2.5",
+    "jquery": "~2.2.4",
     "lodash": "^4.17.11",
     "patternfly": "^3.58.0",
     "patternfly-react": "^2.25.4",
@@ -48,7 +49,7 @@
   },
   "scripts": {
     "test": "node node_modules/.bin/jest webpack",
-    "lint": "./node_modules/.bin/eslint -c .eslintrc webpack/ || exit 0"
+    "lint": "eslint ./webpack"
   },
   "repository": {
     "type": "git",

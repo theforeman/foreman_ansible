@@ -16,28 +16,6 @@ const AssignedRolesList = ({
 }) => {
   const directlyAssignedRoles = assignedRoles.filter(role => !role.inherited);
 
-  const inputFields = (directlyAssignedRoles, resourceName) => {
-    let result;
-    if (isEmpty(directlyAssignedRoles)) {
-       result = <input type="hidden" name={`${resourceName}[ansible_role_ids][]`} value=""/>
-    } else {
-      result = directlyAssignedRoles.map(role => (
-        <input
-          key={role.id}
-          type="hidden"
-          name={`${resourceName}[ansible_role_ids][]`}
-          value={role.id}
-        />
-      ))
-    }
-
-    return (
-      <div>
-        { result }
-      </div>
-    );
-  }
-
   return (
     <div>
       <ListView>
@@ -60,7 +38,24 @@ const AssignedRolesList = ({
           />
         ))}
       </ListView>
-      { inputFields(directlyAssignedRoles, resourceName) }
+      <div>
+        {isEmpty(directlyAssignedRoles) ? (
+          <input
+            type="hidden"
+            name={`${resourceName}[ansible_role_ids][]`}
+            value=""
+          />
+        ) : (
+          directlyAssignedRoles.map(role => (
+            <input
+              key={role.id}
+              type="hidden"
+              name={`${resourceName}[ansible_role_ids][]`}
+              value={role.id}
+            />
+          ))
+        )}
+      </div>
     </div>
   );
 };
