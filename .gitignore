@@ -13,6 +13,6 @@ extras/*.pyc
 locale/*/*.edit.po
 locale/*/*.po.time_stamp
 locale/*/*.pox
-locale/*/LC_MESSAGES
 Gemfile.lock
 node_modules
+package-lock.json
