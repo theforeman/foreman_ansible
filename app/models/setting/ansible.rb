@@ -43,7 +43,7 @@ class Setting
             ),
             set(
               'ansible_verbosity',
-              N_('Foreman will add the this level of verbosity for '\
+              N_('Foreman will add this level of verbosity for '\
                  'additional debugging output when running Ansible playbooks.'),
               '0',
               N_('Default verbosity level'),
