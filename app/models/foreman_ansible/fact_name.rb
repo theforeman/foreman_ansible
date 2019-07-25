@@ -6,7 +6,11 @@ module ForemanAnsible
   # in the fact values table (/fact_values)
   class FactName < ::FactName
     def origin
-      'foreman_ansible/Ansible'
+      'Ansible'
+    end
+
+    def icon_path
+      'foreman_ansible/Ansible.png'
     end
   end
 end
