@@ -7,4 +7,3 @@ Deface::Override.new(
   :insert_top => 'div.tab-pane#params',
   :partial => 'foreman_ansible/ansible_variables/host_variables'
 )
-

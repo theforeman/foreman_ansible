@@ -38,4 +38,3 @@ module ForemanAnsible
     end
   end
 end
-
