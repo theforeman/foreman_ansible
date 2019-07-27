@@ -3,7 +3,6 @@
 module ForemanAnsible
   # Helper methods for host and hostgroup varibales
   module AnsibleVariablesHelper
-
     def ansible_lookup_key_with_diagnostic(obj, values_hash, lookup_key, lookup_value)
       value, matcher = ansible_value_matcher(obj, values_hash, lookup_key)
       inherited_value = LookupKey.format_value_before_type_cast(value, lookup_key.key_type)
@@ -20,7 +19,8 @@ module ForemanAnsible
         :inherited_value => inherited_value,
         :lookup_key => lookup_key,
         :hidden_value? => lookup_key.hidden_value?,
-        :lookup_key_type => lookup_key.key_type)
+        :lookup_key_type => lookup_key.key_type
+      )
     end
 
     def ansible_value_matcher(obj, values_hash, lookup_key)
@@ -38,3 +38,4 @@ module ForemanAnsible
     end
   end
 end
+
