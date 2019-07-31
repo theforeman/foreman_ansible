@@ -84,11 +84,11 @@ class Setting
             set(
               'ansible_implementation',
               N_('Foreman will run Ansible playbooks using this implementation'),
-              'ansible-playbook',
+              'ansible-runner',
               N_('Implementation for running Ansible'),
               nil,
               :collection => lambda do
-                Hash[%w[ansible-playbook ansible-runner].map { |x| [x, x] }]
+                Hash[%w[ansible-runner ansible-playbook].map { |x| [x, x] }]
               end
             )
           ].compact.each do |s|
