@@ -98,8 +98,6 @@ module ForemanAnsible
     def remote_execution_options(host)
       params = {
         'ansible_user' => host_setting(host, 'remote_execution_ssh_user'),
-        'ansible_ssh_pass' => rex_ssh_password(host),
-        'ansible_sudo_pass' => rex_sudo_password(host),
         'ansible_become_method' => host_setting(host, 'remote_execution_effective_user_method'),
         'ansible_ssh_private_key_file' => ansible_or_rex_ssh_private_key(host),
         'ansible_port' => host_setting(host, 'remote_execution_ssh_port'),

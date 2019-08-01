@@ -31,6 +31,29 @@ if defined? ForemanRemoteExecution
           )
         end
 
+        def secrets(host)
+          {
+            :'per-host' => {
+              host.name => {
+                'ansible_ssh_pass' => rex_ssh_password(host),
+                'ansible_sudo_pass' => rex_sudo_password(host),
+              }
+            }
+          }
+        end
+
+        def rex_ssh_password(host)
+          host_setting(host, 'remote_execution_ssh_password')
+        end
+
+        def rex_sudo_password(host)
+          host_setting(host, 'remote_execution_sudo_password')
+        end
+
+        def host_setting(host, setting)
+          host.params[setting.to_s] || Setting[setting]
+        end
+
         def supports_effective_user?
           true
         end
