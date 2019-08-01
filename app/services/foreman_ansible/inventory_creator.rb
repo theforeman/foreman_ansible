@@ -122,16 +122,6 @@ module ForemanAnsible
       result
     end
 
-    def rex_ssh_password(host)
-      @template_invocation.job_invocation.password ||
-        host_setting(host, 'remote_execution_ssh_password')
-    end
-
-    def rex_sudo_password(host)
-      @template_invocation.job_invocation.sudo_password ||
-        host_setting(host, 'remote_execution_sudo_password')
-    end
-
     def ansible_or_rex_ssh_private_key(host)
       ansible_private_file = host_setting(host, 'ansible_ssh_private_key_file')
       if !ansible_private_file.empty?

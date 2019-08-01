@@ -10,6 +10,7 @@ class PlaybookRunnerTest < ActiveSupport::TestCase
       ForemanAnsibleCore::Runner::Playbook.any_instance.stubs(:unknown_hosts).
         returns([])
       File.expects(:exist?).with(Dir.home).returns(true)
+      ForemanAnsibleCore::Runner::Playbook.any_instance.expects(:rebuild_secrets).returns(nil)
       runner = ForemanAnsibleCore::Runner::Playbook.new(nil, nil, :suspended_action => nil)
       assert '/etc/ansible', runner.instance_variable_get('@ansible_dir')
     end
@@ -24,6 +25,7 @@ class PlaybookRunnerTest < ActiveSupport::TestCase
     test 'creates temp one if not provided' do
       Dir.expects(:mktmpdir)
       File.expects(:exist?).with(Dir.home).returns(true)
+      ForemanAnsibleCore::Runner::Playbook.any_instance.expects(:rebuild_secrets).returns(nil)
       ForemanAnsibleCore::Runner::Playbook.new(nil, nil, :suspended_action => nil)
     end
 
@@ -32,6 +34,7 @@ class PlaybookRunnerTest < ActiveSupport::TestCase
       ForemanAnsibleCore.expects(:settings).returns(settings)
       File.expects(:exist?).with(settings[:ansible_dir]).returns(true)
       Dir.expects(:mktmpdir).never
+      ForemanAnsibleCore::Runner::Playbook.any_instance.expects(:rebuild_secrets).returns(nil)
       runner = ForemanAnsibleCore::Runner::Playbook.new(nil, nil, :suspended_action => nil)
       assert '/foo', runner.instance_variable_get('@working_dir')
     end
@@ -39,7 +42,7 @@ class PlaybookRunnerTest < ActiveSupport::TestCase
 
   context 'TOFU policy' do # Trust On First Use
     setup do
-      @inventory = { 'all' => { 'hosts' => ['foreman.example.com'] } }.to_json
+      @inventory = { 'all' => { 'hosts' => ['foreman.example.com'] } }
       @output = StringIO.new
       logger = Logger.new(@output)
       ForemanAnsibleCore::Runner::Playbook.any_instance.stubs(:logger).
@@ -51,6 +54,7 @@ class PlaybookRunnerTest < ActiveSupport::TestCase
         with('foreman.example.com').returns(['somekey'])
       ForemanAnsibleCore::Runner::Playbook.any_instance.
         expects(:add_to_known_hosts).never
+      ForemanAnsibleCore::Runner::Playbook.any_instance.expects(:rebuild_secrets).returns(@inventory)
       ForemanAnsibleCore::Runner::Playbook.new(@inventory, nil, :suspended_action => nil)
     end
 
@@ -59,6 +63,7 @@ class PlaybookRunnerTest < ActiveSupport::TestCase
         with('foreman.example.com').returns([])
       ForemanAnsibleCore::Runner::Playbook.any_instance.
         expects(:add_to_known_hosts).with('foreman.example.com')
+      ForemanAnsibleCore::Runner::Playbook.any_instance.expects(:rebuild_secrets).returns(@inventory)
       ForemanAnsibleCore::Runner::Playbook.new(@inventory, nil, :suspended_action => nil)
     end
 
@@ -67,6 +72,7 @@ class PlaybookRunnerTest < ActiveSupport::TestCase
         with('foreman.example.com').returns([])
       Net::SSH::Transport::Session.expects(:new).with('foreman.example.com').
         raises(Net::Error)
+      ForemanAnsibleCore::Runner::Playbook.any_instance.expects(:rebuild_secrets).returns(@inventory)
       ForemanAnsibleCore::Runner::Playbook.new(@inventory, nil, :suspended_action => nil)
       assert_match(
         /ERROR.*Failed to save host key for foreman.example.com: Net::Error/,
