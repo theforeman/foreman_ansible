@@ -25,6 +25,15 @@ module ForemanAnsible
                                    'app/models/setting/ansible.rb'))
     end
 
+    if Rails.env.test?
+      initializer 'foreman_ansible.register_snapshot_overrides' do
+        Foreman::Renderer::Source::Snapshot.register_override(
+          'ProvisioningTemplate/provision/Preseed default',
+          Engine.root.join('test', 'unit', 'foreman', 'renderer', 'snapshots')
+        )
+      end
+    end
+
     initializer 'foreman_ansible.register_gettext',
                 :after => :load_config_initializers do
       locale_dir = File.join(File.expand_path('../..', __dir__), 'locale')
