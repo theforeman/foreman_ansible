@@ -49,6 +49,8 @@ module ForemanAnsible
         returns(true).at_least_once
       Setting.expects(:[]).with('ansible_connection').
         returns('ssh').at_least_once
+      Setting.expects(:[]).with('remote_execution_effective_user_method').
+        returns('sudo').at_least_once
       @host.expects(:host_params).returns(extra_options).at_least_once
       @template_invocation.job_invocation.expects(:password).
         returns(nil).at_least_once
@@ -77,6 +79,8 @@ module ForemanAnsible
                    connection_params['ansible_sudo_pass']
       assert_equal Setting['ansible_winrm_server_cert_validation'],
                    connection_params['ansible_winrm_server_cert_validation']
+      assert_equal Setting['remote_execution_effective_user_method'],
+                   connection_params['ansible_become_method']
     end
 
     test 'job invocation ssh password is passed when available' do
@@ -105,6 +109,8 @@ module ForemanAnsible
         returns('root')
       host.params.expects(:[]).with('remote_execution_ssh_port').
         returns('2222')
+      host.params.expects(:[]).with('remote_execution_effective_user_method').
+        returns('sudo')
       connection_params = inventory.connection_params(host)
       assert_equal path_to_key,
                    connection_params['ansible_ssh_private_key_file']
