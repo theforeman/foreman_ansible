@@ -11,4 +11,14 @@ class AnsibleRoleTest < ActiveSupport::TestCase
     subject { AnsibleRole.new(:name => 'foo') }
     should validate_uniqueness_of(:name)
   end
+
+  test 'should cast default_value to hash' do
+    variable = FactoryBot.create(
+      :ansible_variable,
+      :key_type => 'hash',
+      :default_value => "{\r\n  \"bat\": \"man\"\r\n}\r\n",
+      :override => true
+    )
+    assert variable.default_value.is_a?(Hash)
+  end
 end
