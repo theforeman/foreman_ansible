@@ -41,7 +41,7 @@ module ForemanAnsibleCore
         logger.debug("[foreman_ansible] - parsing event file #{event_file}")
         begin
           event = JSON.parse(File.read(event_file))
-          if (hostname = event['event_data']['host'])
+          if (hostname = event.dig('event_data', 'host'))
             handle_host_event(hostname, event)
           else
             handle_broadcast_data(event)
