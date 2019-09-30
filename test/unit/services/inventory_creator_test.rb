@@ -41,10 +41,6 @@ module ForemanAnsible
         returns(2222).at_least_once
       Setting.expects(:[]).with('remote_execution_ssh_user').
         returns('root').at_least_once
-      Setting.expects(:[]).with('remote_execution_ssh_password').
-        returns('asafepassword').at_least_once
-      Setting.expects(:[]).with('remote_execution_sudo_password').
-        returns('foobar').at_least_once
       Setting.expects(:[]).with('ansible_winrm_server_cert_validation').
         returns(true).at_least_once
       Setting.expects(:[]).with('ansible_connection').
@@ -52,8 +48,7 @@ module ForemanAnsible
       Setting.expects(:[]).with('remote_execution_effective_user_method').
         returns('sudo').at_least_once
       @host.expects(:host_params).returns(extra_options).at_least_once
-      @template_invocation.job_invocation.expects(:password).
-        returns(nil).at_least_once
+      @template_invocation.job_invocation.expects(:password).never
       inventory = ForemanAnsible::InventoryCreator.new(@host,
                                                        @template_invocation)
       connection_params = inventory.connection_params(@host)
@@ -73,28 +68,12 @@ module ForemanAnsible
                    connection_params['ansible_ssh_private_key_file']
       assert_equal extra_options['ansible_port'],
                    connection_params['ansible_port']
-      assert_equal Setting['remote_execution_ssh_password'],
-                   connection_params['ansible_ssh_pass']
-      assert_equal Setting['remote_execution_sudo_password'],
-                   connection_params['ansible_sudo_pass']
       assert_equal Setting['ansible_winrm_server_cert_validation'],
                    connection_params['ansible_winrm_server_cert_validation']
       assert_equal Setting['remote_execution_effective_user_method'],
                    connection_params['ansible_become_method']
-    end
-
-    test 'job invocation ssh password is passed when available' do
-      inventory = ForemanAnsible::InventoryCreator.new(@host,
-                                                       @template_invocation)
-      assert_equal(@template_invocation.job_invocation.password,
-                   inventory.rex_ssh_password(@host))
-    end
-
-    test 'job invocation sudo password is passed when available' do
-      inventory = ForemanAnsible::InventoryCreator.new(@host,
-                                                       @template_invocation)
-      assert_equal(@template_invocation.job_invocation.sudo_password,
-                   inventory.rex_sudo_password(@host))
+      refute connection_params.key?('ansible_ssh_pass')
+      refute connection_params.key?('ansible_sudo_pass')
     end
 
     test 'ssh private key is passed when available' do
@@ -129,7 +108,7 @@ module ForemanAnsible
       template_invocation = FactoryBot.build(:template_invocation,
                                              :template => job_template,
                                              :job_invocation => job_invocation)
-      job_invocation.expects(:password).returns(nil).at_least_once
+      job_invocation.expects(:password).never
       input_value = FactoryBot.create(
         :template_invocation_input_value,
         :template_invocation => template_invocation,

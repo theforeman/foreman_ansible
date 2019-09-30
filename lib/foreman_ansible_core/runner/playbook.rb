@@ -14,7 +14,7 @@ module ForemanAnsibleCore
 
       def initialize(inventory, playbook, options = {}, suspended_action:)
         super :suspended_action => suspended_action
-        @inventory = inventory
+        @inventory = rebuild_secrets(inventory, options[:secrets])
         unknown_hosts.each do |host|
           add_to_known_hosts(host)
         end
@@ -52,7 +52,7 @@ module ForemanAnsibleCore
 
       def write_inventory
         ensure_directory(File.dirname(inventory_file))
-        File.write(inventory_file, @inventory)
+        File.write(inventory_file, JSON.dump(@inventory))
       end
 
       def write_playbook
@@ -103,7 +103,7 @@ module ForemanAnsibleCore
       end
 
       def unknown_hosts
-        JSON.parse(@inventory)['all']['hosts'].select do |host|
+        @inventory['all']['hosts'].select do |host|
           Net::SSH::KnownHosts.search_for(host).empty?
         end
       end
@@ -117,6 +117,20 @@ module ForemanAnsibleCore
       rescue StandardError => e
         logger.error('[foreman_ansible] - Failed to save host key for '\
           "#{host}: #{e}")
+      end
+
+      def rebuild_secrets(inventory, secrets)
+        inventory['all']['hosts'].each do |name|
+          per_host = secrets['per-host'][name]
+
+          new_secrets = {
+            'ansible_ssh_pass' => inventory['ssh_password'] || per_host['ansible_ssh_pass'],
+            'ansible_sudo_pass' => inventory['sudo_password'] || per_host['ansible_sudo_pass']
+          }
+          inventory['_meta']['hostvars'][name].update(new_secrets)
+        end
+
+        inventory
       end
     end
   end
