@@ -1,0 +1,17 @@
+<%#
+name: Ansible - Run playbook
+snippet: false
+job_category: Ansible Playbook
+provider_type: Ansible
+kind: job_template
+feature: ansible_run_playbook
+template_inputs:
+- name: playbook
+  required: true
+  input_type: user
+  description: The playbook to run against given hosts
+  advanced: false
+  value_type: plain
+%>
+
+<%= input('playbook') %>
