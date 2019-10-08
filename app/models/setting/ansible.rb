@@ -80,6 +80,13 @@ class Setting
               false,
               format(N_('%{cfgmgmt} out of sync disabled'),
                      :cfgmgmt => 'Ansible')
+            ),
+            set(
+              'ansible_inventory_template',
+              N_('Foreman will use this template to schedule the report '\
+                 'with Ansible inventory'),
+              'Ansible Inventory',
+              N_('Default Ansible inventory report template')
             )
           ].compact.each do |s|
             create(s.update(:category => 'Setting::Ansible'))

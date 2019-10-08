@@ -99,6 +99,7 @@ Rails.application.routes.draw do
             get :hosts
             post :hostgroups
             get :hostgroups
+            post :schedule
           end
         end
       end
