@@ -71,7 +71,7 @@ module ForemanAnsible
           '_timestamp' => '2018-10-29 20:01:51 +0100',
           'ansible_facts' =>
           {
-            'ansible_interfaces' => %w(eth0 eth1 eth2 bond0),
+            'ansible_interfaces' => %w[eth0 eth1 eth2 bond0],
             'ansible_eth0' => {
               'active' => true,
               'device' => 'eth0',
@@ -129,7 +129,7 @@ module ForemanAnsible
               ],
               'mtu' => 1500,
               'promisc' => false,
-              'slaves' => %w(eth1 eth2),
+              'slaves' => %w[eth1 eth2],
               'type' => 'bonding'
             }
           }
