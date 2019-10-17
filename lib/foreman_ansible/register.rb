@@ -71,6 +71,9 @@ Foreman::Plugin.register :foreman_ansible do
     permission :edit_hostgroups,
                { :'api/v2/hostgroups' => [:assign_ansible_roles] },
                :resource_type => 'Hostgroup'
+    permission :generate_report_templates,
+               { :'api/v2/ansible_inventories' => [:schedule] },
+               :resource_type => 'ReportTemplate'
   end
 
   role 'Ansible Roles Manager',
@@ -82,7 +85,7 @@ Foreman::Plugin.register :foreman_ansible do
         :edit_ansible_variables, :destroy_ansible_variables]
 
   role 'Ansible Tower Inventory Reader',
-       [:view_hosts, :view_hostgroups, :view_facts],
+       [:view_hosts, :view_hostgroups, :view_facts, :generate_report_templates],
        'Permissions required for the user which is used by Ansible Tower Dynamic Inventory Item'
 
   add_all_permissions_to_default_roles
