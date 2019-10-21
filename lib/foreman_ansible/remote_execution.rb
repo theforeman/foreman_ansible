@@ -30,6 +30,12 @@ module ForemanAnsible
         :provided_inputs => %w[organization_id plan_id],
         :notification_builder => ForemanAnsible::InsightsNotificationBuilder
       )
+      RemoteExecutionFeature.register(
+        :ansible_run_playbook,
+        N_('Run playbook'),
+        :description => N_('Run an Ansible playbook against given hosts'),
+        :provided_inputs => %w[playbook]
+      )
     end
   end
 end

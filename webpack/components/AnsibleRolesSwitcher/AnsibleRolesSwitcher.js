@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Row, Col } from 'patternfly-react';
 import { lowerCase } from 'lodash';
 import PropTypes from 'prop-types';
+import { translate as __ } from 'foremanReact/common/I18n';
 
 import AvailableRolesList from './components/AvailableRolesList';
 import AssignedRolesList from './components/AssignedRolesList';

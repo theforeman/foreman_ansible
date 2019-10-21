@@ -9,6 +9,7 @@
   "dependencies": {
     "@theforeman/vendor": "^0.1.1",
     "react-json-tree": "^0.11.0"
+    "react-bootstrap": "^0.32.1",
   },
   "devDependencies": {
     "@theforeman/vendor-dev": "^0.1.1",
@@ -38,7 +39,7 @@
   },
   "scripts": {
     "test": "node node_modules/.bin/jest webpack",
-    "lint": "./node_modules/.bin/eslint -c .eslintrc webpack/ || exit 0"
+    "lint": "eslint ./webpack"
   },
   "repository": {
     "type": "git",

@@ -5,7 +5,7 @@ module ForemanAnsibleCore
 
       def initialize(input, suspended_action:)
         super input, :suspended_action => suspended_action
-        @inventory = rebuild_inventory(input)
+        @inventory = rebuild_secrets(rebuild_inventory(input), input)
         @playbook = input.values.first[:input][:action_input][:script]
         @root = working_dir
       end
@@ -41,7 +41,7 @@ module ForemanAnsibleCore
         logger.debug("[foreman_ansible] - parsing event file #{event_file}")
         begin
           event = JSON.parse(File.read(event_file))
-          if (hostname = event['event_data']['host'])
+          if (hostname = event.dig('event_data', 'host'))
             handle_host_event(hostname, event)
           else
             handle_broadcast_data(event)
@@ -120,7 +120,7 @@ module ForemanAnsibleCore
       def rebuild_inventory(input)
         action_inputs = input.values.map { |hash| hash[:input][:action_input] }
         hostnames = action_inputs.map { |hash| hash[:name] }
-        inventories = action_inputs.map { |hash| JSON.parse(hash[:ansible_inventory]) }
+        inventories = action_inputs.map { |hash| hash[:ansible_inventory] }
         host_vars = inventories.map { |i| i['_meta']['hostvars'] }.reduce(&:merge)
 
         { '_meta' => { 'hostvars' => host_vars },
@@ -137,6 +137,21 @@ module ForemanAnsibleCore
         else
           Dir.mktmpdir(nil, File.expand_path(dir))
         end
+      end
+
+      def rebuild_secrets(inventory, input)
+        input.each do |host, host_input|
+          secrets = host_input['input']['action_input']['secrets']
+          per_host = secrets['per-host'][host]
+
+          new_secrets = {
+            'ansible_ssh_pass' => inventory['ssh_password'] || per_host['ansible_ssh_pass'],
+            'ansible_sudo_pass' => inventory['sudo_password'] || per_host['ansible_sudo_pass']
+          }
+          inventory['_meta']['hostvars'][host].update(new_secrets)
+        end
+
+        inventory
       end
     end
   end

@@ -8,7 +8,6 @@ Rails.application.routes.draw do
           :defaults => { :apiv => 'v2' },
           :apiv => /v1|v2/,
           :constraints => ApiConstraints.new(:version => 2) do
-
       constraints(:id => %r{[^\/]+}) do
         resources :hosts, :only => [] do
           member do
@@ -75,7 +74,6 @@ Rails.application.routes.draw do
             :defaults => { :apiv => 'v2' },
             :apiv => /v1|v2/,
             :constraints => ApiConstraints.new(:version => 2) do
-
         resources :ansible_roles, :only => [:show, :index, :destroy] do
           collection do
             put :import
@@ -99,6 +97,7 @@ Rails.application.routes.draw do
             get :hosts
             post :hostgroups
             get :hostgroups
+            post :schedule
           end
         end
       end

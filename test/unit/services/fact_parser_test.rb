@@ -71,13 +71,12 @@ module ForemanAnsible
           '_timestamp' => '2018-10-29 20:01:51 +0100',
           'ansible_facts' =>
           {
-            'ansible_interfaces' => [
-                'eth0'
-            ],
+            'ansible_interfaces' => %w[eth0 eth1 eth2 bond0],
             'ansible_eth0' => {
               'active' => true,
               'device' => 'eth0',
-              "macaddress" => '52:54:00:04:55:37',
+              'macaddress' => '52:54:00:04:55:37',
+              'perm_macaddress' => '52:54:00:04:55:37',
               'ipv4' => {
                   'address' => '10.10.0.10',
                   'netmask' => '255.255.0.0',
@@ -93,6 +92,45 @@ module ForemanAnsible
               'mtu' => 1500,
               'promisc' => false,
               'type' => 'ether'
+            },
+            'ansible_eth1' => {
+              'active' => true,
+              'device' => 'eth1',
+              'macaddress' => '52:54:00:04:55:38',
+              'perm_macaddress' => '52:54:00:04:55:38',
+              'mtu' => 1500,
+              'promisc' => false,
+              'type' => 'ether'
+            },
+            'ansible_eth2' => {
+              'active' => true,
+              'device' => 'eth2',
+              'macaddress' => '52:54:00:04:55:38',
+              'perm_macaddress' => '52:54:00:04:55:39',
+              'mtu' => 1500,
+              'promisc' => false,
+              'type' => 'ether'
+            },
+            'ansible_bond0' => {
+              'active' => true,
+              'device' => 'bond0',
+              'macaddress' => '52:54:00:04:55:38',
+              'ipv4' => {
+                  'address' => '10.10.0.11',
+                  'netmask' => '255.255.0.0',
+                  'network' => '10.10.0.0'
+              },
+              'ipv6' => [
+                  {
+                      'address' => 'fd00::5054:00ff:fe04:5538',
+                      'prefix' => '64',
+                      'scope' => 'host'
+                  }
+              ],
+              'mtu' => 1500,
+              'promisc' => false,
+              'slaves' => %w[eth1 eth2],
+              'type' => 'bonding'
             }
           }
         )
@@ -104,6 +142,21 @@ module ForemanAnsible
       interface = @facts_parser.get_facts_for_interface(iut)
       assert_equal '10.10.0.10', interface['ipaddress']
       assert_equal 'fd00::5054:00ff:fe04:5537', interface['ipaddress6']
+    end
+
+    test 'Parses MAC address correctly when bonded' do
+      iut0 = 'eth0'.dup
+      iut1 = 'eth1'.dup
+      iut2 = 'eth2'.dup
+      but0 = 'bond0'.dup
+      interface_eth0 = @facts_parser.get_facts_for_interface(iut0)
+      interface_eth1 = @facts_parser.get_facts_for_interface(iut1)
+      interface_eth2 = @facts_parser.get_facts_for_interface(iut2)
+      interface_bond0 = @facts_parser.get_facts_for_interface(but0)
+      assert_equal '52:54:00:04:55:37', interface_eth0['macaddress']
+      assert_equal '52:54:00:04:55:38', interface_eth1['macaddress']
+      assert_equal '52:54:00:04:55:39', interface_eth2['macaddress']
+      assert_equal '52:54:00:04:55:38', interface_bond0['macaddress']
     end
   end
 
