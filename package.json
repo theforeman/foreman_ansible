@@ -7,23 +7,13 @@
     "test": "test"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0",
-    "classnames": "^2.2.5",
-    "jquery": "~2.2.4",
-    "lodash": "^4.17.11",
-    "patternfly": "^3.58.0",
-    "patternfly-react": "^2.25.4",
-    "prop-types": "^15.6.2",
-    "react": "^16.6.3",
-    "react-bootstrap": "^0.32.1",
-    "react-dom": "^16.6.3",
+    "@theforeman/vendor": "^0.1.1",
     "react-json-tree": "^0.11.0",
-    "reselect": "^3.0.1",
-    "seamless-immutable": "^7.1.3"
+    "react-bootstrap": "^0.32.1"
   },
   "devDependencies": {
+    "@theforeman/vendor-dev": "^0.1.1",
     "babel-eslint": "^8.2.1",
-    "babel-plugin-lodash": "^3.3.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
@@ -64,6 +54,7 @@
   "jest": {
     "verbose": true,
     "moduleDirectories": [
+      "node_modules/@theforeman/vendor-core/node_modules",
       "node_modules",
       "webpack"
     ],
