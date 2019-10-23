@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'test_plugin_helper'
+
 module ForemanAnsible
   # Test for the facts importer - only verify that given
   # a set of facts it's able to import them
@@ -18,8 +20,8 @@ module ForemanAnsible
 
     test 'missing_facts returns facts we do not have in the database' do
       @fact_importer = FactImporter.new(@host, facts_json)
-      @fact_importer.expects(:db_facts).
-        returns('ansible_cmdline' => 'fakevalue').twice
+      @fact_importer.expects(:host_fact_names).
+        returns(['ansible_cmdline'])
       refute @fact_importer.send(:missing_facts).include?('ansible_cmdline')
     end
 
