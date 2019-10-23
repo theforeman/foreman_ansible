@@ -8,8 +8,7 @@
   },
   "dependencies": {
     "@theforeman/vendor": "^0.1.1",
-    "react-json-tree": "^0.11.0",
-    "react-bootstrap": "^0.32.1"
+    "react-json-tree": "^0.11.0"
   },
   "devDependencies": {
     "@theforeman/vendor-dev": "^0.1.1",
