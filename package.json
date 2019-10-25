@@ -7,12 +7,11 @@
     "test": "test"
   },
   "dependencies": {
-    "@theforeman/vendor": "^0.1.1",
-    "react-json-tree": "^0.11.0",
-    "react-bootstrap": "^0.32.1"
+    "@theforeman/vendor": "^1.7.0",
+    "react-json-tree": "^0.11.0"
   },
   "devDependencies": {
-    "@theforeman/vendor-dev": "^0.1.1",
+    "@theforeman/vendor-dev": "^1.7.0",
     "babel-eslint": "^8.2.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-assign": "^6.22.0",
