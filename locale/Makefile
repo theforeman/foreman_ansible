@@ -60,3 +60,10 @@ tx-update: tx-pull reset-po $(MOFILES)
 	git add ../locale/*/LC_MESSAGES
 	git commit -a --amend -m "i18n - pulling from tx"
 	-echo Changes commited!
+
+mo-files: $(MOFILES)
+	git add $(POFILES) $(POTFILE) ../locale/*/LC_MESSAGES
+	git commit -m "i18n - pulling from tx"
+	@echo
+	@echo Changes commited!
+	@echo
