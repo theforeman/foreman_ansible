@@ -6,31 +6,26 @@
   "directories": {
     "test": "test"
   },
+  "peerDependencies": {
+    "@theforeman/vendor": ">= 3.3.2"
+  },
   "dependencies": {
-    "@theforeman/vendor": "^1.7.0",
     "react-json-tree": "^0.11.0"
   },
   "devDependencies": {
-    "@theforeman/vendor-dev": "^1.7.0",
-    "babel-eslint": "^8.2.1",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-assign": "^6.22.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-react": "^6.24.1",
+    "@babel/core": "^7.7.0",
+    "@theforeman/builder": "^4.0.2",
+    "@theforeman/vendor-dev": "^3.3.2",
+    "babel-eslint": "^10.0.0",
+    "babel-jest": "^24.9.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
     "enzyme-to-json": "^3.3.5",
-    "eslint": "^4.18.1",
-    "eslint-config-airbnb": "^16.0.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jest": "^21.2.0",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint": "^6.0.0",
     "eslint-plugin-patternfly-react": "^0.2.1",
-    "eslint-plugin-react": "^7.4.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^23.6.0",
-    "prettier": "^1.16.4",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.0",
     "react-redux": "^5.0.7",
     "react-redux-test-utils": "^0.1.1",
     "redux": "^3.7.2",
@@ -57,6 +52,9 @@
       "node_modules",
       "webpack"
     ],
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
     "setupFiles": [
       "raf/polyfill",
       "./webpack/test_setup.js"
