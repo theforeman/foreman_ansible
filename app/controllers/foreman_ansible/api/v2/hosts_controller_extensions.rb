@@ -23,7 +23,7 @@ module ForemanAnsible
           end
 
           api :POST, '/hosts/:id/play_roles',
-              N_('Plays Ansible roles on a host')
+              N_('Runs all Ansible roles on a host')
           param :id, :identifier, :required => true
 
           def play_roles
@@ -32,7 +32,7 @@ module ForemanAnsible
           end
 
           api :POST, '/hosts/multiple_play_roles',
-              N_('Plays Ansible roles on hosts')
+              N_('Runs all Ansible roles on hosts')
           param :host_ids, Array, N_('IDs of hosts to play roles on'),
                 :required => true
 
