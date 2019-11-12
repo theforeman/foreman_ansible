@@ -17,7 +17,7 @@ module ForemanAnsible
           before_action :find_ansible_roles, :only => [:assign_ansible_roles]
 
           api :POST, '/hostgroups/:id/play_roles',
-              N_('Plays Ansible roles on a hostgroup')
+              N_('Runs all Ansible roles on a hostgroup')
           param :id, :identifier, :required => true
 
           def play_roles
@@ -27,7 +27,7 @@ module ForemanAnsible
           end
 
           api :POST, '/hostgroups/multiple_play_roles',
-              N_('Plays Ansible roles on hostgroups')
+              N_('Runs all Ansible roles on hostgroups')
           param :hostgroup_ids, Array, N_('IDs of hostgroups to play roles on'),
                 :required => true
 

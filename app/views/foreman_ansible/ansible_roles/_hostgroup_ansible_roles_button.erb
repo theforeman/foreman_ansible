@@ -1,8 +1,8 @@
 <%=
   play_roles = if hostgroup.all_ansible_roles.empty?
-    "<a title='No Roles assigned' href=\"#\">#{_('Play Roles')}</a>".html_safe
+    link_to _('Run all Ansible roles'), 'javascript:void(0);', disabled: true, title: 'No Roles assigned'
   else
-    display_link_if_authorized(_('Play Roles'),   hash_for_play_roles_hostgroup_path(:id => hostgroup),   :'data-no-turbolink' => true)
+    display_link_if_authorized(_('Run all Ansible roles'), hash_for_play_roles_hostgroup_path(id: hostgroup), :'data-no-turbolink' => true, title: _('Run all Ansible roles on hosts belonging to this host group'))
   end
 
   actions = [
