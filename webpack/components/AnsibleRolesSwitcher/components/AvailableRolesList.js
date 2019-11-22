@@ -8,11 +8,15 @@ import AnsibleRole from './AnsibleRole';
 
 const AvailableRolesList = ({
   unassignedRoles,
+  assignedRoles,
   pagination,
   itemCount,
   onListingChange,
   onAddRole,
   loading,
+  resourceName,
+  resourceId,
+  variablesUrl,
 }) => (
   <ListView>
     <div className="sticky-pagination">
@@ -31,14 +35,18 @@ const AvailableRolesList = ({
           role={role}
           icon="fa fa-plus-circle"
           onClick={onAddRole}
+          resourceName={resourceName}
+          resourceId={resourceId}
+          variablesUrl={variablesUrl}
+          assignedRoles={assignedRoles}
         />
       ))}
     </LoadingState>
   </ListView>
 );
-
 AvailableRolesList.propTypes = {
   unassignedRoles: PropTypes.arrayOf(PropTypes.object).isRequired,
+  assignedRoles: PropTypes.array.isRequired,
   pagination: PropTypes.shape({
     page: PropTypes.number,
     perPage: PropTypes.number,
@@ -47,6 +55,13 @@ AvailableRolesList.propTypes = {
   onListingChange: PropTypes.func.isRequired,
   onAddRole: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
+  resourceName: PropTypes.string.isRequired,
+  resourceId: PropTypes.number,
+  variablesUrl: PropTypes.string.isRequired,
+};
+
+AvailableRolesList.defaultProps = {
+  resourceId: null,
 };
 
 export default AvailableRolesList;

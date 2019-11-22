@@ -91,6 +91,8 @@ Foreman::Plugin.register :foreman_ansible do
   extend_template_helpers ForemanAnsible::RendererMethods
   allowed_template_helpers :insights_remediation
 
+  register_global_js_file 'fills'
+
   base_role_assignment_params = { :ansible_role_ids => [],
                                   :ansible_roles => [] }
   parameter_filter Host::Managed, base_role_assignment_params.merge(:host_ansible_roles_attributes => {})

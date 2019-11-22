@@ -1,0 +1,333 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnsibleVariablesTableRow should render first row with a lookup key 1`] = `
+<tr
+  className="fields overriden"
+  id="ansible_role_3_params[66]"
+  key="66"
+>
+  <td
+    className="elipsis"
+    rowSpan={2}
+  >
+    aardvark.cube
+  </td>
+  <td
+    className="elipsis param_name"
+  >
+    rectangle
+  </td>
+  <td
+    className="elipsis"
+  >
+    integer
+  </td>
+  <td
+    className=""
+  >
+    <AnsibleVariableInput
+      fieldDisabled={true}
+      fieldHiddenValue={false}
+      fieldOmmited={true}
+      fieldOverriden={true}
+      fieldValue={17}
+      formModelField="hostgroup"
+      keyErrors={
+        Object {
+          "icon": "info",
+          "text": "",
+          "valid": true,
+        }
+      }
+      lookupKey={
+        Object {
+          "currentOverride": Object {
+            "element": "hostgroup",
+            "elementName": "first hostgroup",
+            "value": null,
+          },
+          "defaultValue": 17,
+          "description": "Rectangle param",
+          "hiddenValue": false,
+          "id": 66,
+          "omit": null,
+          "override": true,
+          "overrideValues": Array [
+            Object {
+              "id": 31,
+              "match": "hostgroup=first hostgroup",
+              "omit": true,
+              "value": null,
+            },
+          ],
+          "parameter": "rectangle",
+          "parameterType": "integer",
+        }
+      }
+      lookupValue={
+        Object {
+          "defaultValue": 17,
+          "element": "hostgroup",
+          "elementName": "first hostgroup",
+          "id": 31,
+          "omit": true,
+          "overriden": true,
+          "value": null,
+        }
+      }
+      role={
+        Object {
+          "ansibleVariables": Array [
+            Object {
+              "currentOverride": Object {
+                "element": "hostgroup",
+                "elementName": "first hostgroup",
+                "value": null,
+              },
+              "defaultValue": 17,
+              "description": "Rectangle param",
+              "hiddenValue": false,
+              "id": 66,
+              "omit": null,
+              "override": true,
+              "overrideValues": Array [
+                Object {
+                  "id": 31,
+                  "match": "hostgroup=first hostgroup",
+                  "omit": true,
+                  "value": null,
+                },
+              ],
+              "parameter": "rectangle",
+              "parameterType": "integer",
+            },
+            Object {
+              "currentOverride": Object {
+                "element": "hostgroup",
+                "elementName": "first hostgroup",
+                "value": false,
+              },
+              "defaultValue": true,
+              "description": "Square param",
+              "hiddenValue": false,
+              "id": 65,
+              "omit": null,
+              "override": true,
+              "overrideValues": Array [
+                Object {
+                  "id": 26,
+                  "match": "hostgroup=first hostgroup",
+                  "omit": false,
+                  "value": false,
+                },
+              ],
+              "parameter": "square",
+              "parameterType": "boolean",
+            },
+          ],
+          "id": 3,
+          "name": "aardvark.cube",
+        }
+      }
+      toggleHidden={[Function]}
+      toggleOverride={[Function]}
+      updateFieldValue={[Function]}
+    />
+    <span
+      className="help-block"
+    />
+  </td>
+  <td
+    className="ca"
+  >
+    <input
+      checked={true}
+      name="hostgroup[lookup_values_attributes][66][omit]"
+      onChange={[Function]}
+      type="checkbox"
+      value="1"
+    />
+    <input
+      disabled={false}
+      name="hostgroup[lookup_values_attributes][66][lookup_key_id]"
+      type="hidden"
+      value={66}
+    />
+    <input
+      disabled={false}
+      name="hostgroup[lookup_values_attributes][66][id]"
+      type="hidden"
+      value={31}
+    />
+    <input
+      disabled={false}
+      name="hostgroup[lookup_values_attributes][66][_destroy]"
+      type="hidden"
+      value={false}
+    />
+  </td>
+</tr>
+`;
+
+exports[`AnsibleVariablesTableRow should render second row with a lookup key 1`] = `
+<tr
+  className="fields overriden"
+  id="ansible_role_3_params[65]"
+  key="65"
+>
+  <td
+    className="elipsis param_name"
+  >
+    square
+  </td>
+  <td
+    className="elipsis"
+  >
+    boolean
+  </td>
+  <td
+    className=""
+  >
+    <AnsibleVariableInput
+      fieldDisabled={false}
+      fieldHiddenValue={false}
+      fieldOmmited={false}
+      fieldOverriden={true}
+      fieldValue={true}
+      formModelField="hostgroup"
+      keyErrors={
+        Object {
+          "icon": "info",
+          "text": "",
+          "valid": true,
+        }
+      }
+      lookupKey={
+        Object {
+          "currentOverride": Object {
+            "element": "hostgroup",
+            "elementName": "first hostgroup",
+            "value": false,
+          },
+          "defaultValue": true,
+          "description": "Square param",
+          "hiddenValue": false,
+          "id": 65,
+          "omit": null,
+          "override": true,
+          "overrideValues": Array [
+            Object {
+              "id": 26,
+              "match": "hostgroup=first hostgroup",
+              "omit": false,
+              "value": false,
+            },
+          ],
+          "parameter": "square",
+          "parameterType": "boolean",
+        }
+      }
+      lookupValue={
+        Object {
+          "defaultValue": true,
+          "element": "hostgroup",
+          "elementName": "first hostgroup",
+          "id": 26,
+          "omit": false,
+          "overriden": true,
+          "value": false,
+        }
+      }
+      role={
+        Object {
+          "ansibleVariables": Array [
+            Object {
+              "currentOverride": Object {
+                "element": "hostgroup",
+                "elementName": "first hostgroup",
+                "value": null,
+              },
+              "defaultValue": 17,
+              "description": "Rectangle param",
+              "hiddenValue": false,
+              "id": 66,
+              "omit": null,
+              "override": true,
+              "overrideValues": Array [
+                Object {
+                  "id": 31,
+                  "match": "hostgroup=first hostgroup",
+                  "omit": true,
+                  "value": null,
+                },
+              ],
+              "parameter": "rectangle",
+              "parameterType": "integer",
+            },
+            Object {
+              "currentOverride": Object {
+                "element": "hostgroup",
+                "elementName": "first hostgroup",
+                "value": false,
+              },
+              "defaultValue": true,
+              "description": "Square param",
+              "hiddenValue": false,
+              "id": 65,
+              "omit": null,
+              "override": true,
+              "overrideValues": Array [
+                Object {
+                  "id": 26,
+                  "match": "hostgroup=first hostgroup",
+                  "omit": false,
+                  "value": false,
+                },
+              ],
+              "parameter": "square",
+              "parameterType": "boolean",
+            },
+          ],
+          "id": 3,
+          "name": "aardvark.cube",
+        }
+      }
+      toggleHidden={[Function]}
+      toggleOverride={[Function]}
+      updateFieldValue={[Function]}
+    />
+    <span
+      className="help-block"
+    />
+  </td>
+  <td
+    className="ca"
+  >
+    <input
+      checked={false}
+      name="hostgroup[lookup_values_attributes][65][omit]"
+      onChange={[Function]}
+      type="checkbox"
+      value="1"
+    />
+    <input
+      disabled={false}
+      name="hostgroup[lookup_values_attributes][65][lookup_key_id]"
+      type="hidden"
+      value={65}
+    />
+    <input
+      disabled={false}
+      name="hostgroup[lookup_values_attributes][65][id]"
+      type="hidden"
+      value={26}
+    />
+    <input
+      disabled={false}
+      name="hostgroup[lookup_values_attributes][65][_destroy]"
+      type="hidden"
+      value={false}
+    />
+  </td>
+</tr>
+`;

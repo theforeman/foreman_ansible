@@ -18,3 +18,16 @@ export const ansibleRolesLong = [
   { id: 10, name: 'salt.salt' },
   { id: 11, name: 'anonymous.something' },
 ];
+
+export const ansibleAssignedVariables = [
+  {
+    id: 1,
+    name: 'sthirugn.motd',
+    ansibleVariables: [{ id: 15, parameter: 'motd' }],
+  },
+  {
+    id: 2,
+    name: 'jtyr.ntp',
+    ansibleVariables: [{ id: 16, parameter: 'whatever' }],
+  },
+];

@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`KeyInfoPopover should render when value is hidden 1`] = `
+<div
+  style={
+    Object {
+      "textAlign": "center",
+    }
+  }
+>
+  <GenericPopover
+    button={
+      <a
+        className="popover-pf-info"
+        href="#"
+      >
+        <Icon
+          name="info"
+          type="pf"
+        />
+      </a>
+    }
+    placement="top"
+    popoverId={null}
+    popoverOverlay={
+      <Popover
+        bsClass="popover"
+        id="popover"
+        placement="right"
+        title="Original value info"
+      >
+        <div>
+          
+          <b>
+            Description: 
+          </b>
+          
+          <br />
+          <b>
+            Type: 
+          </b>
+           
+          boolean
+          <br />
+          <b>
+            Matcher: 
+          </b>
+          Default value
+          <br />
+          <b>
+            Inherited Value: 
+          </b>
+          *****
+          <br />
+        </div>
+      </Popover>
+    }
+    popoverText={null}
+    popoverTitle={null}
+    trigger="click"
+  />
+</div>
+`;
+
+exports[`KeyInfoPopover should render when value is not hidden 1`] = `
+<div
+  style={
+    Object {
+      "textAlign": "center",
+    }
+  }
+>
+  <GenericPopover
+    button={
+      <a
+        className="popover-pf-info"
+        href="#"
+      >
+        <Icon
+          name="info"
+          type="pf"
+        />
+      </a>
+    }
+    placement="top"
+    popoverId={null}
+    popoverOverlay={
+      <Popover
+        bsClass="popover"
+        id="popover"
+        placement="right"
+        title="Original value info"
+      >
+        <div>
+          
+          <b>
+            Description: 
+          </b>
+          Square param
+          <br />
+          <b>
+            Type: 
+          </b>
+           
+          boolean
+          <br />
+          <b>
+            Matcher: 
+          </b>
+          hostgroup (first hostgroup)
+          <br />
+          <b>
+            Inherited Value: 
+          </b>
+          <br />
+        </div>
+      </Popover>
+    }
+    popoverText={null}
+    popoverTitle={null}
+    trigger="click"
+  />
+</div>
+`;

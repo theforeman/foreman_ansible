@@ -7,6 +7,11 @@ import {
   ANSIBLE_ROLES_ADD,
   ANSIBLE_ROLES_REMOVE,
   ANSIBLE_ROLES_MOVE,
+  ANSIBLE_VARIABLES_REQUEST,
+  ANSIBLE_VARIABLES_SUCCESS,
+  ANSIBLE_VARIABLES_FAILURE,
+  ANSIBLE_VARIABLES_REMOVE,
+  ANSIBLE_ROLES_FORM_OBJECT,
 } from './AnsibleRolesSwitcherConstants';
 
 export const initialState = Immutable({
@@ -21,10 +26,23 @@ export const initialState = Immutable({
   inheritedRoleIds: [],
   results: [],
   error: { errorMsg: '', status: '', statusText: '' },
+  assignedVariables: [],
+  loadingVariables: false,
+  variablesError: {
+    errorMsg: '',
+    statusText: '',
+    status: null,
+    error: {},
+  },
+  formObject: {
+    resourceName: '',
+    resourceId: '',
+    parentId: '',
+  },
 });
 
 const ansibleRoles = (state = initialState, action) => {
-  const { payload } = action;
+  const { payload, response } = action;
 
   switch (action.type) {
     case ANSIBLE_ROLES_REQUEST:
@@ -66,6 +84,27 @@ const ansibleRoles = (state = initialState, action) => {
       });
     case ANSIBLE_ROLES_MOVE:
       return state.set('assignedRoles', payload.roles);
+    case ANSIBLE_ROLES_FORM_OBJECT:
+      return state.set('formObject', payload.formObject);
+    case ANSIBLE_VARIABLES_REQUEST:
+      return state.set('loadingVariables', true);
+    case ANSIBLE_VARIABLES_SUCCESS: {
+      return state.merge({
+        assignedVariables: response.results,
+        loadingVariables: false,
+      });
+    }
+    case ANSIBLE_VARIABLES_FAILURE:
+      return state.merge({
+        variablesError: response.error,
+        loadingVariables: false,
+      });
+    case ANSIBLE_VARIABLES_REMOVE:
+      return state.merge({
+        assignedVariables: state.assignedVariables.filter(
+          ansibleRole => ansibleRole.id !== payload.role.id
+        ),
+      });
     default:
       return state;
   }

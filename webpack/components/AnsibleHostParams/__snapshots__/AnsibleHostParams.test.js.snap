@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnsibleHostParams should render when loaded 1`] = `
+<div>
+  <fieldset>
+    <h2>
+       
+      Ansible Variables
+    </h2>
+    <Spinner
+      className=""
+      inline={false}
+      inverse={false}
+      loading={false}
+      size="md"
+    >
+      <table
+        className="table table-fixed"
+        id="inherited_ansible_variables"
+      >
+        <thead
+          className="white-header"
+        >
+          <tr>
+            <th
+              className="col-md-2"
+            >
+              Ansible Role
+            </th>
+            <th
+              className="col-md-2"
+            >
+              Name
+            </th>
+            <th
+              className="col-md-2"
+            >
+              Type
+            </th>
+            <th
+              className="col-md-5"
+            >
+              Value
+            </th>
+            <th
+              className="col-md-1 ca"
+            >
+              Omit
+               
+              <GenericPopover
+                button={
+                  <a
+                    href="#"
+                  >
+                    <Icon
+                      name="info"
+                      type="pf"
+                    />
+                  </a>
+                }
+                placement="top"
+                popoverId="ansible-omit-help"
+                popoverOverlay={null}
+                popoverText="Foreman will not send this paramenter in classification output"
+                popoverTitle="Omit parameter from classification"
+                trigger="click"
+              />
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <AnsibleVariablesTableRows
+            assignedRoles={Array []}
+            formObject={
+              Object {
+                "resourceId": null,
+                "resourceName": "hostgroup",
+              }
+            }
+            resourceErrors={Array []}
+          />
+        </tbody>
+      </table>
+    </Spinner>
+  </fieldset>
+  <br />
+</div>
+`;
+
+exports[`AnsibleHostParams should render when loading 1`] = `
+<div>
+  <fieldset>
+    <h2>
+       
+      Ansible Variables
+    </h2>
+    <Spinner
+      className=""
+      inline={false}
+      inverse={false}
+      loading={true}
+      size="md"
+    >
+      <table
+        className="table table-fixed"
+        id="inherited_ansible_variables"
+      >
+        <thead
+          className="white-header"
+        >
+          <tr>
+            <th
+              className="col-md-2"
+            >
+              Ansible Role
+            </th>
+            <th
+              className="col-md-2"
+            >
+              Name
+            </th>
+            <th
+              className="col-md-2"
+            >
+              Type
+            </th>
+            <th
+              className="col-md-5"
+            >
+              Value
+            </th>
+            <th
+              className="col-md-1 ca"
+            >
+              Omit
+               
+              <GenericPopover
+                button={
+                  <a
+                    href="#"
+                  >
+                    <Icon
+                      name="info"
+                      type="pf"
+                    />
+                  </a>
+                }
+                placement="top"
+                popoverId="ansible-omit-help"
+                popoverOverlay={null}
+                popoverText="Foreman will not send this paramenter in classification output"
+                popoverTitle="Omit parameter from classification"
+                trigger="click"
+              />
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <AnsibleVariablesTableRows
+            assignedRoles={Array []}
+            formObject={
+              Object {
+                "resourceId": null,
+                "resourceName": "hostgroup",
+              }
+            }
+            resourceErrors={Array []}
+          />
+        </tbody>
+      </table>
+    </Spinner>
+  </fieldset>
+  <br />
+</div>
+`;

@@ -28,10 +28,30 @@ export const successState = Immutable({
     page: 1,
     perPage: 20,
   },
-  error: { errorMsg: '', status: '', statusText: '' },
+  error: { errorMsg: '', statusText: '', status: null, error: {} },
+  formObject: { resourceName: 'Host', resourceId: 5, parentId: 15 },
+  assignedVariables: [],
+  loadingVariables: false,
+  variablesError: {
+    errorMsg: '',
+    status: null,
+    statusText: '',
+    error: {},
+  },
 });
 
 export const errorPayload = {
   errorMsg: 'Failed to fetch Ansible Roles from server.',
   statusText: '500',
+};
+
+export const permissionDeniedPayload = {
+  errorMsg: 'Failed to fetch Ansible Roles from server.',
+  statusText: 'Forbidden',
+  status: 403,
+  error: {
+    message: 'Access Denied',
+    description: 'You seem to be missing one of the following permissions: ',
+    missingPermissions: ['view_ansible_variables'],
+  },
 };

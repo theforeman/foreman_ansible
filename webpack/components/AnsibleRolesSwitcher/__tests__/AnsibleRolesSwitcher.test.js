@@ -25,6 +25,12 @@ const fixtures = {
     allAssignedRoles: [],
     toDestroyRoles: [],
     availableRolesUrl: 'http://test/roles',
+    inheritedRoleIds: [],
+    resourceName: 'Host',
+    resourceId: 15,
+    variablesUrl: '/hosts/14/variables',
+    initFormObjectAttrs: noop,
+    getAnsibleVariables: noop,
   },
 };
 

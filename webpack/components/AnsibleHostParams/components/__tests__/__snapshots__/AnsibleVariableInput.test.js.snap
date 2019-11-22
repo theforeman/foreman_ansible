@@ -1,0 +1,345 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnsibleVariableInput should render 1`] = `
+<div
+  className="input-group"
+>
+  <span
+    className="input-group-addon"
+  >
+    <KeyInfoPopover
+      hidden={false}
+      keyErrors={Object {}}
+      lookupKey={
+        Object {
+          "currentOverride": Object {
+            "element": "hostgroup",
+            "elementName": "first hostgroup",
+            "value": false,
+          },
+          "defaultValue": true,
+          "description": "Square param",
+          "hiddenValue": false,
+          "id": 65,
+          "omit": null,
+          "override": true,
+          "overrideValues": Array [
+            Object {
+              "id": 26,
+              "match": "hostgroup=first hostgroup",
+              "omit": false,
+              "value": false,
+            },
+          ],
+          "parameter": "square",
+          "parameterType": "boolean",
+        }
+      }
+    />
+  </span>
+  <textarea
+    className="form-control no-stretch "
+    disabled={false}
+    name="host[lookup_values_attributes][65][value]"
+    onChange={[Function]}
+    rows="1"
+    value="foo"
+  />
+  <span
+    className="input-group-btn"
+  >
+    <UnhideButton
+      hidden={false}
+      lookupKey={
+        Object {
+          "currentOverride": Object {
+            "element": "hostgroup",
+            "elementName": "first hostgroup",
+            "value": false,
+          },
+          "defaultValue": true,
+          "description": "Square param",
+          "hiddenValue": false,
+          "id": 65,
+          "omit": null,
+          "override": true,
+          "overrideValues": Array [
+            Object {
+              "id": 26,
+              "match": "hostgroup=first hostgroup",
+              "omit": false,
+              "value": false,
+            },
+          ],
+          "parameter": "square",
+          "parameterType": "boolean",
+        }
+      }
+      toggleHidden={[Function]}
+    />
+    <OverrideButton
+      fieldOverriden={false}
+      keyId={65}
+      toggleField={[Function]}
+    />
+  </span>
+</div>
+`;
+
+exports[`AnsibleVariableInput should render when disabled 1`] = `
+<div
+  className="input-group"
+>
+  <span
+    className="input-group-addon"
+  >
+    <KeyInfoPopover
+      hidden={false}
+      keyErrors={Object {}}
+      lookupKey={
+        Object {
+          "currentOverride": Object {
+            "element": "hostgroup",
+            "elementName": "first hostgroup",
+            "value": false,
+          },
+          "defaultValue": true,
+          "description": "Square param",
+          "hiddenValue": false,
+          "id": 65,
+          "omit": null,
+          "override": true,
+          "overrideValues": Array [
+            Object {
+              "id": 26,
+              "match": "hostgroup=first hostgroup",
+              "omit": false,
+              "value": false,
+            },
+          ],
+          "parameter": "square",
+          "parameterType": "boolean",
+        }
+      }
+    />
+  </span>
+  <textarea
+    className="form-control no-stretch "
+    disabled={true}
+    name="host[lookup_values_attributes][65][value]"
+    onChange={[Function]}
+    rows="1"
+    value="foo"
+  />
+  <span
+    className="input-group-btn"
+  >
+    <UnhideButton
+      hidden={false}
+      lookupKey={
+        Object {
+          "currentOverride": Object {
+            "element": "hostgroup",
+            "elementName": "first hostgroup",
+            "value": false,
+          },
+          "defaultValue": true,
+          "description": "Square param",
+          "hiddenValue": false,
+          "id": 65,
+          "omit": null,
+          "override": true,
+          "overrideValues": Array [
+            Object {
+              "id": 26,
+              "match": "hostgroup=first hostgroup",
+              "omit": false,
+              "value": false,
+            },
+          ],
+          "parameter": "square",
+          "parameterType": "boolean",
+        }
+      }
+      toggleHidden={[Function]}
+    />
+    <OverrideButton
+      fieldOverriden={false}
+      keyId={65}
+      toggleField={[Function]}
+    />
+  </span>
+</div>
+`;
+
+exports[`AnsibleVariableInput should render when hidden 1`] = `
+<div
+  className="input-group"
+>
+  <span
+    className="input-group-addon"
+  >
+    <KeyInfoPopover
+      hidden={false}
+      keyErrors={Object {}}
+      lookupKey={
+        Object {
+          "currentOverride": Object {
+            "element": "hostgroup",
+            "elementName": "first hostgroup",
+            "value": false,
+          },
+          "defaultValue": true,
+          "description": "Square param",
+          "hiddenValue": false,
+          "id": 65,
+          "omit": null,
+          "override": true,
+          "overrideValues": Array [
+            Object {
+              "id": 26,
+              "match": "hostgroup=first hostgroup",
+              "omit": false,
+              "value": false,
+            },
+          ],
+          "parameter": "square",
+          "parameterType": "boolean",
+        }
+      }
+    />
+  </span>
+  <textarea
+    className="form-control no-stretch "
+    disabled={false}
+    name="host[lookup_values_attributes][65][value]"
+    onChange={[Function]}
+    rows="1"
+    value="foo"
+  />
+  <span
+    className="input-group-btn"
+  >
+    <UnhideButton
+      hidden={false}
+      lookupKey={
+        Object {
+          "currentOverride": Object {
+            "element": "hostgroup",
+            "elementName": "first hostgroup",
+            "value": false,
+          },
+          "defaultValue": true,
+          "description": "Square param",
+          "hiddenValue": false,
+          "id": 65,
+          "omit": null,
+          "override": true,
+          "overrideValues": Array [
+            Object {
+              "id": 26,
+              "match": "hostgroup=first hostgroup",
+              "omit": false,
+              "value": false,
+            },
+          ],
+          "parameter": "square",
+          "parameterType": "boolean",
+        }
+      }
+      toggleHidden={[Function]}
+    />
+    <OverrideButton
+      fieldOverriden={false}
+      keyId={65}
+      toggleField={[Function]}
+    />
+  </span>
+</div>
+`;
+
+exports[`AnsibleVariableInput should render when overriden 1`] = `
+<div
+  className="input-group"
+>
+  <span
+    className="input-group-addon"
+  >
+    <KeyInfoPopover
+      hidden={false}
+      keyErrors={Object {}}
+      lookupKey={
+        Object {
+          "currentOverride": Object {
+            "element": "hostgroup",
+            "elementName": "first hostgroup",
+            "value": false,
+          },
+          "defaultValue": true,
+          "description": "Square param",
+          "hiddenValue": false,
+          "id": 65,
+          "omit": null,
+          "override": true,
+          "overrideValues": Array [
+            Object {
+              "id": 26,
+              "match": "hostgroup=first hostgroup",
+              "omit": false,
+              "value": false,
+            },
+          ],
+          "parameter": "square",
+          "parameterType": "boolean",
+        }
+      }
+    />
+  </span>
+  <textarea
+    className="form-control no-stretch "
+    disabled={false}
+    name="host[lookup_values_attributes][65][value]"
+    onChange={[Function]}
+    rows="1"
+    value="foo"
+  />
+  <span
+    className="input-group-btn"
+  >
+    <UnhideButton
+      hidden={false}
+      lookupKey={
+        Object {
+          "currentOverride": Object {
+            "element": "hostgroup",
+            "elementName": "first hostgroup",
+            "value": false,
+          },
+          "defaultValue": true,
+          "description": "Square param",
+          "hiddenValue": false,
+          "id": 65,
+          "omit": null,
+          "override": true,
+          "overrideValues": Array [
+            Object {
+              "id": 26,
+              "match": "hostgroup=first hostgroup",
+              "omit": false,
+              "value": false,
+            },
+          ],
+          "parameter": "square",
+          "parameterType": "boolean",
+        }
+      }
+      toggleHidden={[Function]}
+    />
+    <OverrideButton
+      fieldOverriden={true}
+      keyId={65}
+      toggleField={[Function]}
+    />
+  </span>
+</div>
+`;
