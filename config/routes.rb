@@ -64,6 +64,7 @@ Rails.application.routes.draw do
         get :import
         post :confirm_import
         get 'auto_complete_search'
+        post :overrides
       end
     end
 

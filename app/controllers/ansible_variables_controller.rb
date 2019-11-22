@@ -4,6 +4,7 @@
 class AnsibleVariablesController < ::LookupKeysController
   include Foreman::Controller::AutoCompleteSearch
   include ForemanAnsible::Concerns::ImportControllerHelper
+  include ForemanAnsible::Concerns::AnsibleVariableOverrides
   include Foreman::Controller::Parameters::AnsibleVariable
 
   before_action :import_new_roles, :only => [:confirm_import]
@@ -55,6 +56,22 @@ class AnsibleVariablesController < ::LookupKeysController
     redirect_to ansible_variables_path
   end
 
+  def overrides
+    if params[:hostgroup]
+      process_hostgroup
+      @resolver = ForemanAnsible::OverrideResolver.new(@hostgroup)
+    end
+
+    if params[:host]
+      refresh_host
+      @resolver = ForemanAnsible::OverrideResolver.new(@host)
+    end
+
+    return render :json => [] unless @resolver
+
+    render :json => to_response(@resolver)
+  end
+
   private
 
   def default_order; end
@@ -103,5 +120,14 @@ class AnsibleVariablesController < ::LookupKeysController
                   'smart proxy has the Ansible feature enabled.')
     end
     @smart_proxy
+  end
+
+  def action_permission
+    case params[:action]
+    when 'variables', 'overrides'
+      :view
+    else
+      super
+    end
   end
 end

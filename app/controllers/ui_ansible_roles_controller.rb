@@ -3,6 +3,8 @@ class UiAnsibleRolesController < ::Api::V2::BaseController
     super resource
   end
 
+  layout 'api/v2/layouts/index_layout', :only => [:index]
+
   def index
     @ui_ansible_roles = resource_scope_for_index(:permission => :view_ansible_roles)
   end
