@@ -62,7 +62,7 @@ module ForemanAnsibleCore
         when 'runner_on_unreachable'
           publish_exit_status_for(hostname, 1)
         when 'runner_on_failed'
-          publish_exit_status_for(hostname, 2) if event['ignore_errors'].nil?
+          publish_exit_status_for(hostname, 2) if event.dig('event_data', 'ignore_errors').nil?
         end
       end
 
