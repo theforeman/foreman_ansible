@@ -85,30 +85,16 @@ module ForemanAnsible
           )
         end
         ::FactParser.register_fact_parser(:ansible, ForemanAnsible::FactParser)
-        ::Host::Managed.send(:prepend, ForemanAnsible::HostManagedExtensions)
-        ::Hostgroup.send(:include, ForemanAnsible::HostgroupExtensions)
-        ::HostsHelper.send(:include, ForemanAnsible::HostsHelperExtensions)
-        ::HostsController.send(
-          :include, ForemanAnsible::Concerns::HostsControllerExtensions
-        )
-        ::Api::V2::HostsController.send(
-          :include, ForemanAnsible::Api::V2::HostsControllerExtensions
-        )
-        ::Api::V2::HostsController.send(
-          :include, ForemanAnsible::Api::V2::HostsParamGroupExtensions
-        )
-        ::HostgroupsController.send(
-          :include, ForemanAnsible::Concerns::HostgroupsControllerExtensions
-        )
-        ::Api::V2::HostgroupsController.send(
-          :include, ForemanAnsible::Api::V2::HostgroupsControllerExtensions
-        )
-        ::Api::V2::HostgroupsController.send(
-          :include, ForemanAnsible::Api::V2::HostgroupsParamGroupExtensions
-        )
-        ::ConfigReportImporter.send(
-          :include, ForemanAnsible::AnsibleReportImporter
-        )
+        ::Host::Managed.prepend ForemanAnsible::HostManagedExtensions
+        ::Hostgroup.include ForemanAnsible::HostgroupExtensions
+        ::HostsHelper.include ForemanAnsible::HostsHelperExtensions
+        ::HostsController.include ForemanAnsible::Concerns::HostsControllerExtensions
+        ::Api::V2::HostsController.include ForemanAnsible::Api::V2::HostsControllerExtensions
+        ::Api::V2::HostsController.include ForemanAnsible::Api::V2::HostsParamGroupExtensions
+        ::HostgroupsController.include ForemanAnsible::Concerns::HostgroupsControllerExtensions
+        ::Api::V2::HostgroupsController.include ForemanAnsible::Api::V2::HostgroupsControllerExtensions
+        ::Api::V2::HostgroupsController.include ForemanAnsible::Api::V2::HostgroupsParamGroupExtensions
+        ::ConfigReportImporter.include ForemanAnsible::AnsibleReportImporter
       rescue StandardError => e
         Rails.logger.warn "Foreman Ansible: skipping engine hook (#{e})"
       end

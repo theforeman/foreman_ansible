@@ -2,7 +2,7 @@
 
 require 'test_plugin_helper'
 require 'dynflow/testing'
-Mocha::Mock.send :include, Dynflow::Testing::Mimic
+Mocha::Mock.include Dynflow::Testing::Mimic
 
 # Ensure Hosts controller can CRUD ansible roles
 class HostsControllerExtensionsTest < ActionController::TestCase
