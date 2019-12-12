@@ -89,6 +89,7 @@ class AnsibleRolesSwitcher extends React.Component {
             </div>
             <AssignedRolesList
               assignedRoles={assignedRoles}
+              allAssignedRoles={allAssignedRoles}
               pagination={assignedPagination}
               itemCount={assignedRolesCount}
               onPaginationChange={changeAssignedPage}
