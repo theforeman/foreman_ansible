@@ -39,7 +39,7 @@ module ForemanAnsible
     def import_new_role(role_name, new_roles)
       role = AnsibleRole.find_by(:name => role_name)
       if role.blank? && new_roles.map(&:name).include?(role_name)
-        role = new_roles.select { |r| r.name == role_name }.first
+        role = new_roles.find { |r| r.name == role_name }
       end
       role
     end
