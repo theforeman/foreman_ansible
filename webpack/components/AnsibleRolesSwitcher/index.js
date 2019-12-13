@@ -35,10 +35,7 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(AnsibleRolesSwitcherActions, dispatch);
 
 export default withProtectedView(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(AnsibleRolesSwitcher),
+  connect(mapStateToProps, mapDispatchToProps)(AnsibleRolesSwitcher),
   AnsiblePermissionDenied,
   props => props.data && props.data.canView
 );
