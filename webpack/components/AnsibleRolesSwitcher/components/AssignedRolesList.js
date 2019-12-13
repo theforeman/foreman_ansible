@@ -8,13 +8,16 @@ import AnsibleRole from './AnsibleRole';
 
 const AssignedRolesList = ({
   assignedRoles,
+  allAssignedRoles,
   pagination,
   itemCount,
   onPaginationChange,
   onRemoveRole,
   resourceName,
 }) => {
-  const directlyAssignedRoles = assignedRoles.filter(role => !role.inherited);
+  const directlyAssignedRoles = allAssignedRoles.filter(
+    role => !role.inherited
+  );
 
   return (
     <div>
@@ -62,6 +65,7 @@ const AssignedRolesList = ({
 
 AssignedRolesList.propTypes = {
   assignedRoles: PropTypes.arrayOf(PropTypes.object).isRequired,
+  allAssignedRoles: PropTypes.arrayOf(PropTypes.object).isRequired,
   pagination: PropTypes.shape({
     page: PropTypes.number,
     perPage: PropTypes.number,
