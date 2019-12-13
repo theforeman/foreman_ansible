@@ -4,7 +4,6 @@ require 'ipaddress'
 module ForemanAnsible
   # Relations to make Host::Managed 'have' ansible roles
   module HostManagedExtensions
-    # rubocop:disable Metrics/BlockLength
     def self.prepended(base)
       base.instance_eval do
         include ::ForemanAnsible::Concerns::JobInvocationHelper
@@ -30,7 +29,6 @@ module ForemanAnsible
 
     # This one should be fixed, disabled for the moment as we're
     # in a rush to get the release out
-    # rubocop:disable Metrics/AbcSize
     def play_ansible_roles
       return true unless ansible_roles.present? ||
                          inherited_ansible_roles.present?
@@ -47,13 +45,11 @@ module ForemanAnsible
       logger.info("Error running Ansible roles on #{self} before_provision: "\
                   "#{e.message}")
     end
-    # rubocop:enable Metrics/AbcSize
 
     def all_ansible_roles
       (ansible_roles + inherited_ansible_roles).uniq
     end
 
-    # rubocop:enable Metrics/BlockLength
     # Class methods we may need to override or add
     module ClassMethods
       def import_host(*args)

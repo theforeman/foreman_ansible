@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable BlockLength
 Rails.application.routes.draw do
   namespace :api do
     scope '(:apiv)',
@@ -104,4 +103,3 @@ Rails.application.routes.draw do
     end
   end
 end
-# rubocop:enable BlockLength

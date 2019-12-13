@@ -34,10 +34,10 @@ module Api
 
       test 'schedule inventory by user' do
         report = FactoryBot.create(:report_template)
-        setting = Setting::Ansible.create! :name => 'ansible_inventory_template', :value  => report.name,
-          :default => report.name, :description => 'inventory'
+        Setting::Ansible.create! :name => 'ansible_inventory_template', :value => report.name,
+                                 :default => report.name, :description => 'inventory'
         user = FactoryBot.create(:user)
-        user.roles << Role.find_by_name('Ansible Tower Inventory Reader')
+        user.roles << Role.find_by(:name => 'Ansible Tower Inventory Reader')
         post :schedule, { :session => set_session_user(user) }
         assert_response :success
       end

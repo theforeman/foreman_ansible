@@ -7,8 +7,6 @@ class Setting
       # It would be more disadvantages than advantages to split up
       # default_settings into multiple methods, this way it's already very
       # manageable.
-      # rubocop:disable AbcSize
-      # rubocop:disable MethodLength
       def default_settings
         [
           set(
@@ -85,8 +83,6 @@ class Setting
           )
         ]
       end
-      # rubocop:enable AbcSize
-      # rubocop:enable MethodLength
 
       def load_defaults
         Setting::BLANK_ATTRS.push('ansible_ssh_private_key_file')
