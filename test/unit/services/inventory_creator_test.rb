@@ -5,7 +5,6 @@ require 'test_plugin_helper'
 module ForemanAnsible
   # Test how the inventory creator service transforms host params into
   # inventory variables and connection options
-  # rubocop:disable ClassLength
   class InventoryCreatorTest < ActiveSupport::TestCase
     setup do
       @host = FactoryBot.build(:host)
@@ -204,5 +203,4 @@ module ForemanAnsible
       assert_equal org.name, inventory['_meta']['hostvars'][host.name]['foreman']['organization']
     end
   end
-  # rubocop:enable ClassLength
 end

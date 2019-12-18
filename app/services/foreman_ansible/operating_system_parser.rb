@@ -45,7 +45,6 @@ module ForemanAnsible
       facts[:ansible_distribution_release]
     end
 
-    # rubocop:disable AbcSize, CyclomaticComplexity, PerceivedComplexity
     def os_major
       if os_name == 'Debian' &&
          facts[:ansible_distribution_major_version][%r{\/sid}i]
@@ -56,14 +55,12 @@ module ForemanAnsible
           (facts[:version].split('R')[0] if os_name == 'junos')
       end
     end
-    # rubocop:enable AbcSize, CyclomaticComplexity, PerceivedComplexity
 
     def os_release
       facts[:ansible_distribution_version] ||
         facts[:ansible_lsb] && facts[:ansible_lsb]['release']
     end
 
-    # rubocop:disable AbcSize
     def os_minor
       _, minor = (os_release&.split('.', 2)) ||
                  (facts[:version].split('R') if os_name == 'junos')
@@ -87,7 +84,6 @@ module ForemanAnsible
           facts[:ansible_lsb] && facts[:ansible_lsb]['id']
       end
     end
-    # rubocop:enable AbcSize
 
     def os_description
       if facts[:ansible_os_family] == 'Windows'

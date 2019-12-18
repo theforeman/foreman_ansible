@@ -12,7 +12,7 @@ module ForemanAnsible
 
         # Included blocks shouldn't be bound by length, as otherwise concerns
         # cannot extend the method properly.
-        # rubocop:disable BlockLength, Rails/LexicallyScopedActionFilter
+        # rubocop:disable Rails/LexicallyScopedActionFilter
         included do
           before_action :find_ansible_roles, :only => [:assign_ansible_roles]
 
@@ -61,7 +61,7 @@ module ForemanAnsible
             process_response @hostgroup.update(:ansible_roles => @ansible_roles)
           end
         end
-        # rubocop:enable BlockLength, Rails/LexicallyScopedActionFilter
+        # rubocop:enable Rails/LexicallyScopedActionFilter
 
         private
 

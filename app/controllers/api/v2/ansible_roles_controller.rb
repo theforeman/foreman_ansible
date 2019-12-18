@@ -67,7 +67,7 @@ module Api
         params.fetch(:role_names, [])
       end
 
-      # rubocop:disable DotPosition
+      # rubocop:disable Layout/DotPosition
       def find_proxy
         unless params[:proxy_id]
           msg = _('Smart proxy id is required')
@@ -76,7 +76,7 @@ module Api
         @proxy = SmartProxy.authorized(:view_smart_proxies)
                            .find(params[:proxy_id])
       end
-      # rubocop:enable DotPosition
+      # rubocop:enable Layout/DotPosition
 
       def create_importer
         @importer = ForemanAnsible::ApiRolesImporter.new(@proxy)

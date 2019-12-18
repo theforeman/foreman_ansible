@@ -70,7 +70,6 @@ module ForemanAnsible
       Apipie.configuration.checksum_path += ['/foreman_ansible/api/']
     end
 
-    # rubocop:disable BlockLength
     config.to_prepare do
       begin
         foreman_version = ::Foreman::Version.new
@@ -99,7 +98,6 @@ module ForemanAnsible
         Rails.logger.warn "Foreman Ansible: skipping engine hook (#{e})"
       end
     end
-    # rubocop:enable BlockLength
 
     rake_tasks do
       Rake::Task['db:seed'].enhance do

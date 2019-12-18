@@ -3,9 +3,7 @@
 module ForemanAnsible
   # A class that builds custom notificaton for REX job if it's insights
   # remediation feature
-  # rubocop:disable LineLength
   class InsightsNotificationBuilder < ::UINotifications::RemoteExecutionJobs::BaseJobFinish
-    # rubocop:enable LineLength
     def deliver!
       ::Notification.create!(
         :audience => Notification::AUDIENCE_USER,
