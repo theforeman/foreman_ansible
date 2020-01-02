@@ -62,6 +62,10 @@ if defined? ForemanRemoteExecution
           'ansible-runner'
         end
 
+        def proxy_action_class
+          'ForemanAnsibleCore::TaskLauncher::Playbook::PlaybookRunnerAction'
+        end
+
         def required_proxy_selector_for(template)
           if template.remote_execution_features.where(:label => 'ansible_run_capsule_upgrade').any?
             ::DefaultProxyProxySelector.new
