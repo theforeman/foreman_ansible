@@ -29,6 +29,7 @@ module ForemanAnsible
     def import_variables(role_variables, new_roles)
       detect_changes(
         role_variables.map do |role_name, variables|
+          next if variables.blank?
           role = import_new_role(role_name, new_roles)
           next if role.blank?
           initialize_variables(variables, role)
