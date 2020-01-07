@@ -5,7 +5,6 @@ module Api
     # API controller for Ansible Variables
     class AnsibleVariablesController < ::Api::V2::BaseController
       include ::Api::Version2
-      include Foreman::Controller::Parameters::VariableLookupKey
       include Foreman::Controller::Parameters::AnsibleVariable
 
       resource_description do
@@ -65,7 +64,7 @@ module Api
       param_group :ansible_variable, :as => :update
 
       def update
-        @ansible_variable.update!(variable_lookup_key_params)
+        @ansible_variable.update!(ansible_variable_params)
         render 'api/v2/ansible_variables/show'
       end
 

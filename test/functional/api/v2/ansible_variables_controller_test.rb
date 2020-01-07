@@ -46,6 +46,18 @@ module Api
         res = JSON.parse(@response.body)
         refute res['imported']
       end
+
+      test 'should update' do
+        variable = FactoryBot.create(:ansible_variable, :default_value => 'my default value')
+        new_value = 'changed default value'
+        post :update,
+             :params => { :id => variable.id, :default_value => new_value },
+             :session => set_session_user
+
+        assert_response :success
+        res = JSON.parse(@response.body)
+        assert_equal new_value, res['default_value']
+      end
     end
   end
 end
