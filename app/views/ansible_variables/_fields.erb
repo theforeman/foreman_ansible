@@ -15,7 +15,7 @@
         ) %>
 
     <% version = Foreman::Version.new %>
-    <% if version.major.to_i >= 1 && version.minor.to_i >= 22 %>
+    <% if version.major.to_i > 1 || version.minor.to_i >= 22 %>
       <%= param_type_selector(f, false, :onchange => 'keyTypeChange(this)', :disabled => !f.object.override) %>
     <% else %>
       <%= param_type_selector(f, :onchange => 'keyTypeChange(this)', :disabled => !f.object.override) %>
