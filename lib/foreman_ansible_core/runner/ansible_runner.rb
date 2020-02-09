@@ -82,7 +82,7 @@ module ForemanAnsibleCore
       def write_inventory
         inventory_script = <<~INVENTORY_SCRIPT
           #!/bin/sh
-          cat <<-EOS
+          cat <<-'EOS'
           #{JSON.dump(@inventory)}
           EOS
         INVENTORY_SCRIPT
