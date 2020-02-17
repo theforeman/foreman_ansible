@@ -72,7 +72,7 @@ Rails.application.routes.draw do
             :module => :v2,
             :defaults => { :apiv => 'v2' },
             :apiv => /v1|v2/,
-            :constraints => ApiConstraints.new(:version => 2) do
+            :constraints => ApiConstraints.new(:version => 2, :default => true) do
         resources :ansible_roles, :only => [:show, :index, :destroy] do
           collection do
             put :import

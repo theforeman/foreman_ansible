@@ -3,6 +3,11 @@ module Api
     class AnsibleInventoriesController < ::Api::V2::BaseController
       include ::Api::Version2
 
+      resource_description do
+        api_version 'v2'
+        api_base_url '/ansible/api'
+      end
+
       api :POST, '/ansible_inventories/hosts',
           N_('Show Ansible inventory for hosts')
       param :host_ids, Array, N_('IDs of hosts included in inventory'),
@@ -13,6 +18,10 @@ module Api
       param :host_ids, Array, N_('IDs of hosts included in inventory'),
             :required => true
 
+      def hosts
+        show_inventory :host_ids, :id
+      end
+
       api :POST, '/ansible_inventories/hostgroups',
           N_('Show Ansible inventory for hostgroups')
       param :hostgroup_ids, Array, N_('IDs of hostgroups included in inventory'),
@@ -22,10 +31,6 @@ module Api
           N_('Show Ansible inventory for hostgroups')
       param :hostgroup_ids, Array, N_('IDs of hostgroups included in inventory'),
             :required => true
-
-      def hosts
-        show_inventory :host_ids, :id
-      end
 
       def hostgroups
         show_inventory :hostgroup_ids, :hostgroup_id
