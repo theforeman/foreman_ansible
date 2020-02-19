@@ -32,8 +32,6 @@ module ForemanAnsible
     test 'settings are respected if param cannot be found' do
       AnsibleProvider.stubs(:find_ip_or_hostname).with(@host).returns(@host.name)
       extra_options = { 'ansible_user' => 'someone', 'ansible_port' => 2000 }
-      Setting.expects(:[]).with('Enable_Smart_Variables_in_ENC').
-        returns(nil).at_least_once
       Setting.expects(:[]).with('ansible_ssh_private_key_file').
         returns(nil).at_least_once
       Setting.expects(:[]).with('remote_execution_ssh_port').
