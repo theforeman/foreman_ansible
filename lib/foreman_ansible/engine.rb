@@ -75,10 +75,9 @@ module ForemanAnsible
         foreman_version = ::Foreman::Version.new
         if Rails.env.test? ||
            foreman_version.major.to_i == 1 && foreman_version.minor.to_i < 13
-          ::FactImporter.register_fact_importer(:ansible,
-                                                ForemanAnsible::FactImporter)
+          ::Foreman::Plugin.fact_importer_registry.register(:ansible, ForemanAnsible::FactImporter)
         else
-          ::FactImporter.register_fact_importer(
+          ::Foreman::Plugin.fact_importer_registry.register(
             :ansible,
             ForemanAnsible::StructuredFactImporter
           )
