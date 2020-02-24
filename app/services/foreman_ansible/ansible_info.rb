@@ -10,7 +10,7 @@ module ForemanAnsible
 
       variables.each_with_object({}) do |var, memo|
         value = values[var]
-        memo[var.key] = value if value
+        memo[var.key] = value unless value.nil?
         memo
       end
     end
