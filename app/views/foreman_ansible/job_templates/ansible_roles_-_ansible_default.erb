@@ -15,7 +15,10 @@ model: JobTemplate
     - name: Display all parameters known for the Foreman host
       debug:
         var: foreman
-  roles:
-<%- if @host.all_ansible_roles.present? -%>
-<%=   @host.all_ansible_roles.map { |role| "    - #{role.name.strip}" }.join("\n") %>
-<%- end -%>
+  tasks:
+    - name: Apply roles
+      include_role:
+        name: "{{ role }}"
+      loop: "{{ foreman_ansible_roles }}"
+      loop_control:
+        loop_var: role
