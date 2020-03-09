@@ -20,29 +20,42 @@ Layout/EmptyLineAfterGuardClause:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, IndentationWidth.
 # SupportedStyles: special_inside_parentheses, consistent, align_brackets
-Layout/IndentFirstArrayElement:
+Layout/FirstArrayElementIndentation:
   Enabled: false
 
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, IndentationWidth.
 # SupportedStyles: special_inside_parentheses, consistent, align_braces
-Layout/IndentFirstHashElement:
+Layout/FirstHashElementIndentation:
   Enabled: false
 
 # Offense count: 2
 Lint/BooleanSymbol:
   Enabled: false
 
-# Offense count: 15
-# Cop supports --auto-correct.
-Lint/UnneededCopDisableDirective:
+Minitest/AssertTruthy:
+  Enabled: false
+
+Minitest/AssertEmpty:
+  Enabled: false
+
+Minitest/AssertEqual:
+  Enabled: false
+
+Minitest/AssertIncludes:
+  Enabled: false
+
+Minitest/GlobalExpectations:
+  Enabled: false
+
+Minitest/RefuteIncludes:
   Enabled: false
 
 # Offense count: 1
 # Configuration parameters: MinNameLength, AllowNamesEndingInNumbers, AllowedNames, ForbiddenNames.
 # AllowedNames: io, id, to, by, on, in, at, ip, db
-Naming/UncommunicativeMethodParamName:
+Naming/MethodParameterName:
   Enabled: false
 
 # Offense count: 1
@@ -74,13 +87,6 @@ Rails/InverseOf:
 Rails/RefuteMethods:
   Enabled: false
 
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: braces, no_braces, context_dependent
-Style/BracesAroundHashParameters:
-  Enabled: false
-
 # Offense count: 4
 Style/Documentation:
   Enabled: false
@@ -101,6 +107,15 @@ Style/FormatStringToken:
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: when_needed, always, never
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: false
+
+Style/HashTransformKeys:
+  Enabled: false
+
+Style/HashTransformValues:
   Enabled: false
 
 # Offense count: 4

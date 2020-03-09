@@ -62,7 +62,7 @@ module ForemanAnsible
     end
 
     def os_minor
-      _, minor = (os_release&.split('.', 2)) ||
+      _, minor = os_release&.split('.', 2) ||
                  (facts[:version].split('R') if os_name == 'junos')
       # Until Foreman supports os.minor as something that's not a number,
       # we should remove the extra dots in the version. E.g:
