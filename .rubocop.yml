@@ -5,8 +5,8 @@ Rails:
   Enabled: true
 
 AllCops:
-  TargetRubyVersion: 2.3
-  TargetRailsVersion: 5.1
+  TargetRubyVersion: 2.5
+  TargetRailsVersion: 5.2
   Exclude:
     - 'extras/**/*'
     - 'locale/**/*'
@@ -35,4 +35,10 @@ Rails/SkipsModelValidations:
   Enabled: false
 
 Metrics:
+  Enabled: false
+
+Layout/LineLength:
+  Enabled: false
+
+Performance/RegexpMatch:
   Enabled: false

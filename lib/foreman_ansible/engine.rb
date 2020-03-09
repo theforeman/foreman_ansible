@@ -71,31 +71,29 @@ module ForemanAnsible
     end
 
     config.to_prepare do
-      begin
-        foreman_version = ::Foreman::Version.new
-        if Rails.env.test? ||
-           foreman_version.major.to_i == 1 && foreman_version.minor.to_i < 13
-          ::Foreman::Plugin.fact_importer_registry.register(:ansible, ForemanAnsible::FactImporter)
-        else
-          ::Foreman::Plugin.fact_importer_registry.register(
-            :ansible,
-            ForemanAnsible::StructuredFactImporter
-          )
-        end
-        ::FactParser.register_fact_parser(:ansible, ForemanAnsible::FactParser)
-        ::Host::Managed.prepend ForemanAnsible::HostManagedExtensions
-        ::Hostgroup.include ForemanAnsible::HostgroupExtensions
-        ::HostsHelper.include ForemanAnsible::HostsHelperExtensions
-        ::HostsController.include ForemanAnsible::Concerns::HostsControllerExtensions
-        ::Api::V2::HostsController.include ForemanAnsible::Api::V2::HostsControllerExtensions
-        ::Api::V2::HostsController.include ForemanAnsible::Api::V2::HostsParamGroupExtensions
-        ::HostgroupsController.include ForemanAnsible::Concerns::HostgroupsControllerExtensions
-        ::Api::V2::HostgroupsController.include ForemanAnsible::Api::V2::HostgroupsControllerExtensions
-        ::Api::V2::HostgroupsController.include ForemanAnsible::Api::V2::HostgroupsParamGroupExtensions
-        ::ConfigReportImporter.include ForemanAnsible::AnsibleReportImporter
-      rescue StandardError => e
-        Rails.logger.warn "Foreman Ansible: skipping engine hook (#{e})"
+      foreman_version = ::Foreman::Version.new
+      if Rails.env.test? ||
+         foreman_version.major.to_i == 1 && foreman_version.minor.to_i < 13
+        ::Foreman::Plugin.fact_importer_registry.register(:ansible, ForemanAnsible::FactImporter)
+      else
+        ::Foreman::Plugin.fact_importer_registry.register(
+          :ansible,
+          ForemanAnsible::StructuredFactImporter
+        )
       end
+      ::FactParser.register_fact_parser(:ansible, ForemanAnsible::FactParser)
+      ::Host::Managed.prepend ForemanAnsible::HostManagedExtensions
+      ::Hostgroup.include ForemanAnsible::HostgroupExtensions
+      ::HostsHelper.include ForemanAnsible::HostsHelperExtensions
+      ::HostsController.include ForemanAnsible::Concerns::HostsControllerExtensions
+      ::Api::V2::HostsController.include ForemanAnsible::Api::V2::HostsControllerExtensions
+      ::Api::V2::HostsController.include ForemanAnsible::Api::V2::HostsParamGroupExtensions
+      ::HostgroupsController.include ForemanAnsible::Concerns::HostgroupsControllerExtensions
+      ::Api::V2::HostgroupsController.include ForemanAnsible::Api::V2::HostgroupsControllerExtensions
+      ::Api::V2::HostgroupsController.include ForemanAnsible::Api::V2::HostgroupsParamGroupExtensions
+      ::ConfigReportImporter.include ForemanAnsible::AnsibleReportImporter
+    rescue StandardError => e
+      Rails.logger.warn "Foreman Ansible: skipping engine hook (#{e})"
     end
 
     rake_tasks do
