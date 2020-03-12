@@ -48,22 +48,21 @@ module ForemanAnsible
     def initialize_variables(variables, role)
       variables.map do |variable_name, variable_default|
         variable = AnsibleVariable.find_or_initialize_by(
-          :key => variable_name
+          :key => variable_name,
+          :ansible_role_id => role.id
         )
-        if variable.new_record?
-          variable.assign_attributes(:default_value => variable_default,
-                                     :key_type => infer_key_type(variable_default),
-                                     :imported => true)
-        end
-        variable.ansible_role = role
+        variable.assign_attributes(:default_value => variable_default,
+                                   :key_type => infer_key_type(variable_default))
+        variable.imported = true if variable.new_record?
         variable.valid? ? variable : nil
       end
     end
 
     def detect_changes(imported)
       changes = {}.with_indifferent_access
-      persisted, changes[:new] = imported.partition { |role| role.id.present? }
-      changes[:update], _old = persisted.partition(&:changed?)
+      persisted, changes[:new] = imported.partition { |var| var.id.present? }
+      changed, _old = persisted.partition(&:changed?)
+      _overriden, changes[:update] = changed.partition(&:override?)
       changes[:obsolete] = AnsibleVariable.where.not(:id => persisted.pluck(:id), :imported => false)
       changes
     end
