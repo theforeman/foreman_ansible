@@ -6,5 +6,10 @@ FactoryBot.define do
     sequence(:default_value) { |n| "default_value_#{n}" }
     ansible_role
     imported { true }
+    override { false }
+
+    after(:build) do |variable|
+      variable.key_type ||= ForemanAnsible::VariablesImporter::VARIABLE_TYPES[variable.default_value.class.to_s] || 'string'
+    end
   end
 end
