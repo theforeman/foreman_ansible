@@ -1,3 +1,5 @@
+require 'shellwords'
+
 module ForemanAnsibleCore
   module Runner
     class AnsibleRunner < ForemanTasksCore::Runner::Parent
@@ -80,14 +82,14 @@ module ForemanAnsibleCore
       end
 
       def write_inventory
+        path = File.join(@root, 'inventory', 'hosts')
+        data_path = File.join(@root, 'data')
         inventory_script = <<~INVENTORY_SCRIPT
           #!/bin/sh
-          cat <<-'EOS'
-          #{JSON.dump(@inventory)}
-          EOS
+          cat #{::Shellwords.escape data_path}
         INVENTORY_SCRIPT
-        path = File.join(@root, 'inventory', 'hosts')
         File.write(path, inventory_script)
+        File.write(data_path, JSON.dump(@inventory))
         File.chmod(0o0755, path)
       end
 
