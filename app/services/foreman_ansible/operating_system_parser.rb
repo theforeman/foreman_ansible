@@ -80,8 +80,14 @@ module ForemanAnsible
         facts[:ansible_os_name].tr(" \n\t", '') ||
           facts[:ansible_distribution].tr(" \n\t", '')
       else
-        facts[:ansible_distribution] ||
-          facts[:ansible_lsb] && facts[:ansible_lsb]['id']
+        distribution = facts[:ansible_distribution] || facts[:ansible_lsb].try(:[], 'id')
+
+        if distribution == 'RedHat' &&
+            facts[:ansible_lsb].try(:[], 'id') == 'RedHatEnterpriseWorkstation'
+          distribution += '_Workstation'
+        end
+
+        distribution
       end
     end
 
