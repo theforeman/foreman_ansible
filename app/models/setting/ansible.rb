@@ -78,7 +78,7 @@ class Setting
             'ansible_inventory_template',
             N_('Foreman will use this template to schedule the report '\
                'with Ansible inventory'),
-            'Ansible Inventory',
+            'Ansible - Ansible Inventory',
             N_('Default Ansible inventory report template')
           )
         ]
