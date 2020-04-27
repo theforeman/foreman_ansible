@@ -10,6 +10,7 @@ module ForemanAnsibleCore
         @inventory = rebuild_secrets(rebuild_inventory(input), input)
         @playbook = input.values.first[:input][:action_input][:script]
         @root = working_dir
+        @verbosity_level = input.values.first[:input][:action_input][:verbosity_level]
       end
 
       def start
@@ -99,8 +100,17 @@ module ForemanAnsibleCore
 
       def start_ansible_runner
         command = ['ansible-runner', 'run', @root, '-p', 'playbook.yml']
+        command << verbosity if verbose?
         initialize_command(*command)
         logger.debug("[foreman_ansible] - Running command '#{command.join(' ')}'")
+      end
+
+      def verbosity
+        '-' + 'v' * @verbosity_level.to_i
+      end
+
+      def verbose?
+        @verbosity_level.to_i.positive?
       end
 
       def prepare_directory_structure
