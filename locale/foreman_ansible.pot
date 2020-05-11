@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foreman_ansible 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-27 17:00+0200\n"
-"PO-Revision-Date: 2019-06-27 17:00+0200\n"
+"POT-Creation-Date: 2020-05-11 13:20+0530\n"
+"PO-Revision-Date: 2020-05-11 13:20+0530\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -34,38 +34,42 @@ msgstr ""
 msgid "No changes in variables detected on %s."
 msgstr ""
 
-#: ../app/controllers/ansible_variables_controller.rb:49
-msgid ""
-"Import of variables successfully finished.\n"
-"Added: #{results[:added].count} \n"
-" Removed: #{results[:obsolete].count} \n"
-"Updated: #{results[:updated].count}"
-msgstr ""
-
 #: ../app/controllers/ansible_variables_controller.rb:102
 msgid ""
 "No proxy found to import variables from, ensure that the smart proxy has the A"
 "nsible feature enabled."
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_inventories_controller.rb:7
 #: ../app/controllers/api/v2/ansible_inventories_controller.rb:12
+#: ../app/controllers/api/v2/ansible_inventories_controller.rb:17
 msgid "Show Ansible inventory for hosts"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_inventories_controller.rb:8
 #: ../app/controllers/api/v2/ansible_inventories_controller.rb:13
+#: ../app/controllers/api/v2/ansible_inventories_controller.rb:18
 msgid "IDs of hosts included in inventory"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_inventories_controller.rb:17
-#: ../app/controllers/api/v2/ansible_inventories_controller.rb:22
+#: ../app/controllers/api/v2/ansible_inventories_controller.rb:26
+#: ../app/controllers/api/v2/ansible_inventories_controller.rb:31
 msgid "Show Ansible inventory for hostgroups"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_inventories_controller.rb:18
-#: ../app/controllers/api/v2/ansible_inventories_controller.rb:23
+#: ../app/controllers/api/v2/ansible_inventories_controller.rb:27
+#: ../app/controllers/api/v2/ansible_inventories_controller.rb:32
 msgid "IDs of hostgroups included in inventory"
+msgstr ""
+
+#: ../app/controllers/api/v2/ansible_inventories_controller.rb:40
+msgid "Schedule generating of Ansible Inventory report"
+msgstr ""
+
+#: ../app/controllers/api/v2/ansible_inventories_controller.rb:41
+msgid "Hash of input values of type input=>value"
+msgstr ""
+
+#: ../app/controllers/api/v2/ansible_inventories_controller.rb:43
+msgid "Report format, defaults to '%s'"
 msgstr ""
 
 #: ../app/controllers/api/v2/ansible_override_values_controller.rb:17
@@ -102,8 +106,8 @@ msgstr ""
 
 #: ../app/controllers/api/v2/ansible_roles_controller.rb:36
 #: ../app/controllers/api/v2/ansible_roles_controller.rb:43
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:75
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:85
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:74
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:84
 msgid "Smart Proxy to import from"
 msgstr ""
 
@@ -127,85 +131,85 @@ msgstr ""
 msgid "Smart proxy id is required"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:20
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:19
 msgid "Show variable"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:24
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:23
 msgid "List Ansible variables"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:31
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:30
 msgid "Deletes Ansible variable"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:40
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:39
 msgid "Name of variable"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:41
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:40
 msgid "Role ID"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:42
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:41
 msgid "Default value of variable"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:43
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:42
 msgid "When enabled the parameter is hidden in the UI"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:44
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:43
 msgid "The order in which values are resolved"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:45
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:44
 msgid "Description of variable"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:46
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:45
 msgid "Types of validation values"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:47
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:46
 msgid "Used to enforce certain values for the parameter values"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:48
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:47
 msgid "Types of variable values"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:49
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:48
 msgid "Merge all matching values (only array/hash type)"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:50
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:49
 msgid "Include default value when merging all matching values"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:51
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:50
 msgid "Remove duplicate values (only array type)"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:52
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:51
 msgid "Whether to override variable or not"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:56
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:55
 msgid "Create Ansible variable"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:63
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:62
 msgid "Updates Ansible variable"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:73
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:72
 msgid ""
 "Import Ansible variables. This will only import variables for already existing"
 " roles, it will not import any new roles"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_variables_controller.rb:83
+#: ../app/controllers/api/v2/ansible_variables_controller.rb:82
 msgid ""
 "Obsolete Ansible variables. This will only obsolete variables for already exis"
 "ting roles, it will not delete any old roles"
@@ -213,12 +217,12 @@ msgstr ""
 
 #:
 #: ../app/controllers/foreman_ansible/api/v2/hostgroups_controller_extensions.rb:20
-msgid "Plays Ansible roles on a hostgroup"
+msgid "Runs all Ansible roles on a hostgroup"
 msgstr ""
 
 #:
 #: ../app/controllers/foreman_ansible/api/v2/hostgroups_controller_extensions.rb:30
-msgid "Plays Ansible roles on hostgroups"
+msgid "Runs all Ansible roles on hostgroups"
 msgstr ""
 
 #:
@@ -248,11 +252,11 @@ msgid "IDs of associated ansible roles"
 msgstr ""
 
 #: ../app/controllers/foreman_ansible/api/v2/hosts_controller_extensions.rb:26
-msgid "Plays Ansible roles on a host"
+msgid "Runs all Ansible roles on a host"
 msgstr ""
 
 #: ../app/controllers/foreman_ansible/api/v2/hosts_controller_extensions.rb:35
-msgid "Plays Ansible roles on hosts"
+msgid "Runs all Ansible roles on hosts"
 msgstr ""
 
 #: ../app/controllers/foreman_ansible/api/v2/hosts_controller_extensions.rb:36
@@ -301,17 +305,9 @@ msgid "%s ago"
 msgstr ""
 
 #: ../app/helpers/foreman_ansible/hosts_helper_extensions.rb:13
-#: ../app/lib/actions/foreman_ansible/helpers/host_common.rb:18
-msgid "Play Ansible roles"
-msgstr ""
-
-#: ../app/lib/actions/foreman_ansible/helpers/host_common.rb:10
-msgid "Playbook execution failed"
-msgstr ""
-
-#: ../app/lib/actions/foreman_ansible/helpers/host_common.rb:30
-#: ../lib/foreman_ansible_core/remote_execution_core/ansible_runner.rb:36
-msgid "Error loading data from proxy"
+#: ../app/views/foreman_ansible/ansible_roles/_hostgroup_ansible_roles_button.erb:3
+#: ../app/views/foreman_ansible/ansible_roles/_hostgroup_ansible_roles_button.erb:5
+msgid "Run all Ansible roles"
 msgstr ""
 
 #: ../app/lib/actions/foreman_ansible/helpers/play_roles_description.rb:13
@@ -326,113 +322,113 @@ msgstr ""
 msgid "Unable to get roles/variables from Ansible"
 msgstr ""
 
-#: ../app/models/setting/ansible.rb:20
+#: ../app/models/setting/ansible.rb:14
 msgid ""
 "Use this to supply a path to an SSH Private Key that Ansible will use in lieu "
 "of a password Override with \"ansible_ssh_private_key_file\" host parameter"
 msgstr ""
 
-#: ../app/models/setting/ansible.rb:25
+#: ../app/models/setting/ansible.rb:19
 msgid "Private Key Path"
 msgstr ""
 
-#: ../app/models/setting/ansible.rb:29
+#: ../app/models/setting/ansible.rb:23
 msgid ""
 "Use this connection type by default when running Ansible playbooks. You can ov"
 "erride this on hosts by adding a parameter \"ansible_connection\""
 msgstr ""
 
-#: ../app/models/setting/ansible.rb:33
+#: ../app/models/setting/ansible.rb:27
 msgid "Connection type"
 msgstr ""
 
-#: ../app/models/setting/ansible.rb:37
+#: ../app/models/setting/ansible.rb:31
 msgid ""
 "Enable/disable WinRM server certificate validation when running Ansible playbo"
 "oks. You can override this on hosts by adding a parameter \"ansible_winrm_serve"
 "r_cert_validation\""
 msgstr ""
 
-#: ../app/models/setting/ansible.rb:42
+#: ../app/models/setting/ansible.rb:36
 msgid "WinRM cert Validation"
 msgstr ""
 
-#: ../app/models/setting/ansible.rb:46
+#: ../app/models/setting/ansible.rb:40
 msgid ""
-"Foreman will add the this level of verbosity for additional debugging output w"
-"hen running Ansible playbooks."
+"Foreman will add this level of verbosity for additional debugging output when "
+"running Ansible playbooks."
 msgstr ""
 
-#: ../app/models/setting/ansible.rb:49
+#: ../app/models/setting/ansible.rb:43
 msgid "Default verbosity level"
 msgstr ""
 
-#: ../app/models/setting/ansible.rb:52
+#: ../app/models/setting/ansible.rb:46
 msgid "Disabled"
 msgstr ""
 
-#: ../app/models/setting/ansible.rb:53
+#: ../app/models/setting/ansible.rb:47
 msgid "Level 1 (-v)"
 msgstr ""
 
-#: ../app/models/setting/ansible.rb:54
+#: ../app/models/setting/ansible.rb:48
 msgid "Level 2 (-vv)"
 msgstr ""
 
-#: ../app/models/setting/ansible.rb:55
+#: ../app/models/setting/ansible.rb:49
 msgid "Level 3 (-vvv)"
 msgstr ""
 
-#: ../app/models/setting/ansible.rb:56
+#: ../app/models/setting/ansible.rb:50
 msgid "Level 4 (-vvvv)"
 msgstr ""
 
-#: ../app/models/setting/ansible.rb:62
+#: ../app/models/setting/ansible.rb:55
 msgid ""
 "Timeout (in seconds) to set when Foreman will trigger a play Ansible roles tas"
 "k after a host is fully provisioned. Set this to the maximum time you expect a"
 " host to take until it is ready after a reboot."
 msgstr ""
 
-#: ../app/models/setting/ansible.rb:67
+#: ../app/models/setting/ansible.rb:60
 msgid "Post-provision timeout"
 msgstr ""
 
-#: ../app/models/setting/ansible.rb:71
+#: ../app/models/setting/ansible.rb:64
 msgid "Timeout (in minutes) when hosts should have reported."
 msgstr ""
 
-#: ../app/models/setting/ansible.rb:73
+#: ../app/models/setting/ansible.rb:66
 msgid "Ansible report timeout"
 msgstr ""
 
-#: ../app/models/setting/ansible.rb:77
+#: ../app/models/setting/ansible.rb:70
 msgid ""
 "Disable host configuration status turning to out of sync for %{cfgmgmt} after "
 "report does not arrive within configured interval"
 msgstr ""
 
-#: ../app/models/setting/ansible.rb:81
+#: ../app/models/setting/ansible.rb:74
 msgid "%{cfgmgmt} out of sync disabled"
 msgstr ""
 
-#: ../app/models/setting/ansible.rb:86
-msgid "Foreman will run Ansible playbooks using this implementation"
+#: ../app/models/setting/ansible.rb:79
+msgid "Foreman will use this template to schedule the report with Ansible inventory"
 msgstr ""
 
-#: ../app/models/setting/ansible.rb:88
-msgid "Implementation for running Ansible"
+#: ../app/models/setting/ansible.rb:82
+msgid "Default Ansible inventory report template"
 msgstr ""
 
-#: ../app/models/setting/ansible.rb:104 ../lib/foreman_ansible/register.rb:97
+#: ../app/models/setting/ansible.rb:93 ../lib/foreman_ansible/register.rb:99
 msgid "Ansible"
 msgstr ""
 
-#: ../app/services/foreman_ansible/insights_notification_builder.rb:51
+#: ../app/services/foreman_ansible/insights_notification_builder.rb:49
 msgid "Remediation Plan"
 msgstr ""
 
-#: ../app/services/foreman_ansible/insights_notification_builder.rb:61
+#: ../app/services/foreman_ansible/insights_notification_builder.rb:59
 #: ../db/seeds.d/90_notification_blueprints.rb:13
 msgid "Job Details"
 msgstr ""
@@ -556,7 +552,7 @@ msgid "Actions"
 msgstr ""
 
 #: ../app/views/ansible_roles/index.html.erb:27
-#: ../lib/foreman_ansible/register.rb:103
+#: ../lib/foreman_ansible/register.rb:105
 msgid "Variables"
 msgstr ""
 
@@ -723,7 +719,7 @@ msgstr ""
 
 #:
 #: ../app/views/foreman_ansible/ansible_roles/_hostgroup_ansible_roles_button.erb:5
-msgid "Play Roles"
+msgid "Run all Ansible roles on hosts belonging to this host group"
 msgstr ""
 
 #:
@@ -764,7 +760,7 @@ msgstr ""
 msgid "Insights remediation on %{hosts_count} host(s) has finished successfully"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:99
+#: ../lib/foreman_ansible/register.rb:101
 msgid "Roles"
 msgstr ""
 
@@ -784,20 +780,32 @@ msgstr ""
 msgid "Runs a given maintenance plan from Red Hat Access Insights given an ID."
 msgstr ""
 
+#: ../lib/foreman_ansible/remote_execution.rb:35
+msgid "Run playbook"
+msgstr ""
+
+#: ../lib/foreman_ansible/remote_execution.rb:36
+msgid "Run an Ansible playbook against given hosts"
+msgstr ""
+
+#: ../lib/foreman_ansible_core/remote_execution_core/ansible_runner.rb:36
+msgid "Error loading data from proxy"
+msgstr ""
+
 #: action_names.rb:2
-msgid "Remote action:"
+msgid "Action with sub plans"
 msgstr ""
 
 #: action_names.rb:3
-msgid "Import Puppet classes"
-msgstr ""
-
-#: action_names.rb:4
 msgid "Import facts"
 msgstr ""
 
+#: action_names.rb:4
+msgid "Import Puppet classes"
+msgstr ""
+
 #: action_names.rb:5
-msgid "Action with sub plans"
+msgid "Remote action:"
 msgstr ""
 
 #: gemspec.rb:2

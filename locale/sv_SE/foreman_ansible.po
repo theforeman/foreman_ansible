@@ -1,24 +1,29 @@
-# Portuguese translations for foreman_ansible package.
-# Copyright (C) 2018 THE PACKAGE'S COPYRIGHT HOLDER
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the foreman_ansible package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Translators:
+# 0868a4d1af5275b3f70b0a6dac4c99a4, 2018
+# Mikael Fridh <frimik@gmail.com>, 2018
+# johnny.westerlund <johnny.westerlund@gmail.com>, 2019
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: foreman_ansible 5.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2018-03-12 12:24-0400\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Portuguese\n"
-"Language: pt_BR\n"
+"PO-Revision-Date: 2018-11-14 21:36+0000\n"
+"Last-Translator: johnny.westerlund <johnny.westerlund@gmail.com>, 2019\n"
+"Language-Team: Swedish (Sweden) (https://www.transifex.com/foreman/teams/114/s"
+"v_SE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"\n"
+"Language: sv_SE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "%s ago"
-msgstr ""
+msgstr "%s sedan"
 
 msgid "%{cfgmgmt} out of sync disabled"
 msgstr ""
@@ -27,7 +32,7 @@ msgid "Action with sub plans"
 msgstr ""
 
 msgid "Actions"
-msgstr ""
+msgstr "Åtgärder"
 
 msgid "Add"
 msgstr ""
@@ -87,7 +92,7 @@ msgid "Before including these variables on your playbooks, Foreman will validate
 msgstr ""
 
 msgid "Cancel"
-msgstr ""
+msgstr "Avbryt"
 
 msgid "Changed Ansible roles"
 msgstr ""
@@ -96,22 +101,22 @@ msgid "Changed Ansible variables"
 msgstr ""
 
 msgid "Check/Uncheck all"
-msgstr ""
+msgstr "Markera/Avmarkera samtliga"
 
 msgid "Check/Uncheck all %s changes"
-msgstr ""
+msgstr "Markera/Avmarkera samtliga %s ändringar"
 
 msgid "Check/Uncheck new"
-msgstr ""
+msgstr "Markera/Avmarkera nya"
 
 msgid "Check/Uncheck obsolete"
-msgstr ""
+msgstr "Markera/Avmarkera förlegade"
 
 msgid "Check/Uncheck update"
 msgstr ""
 
 msgid "Clone"
-msgstr ""
+msgstr "Klona"
 
 msgid "Connection type"
 msgstr ""
@@ -144,7 +149,7 @@ msgid "Default verbosity level"
 msgstr ""
 
 msgid "Delete %s?"
-msgstr ""
+msgstr "Radera %s?"
 
 msgid "Deletes Ansible role"
 msgstr ""
@@ -162,10 +167,10 @@ msgid "Disable host configuration status turning to out of sync for %{cfgmgmt} a
 msgstr ""
 
 msgid "Disabled"
-msgstr ""
+msgstr "Inaktiverad"
 
 msgid "Edit %s"
-msgstr ""
+msgstr "Redigera %s"
 
 msgid "Edit Ansible Variable"
 msgstr ""
@@ -207,7 +212,7 @@ msgid "Hostgroups count"
 msgstr ""
 
 msgid "Hosts"
-msgstr ""
+msgstr "Värdar"
 
 msgid "Hosts count"
 msgstr ""
@@ -228,10 +233,10 @@ msgid "IDs of hosts to play roles on"
 msgstr ""
 
 msgid "If checked, will raise an error if there is no default value and no matcher provide a value."
-msgstr ""
+msgstr "Om vald, kommer ett fel att flaggas om det inte finns något standardvärde och ingen matchare tillhandahåller ett värde."
 
 msgid "Import"
-msgstr ""
+msgstr "Importera"
 
 msgid "Import Ansible roles"
 msgstr ""
@@ -246,7 +251,7 @@ msgid "Import facts"
 msgstr ""
 
 msgid "Import from %s"
-msgstr ""
+msgstr "Importera från %s"
 
 msgid "Import of roles successfully finished."
 msgstr ""
@@ -276,7 +281,7 @@ msgid "Learn more about this in the documentation."
 msgstr ""
 
 msgid "Level"
-msgstr ""
+msgstr "Nivå"
 
 msgid "Level 1 (-v)"
 msgstr ""
@@ -309,22 +314,22 @@ msgid "Merge all matching values (only array/hash type)"
 msgstr ""
 
 msgid "Message"
-msgstr ""
+msgstr "Meddelande"
 
 msgid "Module"
 msgstr ""
 
 msgid "Name"
-msgstr ""
+msgstr "Namn"
 
 msgid "Name of variable"
 msgstr ""
 
 msgid "Nest"
-msgstr ""
+msgstr "Nästla"
 
 msgid "New"
-msgstr ""
+msgstr "Ny"
 
 msgid "New Ansible Variable"
 msgstr ""
@@ -347,10 +352,10 @@ msgid "No proxy found to import variables from, ensure that the smart proxy has 
 msgstr ""
 
 msgid "Nothing to show"
-msgstr ""
+msgstr "Inget att visa"
 
 msgid "Obsolete"
-msgstr ""
+msgstr "Förlegad"
 
 msgid "Obsolete Ansible roles"
 msgstr ""
@@ -359,13 +364,13 @@ msgid "Obsolete Ansible variables. This will only obsolete variables for already
 msgstr ""
 
 msgid "Operation"
-msgstr ""
+msgstr "Operation"
 
 msgid "Optional Input Validator"
 msgstr ""
 
 msgid "Order"
-msgstr ""
+msgstr "Order"
 
 msgid "Override match"
 msgstr ""
@@ -410,10 +415,10 @@ msgid "Role ID"
 msgstr ""
 
 msgid "Roles"
-msgstr ""
+msgstr "Roller"
 
 msgid "Role|Name"
-msgstr ""
+msgstr "Namn"
 
 msgid "Run Ansible roles"
 msgstr ""
@@ -452,7 +457,7 @@ msgid "Schedule generating of Ansible Inventory report"
 msgstr ""
 
 msgid "Select the changes you want to realize in Foreman"
-msgstr ""
+msgstr "Markera ändringarna som du vill verkställa i Foreman"
 
 msgid "Set the order in which values are resolved."
 msgstr ""
@@ -482,10 +487,10 @@ msgid "Specify Matchers"
 msgstr ""
 
 msgid "The order in which matchers keys are processed, first match wins.<br> You may use multiple attributes as a matcher key, for example, an order of <code>host group, environment</code> would expect a matcher such as <code>hostgroup = \"web servers\", environment = production</code>"
-msgstr ""
+msgstr "Ordningen i vilken matchnycklar är behandlad är, första träff vinner. <br>Du kan använda multipla attribut som matchnycklar, t.ex. en ordning som <code>värdgrupp, miljö</code> skulle anta en matchare som <code> värdgrupp =\"webbservrar\", miljö=\"produktion\"</code>"
 
 msgid "The order in which values are resolved"
-msgstr ""
+msgstr "I vilken ordning värden slås upp"
 
 msgid "There are no Ansible roles to play"
 msgstr ""
@@ -497,10 +502,10 @@ msgid "Timeout (in seconds) to set when Foreman will trigger a play Ansible role
 msgstr ""
 
 msgid "Toggle"
-msgstr ""
+msgstr "Skifta"
 
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 msgid "Types of validation values"
 msgstr ""
@@ -515,7 +520,7 @@ msgid "Unable to get roles/variables from Ansible"
 msgstr ""
 
 msgid "Update"
-msgstr ""
+msgstr "Uppdatera"
 
 msgid "Updates Ansible variable"
 msgstr ""

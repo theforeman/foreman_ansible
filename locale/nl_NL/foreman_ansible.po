@@ -1,24 +1,32 @@
-# Portuguese translations for foreman_ansible package.
-# Copyright (C) 2018 THE PACKAGE'S COPYRIGHT HOLDER
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the foreman_ansible package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Translators:
+# Maxim Burgerhout <maxim@wzzrd.com>, 2018
+# Siert Z. <sgzijl@gmail.com>, 2018
+# EmielK <emiel@kremers.us>, 2018
+# Wouter Wijsman <wwijsman@live.nl>, 2018
+# Mark Olie <mark.transifex@oliekoets.nl>, 2019
+# dschutterop <daniel@schutterop.nl>, 2019
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: foreman_ansible 5.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2018-03-12 12:24-0400\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Portuguese\n"
-"Language: pt_BR\n"
+"PO-Revision-Date: 2018-11-14 21:36+0000\n"
+"Last-Translator: dschutterop <daniel@schutterop.nl>, 2019\n"
+"Language-Team: Dutch (Netherlands) (https://www.transifex.com/foreman/teams/11"
+"4/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"\n"
+"Language: nl_NL\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "%s ago"
-msgstr ""
+msgstr "%s geleden"
 
 msgid "%{cfgmgmt} out of sync disabled"
 msgstr ""
@@ -27,13 +35,13 @@ msgid "Action with sub plans"
 msgstr ""
 
 msgid "Actions"
-msgstr ""
+msgstr "Acties"
 
 msgid "Add"
 msgstr ""
 
 msgid "Ansible"
-msgstr ""
+msgstr "Ansible"
 
 msgid "Ansible Role"
 msgstr ""
@@ -66,7 +74,7 @@ msgid "Ansible roles to assign to a hostgroup"
 msgstr ""
 
 msgid "Ansible support in Foreman"
-msgstr ""
+msgstr "Ansible ondersteuning in Foreman"
 
 msgid "Ansible: Run Insights maintenance plan"
 msgstr ""
@@ -87,7 +95,7 @@ msgid "Before including these variables on your playbooks, Foreman will validate
 msgstr ""
 
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 msgid "Changed Ansible roles"
 msgstr ""
@@ -96,22 +104,22 @@ msgid "Changed Ansible variables"
 msgstr ""
 
 msgid "Check/Uncheck all"
-msgstr ""
+msgstr "Vink alles aan/uit"
 
 msgid "Check/Uncheck all %s changes"
-msgstr ""
+msgstr "Vink alle %s wijzigingen aan/uit"
 
 msgid "Check/Uncheck new"
-msgstr ""
+msgstr "Vink nieuw aan/uit"
 
 msgid "Check/Uncheck obsolete"
-msgstr ""
+msgstr "Vink overtollige aan/uit"
 
 msgid "Check/Uncheck update"
 msgstr ""
 
 msgid "Clone"
-msgstr ""
+msgstr "Klonen"
 
 msgid "Connection type"
 msgstr ""
@@ -138,13 +146,13 @@ msgid "Default Behavior"
 msgstr ""
 
 msgid "Default value of variable"
-msgstr ""
+msgstr "Standaard waarde van een variabele"
 
 msgid "Default verbosity level"
 msgstr ""
 
 msgid "Delete %s?"
-msgstr ""
+msgstr "%s verwijderen?"
 
 msgid "Deletes Ansible role"
 msgstr ""
@@ -153,7 +161,7 @@ msgid "Deletes Ansible variable"
 msgstr ""
 
 msgid "Description of variable"
-msgstr ""
+msgstr "Beschrijving van een variabele"
 
 msgid "Destroy an override value"
 msgstr ""
@@ -165,7 +173,7 @@ msgid "Disabled"
 msgstr ""
 
 msgid "Edit %s"
-msgstr ""
+msgstr "Bewerken %s"
 
 msgid "Edit Ansible Variable"
 msgstr ""
@@ -180,7 +188,7 @@ msgid "Fetch Ansible roles available to be imported"
 msgstr ""
 
 msgid "Foreman"
-msgstr ""
+msgstr "Foreman"
 
 msgid "Foreman will add this level of verbosity for additional debugging output when running Ansible playbooks."
 msgstr ""
@@ -228,10 +236,10 @@ msgid "IDs of hosts to play roles on"
 msgstr ""
 
 msgid "If checked, will raise an error if there is no default value and no matcher provide a value."
-msgstr ""
+msgstr "Wanneer aangevinkt, zal een fout geven als er geen standaardwaarde is en geen matcher een waarde geeft."
 
 msgid "Import"
-msgstr ""
+msgstr "Geimporteerd"
 
 msgid "Import Ansible roles"
 msgstr ""
@@ -258,7 +266,7 @@ msgid "Imported?"
 msgstr ""
 
 msgid "Include default value when merging all matching values"
-msgstr ""
+msgstr "Voeg een default value toe wanneer alle matching waarden worden samengevoegd"
 
 msgid "Include default value when merging all matching values."
 msgstr ""
@@ -279,16 +287,16 @@ msgid "Level"
 msgstr ""
 
 msgid "Level 1 (-v)"
-msgstr ""
+msgstr "Niveau  1 (-v)"
 
 msgid "Level 2 (-vv)"
-msgstr ""
+msgstr "Niveau 2 (-vv)"
 
 msgid "Level 3 (-vvv)"
-msgstr ""
+msgstr "Niveau 3 (-vvv)"
 
 msgid "Level 4 (-vvvv)"
-msgstr ""
+msgstr "Niveau 4 (-vvvv)"
 
 msgid "List Ansible roles"
 msgstr ""
@@ -306,19 +314,19 @@ msgid "Mark the variable to be managed by Foreman. When the Ansible role of this
 msgstr ""
 
 msgid "Merge all matching values (only array/hash type)"
-msgstr ""
+msgstr "Voeg alle matching values samen (alleen array/hash types)"
 
 msgid "Message"
-msgstr ""
+msgstr "Bericht"
 
 msgid "Module"
 msgstr ""
 
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgid "Name of variable"
-msgstr ""
+msgstr "Naam van een variabele"
 
 msgid "Nest"
 msgstr ""
@@ -368,13 +376,13 @@ msgid "Order"
 msgstr ""
 
 msgid "Override match"
-msgstr ""
+msgstr "Override overeenkomst"
 
 msgid "Override the default value of the Ansible variable."
 msgstr ""
 
 msgid "Override value, required if omit is false"
-msgstr ""
+msgstr "Override waarde, verplicht als uitsluiten uit staat"
 
 msgid "Overriden"
 msgstr ""
@@ -401,7 +409,7 @@ msgid "Remove"
 msgstr ""
 
 msgid "Remove duplicate values (only array type)"
-msgstr ""
+msgstr "Verwijder dubbele waarden (alleen array type)"
 
 msgid "Report format, defaults to '%s'"
 msgstr ""
@@ -410,7 +418,7 @@ msgid "Role ID"
 msgstr ""
 
 msgid "Roles"
-msgstr ""
+msgstr "Rollen"
 
 msgid "Role|Name"
 msgstr ""
@@ -485,7 +493,7 @@ msgid "The order in which matchers keys are processed, first match wins.<br> You
 msgstr ""
 
 msgid "The order in which values are resolved"
-msgstr ""
+msgstr "De volgorde waarin waarden worden opgezocht"
 
 msgid "There are no Ansible roles to play"
 msgstr ""
@@ -503,10 +511,10 @@ msgid "Type"
 msgstr ""
 
 msgid "Types of validation values"
-msgstr ""
+msgstr "Types van validatie waarden"
 
 msgid "Types of variable values"
-msgstr ""
+msgstr "Types van variabelen"
 
 msgid "Unable to get roles from Ansible"
 msgstr ""
@@ -527,7 +535,7 @@ msgid "Use this to supply a path to an SSH Private Key that Ansible will use in 
 msgstr ""
 
 msgid "Used to enforce certain values for the parameter values"
-msgstr ""
+msgstr "Gebruikt om sommige waarden af te dwingen voor de parameterwaarden"
 
 msgid "Value to use when there is no match."
 msgstr ""
@@ -542,7 +550,7 @@ msgid "Variable|Role"
 msgstr ""
 
 msgid "When enabled the parameter is hidden in the UI"
-msgstr ""
+msgstr "Als aangezet dan wordt de parameter wordt hidden in de UI"
 
 msgid "Whether to override variable or not"
 msgstr ""

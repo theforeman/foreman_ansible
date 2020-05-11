@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 3.0.1\n"
+"Project-Id-Version: foreman_ansible 5.0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2014-08-20 08:54+0100\n"
 "Last-Translator: Foreman Team <foreman-dev@googlegroups.com>\n"
@@ -129,6 +129,9 @@ msgstr ""
 msgid "Create an override value for a specific ansible variable"
 msgstr ""
 
+msgid "Default Ansible inventory report template"
+msgstr ""
+
 msgid "Default Behavior"
 msgstr ""
 
@@ -177,10 +180,13 @@ msgstr ""
 msgid "Foreman"
 msgstr ""
 
-msgid "Foreman will add the this level of verbosity for additional debugging output when running Ansible playbooks."
+msgid "Foreman will add this level of verbosity for additional debugging output when running Ansible playbooks."
 msgstr ""
 
-msgid "Foreman will run Ansible playbooks using this implementation"
+msgid "Foreman will use this template to schedule the report with Ansible inventory"
+msgstr ""
+
+msgid "Hash of input values of type input=>value"
 msgstr ""
 
 msgid "Hidden Value"
@@ -222,9 +228,6 @@ msgstr ""
 msgid "If checked, will raise an error if there is no default value and no matcher provide a value."
 msgstr ""
 
-msgid "Implementation for running Ansible"
-msgstr ""
-
 msgid "Import"
 msgstr ""
 
@@ -244,13 +247,6 @@ msgid "Import from %s"
 msgstr ""
 
 msgid "Import of roles successfully finished."
-msgstr ""
-
-msgid ""
-"Import of variables successfully finished.\n"
-"Added: #{results[:added].count} \n"
-" Removed: #{results[:obsolete].count} \n"
-"Updated: #{results[:updated].count}"
 msgstr ""
 
 msgid "Imported at"
@@ -381,27 +377,6 @@ msgstr ""
 msgid "Overriden"
 msgstr ""
 
-msgid "Play Ansible roles"
-msgstr ""
-
-msgid "Play Roles"
-msgstr ""
-
-msgid "Playbook execution failed"
-msgstr ""
-
-msgid "Plays Ansible roles on a host"
-msgstr ""
-
-msgid "Plays Ansible roles on a hostgroup"
-msgstr ""
-
-msgid "Plays Ansible roles on hostgroups"
-msgstr ""
-
-msgid "Plays Ansible roles on hosts"
-msgstr ""
-
 msgid "Post-provision timeout"
 msgstr ""
 
@@ -426,6 +401,9 @@ msgstr ""
 msgid "Remove duplicate values (only array type)"
 msgstr ""
 
+msgid "Report format, defaults to '%s'"
+msgstr ""
+
 msgid "Role ID"
 msgstr ""
 
@@ -438,10 +416,37 @@ msgstr ""
 msgid "Run Ansible roles"
 msgstr ""
 
+msgid "Run all Ansible roles"
+msgstr ""
+
+msgid "Run all Ansible roles on hosts belonging to this host group"
+msgstr ""
+
+msgid "Run an Ansible playbook against given hosts"
+msgstr ""
+
+msgid "Run playbook"
+msgstr ""
+
 msgid "Runs a given maintenance plan from Red Hat Access Insights given an ID."
 msgstr ""
 
+msgid "Runs all Ansible roles on a host"
+msgstr ""
+
+msgid "Runs all Ansible roles on a hostgroup"
+msgstr ""
+
+msgid "Runs all Ansible roles on hostgroups"
+msgstr ""
+
+msgid "Runs all Ansible roles on hosts"
+msgstr ""
+
 msgid "Runs an Ansible playbook which contains all the roles defined for a host"
+msgstr ""
+
+msgid "Schedule generating of Ansible Inventory report"
 msgstr ""
 
 msgid "Select the changes you want to realize in Foreman"
