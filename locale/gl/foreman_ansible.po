@@ -1,24 +1,26 @@
-# Portuguese translations for foreman_ansible package.
-# Copyright (C) 2018 THE PACKAGE'S COPYRIGHT HOLDER
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the foreman_ansible package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Translators:
+# Carmela Rubiños <carmela.rubinos@gmail.com>, 2019
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: foreman_ansible 5.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2018-03-12 12:24-0400\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Portuguese\n"
-"Language: pt_BR\n"
+"PO-Revision-Date: 2018-11-14 21:36+0000\n"
+"Last-Translator: Carmela Rubiños <carmela.rubinos@gmail.com>, 2019\n"
+"Language-Team: Galician (https://www.transifex.com/foreman/teams/114/gl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"\n"
+"Language: gl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "%s ago"
-msgstr ""
+msgstr "Fai %s"
 
 msgid "%{cfgmgmt} out of sync disabled"
 msgstr ""
@@ -27,7 +29,7 @@ msgid "Action with sub plans"
 msgstr ""
 
 msgid "Actions"
-msgstr ""
+msgstr "Accións"
 
 msgid "Add"
 msgstr ""
@@ -87,7 +89,7 @@ msgid "Before including these variables on your playbooks, Foreman will validate
 msgstr ""
 
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 msgid "Changed Ansible roles"
 msgstr ""
@@ -111,7 +113,7 @@ msgid "Check/Uncheck update"
 msgstr ""
 
 msgid "Clone"
-msgstr ""
+msgstr "Clonar"
 
 msgid "Connection type"
 msgstr ""
@@ -144,7 +146,7 @@ msgid "Default verbosity level"
 msgstr ""
 
 msgid "Delete %s?"
-msgstr ""
+msgstr "¿Borrar %s?"
 
 msgid "Deletes Ansible role"
 msgstr ""
@@ -165,7 +167,7 @@ msgid "Disabled"
 msgstr ""
 
 msgid "Edit %s"
-msgstr ""
+msgstr "Editar %s"
 
 msgid "Edit Ansible Variable"
 msgstr ""
@@ -207,7 +209,7 @@ msgid "Hostgroups count"
 msgstr ""
 
 msgid "Hosts"
-msgstr ""
+msgstr "Equipos"
 
 msgid "Hosts count"
 msgstr ""
@@ -228,10 +230,10 @@ msgid "IDs of hosts to play roles on"
 msgstr ""
 
 msgid "If checked, will raise an error if there is no default value and no matcher provide a value."
-msgstr ""
+msgstr "Se está seleccionado, mostrará un erro se non existe valor predeterminado e ningún 'matcher' proporciona un valor."
 
 msgid "Import"
-msgstr ""
+msgstr "Importar"
 
 msgid "Import Ansible roles"
 msgstr ""
@@ -246,7 +248,7 @@ msgid "Import facts"
 msgstr ""
 
 msgid "Import from %s"
-msgstr ""
+msgstr "Importar de %s"
 
 msgid "Import of roles successfully finished."
 msgstr ""
@@ -276,7 +278,7 @@ msgid "Learn more about this in the documentation."
 msgstr ""
 
 msgid "Level"
-msgstr ""
+msgstr "Nivel"
 
 msgid "Level 1 (-v)"
 msgstr ""
@@ -309,22 +311,22 @@ msgid "Merge all matching values (only array/hash type)"
 msgstr ""
 
 msgid "Message"
-msgstr ""
+msgstr "Mensaxe"
 
 msgid "Module"
 msgstr ""
 
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 msgid "Name of variable"
 msgstr ""
 
 msgid "Nest"
-msgstr ""
+msgstr "Anidar"
 
 msgid "New"
-msgstr ""
+msgstr "Novo"
 
 msgid "New Ansible Variable"
 msgstr ""
@@ -347,7 +349,7 @@ msgid "No proxy found to import variables from, ensure that the smart proxy has 
 msgstr ""
 
 msgid "Nothing to show"
-msgstr ""
+msgstr "Nada que mostrar"
 
 msgid "Obsolete"
 msgstr ""
@@ -359,13 +361,13 @@ msgid "Obsolete Ansible variables. This will only obsolete variables for already
 msgstr ""
 
 msgid "Operation"
-msgstr ""
+msgstr "Operación"
 
 msgid "Optional Input Validator"
 msgstr ""
 
 msgid "Order"
-msgstr ""
+msgstr "Orde"
 
 msgid "Override match"
 msgstr ""
@@ -410,10 +412,10 @@ msgid "Role ID"
 msgstr ""
 
 msgid "Roles"
-msgstr ""
+msgstr "Roles"
 
 msgid "Role|Name"
-msgstr ""
+msgstr "Nome"
 
 msgid "Run Ansible roles"
 msgstr ""
@@ -482,10 +484,10 @@ msgid "Specify Matchers"
 msgstr ""
 
 msgid "The order in which matchers keys are processed, first match wins.<br> You may use multiple attributes as a matcher key, for example, an order of <code>host group, environment</code> would expect a matcher such as <code>hostgroup = \"web servers\", environment = production</code>"
-msgstr ""
+msgstr "A orde en que se procesan as chaves de concordancia, a primera concordancia gana.<br> Pódense usar múles atributos como clave de concordancia, por exemplo, cunha orde de <code>grupo de equipos, environment</code> esperamos unha concordancia como <code>hostgroup = \"web servers\", environment = production</code>"
 
 msgid "The order in which values are resolved"
-msgstr ""
+msgstr "A orde na cual se resolven os valores"
 
 msgid "There are no Ansible roles to play"
 msgstr ""
@@ -500,7 +502,7 @@ msgid "Toggle"
 msgstr ""
 
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 msgid "Types of validation values"
 msgstr ""
@@ -515,7 +517,7 @@ msgid "Unable to get roles/variables from Ansible"
 msgstr ""
 
 msgid "Update"
-msgstr ""
+msgstr "Actualizar"
 
 msgid "Updates Ansible variable"
 msgstr ""
