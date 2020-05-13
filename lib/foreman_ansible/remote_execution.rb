@@ -42,6 +42,11 @@ module ForemanAnsible
         :description => N_('Run an Ansible playbook to enable web console on given hosts'),
         :host_action_button => true
       )
+      RemoteExecutionFeature.register(
+        :ansible_run_capsule_upgrade,
+        N_('Upgrade capsules on given hosts'),
+        :description => N_('Upgrade capsules on given capsule server hosts')
+      )
     end
   end
 end
