@@ -36,6 +36,12 @@ module ForemanAnsible
         :description => N_('Run an Ansible playbook against given hosts'),
         :provided_inputs => %w[playbook]
       )
+      RemoteExecutionFeature.register(
+        :ansible_enable_web_console,
+        N_('Enable web console'),
+        :description => N_('Run an Ansible playbook to enable web console on given hosts'),
+        :host_action_button => true
+      )
     end
   end
 end
