@@ -44,8 +44,8 @@ module ForemanAnsible
       )
       RemoteExecutionFeature.register(
         :ansible_run_capsule_upgrade,
-        N_('Upgrade capsules on given hosts'),
-        :description => N_('Upgrade capsules on given capsule server hosts')
+        N_('Upgrade Capsules on given hosts'),
+        :description => N_('Upgrade Capsules on given Capsule server hosts')
       )
     end
   end
