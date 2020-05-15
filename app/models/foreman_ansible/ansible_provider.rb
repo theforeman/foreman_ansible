@@ -64,7 +64,7 @@ if defined? ForemanRemoteExecution
 
         def required_proxy_selector_for(template)
           if template.remote_execution_features.where(:label => 'ansible_run_capsule_upgrade').any?
-            ::InternalProxyProxySelector.new
+            ::DefaultProxyProxySelector.new
           else
             super
           end
