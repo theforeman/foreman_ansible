@@ -18,7 +18,7 @@ User.as_anonymous_admin do
         sync = !Rails.env.test? && Setting[:remote_execution_sync_templates]
         template = JobTemplate.import_raw!(File.read(template),
                                            :default => true,
-                                           :locked => true,
+                                           :lock => true,
                                            :update => sync)
         template.organizations = organizations if template.present?
         template.locations = locations if template.present?
