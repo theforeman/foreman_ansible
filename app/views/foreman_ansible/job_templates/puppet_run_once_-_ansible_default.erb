@@ -18,4 +18,8 @@ model: JobTemplate
 - hosts: all
   tasks:
     - command: |
-        puppet agent --onetime --no-usecacheonfailure --no-daemonize <%= input("puppet_options") %>
+        puppet agent --onetime --no-usecacheonfailure --no-daemonize <%= input("puppet_options") -%>
+<% if @host.operatingsystem.family == 'Debian' -%>
+      environment:
+        PATH: "/opt/puppetlabs/bin:{{ (ansible_env|default({})).PATH|default('') }}"
+<% end -%>
