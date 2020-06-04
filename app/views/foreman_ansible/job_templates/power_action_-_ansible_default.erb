@@ -18,7 +18,7 @@ model: JobTemplate
 ---
 - hosts: all
   tasks:
-    - command: |
+    - shell: |
         echo <%= input('action') %> host && sleep 3
         <%= case input('action')
           when 'restart'
