@@ -14,6 +14,13 @@ template_inputs:
   advanced: false
   value_type: plain
   hidden_value: true
+- name: http_proxy
+  required: false
+  input_type: user
+  advanced: true
+  value_type: plain
+  hidden_value: false
+  description: You can specify a HTTP proxy address that should be used for Cloud Connector connection to the cloud.redhat.com. Note that it must be HTTP proxy, not HTTPS. The tunelling of SSL (secured web socket connection) in SSL (HTTPS proxy) is currently unsupported.
 model: JobTemplate
 job_category: Ansible Playbook
 description_format: "%{template_name}"
