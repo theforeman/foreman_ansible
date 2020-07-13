@@ -10,7 +10,7 @@ module ForemanAnsible
       @host = FactoryBot.build(:host)
       @template_invocation = OpenStruct.new(
         :job_invocation => OpenStruct.new(:password => 'foobar',
-                                          :sudo_password => 'foobar'),
+                                          :effective_user_password => 'foobar'),
         :effective_user => 'foobar'
       )
     end
@@ -69,8 +69,7 @@ module ForemanAnsible
                    connection_params['ansible_winrm_server_cert_validation']
       assert_equal Setting['remote_execution_effective_user_method'],
                    connection_params['ansible_become_method']
-      refute connection_params.key?('ansible_ssh_pass')
-      refute connection_params.key?('ansible_sudo_pass')
+      refute connection_params.key?('ansible_become_password')
     end
 
     test 'ssh private key is passed when available' do

@@ -87,24 +87,22 @@ class PlaybookRunnerTest < ActiveSupport::TestCase
         '_meta' => { 'hostvars' => { 'foreman.example.com' => {} } } }
     end
     let(:secrets) do
-      host_secrets = { 'ansible_ssh_pass' => 'letmein', 'ansible_sudo_pass' => 'iamroot' }
+      host_secrets = { 'ansible_become_password' => 'iamroot' }
       { 'per-host' => { 'foreman.example.com' => host_secrets } }
     end
     let(:runner) { ForemanAnsibleCore::Runner::Playbook.allocate }
 
     test 'uses secrets from inventory' do
-      test_inventory = inventory.merge('ssh_password' => 'sshpass', 'sudo_password' => 'sudopass')
+      test_inventory = inventory.merge('effective_user_password' => 'mypass')
       rebuilt = runner.send(:rebuild_secrets, test_inventory, secrets)
       host_vars = rebuilt.dig('_meta', 'hostvars', 'foreman.example.com')
-      assert_equal 'sshpass', host_vars['ansible_ssh_pass']
-      assert_equal 'sudopass', host_vars['ansible_sudo_pass']
+      assert_equal 'mypass', host_vars['ansible_become_password']
     end
 
     test 'host secrets are used when not overriden by inventory secrest' do
       rebuilt = runner.send(:rebuild_secrets, inventory, secrets)
       host_vars = rebuilt.dig('_meta', 'hostvars', 'foreman.example.com')
-      assert_equal 'letmein', host_vars['ansible_ssh_pass']
-      assert_equal 'iamroot', host_vars['ansible_sudo_pass']
+      assert_equal 'iamroot', host_vars['ansible_become_password']
     end
   end
 end

@@ -124,8 +124,7 @@ module ForemanAnsibleCore
           per_host = secrets['per-host'][name]
 
           new_secrets = {
-            'ansible_ssh_pass' => inventory['ssh_password'] || per_host['ansible_ssh_pass'],
-            'ansible_sudo_pass' => inventory['sudo_password'] || per_host['ansible_sudo_pass']
+            'ansible_become_password' => inventory['effective_user_password'] || per_host['ansible_become_password']
           }
           inventory['_meta']['hostvars'][name].update(new_secrets)
         end
