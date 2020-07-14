@@ -67,6 +67,11 @@ end
 
 module Host
   class Managed
+    apipie :class do
+      property :all_ansible_roles, array_of: 'AnsibleRole', desc: 'Returns all ansible roles assigned to the host, both its own and inherited'
+      property :ansible_roles, array_of: 'AnsibleRole', desc: 'Returns ansible roles assigned to the host'
+      property :inherited_ansible_roles, array_of: 'AnsibleRole', desc: 'Returns inherited ansible roles assigned to the host'
+    end
     # Methods to be allowed in any template with safemode enabled
     class Jail < Safemode::Jail
       allow :all_ansible_roles, :ansible_roles, :inherited_ansible_roles

@@ -28,6 +28,12 @@ class AnsibleRole < ApplicationRecord
   scoped_search :relation => :hostgroups,
                 :on => :name, :rename => :hostgroup, :only_explicit => true
 
+  apipie :class, "A class representing #{model_name.human} object" do
+    name 'Ansible role'
+    refs 'AnsibleRole'
+    sections only: %w[all additional]
+    property :name, String, desc: 'Returns name of the ansible role'
+  end
   # Methods to be allowed in any template with safemode enabled
   class Jail < Safemode::Jail
     allow :name

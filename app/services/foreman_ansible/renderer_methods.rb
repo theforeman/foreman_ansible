@@ -4,7 +4,18 @@ module ForemanAnsible
   # Macro to fetch RH Insights plan playbook
   module RendererMethods
     extend ActiveSupport::Concern
+    extend ApipieDSL::Module
 
+    apipie :class, 'Macros related to Ansible playbooks' do
+      name 'Ansible'
+      sections only: %w[all jobs]
+    end
+
+    apipie :method, 'Returns Insights maintenance plan for host' do
+      required :plan_id, String, desc: 'The playbook for the rule coming from insights'
+      optional :organization_id, Integer, desc: 'The Foreman organization associated with the Insights account', default: 'Current organization ID'
+      returns String, desc: 'Insights maintenance plan for host'
+    end
     def insights_remediation(plan_id, organization_id = Organization.current.id)
       return "$INSIGHTS_REMEDIATION[#{plan_id}, #{organization_id}]" if preview?
 
