@@ -109,6 +109,10 @@ Foreman::Plugin.register :foreman_ansible do
   apipie_documented_controllers [
     "#{ForemanAnsible::Engine.root}/app/controllers/api/v2/*.rb"
   ]
+  ApipieDSL.configuration.dsl_classes_matchers += [
+    "#{ForemanAnsible::Engine.root}/app/models/*.rb",
+    "#{ForemanAnsible::Engine.root}/app/services/foreman_ansible/*.rb"
+  ]
 
   register_info_provider ForemanAnsible::AnsibleInfo
 
