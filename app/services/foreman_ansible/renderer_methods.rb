@@ -8,13 +8,13 @@ module ForemanAnsible
 
     apipie :class, 'Macros related to Ansible playbooks' do
       name 'Ansible'
-      sections only: %w[all jobs]
+      sections :only => %w[all jobs]
     end
 
     apipie :method, 'Returns Insights maintenance plan for host' do
-      required :plan_id, String, desc: 'The playbook for the rule coming from insights'
-      optional :organization_id, Integer, desc: 'The Foreman organization associated with the Insights account', default: 'Current organization ID'
-      returns String, desc: 'Insights maintenance plan for host'
+      required :plan_id, String, :desc => 'The playbook for the rule coming from insights'
+      optional :organization_id, Integer, :desc => 'The Foreman organization associated with the Insights account', :default => 'Current organization ID'
+      returns String, :desc => 'Insights maintenance plan for host'
     end
     def insights_remediation(plan_id, organization_id = Organization.current.id)
       return "$INSIGHTS_REMEDIATION[#{plan_id}, #{organization_id}]" if preview?
