@@ -32,15 +32,17 @@ module ForemanAnsibleCore
         let(:runner) { ForemanAnsibleCore::Runner::AnsibleRunner.allocate }
 
         test 'uses secrets from inventory' do
-          test_inventory = inventory.merge('effective_user_password' => 'mypass')
+          test_inventory = inventory.merge('ssh_password' => 'sshpass', 'effective_user_password' => 'mypass')
           rebuilt = runner.send(:rebuild_secrets, test_inventory, input)
           host_vars = rebuilt.dig('_meta', 'hostvars', 'foreman.example.com')
+          assert_equal 'sshpass', host_vars['ansible_ssh_pass']
           assert_equal 'mypass', host_vars['ansible_become_password']
         end
 
         test 'host secrets are used when not overriden by inventory secrest' do
           rebuilt = runner.send(:rebuild_secrets, inventory, input)
           host_vars = rebuilt.dig('_meta', 'hostvars', 'foreman.example.com')
+          assert_equal 'letmein', host_vars['ansible_ssh_pass']
           assert_equal 'iamroot', host_vars['ansible_become_password']
         end
       end
