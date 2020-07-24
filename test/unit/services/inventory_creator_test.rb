@@ -69,6 +69,7 @@ module ForemanAnsible
                    connection_params['ansible_winrm_server_cert_validation']
       assert_equal Setting['remote_execution_effective_user_method'],
                    connection_params['ansible_become_method']
+      refute connection_params.key?('ansible_ssh_pass')
       refute connection_params.key?('ansible_become_password')
     end
 

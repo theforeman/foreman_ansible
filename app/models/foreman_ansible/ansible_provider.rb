@@ -35,10 +35,15 @@ if defined? ForemanRemoteExecution
           {
             'per-host' => {
               host.name => {
+                'ansible_ssh_pass' => rex_ssh_password(host),
                 'ansible_become_password' => rex_effective_user_password(host)
               }
             }
           }
+        end
+
+        def rex_ssh_password(host)
+          host_setting(host, 'remote_execution_ssh_password')
         end
 
         def rex_effective_user_password(host)
