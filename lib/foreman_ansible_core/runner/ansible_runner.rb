@@ -38,6 +38,11 @@ module ForemanAnsibleCore
         end
       end
 
+      def close
+        super
+        FileUtils.remove_entry(@root) if @tmp_working_dir
+      end
+
       private
 
       def handle_event_file(event_file)
