@@ -41,8 +41,11 @@ feature: ansible_run_capsule_upgrade
       when: "'rubygem-foreman_maintain' not in ansible_facts.packages"
 
     - block:
+      <%- whitelist_option = if input('whitelist_options').present?
+                               "--whitelist=#{input('whitelist_options')}"
+                             end -%>
       - name: Upgrade Capsule server using satellite-maintain
-        shell: satellite-maintain upgrade run --assumeyes --target-version=<%= input('target_version') %> --whitelist="<%= input('whitelist_options') %>"
+        shell: satellite-maintain upgrade run --assumeyes --target-version=<%= input('target_version') %> <%= whitelist_option %>
         register: result
 
       - name: Re-Gather the rpm package facts after the upgrade
