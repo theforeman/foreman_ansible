@@ -36,6 +36,9 @@ Rails:
 Rails/ActionFilter:
   EnforcedStyle: action
 
+Rails/ContentTag:
+  Enabled: false
+
 Rails/SkipsModelValidations:
   Enabled: false
 
