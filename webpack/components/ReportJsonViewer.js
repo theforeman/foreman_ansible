@@ -10,7 +10,7 @@ const theme = {
 
 const ReportJsonViewer = ({ data }) => (
   <div className="report-json-viewer">
-    <JSONTree data={this.props.data} hideRoot theme={theme} />
+    <JSONTree data={data} hideRoot theme={theme} />
   </div>
 );
 

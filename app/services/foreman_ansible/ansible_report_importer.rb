@@ -9,7 +9,7 @@ module ForemanAnsible
     included do
       def host
         hostname = name.downcase
-        if AnsibleReportScanner.ansible_report?(raw['logs']) &&
+        if AnsibleReportScanner.ansible_report?(raw) &&
            IPAddress.valid?(hostname) &&
            Nic::Interface.find_by(:ip => hostname)
           @host = Nic::Interface.find_by(:ip => hostname).host
