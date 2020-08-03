@@ -14,7 +14,7 @@ AllCops:
 
 # Just so it looks like core Foreman
 Style/HashSyntax:
-  EnforcedStyle: hash_rockets
+  EnforcedStyle: no_mixed_keys
 
 Layout/DotPosition:
   EnforcedStyle: 'trailing'
