@@ -24,7 +24,7 @@ module ForemanAnsibleCore
             '_meta' => { 'hostvars' => { 'foreman.example.com' => {} } } }
         end
         let(:input) do
-          host_secrets = { 'ansible_become_password' => 'iamroot' }
+          host_secrets = { 'ansible_ssh_pass' => 'letmein', 'ansible_become_password' => 'iamroot' }
           secrets = { 'per-host' => { 'foreman.example.com' => host_secrets } }
           host_input = { 'input' => { 'action_input' => { 'secrets' => secrets } } }
           { 'foreman.example.com' => host_input }
