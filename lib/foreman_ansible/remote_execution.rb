@@ -47,6 +47,11 @@ module ForemanAnsible
         N_('Upgrade Capsules on given hosts'),
         :description => N_('Upgrade Capsules on given Capsule server hosts')
       )
+      RemoteExecutionFeature.register(
+        :ansible_configure_cloud_connector,
+        N_('Configure Cloud Connector on given hosts'),
+        :description => N_('Configure Cloud Connector on given hosts')
+      )
     end
   end
 end

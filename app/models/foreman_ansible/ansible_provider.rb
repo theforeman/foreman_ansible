@@ -5,6 +5,11 @@ if defined? ForemanRemoteExecution
     # Provider for RemoteExecution that allows to run Ansible playbooks.
     # Read the source of other RemoteExecution providers for more.
     class AnsibleProvider < RemoteExecutionProvider
+      FEATURES_THROUGH_INTERNAL_PROXY = %w(
+        ansible_run_capsule_upgrade
+        ansible_configure_cloud_connector
+      ).freeze
+
       class << self
         def ssh_password(host)
           host_setting(host, :remote_execution_ssh_password)
@@ -67,7 +72,7 @@ if defined? ForemanRemoteExecution
         end
 
         def required_proxy_selector_for(template)
-          if template.remote_execution_features.where(:label => 'ansible_run_capsule_upgrade').any?
+          if template.remote_execution_features.where(:label => FEATURES_THROUGH_INTERNAL_PROXY).any?
             ::DefaultProxyProxySelector.new
           else
             super
