@@ -45,12 +45,14 @@ module ForemanAnsible
       RemoteExecutionFeature.register(
         :ansible_run_capsule_upgrade,
         N_('Upgrade Capsules on given hosts'),
-        :description => N_('Upgrade Capsules on given Capsule server hosts')
+        :description => N_('Upgrade Capsules on given Capsule server hosts'),
+        :proxy_selector_override => ::RemoteExecutionProxySelector::INTERNAL_PROXY
       )
       RemoteExecutionFeature.register(
         :ansible_configure_cloud_connector,
         N_('Configure Cloud Connector on given hosts'),
-        :description => N_('Configure Cloud Connector on given hosts')
+        :description => N_('Configure Cloud Connector on given hosts'),
+        :proxy_selector_override => ::RemoteExecutionProxySelector::INTERNAL_PROXY
       )
     end
   end
