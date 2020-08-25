@@ -35,7 +35,7 @@ class AnsibleProviderTest < ActiveSupport::TestCase
       it 'generates secrets properly' do
         params = {
           'remote_execution_ssh_password' => 'password',
-          'ansible_become_password' => 'letmein'
+          'remote_execution_effective_user_password' => 'letmein'
         }
         host.expects(:params).twice.returns(params)
         secrets = ForemanAnsible::AnsibleProvider.secrets(host)
