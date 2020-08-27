@@ -16,6 +16,7 @@ engines:
     enabled: true
   rubocop:
     enabled: true
+    channel: rubocop-0-87
     checks:
       Rubocop/Style/PercentLiteralDelimiters:
         enabled: false # it's outdated vs rubocop

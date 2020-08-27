@@ -1,0 +1,35 @@
+name: JavaScript Testing
+on:
+  pull_request:
+    paths:
+      - 'webpack/**'
+      - 'package.json'
+      - '.github/workflows/js_tests.yml'
+
+jobs:
+  test_js:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [10, 12]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+        with:
+          repository: theforeman/foreman
+          ref: develop
+          path: foreman
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version:  ${{ matrix.node-version }}
+      - name: Foreman npm install
+        working-directory: './foreman'
+        run: npm install
+      - name: Plugin npm install
+        run: npm install
+      - name: Run plugin linter
+        run: npm run lint
+      - name: Run plugin tests
+        run: npm run test
