@@ -66,14 +66,6 @@ if defined? ForemanRemoteExecution
           'ForemanAnsibleCore::TaskLauncher::Playbook::PlaybookRunnerAction'
         end
 
-        def required_proxy_selector_for(template)
-          if template.remote_execution_features.where(:label => FEATURES_THROUGH_INTERNAL_PROXY).any?
-            ::DefaultProxyProxySelector.new
-          else
-            super
-          end
-        end
-
         private
 
         def ansible_command?(template)
