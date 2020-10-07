@@ -40,7 +40,7 @@ class AnsibleProviderTest < ActiveSupport::TestCase
         host.expects(:params).twice.returns(params)
         secrets = ForemanAnsible::AnsibleProvider.secrets(host)
         host_secrets = secrets['per-host'][host.name]
-        assert_equal host_secrets['ansible_ssh_pass'], 'password'
+        assert_equal host_secrets['ansible_password'], 'password'
         assert_equal host_secrets['ansible_become_password'], 'letmein'
       end
     end
