@@ -42,10 +42,7 @@ module ForemanAnsible
     end
 
     def report_json_viewer(json)
-      uid = "reportjson-viewer-#{json.object_id}"
-      viewer = content_tag :div, '', :id => uid
-      viewer << mount_react_component('ReportJsonViewer',
-                                      "##{uid}", json.to_json)
+      react_component('ReportJsonViewer', data: json)
     end
 
     private
