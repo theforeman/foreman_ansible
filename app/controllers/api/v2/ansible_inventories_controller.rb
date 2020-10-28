@@ -72,8 +72,8 @@ module Api
           process_resource_error(:resource => @ansible_inventory)
         end
       rescue StandardError => e
-        render_error 'standard_error', :status => :internal_error,
-                                       :locals => { :exception => e }
+        render_error :custom_error, :status => :unprocessable_entity,
+                                    :locals => { :message => _("Scheduling Report template failed for: #{e.message}") }
       end
 
       def action_permission
