@@ -68,9 +68,9 @@ end
 module Host
   class Managed
     apipie :class do
-      property :all_ansible_roles, array_of: 'AnsibleRole', desc: 'Returns all ansible roles assigned to the host, both its own and inherited'
-      property :ansible_roles, array_of: 'AnsibleRole', desc: 'Returns ansible roles assigned to the host'
-      property :inherited_ansible_roles, array_of: 'AnsibleRole', desc: 'Returns inherited ansible roles assigned to the host'
+      property :all_ansible_roles, array_of: 'AnsibleRole', desc: 'Returns all ansible roles assigned to the host, both its own and inherited from the host group and its parents'
+      property :ansible_roles, array_of: 'AnsibleRole', desc: 'Returns ansible roles directly assigned to the host'
+      property :inherited_ansible_roles, array_of: 'AnsibleRole', desc: 'Returns only ansible roles assigned to the host\'s host group and its parents'
     end
     # Methods to be allowed in any template with safemode enabled
     class Jail < Safemode::Jail

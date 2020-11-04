@@ -36,3 +36,15 @@ module ForemanAnsible
     end
   end
 end
+
+class Hostgroup
+  apipie :class do
+    property :all_ansible_roles, array_of: 'AnsibleRole', desc: 'Returns all ansible roles assigned to the host group, both its own and inherited from parent host groups'
+    property :ansible_roles, array_of: 'AnsibleRole', desc: 'Returns ansible roles directly assigned to the host group'
+    property :inherited_ansible_roles, array_of: 'AnsibleRole', desc: 'Returns only the inherited ansible roles assigned to the host group\'s parents'
+  end
+  # Methods to be allowed in any template with safemode enabled
+  class Jail < Safemode::Jail
+    allow :all_ansible_roles, :ansible_roles, :inherited_ansible_roles
+  end
+end
