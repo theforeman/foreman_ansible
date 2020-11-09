@@ -22,6 +22,6 @@ Gem::Specification.new do |s|
   # Kept as a dev dependency so tests can run together
   s.add_development_dependency 'foreman_ansible_core', '~> 3.0'
   s.add_dependency 'deface', '< 2.0'
-  s.add_dependency 'foreman_remote_execution', '>= 4.0.0'
+  s.add_dependency 'foreman_remote_execution', '>= 4.2.0'
   s.add_dependency 'ipaddress', '>= 0.8.0', '< 1.0'
 end
