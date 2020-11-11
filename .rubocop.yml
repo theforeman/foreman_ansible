@@ -37,9 +37,6 @@ Rails:
 Rails/ActionFilter:
   EnforcedStyle: action
 
-Rails/ContentTag:
-  Enabled: false
-
 Rails/SkipsModelValidations:
   Enabled: false
 
@@ -54,3 +51,6 @@ Style/RaiseArgs:
 
 Style/SymbolArray:
   EnforcedStyle: brackets
+
+Style/Documentation:
+  Enabled: false
