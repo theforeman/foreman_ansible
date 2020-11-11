@@ -78,7 +78,7 @@ module ForemanAnsible
     def create_new_variables(variables)
       iterate_over_variables(variables) do |role, memo, attrs|
         variable = AnsibleVariable.new(
-          JSON.parse(attrs)['ansible_variable']
+          JSON.parse(attrs)
         )
         variable.ansible_role = ::AnsibleRole.find_by(:name => role)
         variable.save
@@ -88,7 +88,7 @@ module ForemanAnsible
 
     def update_variables(variables)
       iterate_over_variables(variables) do |_role, memo, attrs|
-        attributes = JSON.parse(attrs)['ansible_variable']
+        attributes = JSON.parse(attrs)
         var = AnsibleVariable.find attributes['id']
         var.update(attributes)
         memo << var
@@ -98,7 +98,7 @@ module ForemanAnsible
     def delete_old_variables(variables)
       iterate_over_variables(variables) do |_role, memo, attrs|
         variable = AnsibleVariable.find(
-          JSON.parse(attrs)['ansible_variable']['id']
+          JSON.parse(attrs)['id']
         )
         memo << variable.key
         variable.destroy
