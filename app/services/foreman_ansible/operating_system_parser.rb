@@ -83,7 +83,7 @@ module ForemanAnsible
         distribution = facts[:ansible_distribution] || facts[:ansible_lsb].try(:[], 'id')
 
         if distribution == 'RedHat' &&
-            facts[:ansible_lsb].try(:[], 'id') == 'RedHatEnterpriseWorkstation'
+           facts[:ansible_lsb].try(:[], 'id') == 'RedHatEnterpriseWorkstation'
           distribution += '_Workstation'
         end
 

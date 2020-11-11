@@ -68,7 +68,7 @@ module ForemanAnsible
       prettyp.gsub!(/^(\[|\])/, '')
       prettyp.gsub!(/^[\s]*$\n/, '')
       paragraph_style = 'white-space:pre;padding: 2em 0'
-      content_tag(:p, prettyp, :style => paragraph_style)
+      tag(:p, prettyp, :style => paragraph_style)
     end
 
     def hash_with_keys_removed(hash)
