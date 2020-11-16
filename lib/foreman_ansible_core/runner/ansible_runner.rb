@@ -11,6 +11,7 @@ module ForemanAnsibleCore
         @playbook = input.values.first[:input][:action_input][:script]
         @root = working_dir
         @verbosity_level = input.values.first[:input][:action_input][:verbosity_level]
+        @ansible_forks = input.values.first[:input][:action_input][:ansible_forks]
       end
 
       def start
@@ -105,6 +106,7 @@ module ForemanAnsibleCore
 
       def start_ansible_runner
         command = ['ansible-runner', 'run', @root, '-p', 'playbook.yml']
+        command << forks if forks_defined?
         command << verbosity if verbose?
         initialize_command(*command)
         logger.debug("[foreman_ansible] - Running command '#{command.join(' ')}'")
@@ -116,6 +118,14 @@ module ForemanAnsibleCore
 
       def verbose?
         @verbosity_level.to_i.positive?
+      end
+
+      def forks_defined?
+        @ansible_forks.to_i.positive?
+      end
+
+      def forks
+        '--forks=' + @ansible_forks.to_s
       end
 
       def prepare_directory_structure

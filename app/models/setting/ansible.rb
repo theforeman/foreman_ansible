@@ -80,12 +80,20 @@ class Setting
                'with Ansible inventory'),
             'Ansible - Ansible Inventory',
             N_('Default Ansible inventory report template')
+          ),
+          set(
+            'ansible_forks',
+            N_('Forks controls how many hosts are configured by Ansible '\
+               'in parallel.'),
+            '',
+            N_('Ansible forks')
           )
         ]
       end
 
       def load_defaults
         Setting::BLANK_ATTRS.push('ansible_ssh_private_key_file')
+        Setting::BLANK_ATTRS.push('ansible_forks')
         super
       end
 
