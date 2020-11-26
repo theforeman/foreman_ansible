@@ -1,6 +1,7 @@
 name: Ruby Testing
 on: [pull_request]
 env:
+  BUNDLE_WITHOUT: journald:development:console:libvirt
   RAILS_ENV: test
   DATABASE_URL: postgresql://postgres:@localhost/test
   DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: true
@@ -13,10 +14,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.6
-      - name: Setup
-        run: |
-          gem install bundler
-          bundle install --jobs=3 --retry=3
+          bundler-cache: true
       - name: Run rubocop
         run: bundle exec rubocop
   test_ruby:
@@ -45,30 +43,21 @@ jobs:
       - uses: actions/checkout@v2
         with:
           path: foreman_ansible
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ matrix.ruby-version }}
-      - name: Setup Node
-        uses: actions/setup-node@v1
-        with:
-          node-version:  ${{ matrix.node-version }}
-      - uses: actions/cache@v2
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-fgems-${{ matrix.ruby-version }}-${{ hashFiles('Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-fgems-${{ matrix.ruby-version }}-
       - name: Setup Bundler
         run: |
           echo "gem 'foreman_ansible', path: './foreman_ansible'" > bundler.d/foreman_ansible.local.rb
           echo "gem 'foreman_ansible_core', path: './foreman_ansible'" >> bundler.d/foreman_ansible.local.rb
-          gem install bundler
-          bundle config set without journald development console libvirt
-          bundle config set path vendor/bundle
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          bundler-cache: true
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version:  ${{ matrix.node-version }}
       - name: Prepare test env
         run: |
-          bundle install --jobs=3 --retry=3
           bundle exec rake db:create
           bundle exec rake db:migrate
           bundle exec rake db:test:prepare
