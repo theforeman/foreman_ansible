@@ -13,6 +13,7 @@ AllCops:
     - 'extras/**/*'
     - 'locale/**/*'
     - 'node_modules/**/*'
+    - 'vendor/bundle/**/*'
 
 # Just so it looks like core Foreman
 Layout/DotPosition:
