@@ -1,13 +1,11 @@
-name: Ruby Testing
-on:
-  pull_request:
+name: Write cache on merge
+  push:
+    branches:
+    - master
 env:
   BUNDLE_WITHOUT: journald:development:console:libvirt
-  RAILS_ENV: test
-  DATABASE_URL: postgresql://postgres:@localhost/test
-  DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: true
 jobs:
-  rubocop:
+  rubocop_cache:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,22 +14,13 @@ jobs:
         with:
           ruby-version: 2.6
           bundler-cache: true
-      - name: Run rubocop
-        run: bundle exec rubocop
-  test_ruby:
+  ruby_cache:
     runs-on: ubuntu-latest
-    needs: rubocop
-    services:
-      postgres:
-        image: postgres:12.1
-        ports: ['5432:5432']
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     strategy:
       fail-fast: false
       matrix:
         foreman-core-branch: [develop]
         ruby-version: [2.5, 2.6]
-        node-version: [12]
     steps:
       - name: Install build packages
         run: |
@@ -53,16 +42,3 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true
-      - name: Setup Node
-        uses: actions/setup-node@v1
-        with:
-          node-version:  ${{ matrix.node-version }}
-      - name: Prepare test env
-        run: |
-          bundle exec rake db:create
-          bundle exec rake db:migrate
-          bundle exec rake db:test:prepare
-      - name: Run plugin tests
-        run: |
-          bundle exec rake test:foreman_ansible
-          bundle exec rake test TEST="test/unit/foreman/access_permissions_test.rb"
