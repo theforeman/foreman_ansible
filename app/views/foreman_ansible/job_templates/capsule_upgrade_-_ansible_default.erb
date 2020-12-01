@@ -34,11 +34,10 @@ feature: ansible_run_capsule_upgrade
         msg: "This playbook cannot be executed on a Satellite server. Use only on a Capsule server."
       when: "'satellite' in ansible_facts.packages"
 
-    - name: Install satellite-maintain if not present
+    - name: Install|Update satellite-maintain if not present
       package:
         name: rubygem-foreman_maintain
-        state: present
-      when: "'rubygem-foreman_maintain' not in ansible_facts.packages"
+        state: latest
 
     - block:
       <%- whitelist_option = if input('whitelist_options').present?
