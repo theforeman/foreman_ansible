@@ -25,7 +25,7 @@ model: JobTemplate
 ---
 - hosts: all
   tasks:
-    - command: ansible-galaxy install {{ item }} <% "-p #{input('location')}" if input('location').present? %>
+    - command: ansible-galaxy install {{ item }} -p <%= input('location').present? ? input('location') : '/etc/ansible/roles' %>
       register: out
       with_items:
         - <%= input('ansible_roles_list') %>
