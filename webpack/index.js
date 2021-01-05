@@ -18,6 +18,7 @@ componentRegistry.register({
 
 injectReducer('foremanAnsible', reducer);
 
+/* eslint-disable jquery/no-data */
 tfm.initAnsibleRoleSwitcher = () => {
   $(document).on('ContentLoad', evt => {
     tfm.reactMounter.mount(
@@ -27,3 +28,4 @@ tfm.initAnsibleRoleSwitcher = () => {
     );
   });
 };
+/* eslint-enable jquery/no-data */

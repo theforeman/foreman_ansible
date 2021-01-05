@@ -1,4 +1,4 @@
-import { testComponentSnapshotsWithFixtures } from 'react-redux-test-utils';
+import { testComponentSnapshotsWithFixtures } from '@theforeman/test';
 
 import AnsibleRolesSwitcher from '../AnsibleRolesSwitcher';
 
@@ -23,6 +23,7 @@ const fixtures = {
       initialAssignedRoles: [],
     },
     error: { statusText: '', errorMsg: '' },
+    allAssignedRoles: [],
   },
 };
 
