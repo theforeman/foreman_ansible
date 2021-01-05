@@ -1,0 +1,46 @@
+---
+- hosts: all
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: Run local playbook with assigned tag meta
+      local_action:
+        module: ansible.builtin.command
+        argv: 
+          - /bin/ansible-playbook
+          - -i 
+          - "{{ inventory_dir }}"
+          - -c 
+          - local
+<% unless input('Tags').blank? -%>
+          - --tags
+          - <%= input('Tags') %>
+<% end -%>
+<% unless input('Skip Tags').blank? -%>
+          - --skip-tags
+          - <%= input('Skip Tags') %>
+<% end -%>
+          - /dev/stdin
+        stdin:  |
+                ---
+                - hosts: all
+                  pre_tasks:
+                    - name: Display all parameters known for the Foreman host
+                      debug:
+                        var: foreman
+                      tags:
+                        - always
+                  tasks:
+                    - name: Apply roles
+                      include_role:
+                        name: "{{ '{{' }} role {{ '}}' }}"
+                      loop: "{{ '{{' }} foreman_ansible_roles {{ '}}' }}"
+                      loop_control:
+                        loop_var: role
+                      tags:
+                        - always
+      register: cmd_output
+    - name: debug
+      debug:
+          var: cmd_output
