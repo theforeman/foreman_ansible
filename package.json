@@ -7,33 +7,24 @@
     "test": "test"
   },
   "peerDependencies": {
-    "@theforeman/vendor": ">= 3.3.2"
+    "@theforeman/vendor": ">= 6.0.0"
   },
   "dependencies": {
     "react-json-tree": "^0.11.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.0",
-    "@theforeman/builder": "^4.0.2",
-    "@theforeman/vendor-dev": "^3.3.2",
-    "babel-eslint": "^10.0.0",
-    "babel-jest": "^24.9.0",
-    "enzyme": "^3.7.0",
-    "enzyme-adapter-react-16": "^1.7.0",
-    "enzyme-to-json": "^3.3.5",
-    "eslint": "^6.0.0",
-    "eslint-plugin-patternfly-react": "^0.2.1",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^24.9.0",
-    "prettier": "^1.19.0",
-    "react-redux": "^5.0.7",
-    "react-redux-test-utils": "^0.1.1",
-    "redux": "^3.7.2",
-    "redux-thunk": "^2.3.0"
+    "@theforeman/builder": "^6.0.0",
+    "@theforeman/eslint-plugin-foreman": "6.0.0",
+    "@theforeman/test": "^6.0.0",
+    "@theforeman/vendor-dev": "^6.0.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.7.2",
+    "prettier": "^1.13.5"
   },
   "scripts": {
-    "test": "node node_modules/.bin/jest webpack",
-    "lint": "eslint ./webpack"
+    "test": "tfm-test --plugin",
+    "lint": "tfm-lint --plugin -d webpack"
   },
   "repository": {
     "type": "git",
@@ -44,27 +35,5 @@
   "bugs": {
     "url": "https://projects.theforeman.org/projects/ansible"
   },
-  "homepage": "https://theforeman.org/plugins/foreman_ansible/",
-  "jest": {
-    "verbose": true,
-    "moduleDirectories": [
-      "node_modules/@theforeman/vendor-core/node_modules",
-      "node_modules",
-      "webpack"
-    ],
-    "transform": {
-      "^.+\\.js$": "babel-jest"
-    },
-    "setupFiles": [
-      "raf/polyfill",
-      "./webpack/test_setup.js"
-    ],
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "<rootDir>/foreman/"
-    ],
-    "moduleNameMapper": {
-      "^.+\\.(css|scss)$": "identity-obj-proxy"
-    }
-  }
+  "homepage": "https://theforeman.org/plugins/foreman_ansible/"
 }

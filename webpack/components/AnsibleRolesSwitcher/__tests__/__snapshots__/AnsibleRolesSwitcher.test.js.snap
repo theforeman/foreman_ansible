@@ -61,6 +61,7 @@ exports[`AnsibleRolesSwitcher should render 1`] = `
         </h2>
       </div>
       <AssignedRolesList
+        allAssignedRoles={Array []}
         assignedRoles={Array []}
         itemCount={2}
         onPaginationChange={[Function]}

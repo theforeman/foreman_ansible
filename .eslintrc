@@ -1,19 +1,4 @@
 {
-  "plugins": ["patternfly-react"],
-  "extends": [
-    "plugin:patternfly-react/recommended",
-    "./node_modules/@theforeman/vendor-dev/eslint.extends.js",
-  ],
-  "rules": {
-    "prettier/prettier": ["error", {
-      "singleQuote": true,
-      "trailingComma": "es5"
-    }],
-    "import/no-unresolved": ["error", {
-      "ignore": ['foremanReact/.*']
-    }],
-    "import/extensions": ["error", {
-      "ignore": ['foremanReact/.*']
-    }],
-  }
+  "plugins": ["@theforeman/foreman"],
+  "extends": ["plugin:@theforeman/foreman/core", "plugin:@theforeman/foreman/plugins"]
 }

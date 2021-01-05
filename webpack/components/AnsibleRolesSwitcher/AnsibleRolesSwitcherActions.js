@@ -21,7 +21,7 @@ export const getAnsibleRoles = (
   resourceName,
   pagination,
   search
-) => dispatch => {
+) => async dispatch => {
   dispatch({ type: ANSIBLE_ROLES_REQUEST });
 
   const params = {
@@ -30,19 +30,19 @@ export const getAnsibleRoles = (
     ...propsToSnakeCase({ resourceId, resourceName }),
   };
 
-  return api
-    .get(url, {}, params)
-    .then(({ data }) =>
-      dispatch({
-        type: ANSIBLE_ROLES_SUCCESS,
-        payload: {
-          initialAssignedRoles,
-          inheritedRoleIds,
-          ...propsToCamelCase(data),
-        },
-      })
-    )
-    .catch(error => dispatch(errorHandler(ANSIBLE_ROLES_FAILURE, error)));
+  try {
+    const res = await api.get(url, {}, params);
+    return dispatch({
+      type: ANSIBLE_ROLES_SUCCESS,
+      payload: {
+        initialAssignedRoles,
+        inheritedRoleIds,
+        ...propsToCamelCase(res.data),
+      },
+    });
+  } catch (error) {
+    return dispatch(errorHandler(ANSIBLE_ROLES_FAILURE, error));
+  }
 };
 
 const errorHandler = (msg, err) => {
