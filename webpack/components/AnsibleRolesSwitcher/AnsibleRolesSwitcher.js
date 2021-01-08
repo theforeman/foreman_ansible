@@ -17,7 +17,7 @@ class AnsibleRolesSwitcher extends React.Component {
       inheritedRoleIds,
       resourceId,
       resourceName,
-    } = this.props.data;
+    } = this.props;
 
     this.props.getAnsibleRoles(
       availableRolesUrl,
@@ -52,7 +52,7 @@ class AnsibleRolesSwitcher extends React.Component {
       inheritedRoleIds,
       resourceId,
       resourceName,
-    } = this.props.data;
+    } = this.props;
 
     const onListingChange = paginationArgs =>
       getAnsibleRoles(
@@ -104,13 +104,11 @@ class AnsibleRolesSwitcher extends React.Component {
 }
 
 AnsibleRolesSwitcher.propTypes = {
-  data: PropTypes.shape({
-    initialAssignedRoles: PropTypes.arrayOf(PropTypes.object),
-    availableRolesUrl: PropTypes.string,
-    inheritedRoleIds: PropTypes.arrayOf(PropTypes.number),
-    resourceId: PropTypes.number,
-    resourceName: PropTypes.string,
-  }).isRequired,
+  initialAssignedRoles: PropTypes.arrayOf(PropTypes.object),
+  availableRolesUrl: PropTypes.string.isRequired,
+  inheritedRoleIds: PropTypes.arrayOf(PropTypes.number),
+  resourceId: PropTypes.number,
+  resourceName: PropTypes.string,
   getAnsibleRoles: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   pagination: PropTypes.shape({
@@ -137,6 +135,10 @@ AnsibleRolesSwitcher.propTypes = {
 
 AnsibleRolesSwitcher.defaultProps = {
   error: {},
+  resourceId: null,
+  resourceName: '',
+  initialAssignedRoles: [],
+  inheritedRoleIds: [],
 };
 
 export default AnsibleRolesSwitcher;
