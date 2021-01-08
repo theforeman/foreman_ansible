@@ -19,11 +19,10 @@ const fixtures = {
     assignedRolesCount: 2,
     assignedRoles: [],
     unassignedRoles: [],
-    data: {
-      initialAssignedRoles: [],
-    },
+    initialAssignedRoles: [],
     error: { statusText: '', errorMsg: '' },
     allAssignedRoles: [],
+    availableRolesUrl: 'http://test/roles',
   },
 };
 
