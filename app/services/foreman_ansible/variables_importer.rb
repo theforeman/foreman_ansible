@@ -51,7 +51,8 @@ module ForemanAnsible
           :key => variable_name,
           :ansible_role_id => role.id
         )
-        variable.assign_attributes(:default_value => variable_default,
+        variable.assign_attributes(:hidden_value => false,
+                                   :default_value => variable_default,
                                    :key_type => infer_key_type(variable_default))
         variable.imported = true if variable.new_record?
         variable.valid? ? variable : nil
@@ -80,6 +81,8 @@ module ForemanAnsible
         variable = AnsibleVariable.new(
           JSON.parse(attrs)
         )
+        # Make sure, newly created variables are not hidden
+        variable.hidden_value = false
         variable.ansible_role = ::AnsibleRole.find_by(:name => role)
         variable.save
         memo << variable
@@ -89,6 +92,8 @@ module ForemanAnsible
     def update_variables(variables)
       iterate_over_variables(variables) do |_role, memo, attrs|
         attributes = JSON.parse(attrs)
+        # Make sure to let the flag if a variable is hidden untouched
+        attributes.delete('hidden_value')
         var = AnsibleVariable.find attributes['id']
         var.update(attributes)
         memo << var
