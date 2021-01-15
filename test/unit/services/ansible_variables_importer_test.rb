@@ -59,6 +59,19 @@ class AnsibleVariablesImporterTest < ActiveSupport::TestCase
       assert_empty changes['update']
     end
 
+    test 'sets hidden value to false by default' do
+      role = FactoryBot.create(:ansible_role)
+      variable = FactoryBot.create(:ansible_variable)
+      api_response = {
+        role.name => { variable.key => 'new value' }
+      }
+      changes = importer.import_variables(api_response, [role.name])
+      assert_empty changes['update']
+      assert_not_empty changes['new']
+      assert_equal variable.key, changes['new'].first.key
+      assert_not changes['new'].first.hidden_value?
+    end
+
     test 'reimports variable with same key for different role' do
       role = FactoryBot.create(:ansible_role)
       variable = FactoryBot.create(:ansible_variable)
