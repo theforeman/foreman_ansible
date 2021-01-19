@@ -1,8 +1,7 @@
 <% title _("Ansible Variables") %>
 <%= stylesheet 'foreman_ansible/foreman-ansible' %>
 
-<%= title_actions ansible_proxy_import(hash_for_import_ansible_variables_path),
-      display_link_if_authorized(_('New Ansible Variable'), hash_for_new_ansible_variable_path, :class => "btn btn-default no-float"),
+<%= title_actions display_link_if_authorized(_('New Ansible Variable'), hash_for_new_ansible_variable_path, :class => "btn btn-default no-float"),
       documentation_button('#4.3Variables', :root_url => ansible_doc_url)
        %>
 

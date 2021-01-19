@@ -26,7 +26,7 @@ class UiRolesImporterTest < ActiveSupport::TestCase
     @role = FactoryBot.create(:ansible_role)
     new_role_name = 'test_role.foreman'
     @new_role = { :id => nil, :name => new_role_name }
-    @changes = { 'new' => { 'test_role.foreman' => @new_role.to_json },
-                 'obsolete' => { @role.name => @role.to_json } }
+    @changes = { 'new' => { 'test_role.foreman' => @new_role },
+                 'obsolete' => { @role.name => @role } }
   end
 end

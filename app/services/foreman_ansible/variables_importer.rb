@@ -26,6 +26,10 @@ module ForemanAnsible
       import_variables(local_variables, new_roles)
     end
 
+    def get_variables_names(role_name)
+      remote_variables[role_name]
+    end
+
     def import_variables(role_variables, new_roles)
       detect_changes(
         role_variables.map do |role_name, variables|
@@ -35,6 +39,34 @@ module ForemanAnsible
           initialize_variables(variables, role)
         end.select(&:present?).flatten.compact
       )
+    end
+
+    def import_variables_roles(roles)
+      if roles['new']
+        imported_roles = roles['new'].keys
+        variables_to_import = {}
+        remote_variables.each do |role, variables|
+          next unless imported_roles.include? role
+          role_obj = AnsibleRole.find_by(:name => role)
+          variables_to_import[role] = {}
+          values = initialize_variables(variables, role_obj)
+          values.each do |value|
+            variables_to_import[role][value.key] = value.attributes.to_json
+          end
+        end
+        create_new_variables(variables_to_import)
+      end
+      return if roles['old'].empty?
+      variables_to_update = { 'new' => {}, 'obsolete' => {}, 'update' => {} }
+      import_variable_names([]).each do |kind, variables|
+        variables.each do |variable|
+          next unless roles['old'].values.map { |role| role['id'] }.include?(variable.ansible_role_id)
+          role_name = variable.ansible_role.name
+          variables_to_update[kind][role_name] ||= {}
+          variables_to_update[kind][role_name][variable.key] = variable.attributes.to_json
+        end
+      end
+      finish_import(variables_to_update['new'], variables_to_update['obsolete'], variables_to_update['update'])
     end
 
     def import_new_role(role_name, new_roles)
@@ -92,8 +124,6 @@ module ForemanAnsible
     def update_variables(variables)
       iterate_over_variables(variables) do |_role, memo, attrs|
         attributes = JSON.parse(attrs)
-        # Make sure to let the flag if a variable is hidden untouched
-        attributes.delete('hidden_value')
         var = AnsibleVariable.find attributes['id']
         var.update(attributes)
         memo << var

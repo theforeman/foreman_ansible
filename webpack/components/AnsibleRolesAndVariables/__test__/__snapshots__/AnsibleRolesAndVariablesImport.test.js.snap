@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImportRolesAndVariablesTable should render 1`] = `
+<div
+  id="import-ansible-roles-variables"
+>
+  <Toolbar>
+    <ToolbarContent
+      isExpanded={false}
+      showClearFiltersButton={false}
+    >
+      <ForwardRef
+        variant="icon-button-group"
+      >
+        <ToolbarItem>
+          <Checkbox
+            aria-label="select all checkbox"
+            className=""
+            id="select-all"
+            isChecked={false}
+            isDisabled={false}
+            isValid={true}
+            label="Select all"
+            name="select-all"
+            onChange={[Function]}
+          />
+        </ToolbarItem>
+      </ForwardRef>
+    </ToolbarContent>
+  </Toolbar>
+  <Table
+    aria-label="import roles and variables"
+    borders={true}
+    canSelectAll={false}
+    canSortFavorites={true}
+    cells={
+      Array [
+        Object {
+          "title": "Name",
+          "transforms": Array [
+            [Function],
+          ],
+        },
+        Object {
+          "title": "Operation",
+          "transforms": Array [
+            [Function],
+          ],
+        },
+        Object {
+          "title": "Variables",
+          "transforms": Array [
+            [Function],
+          ],
+        },
+        Object {
+          "title": "Hosts Count",
+          "transforms": Array [
+            [Function],
+          ],
+        },
+        Object {
+          "title": "Hostgroups count",
+          "transforms": Array [
+            [Function],
+          ],
+        },
+      ]
+    }
+    className=""
+    contentId="expanded-content"
+    dropdownDirection="down"
+    dropdownPosition="right"
+    expandId="expandable-toggle"
+    gridBreakPoint="grid-md"
+    isStickyHeader={false}
+    onSelect={[Function]}
+    ouiaSafe={true}
+    role="grid"
+    rowLabeledBy="simple-node"
+    rows={
+      Array [
+        Object {
+          "cells": Array [
+            "bennojoy.ntp",
+            "Update Role Variables",
+            "Add: 1 Remove: 2 ",
+            "",
+            "",
+          ],
+          "id": "bennojoy.ntp",
+          "kind": "old",
+        },
+        Object {
+          "cells": Array [
+            "0ta2.git_role",
+            "Import Role ",
+            "Add: 5 ",
+            "",
+            "",
+          ],
+          "id": "0ta2.git_role",
+          "kind": "new",
+        },
+      ]
+    }
+    selectVariant="checkbox"
+    variant={null}
+  >
+    <TableHeader />
+    <Component />
+  </Table>
+  <Pagination
+    className=""
+    defaultToFullPage={true}
+    firstPage={1}
+    isCompact={true}
+    isDisabled={false}
+    isSticky={false}
+    itemCount={2}
+    itemsEnd={null}
+    itemsStart={null}
+    offset={0}
+    onFirstClick={[Function]}
+    onLastClick={[Function]}
+    onNextClick={[Function]}
+    onPageInput={[Function]}
+    onPerPageSelect={[Function]}
+    onPreviousClick={[Function]}
+    onSetPage={[Function]}
+    ouiaSafe={true}
+    page={0}
+    perPage={5}
+    perPageOptions={
+      Array [
+        Object {
+          "title": "3",
+          "value": 3,
+        },
+        Object {
+          "title": "5",
+          "value": 5,
+        },
+        Object {
+          "title": "10",
+          "value": 10,
+        },
+      ]
+    }
+    titles={
+      Object {
+        "paginationTitle": "top pagination",
+      }
+    }
+    toggleTemplate={[Function]}
+    variant="top"
+    widgetId="pagination-options-menu"
+  />
+  <div
+    className="submit-cancel-btns"
+  >
+    <br />
+    <br />
+    <Button
+      onClick={[Function]}
+      variant="primary"
+    >
+      Submit
+    </Button>
+    <Button
+      variant="secondary"
+    >
+      Cancel
+    </Button>
+  </div>
+</div>
+`;

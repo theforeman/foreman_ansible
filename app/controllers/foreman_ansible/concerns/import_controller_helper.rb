@@ -9,8 +9,8 @@ module ForemanAnsible
       included do
         # rubocop:disable Rails/LexicallyScopedActionFilter
         before_action :find_resource, :only => [:destroy]
-        before_action :find_proxy, :only => [:import]
-        before_action :create_importer, :only => [:import, :confirm_import]
+        before_action :find_proxy, :only => [:import, :import_variables, :confirm_import]
+        before_action :create_importer, :only => [:import, :confirm_import, :import_variables, :confirm_import]
         before_action :default_order, :only => [:index]
         # rubocop:enable Rails/LexicallyScopedActionFilter
       end

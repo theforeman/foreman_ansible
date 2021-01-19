@@ -34,21 +34,6 @@ class AnsibleVariablesControllerTest < ActionController::TestCase
     assert_redirected_to ansible_variables_url
   end
 
-  test 'should show import page' do
-    ForemanAnsible::UiRolesImporter.any_instance.
-      expects(:import_role_names).returns({})
-
-    ForemanAnsible::VariablesImporter.any_instance.
-      expects(:import_variable_names).returns({
-        :obsolete => [@model]
-      })
-
-    get :import,
-        :params => { :proxy => @proxy.id },
-        :session => set_session_user
-    assert_response :success
-  end
-
   test 'should create ansible variable' do
     params = { :ansible_variable => { :key => 'great name', :ansible_role_id => FactoryBot.create(:ansible_role).id } }
     assert_difference('AnsibleVariable.count', 1) do
