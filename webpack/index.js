@@ -2,6 +2,7 @@ import componentRegistry from 'foremanReact/components/componentRegistry';
 import injectReducer from 'foremanReact/redux/reducers/registerReducer';
 import ReportJsonViewer from './components/ReportJsonViewer';
 import AnsibleRolesSwitcher from './components/AnsibleRolesSwitcher';
+import WrappedImportRolesAndVariables from './components/AnsibleRolesAndVariables';
 import reducer from './reducer';
 
 componentRegistry.register({
@@ -11,6 +12,11 @@ componentRegistry.register({
 componentRegistry.register({
   name: 'AnsibleRolesSwitcher',
   type: AnsibleRolesSwitcher,
+});
+
+componentRegistry.register({
+  name: 'WrappedImportRolesAndVariables',
+  type: WrappedImportRolesAndVariables,
 });
 
 injectReducer('foremanAnsible', reducer);

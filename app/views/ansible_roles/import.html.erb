@@ -1,51 +1,11 @@
 <% title _("Changed Ansible roles") %>
-<%= form_tag confirm_import_ansible_roles_path do %>
-  <h4><%= _("Select the changes you want to realize in Foreman") %></h4>
-  <h6>
-  <%= _("Toggle") %>:
-  <%= link_to_function(icon_text("check", _("New")),
-                       "toggleCheckboxesBySelector('.role_select_boxes_new')",
-                       :title => _("Check/Uncheck new")) %> |
-  <%= link_to_function(icon_text("check", _("Obsolete")),
-                       "toggleCheckboxesBySelector('.role_select_boxes_obsolete')",
-                       :title => _("Check/Uncheck obsolete")) %>
-  </h6>
-  <table class="<%= table_css_classes %>">
-    <thead>
-      <tr>
-        <th class="ca">
-          <%= link_to_function(icon_text("check"),
-                               "toggleCheckboxesBySelector('.role_select_boxes')",
-                               :title => _("Check/Uncheck all")) %>
-        </th>
-        <th><%= _("Name") %></th>
-        <th class="col-md-2"><%= _("Hosts count") %></th>
-        <th class="col-md-2"><%= _("Hostgroups count") %></th>
-        <th><%= _("Operation") %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% changed.each do |kind, roles| %>
-        <% roles.each do |role| %>
-          <tr>
-            <td>
-              <%= check_box_tag "changed[#{kind}][#{role}]", role.to_json, false, :class => "role_select_boxes role_select_boxes_#{kind} role_select_boxes_role_#{role}" %>
-            </td>
-            <td>
-              <%= link_to_function("#{role}", "toggleCheckboxesBySelector('.role_select_boxes_role_#{role}')", :title => _("Check/Uncheck all %s changes") % role) %>
-            </td>
-            <td><%= role.hosts.count %></td>
-            <td><%= role.hostgroups.count %></td>
-            <td>
-              <%= { "new" => _("Add"), "obsolete" => _("Remove") }[kind] %>
-            </td>
-          </tr>
-        <% end %>
-      <% end %>
-    </tbody>
-  </table>
-  <div>
-    <%= link_to _("Cancel"), ansible_roles_path, :class => "btn btn-default" %>
-    <%= submit_tag _("Update"), :class => "btn btn-primary" %>
-  </div>
-<% end %>
+<%= webpacked_plugins_js_for :foreman_ansible %>
+<%= webpacked_plugins_css_for :foreman_ansible %>
+
+
+<%= react_component(
+        'WrappedImportRolesAndVariables',
+        :rowsData => @rows,
+        :proxy => @proxy.id
+    ) %>
+
