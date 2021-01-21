@@ -16,7 +16,9 @@ class HostsControllerExtensionsTest < ActionController::TestCase
     test 'create a host with ansible roles' do
       host = { :name => 'foo',
                :managed => false,
-               :ansible_role_ids => [@role.id] }
+               :host_ansible_roles_attributes => {
+                 0 => { :ansible_role_id => @role.id, :position => 0 }
+               } }
       post :create, :params => { :host => host }, :session => set_session_user
       assert_redirected_to host_url(assigns('host'))
       assert assigns('host').ansible_roles, [@role]
@@ -27,17 +29,19 @@ class HostsControllerExtensionsTest < ActionController::TestCase
       post :update,
            :params => {
              :id => host.id,
-             :host => { :ansible_role_ids => [@role.id] }
+             :host => { :host_ansible_roles_attributes => {
+               0 => { :ansible_role_id => @role.id, :position => 0 }
+             } }
            },
            :session => set_session_user
       assert_redirected_to host_url(assigns('host'))
-      assert assigns('host').ansible_roles, [@role]
+      assert_equal assigns('host').ansible_roles, [@role]
     end
 
     test 'delete a host with ansible roles' do
-      host = FactoryBot.create(:host,
-                               :managed => false,
-                               :ansible_roles => [@role])
+      host = FactoryBot.create(:host, :managed => false)
+      FactoryBot.create(:host_ansible_role, host_id: host.id, ansible_role_id: @role.id, position: 0)
+
       assert_include @role.hosts, host
       delete :destroy,
              :params => { :id => host.id },

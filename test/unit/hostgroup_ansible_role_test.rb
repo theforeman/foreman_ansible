@@ -13,7 +13,8 @@ class HostgroupAnsibleRoleTest < ActiveSupport::TestCase
     subject do
       HostgroupAnsibleRole.new(
         :hostgroup => FactoryBot.build(:hostgroup),
-        :ansible_role => FactoryBot.build(:ansible_role)
+        :ansible_role => FactoryBot.build(:ansible_role),
+        :position => 0
       )
     end
     should validate_uniqueness_of(:ansible_role_id).scoped_to(:hostgroup_id)

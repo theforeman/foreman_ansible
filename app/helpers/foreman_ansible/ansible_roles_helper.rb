@@ -35,8 +35,29 @@ module ForemanAnsible
       _('%s ago') % time_ago_in_words(role.updated_at)
     end
 
+    def role_attributes_for_roles_switcher(form_object)
+      if form_object.is_a?(Hostgroup)
+        model_roles_attrs(form_object, HostgroupAnsibleRole, :hostgroup_id, :hostgroup_ansible_role_id)
+      else
+        model_roles_attrs(form_object, HostAnsibleRole, :host_id, :host_ansible_role_id)
+      end
+    end
+
     def roles_attrs(roles)
       roles.map { |item| { :id => item.id, :name => item.name } }
+    end
+
+    def model_roles_attrs(form_object, assoc_class, foreign_key, assoc_key)
+      inherited_attrs = roles_attrs form_object.inherited_ansible_roles_ordered
+
+      own_attrs = assoc_class.includes(:ansible_role).
+                  where(foreign_key => form_object.id).
+                  where.not(:ansible_roles => { :id => form_object.inherited_ansible_roles.pluck(:id) }).
+                  order(:position).
+                  map do |join_record|
+        { :id => join_record.ansible_role_id, assoc_key => join_record.id, :name => join_record.ansible_role.name, :position => join_record.position }
+      end
+      inherited_attrs + own_attrs
     end
   end
 end

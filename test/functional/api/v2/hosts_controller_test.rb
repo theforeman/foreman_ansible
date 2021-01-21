@@ -53,9 +53,9 @@ module Api
       end
 
       test 'should update a host with ansible_role_ids param' do
-        host = FactoryBot.create(:host,
-                                 :managed => false,
-                                 :ansible_role_ids => [@ansible_role1.id])
+        host = FactoryBot.create(:host, :managed => false)
+        FactoryBot.create(:host_ansible_role, :host_id => host.id, :ansible_role_id => @ansible_role1.id, :position => 0)
+
         post :update,
              :params => {
                :id => host.id,
@@ -63,28 +63,29 @@ module Api
              },
              :session => set_session_user
         assert_response :success
-        assert assigns('host').ansible_roles, [@ansible_role2]
+        host.reload
+        assert_equal host.ansible_roles, [@ansible_role2]
       end
 
       test 'should list ansible roles for a host' do
-        @host3.ansible_roles = [@ansible_role1]
+        FactoryBot.create(:host_ansible_role, :host_id => @host3.id, :ansible_role_id => @ansible_role1.id, :position => 0)
         get :ansible_roles, :params => { :id => @host3.id }
         response = JSON.parse(@response.body)
         assert_equal @ansible_role1.id, response.first['id']
       end
 
-      test 'should assign a role to a host' do
+      test 'should assign a role to a host with a correct ordering' do
         host = FactoryBot.create(:host,
                                  :managed => false,
                                  :ansible_role_ids => [])
         post :assign_ansible_roles,
              :params => {
                :id => host.id,
-               :ansible_role_ids => [@ansible_role1.id]
+               :ansible_role_ids => [@ansible_role2.id, @ansible_role1.id]
              },
              :session => set_session_user
         assert_response :success
-        assert assigns('host').ansible_roles, [@ansible_role1]
+        assert_equal assigns('host').ansible_roles, [@ansible_role2, @ansible_role1]
       end
     end
   end

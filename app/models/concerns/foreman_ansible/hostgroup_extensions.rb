@@ -7,8 +7,11 @@ module ForemanAnsible
 
     included do
       has_many :hostgroup_ansible_roles, :foreign_key => :hostgroup_id
-      has_many :ansible_roles, :through => :hostgroup_ansible_roles,
-                               :dependent => :destroy
+      has_many :ansible_roles,
+               -> { order('hostgroup_ansible_roles.position ASC') },
+               :through => :hostgroup_ansible_roles,
+               :dependent => :destroy
+      accepts_nested_attributes_for :hostgroup_ansible_roles, :allow_destroy => true
       audit_associations :ansible_roles
 
       def inherited_ansible_roles
@@ -24,14 +27,14 @@ module ForemanAnsible
       end
 
       def host_ansible_roles
-        hosts.all.includes(:ansible_roles).flat_map(&:ansible_roles)
+        hosts.includes(:host_ansible_roles).flat_map(&:ansible_roles)
       end
 
       # includes also roles of all assigned hosts, useful to determine if
       # at least one host in this hostgroup has some ansible role assigned
       # either directly or through hostgroup
       def all_ansible_roles
-        (ansible_roles + inherited_ansible_roles + host_ansible_roles).uniq
+        (inherited_ansible_roles + ansible_roles + host_ansible_roles).uniq
       end
     end
   end

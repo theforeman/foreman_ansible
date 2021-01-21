@@ -9,6 +9,7 @@ module Api
     class HostgroupsControllerTest < ActionController::TestCase
       setup do
         @ansible_role1 = FactoryBot.create(:ansible_role)
+        @ansible_role2 = FactoryBot.create(:ansible_role)
         @host1 = FactoryBot.create(:host, :with_hostgroup)
         @host2 = FactoryBot.create(:host, :with_hostgroup)
         @host3 = FactoryBot.create(:host, :with_hostgroup)
@@ -44,23 +45,23 @@ module Api
       end
 
       test 'should list ansible roles for a host group' do
-        @host3.hostgroup.ansible_roles = [@ansible_role1]
+        FactoryBot.create(:hostgroup_ansible_role, hostgroup_id: @host3.hostgroup.id, ansible_role_id: @ansible_role1.id, position: 0)
         get :ansible_roles, :params => { :id => @host3.hostgroup.id }
         response = JSON.parse(@response.body)
         assert_equal @ansible_role1.id, response.first['id']
       end
 
-      test 'should assign a role to a hostgroup' do
+      test 'should assign a role to a hostgroup with a correct ordering' do
         hostgroup = FactoryBot.create(:hostgroup,
                                       :ansible_role_ids => [])
         post :assign_ansible_roles,
              :params => {
                :id => hostgroup.id,
-               :ansible_role_ids => [@ansible_role1.id]
+               :ansible_role_ids => [@ansible_role2.id, @ansible_role1.id]
              },
              :session => set_session_user
         assert_response :success
-        assert assigns('hostgroup').ansible_roles, [@ansible_role1]
+        assert_equal assigns('hostgroup').ansible_roles, [@ansible_role2, @ansible_role1]
       end
     end
   end
