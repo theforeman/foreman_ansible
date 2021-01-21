@@ -128,11 +128,15 @@ module ForemanAnsible
     end
 
     test 'ansible_roles are passed as top-level "hostvars"' do
+      host = FactoryBot.create(:host)
       roles = [].tap do |array|
-        2.times { array << FactoryBot.create(:ansible_role) }
+        2.times do |idx|
+          role = FactoryBot.create(:ansible_role)
+          FactoryBot.create(:host_ansible_role, :host_id => host.id, :ansible_role_id => role.id, :position => idx)
+          array << role
+        end
       end
 
-      host = FactoryBot.create(:host, :ansible_roles => roles)
       inventory = ForemanAnsible::InventoryCreator.new([host]).to_hash
       inventory_roles = inventory['_meta']['hostvars'][host.name]['foreman_ansible_roles']
       assert_equal 2, inventory_roles.count
@@ -156,7 +160,9 @@ module ForemanAnsible
         end
       end
 
-      host = FactoryBot.create(:host, :ansible_roles => [role])
+      host = FactoryBot.create(:host)
+      FactoryBot.create(:host_ansible_role, :host_id => host.id, :ansible_role_id => role.id, :position => 0)
+
       inventory = ForemanAnsible::InventoryCreator.new([host]).to_hash
       host_inventory = inventory['_meta']['hostvars'][host.name]
       assert host_inventory[variables.first.key]
@@ -174,7 +180,9 @@ module ForemanAnsible
         end
       end
 
-      host = FactoryBot.create(:host, :ansible_roles => [role])
+      host = FactoryBot.create(:host)
+      FactoryBot.create(:host_ansible_role, :host_id => host.id, :ansible_role_id => role.id, :position => 0)
+
       inventory = ForemanAnsible::InventoryCreator.new([host]).to_hash
       inventory_roles = inventory['_meta']['hostvars'][host.name]['foreman']
       refute inventory_roles[variables.first.key]
@@ -188,7 +196,8 @@ module ForemanAnsible
                         :ansible_role_id => role.id,
                         :default_value => "variable value",
                         :override => true)
-      host = FactoryBot.create(:host, :ansible_roles => [role])
+      host = FactoryBot.create(:host)
+      FactoryBot.create(:host_ansible_role, :host_id => host.id, :ansible_role_id => role.id, :position => 0)
       host.expects(:host_params).returns('test_var' => 'param value').at_least_once
       inventory = ForemanAnsible::InventoryCreator.new([host]).to_hash
       assert_equal 'variable value', inventory['_meta']['hostvars'][host.name]['test_var']

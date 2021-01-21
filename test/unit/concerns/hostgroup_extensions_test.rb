@@ -9,22 +9,23 @@ class HostgroupExtensionsTest < ActiveSupport::TestCase
     @role2 = FactoryBot.create(:ansible_role)
     @role3 = FactoryBot.create(:ansible_role)
 
-    @hostgroup_parent = FactoryBot.create(:hostgroup,
-                                          :ansible_roles => [@role2])
-    @hostgroup = FactoryBot.create(:hostgroup, :ansible_roles => [@role1])
-    @host = FactoryBot.create(:host,
-                              :ansible_roles => [@role3],
-                              :hostgroup => @hostgroup)
+    @hostgroup_parent = FactoryBot.create(:hostgroup)
+    FactoryBot.create(:hostgroup_ansible_role, :hostgroup_id => @hostgroup_parent.id, :ansible_role_id => @role2.id, :position => 1)
+    @hostgroup = FactoryBot.create(:hostgroup)
+    FactoryBot.create(:hostgroup_ansible_role, :hostgroup_id => @hostgroup.id, :ansible_role_id => @role1.id, :position => 10)
+    @host = FactoryBot.create(:host, :hostgroup => @hostgroup)
+    FactoryBot.create(:host_ansible_role, :host_id => @host.id, :ansible_role_id => @role3.id)
   end
 
   describe '#all_ansible_roles' do
     test 'returns assigned roles without any parent hostgroup' do
+      @hostgroup.host_ansible_roles
       @hostgroup.all_ansible_roles.must_equal [@role1, @role3]
     end
 
     test 'returns assigned and inherited roles with from parent hostgroup' do
       @hostgroup.parent = @hostgroup_parent
-      @hostgroup.all_ansible_roles.must_equal [@role1, @role2, @role3]
+      @hostgroup.all_ansible_roles.must_equal [@role2, @role1, @role3]
     end
   end
 
@@ -48,5 +49,10 @@ class HostgroupExtensionsTest < ActiveSupport::TestCase
       @hostgroup.parent = @hostgroup_parent
       @hostgroup.inherited_and_own_ansible_roles.must_equal [@role2, @role1]
     end
+  end
+
+  test 'should return ordered roles for hostgroup' do
+    @hostgroup.parent = @hostgroup_parent
+    @hostgroup.inherited_and_own_ansible_roles.must_equal [@role2, @role1]
   end
 end
