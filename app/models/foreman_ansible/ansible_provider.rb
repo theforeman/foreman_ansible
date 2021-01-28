@@ -27,7 +27,8 @@ if defined? ForemanRemoteExecution
             :remote_execution_command => ansible_command?(
               template_invocation.template
             ),
-            :name => host.name
+            :name => host.name,
+            :check_mode => host.host_param('ansible_roles_check_mode')
           )
         end
 
