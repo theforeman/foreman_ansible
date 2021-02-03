@@ -82,6 +82,7 @@ Object {
       "name": "anonymous.something",
     },
   ],
+  "toDestroyRoles": Array [],
 }
 `;
 
@@ -163,6 +164,7 @@ Object {
       "name": "anonymous.something",
     },
   ],
+  "toDestroyRoles": Array [],
 }
 `;
 
@@ -239,7 +241,10 @@ Object {
       "id": 11,
       "name": "anonymous.something",
     },
+  ],
+  "toDestroyRoles": Array [
     Object {
+      "destroy": true,
       "id": 6,
       "name": "theforeman.foreman_scap_client",
     },
@@ -267,6 +272,7 @@ Object {
     "perPage": 10,
   },
   "results": Array [],
+  "toDestroyRoles": Array [],
 }
 `;
 
@@ -290,6 +296,7 @@ Object {
     "perPage": 10,
   },
   "results": Array [],
+  "toDestroyRoles": Array [],
 }
 `;
 
@@ -312,6 +319,7 @@ Object {
     "perPage": 10,
   },
   "results": Array [],
+  "toDestroyRoles": Array [],
 }
 `;
 
@@ -395,5 +403,6 @@ Object {
       "name": "anonymous.something",
     },
   ],
+  "toDestroyRoles": Array [],
 }
 `;

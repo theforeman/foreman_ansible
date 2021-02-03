@@ -37,6 +37,7 @@ class AnsibleRolesSwitcher extends React.Component {
       itemCount,
       addAnsibleRole,
       removeAnsibleRole,
+      moveAnsibleRole,
       getAnsibleRoles,
       changeAssignedPage,
       assignedPagination,
@@ -44,6 +45,7 @@ class AnsibleRolesSwitcher extends React.Component {
       assignedRoles,
       allAssignedRoles,
       unassignedRoles,
+      toDestroyRoles,
       error,
     } = this.props;
 
@@ -89,12 +91,15 @@ class AnsibleRolesSwitcher extends React.Component {
             </div>
             <AssignedRolesList
               assignedRoles={assignedRoles}
+              unassignedRoles={unassignedRoles}
               allAssignedRoles={allAssignedRoles}
               pagination={assignedPagination}
               itemCount={assignedRolesCount}
               onPaginationChange={changeAssignedPage}
               onRemoveRole={removeAnsibleRole}
+              onMoveRole={moveAnsibleRole}
               resourceName={lowerCase(resourceName || '')}
+              toDestroyRoles={toDestroyRoles}
             />
           </Col>
         </Row>
@@ -118,6 +123,7 @@ AnsibleRolesSwitcher.propTypes = {
   itemCount: PropTypes.number.isRequired,
   addAnsibleRole: PropTypes.func.isRequired,
   removeAnsibleRole: PropTypes.func.isRequired,
+  moveAnsibleRole: PropTypes.func.isRequired,
   changeAssignedPage: PropTypes.func.isRequired,
   assignedPagination: PropTypes.shape({
     page: PropTypes.number,
@@ -126,6 +132,7 @@ AnsibleRolesSwitcher.propTypes = {
   assignedRolesCount: PropTypes.number.isRequired,
   assignedRoles: PropTypes.arrayOf(PropTypes.object).isRequired,
   allAssignedRoles: PropTypes.arrayOf(PropTypes.object).isRequired,
+  toDestroyRoles: PropTypes.arrayOf(PropTypes.object).isRequired,
   unassignedRoles: PropTypes.arrayOf(PropTypes.object).isRequired,
   error: PropTypes.shape({
     errorMsg: PropTypes.string,

@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AssignedRolesList should render 1`] = `
-<div>
+<DndProvider
+  backend={[Function]}
+>
   <ListView
     className=""
   >
@@ -21,9 +23,11 @@ exports[`AssignedRolesList should render 1`] = `
         viewType="list"
       />
     </div>
-    <AnsibleRole
+    <Component
       icon="fa fa-minus-circle"
+      index={0}
       key="1"
+      moveValue={[Function]}
       onClick={[Function]}
       resourceName="host"
       role={
@@ -33,9 +37,11 @@ exports[`AssignedRolesList should render 1`] = `
         }
       }
     />
-    <AnsibleRole
+    <Component
       icon="fa fa-minus-circle"
+      index={1}
       key="2"
+      moveValue={[Function]}
       onClick={[Function]}
       resourceName="host"
       role={
@@ -47,18 +53,28 @@ exports[`AssignedRolesList should render 1`] = `
     />
   </ListView>
   <div>
-    <input
+    <AnsibleRoleInputs
+      idx={0}
       key="1"
-      name="host[ansible_role_ids][]"
-      type="hidden"
-      value={1}
+      resourceName="host"
+      role={
+        Object {
+          "id": 1,
+          "name": "fake.role",
+        }
+      }
     />
-    <input
+    <AnsibleRoleInputs
+      idx={1}
       key="2"
-      name="host[ansible_role_ids][]"
-      type="hidden"
-      value={2}
+      resourceName="host"
+      role={
+        Object {
+          "id": 2,
+          "name": "test.role",
+        }
+      }
     />
   </div>
-</div>
+</DndProvider>
 `;

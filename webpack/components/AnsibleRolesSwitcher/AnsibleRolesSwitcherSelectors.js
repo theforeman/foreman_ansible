@@ -1,16 +1,7 @@
-import { differenceBy, slice, includes, uniq } from 'lodash';
+import { differenceBy, slice, includes } from 'lodash';
 import Immutable from 'seamless-immutable';
 import { createSelector } from 'reselect';
-
-const compare = (a, b) => {
-  if (a.name < b.name) {
-    return -1;
-  }
-  if (a.name > b.name) {
-    return 1;
-  }
-  return 0;
-};
+import { propsToCamelCase } from 'foremanReact/common/helpers';
 
 const switcherState = state => state.foremanAnsible.ansibleRolesSwitcher;
 
@@ -21,7 +12,7 @@ const markInheritedRoles = (roles, inheritedRoleIds) =>
 
 export const selectResults = state =>
   Immutable(
-    Immutable.asMutable(uniq(switcherState(state).results)).sort(compare)
+    Immutable.asMutable(switcherState(state).results.map(propsToCamelCase))
   );
 
 export const selectItemCount = state => switcherState(state).itemCount;
@@ -29,10 +20,13 @@ export const selectItemCount = state => switcherState(state).itemCount;
 export const selectAssignedRoles = state =>
   Immutable.asMutable(
     markInheritedRoles(
-      switcherState(state).assignedRoles,
+      switcherState(state).assignedRoles.map(propsToCamelCase),
       switcherState(state).inheritedRoleIds
     )
-  ).sort(compare);
+  );
+
+export const selectToDestroyRoles = state =>
+  switcherState(state).toDestroyRoles;
 
 export const selectAssignedRolesCount = state =>
   selectAssignedRoles(state).length;

@@ -16,6 +16,7 @@ import {
   selectLoading,
   selectAssignedPagination,
   selectError,
+  selectToDestroyRoles,
 } from './AnsibleRolesSwitcherSelectors';
 
 const mapStateToProps = state => ({
@@ -29,6 +30,7 @@ const mapStateToProps = state => ({
   assignedRoles: selectAssignedRolesPage(state),
   allAssignedRoles: selectAssignedRoles(state),
   unassignedRoles: selectUnassignedRoles(state),
+  toDestroyRoles: selectToDestroyRoles(state),
 });
 
 const mapDispatchToProps = dispatch =>
