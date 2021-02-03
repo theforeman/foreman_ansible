@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnsibleRoleInputs should render role to add 1`] = `
+<Fragment>
+  <input
+    name="host[host_ansible_roles_attributes][14][id]"
+    type="hidden"
+    value={5}
+  />
+  <input
+    name="host[host_ansible_roles_attributes][14][ansible_role_id]"
+    type="hidden"
+    value={2}
+  />
+  <input
+    name="host[host_ansible_roles_attributes][14][position]"
+    type="hidden"
+    value={15}
+  />
+  <input
+    name="host[host_ansible_roles_attributes][14][_destroy]"
+    type="hidden"
+    value={false}
+  />
+</Fragment>
+`;
+
+exports[`AnsibleRoleInputs should render role to remove 1`] = `
+<Fragment>
+  <input
+    name="host[host_ansible_roles_attributes][14][id]"
+    type="hidden"
+    value={5}
+  />
+  <input
+    name="host[host_ansible_roles_attributes][14][ansible_role_id]"
+    type="hidden"
+    value={2}
+  />
+  <input
+    name="host[host_ansible_roles_attributes][14][position]"
+    type="hidden"
+    value={15}
+  />
+  <input
+    name="host[host_ansible_roles_attributes][14][_destroy]"
+    type="hidden"
+    value={true}
+  />
+</Fragment>
+`;

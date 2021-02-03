@@ -13,6 +13,7 @@ const fixtures = {
     itemCount: 20,
     addAnsibleRole: noop,
     removeAnsibleRole: noop,
+    moveAnsibleRole: noop,
     getAnsibleRoles: noop,
     changeAssignedPage: noop,
     assignedPagination: { page: 1, perPage: 12 },
@@ -22,6 +23,7 @@ const fixtures = {
     initialAssignedRoles: [],
     error: { statusText: '', errorMsg: '' },
     allAssignedRoles: [],
+    toDestroyRoles: [],
     availableRolesUrl: 'http://test/roles',
   },
 };

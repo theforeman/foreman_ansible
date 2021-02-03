@@ -23,6 +23,7 @@ export const successState = Immutable({
     ...ansibleRolesLong.slice(4, 6),
   ],
   results: ansibleRolesLong,
+  toDestroyRoles: [],
   assignedPagination: {
     page: 1,
     perPage: 20,

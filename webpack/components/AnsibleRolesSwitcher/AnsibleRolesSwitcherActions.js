@@ -10,6 +10,7 @@ import {
   ANSIBLE_ROLES_FAILURE,
   ANSIBLE_ROLES_ADD,
   ANSIBLE_ROLES_REMOVE,
+  ANSIBLE_ROLES_MOVE,
   ANSIBLE_ROLES_ASSIGNED_PAGE_CHANGE,
 } from './AnsibleRolesSwitcherConstants';
 
@@ -61,6 +62,11 @@ export const addAnsibleRole = role => ({
 export const removeAnsibleRole = role => ({
   type: ANSIBLE_ROLES_REMOVE,
   payload: { role },
+});
+
+export const moveAnsibleRole = roles => ({
+  type: ANSIBLE_ROLES_MOVE,
+  payload: { roles },
 });
 
 export const changeAssignedPage = pagination => ({

@@ -8,7 +8,7 @@ module ForemanAnsible
       base.instance_eval do
         include ::ForemanAnsible::Concerns::JobInvocationHelper
 
-        has_many :host_ansible_roles, :foreign_key => :host_id
+        has_many :host_ansible_roles, -> { order('host_ansible_roles.position ASC') }, :foreign_key => :host_id
         accepts_nested_attributes_for :host_ansible_roles, :allow_destroy => true
         has_many :ansible_roles,
                  -> { order('host_ansible_roles.position ASC') },
