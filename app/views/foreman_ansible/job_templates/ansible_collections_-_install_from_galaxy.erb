@@ -1,0 +1,28 @@
+<%#
+name: Ansible Collection - Install from Galaxy
+job_category: Ansible Galaxy
+description_format: Install collections '%{ansible_collections_list}' from Galaxy
+snippet: false
+template_inputs:
+- name: ansible_collections_list
+  required: true
+  input_type: user
+  description: "List of collections in Ansible Galaxy to install, separated by commas, e.g:
+    mysql,nginx\r\n\r\nThe default collections_paths is configured in /etc/ansible/ansible.cfg,
+    you may override it by filling the 'collections_path' input.
+    Click on \"Advanced\" to see it."
+  advanced: false
+- name: collections_path
+  required: false
+  input_type: user
+  description: A particular directory where you want the downloaded collections to be placed.
+  advanced: true
+provider_type: Ansible
+kind: job_template
+model: JobTemplate
+%>
+
+---
+- hosts: all
+  tasks:
+    - command: ansible-galaxy collection install <%= input('ansible_collections_list').split(",").join(' ') %> -p <%= input('collections_path').present? ? input('collections_path') : '/etc/ansible/collections' %>
