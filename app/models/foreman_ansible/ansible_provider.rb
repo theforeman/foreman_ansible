@@ -24,6 +24,7 @@ if defined? ForemanRemoteExecution
               [host], template_invocation
             ).to_hash,
             :verbosity_level => Setting[:ansible_verbosity],
+            :ansible_forks => Setting[:ansible_forks],
             :remote_execution_command => ansible_command?(
               template_invocation.template
             ),
