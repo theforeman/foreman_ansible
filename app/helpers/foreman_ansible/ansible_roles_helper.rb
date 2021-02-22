@@ -36,28 +36,26 @@ module ForemanAnsible
     end
 
     def role_attributes_for_roles_switcher(form_object)
+      inherited_role_ids = form_object.inherited_ansible_roles.map(&:id)
       if form_object.is_a?(Hostgroup)
-        model_roles_attrs(form_object, HostgroupAnsibleRole, :hostgroup_id, :hostgroup_ansible_role_id)
+        assoc_roles = form_object.hostgroup_ansible_roles
+        assoc_key = :hostgroup_ansible_role_id
       else
-        model_roles_attrs(form_object, HostAnsibleRole, :host_id, :host_ansible_role_id)
+        assoc_roles = form_object.host_ansible_roles
+        assoc_key = :host_ansible_role_id
       end
+      own_roles_attrs = model_roles_attrs(assoc_roles.reject { |ar| inherited_role_ids.include?(ar.ansible_role_id) }, assoc_key)
+      roles_attrs(form_object.inherited_ansible_roles) + own_roles_attrs
     end
 
     def roles_attrs(roles)
-      roles.map { |item| { :id => item.id, :name => item.name } }
+      roles.map { |item| { id: item.id, name: item.name } }
     end
 
-    def model_roles_attrs(form_object, assoc_class, foreign_key, assoc_key)
-      inherited_attrs = roles_attrs form_object.inherited_ansible_roles_ordered
+    private
 
-      own_attrs = assoc_class.includes(:ansible_role).
-                  where(foreign_key => form_object.id).
-                  where.not(:ansible_roles => { :id => form_object.inherited_ansible_roles.pluck(:id) }).
-                  order(:position).
-                  map do |join_record|
-        { :id => join_record.ansible_role_id, assoc_key => join_record.id, :name => join_record.ansible_role.name, :position => join_record.position }
-      end
-      inherited_attrs + own_attrs
+    def model_roles_attrs(associated_roles, assoc_key)
+      associated_roles.map { |item| { id: item.ansible_role_id, name: item.ansible_role.name, position: item.position }.merge(assoc_key => item.id) }
     end
   end
 end
