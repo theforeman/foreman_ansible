@@ -32,9 +32,11 @@ class AnsibleRolesController < ::ApplicationController
   end
 
   def confirm_import
-    @importer.finish_import(params[:changed]&.to_unsafe_h)
-    @variables_importer.import_variables_roles(params[:changed]) if params[:changed]['new'] || params[:changed]['old']
-    success _('Import of roles and their variables was successfully finished.')
+    job = SyncRolesAndVariables.perform_later(params['changed'].to_unsafe_h, @proxy)
+    task = ForemanTasks::Task.find_by(external_id: job.provider_job_id)
+    render json: {
+      task: task
+    }, status: :ok
   end
 
   private

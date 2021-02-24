@@ -13,7 +13,25 @@ blueprints = [
         :title => N_('Job Details')
       ]
     }
+  },
+  {
+    :group => N_('Roles'),
+    :name => 'Sync_roles_and_variables_successfully',
+    :message => N_('Import roles and variables has finished successfully'),
+    :level => 'success',
+    :actions => {
+      :links => [
+        :path_method => :ansible_roles_path,
+        :title => N_('Roles')
+      ]
+    }
+  },
+  {
+    :group => N_('Roles'),
+    :name => 'Sync_roles_and_variables_failed',
+    :message => 'DYNAMIC',
+    :level => 'error'
   }
-]
 
+]
 blueprints.each { |blueprint| UINotifications::Seed.new(blueprint).configure }
