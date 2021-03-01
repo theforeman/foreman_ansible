@@ -18,6 +18,10 @@ module ForemanAnsible
         partial_hostname_match(hostname)
       end
 
+      def self.authorized_smart_proxy_features
+        super + ['Ansible']
+      end
+
       def partial_hostname_match(hostname)
         return @host unless @host.new_record?
         hosts = Host.where(Host.arel_table[:name].matches("#{hostname}.%"))
