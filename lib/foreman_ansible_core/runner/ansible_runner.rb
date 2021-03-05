@@ -8,9 +8,11 @@ module ForemanAnsibleCore
       def initialize(input, suspended_action:)
         super input, :suspended_action => suspended_action
         @inventory = rebuild_secrets(rebuild_inventory(input), input)
-        @playbook = input.values.first[:input][:action_input][:script]
+        action_input = input.values.first[:input][:action_input]
+        @playbook = action_input[:script]
         @root = working_dir
-        @verbosity_level = input.values.first[:input][:action_input][:verbosity_level]
+        @verbosity_level = action_input[:verbosity_level]
+        @rex_command = action_input[:remote_execution_command]
       end
 
       def start
@@ -104,7 +106,9 @@ module ForemanAnsibleCore
       end
 
       def start_ansible_runner
-        command = ['ansible-runner', 'run', @root, '-p', 'playbook.yml']
+        env = {}
+        env['FOREMAN_CALLBACK_DISABLE'] = '1' if @rex_command
+        command = [env, 'ansible-runner', 'run', @root, '-p', 'playbook.yml']
         command << verbosity if verbose?
         initialize_command(*command)
         logger.debug("[foreman_ansible] - Running command '#{command.join(' ')}'")
