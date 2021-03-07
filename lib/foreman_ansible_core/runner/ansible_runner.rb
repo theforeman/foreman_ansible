@@ -52,9 +52,9 @@ module ForemanAnsibleCore
         logger.debug("[foreman_ansible] - parsing event file #{event_file}")
         begin
           event = JSON.parse(File.read(event_file))
-          if (hostname = event.dig('event_data', 'host'))
+          if hostname_for_event(event)
             handle_host_event(hostname, event)
-          else
+          elsif event.key?('stdout')
             handle_broadcast_data(event)
           end
           true
@@ -62,6 +62,13 @@ module ForemanAnsibleCore
           logger.error("[foreman_ansible] - Error parsing runner event at #{event_file}: #{e.class}: #{e.message}")
           logger.debug(e.backtrace.join("\n"))
         end
+      end
+
+      def hostname_for_event(event)
+        hostname = event.dig('event_data', 'host') || event.dig('event_data', 'remote_addr')
+        return nil if hostname.blank? || hostname == 'locahost'
+        raise "handle_host_event: unknown host #{hostname}" unless @targets.key?(hostname)
+        hostname
       end
 
       def handle_host_event(hostname, event)
