@@ -66,6 +66,10 @@ if defined? ForemanRemoteExecution
           'ForemanAnsibleCore::TaskLauncher::Playbook::PlaybookRunnerAction'
         end
 
+        def proxy_batch_size
+          Setting['foreman_ansible_proxy_batch_size']
+        end
+
         private
 
         def ansible_command?(template)
