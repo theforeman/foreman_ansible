@@ -17,6 +17,12 @@ module ForemanAnsibleCore
         Runner::AnsibleRunner
       end
 
+      # Discard everything apart from hostname to be able to tell the actions
+      # apart when debugging
+      def transform_input(input)
+        { 'action_input' => input['action_input'].slice('name') }
+      end
+
       # def self.input_format
       #   {
       #     $UUID => {
