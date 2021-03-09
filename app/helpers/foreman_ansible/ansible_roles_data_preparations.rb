@@ -42,11 +42,21 @@ module ForemanAnsible
       variables_to_s(variables)
     end
 
+    def excluded_roles
+      Setting.convert_array_to_regexp(Setting[:ansible_roles_to_ignore])
+    end
+
+    def role_match_excluded_roles(role_name)
+      match = role_name.match(excluded_roles)
+      match.to_s.empty? ? nil : match
+    end
+
     def prepare_ansible_import_rows(changed, variables_importer)
       rows = []
       changed.each do |kind, roles|
         imported_variables = variables_importer.import_variable_names(roles)
         roles.each do |role|
+          next if role_match_excluded_roles(role.name)
           role_action = get_role_action(kind)
           variables = get_roles_variables(imported_variables, variables_importer, kind, role)
           next if variables.empty? && kind['old']

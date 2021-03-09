@@ -3,6 +3,7 @@
 class Setting
   # Provide settings related with Ansible
   class Ansible < ::Setting
+    ::Setting::BLANK_ATTRS.concat %w[ansible_roles_to_ignore]
     class << self
       # It would be more disadvantages than advantages to split up
       # default_settings into multiple methods, this way it's already very
@@ -80,6 +81,14 @@ class Setting
                'with Ansible inventory'),
             'Ansible - Ansible Inventory',
             N_('Default Ansible inventory report template')
+          ),
+          set(
+            'ansible_roles_to_ignore',
+            N_('Those roles will be excluded when importing roles from smart proxy, '\
+                'The expected input is comma separated values and you can use * wildcard metacharacters'\
+                'For example: foo*, *b*,*bar'),
+            [],
+            N_('Ansible roles to ignore')
           )
         ]
       end
