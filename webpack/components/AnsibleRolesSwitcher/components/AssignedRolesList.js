@@ -3,7 +3,6 @@ import { DndProvider } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
 import { ListView } from 'patternfly-react';
-import PaginationWrapper from 'foremanReact/components/Pagination/PaginationWrapper';
 
 import {
   orderable,
@@ -22,33 +21,27 @@ const OrderableRole = orderable(AnsibleRole, {
 });
 
 const AssignedRolesList = ({
-  assignedRoles,
   unassignedRoles,
-  allAssignedRoles,
+  assignedRoles,
   toDestroyRoles,
-  pagination,
-  itemCount,
-  onPaginationChange,
   onRemoveRole,
   onMoveRole,
   resourceName,
 }) => {
   const moveValue = (dragIndex, hoverIndex) => {
-    onMoveRole(orderDragged(allAssignedRoles, dragIndex, hoverIndex));
+    onMoveRole(orderDragged(assignedRoles, dragIndex, hoverIndex));
   };
-
-  const roleIdx = (idx, pageInfo) =>
-    idx + (pageInfo.page - 1) * pageInfo.perPage;
 
   const allOwnRoles = roles => roles.filter(role => !role.inherited);
 
   const renderRole = (role, idx) =>
-    role.inherited ? renderInherited(role) : renderOwn(role, idx);
+    role.inherited ? renderInherited(role, idx) : renderOwn(role, idx);
 
-  const renderInherited = role => (
+  const renderInherited = (role, idx) => (
     <AnsibleRole
       key={role.id}
       role={role}
+      index={idx}
       icon="fa fa-minus-circle"
       onClick={onRemoveRole}
       resourceName={resourceName}
@@ -59,7 +52,7 @@ const AssignedRolesList = ({
     <OrderableRole
       key={role.id}
       role={role}
-      index={roleIdx(idx, pagination)}
+      index={idx}
       moveValue={moveValue}
       icon="fa fa-minus-circle"
       onClick={onRemoveRole}
@@ -69,20 +62,9 @@ const AssignedRolesList = ({
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <ListView>
-        <div className="sticky-pagination sticky-pagination-grey">
-          <PaginationWrapper
-            viewType="list"
-            itemCount={itemCount}
-            pagination={pagination}
-            onChange={onPaginationChange}
-            dropdownButtonId="assigned-ansible-roles-pagination-row-dropdown"
-          />
-        </div>
-        {allAssignedRoles.map(renderRole)}
-      </ListView>
+      <ListView>{assignedRoles.map(renderRole)}</ListView>
       <div>
-        {allOwnRoles(allAssignedRoles)
+        {allOwnRoles(assignedRoles)
           .concat(toDestroyRoles)
           .map((role, idx) => (
             <AnsibleRoleInputs
@@ -98,15 +80,8 @@ const AssignedRolesList = ({
 };
 
 AssignedRolesList.propTypes = {
-  assignedRoles: PropTypes.arrayOf(PropTypes.object).isRequired,
   unassignedRoles: PropTypes.arrayOf(PropTypes.object).isRequired,
-  allAssignedRoles: PropTypes.arrayOf(PropTypes.object).isRequired,
-  pagination: PropTypes.shape({
-    page: PropTypes.number,
-    perPage: PropTypes.number,
-  }).isRequired,
-  itemCount: PropTypes.number.isRequired,
-  onPaginationChange: PropTypes.func.isRequired,
+  assignedRoles: PropTypes.arrayOf(PropTypes.object).isRequired,
   onRemoveRole: PropTypes.func.isRequired,
   onMoveRole: PropTypes.func.isRequired,
   resourceName: PropTypes.string.isRequired,

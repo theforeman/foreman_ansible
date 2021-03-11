@@ -7,6 +7,7 @@ import { translate as __ } from 'foremanReact/common/I18n';
 import AvailableRolesList from './components/AvailableRolesList';
 import AssignedRolesList from './components/AssignedRolesList';
 import AnsibleRolesSwitcherError from './components/AnsibleRolesSwitcherError';
+import OrderedRolesTooltip from './components/OrderedRolesTooltip';
 import { excludeAssignedRolesSearch } from './AnsibleRolesSwitcherHelpers';
 
 class AnsibleRolesSwitcher extends React.Component {
@@ -39,11 +40,7 @@ class AnsibleRolesSwitcher extends React.Component {
       removeAnsibleRole,
       moveAnsibleRole,
       getAnsibleRoles,
-      changeAssignedPage,
-      assignedPagination,
-      assignedRolesCount,
       assignedRoles,
-      allAssignedRoles,
       unassignedRoles,
       toDestroyRoles,
       error,
@@ -59,12 +56,12 @@ class AnsibleRolesSwitcher extends React.Component {
     const onListingChange = paginationArgs =>
       getAnsibleRoles(
         availableRolesUrl,
-        allAssignedRoles,
+        assignedRoles,
         inheritedRoleIds,
         resourceId,
         resourceName,
         paginationArgs,
-        excludeAssignedRolesSearch(allAssignedRoles)
+        excludeAssignedRolesSearch(assignedRoles)
       );
 
     return (
@@ -87,15 +84,14 @@ class AnsibleRolesSwitcher extends React.Component {
 
           <Col sm={6} className="assigned-roles-container">
             <div className="assigned-roles-header">
-              <h2>{__('Assigned Ansible Roles')}</h2>
+              <h2>
+                <OrderedRolesTooltip />
+                {__('Assigned Ansible Roles')}
+              </h2>
             </div>
             <AssignedRolesList
               assignedRoles={assignedRoles}
               unassignedRoles={unassignedRoles}
-              allAssignedRoles={allAssignedRoles}
-              pagination={assignedPagination}
-              itemCount={assignedRolesCount}
-              onPaginationChange={changeAssignedPage}
               onRemoveRole={removeAnsibleRole}
               onMoveRole={moveAnsibleRole}
               resourceName={lowerCase(resourceName || '')}
@@ -124,14 +120,7 @@ AnsibleRolesSwitcher.propTypes = {
   addAnsibleRole: PropTypes.func.isRequired,
   removeAnsibleRole: PropTypes.func.isRequired,
   moveAnsibleRole: PropTypes.func.isRequired,
-  changeAssignedPage: PropTypes.func.isRequired,
-  assignedPagination: PropTypes.shape({
-    page: PropTypes.number,
-    perPage: PropTypes.number,
-  }).isRequired,
-  assignedRolesCount: PropTypes.number.isRequired,
   assignedRoles: PropTypes.arrayOf(PropTypes.object).isRequired,
-  allAssignedRoles: PropTypes.arrayOf(PropTypes.object).isRequired,
   toDestroyRoles: PropTypes.arrayOf(PropTypes.object).isRequired,
   unassignedRoles: PropTypes.arrayOf(PropTypes.object).isRequired,
   error: PropTypes.shape({

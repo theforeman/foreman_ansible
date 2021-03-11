@@ -7,14 +7,11 @@ import AnsiblePermissionDenied from './components/AnsiblePermissionDenied';
 import withProtectedView from './components/withProtectedView';
 import {
   selectUnassignedRoles,
-  selectAssignedRolesPage,
   selectAssignedRoles,
-  selectAssignedRolesCount,
   selectResults,
   selectPaginationMemoized,
   selectItemCount,
   selectLoading,
-  selectAssignedPagination,
   selectError,
   selectToDestroyRoles,
 } from './AnsibleRolesSwitcherSelectors';
@@ -25,10 +22,7 @@ const mapStateToProps = state => ({
   itemCount: selectItemCount(state),
   loading: selectLoading(state),
   error: selectError(state),
-  assignedPagination: selectAssignedPagination(state),
-  assignedRolesCount: selectAssignedRolesCount(state),
-  assignedRoles: selectAssignedRolesPage(state),
-  allAssignedRoles: selectAssignedRoles(state),
+  assignedRoles: selectAssignedRoles(state),
   unassignedRoles: selectUnassignedRoles(state),
   toDestroyRoles: selectToDestroyRoles(state),
 });

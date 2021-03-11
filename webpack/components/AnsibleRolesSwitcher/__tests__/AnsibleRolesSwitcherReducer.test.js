@@ -15,7 +15,6 @@ import {
   ANSIBLE_ROLES_FAILURE,
   ANSIBLE_ROLES_ADD,
   ANSIBLE_ROLES_REMOVE,
-  ANSIBLE_ROLES_ASSIGNED_PAGE_CHANGE,
 } from '../AnsibleRolesSwitcherConstants';
 
 const fixtures = {
@@ -58,13 +57,6 @@ const fixtures = {
     action: {
       type: ANSIBLE_ROLES_REMOVE,
       payload: { role: ansibleRolesLong[5] },
-    },
-  },
-  'should change pagination for assigned roles': {
-    state: successState,
-    action: {
-      type: ANSIBLE_ROLES_ASSIGNED_PAGE_CHANGE,
-      payload: { pagination: { page: 20, perPage: 5 } },
     },
   },
 };
