@@ -7,22 +7,6 @@ exports[`AssignedRolesList should render 1`] = `
   <ListView
     className=""
   >
-    <div
-      className="sticky-pagination sticky-pagination-grey"
-    >
-      <PaginationWrapper
-        dropdownButtonId="assigned-ansible-roles-pagination-row-dropdown"
-        itemCount={2}
-        onChange={[Function]}
-        pagination={
-          Object {
-            "page": 1,
-            "perPage": 25,
-          }
-        }
-        viewType="list"
-      />
-    </div>
     <Component
       icon="fa fa-minus-circle"
       index={0}

@@ -7,7 +7,6 @@ import {
   ANSIBLE_ROLES_ADD,
   ANSIBLE_ROLES_REMOVE,
   ANSIBLE_ROLES_MOVE,
-  ANSIBLE_ROLES_ASSIGNED_PAGE_CHANGE,
 } from './AnsibleRolesSwitcherConstants';
 
 export const initialState = Immutable({
@@ -21,10 +20,6 @@ export const initialState = Immutable({
   toDestroyRoles: [],
   inheritedRoleIds: [],
   results: [],
-  assignedPagination: {
-    page: 1,
-    perPage: 10,
-  },
   error: { errorMsg: '', status: '', statusText: '' },
 });
 
@@ -71,8 +66,6 @@ const ansibleRoles = (state = initialState, action) => {
       });
     case ANSIBLE_ROLES_MOVE:
       return state.set('assignedRoles', payload.roles);
-    case ANSIBLE_ROLES_ASSIGNED_PAGE_CHANGE:
-      return state.set('assignedPagination', payload.pagination);
     default:
       return state;
   }

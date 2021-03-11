@@ -1,4 +1,4 @@
-import { differenceBy, slice, includes } from 'lodash';
+import { differenceBy, includes } from 'lodash';
 import Immutable from 'seamless-immutable';
 import { createSelector } from 'reselect';
 import { propsToCamelCase } from 'foremanReact/common/helpers';
@@ -28,11 +28,7 @@ export const selectAssignedRoles = state =>
 export const selectToDestroyRoles = state =>
   switcherState(state).toDestroyRoles;
 
-export const selectAssignedRolesCount = state =>
-  selectAssignedRoles(state).length;
 export const selectLoading = state => switcherState(state).loading;
-export const selectAssignedPagination = state =>
-  switcherState(state).assignedPagination;
 export const selectError = state => switcherState(state).error;
 export const selectPagination = state => switcherState(state).pagination;
 
@@ -49,14 +45,4 @@ export const selectUnassignedRoles = createSelector(
   selectResults,
   selectAssignedRoles,
   (results, assignedRoles) => differenceBy(results, assignedRoles, 'id')
-);
-
-export const selectAssignedRolesPage = createSelector(
-  selectAssignedPagination,
-  selectAssignedRoles,
-  (assignedPagination, assignedRoles) => {
-    const offset = (assignedPagination.page - 1) * assignedPagination.perPage;
-
-    return slice(assignedRoles, offset, offset + assignedPagination.perPage);
-  }
 );
