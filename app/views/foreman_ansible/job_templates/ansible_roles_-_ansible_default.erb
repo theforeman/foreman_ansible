@@ -15,10 +15,14 @@ model: JobTemplate
     - name: Display all parameters known for the Foreman host
       debug:
         var: foreman
+      tags:
+        - always
   tasks:
     - name: Apply roles
       include_role:
         name: "{{ role }}"
+      tags:
+        - always
       loop: "{{ foreman_ansible_roles }}"
       loop_control:
         loop_var: role
