@@ -3,25 +3,37 @@
 module ForemanAnsible
   # imports Ansible roles through API
   class ApiRolesImporter < RolesImporter
-    def import!(role_names = nil)
-      new_roles = import_role_names[:new]
-      if role_names.present?
-        new_roles.select! do |role|
-          role_names.include?(role.name)
+    include ::ForemanAnsible::AnsibleRolesDataPreparations
+
+    def import!(role_names)
+      @roles_importer = ForemanAnsible::UiRolesImporter.new(@ansible_proxy)
+      @variables_importer = ForemanAnsible::VariablesImporter.new(@ansible_proxy)
+      params = { 'changed' => {} }
+      roles = prepare_ansible_import_rows(@roles_importer.import!, @variables_importer, false)
+      roles.each do |role|
+        if role_names.include? role[:name]
+          params['changed'][role[:kind]] ||= {}
+          params['changed'][role[:kind]][role[:name]] = { 'id' => role[:id], 'name' => role[:name] }
         end
       end
-      new_roles.map(&:save)
-      new_roles
+      params
+    end
+
+    def confirm_import(params)
+      @roles_importer.finish_import(params['changed'])
+      @variables_importer.import_variables_roles(params['changed']) if params['changed']['new'] || params['changed']['old']
+    end
+
+    def confirm_sync(params)
+      job = SyncRolesAndVariables.perform_later(params['changed'], @ansible_proxy)
+      task = ForemanTasks::Task.find_by(external_id: job.provider_job_id)
+      task
     end
 
     def obsolete!
       obsolete_roles = import_role_names[:obsolete]
       obsolete_roles.map(&:destroy)
       obsolete_roles
-    end
-
-    def fetch!
-      fetch_role_names
     end
   end
 end

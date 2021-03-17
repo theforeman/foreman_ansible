@@ -45,7 +45,30 @@ module Api
           }, :session => set_session_user
           assert_response :success
         end
+
         test 'should fetch' do
+          @controller = Api::V2::AnsibleRolesController.new
+          @controller.stubs(:prepare_ansible_import_rows).returns(
+            [{
+              :name => 'test_user.test_name',
+              :id => nil,
+              :role_action => 'Import Role',
+              :variables => 'Add: 7',
+              :hosts_count => '',
+              :hostgroup_count => '',
+              :kind => 'new'
+            },
+             {
+               :name => 'some_user.some_role',
+               :id => nil,
+               :role_action => 'Import Role',
+               :variables => 'Add: 3',
+               :hosts_count => '',
+               :hostgroup_count => '',
+               :kind => 'new'
+             }]
+          )
+
           get :fetch, :params => {
             :proxy_id => @proxy.id
           }, :session => set_session_user

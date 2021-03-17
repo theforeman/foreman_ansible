@@ -51,22 +51,42 @@ module ForemanAnsible
       match.to_s.empty? ? nil : match
     end
 
-    def prepare_ansible_import_rows(changed, variables_importer)
+    def prepare_api_row(role, kind, variables, role_action)
+      {
+        name: role.name,
+        id: role.id,
+        role_action: role_action,
+        variables: variables,
+        hosts_count: role_action == 'Remove Role' ? role.hosts.count : '',
+        hostgroup_count: role_action == 'Remove Role' ? role.hostgroups.count : '',
+        kind: kind
+      }
+    end
+
+    def prepare_ui_row(role, kind, variables, role_action)
+      { cells: [
+        role.name,
+        role_action, variables,
+        role_action == 'Remove Role' ? role.hosts.count : '',
+        role_action == 'Remove Role' ? role.hostgroups.count : ''
+      ],
+        role: role, kind: kind, id: role.name }
+    end
+
+    def prepare_ansible_import_rows(changed, variables_importer, is_ui = true)
       rows = []
       changed.each do |kind, roles|
         imported_variables = variables_importer.import_variable_names(roles)
         roles.each do |role|
           next if role_match_excluded_roles(role.name)
-          role_action = get_role_action(kind)
           variables = get_roles_variables(imported_variables, variables_importer, kind, role)
           next if variables.empty? && kind['old']
-          rows.append({ cells: [
-                        role.name,
-                        role_action, variables,
-                        role_action == 'Remove Role' ? role.hosts.count : '',
-                        role_action == 'Remove Role' ? role.hostgroups.count : ''
-                      ],
-                        role: role, kind: kind, id: role.name })
+          role_action = get_role_action(kind)
+          if is_ui
+            rows.append(prepare_ui_row(role, kind, variables, role_action))
+          else
+            rows.append(prepare_api_row(role, kind, variables, role_action))
+          end
         end
       end
       rows

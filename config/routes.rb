@@ -77,6 +77,7 @@ Rails.application.routes.draw do
         resources :ansible_roles, :only => [:show, :index, :destroy] do
           collection do
             put :import
+            put :sync
             put :obsolete
             get :fetch
           end
