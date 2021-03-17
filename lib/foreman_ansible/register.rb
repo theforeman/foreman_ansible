@@ -25,7 +25,7 @@ Foreman::Plugin.register :foreman_ansible do
                :resource_type => 'AnsibleRole'
     permission :import_ansible_roles,
                { :ansible_roles => [:import, :confirm_import],
-                 :'api/v2/ansible_roles' => [:import] },
+                 :'api/v2/ansible_roles' => [:import, :sync] },
                :resource_type => 'AnsibleRole'
     permission :view_ansible_variables,
                {

@@ -69,20 +69,22 @@ module Api
       end
 
       api :PUT, '/ansible_variables/import',
-          N_('Import Ansible variables. This will only import variables '\
-             'for already existing roles, it will not import any new roles')
+          N_('DEPRECATED: Import Ansible variables. This will only import variables '\
+             'for already existing roles, it will not import any new roles'), deprecated: true
       param :proxy_id, :identifier, N_('Smart Proxy to import from'), :required => true
       def import
+        Foreman::Deprecation.api_deprecation_warning(_('Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled'))
         new_variables = @importer.import_variable_names([])[:new]
         new_variables.map(&:save)
         @imported = new_variables
       end
 
       api :PUT, '/ansible_variables/obsolete',
-          N_('Obsolete Ansible variables. This will only obsolete variables '\
-             'for already existing roles, it will not delete any old roles')
+          N_('DEPRECATED: Obsolete Ansible variables. This will only obsolete variables '\
+             'for already existing roles, it will not delete any old roles'), deprecated: true
       param :proxy_id, :identifier, N_('Smart Proxy to import from'), :required => true
       def obsolete
+        Foreman::Deprecation.api_deprecation_warning(_('Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled'))
         old_variables = @importer.import_variable_names([])[:obsolete]
         old_variables.map(&:destroy)
         @obsoleted = old_variables
