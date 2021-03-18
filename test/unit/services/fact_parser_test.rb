@@ -29,6 +29,22 @@ module ForemanAnsible
       refute @facts_parser.environment
     end
 
+    test 'calculates virtual reported data' do
+      refute @facts_parser.virtual
+    end
+
+    test 'calculates ram reported data' do
+      assert_equal 7899, @facts_parser.ram
+    end
+
+    test 'calculates sockets reported data' do
+      assert_equal 1, @facts_parser.sockets
+    end
+
+    test 'calculates cores reported data' do
+      assert_equal 2, @facts_parser.cores
+    end
+
     test 'creates operatingsystem from operating system options' do
       sample_mock = mock
       major_fact = @facts_parser.facts['ansible_distribution_major_version']

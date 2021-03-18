@@ -72,6 +72,22 @@ module ForemanAnsible
       Time.zone.now.to_i - facts['ansible_uptime_seconds'].to_i
     end
 
+    def virtual
+      facts['ansible_virtualization_role'] == 'guest'
+    end
+
+    def ram
+      facts['ansible_memtotal_mb'].to_i
+    end
+
+    def sockets
+      facts['ansible_processor_count'].to_i
+    end
+
+    def cores
+      facts['ansible_processor_cores'].to_i
+    end
+
     private
 
     def ansible_interfaces
