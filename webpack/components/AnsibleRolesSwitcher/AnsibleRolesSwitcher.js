@@ -8,7 +8,10 @@ import AvailableRolesList from './components/AvailableRolesList';
 import AssignedRolesList from './components/AssignedRolesList';
 import AnsibleRolesSwitcherError from './components/AnsibleRolesSwitcherError';
 import OrderedRolesTooltip from './components/OrderedRolesTooltip';
-import { excludeAssignedRolesSearch } from './AnsibleRolesSwitcherHelpers';
+import {
+  excludeAssignedRolesSearch,
+  rolesByIdSearch,
+} from './AnsibleRolesSwitcherHelpers';
 
 class AnsibleRolesSwitcher extends React.Component {
   componentDidMount() {
@@ -18,7 +21,10 @@ class AnsibleRolesSwitcher extends React.Component {
       inheritedRoleIds,
       resourceId,
       resourceName,
+      variablesUrl,
     } = this.props;
+
+    this.props.initFormObjectAttrs({ resourceName, resourceId });
 
     this.props.getAnsibleRoles(
       availableRolesUrl,
@@ -28,6 +34,16 @@ class AnsibleRolesSwitcher extends React.Component {
       resourceName,
       { page: 1, perPage: 10 },
       excludeAssignedRolesSearch(initialAssignedRoles)
+    );
+
+    this.props.getAnsibleVariables(
+      variablesUrl,
+      rolesByIdSearch(
+        inheritedRoleIds.concat(initialAssignedRoles.map(role => role.id))
+      ),
+      resourceName,
+      resourceId,
+      initialAssignedRoles
     );
   }
 
@@ -51,6 +67,7 @@ class AnsibleRolesSwitcher extends React.Component {
       inheritedRoleIds,
       resourceId,
       resourceName,
+      variablesUrl,
     } = this.props;
 
     const onListingChange = paginationArgs =>
@@ -74,11 +91,15 @@ class AnsibleRolesSwitcher extends React.Component {
             </div>
             <AvailableRolesList
               unassignedRoles={unassignedRoles}
+              assignedRoles={assignedRoles}
               pagination={pagination}
               itemCount={itemCount}
               onListingChange={onListingChange}
               onAddRole={addAnsibleRole}
               loading={loading}
+              resourceName={resourceName}
+              resourceId={resourceId}
+              variablesUrl={variablesUrl}
             />
           </Col>
 
@@ -110,6 +131,7 @@ AnsibleRolesSwitcher.propTypes = {
   inheritedRoleIds: PropTypes.arrayOf(PropTypes.number),
   resourceId: PropTypes.number,
   resourceName: PropTypes.string,
+  variablesUrl: PropTypes.string.isRequired,
   getAnsibleRoles: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   pagination: PropTypes.shape({
@@ -127,6 +149,8 @@ AnsibleRolesSwitcher.propTypes = {
     errorMsg: PropTypes.string,
     statusText: PropTypes.string,
   }),
+  initFormObjectAttrs: PropTypes.func.isRequired,
+  getAnsibleVariables: PropTypes.func.isRequired,
 };
 
 AnsibleRolesSwitcher.defaultProps = {

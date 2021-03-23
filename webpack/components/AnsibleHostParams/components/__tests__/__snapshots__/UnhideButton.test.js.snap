@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UnhideButton should not show when not needed 1`] = `""`;
+
+exports[`UnhideButton should render when value is hidden 1`] = `
+<ButtonHelpPopover
+  button={
+    <Button
+      active={false}
+      block={false}
+      bsClass="btn"
+      bsStyle="default"
+      className="btn btn-default btn-md btn-hide"
+      disabled={false}
+      name="button"
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="fa fa-font btn-strike"
+      />
+    </Button>
+  }
+  popoverId="lookup-key-hide-value-80"
+  popoverText="Hide this value"
+/>
+`;
+
+exports[`UnhideButton should render when value is not hidden 1`] = `
+<ButtonHelpPopover
+  button={
+    <Button
+      active={false}
+      block={false}
+      bsClass="btn"
+      bsStyle="default"
+      className="btn btn-default btn-md btn-hide"
+      disabled={false}
+      name="button"
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="fa fa-font btn-strike"
+      />
+    </Button>
+  }
+  popoverId="lookup-key-hide-value-80"
+  popoverText="Hide this value"
+/>
+`;

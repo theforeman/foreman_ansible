@@ -22,7 +22,7 @@ module ForemanAnsible
               :validator_rule => var.validator_rule,
               :default_value => var.default_value,
               :override_values => var.lookup_values.map { |lv| { :id => lv.id, :match => lv.match, :value => lv.value, :omit => lv.omit } },
-              :current_value => resolver.resolve(var)
+              :current_override => resolver.resolve(var)
             }
           end
 

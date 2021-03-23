@@ -21,6 +21,31 @@ Array [
 ]
 `;
 
+exports[`AnsibleRolesSwitcherSelectors should return assigned variables 1`] = `
+Array [
+  Object {
+    "ansibleVariables": Array [
+      Object {
+        "id": 15,
+        "parameter": "motd",
+      },
+    ],
+    "id": 1,
+    "name": "sthirugn.motd",
+  },
+  Object {
+    "ansibleVariables": Array [
+      Object {
+        "id": 16,
+        "parameter": "whatever",
+      },
+    ],
+    "id": 2,
+    "name": "jtyr.ntp",
+  },
+]
+`;
+
 exports[`AnsibleRolesSwitcherSelectors should return unassigned roles 1`] = `
 Array [
   Object {
@@ -33,3 +58,13 @@ Array [
   },
 ]
 `;
+
+exports[`AnsibleRolesSwitcherSelectors should select form object 1`] = `
+Object {
+  "parentId": 4,
+  "resourceId": 5,
+  "resourceName": "Host",
+}
+`;
+
+exports[`AnsibleRolesSwitcherSelectors should select variables loading 1`] = `true`;

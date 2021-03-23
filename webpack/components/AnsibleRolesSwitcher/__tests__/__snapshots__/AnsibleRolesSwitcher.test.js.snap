@@ -34,6 +34,7 @@ exports[`AnsibleRolesSwitcher should render 1`] = `
         </h2>
       </div>
       <AvailableRolesList
+        assignedRoles={Array []}
         itemCount={20}
         loading={false}
         onAddRole={[Function]}
@@ -44,7 +45,10 @@ exports[`AnsibleRolesSwitcher should render 1`] = `
             "perPage": 12,
           }
         }
+        resourceId={15}
+        resourceName="Host"
         unassignedRoles={Array []}
+        variablesUrl="/hosts/14/variables"
       />
     </Col>
     <Col
@@ -65,7 +69,7 @@ exports[`AnsibleRolesSwitcher should render 1`] = `
         assignedRoles={Array []}
         onMoveRole={[Function]}
         onRemoveRole={[Function]}
-        resourceName=""
+        resourceName="host"
         toDestroyRoles={Array []}
         unassignedRoles={Array []}
       />

@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OverrideButton should render when field is not overriden 1`] = `
+<ButtonHelpPopover
+  button={
+    <Button
+      active={false}
+      block={false}
+      bsClass="btn"
+      bsStyle="default"
+      className="btn btn-default btn-md btn-override"
+      disabled={false}
+      name="button"
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="fa fa-pencil-square-o"
+      />
+    </Button>
+  }
+  popoverId="lookup-key-add-override-7"
+  popoverText="Override this value"
+/>
+`;
+
+exports[`OverrideButton should render when field is overriden 1`] = `
+<ButtonHelpPopover
+  button={
+    <Button
+      active={false}
+      block={false}
+      bsClass="btn"
+      bsStyle="default"
+      className="btn btn-default btn-md btn-override"
+      disabled={false}
+      name="button"
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="fa fa-times"
+      />
+    </Button>
+  }
+  popoverId="lookup-key-remove-override-7"
+  popoverText="Remove this override"
+/>
+`;

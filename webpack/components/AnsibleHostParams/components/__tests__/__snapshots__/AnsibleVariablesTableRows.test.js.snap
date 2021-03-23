@@ -1,0 +1,234 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnsibleVariablesTableRows should render 1`] = `
+Array [
+  <AnsibleVariablesTableRow
+    firstKey={
+      Object {
+        "currentOverride": Object {
+          "element": "hostgroup",
+          "elementName": "first hostgroup",
+          "value": null,
+        },
+        "defaultValue": 17,
+        "description": "Rectangle param",
+        "hiddenValue": false,
+        "id": 66,
+        "omit": null,
+        "override": true,
+        "overrideValues": Array [
+          Object {
+            "id": 31,
+            "match": "hostgroup=first hostgroup",
+            "omit": true,
+            "value": null,
+          },
+        ],
+        "parameter": "rectangle",
+        "parameterType": "integer",
+      }
+    }
+    formObject={
+      Object {
+        "resourceId": 4,
+        "resourceName": "Host",
+      }
+    }
+    key="66"
+    lookupKey={
+      Object {
+        "currentOverride": Object {
+          "element": "hostgroup",
+          "elementName": "first hostgroup",
+          "value": null,
+        },
+        "defaultValue": 17,
+        "description": "Rectangle param",
+        "hiddenValue": false,
+        "id": 66,
+        "omit": null,
+        "override": true,
+        "overrideValues": Array [
+          Object {
+            "id": 31,
+            "match": "hostgroup=first hostgroup",
+            "omit": true,
+            "value": null,
+          },
+        ],
+        "parameter": "rectangle",
+        "parameterType": "integer",
+      }
+    }
+    resourceError={null}
+    role={
+      Object {
+        "ansibleVariables": Array [
+          Object {
+            "currentOverride": Object {
+              "element": "hostgroup",
+              "elementName": "first hostgroup",
+              "value": null,
+            },
+            "defaultValue": 17,
+            "description": "Rectangle param",
+            "hiddenValue": false,
+            "id": 66,
+            "omit": null,
+            "override": true,
+            "overrideValues": Array [
+              Object {
+                "id": 31,
+                "match": "hostgroup=first hostgroup",
+                "omit": true,
+                "value": null,
+              },
+            ],
+            "parameter": "rectangle",
+            "parameterType": "integer",
+          },
+          Object {
+            "currentOverride": Object {
+              "element": "hostgroup",
+              "elementName": "first hostgroup",
+              "value": false,
+            },
+            "defaultValue": true,
+            "description": "Square param",
+            "hiddenValue": false,
+            "id": 65,
+            "omit": null,
+            "override": true,
+            "overrideValues": Array [
+              Object {
+                "id": 26,
+                "match": "hostgroup=first hostgroup",
+                "omit": false,
+                "value": false,
+              },
+            ],
+            "parameter": "square",
+            "parameterType": "boolean",
+          },
+        ],
+        "id": 3,
+        "name": "aardvark.cube",
+      }
+    }
+  />,
+  <AnsibleVariablesTableRow
+    firstKey={
+      Object {
+        "currentOverride": Object {
+          "element": "hostgroup",
+          "elementName": "first hostgroup",
+          "value": null,
+        },
+        "defaultValue": 17,
+        "description": "Rectangle param",
+        "hiddenValue": false,
+        "id": 66,
+        "omit": null,
+        "override": true,
+        "overrideValues": Array [
+          Object {
+            "id": 31,
+            "match": "hostgroup=first hostgroup",
+            "omit": true,
+            "value": null,
+          },
+        ],
+        "parameter": "rectangle",
+        "parameterType": "integer",
+      }
+    }
+    formObject={
+      Object {
+        "resourceId": 4,
+        "resourceName": "Host",
+      }
+    }
+    key="65"
+    lookupKey={
+      Object {
+        "currentOverride": Object {
+          "element": "hostgroup",
+          "elementName": "first hostgroup",
+          "value": false,
+        },
+        "defaultValue": true,
+        "description": "Square param",
+        "hiddenValue": false,
+        "id": 65,
+        "omit": null,
+        "override": true,
+        "overrideValues": Array [
+          Object {
+            "id": 26,
+            "match": "hostgroup=first hostgroup",
+            "omit": false,
+            "value": false,
+          },
+        ],
+        "parameter": "square",
+        "parameterType": "boolean",
+      }
+    }
+    resourceError={null}
+    role={
+      Object {
+        "ansibleVariables": Array [
+          Object {
+            "currentOverride": Object {
+              "element": "hostgroup",
+              "elementName": "first hostgroup",
+              "value": null,
+            },
+            "defaultValue": 17,
+            "description": "Rectangle param",
+            "hiddenValue": false,
+            "id": 66,
+            "omit": null,
+            "override": true,
+            "overrideValues": Array [
+              Object {
+                "id": 31,
+                "match": "hostgroup=first hostgroup",
+                "omit": true,
+                "value": null,
+              },
+            ],
+            "parameter": "rectangle",
+            "parameterType": "integer",
+          },
+          Object {
+            "currentOverride": Object {
+              "element": "hostgroup",
+              "elementName": "first hostgroup",
+              "value": false,
+            },
+            "defaultValue": true,
+            "description": "Square param",
+            "hiddenValue": false,
+            "id": 65,
+            "omit": null,
+            "override": true,
+            "overrideValues": Array [
+              Object {
+                "id": 26,
+                "match": "hostgroup=first hostgroup",
+                "omit": false,
+                "value": false,
+              },
+            ],
+            "parameter": "square",
+            "parameterType": "boolean",
+          },
+        ],
+        "id": 3,
+        "name": "aardvark.cube",
+      }
+    }
+  />,
+]
+`;

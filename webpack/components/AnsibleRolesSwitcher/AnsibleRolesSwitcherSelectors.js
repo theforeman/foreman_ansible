@@ -1,7 +1,11 @@
 import { differenceBy, includes } from 'lodash';
+import {
+  deepPropsToCamelCase,
+  propsToCamelCase,
+} from 'foremanReact/common/helpers';
+
 import Immutable from 'seamless-immutable';
 import { createSelector } from 'reselect';
-import { propsToCamelCase } from 'foremanReact/common/helpers';
 
 const switcherState = state => state.foremanAnsible.ansibleRolesSwitcher;
 
@@ -46,3 +50,10 @@ export const selectUnassignedRoles = createSelector(
   selectAssignedRoles,
   (results, assignedRoles) => differenceBy(results, assignedRoles, 'id')
 );
+
+export const selectAssignedVariables = state =>
+  deepPropsToCamelCase(switcherState(state).assignedVariables);
+export const selectVariablesLoading = state =>
+  switcherState(state).loadingVariables;
+
+export const selectFormObject = state => switcherState(state).formObject;

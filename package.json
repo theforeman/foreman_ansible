@@ -20,6 +20,7 @@
     "@theforeman/vendor-dev": "^6.0.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2",
+    "jed": "^1.1.1",
     "prettier": "^1.13.5"
   },
   "scripts": {

@@ -28,26 +28,34 @@ exports[`AvailableRolesList should render 1`] = `
     timeout={300}
   >
     <AnsibleRole
+      assignedRoles={Array []}
       icon="fa fa-plus-circle"
       key="1"
       onClick={[Function]}
+      resourceId={14}
+      resourceName="Host"
       role={
         Object {
           "id": 1,
           "name": "fake.role",
         }
       }
+      variablesUrl="/hosts/14/variables"
     />
     <AnsibleRole
+      assignedRoles={Array []}
       icon="fa fa-plus-circle"
       key="2"
       onClick={[Function]}
+      resourceId={14}
+      resourceName="Host"
       role={
         Object {
           "id": 2,
           "name": "test.role",
         }
       }
+      variablesUrl="/hosts/14/variables"
     />
   </LoadingState>
 </ListView>

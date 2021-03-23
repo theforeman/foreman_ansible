@@ -7,6 +7,7 @@
                                                 :initialAssignedRoles => role_attributes_for_roles_switcher(f.object),
                                                 :inheritedRoleIds => f.object.inherited_ansible_roles.map(&:id),
                                                 :availableRolesUrl => ui_ansible_roles_path,
+                                                :variablesUrl => overrides_ansible_variables_path,
                                                 :resourceId => f.object.id,
                                                 :resourceName => class_name,
                                                 :canView => User.current.can?(:view_ansible_roles)
