@@ -104,4 +104,8 @@ class AnsibleVariablesController < ::LookupKeysController
     end
     @smart_proxy
   end
+
+  def controller_permission
+    'ansible_variables'
+  end
 end
