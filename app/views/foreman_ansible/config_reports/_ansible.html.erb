@@ -1,6 +1,11 @@
 <%= webpacked_plugins_js_for :foreman_ansible %>
 <%= stylesheet 'foreman_ansible/foreman-ansible' %>
+<% if ansible_run_in_check_mode?(logs.first) %>
+  <%= alert :class => 'alert-info',
+            :header => _('Ansible check mode'),
+            :text => _('Notice that ansible roles run in check mode.')%>
 
+<% end %>
 <table id='report_log' class="<%= table_css_classes %>">
   <thead>
     <tr>
@@ -12,12 +17,14 @@
   </thead>
   <tbody>
     <% logs.each do |log| %>
-      <tr>
-        <td><span <%= report_tag log.level %>><%= h log.level %></span></td>
-        <td><%= ansible_module_name(log) %></td>
-        <td><%= ansible_module_args(log) %></td>
-        <td><%= ansible_module_message(log) %></td>
-      </tr>
+      <% unless check_mode_log?(log) %>
+        <tr>
+          <td><span <%= report_tag log.level %>><%= h log.level %></span></td>
+          <td><%= ansible_module_name(log) %></td>
+          <td><%= ansible_module_args(log) %></td>
+          <td><%= ansible_module_message(log) %></td>
+        </tr>
+      <% end %>
     <% end %>
     <tr id='ntsh' <%= "style='display: none;'".html_safe if logs.size > 0%>><td colspan="3">
         <%= _("Nothing to show") %>

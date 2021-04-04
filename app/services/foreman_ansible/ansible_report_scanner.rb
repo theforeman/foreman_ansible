@@ -5,7 +5,21 @@ module ForemanAnsible
   # sets the origin of the report to 'Ansible'
   class AnsibleReportScanner
     class << self
-      def add_reporter_data(report, raw); end
+      def add_reporter_data(_report, raw)
+        check_mode_message = raw['check_mode'] ? 'check_mode_enabled' : 'check_mode_disabled'
+        check_mode_log = {
+          'log': {
+            'sources': {
+              'source': 'check_mode'
+            },
+            'messages': {
+              'message': check_mode_message
+            },
+            'level': 'info'
+          }
+        }
+        raw['logs'].insert(0, check_mode_log.deep_stringify_keys)
+      end
 
       def identify_origin(raw)
         'Ansible' if ansible_report?(raw)
