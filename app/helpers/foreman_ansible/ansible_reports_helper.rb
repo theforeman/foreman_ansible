@@ -19,6 +19,10 @@ module ForemanAnsible
       name
     end
 
+    def ansible_run_in_check_mode?(log)
+      log.message&.value == 't' if log.source&.value == 'check_mode'
+    end
+
     def ansible_module_args(log)
       report_json_viewer module_invocations parsed_message_json(log)
     end

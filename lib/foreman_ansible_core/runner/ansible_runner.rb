@@ -110,7 +110,10 @@ module ForemanAnsibleCore
         env = {}
         env['FOREMAN_CALLBACK_DISABLE'] = '1' if @rex_command
         command = [env, 'ansible-runner', 'run', @root, '-p', 'playbook.yml']
-        command << '--cmdline' << '"--check"' if check_mode?
+        if check_mode?
+          command << '--cmdline' << '"--check"'
+          env['CHECK_MODE'] = '1'
+        end
         command << verbosity if verbose?
         initialize_command(*command)
         logger.debug("[foreman_ansible] - Running command '#{command.join(' ')}'")
