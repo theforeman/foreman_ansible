@@ -19,7 +19,6 @@ module ForemanAnsible
     config.autoload_paths += Dir["#{config.root}/app/services"]
     config.autoload_paths += Dir["#{config.root}/app/views"]
     config.autoload_paths += Dir["#{config.root}/app/lib"]
-    config.autoload_paths += Dir["#{config.root}/test/"]
 
     initializer 'foreman_ansible.load_default_settings',
                 :before => :load_config_initializers do

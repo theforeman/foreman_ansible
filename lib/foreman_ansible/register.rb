@@ -29,7 +29,7 @@ Foreman::Plugin.register :foreman_ansible do
                :resource_type => 'AnsibleRole'
     permission :view_ansible_variables,
                {
-                 :ansible_variables => [:index, :auto_complete_search, :overrides],
+                 :ansible_variables => [:index, :auto_complete_search],
                  :'api/v2/ansible_variables' => [:index, :show]
                },
                :resource_type => 'AnsibleVariable'
