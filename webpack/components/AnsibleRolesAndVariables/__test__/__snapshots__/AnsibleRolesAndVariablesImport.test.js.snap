@@ -74,6 +74,7 @@ exports[`ImportRolesAndVariablesTable should render 1`] = `
     expandId="expandable-toggle"
     gridBreakPoint="grid-md"
     isStickyHeader={false}
+    isTreeTable={false}
     onSelect={[Function]}
     ouiaSafe={true}
     role="grid"

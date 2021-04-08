@@ -6,10 +6,8 @@ class AnsibleRolesController < ::ApplicationController
   include ForemanAnsible::Concerns::ImportControllerHelper
   include ::ForemanAnsible::AnsibleRolesDataPreparations
   def index
-    @ansible_roles = resource_base.search_for(params[:search],
-                                              :order => params[:order]).
-                     paginate(:page => params[:page],
-                              :per_page => params[:per_page])
+    @ansible_roles = resource_base.search_for(params[:search], :order => params[:order])
+    @index_rows = prepare_ansible_index_rows(@ansible_roles)
   end
 
   def destroy

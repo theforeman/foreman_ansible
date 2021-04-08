@@ -2,6 +2,8 @@
 
 module ForemanAnsible
   module AnsibleRolesDataPreparations
+    include ForemanAnsible::AnsibleRolesHelper
+
     VARIABLE_ACTION_NAMES = { 'new' => N_('Add'), 'obsolete' => N_('Remove'), 'update' => N_('Update') }.freeze
     ROLE_ACTION_NAMES = { 'new' => N_('Import Role'), 'obsolete' => N_('Remove Role'), 'old' => N_('Update Role Variables') }.freeze
 
@@ -88,6 +90,28 @@ module ForemanAnsible
             rows.append(prepare_api_row(role, kind, variables, role_action))
           end
         end
+      end
+      rows
+    end
+
+    def prepare_ansible_index_rows(roles)
+      rows = []
+      roles.each do |role|
+        hosts_path = hosts_path(:search => "ansible_role = #{role.name}")
+        imported_at = import_time role
+        variables = role.ansible_variables.count.to_s + ' ' + ansible_variables_path(:search => "ansible_role = #{role}")
+        hosts = role.hosts.count.to_s + ' ' + hosts_path
+        can_delete = authorized_for(hash_for_ansible_role_path(:id => role).merge(:auth_object => role, :authorizer => authorizer))
+        rows.append(
+          { cells: [
+            role.name,
+            variables,
+            role.hostgroups.count,
+            hosts,
+            imported_at
+          ],
+            role: role, id: role.name, can_delete: can_delete }
+        )
       end
       rows
     end

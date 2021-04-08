@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RolesIndexTable should render 1`] = `
+<div>
+  <RolesIndex
+    RolesIndexActions={[Function]}
+    paginatedRows={
+      Array [
+        Object {
+          "can_delete": true,
+          "cells": Array [
+            "dcos.cluster.dcos_agent",
+            "1 /ansible/ansible_variables?search=ansible_role+%3D+dcos.cluster.dcos_agent",
+            0,
+            "0 /hosts?search=ansible_role+%3D+dcos.cluster.dcos_agent",
+            "about 17 hours ago",
+          ],
+          "id": "dcos.cluster.dcos_agent",
+        },
+        Object {
+          "can_delete": false,
+          "cells": Array [
+            "dcos.cluster.dcos_bootstrap",
+            "8 /ansible/ansible_variables?search=ansible_role+%3D+dcos.cluster.dcos_bootstrap",
+            0,
+            "0 /hosts?search=ansible_role+%3D+dcos.cluster.dcos_bootstrap",
+            "about 17 hours ago",
+          ],
+          "id": "dcos.cluster.dcos_bootstrap",
+        },
+      ]
+    }
+    rows={
+      Array [
+        Object {
+          "can_delete": true,
+          "cells": Array [
+            "dcos.cluster.dcos_agent",
+            "1 /ansible/ansible_variables?search=ansible_role+%3D+dcos.cluster.dcos_agent",
+            0,
+            "0 /hosts?search=ansible_role+%3D+dcos.cluster.dcos_agent",
+            "about 17 hours ago",
+          ],
+          "id": "dcos.cluster.dcos_agent",
+        },
+        Object {
+          "can_delete": false,
+          "cells": Array [
+            "dcos.cluster.dcos_bootstrap",
+            "8 /ansible/ansible_variables?search=ansible_role+%3D+dcos.cluster.dcos_bootstrap",
+            0,
+            "0 /hosts?search=ansible_role+%3D+dcos.cluster.dcos_bootstrap",
+            "about 17 hours ago",
+          ],
+          "id": "dcos.cluster.dcos_bootstrap",
+        },
+      ]
+    }
+  />
+  <Pagination
+    className=""
+    defaultToFullPage={true}
+    firstPage={1}
+    isCompact={true}
+    isDisabled={false}
+    isSticky={false}
+    itemCount={2}
+    itemsEnd={null}
+    itemsStart={null}
+    offset={0}
+    onFirstClick={[Function]}
+    onLastClick={[Function]}
+    onNextClick={[Function]}
+    onPageInput={[Function]}
+    onPerPageSelect={[Function]}
+    onPreviousClick={[Function]}
+    onSetPage={[Function]}
+    ouiaSafe={true}
+    page={0}
+    perPage={20}
+    perPageOptions={
+      Array [
+        Object {
+          "title": "5",
+          "value": 5,
+        },
+        Object {
+          "title": "10",
+          "value": 10,
+        },
+        Object {
+          "title": "20",
+          "value": 20,
+        },
+        Object {
+          "title": "50",
+          "value": 50,
+        },
+      ]
+    }
+    titles={
+      Object {
+        "paginationTitle": "top pagination",
+      }
+    }
+    toggleTemplate={[Function]}
+    variant="top"
+    widgetId="pagination-options-menu"
+  />
+</div>
+`;

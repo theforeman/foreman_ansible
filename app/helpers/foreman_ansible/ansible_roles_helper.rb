@@ -3,6 +3,8 @@
 module ForemanAnsible
   # Small convenience to list all roles in the UI
   module AnsibleRolesHelper
+    include ActionView::Helpers::DateHelper
+
     def ansible_proxy_links(hash, classes = nil)
       SmartProxy.with_features('Ansible').map do |proxy|
         display_link_if_authorized(_('Import from %s') % proxy.name,
