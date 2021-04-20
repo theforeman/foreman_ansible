@@ -56,7 +56,7 @@ module Api
         if params['changed'].present?
           @task = @importer.confirm_sync(params)
         else
-          process_resource_error({ :message => _('Roles could not be synced') })
+          render_message _('No changes detected in specified Ansible Roles and their variables')
         end
       end
 
