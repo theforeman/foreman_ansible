@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Tabs, Tab, TabTitleText, Label } from '@patternfly/react-core';
-import { InfoCircleIcon } from '@patternfly/react-icons';
+import { Tabs, Tab, TabTitleText } from '@patternfly/react-core';
 import SkeletonLoader from 'foremanReact/components/common/SkeletonLoader';
+import { Tabs, Tab, TabTitleText } from '@patternfly/react-core';
+
 import { translate as __ } from 'foremanReact/common/I18n';
 
+import AnsibleVariableOverrides from './components/AnsibleVariableOverrides';
 import './AnsibleHostDetail.scss';
 import WrappedAnsibleHostInventory from './components/AnsibleHostInventory';
 
@@ -23,13 +25,7 @@ const AnsibleHostDetail = ({ response, status }) => {
           >
             <div className="host-details-tab-item">
               <div className="ansible-host-detail">
-                <Label
-                  color="blue"
-                  icon={<InfoCircleIcon />}
-                  style={{ marginTop: '1.5rem' }}
-                >
-                  Ansible Variables coming soon!
-                </Label>
+                <AnsibleVariableOverrides id={response.id} hostAttrs={response} />
               </div>
             </div>
           </Tab>
