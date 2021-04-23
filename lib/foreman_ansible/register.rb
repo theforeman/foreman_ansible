@@ -103,6 +103,10 @@ Foreman::Plugin.register :foreman_ansible do
 
   register_global_js_file 'global'
 
+  extend_graphql_type :type => ::Types::Host do
+    field :all_ansible_roles, ::Types::AnsibleRole.connection_type, :null => true
+  end
+
   divider :top_menu, :caption => N_('Ansible'), :parent => :configure_menu
   menu :top_menu, :ansible_roles,
        :caption => N_('Roles'),
