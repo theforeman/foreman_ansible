@@ -5,10 +5,8 @@ import '@testing-library/jest-dom';
 import AnsibleHostDetail from './';
 
 describe('AnsibleHostDetail', () => {
-  it('should show content', () => {
-    render(<AnsibleHostDetail />);
-    expect(
-      screen.getByText('Ansible Variables coming soon!')
-    ).toBeInTheDocument();
+  it('should show spinner when loading', () => {
+    render(<AnsibleHostDetail status="PENDING" response={{}} />);
+    expect(screen.getByText('Loading')).toBeInTheDocument();
   });
 });
