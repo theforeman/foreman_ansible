@@ -13,7 +13,12 @@
     "react-json-tree": "^0.11.0"
   },
   "devDependencies": {
+    "@apollo/react-testing": "^4.0.0",
     "@babel/core": "^7.7.0",
+    "@testing-library/dom": "^7.30.4",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^13.1.2",
     "@theforeman/builder": "^8.4.1",
     "@theforeman/eslint-plugin-foreman": "^8.4.1",
     "@theforeman/find-foreman": "^8.4.1",
