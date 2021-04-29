@@ -1,0 +1,44 @@
+<%#
+name: Convert to RHEL
+snippet: false
+template_inputs:
+- name: Activation Key
+  required: true
+  input_type: user
+  advanced: false
+  value_type: plain
+  resource_type: Katello::ActivationKey
+  hidden_value: false
+- name: Restart
+  required: true
+  input_type: user
+  options: "yes\r\nno"
+  advanced: false
+  value_type: plain
+  resource_type: Katello::ActivationKey
+  hidden_value: false
+model: JobTemplate
+job_category: Convert 2 RHEL
+provider_type: Ansible
+kind: job_template
+%>
+---
+- hosts: all
+  tasks:
+    - name: Install convert2rhel
+      ansible.builtin.package:
+        name: convert2rhel
+        state: present
+    - name: Prepopulate katello-ca-consumer
+      get_url:
+        url: <%= subscription_manager_configuration_url(@host) %>
+        dest: /usr/share/convert2rhel/subscription-manager/katello-ca-consumer-latest.noarch.rpm
+    - name: Start convert2rhel
+      command: convert2rhel -y --activationkey "<%= input('Activation Key') %>" --org "<%= @host.organization.label %>" > /root/convert2rhel.log
+<%- if input('Restart') == "yes" -%>
+    - name: Reboot the machine
+      reboot:
+        reboot_timeout: 1800
+<%- end -%>
+    - name: Update system facts
+      command: subscription-manager facts --update
