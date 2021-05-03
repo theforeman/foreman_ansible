@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Foreman::Plugin.register :foreman_ansible do
-  requires_foreman '>= 2.2'
+  requires_foreman '>= 2.6'
 
   security_block :foreman_ansible do
     permission :play_roles_on_host,
