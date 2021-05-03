@@ -71,17 +71,6 @@ module ForemanAnsible
     end
 
     config.to_prepare do
-      foreman_version = ::Foreman::Version.new
-      if Rails.env.test? ||
-         foreman_version.major.to_i == 1 && foreman_version.minor.to_i < 13
-        ::Foreman::Plugin.fact_importer_registry.register(:ansible, ForemanAnsible::FactImporter)
-      else
-        ::Foreman::Plugin.fact_importer_registry.register(
-          :ansible,
-          ForemanAnsible::StructuredFactImporter
-        )
-      end
-      ::FactParser.register_fact_parser(:ansible, ForemanAnsible::FactParser)
       ::Host::Managed.prepend ForemanAnsible::HostManagedExtensions
       ::Hostgroup.include ForemanAnsible::HostgroupExtensions
       ::HostsHelper.include ForemanAnsible::HostsHelperExtensions
