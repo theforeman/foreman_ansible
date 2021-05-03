@@ -13,14 +13,6 @@ Layout/ClosingHeredocIndentation:
   Exclude:
     - 'test/unit/helpers/ansible_reports_helper_test.rb'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, IndentationWidth.
-# SupportedStyles: special_inside_parentheses, consistent, align_brackets
-Layout/FirstArrayElementIndentation:
-  Exclude:
-    - 'test/unit/services/fact_parser_test.rb'
-
 # Offense count: 6
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, IndentationWidth.
@@ -28,7 +20,6 @@ Layout/FirstArrayElementIndentation:
 Layout/FirstHashElementIndentation:
   Exclude:
     - 'test/functional/ansible_variables_controller_test.rb'
-    - 'test/unit/services/fact_parser_test.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -48,7 +39,6 @@ Lint/BooleanSymbol:
 Minitest/AssertEmpty:
   Exclude:
     - 'test/functional/hosts_controller_test.rb'
-    - 'test/unit/services/fact_importer_test.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -77,22 +67,11 @@ Minitest/GlobalExpectations:
     - 'test/unit/concerns/hostgroup_extensions_test.rb'
 
 # Offense count: 1
-# Cop supports --auto-correct.
-Minitest/RefuteIncludes:
-  Exclude:
-    - 'test/unit/services/fact_importer_test.rb'
-
-# Offense count: 1
 # Configuration parameters: MinNameLength, AllowNamesEndingInNumbers, AllowedNames, ForbiddenNames.
 # AllowedNames: io, id, to, by, on, in, at, ip, db, os, pp
 Naming/MethodParameterName:
   Exclude:
     - 'app/helpers/foreman_ansible/ansible_roles_helper.rb'
-
-# Offense count: 5
-Performance/UnfreezeString:
-  Exclude:
-    - 'test/unit/services/fact_parser_test.rb'
 
 # Offense count: 1
 # Configuration parameters: Include.
@@ -130,8 +109,6 @@ Rails/RefuteMethods:
     - 'test/functional/api/v2/hostgroups_controller_test.rb'
     - 'test/functional/api/v2/hosts_controller_test.rb'
     - 'test/unit/services/api_roles_importer_test.rb'
-    - 'test/unit/services/fact_importer_test.rb'
-    - 'test/unit/services/fact_parser_test.rb'
     - 'test/unit/services/inventory_creator_test.rb'
     - 'test/unit/services/ui_roles_importer_test.rb'
 
