@@ -101,7 +101,11 @@ module ForemanAnsible
 
     def ip_from_interface(interface)
       return if facts[:"ansible_#{interface}"]['ipv4'].blank?
-      facts[:"ansible_#{interface}"]['ipv4']['address']
+      if facts[:"ansible_#{interface}"]['ipv4'].is_a?(Array)
+        facts[:"ansible_#{interface}"]['ipv4'][0]['address']
+      else
+        facts[:"ansible_#{interface}"]['ipv4']['address']
+      end
     end
 
     def ipv6_from_interface(interface)
