@@ -61,8 +61,7 @@ module ForemanAnsible
                    connection_params['ansible_user']
       refute_equal Setting['remote_execution_ssh_port'],
                    connection_params['ansible_port']
-      assert_equal ForemanRemoteExecutionCore.settings[:ssh_identity_key_file],
-                   connection_params['ansible_ssh_private_key_file']
+      assert_nil   connection_params['ansible_ssh_private_key_file']
       assert_equal extra_options['ansible_port'],
                    connection_params['ansible_port']
       assert_equal Setting['ansible_winrm_server_cert_validation'],
