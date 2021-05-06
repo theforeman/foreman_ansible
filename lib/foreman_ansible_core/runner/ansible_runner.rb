@@ -142,7 +142,12 @@ module ForemanAnsibleCore
         action_inputs = input.values.map { |hash| hash[:input][:action_input] }
         hostnames = action_inputs.map { |hash| hash[:name] }
         inventories = action_inputs.map { |hash| hash[:ansible_inventory] }
-        host_vars = inventories.map { |i| i['_meta']['hostvars'] }.reduce(&:merge)
+        host_vars = inventories.map { |i| i['_meta']['hostvars'] }.reduce({}) do |acc, hosts|
+          hosts.reduce(acc) do |inner_acc, (hostname, vars)|
+            vars[:ansible_ssh_private_key_file] ||= ForemanRemoteExecutionCore.settings[:ssh_identity_key_file]
+            inner_acc.merge(hostname => vars)
+          end
+        end
 
         { '_meta' => { 'hostvars' => host_vars },
           'all' => { 'hosts' => hostnames,

@@ -99,7 +99,7 @@ module ForemanAnsible
       params = {
         'ansible_user' => host_setting(host, 'remote_execution_ssh_user'),
         'ansible_become_method' => host_setting(host, 'remote_execution_effective_user_method'),
-        'ansible_ssh_private_key_file' => ansible_or_rex_ssh_private_key(host),
+        'ansible_ssh_private_key_file' => ansible_ssh_private_key(host),
         'ansible_port' => host_setting(host, 'remote_execution_ssh_port'),
         'ansible_host' => AnsibleProvider.find_ip_or_hostname(host)
       }
@@ -122,13 +122,9 @@ module ForemanAnsible
       result
     end
 
-    def ansible_or_rex_ssh_private_key(host)
+    def ansible_ssh_private_key(host)
       ansible_private_file = host_setting(host, 'ansible_ssh_private_key_file')
-      if !ansible_private_file.empty?
-        ansible_private_file
-      else
-        ForemanRemoteExecutionCore.settings[:ssh_identity_key_file]
-      end
+      ansible_private_file unless ansible_private_file.empty?
     end
 
     private
