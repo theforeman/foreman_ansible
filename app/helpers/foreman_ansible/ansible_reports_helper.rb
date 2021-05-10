@@ -4,19 +4,17 @@ module ForemanAnsible
   # This module takes the config reports stored in Foreman for Ansible and
   # modifies them to be properly presented in views
   module AnsibleReportsHelper
-    ANSIBLE_META_KEYS = %w[
-      _ansible_parsed _ansible_no_log _ansible_item_result
-      _ansible_ignore_errors _ansible_verbose_always _ansible_verbose_override
-    ].freeze
-    ANSIBLE_HIDDEN_KEYS = %w[
-      invocation module_args results ansible_facts
-      stdout stderr
-    ].freeze
-
     def ansible_module_name(log)
       source_value = log.source&.value
       name = source_value.split(':')[0].strip if source_value&.include?(':')
       name
+    end
+
+    def ansible_task_name(log)
+      source_value = log.source&.value
+      return source_value || no_data_message unless source_value.include? ':'
+      name = source_value.split(':')[1].strip if source_value.include?(':')
+      name || no_data_message
     end
 
     def ansible_run_in_check_mode?(log)
@@ -27,12 +25,36 @@ module ForemanAnsible
       log.source&.value == 'check_mode'
     end
 
-    def ansible_module_args(log)
-      report_json_viewer module_invocations parsed_message_json(log)
+    def ansible_module_message(log)
+      msg_json = parsed_message_json(log)
+      module_action = msg_json['module']
+      case module_action
+      when 'package'
+        msg_json['results'].empty? ? msg_json['msg'] : msg_json['results']
+      when 'template'
+        module_args = msg_json['invocation']['module_args']
+        _("Rendered template #{module_args['_original_basename']} to #{msg_json['dest']}")
+      when 'service'
+        _("Service #{msg_json['name']} #{msg_json['state']} (enabled: #{msg_json['enabled']})")
+      when 'group'
+        _("User group #{msg_json['name']} #{msg_json['state']}, gid: #{msg_json['gid']}")
+      when 'user'
+        _("User #{msg_json['name']} #{msg_json['state']}, uid: #{msg_json['uid']}")
+      when 'cron'
+        module_args = msg_json['invocation']['module_args']
+        _("Cron job: #{module_args['minute']} #{module_args['hour']} #{module_args['day']} #{module_args['month']} #{module_args['weekday']} #{module_args['job']} (disabled: #{module_args['disabled']})")
+      when 'copy'
+        module_args = msg_json['invocation']['module_args']
+        _("Copy #{module_args['_original_basename']} to #{msg_json['dest']}")
+      when 'command', 'shell'
+        msg_json['stdout_lines']
+      else
+        no_data_message
+      end
     end
 
-    def ansible_module_message(log)
-      report_json_viewer hash_with_keys_removed parsed_message_json(log)
+    def no_data_message
+      _('No additional data')
     end
 
     def ansible_report_origin_icon
@@ -49,48 +71,7 @@ module ForemanAnsible
       false
     end
 
-    def report_json_viewer(json)
-      react_component('ReportJsonViewer', data: json)
-    end
-
     private
-
-    def module_invocations(hash)
-      invocations = []
-      invocations << hash.delete('invocation')
-      results = hash.delete('results')
-      invocations << results
-      invocations = invocations.compact.flatten.map do |ih|
-        ih.is_a?(Hash) ? remove_keys(ih) : ih
-      end
-      invocations
-    end
-
-    def pretty_print_hash(hash)
-      prettyp = JSON.pretty_generate(remove_keys(hash))
-      prettyp.gsub!(/{\n*/, "\n")
-      prettyp.gsub!(/},*\n*/, "\n")
-      prettyp.gsub!(/^(\[|\])/, '')
-      prettyp.gsub!(/^[\s]*$\n/, '')
-      paragraph_style = 'white-space:pre;padding: 2em 0'
-      tag(:p, prettyp, :style => paragraph_style)
-    end
-
-    def hash_with_keys_removed(hash)
-      new_hash = remove_keys(hash)
-      remove_keys(new_hash, ANSIBLE_HIDDEN_KEYS)
-    end
-
-    def remove_keys(hash, keys = ANSIBLE_META_KEYS)
-      hash.each do |key, value|
-        if value.is_a? Array
-          value.each { |h| remove_keys(h) if h.is_a? Hash }
-        elsif value.is_a? Hash
-          remove_keys(value)
-        end
-        hash.delete(key) if keys.include? key
-      end
-    end
 
     def parsed_message_json(log)
       JSON.parse(log.message.value)
