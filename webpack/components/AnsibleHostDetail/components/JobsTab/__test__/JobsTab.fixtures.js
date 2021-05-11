@@ -13,10 +13,8 @@ const futureDate = new Date(today.setDate(today.getDate() + 3));
 futureDate.setMilliseconds(0);
 futureDate.setSeconds(0);
 export { futureDate };
-export const emptyScheduledMocks = mockFactory([], scheduledJobsSearch(hostId));
-export const emptyPreviousMocks = mockFactory([], previousJobsSearch(hostId));
 
-const firstJob = {
+export const firstJob = {
   __typename: 'JobInvocation',
   id: 'MDE6Sm9iSW52b2NhdGlvbi0yNTY=',
   description: 'Run Ansible roles',
@@ -36,7 +34,7 @@ const firstJob = {
   },
 };
 
-const secondJob = {
+export const secondJob = {
   __typename: 'JobInvocation',
   id: 'MDE6Sm9iSW52b2NhdGlvbi0yNzE=',
   description: 'Run Ansible roles',
@@ -56,34 +54,34 @@ const secondJob = {
   },
 };
 
-const jobInvocationsMockFactory = mockFactory(
+export const jobInvocationsMockFactory = mockFactory(
   'jobInvocations',
   recurringJobsQuery
 );
-const jobCreateMockFactory = mockFactory(
+export const jobCreateMockFactory = mockFactory(
   'createJobInvocation',
   createJobMutation
 );
 
 const emptyScheduledJobsMock = jobInvocationsMockFactory(
-  { search: scheduledJobsSearch(hostId) },
+  { search: scheduledJobsSearch('host', hostId) },
   { nodes: [] }
 );
 const emptyScheduledJobsRefetchMock = jobInvocationsMockFactory(
-  { search: scheduledJobsSearch(hostId) },
+  { search: scheduledJobsSearch('host', hostId) },
   { nodes: [] },
   { refetchData: { nodes: [firstJob] } }
 );
 const emptyPreviousJobsMock = jobInvocationsMockFactory(
-  { search: previousJobsSearch(hostId) },
+  { search: previousJobsSearch('host', hostId) },
   { nodes: [] }
 );
 const scheduledJobsMocks = jobInvocationsMockFactory(
-  { search: scheduledJobsSearch(hostId) },
+  { search: scheduledJobsSearch('host', hostId) },
   { nodes: [firstJob] }
 );
 const previousJobsMocks = jobInvocationsMockFactory(
-  { search: previousJobsSearch(hostId) },
+  { search: previousJobsSearch('host', hostId) },
   { nodes: [secondJob] }
 );
 
@@ -93,7 +91,7 @@ export const scheduledAndPreviousMocks = scheduledJobsMocks.concat(
 );
 
 const createJobMock = jobCreateMockFactory(
-  toVars(hostId, futureDate, 'weekly').variables,
+  toVars('host', hostId, futureDate, 'weekly').variables,
   { jobInvocation: { id: 'MDE6Sm9iSW52b2NhdGlvbi00MTU=' }, errors: [] }
 );
 

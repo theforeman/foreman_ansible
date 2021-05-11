@@ -9,34 +9,30 @@ import {
   emptyMocks,
   scheduledAndPreviousMocks,
   createMocks,
-  hostId,
+  matchMock,
   futureDate,
-} from './JobsTab.fixtures';
-import JobsTab from '../';
-import * as toasts from '../../../../../toastHelper';
-
-import { toCron } from '../NewRecurringJobHelper';
+} from './HostgroupJobs.fixtures';
+import HostgroupJobs from '../';
+import * as toasts from '../../../toastHelper';
 
 import {
   tick,
   withRouter,
   withMockedProvider,
   withRedux,
-} from '../../../../../testHelper';
+} from '../../../testHelper';
 
-const TestComponent = withRedux(withRouter(withMockedProvider(JobsTab)));
+import { toCron } from '../../../components/AnsibleHostDetail/components/JobsTab/NewRecurringJobHelper';
+
+const TestComponent = withRedux(withRouter(withMockedProvider(HostgroupJobs)));
 
 const now = new Date('2021-08-28 00:00:00 -1100');
 const ComponentWithIntl = i18nProviderWrapperFactory(now, 'UTC')(TestComponent);
 
-describe('JobsTab', () => {
+describe('HostgroupJobs', () => {
   it('should load the page', async () => {
     render(
-      <ComponentWithIntl
-        resourceName="host"
-        resourceId={hostId}
-        mocks={scheduledAndPreviousMocks}
-      />
+      <ComponentWithIntl match={matchMock} mocks={scheduledAndPreviousMocks} />
     );
     await waitFor(tick);
     await waitFor(tick);
@@ -45,17 +41,10 @@ describe('JobsTab', () => {
       .map(element => expect(element).toBeInTheDocument());
     expect(screen.getByText('Scheduled recurring jobs')).toBeInTheDocument();
     expect(screen.getByText('Previously executed jobs')).toBeInTheDocument();
-    expect(screen.getByText(toCron(futureDate, 'weekly'))).toBeInTheDocument();
     expect(screen.getByText('54 10 15 * *')).toBeInTheDocument();
   });
   it('should show empty state', async () => {
-    render(
-      <ComponentWithIntl
-        resourceName="host"
-        resourceId={hostId}
-        mocks={emptyMocks}
-      />
-    );
+    render(<ComponentWithIntl match={matchMock} mocks={emptyMocks} />);
     await waitFor(tick);
     await waitFor(tick);
     expect(
@@ -69,13 +58,7 @@ describe('JobsTab', () => {
     const showToast = jest.fn();
     jest.spyOn(toasts, 'showToast').mockImplementation(showToast);
 
-    render(
-      <ComponentWithIntl
-        resourceName="host"
-        resourceId={hostId}
-        mocks={createMocks}
-      />
-    );
+    render(<ComponentWithIntl match={matchMock} mocks={createMocks} />);
     await waitFor(tick);
     userEvent.click(
       screen.getByRole('button', { name: 'schedule recurring job' })

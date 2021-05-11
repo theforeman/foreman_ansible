@@ -11,7 +11,7 @@ import RecurringJobsTable from './RecurringJobsTable';
 import PreviousJobsTable from './PreviousJobsTable';
 import NewRecurringJobModal from './NewRecurringJobModal';
 
-const JobsTab = ({ response }) => {
+const JobsTab = ({ resourceName, resourceId }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const toggleModal = () => setModalOpen(!modalOpen);
@@ -26,7 +26,8 @@ const JobsTab = ({ response }) => {
     <Grid>
       <GridItem span={12}>
         <RecurringJobsTable
-          hostId={response.id}
+          resourceId={resourceId}
+          resourceName={resourceName}
           fetchFn={fetchRecurringFn}
           renameData={renameData}
           resultPath="jobInvocations.nodes"
@@ -38,7 +39,8 @@ const JobsTab = ({ response }) => {
       </GridItem>
       <GridItem span={12}>
         <PreviousJobsTable
-          hostId={response.id}
+          resourceId={resourceId}
+          resourceName={resourceName}
           fetchFn={fetchPreviousFn}
           renameData={renameData}
           resultPath="jobInvocations.nodes"
@@ -48,14 +50,16 @@ const JobsTab = ({ response }) => {
       <NewRecurringJobModal
         isOpen={modalOpen}
         onClose={toggleModal}
-        hostId={response.id}
+        resourceId={resourceId}
+        resourceName={resourceName}
       />
     </Grid>
   );
 };
 
 JobsTab.propTypes = {
-  response: PropTypes.object.isRequired,
+  resourceName: PropTypes.string.isRequired,
+  resourceId: PropTypes.number.isRequired,
 };
 
 export default JobsTab;

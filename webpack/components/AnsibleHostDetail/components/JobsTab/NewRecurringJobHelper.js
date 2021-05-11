@@ -43,22 +43,29 @@ export const toCron = (date, repeat) => {
   }
 };
 
-export const toVars = (hostId, date, repeat) => ({
-  variables: {
-    jobInvocation: {
-      hostIds: [hostId],
-      feature: 'ansible_run_host',
-      targetingType: 'static_query',
-      scheduling: {
-        startAt: date,
-      },
-      recurrence: {
-        cronLine: toCron(date, repeat),
-        purpose: ansiblePurpose(hostId),
+export const toVars = (resourceName, resourceId, date, repeat) => {
+  const targeting =
+    resourceName === 'host'
+      ? { hostId: resourceId }
+      : { searchQuery: `hostgroup_id = ${resourceId}` };
+
+  return {
+    variables: {
+      jobInvocation: {
+        ...targeting,
+        feature: 'ansible_run_host',
+        targetingType: 'static_query',
+        scheduling: {
+          startAt: date,
+        },
+        recurrence: {
+          cronLine: toCron(date, repeat),
+          purpose: ansiblePurpose(resourceName, resourceId),
+        },
       },
     },
-  },
-});
+  };
+};
 
 const joinErrors = errors => errors.map(err => err.message).join(', ');
 
@@ -68,7 +75,7 @@ const formatError = error =>
     error
   );
 
-export const onSubmit = (callMutation, onClose, hostId) => (
+export const onSubmit = (callMutation, onClose, resourceName, resourceId) => (
   values,
   actions
 ) => {
@@ -95,7 +102,7 @@ export const onSubmit = (callMutation, onClose, hostId) => (
   };
 
   const date = new Date(`${values.startDate}T${values.startTime}`);
-  const variables = toVars(hostId, date, values.repeat);
+  const variables = toVars(resourceName, resourceId, date, values.repeat);
   // eslint-disable-next-line promise/prefer-await-to-then
   callMutation(variables).then(onCompleted, onError);
 };
