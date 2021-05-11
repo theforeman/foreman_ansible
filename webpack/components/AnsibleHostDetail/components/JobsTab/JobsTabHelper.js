@@ -1,21 +1,25 @@
 import { useQuery } from '@apollo/client';
 import jobsQuery from '../../../../graphql/queries/recurringJobs.gql';
 
-export const ansiblePurpose = hostId => `ansible-host-${hostId}`;
+export const ansiblePurpose = (resourceName, resourceId) =>
+  `ansible-${resourceName}-${resourceId}`;
 
-const jobSearch = (hostId, statusSearch) =>
-  `recurring = true && targeted_host_id = ${hostId} && pattern_template_name = "Ansible Roles - Ansible Default" && ${statusSearch} && recurring_logic.purpose = ${ansiblePurpose(
-    hostId
+const jobSearch = (resourceName, resourceId, statusSearch) =>
+  `recurring = true && pattern_template_name = "Ansible Roles - Ansible Default" && ${statusSearch} && recurring_logic.purpose = ${ansiblePurpose(
+    resourceName,
+    resourceId
   )}`;
 
-export const scheduledJobsSearch = hostId =>
-  jobSearch(hostId, 'status = queued');
-export const previousJobsSearch = hostId =>
-  jobSearch(hostId, 'status != queued');
+export const scheduledJobsSearch = (resourceName, resourceId) =>
+  jobSearch(resourceName, resourceId, 'status = queued');
+export const previousJobsSearch = (resourceName, resourceId) =>
+  jobSearch(resourceName, resourceId, 'status != queued');
 
 const fetchJobsFn = searchFn => componentProps =>
   useQuery(jobsQuery, {
-    variables: { search: searchFn(componentProps.hostId) },
+    variables: {
+      search: searchFn(componentProps.resourceName, componentProps.resourceId),
+    },
   });
 
 export const fetchRecurringFn = fetchJobsFn(scheduledJobsSearch);

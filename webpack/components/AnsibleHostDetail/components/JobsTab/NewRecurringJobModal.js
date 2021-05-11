@@ -32,13 +32,13 @@ import createJobInvocation from '../../../../graphql/mutations/createJobInvocati
 import jobsQuery from '../../../../graphql/queries/recurringJobs.gql';
 
 const NewRecurringJobModal = props => {
-  const { onClose, hostId } = props;
+  const { onClose, resourceId, resourceName } = props;
 
   const [callMutation] = useMutation(createJobInvocation, {
     refetchQueries: [
       {
         query: jobsQuery,
-        variables: { search: scheduledJobsSearch(hostId) },
+        variables: { search: scheduledJobsSearch(resourceName, resourceId) },
       },
     ],
   });
@@ -46,7 +46,7 @@ const NewRecurringJobModal = props => {
   return (
     <Formik
       validationSchema={createValidationSchema()}
-      onSubmit={onSubmit(callMutation, onClose, hostId)}
+      onSubmit={onSubmit(callMutation, onClose, resourceName, resourceId)}
       initialValues={{
         startTime: '',
         startDate: '',
@@ -121,7 +121,8 @@ const NewRecurringJobModal = props => {
 
 NewRecurringJobModal.propTypes = {
   onClose: PropTypes.func.isRequired,
-  hostId: PropTypes.number.isRequired,
+  resourceId: PropTypes.number.isRequired,
+  resourceName: PropTypes.string.isRequired,
   isOpen: PropTypes.bool.isRequired,
 };
 

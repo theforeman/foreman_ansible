@@ -43,6 +43,7 @@ const withLoading = Component => {
     }
 
     const result = pluckData(data, resultPath);
+
     if (
       showEmptyState &&
       ((Array.isArray(result) && result.length === 0) || !result)
