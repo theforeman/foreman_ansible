@@ -5,4 +5,5 @@ export const SECONDARY_TABS = [
   { key: 'roles', title: __('Roles') },
   { key: 'variables', title: __('Variables') },
   { key: 'inventory', title: __('Inventory') },
+  { key: 'jobs', title: __('Jobs') },
 ];

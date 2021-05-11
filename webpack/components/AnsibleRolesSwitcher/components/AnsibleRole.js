@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ListView, Tooltip, OverlayTrigger } from 'patternfly-react';
 import classNames from 'classnames';
 import { translate as __ } from 'foremanReact/common/I18n';
@@ -81,4 +82,5 @@ AnsibleRole.defaultProps = {
     name: '',
   },
 };
+
 export default AnsibleRole;

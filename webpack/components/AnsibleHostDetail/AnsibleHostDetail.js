@@ -9,7 +9,7 @@ import './AnsibleHostDetail.scss';
 import { hashRoute } from './helpers';
 
 const AnsibleHostDetail = ({
-  response: { id },
+  response,
   status,
   location: { pathname },
 }) => (
@@ -26,7 +26,7 @@ const AnsibleHostDetail = ({
             />
           ))}
         </Tabs>
-        <SecondaryTabRoutes id={id} />
+        <SecondaryTabRoutes response={response} />
       </>
     )}
   </SkeletonLoader>
