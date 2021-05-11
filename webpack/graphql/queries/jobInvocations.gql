@@ -1,0 +1,17 @@
+query($search: String) {
+  jobInvocations(search: $search) {
+    nodes {
+      id
+      description
+      startAt
+      statusLabel
+      recurringLogic {
+        cronLine
+      }
+      task {
+        state
+        result
+      }
+    }
+  }
+}
