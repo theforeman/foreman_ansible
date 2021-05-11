@@ -94,17 +94,27 @@ export const intruder = userFactory('intruder', [
 export const mockFactory = (resultName, query) => (
   variables,
   modelResults,
-  { errors = [], currentUser = null } = {}
+  { errors = [], currentUser = null, refetchData = null } = {}
 ) => {
+  let called = false;
+
+  const returnData = results => ({
+    data: {
+      [resultName]: results,
+    },
+  });
+
   const mock = {
     request: {
       query,
       variables,
     },
-    result: {
-      data: {
-        [resultName]: modelResults,
-      },
+    newData: () => {
+      if (called && refetchData) {
+        return returnData(refetchData);
+      }
+      called = true;
+      return returnData(modelResults);
     },
   };
 
@@ -121,15 +131,21 @@ export const mockFactory = (resultName, query) => (
 export const advancedMockFactory = query => (
   variables,
   data,
-  { errors = [], currentUser = null } = {}
+  { errors = [], currentUser = null, refetchData = null } = {}
 ) => {
+  let called = false;
+
   const mock = {
     request: {
       query,
       variables,
     },
-    result: {
-      data,
+    newData: () => {
+      if (called && refetchData) {
+        return { data: refetchData };
+      }
+      called = true;
+      return { data };
     },
   };
 

@@ -33,7 +33,7 @@ const SecondaryTabRoutes = ({ response, router, history }) => (
     </Route>
     <Route path={route('jobs')}>
       <TabLayout>
-        <JobsTab response={response} router={router} />
+        <JobsTab response={response} />
       </TabLayout>
     </Route>
   </Switch>

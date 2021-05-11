@@ -31,11 +31,11 @@ const RolesTab = ({ hostId, history }) => {
       fetchFn={useFetchFn}
       resultPath="host.ownAnsibleRoles.nodes"
       renameData={renameData}
-      emptyStateTitle={__('No Ansible roles assigned')}
       hostId={hostId}
       history={history}
       hostGlobalId={hostGlobalId}
       pagination={pagination}
+      emptyStateProps={{ title: __('No Ansible roles assigned') }}
     />
   );
 };

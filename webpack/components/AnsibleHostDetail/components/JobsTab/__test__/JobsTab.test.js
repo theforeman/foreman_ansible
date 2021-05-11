@@ -1,31 +1,30 @@
 import React from 'react';
-
 import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
-import { MockedProvider } from '@apollo/react-testing';
-import { MemoryRouter } from 'react-router-dom';
 
 import { i18nProviderWrapperFactory } from 'foremanReact/common/i18nProviderWrapperFactory';
 
-import RecurringJobsTable from '../';
 import {
-  emptyScheduledMocks,
-  emptyPreviousMocks,
-  scheduledJobsMocks,
-  previousJobsMocks,
+  emptyMocks,
+  scheduledAndPreviousMocks,
+  createMocks,
   hostId,
+  futureDate,
 } from './JobsTab.fixtures';
+import JobsTab from '../';
+import * as toasts from '../../../../../toastHelper';
 
-const tick = () => new Promise(resolve => setTimeout(resolve, 0));
+import { toCron } from '../NewRecurringJobHelper';
 
-// eslint-disable-next-line react/prop-types
-const TestComponent = ({ mocks, ...rest }) => (
-  <MemoryRouter>
-    <MockedProvider mocks={mocks} addTypename={false}>
-      <RecurringJobsTable {...rest} />
-    </MockedProvider>
-  </MemoryRouter>
-);
+import {
+  tick,
+  withRouter,
+  withMockedProvider,
+  withRedux,
+} from '../../../../../testHelper';
+
+const TestComponent = withRedux(withRouter(withMockedProvider(JobsTab)));
 
 const now = new Date('2021-08-28 00:00:00 -1100');
 const ComponentWithIntl = i18nProviderWrapperFactory(now, 'UTC')(TestComponent);
@@ -36,7 +35,7 @@ describe('JobsTab', () => {
       <ComponentWithIntl
         response={{ id: hostId }}
         router={{ push: jest.fn() }}
-        mocks={scheduledJobsMocks.concat(previousJobsMocks)}
+        mocks={scheduledAndPreviousMocks}
       />
     );
     await waitFor(tick);
@@ -46,18 +45,15 @@ describe('JobsTab', () => {
       .map(element => expect(element).toBeInTheDocument());
     expect(screen.getByText('Scheduled recurring jobs')).toBeInTheDocument();
     expect(screen.getByText('Previously executed jobs')).toBeInTheDocument();
-    expect(screen.getByText('37 13 31 * *')).toBeInTheDocument();
+    expect(screen.getByText(toCron(futureDate, 'weekly'))).toBeInTheDocument();
     expect(screen.getByText('54 10 15 * *')).toBeInTheDocument();
-    expect(screen.getByText('30 * * * *')).toBeInTheDocument();
-    expect(screen.getByText('42 14 * * *')).toBeInTheDocument();
-    expect(screen.getByText('58 * * * *')).toBeInTheDocument();
   });
   it('should show empty state', async () => {
     render(
       <ComponentWithIntl
         response={{ id: hostId }}
         router={{ push: jest.fn() }}
-        mocks={emptyScheduledMocks.concat(emptyPreviousMocks)}
+        mocks={emptyMocks}
       />
     );
     await waitFor(tick);
@@ -68,5 +64,46 @@ describe('JobsTab', () => {
     expect(
       screen.getByText('No previous job executions found')
     ).toBeInTheDocument();
+  });
+  it('should create new recurring job', async () => {
+    const showToast = jest.fn();
+    jest.spyOn(toasts, 'showToast').mockImplementation(showToast);
+
+    render(<ComponentWithIntl response={{ id: hostId }} mocks={createMocks} />);
+    await waitFor(tick);
+    userEvent.click(
+      screen.getByRole('button', { name: 'schedule recurring job' })
+    );
+    await waitFor(tick);
+    userEvent.selectOptions(screen.getByLabelText(/repeat/), 'weekly');
+    userEvent.type(
+      screen.getByLabelText(/startTime/),
+      futureDate
+        .toISOString()
+        .split('T')[1]
+        .slice(0, 5)
+    );
+    userEvent.type(
+      screen.getByLabelText(/startDate/),
+      futureDate.toISOString().split('T')[0]
+    );
+    expect(
+      screen.getByRole('button', { name: 'submit creating job' })
+    ).not.toBeDisabled();
+    userEvent.click(
+      screen.getByRole('button', { name: 'submit creating job' })
+    );
+    await waitFor(tick);
+    await waitFor(tick);
+    await waitFor(tick);
+    expect(showToast).toHaveBeenCalledWith({
+      type: 'success',
+      message: 'Ansible job was successfully created.',
+    });
+    expect(screen.getByText(toCron(futureDate, 'weekly'))).toBeInTheDocument();
+    expect(screen.getByText('in 3 days')).toBeInTheDocument();
+    expect(
+      screen.queryByText('No config job for Ansible roles scheduled')
+    ).not.toBeInTheDocument();
   });
 });

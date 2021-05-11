@@ -51,7 +51,7 @@ describe('assigning Ansible roles', () => {
       type: 'success',
       message: 'Ansible Roles were successfully assigned.',
     });
-  });
+  }, 8000);
   it('should show errors', async () => {
     const showToast = jest.fn();
     jest.spyOn(toasts, 'showToast').mockImplementation(showToast);
@@ -79,5 +79,5 @@ describe('assigning Ansible roles', () => {
       message:
         'There was a following error when assigning Ansible Roles: is invalid',
     });
-  });
+  }, 8000);
 });

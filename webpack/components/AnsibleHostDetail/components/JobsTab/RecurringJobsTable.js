@@ -36,7 +36,9 @@ const RecurringJobsTable = props => {
               <Td>
                 <a
                   onClick={() =>
-                    props.router.push(`/job_invocations/${decodeId(job.id)}`)
+                    window.tfm.nav.pushUrl(
+                      `/job_invocations/${decodeId(job.id)}`
+                    )
                   }
                 >
                   {job.description}
@@ -56,7 +58,6 @@ const RecurringJobsTable = props => {
 
 RecurringJobsTable.propTypes = {
   jobs: PropTypes.array.isRequired,
-  router: PropTypes.object.isRequired,
 };
 
 export default withLoading(RecurringJobsTable);

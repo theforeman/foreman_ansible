@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { translate as __ } from 'foremanReact/common/I18n';
+import PropTypes from 'prop-types';
 
 import Skeleton from 'react-loading-skeleton';
 import EmptyState from 'foremanReact/components/common/EmptyState/EmptyStatePattern';
@@ -16,15 +16,20 @@ const pluckData = (data, path) => {
 };
 
 const withLoading = Component => {
+  const defaultEmptyStateProps = {
+    header: __('Nothing Found!'),
+    description: '',
+  };
+
   const Subcomponent = ({
     fetchFn,
     resultPath,
     renameData,
-    emptyStateTitle,
     showEmptyState,
     emptyWrapper,
     loadingWrapper,
     wrapper,
+    emptyStateProps,
     ...rest
   }) => {
     const { loading, error, data } = fetchFn(rest);
@@ -43,7 +48,7 @@ const withLoading = Component => {
       ((Array.isArray(result) && result.length === 0) || !result)
     ) {
       return emptyWrapper(
-        <EmptyState header={emptyStateTitle} description="" />
+        <EmptyState {...{ ...defaultEmptyStateProps, ...emptyStateProps }} />
       );
     }
 
@@ -54,19 +59,19 @@ const withLoading = Component => {
     fetchFn: PropTypes.func.isRequired,
     resultPath: PropTypes.string.isRequired,
     renameData: PropTypes.func,
-    emptyStateTitle: PropTypes.string,
     showEmptyState: PropTypes.bool,
     loadingWrapper: PropTypes.func,
     emptyWrapper: PropTypes.func,
+    emptyStateProps: PropTypes.object,
   };
 
   Subcomponent.defaultProps = {
     renameData: data => data,
-    emptyStateTitle: __('No results found'),
     showEmptyState: true,
     loadingWrapper: child => child,
     emptyWrapper: child => child,
     wrapper: child => child,
+    emptyStateProps: defaultEmptyStateProps,
   };
 
   return Subcomponent;

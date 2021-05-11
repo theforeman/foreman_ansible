@@ -1,0 +1,11 @@
+mutation CreateJobInvocation($jobInvocation: JobInvocationInput!) {
+  createJobInvocation(input: { jobInvocation: $jobInvocation }) {
+    jobInvocation {
+      id
+    }
+    errors {
+      path
+      message
+    }
+  }
+}
