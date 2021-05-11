@@ -6,9 +6,11 @@ query($search: String) {
       startAt
       statusLabel
       recurringLogic {
+        id
         cronLine
       }
       task {
+        id
         state
         result
       }

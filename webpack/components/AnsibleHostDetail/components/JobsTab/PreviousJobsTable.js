@@ -42,7 +42,9 @@ const PreviousJobsTable = props => {
               <Td>
                 <a
                   onClick={() =>
-                    props.router.push(`/job_invocations/${decodeId(job.id)}`)
+                    window.tfm.nav.pushUrl(
+                      `/job_invocations/${decodeId(job.id)}`
+                    )
                   }
                 >
                   {job.description}
@@ -64,7 +66,6 @@ const PreviousJobsTable = props => {
 
 PreviousJobsTable.propTypes = {
   jobs: PropTypes.array.isRequired,
-  router: PropTypes.object.isRequired,
 };
 
 export default withLoading(PreviousJobsTable);
