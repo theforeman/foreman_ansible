@@ -15,12 +15,20 @@ jobs:
         node-version: [10, 12]
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+        with:
+          repository: theforeman/foreman
+          ref: develop
+          path: foreman
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
       - name: Npm install
         run: npm install
+      - name: Npm install for core
+        run: npm install
+        working-directory: ./foreman
       - name: Run plugin linter
         run: npm run lint
       - name: Run plugin tests
