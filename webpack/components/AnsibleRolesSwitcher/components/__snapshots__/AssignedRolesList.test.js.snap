@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AssignedRolesList should render 1`] = `
-<DndProvider
+<Memo(DndProvider)
   backend={[Function]}
 >
   <ListView
     className=""
   >
-    <Component
+    <DropTarget(DragSource(Orderable(AnsibleRole)))
       icon="fa fa-minus-circle"
       index={0}
       key="1"
@@ -21,7 +21,7 @@ exports[`AssignedRolesList should render 1`] = `
         }
       }
     />
-    <Component
+    <DropTarget(DragSource(Orderable(AnsibleRole)))
       icon="fa fa-minus-circle"
       index={1}
       key="2"
@@ -60,5 +60,5 @@ exports[`AssignedRolesList should render 1`] = `
       }
     />
   </div>
-</DndProvider>
+</Memo(DndProvider)>
 `;

@@ -14,16 +14,18 @@
   },
   "devDependencies": {
     "@babel/core": "^7.7.0",
-    "@theforeman/builder": "^6.0.0",
-    "@theforeman/eslint-plugin-foreman": "6.0.0",
-    "@theforeman/test": "^6.0.0",
-    "@theforeman/vendor-dev": "^6.0.0",
+    "@theforeman/builder": "^8.4.1",
+    "@theforeman/eslint-plugin-foreman": "^8.4.1",
+    "@theforeman/find-foreman": "^8.4.1",
+    "@theforeman/stories": "^8.4.1",
+    "@theforeman/test": "^8.4.1",
+    "@theforeman/vendor-dev": "^8.4.1",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2",
     "prettier": "^1.13.5"
   },
   "scripts": {
-    "test": "tfm-test --plugin",
+    "test": "tfm-test --plugin --config jest.config.js",
     "lint": "tfm-lint --plugin -d webpack"
   },
   "repository": {

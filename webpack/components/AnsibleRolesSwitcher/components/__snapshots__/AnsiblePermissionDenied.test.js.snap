@@ -2,6 +2,7 @@
 
 exports[`AnsiblePermissionDenied should render 1`] = `
 <EmptyStatePattern
+  action={null}
   description={
     <span>
       You are not authorized to perform this action.
@@ -22,5 +23,6 @@ exports[`AnsiblePermissionDenied should render 1`] = `
   header="Permission Denied"
   icon="lock"
   iconType="fa"
+  secondaryActions={Array []}
 />
 `;
