@@ -66,7 +66,15 @@ module ForemanAnsibleCore
 
       def handle_host_event(hostname, event)
         log_event("for host: #{hostname.inspect}", event)
-        publish_data_for(hostname, event['stdout'] + "\n", 'stdout') if event['stdout']
+        if event['stdout']
+          if @outputs[hostname]
+            publish_data_for(hostname, event['stdout'] + "\n", 'stdout')
+          elsif hostname == 'localhost'
+            broadcast_data(event['stdout'] + "\n", 'stdout')
+          else
+            raise "handle_host_event: unknown host #{hostname}"
+          end
+        end
         case event['event']
         when 'runner_on_ok'
           publish_exit_status_for(hostname, 0) if @exit_statuses[hostname].nil?
