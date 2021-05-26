@@ -1,4 +1,5 @@
 require 'shellwords'
+require 'yaml'
 
 module ForemanAnsibleCore
   module Runner
@@ -14,12 +15,14 @@ module ForemanAnsibleCore
         @verbosity_level = action_input[:verbosity_level]
         @rex_command = action_input[:remote_execution_command]
         @check_mode = action_input[:check_mode]
+        @passphrase = action_input['secrets']['key_passphrase']
       end
 
       def start
         prepare_directory_structure
         write_inventory
         write_playbook
+        write_ssh_key if !@passphrase.nil? && !@passphrase.empty?
         start_ansible_runner
       end
 
@@ -106,6 +109,15 @@ module ForemanAnsibleCore
         File.write(File.join(@root, 'project', 'playbook.yml'), @playbook)
       end
 
+      def write_ssh_key
+        key_path = File.join(@root, 'env', 'ssh_key')
+        File.symlink(ForemanRemoteExecutionCore.settings[:ssh_identity_key_file], key_path)
+
+        passwords_path = File.join(@root, 'env', 'passwords')
+        secrets = YAML.dump({ "for.*/artifacts/.*/ssh_key_data:" => @passphrase })
+        File.write(passwords_path, secrets, perm: 0o600)
+      end
+
       def start_ansible_runner
         env = {}
         env['FOREMAN_CALLBACK_DISABLE'] = '1' if @rex_command
@@ -129,7 +141,7 @@ module ForemanAnsibleCore
       end
 
       def prepare_directory_structure
-        inner = %w[inventory project].map { |part| File.join(@root, part) }
+        inner = %w[inventory project env].map { |part| File.join(@root, part) }
         ([@root] + inner).each do |path|
           FileUtils.mkdir_p path
         end
