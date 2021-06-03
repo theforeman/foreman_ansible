@@ -18,8 +18,6 @@ Gem::Specification.new do |s|
             ['package.json']
   s.test_files = Dir['test/**/*']
 
-  # Kept as a dev dependency so tests can run together
-  s.add_development_dependency 'foreman_ansible_core', '~> 3.0'
   s.add_dependency 'acts_as_list', '~> 1.0.3'
   s.add_dependency 'deface', '< 2.0'
   s.add_dependency 'foreman_remote_execution', '>= 4.4.0'

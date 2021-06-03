@@ -4,7 +4,6 @@ require 'deface'
 require 'acts_as_list'
 require 'fast_gettext'
 require 'gettext_i18n_rails'
-require 'foreman_ansible_core' if Rails.env.test?
 require 'foreman_ansible/remote_execution'
 
 module ForemanAnsible

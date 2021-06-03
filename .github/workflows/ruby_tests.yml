@@ -50,7 +50,6 @@ jobs:
       - name: Setup Bundler
         run: |
           echo "gem 'foreman_ansible', path: './foreman_ansible'" > bundler.d/foreman_ansible.local.rb
-          echo "gem 'foreman_ansible_core', path: './foreman_ansible'" >> bundler.d/foreman_ansible.local.rb
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
