@@ -1,4 +1,5 @@
 require 'shellwords'
+require 'foreman_tasks_core/runner/command'
 
 module ForemanAnsibleCore
   module Runner
