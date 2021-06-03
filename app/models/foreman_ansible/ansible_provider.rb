@@ -64,7 +64,7 @@ if defined? ForemanRemoteExecution
         end
 
         def proxy_action_class
-          'ForemanAnsibleCore::TaskLauncher::Playbook::PlaybookRunnerAction'
+          'Proxy::Ansible::TaskLauncher::Playbook::PlaybookRunnerAction'
         end
 
         private
