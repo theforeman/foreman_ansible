@@ -11,7 +11,12 @@ const TestComponent = withRedux(withMockedProvider(AnsibleVariableOverrides));
 describe('AnsibleVariableOverrides', () => {
   it('should show skeleton when page is loading', () => {
     const { container } = render(
-      <TestComponent hostId={hostId} hostAttrs={hostAttrs} />
+      <TestComponent
+        hostId={hostId}
+        hostAttrs={hostAttrs}
+        mocks={mocks}
+        hostName="test.example.com"
+      />
     );
     expect(
       container.getElementsByClassName('react-loading-skeleton')
@@ -19,7 +24,12 @@ describe('AnsibleVariableOverrides', () => {
   });
   it('should load', async () => {
     render(
-      <TestComponent hostId={hostId} mocks={mocks} hostAttrs={hostAttrs} />
+      <TestComponent
+        hostId={hostId}
+        mocks={mocks}
+        hostAttrs={hostAttrs}
+        hostName="test.example.com"
+      />
     );
     await waitFor(tick);
     expect(screen.getByText('rectangle')).toBeInTheDocument();

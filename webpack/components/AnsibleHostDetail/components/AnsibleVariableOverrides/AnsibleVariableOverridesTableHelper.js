@@ -1,9 +1,7 @@
 import React from 'react';
 import { TimesIcon, CheckIcon } from '@patternfly/react-icons';
-import { useMutation } from '@apollo/client';
 import { sprintf, translate as __ } from 'foremanReact/common/I18n';
 
-import deleteAnsibleVariableOverride from '../../../../graphql/mutations/deleteAnsibleVariableOverride.gql';
 import { showToast } from '../../../../toastHelper';
 
 const formatSourceLink = currentValue =>
@@ -33,14 +31,18 @@ export const formatValue = variable => {
 
 const joinErrors = errors => errors.map(err => err.message).join(', ');
 
-const onCompleted = data => {
-  const { errors } = data.deleteAnsibleVariableOverride;
+export const onCompleted = onSubmitSuccess => response => {
+  const {
+    errors,
+    overridenAnsibleVariable,
+  } = response.data.deleteAnsibleVariableOverride;
   if (Array.isArray(errors) && errors.length > 0) {
     showToast({
       type: 'error',
       message: formatError(joinErrors(errors)),
     });
   } else {
+    onSubmitSuccess(overridenAnsibleVariable.currentValue.value);
     showToast({
       type: 'success',
       message: __('Ansible variable override was successfully deleted.'),
@@ -63,15 +65,9 @@ const formatError = error =>
     error
   );
 
-const onError = error => {
-  showToast({ type: 'error', message: formatError(error) });
+export const onError = response => {
+  showToast({ type: 'error', message: formatError(response.error) });
 };
-
-export const usePrepareMutation = () =>
-  useMutation(deleteAnsibleVariableOverride, {
-    onCompleted,
-    onError,
-  });
 
 const validationSuccess = { key: 'success', msg: '' };
 

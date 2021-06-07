@@ -2,10 +2,12 @@
 import variableOverridesQuery from '../../../../../graphql/queries/variableOverrides.gql';
 import deleteAnsibleVariableOverride from '../../../../../graphql/mutations/deleteAnsibleVariableOverride.gql';
 import updateAnsibleVariableOverride from '../../../../../graphql/mutations/updateAnsibleVariableOverride.gql';
+import createAnsibleVariableOverride from '../../../../../graphql/mutations/createAnsibleVariableOverride.gql';
 
 export const hostId = 3;
 const hostGlobalId = 'MDE6SG9zdC0z';
 const name = 'centos-random.example.com';
+const match = `fqdn=${name}`;
 
 export const hostAttrs = {
   name,
@@ -15,6 +17,9 @@ const overrideUpdateDeleteId = 'MDE6TG9va3VwVmFsdWUtODQ=';
 const ansibleVariableId = 'MDE6QW5zaWJsZVZhcmlhYmxlLTY2';
 const variableId = 66;
 
+const barVariableGlobalId = 'MDE6QW5zaWJsZVZhcmlhYmxlLTU3Mw==';
+const barVariableId = 573;
+
 export const mocks = [
   {
     request: {
@@ -22,7 +27,7 @@ export const mocks = [
       variables: {
         id: hostGlobalId,
         hostId,
-        match: `fqdn=${name}`,
+        match,
       },
     },
     result: {
@@ -53,7 +58,7 @@ export const mocks = [
                           {
                             __typename: 'LookupValue',
                             id: overrideUpdateDeleteId,
-                            match: 'fqdn=centos-random.example.com',
+                            match,
                             value: 21,
                             omit: false,
                           },
@@ -63,12 +68,12 @@ export const mocks = [
                         __typename: 'AnsibleVariableOverride',
                         value: 21,
                         element: 'fqdn',
-                        elementName: 'centos-random.example.com',
+                        elementName: name,
                       },
                     },
                     {
                       __typename: 'OverridenAnsibleVariable',
-                      id: 'MDE6QW5zaWJsZVZhcmlhYmxlLTU3Mw==',
+                      id: barVariableGlobalId,
                       key: 'bar',
                       defaultValue: 'a',
                       parameterType: 'string',
@@ -81,18 +86,13 @@ export const mocks = [
                           {
                             __typename: 'LookupValue',
                             id: 'MDE6TG9va3VwVmFsdWUtODE=',
-                            match: 'fqdn=centos-random.example.com',
+                            match,
                             value: 'b',
                             omit: false,
                           },
                         ],
                       },
-                      currentValue: {
-                        __typename: 'AnsibleVariableOverride',
-                        value: 'b',
-                        element: 'fqdn',
-                        elementName: 'centos-random.example.com',
-                      },
+                      currentValue: null,
                     },
                     {
                       __typename: 'OverridenAnsibleVariable',
@@ -244,6 +244,7 @@ const updateMockFactory = (variableValue, returnValue, errors = []) => {
           hostId,
           ansibleVariableId: variableId,
           value: variableValue,
+          match: `fqdn=${hostAttrs.name}`,
         },
       },
       result: {
@@ -252,6 +253,64 @@ const updateMockFactory = (variableValue, returnValue, errors = []) => {
             overridenAnsibleVariable: {
               __typename: 'OverridenAnsibleVariable',
               id: ansibleVariableId,
+              lookupValues: {
+                nodes: [
+                  {
+                    id: 'MDE6TG9va3VwVmFsdWUtOTY=',
+                    match: 'fqdn=centos-random.example.com',
+                    value: returnValue,
+                    omit: false,
+                  },
+                ],
+              },
+              currentValue: {
+                __typename: 'AnsibleVariableOverride',
+                element: 'fqdn',
+                elementName: 'centos-random.example.com',
+                value: returnValue,
+              },
+            },
+            errors,
+          },
+        },
+      },
+    },
+  ];
+
+  return mockArray;
+};
+
+const createMockFactory = (variableValue, returnValue, errors = []) => {
+  const variables = {
+    hostId,
+    lookupKeyId: barVariableId,
+    value: variableValue,
+    match: `fqdn=${hostAttrs.name}`,
+  };
+
+  const mockArray = [
+    {
+      request: {
+        query: createAnsibleVariableOverride,
+        variables,
+      },
+      result: {
+        data: {
+          createAnsibleVariableOverride: {
+            overridenAnsibleVariable: {
+              __typename: 'OverridenAnsibleVariable',
+              id: ansibleVariableId,
+              lookupValues: {
+                nodes: [
+                  {
+                    __typename: 'LookupValue',
+                    id: 'MDE6TG9va3VwVmFsdWUtOTY=',
+                    match: 'fqdn=centos-random.example.com',
+                    value: returnValue,
+                    omit: false,
+                  },
+                ],
+              },
               currentValue: {
                 __typename: 'AnsibleVariableOverride',
                 element: 'fqdn',
@@ -270,6 +329,7 @@ const updateMockFactory = (variableValue, returnValue, errors = []) => {
 };
 
 export const updateMocks = updateMockFactory('2177', 2177);
+export const createMocks = createMockFactory('b', 'b');
 export const updateErrorMocks = updateMockFactory('2177', 21, [
   {
     path: ['base'],

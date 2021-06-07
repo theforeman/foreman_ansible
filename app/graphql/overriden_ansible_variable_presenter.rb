@@ -4,7 +4,7 @@ class OverridenAnsibleVariablePresenter
   delegate :id, :key, :description, :override?,
            :parameter_type, :hidden_value?, :omit, :required,
            :validator_type, :validator_rule, :default_value,
-           :ansible_role, :to => :ansible_variable
+           :ansible_role, :current_value, :to => :ansible_variable
 
   def initialize(ansible_variable, override_resolver)
     @ansible_variable = ansible_variable

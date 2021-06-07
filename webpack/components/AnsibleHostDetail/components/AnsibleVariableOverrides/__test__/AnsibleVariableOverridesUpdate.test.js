@@ -7,13 +7,14 @@ import { withRedux, withMockedProvider, tick } from '../../../../../testHelper';
 import {
   mocks,
   updateMocks,
+  createMocks,
   updateErrorMocks,
   updateValidationMocks,
   hostId,
   hostAttrs,
 } from './AnsibleVariableOverrides.fixtures';
 
-import * as toasts from '../ToastHelper';
+import * as toasts from '../../../../../toastHelper';
 
 import AnsibleVariableOverrides from '../';
 
@@ -22,7 +23,7 @@ const TestComponent = withRedux(withMockedProvider(AnsibleVariableOverrides));
 describe('AnsibleVariableOverrides', () => {
   it('edit existing override', async () => {
     const showToast = jest.fn();
-    jest.spyOn(toasts, 'dispatchToast').mockImplementation(() => showToast);
+    jest.spyOn(toasts, 'showToast').mockImplementation(showToast);
 
     render(
       <TestComponent
@@ -31,6 +32,7 @@ describe('AnsibleVariableOverrides', () => {
         hostAttrs={hostAttrs}
       />
     );
+
     await waitFor(tick);
     expect(screen.getByText('21')).toBeInTheDocument();
     userEvent.click(
@@ -48,20 +50,21 @@ describe('AnsibleVariableOverrides', () => {
     await waitFor(tick);
     expect(showToast).toHaveBeenCalledWith({
       type: 'success',
-      message: 'Ansible variable override successfully updated.',
+      message: 'Ansible variable override successfully changed.',
     });
     expect(screen.queryByText('21')).not.toBeInTheDocument();
     expect(screen.getByText('2177')).toBeInTheDocument();
   });
   it('should show unexpected errors', async () => {
     const showToast = jest.fn();
-    jest.spyOn(toasts, 'dispatchToast').mockImplementation(() => showToast);
+    jest.spyOn(toasts, 'showToast').mockImplementation(showToast);
 
     render(
       <TestComponent
         mocks={mocks.concat(updateErrorMocks)}
         hostId={hostId}
         hostAttrs={hostAttrs}
+        hostName={hostAttrs.name}
       />
     );
     await waitFor(tick);
@@ -81,7 +84,7 @@ describe('AnsibleVariableOverrides', () => {
     expect(showToast).toHaveBeenCalledWith({
       type: 'error',
       message:
-        'There was a following error when updating Ansible variable override: Not enough minerals',
+        'There was a following error when changing Ansible variable override: Not enough minerals',
     });
     expect(
       screen.getByRole('textbox', { name: 'Edit override field' })
@@ -95,7 +98,12 @@ describe('AnsibleVariableOverrides', () => {
   });
   it('should show client validations', async () => {
     render(
-      <TestComponent mocks={mocks} hostId={hostId} hostAttrs={hostAttrs} />
+      <TestComponent
+        mocks={mocks}
+        hostId={hostId}
+        hostAttrs={hostAttrs}
+        hostName={hostAttrs.name}
+      />
     );
     await waitFor(tick);
     userEvent.click(
@@ -123,6 +131,7 @@ describe('AnsibleVariableOverrides', () => {
         mocks={mocks.concat(updateValidationMocks)}
         hostId={hostId}
         hostAttrs={hostAttrs}
+        hostName={hostAttrs.name}
       />
     );
     await waitFor(tick);
@@ -139,5 +148,34 @@ describe('AnsibleVariableOverrides', () => {
     );
     await waitFor(tick);
     expect(screen.getByText('is invalid integer')).toBeInTheDocument();
+  });
+  it('should create new override', async () => {
+    const showToast = jest.fn();
+    jest.spyOn(toasts, 'showToast').mockImplementation(showToast);
+
+    render(
+      <TestComponent
+        mocks={mocks.concat(createMocks)}
+        hostId={hostId}
+        hostAttrs={hostAttrs}
+      />
+    );
+    await waitFor(tick);
+    userEvent.click(
+      screen.getAllByRole('button', { name: 'Edit override button' })[1]
+    );
+    const input = screen.getByRole('textbox', { name: 'Edit override field' });
+    userEvent.clear(input);
+    userEvent.type(input, 'b');
+    userEvent.click(
+      screen.getAllByRole('button', {
+        name: 'Submit editing override button',
+      })[1]
+    );
+    await waitFor(tick);
+    expect(showToast).toHaveBeenCalledWith({
+      type: 'success',
+      message: 'Ansible variable override successfully changed.',
+    });
   });
 });

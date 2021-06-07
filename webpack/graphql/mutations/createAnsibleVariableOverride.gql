@@ -1,10 +1,9 @@
-mutation UpdateAnsibleVariableOverride(
-  $id: ID!,
+mutation CreateAnsibleVariableOverride(
   $hostId: Int!,
-  $ansibleVariableId: Int!,
-  $value: RawJson!
+  $value: RawJson!,
+  $lookupKeyId: Int!,
   $match: String!) {
-  updateAnsibleVariableOverride(input: { id: $id, hostId: $hostId, value: $value, ansibleVariableId: $ansibleVariableId }) {
+  createAnsibleVariableOverride(input: { hostId: $hostId, lookupKeyId: $lookupKeyId, value: $value, match: $match }) {
     overridenAnsibleVariable {
       id
       lookupValues(match: $match) {
