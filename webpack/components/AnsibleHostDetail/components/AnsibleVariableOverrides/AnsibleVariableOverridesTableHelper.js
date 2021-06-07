@@ -72,3 +72,56 @@ export const usePrepareMutation = () =>
     onCompleted,
     onError,
   });
+
+const validationSuccess = { key: 'success', msg: '' };
+
+const validateRegexp = (variable, value) => {
+  if (new RegExp(variable.validatorRule).test(value)) {
+    return validationSuccess;
+  }
+  return {
+    key: 'error',
+    msg: sprintf(
+      __('Invalid, expected to match a regex: %s'),
+      variable.validatorRule
+    ),
+  };
+};
+
+const validateList = (variable, value) => {
+  if (variable.validatorRule.split(',').find(item => item.trim() === value)) {
+    return validationSuccess;
+  }
+  return {
+    key: 'error',
+    msg: sprintf(__('Invalid, expected one of: %s'), variable.validatorRule),
+  };
+};
+
+export const validate = (variable, value) => {
+  if (variable.required && !value) {
+    return { key: 'error', msg: __('is required') };
+  }
+
+  if (variable.validatorType === 'regexp') {
+    return validateRegexp(variable, value);
+  }
+
+  if (variable.validatorType === 'list') {
+    return validateList(variable, value);
+  }
+
+  return { key: 'noval', msg: '' };
+};
+
+export const changeWorking = item => ({ ...item, working: !item.working });
+export const changeOpen = item => ({ ...item, open: !item.open });
+export const changeValue = (variable, value) => item => ({
+  ...item,
+  value,
+  validation: validate(variable, value),
+});
+export const setValidationError = error => item => ({
+  ...item,
+  validation: { key: 'error', msg: error },
+});

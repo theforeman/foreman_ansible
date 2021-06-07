@@ -4,18 +4,14 @@ import '@testing-library/jest-dom';
 
 import AnsibleVariableOverrides from '../';
 import { mocks, hostId, hostAttrs } from './AnsibleVariableOverrides.fixtures';
-import { withRedux, withMockedProvider, tick } from '../../../../../testHelper';
+import { withMockedProvider, withRedux, tick } from '../../../../../testHelper';
 
 const TestComponent = withRedux(withMockedProvider(AnsibleVariableOverrides));
 
 describe('AnsibleVariableOverrides', () => {
   it('should show skeleton when page is loading', () => {
     const { container } = render(
-      <TestComponent
-        showToast={jest.fn()}
-        hostId={hostId}
-        hostAttrs={hostAttrs}
-      />
+      <TestComponent hostId={hostId} hostAttrs={hostAttrs} />
     );
     expect(
       container.getElementsByClassName('react-loading-skeleton')
@@ -23,12 +19,7 @@ describe('AnsibleVariableOverrides', () => {
   });
   it('should load', async () => {
     render(
-      <TestComponent
-        showToast={jest.fn()}
-        hostId={hostId}
-        mocks={mocks}
-        hostAttrs={hostAttrs}
-      />
+      <TestComponent hostId={hostId} mocks={mocks} hostAttrs={hostAttrs} />
     );
     await waitFor(tick);
     expect(screen.getByText('rectangle')).toBeInTheDocument();

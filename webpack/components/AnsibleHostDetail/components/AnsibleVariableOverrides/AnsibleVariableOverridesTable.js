@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
@@ -13,16 +13,25 @@ import {
   Td,
 } from '@patternfly/react-table';
 
+import EditableAction from './EditableAction';
+import EditableValue from './EditableValue';
+import { decodeModelId } from '../../../../globalIdHelper';
 import {
-  formatValue,
   formatSourceAttr,
   usePrepareMutation,
   findOverride,
+  changeOpen,
+  changeWorking,
+  changeValue,
+  setValidationError,
 } from './AnsibleVariableOverridesTableHelper';
 
-import { decodeModelId } from '../../../../globalIdHelper';
-
-const AnsibleVariableOverridesTable = ({ variables, hostAttrs, hostId }) => {
+const AnsibleVariableOverridesTable = ({
+  variables,
+  hostAttrs,
+  hostId,
+  hostGlobalId,
+}) => {
   const columns = [
     __('Name'),
     __('Ansible Role'),
@@ -67,31 +76,95 @@ const AnsibleVariableOverridesTable = ({ variables, hostAttrs, hostId }) => {
     return actions;
   };
 
+  const [editableState, setEditableState] = useState(
+    variables.map((variable, idx) => ({
+      open: false,
+      value: variable.currentValue
+        ? variable.currentValue.value
+        : variable.defaultValue,
+      validation: { key: 'noval', msg: '' },
+      working: false,
+    }))
+  );
+
+  const updateState = idx => (...updaters) => {
+    setEditableState(
+      editableState.map((item, index) => {
+        if (idx === index) {
+          return updaters.reduce((memo, updater) => updater(memo), item);
+        }
+        return item;
+      })
+    );
+  };
+
+  const toggleWorking = idx => label => {
+    updateState(idx)(changeWorking);
+  };
+
+  const toggleEditable = idx => () => {
+    updateState(idx)(changeOpen);
+  };
+
+  const onValueChange = (idx, variable) => value => {
+    updateState(idx)(changeValue(variable, value));
+  };
+
+  const onSubmitSuccess = idx => () => {
+    updateState(idx)(changeOpen, changeWorking);
+  };
+
+  const onValidationError = idx => error => {
+    updateState(idx)(setValidationError(error), changeWorking);
+  };
+
   return (
-    <React.Fragment>
-      <TableComposable variant="compact" className="ansible-tab-margin">
-        <Thead>
-          <Tr>
-            {columns.map(col => (
-              <Th key={col}>{col}</Th>
-            ))}
-            <Th />
-          </Tr>
-        </Thead>
-        <Tbody>
-          {variables.map(variable => (
-            <Tr key={variable.key}>
-              <Td>{variable.key}</Td>
-              <Td>{variable.ansibleRoleName}</Td>
-              <Td>{variable.parameterType}</Td>
-              <Td>{formatValue(variable)}</Td>
-              <Td>{formatSourceAttr(variable)}</Td>
-              <Td actions={{ items: actionsResolver(variable) }} />
-            </Tr>
+    <TableComposable variant="compact">
+      <Thead>
+        <Tr>
+          {columns.map(col => (
+            <Th key={col}>{col}</Th>
           ))}
-        </Tbody>
-      </TableComposable>
-    </React.Fragment>
+          <Th />
+        </Tr>
+      </Thead>
+      <Tbody>
+        {variables.map((variable, idx) => (
+          <Tr key={idx}>
+            <Td>{variable.key}</Td>
+            <Td>{variable.ansibleRoleName}</Td>
+            <Td>{variable.parameterType}</Td>
+            <Td>
+              <EditableValue
+                variable={variable}
+                editing={editableState[idx].open}
+                onChange={onValueChange(idx, variable)}
+                value={editableState[idx].value}
+                validation={editableState[idx].validation}
+                working={editableState[idx].working}
+              />
+            </Td>
+            <Td>{formatSourceAttr(variable)}</Td>
+            <Td>
+              <EditableAction
+                open={editableState[idx].open}
+                onClose={toggleEditable(idx)}
+                onOpen={toggleEditable(idx)}
+                toggleWorking={toggleWorking(idx)}
+                idx={idx}
+                variable={variable}
+                state={editableState[idx]}
+                hostId={hostId}
+                hostGlobalId={hostGlobalId}
+                onSubmitSuccess={onSubmitSuccess(idx)}
+                onValidationError={onValidationError(idx)}
+              />
+            </Td>
+            <Td actions={{ items: actionsResolver(variable) }} />
+          </Tr>
+        ))}
+      </Tbody>
+    </TableComposable>
   );
 };
 
@@ -99,6 +172,7 @@ AnsibleVariableOverridesTable.propTypes = {
   variables: PropTypes.array.isRequired,
   hostAttrs: PropTypes.object.isRequired,
   hostId: PropTypes.number.isRequired,
+  hostGlobalId: PropTypes.string.isRequired,
 };
 
 export default AnsibleVariableOverridesTable;

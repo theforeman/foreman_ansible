@@ -9,6 +9,9 @@ query($id: String!, $hostId: Int!, $match: String) {
             defaultValue
             parameterType
             ansibleRoleName
+            validatorType
+            validatorRule
+            required
             lookupValues(match: $match) {
               nodes {
                 id
