@@ -6,128 +6,130 @@ import classNames from 'classnames';
 import { Button, Spinner } from '@patternfly/react-core';
 import { TimesIcon, CheckIcon, PencilAltIcon } from '@patternfly/react-icons';
 
-import { useDispatch } from 'react-redux';
-import { translate as __ } from 'foremanReact/common/I18n';
-
 import './EditableAction.scss';
 
 import { decodeModelId } from '../../../../globalIdHelper';
-import { dispatchToast } from './ToastHelper';
 import updateAnsibleVariableOverrideMutation from '../../../../graphql/mutations/updateAnsibleVariableOverride.gql';
-import { formatError, joinErrors } from './EditableActionHelper';
+import createAnsibleVariableOverrideMutation from '../../../../graphql/mutations/createAnsibleVariableOverride.gql';
+import {
+  onCompleted,
+  onError,
+  hasError,
+  createMatcher,
+} from './EditableActionHelper';
 
-const EditableAction = props => {
-  const dispatch = useDispatch();
-  const showToast = dispatchToast(dispatch);
-
+const EditableAction = ({
+  onValidationError,
+  toggleWorking,
+  onSubmitSuccess,
+  open,
+  onClose,
+  onOpen,
+  state,
+  variable,
+  hostId,
+  hostName,
+}) => {
   const [callUpdateMutation] = useMutation(
     updateAnsibleVariableOverrideMutation,
     {
-      onCompleted: data => {
-        const { errors } = data.updateAnsibleVariableOverride;
-        if (Array.isArray(errors) && errors.length > 0) {
-          if (
-            errors.length === 1 &&
-            errors[0].path.join(' ') === 'attributes value'
-          ) {
-            props.onValidationError(errors[0].message);
-          } else {
-            props.toggleWorking();
-            showToast({
-              type: 'error',
-              message: formatError(joinErrors(errors)),
-            });
-          }
-        } else {
-          props.onSubmitSuccess();
-          showToast({
-            type: 'success',
-            message: __('Ansible variable override successfully updated.'),
-          });
-        }
-      },
-      onError: error => {
-        props.toggleWorking();
-        showToast({ type: 'error', message: formatError(error.message) });
-      },
+      onCompleted: onCompleted(
+        'updateAnsibleVariableOverride',
+        onValidationError,
+        toggleWorking,
+        onSubmitSuccess
+      ),
+      onError: onError(toggleWorking),
     }
   );
 
-  const onSubmit = (idx, variable, state, hostId) => event => {
-    if (variable.currentValue.element === 'fqdn') {
-      updateOverride(variable, idx, state, hostId);
+  const [callCreateMutation] = useMutation(
+    createAnsibleVariableOverrideMutation,
+    {
+      onCompleted: onCompleted(
+        'createAnsibleVariableOverride',
+        onValidationError,
+        toggleWorking,
+        onSubmitSuccess
+      ),
+      onError: onError(toggleWorking),
     }
+  );
+
+  const onSubmit = event => {
+    if (!variable.currentValue || variable.currentValue.element !== 'fqdn') {
+      return createOverride();
+    }
+    return updateOverride();
   };
 
-  const updateOverride = (variable, idx, state, hostId) => {
-    const matcher = `fqdn=${variable.currentValue.elementName}`;
+  const updateOverride = () => {
+    const match = createMatcher(variable.currentValue.elementName);
     const lookupValue = variable.lookupValues.nodes.find(
-      item => item.match === matcher
+      item => item.match === match
     );
-    props.toggleWorking();
+    toggleWorking();
     callUpdateMutation({
       variables: {
         id: lookupValue.id,
         value: state.value,
         hostId,
         ansibleVariableId: decodeModelId(variable),
+        match,
       },
     });
   };
 
-  const hasError = state => state.validation.key === 'error';
-
-  if (
-    !(
-      props.variable.currentValue &&
-      props.variable.currentValue.element === 'fqdn'
-    )
-  ) {
-    return null;
-  }
+  const createOverride = () => {
+    const match = createMatcher(hostName);
+    toggleWorking();
+    callCreateMutation({
+      variables: {
+        hostId,
+        lookupKeyId: decodeModelId(variable),
+        value: state.value,
+        match,
+      },
+    });
+  };
 
   return (
     <React.Fragment>
       <div>
         <div
           className={classNames({
-            hideElement: !props.open,
+            hideElement: !open,
             editableActionItem: true,
           })}
         >
           <Button
             variant="plain"
-            onClick={props.onClose}
-            isDisabled={props.state.working}
+            onClick={onClose}
+            isDisabled={state.working}
             aria-label="Cancel editing override button"
           >
             <TimesIcon />
           </Button>
           <Button
             variant="plain"
-            onClick={onSubmit(
-              props.idx,
-              props.variable,
-              props.state,
-              props.hostId
-            )}
-            isDisabled={props.state.working || hasError(props.state)}
+            onClick={onSubmit}
+            isDisabled={state.working || hasError(state)}
             aria-label="Submit editing override button"
           >
             <CheckIcon />
           </Button>
-          <span className={!props.state.working ? 'hideElement' : ''}>
+          <span className={!state.working ? 'hideElement' : ''}>
             <Spinner size="md" />
           </span>
         </div>
         <div
           className={classNames({
-            hideElement: props.open,
+            hideElement: open,
             editableActionItem: true,
           })}
         >
           <Button
-            onClick={props.onOpen}
+            onClick={onOpen}
             variant="plain"
             aria-label="Edit override button"
           >
@@ -148,8 +150,8 @@ EditableAction.propTypes = {
   variable: PropTypes.object.isRequired,
   state: PropTypes.object.isRequired,
   open: PropTypes.bool.isRequired,
-  idx: PropTypes.number.isRequired,
   hostId: PropTypes.number.isRequired,
+  hostName: PropTypes.string.isRequired,
 };
 
 export default EditableAction;

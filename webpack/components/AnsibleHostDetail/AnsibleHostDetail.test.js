@@ -8,7 +8,7 @@ describe('AnsibleHostDetail', () => {
     const { container } = render(
       <AnsibleHostDetail
         status="PENDING"
-        response={{ id: 5 }}
+        response={{ id: 5, name: 'test.example.com' }}
         router={{}}
         history={{}}
       />

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { useMutation } from '@apollo/client';
 
 import { sprintf, translate as __ } from 'foremanReact/common/I18n';
 import { openConfirmModal } from 'foremanReact/components/ConfirmModal';
@@ -13,17 +14,19 @@ import {
   Td,
 } from '@patternfly/react-table';
 
+import deleteAnsibleVariableOverride from '../../../../graphql/mutations/deleteAnsibleVariableOverride.gql';
 import EditableAction from './EditableAction';
 import EditableValue from './EditableValue';
 import { decodeModelId } from '../../../../globalIdHelper';
 import {
   formatSourceAttr,
-  usePrepareMutation,
   findOverride,
   changeOpen,
   changeWorking,
   changeValue,
   setValidationError,
+  onCompleted,
+  onError,
 } from './AnsibleVariableOverridesTableHelper';
 
 const AnsibleVariableOverridesTable = ({
@@ -39,42 +42,6 @@ const AnsibleVariableOverridesTable = ({
     __('Value'),
     __('Source attribute'),
   ];
-
-  const dispatch = useDispatch();
-  const [callMutation] = usePrepareMutation();
-
-  const deleteAction = variable => ({
-    title: __('Delete'),
-    onClick: () => {
-      dispatch(
-        openConfirmModal({
-          title: __('Delete Ansible Variable Override'),
-          message:
-            variable &&
-            sprintf(
-              __('Are you sure you want to delete override for %s?'),
-              variable.key
-            ),
-          onConfirm: () =>
-            callMutation({
-              variables: {
-                id: findOverride(variable, hostAttrs.name).id,
-                hostId,
-                variableId: decodeModelId(variable),
-              },
-            }),
-        })
-      );
-    },
-  });
-
-  const actionsResolver = variable => {
-    const actions = [];
-    if (variable.currentValue?.element === 'fqdn') {
-      actions.push(deleteAction(variable));
-    }
-    return actions;
-  };
 
   const [editableState, setEditableState] = useState(
     variables.map((variable, idx) => ({
@@ -110,12 +77,53 @@ const AnsibleVariableOverridesTable = ({
     updateState(idx)(changeValue(variable, value));
   };
 
-  const onSubmitSuccess = idx => () => {
-    updateState(idx)(changeOpen, changeWorking);
+  const onSubmitSuccess = (idx, variable) => newValue => {
+    updateState(idx)(
+      changeOpen,
+      changeWorking,
+      changeValue(variable, newValue)
+    );
   };
 
   const onValidationError = idx => error => {
     updateState(idx)(setValidationError(error), changeWorking);
+  };
+
+  const dispatch = useDispatch();
+  const [callMutation] = useMutation(deleteAnsibleVariableOverride);
+
+  const deleteAction = (variable, idx) => ({
+    title: __('Delete'),
+    onClick: () => {
+      dispatch(
+        openConfirmModal({
+          title: __('Delete Ansible Variable Override'),
+          message:
+            variable &&
+            sprintf(
+              __('Are you sure you want to delete override for %s?'),
+              variable.key
+            ),
+          onConfirm: () => {
+            callMutation({
+              variables: {
+                id: findOverride(variable, hostAttrs.name).id,
+                hostId,
+                variableId: decodeModelId(variable),
+              },
+            }).then(onCompleted(onValueChange(idx, variable)), onError); // eslint-disable-line
+          },
+        })
+      );
+    },
+  });
+
+  const actionsResolver = (variable, idx) => {
+    const actions = [];
+    if (variable.currentValue?.element === 'fqdn') {
+      actions.push(deleteAction(variable, idx));
+    }
+    return actions;
   };
 
   return (
@@ -151,16 +159,16 @@ const AnsibleVariableOverridesTable = ({
                 onClose={toggleEditable(idx)}
                 onOpen={toggleEditable(idx)}
                 toggleWorking={toggleWorking(idx)}
-                idx={idx}
                 variable={variable}
                 state={editableState[idx]}
                 hostId={hostId}
+                hostName={hostAttrs.name}
                 hostGlobalId={hostGlobalId}
-                onSubmitSuccess={onSubmitSuccess(idx)}
+                onSubmitSuccess={onSubmitSuccess(idx, variable)}
                 onValidationError={onValidationError(idx)}
               />
             </Td>
-            <Td actions={{ items: actionsResolver(variable) }} />
+            <Td actions={{ items: actionsResolver(variable, idx) }} />
           </Tr>
         ))}
       </Tbody>
