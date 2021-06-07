@@ -11,12 +11,10 @@ import { extractVariables } from './AnsibleVariableOverridesHelper';
 import './AnsibleVariableOverrides.scss';
 
 const AnsibleVariableOverrides = ({ hostId, hostAttrs }) => {
+  const hostGlobalId = encodeId('Host', hostId);
+
   const { loading, data, error } = useQuery(variableOverrides, {
-    variables: {
-      hostId,
-      id: encodeId('Host', hostId),
-      match: `fqdn=${hostAttrs.name}`,
-    },
+    variables: { hostId, id: hostGlobalId, match: `fqdn=${hostAttrs.name}` },
   });
 
   if (loading) {
@@ -32,6 +30,7 @@ const AnsibleVariableOverrides = ({ hostId, hostAttrs }) => {
       variables={extractVariables(data.host.allAnsibleRoles.nodes)}
       hostId={hostId}
       hostAttrs={hostAttrs}
+      hostGlobalId={hostGlobalId}
     />
   );
 };

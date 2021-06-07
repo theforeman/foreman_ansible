@@ -186,6 +186,7 @@ Foreman::Plugin.register :foreman_ansible do
   register_graphql_query_field :ansible_roles, '::Types::AnsibleRole', :collection_field
   register_graphql_mutation_field :assign_ansible_roles, '::Mutations::Hosts::AssignAnsibleRoles'
   register_graphql_mutation_field :delete_ansible_variable_override, ::Mutations::AnsibleVariableOverrides::Delete
+  register_graphql_mutation_field :update_ansible_variable_override, ::Mutations::AnsibleVariableOverrides::Update
 
   divider :top_menu, :caption => N_('Ansible'), :parent => :configure_menu
   menu :top_menu, :ansible_roles,

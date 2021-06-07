@@ -8,7 +8,7 @@ module ForemanAnsible
       @ansible_variables = if variable_ids.empty?
                              AnsibleVariable.where(:ansible_role_id => host.all_ansible_roles, :override => true)
                            else
-                             AnsibleVariable.where(:ansible_role_id => variable_ids, :override => true)
+                             AnsibleVariable.where(:id => variable_ids, :override => true)
                            end
       @overrides = @ansible_variables.values_hash(host).raw
     end

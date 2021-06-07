@@ -8,7 +8,9 @@ module Types
       argument :match, String, required: false
     end
 
-    def lookup_values(match:)
+    def lookup_values(match: nil)
+      return CollectionLoader.for(object.ansible_variable.class, :lookup_values).load(object.ansible_variable) unless match
+
       scope = lambda do |sc|
         sc.where(:match => match)
       end

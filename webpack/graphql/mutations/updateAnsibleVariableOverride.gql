@@ -1,0 +1,20 @@
+mutation UpdateAnsibleVariableOverride(
+  $id: ID!,
+  $hostId: Int!,
+  $ansibleVariableId: Int!,
+  $value: RawJson!) {
+  updateAnsibleVariableOverride(input: { id: $id, hostId: $hostId, value: $value, ansibleVariableId: $ansibleVariableId }) {
+    overridenAnsibleVariable {
+      id
+      currentValue {
+        element
+        value
+        elementName
+      }
+    }
+    errors {
+      path
+      message
+    }
+  }
+}
