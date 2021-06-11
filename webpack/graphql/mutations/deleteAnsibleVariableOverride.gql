@@ -1,0 +1,17 @@
+mutation DeleteAnsibleVariableOverride($id: ID!, $hostId: Int!, $variableId: Int!) {
+  deleteAnsibleVariableOverride(input: { id: $id, hostId: $hostId, variableId: $variableId }) {
+    id
+    overridenAnsibleVariable {
+      id
+      currentValue {
+        value
+        element
+        elementName
+      }
+    }
+    errors {
+      path
+      message
+    }
+  }
+}

@@ -1,6 +1,9 @@
 import React from 'react';
 import { TimesIcon, CheckIcon } from '@patternfly/react-icons';
-import { translate as __ } from 'foremanReact/common/I18n';
+import { useMutation } from '@apollo/client';
+import { sprintf, translate as __ } from 'foremanReact/common/I18n';
+
+import deleteAnsibleVariableOverride from '../../../../graphql/mutations/deleteAnsibleVariableOverride.gql';
 
 const formatSourceLink = currentValue =>
   `${__(currentValue.element)}: ${currentValue.elementName}`;
@@ -25,4 +28,51 @@ export const formatValue = variable => {
     default:
       return value;
   }
+};
+
+const joinErrors = errors => errors.map(err => err.message).join(', ');
+
+const onCompleted = (toggleModal, showToast) => data => {
+  toggleModal();
+  const { errors } = data.deleteAnsibleVariableOverride;
+  if (Array.isArray(errors) && errors.lenght > 0) {
+    showToast({
+      type: 'error',
+      message: formatError(joinErrors(errors)),
+    });
+  } else {
+    showToast({
+      type: 'success',
+      message: __('Ansible variable override was successfully deleted.'),
+    });
+  }
+};
+
+export const findOverride = (variable, hostname) =>
+  variable.lookupValues.nodes.find(
+    item =>
+      item.value === variable.currentValue.value &&
+      item.match === `fqdn=${hostname}`
+  );
+
+const formatError = error =>
+  sprintf(
+    __(
+      'There was a following error when deleting Ansible variable override: %s'
+    ),
+    error
+  );
+
+const onError = showToast => error => {
+  showToast({ type: 'error', message: formatError(error) });
+};
+
+export const prepareMutation = (toggleModal, showToast) => () =>
+  useMutation(deleteAnsibleVariableOverride, {
+    onCompleted: onCompleted(toggleModal, showToast),
+    onError: onError(showToast),
+  });
+
+export const submitDelete = (hostId, variableId) => (mutation, id) => {
+  mutation({ variables: { id, hostId, variableId } });
 };

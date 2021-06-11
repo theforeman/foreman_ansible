@@ -1,37 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Skeleton from 'react-loading-skeleton';
+import { useDispatch } from 'react-redux';
+import { addToast } from 'foremanReact/redux/actions/toasts';
+import AnsibleVariableOverrides from './AnsibleVariableOverrides';
 
-import { useQuery } from '@apollo/client';
-import variableOverrides from '../../../../graphql/queries/variableOverrides.gql';
-import AnsibleVariableOverridesTable from './AnsibleVariableOverridesTable';
+const WrappedAnsibleVariableOverrides = props => {
+  const dispatch = useDispatch();
+  const showToast = toast => dispatch(addToast(toast));
 
-import { encodeId } from '../../../../globalIdHelper';
-import { extractVariables } from './AnsibleVariableOverridesHelper';
-import './AnsibleVariableOverrides.scss';
-
-const AnsibleVariableOverrides = ({ id }) => {
-  const { loading, data, error } = useQuery(variableOverrides, {
-    variables: { hostId: id, id: encodeId('Host', id) },
-  });
-
-  if (loading) {
-    return <Skeleton count={5} />;
-  }
-
-  if (error) {
-    return <div>{error.message}</div>;
-  }
-
-  return (
-    <AnsibleVariableOverridesTable
-      variables={extractVariables(data.host.allAnsibleRoles.nodes)}
-    />
-  );
+  return <AnsibleVariableOverrides showToast={showToast} {...props} />;
 };
 
-AnsibleVariableOverrides.propTypes = {
-  id: PropTypes.number.isRequired,
-};
-
-export default AnsibleVariableOverrides;
+export default WrappedAnsibleVariableOverrides;

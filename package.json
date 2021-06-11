@@ -14,6 +14,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.7.0",
+    "@testing-library/user-event": "^13.2.1",
     "@theforeman/builder": "^8.4.1",
     "@theforeman/eslint-plugin-foreman": "^8.4.1",
     "@theforeman/find-foreman": "^8.4.1",
