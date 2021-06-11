@@ -4,10 +4,19 @@ query($id: String!, $hostId: Int!) {
       nodes {
         ansibleVariablesWithOverrides(hostId: $hostId) {
           nodes {
+            id
             key
             defaultValue
             parameterType
             ansibleRoleName
+            lookupValues {
+              nodes {
+                id
+                match
+                value
+                omit
+              }
+            }
             currentValue {
               value
               element
