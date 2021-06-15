@@ -4,9 +4,10 @@ import CheckIcon from '@patternfly/react-icons/dist/js/icons/check-icon';
 import { Link } from 'react-router-dom';
 import { translate as __ } from 'foremanReact/common/I18n';
 
-const formatSourceLink = (hostAttrs, variable) => {
-  const value = `${variable.currentValue.element}: ${variable.currentValue.elementName}`;
-  let { element } = variable.currentValue;
+const formatSourceLink = (hostAttrs, { currentValue }) => {
+  const value = `${currentValue.element}: ${currentValue.elementName}`;
+  let { element } = currentValue;
+  const { meta } = currentValue;
 
   const knownMatchResources = ['os', 'hostgroup', 'domain'];
 
@@ -20,7 +21,7 @@ const formatSourceLink = (hostAttrs, variable) => {
 
   const elementId = hostAttrs[`${element}_id`];
 
-  if (elementId) {
+  if (elementId && meta?.canEdit) {
     return <Link to={`/${element}s/${elementId}/edit`}>{value}</Link>;
   }
   return value;
@@ -32,9 +33,8 @@ export const formatSourceAttr = (hostAttrs, variable) =>
     : __('Default value');
 
 export const formatValue = variable => {
-  const value = variable.currentValue
-    ? variable.currentValue.value
-    : variable.defaultValue;
+  const value = variable.currentValue?.value || variable.defaultValue;
+
   if (variable.parameterType === 'boolean') {
     return value ? <CheckIcon /> : <TimesIcon />;
   }

@@ -12,6 +12,9 @@ query($id: String!, $hostId: Int!) {
               value
               element
               elementName
+              meta {
+                canEdit
+              }
             }
           }
         }
@@ -19,4 +22,3 @@ query($id: String!, $hostId: Int!) {
     }
   }
 }
-

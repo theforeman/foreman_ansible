@@ -15,7 +15,6 @@
   "devDependencies": {
     "@apollo/react-testing": "^4.0.0",
     "@babel/core": "^7.7.0",
-    "@testing-library/react": "^11.2.5",
     "@theforeman/builder": "^8.4.1",
     "@theforeman/eslint-plugin-foreman": "^8.4.1",
     "@theforeman/find-foreman": "^8.4.1",

@@ -7,6 +7,7 @@ import variableOverrides from '../../../../graphql/queries/variableOverrides.gql
 import AnsibleVariableOverridesTable from './AnsibleVariableOverridesTable';
 
 import { encodeId } from '../../../../globalIdHelper';
+import { reorderVariables } from './AnsibleVariableOverridesHelper';
 import './AnsibleVariableOverrides.scss';
 
 const AnsibleVariableOverrides = ({ id, hostAttrs }) => {
@@ -22,18 +23,10 @@ const AnsibleVariableOverrides = ({ id, hostAttrs }) => {
     return <div>{error.message}</div>;
   }
 
-  const variables = data.host.allAnsibleRoles.nodes.reduce((memo, role) => {
-    const vars = role.ansibleVariablesWithOverrides.nodes.map(variable => ({
-      ...variable,
-      roleName: role.name,
-    }));
-    return memo.concat(vars);
-  }, []);
-
   return (
     <div className="ansible-tab-margin">
       <AnsibleVariableOverridesTable
-        variables={variables}
+        variables={reorderVariables(data.host.allAnsibleRoles.nodes)}
         hostAttrs={hostAttrs}
       />
     </div>

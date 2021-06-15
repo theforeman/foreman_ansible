@@ -42,6 +42,9 @@ const mocks = [
                         value: 101,
                         element: 'os',
                         elementName: 'CentOS 7.9',
+                        meta: {
+                          canEdit: true,
+                        },
                       },
                     },
                     {
@@ -58,6 +61,9 @@ const mocks = [
                         value: 'c',
                         element: 'domain',
                         elementName: 'example.com',
+                        meta: {
+                          canEdit: true,
+                        },
                       },
                     },
                     {
@@ -68,6 +74,9 @@ const mocks = [
                         value: ['nine'],
                         element: 'hostgroup',
                         elementName: 'parent hostgroup',
+                        meta: {
+                          canEdit: false,
+                        },
                       },
                     },
                     {
@@ -136,5 +145,15 @@ describe('AnsibleVariableOverrides', () => {
     expect(screen.getByText('ellipse')).toBeInTheDocument();
     expect(screen.getByText('sun')).toBeInTheDocument();
     expect(screen.getByText('moon')).toBeInTheDocument();
+    expect(
+      screen.getByText('hostgroup: parent hostgroup').closest('a')
+    ).not.toBeInTheDocument();
+    expect(screen.getByText('os: CentOS 7.9').closest('a')).toHaveAttribute(
+      'href',
+      '/operatingsystems/6/edit'
+    );
+    expect(
+      screen.getByText('domain: example.com').closest('a')
+    ).toHaveAttribute('href', '/domains/9/edit');
   });
 });
