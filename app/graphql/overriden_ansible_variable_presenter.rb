@@ -11,6 +11,28 @@ class OverridenAnsibleVariablePresenter
   end
 
   def current_value
-    @override_resolver.resolve @ansible_variable
+    result = @override_resolver.resolve @ansible_variable
+    add_meta result
+  end
+
+  private
+
+  def known_type_class(element)
+    return unless element.is_a? String
+    return Operatingsystem if element == 'os'
+    element.classify.constantize rescue nil
+  end
+
+  def add_meta(result)
+    return unless result
+    type = known_type_class(result[:element])
+    return result unless type
+    attribute = type.attribute_names.include?('title') ? :title : :name
+    object = type.find_by attribute => result[:element_name]
+    return result unless object
+    result[:meta] = {
+      :can_edit => User.current.can?(object.permission_name(:edit), object)
+    }
+    result
   end
 end
