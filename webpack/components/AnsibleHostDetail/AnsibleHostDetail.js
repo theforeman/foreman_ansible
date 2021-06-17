@@ -11,22 +11,24 @@ const AnsibleHostDetail = props => {
   const [activeTab] = useState('variables');
 
   return (
-    <div className="ansible-host-detail">
-      <Tabs activeKey={activeTab} isSecondary>
-        <Tab
-          eventKey="variables"
-          title={<TabTitleText>{__('Variables')}</TabTitleText>}
-        >
-          <Label
-            color="blue"
-            icon={<InfoCircleIcon />}
-            style={{ marginTop: '1.5rem' }}
-          >
-            Ansible Variables coming soon!
-          </Label>
-        </Tab>
-      </Tabs>
-    </div>
+    <Tabs activeKey={activeTab} isSecondary>
+      <Tab
+        eventKey="variables"
+        title={<TabTitleText>{__('Variables')}</TabTitleText>}
+      >
+        <div className="host-details-tab-item">
+          <div className="ansible-host-detail">
+            <Label
+              color="blue"
+              icon={<InfoCircleIcon />}
+              style={{ marginTop: '1.5rem' }}
+            >
+              Ansible Variables coming soon!
+            </Label>
+          </div>
+        </div>
+      </Tab>
+    </Tabs>
   );
 };
 
