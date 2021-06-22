@@ -32,7 +32,8 @@ if defined? ForemanRemoteExecution
               template_invocation.template
             ),
             :name => host.name,
-            :check_mode => host.host_param('ansible_roles_check_mode')
+            :check_mode => host.host_param('ansible_roles_check_mode'),
+            :job_invocation_timeout => template_invocation.job_invocation[:execution_timeout_interval]
           )
         end
 
