@@ -125,19 +125,23 @@ const TestComponent = props => (
 );
 
 describe('AnsibleVariableOverrides', () => {
-  it('should show spinner when page is loading', () => {
-    render(
+  it('should show skeleton when page is loading', () => {
+    const { container } = render(
       <TestComponent status="PENDING" id={hostId} hostAttrs={hostAttrs} />
     );
-    expect(screen.getByText('Loading')).toBeInTheDocument();
+    expect(
+      container.getElementsByClassName('react-loading-skeleton')
+    ).toHaveLength(5);
   });
   it('should load', async () => {
-    render(
+    const { container } = render(
       <MemoryRouter>
         <TestComponent status="RESOLVED" id={hostId} hostAttrs={hostAttrs} />
       </MemoryRouter>
     );
-    expect(screen.getByText('Loading')).toBeInTheDocument();
+    expect(
+      container.getElementsByClassName('react-loading-skeleton')
+    ).toHaveLength(5);
     await waitFor(tick);
     expect(screen.getByText('rectangle')).toBeInTheDocument();
     expect(screen.getByText('square')).toBeInTheDocument();
