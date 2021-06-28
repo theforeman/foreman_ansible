@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Loading from 'foremanReact/components/Loading';
+import Skeleton from 'react-loading-skeleton';
 
 import { useQuery } from '@apollo/client';
 import variableOverrides from '../../../../graphql/queries/variableOverrides.gql';
@@ -16,7 +16,7 @@ const AnsibleVariableOverrides = ({ id, hostAttrs }) => {
   });
 
   if (loading) {
-    return <Loading />;
+    return <Skeleton count={5} />;
   }
 
   if (error) {
