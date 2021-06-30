@@ -87,9 +87,11 @@ module ForemanAnsibleCore
             publish_data_for(host, [header, line].join("\n"), 'stdout')
 
             # If the task has been rescued, it won't consider a failure
+            # rubocop:disable Style/IfUnlessModifier
             if @exit_statuses[host].to_i != 0 && failures[host].to_i <= 0
               publish_exit_status_for(host, 0)
             end
+            # rubocop:enable Style/IfUnlessModifier
           end
         else
           broadcast_data(event['stdout'] + "\n", 'stdout')
