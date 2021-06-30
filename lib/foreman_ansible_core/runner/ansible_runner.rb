@@ -80,10 +80,16 @@ module ForemanAnsibleCore
       def handle_broadcast_data(event)
         log_event("broadcast", event)
         if event['event'] == 'playbook_on_stats'
+          failures = event.dig('event_data', 'failures') || {}
           header, *rows = event['stdout'].strip.lines.map(&:chomp)
           @outputs.keys.select { |key| key.is_a? String }.each do |host|
             line = rows.find { |row| row =~ /#{host}/ }
             publish_data_for(host, [header, line].join("\n"), 'stdout')
+
+            # If the task has been rescued, it won't consider a failure
+            if @exit_statuses[host].to_i != 0 && failures[host].to_i <= 0
+              publish_exit_status_for(host, 0)
+            end
           end
         else
           broadcast_data(event['stdout'] + "\n", 'stdout')
