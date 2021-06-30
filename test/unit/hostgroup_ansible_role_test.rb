@@ -19,4 +19,17 @@ class HostgroupAnsibleRoleTest < ActiveSupport::TestCase
     end
     should validate_uniqueness_of(:ansible_role_id).scoped_to(:hostgroup_id)
   end
+
+  describe 'ordering' do
+    test 'should list roles in correct order' do
+      hg = FactoryBot.create(:hostgroup)
+      5.times do |idx|
+        HostgroupAnsibleRole.create(:hostgroup => hg, :ansible_role => FactoryBot.create(:ansible_role), :position => idx)
+      end
+
+      hg.hostgroup_ansible_roles.each_with_index do |item, idx|
+        assert_equal(item.position, idx + 1)
+      end
+    end
+  end
 end
