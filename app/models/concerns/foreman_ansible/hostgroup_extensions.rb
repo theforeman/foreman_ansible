@@ -6,7 +6,7 @@ module ForemanAnsible
     extend ActiveSupport::Concern
 
     included do
-      has_many :hostgroup_ansible_roles, :foreign_key => :hostgroup_id
+      has_many :hostgroup_ansible_roles, -> { order('hostgroup_ansible_roles.position ASC') }, :foreign_key => :hostgroup_id
       has_many :ansible_roles,
                -> { order('hostgroup_ansible_roles.position ASC') },
                :through => :hostgroup_ansible_roles,
