@@ -6,7 +6,12 @@ module ForemanAnsible
   # to the right hostname in Foreman
   module AnsibleReportImporter
     extend ActiveSupport::Concern
+
     included do
+      class << self
+        prepend PatchedClassMethods
+      end
+
       def host
         hostname = name.downcase
         if AnsibleReportScanner.ansible_report?(raw) &&
@@ -16,10 +21,6 @@ module ForemanAnsible
         end
         super
         partial_hostname_match(hostname)
-      end
-
-      def self.authorized_smart_proxy_features
-        super + ['Ansible']
       end
 
       def partial_hostname_match(hostname)
@@ -32,6 +33,12 @@ module ForemanAnsible
           return @host
         end
         @host = hosts.first || @host
+      end
+    end
+
+    module PatchedClassMethods
+      def authorized_smart_proxy_features
+        super + ['Ansible']
       end
     end
   end
