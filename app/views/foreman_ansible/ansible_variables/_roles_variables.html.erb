@@ -1,0 +1,16 @@
+<table class="table table-fixed" id="inherited_ansible_role_variables">
+  <thead class="white-header">
+    <tr>
+      <th class='col-md-2'><%= _('Ansible Role') %></th>
+      <th class='col-md-2'><%= _('Name') %></th>
+      <th class='col-md-5'><%= _('Value') %></th>
+      <th class='col-md-1 ca'><%= _("Omit") %>&nbsp;<%= omit_help %></th>
+    </tr>
+  </thead>
+  <tbody>
+  <%= render :partial => 'foreman_ansible/ansible_variables/role_variables',
+    :collection => obj.is_a?(Hostgroup) ? obj.inherited_and_own_ansible_roles : obj.all_ansible_roles,
+    :as => :ansiblerole,
+    :locals => { :obj => obj } %>
+    </tbody>
+    </table>
