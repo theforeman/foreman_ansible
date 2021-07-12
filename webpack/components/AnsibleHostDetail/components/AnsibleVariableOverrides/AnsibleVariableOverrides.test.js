@@ -116,6 +116,7 @@ const hostAttrs = {
   operatingsystem_id: 6,
   hostgroup_id: 7,
   domain_id: 9,
+  id: hostId,
 };
 
 const TestComponent = props => (
@@ -127,21 +128,18 @@ const TestComponent = props => (
 describe('AnsibleVariableOverrides', () => {
   it('should show skeleton when page is loading', () => {
     const { container } = render(
-      <TestComponent status="PENDING" id={hostId} hostAttrs={hostAttrs} />
+      <TestComponent status="PENDING" hostAttrs={hostAttrs} />
     );
     expect(
       container.getElementsByClassName('react-loading-skeleton')
     ).toHaveLength(5);
   });
   it('should load', async () => {
-    const { container } = render(
+    render(
       <MemoryRouter>
-        <TestComponent status="RESOLVED" id={hostId} hostAttrs={hostAttrs} />
+        <TestComponent status="RESOLVED" hostAttrs={hostAttrs} />
       </MemoryRouter>
     );
-    expect(
-      container.getElementsByClassName('react-loading-skeleton')
-    ).toHaveLength(5);
     await waitFor(tick);
     expect(screen.getByText('rectangle')).toBeInTheDocument();
     expect(screen.getByText('square')).toBeInTheDocument();

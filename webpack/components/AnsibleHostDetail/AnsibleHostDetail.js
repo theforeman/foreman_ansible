@@ -21,7 +21,7 @@ const AnsibleHostDetail = ({ response, status }) => {
         <div className="host-details-tab-item">
           <div className="ansible-host-detail">
             <SkeletonLoader status={status} skeletonProps={{ count: 5 }}>
-              <AnsibleVariableOverrides id={response.id} hostAttrs={response} />
+              <AnsibleVariableOverrides hostAttrs={response} />
             </SkeletonLoader>
           </div>
         </div>

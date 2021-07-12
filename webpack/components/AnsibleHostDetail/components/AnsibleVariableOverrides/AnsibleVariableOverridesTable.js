@@ -28,14 +28,14 @@ const AnsibleVariableOverridesTable = ({ variables, hostAttrs }) => {
     <TableComposable variant="compact">
       <Thead>
         <Tr>
-          {columns.map((col, idx) => (
-            <Th key={idx}>{col}</Th>
+          {columns.map(col => (
+            <Th key={col}>{col}</Th>
           ))}
         </Tr>
       </Thead>
       <Tbody>
-        {variables.map((variable, idx) => (
-          <Tr key={idx}>
+        {variables.map(variable => (
+          <Tr key={variable.key}>
             <Td>{variable.key}</Td>
             <Td>{variable.roleName}</Td>
             <Td>{variable.parameterType}</Td>
