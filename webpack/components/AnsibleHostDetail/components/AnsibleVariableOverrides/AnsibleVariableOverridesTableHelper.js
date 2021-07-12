@@ -35,12 +35,14 @@ export const formatSourceAttr = (hostAttrs, variable) =>
 export const formatValue = variable => {
   const value = variable.currentValue?.value || variable.defaultValue;
 
-  if (variable.parameterType === 'boolean') {
-    return value ? <CheckIcon /> : <TimesIcon />;
+  switch (variable.parameterType) {
+    case 'boolean':
+      return value ? <CheckIcon /> : <TimesIcon />;
+    case 'yaml':
+    case 'hash':
+    case 'array':
+      return JSON.stringify(value);
+    default:
+      return value;
   }
-  const type = variable.parameterType;
-  if (type === 'yaml' || type === 'hash' || type === 'array') {
-    return JSON.stringify(value);
-  }
-  return value;
 };
