@@ -13,20 +13,20 @@ const AnsibleHostDetail = ({ response, status }) => {
   const [activeTab] = useState('variables');
 
   return (
-    <Tabs activeKey={activeTab} isSecondary>
-      <Tab
-        eventKey="variables"
-        title={<TabTitleText>{__('Variables')}</TabTitleText>}
-      >
-        <div className="host-details-tab-item">
-          <div className="ansible-host-detail">
-            <SkeletonLoader status={status} skeletonProps={{ count: 5 }}>
+    <SkeletonLoader status={status} skeletonProps={{ count: 5 }}>
+      <Tabs activeKey={activeTab} isSecondary>
+        <Tab
+          eventKey="variables"
+          title={<TabTitleText>{__('Variables')}</TabTitleText>}
+        >
+          <div className="host-details-tab-item">
+            <div className="ansible-host-detail">
               <AnsibleVariableOverrides hostAttrs={response} />
-            </SkeletonLoader>
+            </div>
           </div>
-        </div>
-      </Tab>
-    </Tabs>
+        </Tab>
+      </Tabs>
+    </SkeletonLoader>
   );
 };
 

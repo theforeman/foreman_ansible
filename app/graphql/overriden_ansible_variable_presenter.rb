@@ -20,7 +20,7 @@ class OverridenAnsibleVariablePresenter
   def known_type_class(element)
     return unless element.is_a? String
     return Operatingsystem if element == 'os'
-    element.classify.constantize rescue nil
+    element.classify.safe_constantize
   end
 
   def add_meta(result)

@@ -1,11 +1,10 @@
 import React from 'react';
-import TimesIcon from '@patternfly/react-icons/dist/js/icons/times-icon';
-import CheckIcon from '@patternfly/react-icons/dist/js/icons/check-icon';
+import { TimesIcon, CheckIcon } from '@patternfly/react-icons';
 import { Link } from 'react-router-dom';
 import { translate as __ } from 'foremanReact/common/I18n';
 
 const formatSourceLink = (hostAttrs, { currentValue }) => {
-  const value = `${currentValue.element}: ${currentValue.elementName}`;
+  const value = `${__(currentValue.element)}: ${currentValue.elementName}`;
   let { element } = currentValue;
   const { meta } = currentValue;
 
