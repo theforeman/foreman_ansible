@@ -54,6 +54,3 @@ Style/SymbolArray:
 
 Style/Documentation:
   Enabled: false
-
-Style/RescueModifier:
-  Enabled: false
