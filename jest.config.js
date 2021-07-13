@@ -9,6 +9,9 @@ const foremanReactFull = foremanRelativePath(foremanReactRelative);
 // Find correct path to foremanReact so we do not have to mock it in tests
 tfmConfig.moduleNameMapper['^foremanReact(.*)$'] = `${foremanReactFull}/$1`;
 
+// Makes graphql files work in test
+tfmConfig.transform["\\.(gql|graphql)$"] = "jest-transform-graphql";
+
 // Do not use default resolver
 tfmConfig.resolver = null;
 // Specify module dirs instead

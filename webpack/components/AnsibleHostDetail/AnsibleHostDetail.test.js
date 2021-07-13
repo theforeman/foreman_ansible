@@ -6,7 +6,7 @@ import AnsibleHostDetail from './';
 
 describe('AnsibleHostDetail', () => {
   it('should show content', () => {
-    render(<AnsibleHostDetail />);
+    render(<AnsibleHostDetail status="RESOLVED" response={{ id: 3 }} />);
     expect(
       screen.getByText('Ansible Variables coming soon!')
     ).toBeInTheDocument();
