@@ -14,7 +14,9 @@ import {
 import { Flex, FlexItem, Button } from '@patternfly/react-core';
 
 import EditRolesModal from './EditRolesModal';
+
 import withLoading from '../../../withLoading';
+import AllRolesModal from './AllRolesModal';
 
 const RolesTable = props => {
   const columns = [__('Name')];
@@ -28,6 +30,11 @@ const RolesTable = props => {
             <Button aria-label="edit ansible roles">
               {__('Edit Ansible Roles')}
             </Button>
+          </Link>
+        </FlexItem>
+        <FlexItem>
+          <Link to="/Ansible/roles/all">
+            <Button variant="link">{__('View all assigned roles')}</Button>
           </Link>
         </FlexItem>
       </Flex>
@@ -55,6 +62,13 @@ const RolesTable = props => {
           hostId={props.hostId}
         />
       </Route>
+      <Route path="/Ansible/roles/all">
+        <AllRolesModal
+          onClose={() => props.history.push('/Ansible/roles')}
+          isOpen
+          hostGlobalId={props.hostGlobalId}
+        />
+      </Route>
     </React.Fragment>
   );
 };
@@ -62,6 +76,7 @@ const RolesTable = props => {
 RolesTable.propTypes = {
   ansibleRoles: PropTypes.array.isRequired,
   hostId: PropTypes.number.isRequired,
+  hostGlobalId: PropTypes.string.isRequired,
   history: PropTypes.object.isRequired,
 };
 

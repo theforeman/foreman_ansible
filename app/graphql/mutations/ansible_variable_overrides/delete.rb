@@ -21,7 +21,7 @@ module Mutations
 
         result = super id: id
         resolver = ::ForemanAnsible::OverrideResolver.new(host, [variable.id])
-        result.merge :overriden_ansible_variable => ::OverridenAnsibleVariablePresenter.new(variable, resolver)
+        result.merge :overriden_ansible_variable => ::Presenters::OverridenAnsibleVariablePresenter.new(variable, resolver)
       end
 
       def resource_not_found(message)

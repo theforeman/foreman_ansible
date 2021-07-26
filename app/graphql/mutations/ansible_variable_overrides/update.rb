@@ -19,7 +19,7 @@ module Mutations
         host = Host.find host_id
         vars = AnsibleVariable.where :id => ansible_variable_id
         resolver = ::ForemanAnsible::OverrideResolver.new(host, vars.pluck(:id))
-        result.merge :overriden_ansible_variable => ::OverridenAnsibleVariablePresenter.new(vars.first, resolver)
+        result.merge :overriden_ansible_variable => ::Presenters::OverridenAnsibleVariablePresenter.new(vars.first, resolver)
       end
     end
   end

@@ -22,8 +22,9 @@ const withLoading = Component => {
     renameData,
     emptyStateTitle,
     showEmptyState,
-    loadingWrapper,
     emptyWrapper,
+    loadingWrapper,
+    wrapper,
     ...rest
   }) => {
     const { loading, error, data } = fetchFn(rest);
@@ -46,7 +47,7 @@ const withLoading = Component => {
       );
     }
 
-    return <Component {...rest} {...renameData(data)} />;
+    return wrapper(<Component {...rest} {...renameData(data)} />);
   };
 
   Subcomponent.propTypes = {
@@ -65,6 +66,7 @@ const withLoading = Component => {
     showEmptyState: true,
     loadingWrapper: child => child,
     emptyWrapper: child => child,
+    wrapper: child => child,
   };
 
   return Subcomponent;

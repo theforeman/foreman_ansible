@@ -1,5 +1,6 @@
 import { mockFactory, advancedMockFactory } from '../../../../../testHelper';
 import ansibleRolesQuery from '../../../../../graphql/queries/hostAnsibleRoles.gql';
+import allAnsibleRolesQuery from '../../../../../graphql/queries/allAnsibleRoles.gql';
 import availableAnsibleRolesQuery from '../../../../../graphql/queries/hostAvailableAnsibleRoles.gql';
 import assignAnsibleRolesMutation from '../../../../../graphql/mutations/assignAnsibleRoles.gql';
 import { decodeModelId } from '../../../../../globalIdHelper';
@@ -8,6 +9,7 @@ export const hostId = 3;
 const hostGlobalId = 'MDE6SG9zdC0z';
 
 const ansibleRolesMockFactory = mockFactory('host', ansibleRolesQuery);
+const allAnsibleRolesMockFactory = mockFactory('host', allAnsibleRolesQuery);
 const assignRolesMockFactory = mockFactory(
   'assignAnsibleRoles',
   assignAnsibleRolesMutation
@@ -76,6 +78,26 @@ const availableRoles = {
     },
   ],
 };
+
+export const allRolesMocks = allAnsibleRolesMockFactory(
+  { id: hostGlobalId },
+  {
+    __typename: 'Host',
+    id: hostGlobalId,
+    allAnsibleRoles: {
+      nodes: [
+        {
+          id: 'MDE6QW5zaWJsZVJvbGUtMg==',
+          name: 'adriagalin.motd',
+          inherited: true,
+        },
+        { ...role1, inherited: false },
+        { ...role2, inherited: false },
+        { ...role3, inherited: false },
+      ],
+    },
+  }
+);
 
 const editModalData = {
   host: {
