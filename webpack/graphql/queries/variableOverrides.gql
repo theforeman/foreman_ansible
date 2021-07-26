@@ -2,19 +2,16 @@ query($id: String!, $hostId: Int!) {
   host(id: $id) {
     allAnsibleRoles {
       nodes {
-        name
         ansibleVariablesWithOverrides(hostId: $hostId) {
           nodes {
             key
             defaultValue
             parameterType
+            ansibleRoleName
             currentValue {
               value
               element
               elementName
-              meta {
-                canEdit
-              }
             }
           }
         }

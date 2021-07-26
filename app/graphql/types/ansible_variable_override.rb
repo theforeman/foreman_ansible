@@ -5,6 +5,5 @@ module Types
     field :value, ::Types::RawJson, :null => false
     field :element, ::Types::RawJson, :null => false
     field :element_name, ::Types::RawJson, :null => false
-    field :meta, ::Types::Meta, :null => true
   end
 end

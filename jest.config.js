@@ -6,9 +6,6 @@ const foremanReactRelative = 'webpack/assets/javascripts/react_app';
 const foremanFull = foremanLocation();
 const foremanReactFull = foremanRelativePath(foremanReactRelative);
 
-// Makes graphql files work in test
-tfmConfig.transform["\\.(gql|graphql)$"] = "jest-transform-graphql";
-
 // Find correct path to foremanReact so we do not have to mock it in tests
 tfmConfig.moduleNameMapper['^foremanReact(.*)$'] = `${foremanReactFull}/$1`;
 

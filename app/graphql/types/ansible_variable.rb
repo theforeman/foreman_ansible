@@ -14,5 +14,10 @@ module Types
     field :validator_type, String
     field :validator_rule, String
     field :default_value, ::Types::RawJson
+    field :ansible_role_name, String
+
+    def ansible_role_name
+      object.ansible_role.name
+    end
   end
 end

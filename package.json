@@ -13,17 +13,15 @@
     "react-json-tree": "^0.11.0"
   },
   "devDependencies": {
-    "@apollo/react-testing": "^4.0.0",
     "@babel/core": "^7.7.0",
-    "@theforeman/builder": "^8.4.1",
-    "@theforeman/eslint-plugin-foreman": "^8.4.1",
-    "@theforeman/find-foreman": "^8.4.1",
-    "@theforeman/stories": "^8.4.1",
-    "@theforeman/test": "^8.4.1",
-    "@theforeman/vendor-dev": "^8.4.1",
+    "@theforeman/builder": "^8.9.0",
+    "@theforeman/eslint-plugin-foreman": "^8.9.0",
+    "@theforeman/find-foreman": "^8.9.0",
+    "@theforeman/stories": "^8.9.0",
+    "@theforeman/test": "^8.9.0",
+    "@theforeman/vendor-dev": "^8.9.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2",
-    "jest-transform-graphql": "^2.1.0",
     "prettier": "^1.13.5"
   },
   "scripts": {
