@@ -6,12 +6,16 @@ import SkeletonLoader from 'foremanReact/components/common/SkeletonLoader';
 import { translate as __ } from 'foremanReact/common/I18n';
 
 import AnsibleVariableOverrides from './components/AnsibleVariableOverrides';
+
+import RolesTab from './components/RolesTab';
+import TabLayout from './components/TabLayout';
+
 import './AnsibleHostDetail.scss';
 import WrappedAnsibleHostInventory from './components/AnsibleHostInventory';
 
 const AnsibleHostDetail = ({ response, status }) => {
   // https://projects.theforeman.org/issues/32398
-  const [activeTab, setActiveTab] = useState('variables');
+  const [activeTab, setActiveTab] = useState('roles');
   const handleTabClick = (event, tab) => setActiveTab(tab);
 
   return (
@@ -19,20 +23,28 @@ const AnsibleHostDetail = ({ response, status }) => {
       {response && (
         <Tabs onSelect={handleTabClick} activeKey={activeTab} isSecondary>
           <Tab
+            eventKey="roles"
+            title={<TabTitleText>{__('Roles')}</TabTitleText>}
+          >
+            <TabLayout>
+              <RolesTab hostId={response.id} />
+            </TabLayout>
+          </Tab>
+          <Tab
             eventKey="variables"
             title={<TabTitleText>{__('Variables')}</TabTitleText>}
           >
-            <div className="host-details-tab-item">
-              <div className="ansible-host-detail">
-                <AnsibleVariableOverrides id={response.id} />
-              </div>
-            </div>
+            <TabLayout>
+              <AnsibleVariableOverrides id={response.id} />
+            </TabLayout>
           </Tab>
           <Tab
             eventKey="inventory"
             title={<TabTitleText>{__('Inventory')}</TabTitleText>}
           >
-            <WrappedAnsibleHostInventory hostId={response.id} />
+            <TabLayout>
+              <WrappedAnsibleHostInventory hostId={response.id} />
+            </TabLayout>
           </Tab>
         </Tabs>
       )}

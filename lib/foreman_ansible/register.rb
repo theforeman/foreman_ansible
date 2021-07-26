@@ -107,6 +107,8 @@ Foreman::Plugin.register :foreman_ansible do
     field :all_ansible_roles, ::Types::AnsibleRole.connection_type, :null => true
   end
 
+  register_graphql_query_field :ansible_roles, '::Types::AnsibleRole', :collection_field
+
   divider :top_menu, :caption => N_('Ansible'), :parent => :configure_menu
   menu :top_menu, :ansible_roles,
        :caption => N_('Roles'),
