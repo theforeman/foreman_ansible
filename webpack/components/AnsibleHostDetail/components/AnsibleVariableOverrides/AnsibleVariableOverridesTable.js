@@ -25,7 +25,7 @@ const AnsibleVariableOverridesTable = ({ variables, hostAttrs }) => {
   ];
 
   return (
-    <TableComposable variant="compact">
+    <TableComposable variant="compact" className="ansible-tab-margin">
       <Thead>
         <Tr>
           {columns.map(col => (
@@ -37,7 +37,7 @@ const AnsibleVariableOverridesTable = ({ variables, hostAttrs }) => {
         {variables.map(variable => (
           <Tr key={variable.key}>
             <Td>{variable.key}</Td>
-            <Td>{variable.roleName}</Td>
+            <Td>{variable.ansibleRoleName}</Td>
             <Td>{variable.parameterType}</Td>
             <Td>{formatValue(variable)}</Td>
             <Td>{formatSourceAttr(hostAttrs, variable)}</Td>

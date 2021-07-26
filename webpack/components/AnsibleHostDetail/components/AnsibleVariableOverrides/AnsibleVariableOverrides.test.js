@@ -25,7 +25,6 @@ const mocks = [
           allAnsibleRoles: {
             nodes: [
               {
-                name: 'test.role',
                 ansibleVariablesWithOverrides: {
                   nodes: [],
                 },
@@ -38,6 +37,7 @@ const mocks = [
                       key: 'rectangle',
                       defaultValue: 17,
                       parameterType: 'integer',
+                      ansibleRoleName: 'test.role',
                       currentValue: {
                         value: 101,
                         element: 'os',
@@ -51,12 +51,14 @@ const mocks = [
                       key: 'square',
                       defaultValue: true,
                       parameterType: 'boolean',
+                      ansibleRoleName: 'test.role',
                       currentValue: null,
                     },
                     {
                       key: 'circle',
                       defaultValue: 'd',
                       parameterType: 'string',
+                      ansibleRoleName: 'test.role',
                       currentValue: {
                         value: 'c',
                         element: 'domain',
@@ -70,6 +72,7 @@ const mocks = [
                       key: 'ellipse',
                       defaultValue: ['seven', 'eight'],
                       parameterType: 'array',
+                      ansibleRoleName: 'test.role',
                       currentValue: {
                         value: ['nine'],
                         element: 'hostgroup',
@@ -83,12 +86,14 @@ const mocks = [
                       key: 'spiral',
                       defaultValue: { one: 'one', two: 'two' },
                       parameterType: 'hash',
+                      ansibleRoleName: 'test.role',
                       currentValue: null,
                     },
                     {
                       key: 'sun',
                       defaultValue: "{ one: 'one', two: 'two' }",
                       parameterType: 'json',
+                      ansibleRoleName: 'test.role',
                       currentValue: null,
                     },
                     {
@@ -97,6 +102,7 @@ const mocks = [
                         { hosts: 'all', become: 'true', roles: ['foo'] },
                       ],
                       parameterType: 'yaml',
+                      ansibleRoleName: 'test.role',
                       currentValue: null,
                     },
                   ],
@@ -147,15 +153,5 @@ describe('AnsibleVariableOverrides', () => {
     expect(screen.getByText('ellipse')).toBeInTheDocument();
     expect(screen.getByText('sun')).toBeInTheDocument();
     expect(screen.getByText('moon')).toBeInTheDocument();
-    expect(
-      screen.getByText('hostgroup: parent hostgroup').closest('a')
-    ).not.toBeInTheDocument();
-    expect(screen.getByText('os: CentOS 7.9').closest('a')).toHaveAttribute(
-      'href',
-      '/operatingsystems/6/edit'
-    );
-    expect(
-      screen.getByText('domain: example.com').closest('a')
-    ).toHaveAttribute('href', '/domains/9/edit');
   });
 });

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Tabs, Tab, TabTitleText } from '@patternfly/react-core';
 import SkeletonLoader from 'foremanReact/components/common/SkeletonLoader';
-import { Tabs, Tab, TabTitleText } from '@patternfly/react-core';
 
 import { translate as __ } from 'foremanReact/common/I18n';
 
@@ -25,7 +24,10 @@ const AnsibleHostDetail = ({ response, status }) => {
           >
             <div className="host-details-tab-item">
               <div className="ansible-host-detail">
-                <AnsibleVariableOverrides id={response.id} hostAttrs={response} />
+                <AnsibleVariableOverrides
+                  id={response.id}
+                  hostAttrs={response}
+                />
               </div>
             </div>
           </Tab>
