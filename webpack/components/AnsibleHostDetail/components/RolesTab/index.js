@@ -8,13 +8,15 @@ import { encodeId } from '../../../../globalIdHelper';
 import RolesTable from './RolesTable';
 
 const RolesTab = ({ hostId, history }) => {
+  const hostGlobalId = encodeId('Host', hostId);
+
   const renameData = data => ({
     ansibleRoles: data.host.ownAnsibleRoles.nodes,
   });
 
   const useFetchFn = () =>
     useQuery(ansibleRolesQuery, {
-      variables: { id: encodeId('Host', hostId) },
+      variables: { id: hostGlobalId },
     });
 
   return (
@@ -25,6 +27,7 @@ const RolesTab = ({ hostId, history }) => {
       emptyStateTitle={__('No Ansible roles assigned')}
       hostId={hostId}
       history={history}
+      hostGlobalId={hostGlobalId}
     />
   );
 };

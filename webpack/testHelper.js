@@ -1,10 +1,11 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { MockedProvider } from '@apollo/react-testing';
+import { Router, MemoryRouter } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
+
 import store from 'foremanReact/redux';
 import ConfirmModal from 'foremanReact/components/ConfirmModal';
-import { MemoryRouter, Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
 import { getForemanContext } from 'foremanReact/Root/Context/ForemanContext';
 
 export const withRedux = Component => props => (

@@ -18,9 +18,15 @@ module Types
         sc.where(:override => true)
       end
 
-      CollectionLoader.for(object.class, :ansible_variables, scope).load(object).then do |vars|
-        vars.map { |variable| ::OverridenAnsibleVariablePresenter.new variable, context[:ansible_overrides_resolver] }
+      CollectionLoader.for(object_class, :ansible_variables, scope).load(load_object).then do |vars|
+        vars.map { |variable| ::Presenters::OverridenAnsibleVariablePresenter.new variable, context[:ansible_overrides_resolver] }
       end
+    end
+
+    delegate :class, to: :object, prefix: true
+
+    def load_object
+      object
     end
   end
 end
