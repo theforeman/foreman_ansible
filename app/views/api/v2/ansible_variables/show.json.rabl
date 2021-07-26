@@ -10,7 +10,7 @@ attributes :id, :variable, :ansible_role, :ansible_role_id, :description, :overr
 node do |ansible_variable|
   {
     :override_values => partial(
-      'api/v2/override_values/index',
+      'api/v2/ansible_override_values/index',
       :object => ansible_variable.lookup_values
     )
   }
