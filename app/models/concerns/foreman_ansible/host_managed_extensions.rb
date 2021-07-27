@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'ipaddress'
+require 'resolv'
 module ForemanAnsible
   # Relations to make Host::Managed 'have' ansible roles
   module HostManagedExtensions
@@ -58,7 +58,7 @@ module ForemanAnsible
       def import_host(*args)
         host = super(*args)
         hostname = args[0]
-        if IPAddress.valid?(hostname) &&
+        if (Resolv::IPv4::Regex.match?(hostname) || Resolv::IPv6::Regex.match?(hostname)) &&
            (host_nic = Nic::Interface.find_by(:ip => hostname))
           host = host_nic.host
         end
