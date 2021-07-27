@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'ipaddress'
+require 'resolv'
 module ForemanAnsible
   # Ensures Ansible reports from hosts where the IP was used, are assigned
   # to the right hostname in Foreman
@@ -10,7 +10,7 @@ module ForemanAnsible
       def host
         hostname = name.downcase
         if AnsibleReportScanner.ansible_report?(raw) &&
-           IPAddress.valid?(hostname) &&
+           (Resolv::IPv4::Regex.match?(hostname) || Resolv::IPv6::Regex.match?(hostname)) &&
            Nic::Interface.find_by(:ip => hostname)
           @host = Nic::Interface.find_by(:ip => hostname).host
         end
