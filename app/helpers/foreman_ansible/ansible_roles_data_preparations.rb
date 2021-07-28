@@ -2,22 +2,22 @@
 
 module ForemanAnsible
   module AnsibleRolesDataPreparations
-    VARIABLE_ACTION_NAMES = { 'new' => N_('Add'), 'obsolete' => N_('Remove'), 'update' => N_('Update') }.freeze
-    ROLE_ACTION_NAMES = { 'new' => N_('Import Role'), 'obsolete' => N_('Remove Role'), 'old' => N_('Update Role Variables') }.freeze
+    VARIABLE_ACTION_NAMES = { 'new' => _('Add'), 'obsolete' => _('Remove'), 'update' => _('Update') }.freeze
+    ROLE_ACTION_NAMES = { 'new' => _('Import Role'), 'obsolete' => _('Remove Role'), 'old' => _('Update Role Variables') }.freeze
 
-    def get_variable_action(kind)
-      _(VARIABLE_ACTION_NAMES[kind])
+    def variable_action_name(kind)
+      VARIABLE_ACTION_NAMES[kind]
     end
 
-    def get_role_action(kind)
-      _(ROLE_ACTION_NAMES[kind])
+    def role_action_name(kind)
+      ROLE_ACTION_NAMES[kind]
     end
 
     def get_old_roles_variables(imported_variables, role)
-      variables = { 'Add' => [], 'Remove' => [], 'Update' => [] }
+      variables = { 'new' => [], 'obsolete' => [], 'update' => [] }
       imported_variables.each do |kind, temp_variables|
         temp_variables.each do |temp_variable|
-          variables[get_variable_action(kind)].append(temp_variable.key) if temp_variable.ansible_role_id == role.id
+          variables[kind].append(temp_variable.key) if temp_variable.ansible_role_id == role.id
         end
       end
       variables
@@ -26,16 +26,16 @@ module ForemanAnsible
     def variables_to_s(variables)
       str = ''
       variables.each do |action, temp_variables|
-        str += "#{action}: #{temp_variables.size}, " unless temp_variables.empty?
+        str += "#{variable_action_name action}: #{temp_variables.size}, " unless temp_variables.empty?
       end
       str[0..-3]
     end
 
     def get_roles_variables(imported_variables, variables_importer, kind, role)
       if kind == 'new'
-        variables = { 'Add' => variables_importer.get_variables_names(role.name) }
+        variables = { 'new' => variables_importer.get_variables_names(role.name) }
       elsif kind == 'obsolete'
-        variables = { 'Remove' => role.ansible_variables.map(&:key) }
+        variables = { 'obsolete' => role.ansible_variables.map(&:key) }
       elsif kind == 'old'
         variables = get_old_roles_variables(imported_variables, role)
       end
@@ -51,24 +51,25 @@ module ForemanAnsible
       match.to_s.empty? ? nil : match
     end
 
-    def prepare_api_row(role, kind, variables, role_action)
+    def prepare_api_row(role, kind, variables)
       {
         name: role.name,
         id: role.id,
-        role_action: role_action,
+        role_action: role_action_name(kind),
         variables: variables,
-        hosts_count: role_action == 'Remove Role' ? role.hosts.count : '',
-        hostgroup_count: role_action == 'Remove Role' ? role.hostgroups.count : '',
+        hosts_count: kind == 'obsolete' ? role.hosts.count : '',
+        hostgroup_count: kind == 'obsolete' ? role.hostgroups.count : '',
         kind: kind
       }
     end
 
-    def prepare_ui_row(role, kind, variables, role_action)
+    def prepare_ui_row(role, kind, variables)
       { cells: [
         role.name,
-        role_action, variables,
-        role_action == 'Remove Role' ? role.hosts.count : '',
-        role_action == 'Remove Role' ? role.hostgroups.count : ''
+        role_action_name(kind),
+        variables,
+        kind == 'obsolete' ? role.hosts.count : '',
+        kind == 'obsolete' ? role.hostgroups.count : ''
       ],
         role: role, kind: kind, id: role.name }
     end
@@ -81,11 +82,10 @@ module ForemanAnsible
           next if role_match_excluded_roles(role.name)
           variables = get_roles_variables(imported_variables, variables_importer, kind, role)
           next if variables.empty? && kind['old']
-          role_action = get_role_action(kind)
           if is_ui
-            rows.append(prepare_ui_row(role, kind, variables, role_action))
+            rows.append(prepare_ui_row(role, kind, variables))
           else
-            rows.append(prepare_api_row(role, kind, variables, role_action))
+            rows.append(prepare_api_row(role, kind, variables))
           end
         end
       end
