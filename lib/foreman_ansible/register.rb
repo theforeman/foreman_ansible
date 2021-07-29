@@ -29,23 +29,27 @@ Foreman::Plugin.register :foreman_ansible do
                :resource_type => 'AnsibleRole'
     permission :view_ansible_variables,
                {
+                 :lookup_values => [:index],
                  :ansible_variables => [:index, :auto_complete_search],
                  :'api/v2/ansible_variables' => [:index, :show]
                },
                :resource_type => 'AnsibleVariable'
     permission :edit_ansible_variables,
-               { :ansible_variables => [:edit, :update],
+               { :lookup_values => [:update],
+                 :ansible_variables => [:edit, :update],
                  :'api/v2/ansible_variables' => [:update],
                  :'api/v2/ansible_override_values' => [:create, :destroy] },
                :resource_type => 'AnsibleVariable'
     permission :destroy_ansible_variables,
                {
+                 :lookup_values => [:destroy],
                  :ansible_variables => [:destroy],
                  :'api/v2/ansible_variables' => [:destroy, :obsolete]
                },
                :resource_type => 'AnsibleVariable'
     permission :create_ansible_variables,
                {
+                 :lookup_values => [:create],
                  :ansible_variables => [:new, :create],
                  :'api/v2/ansible_variables' => [:create]
                },
