@@ -1,0 +1,20 @@
+<%#
+name: Run OpenSCAP scans - Ansible Default
+job_category: OpenSCAP Ansible Commands
+description_format: Run scan for all OpenSCAP policies on given hosts
+snippet: false
+provider_type: Ansible
+kind: job_template
+model: JobTemplate
+%>
+
+<% raise "Create and assign a policy to this host before proceeding" if @host.policies_enc_raw.empty? -%>
+---
+- hosts: all
+  tasks:
+<% @host.policies_enc_raw.each do |policy| -%>
+    - shell: /usr/bin/foreman_scap_client <%= policy['id'] %>
+      register: out
+    - debug: var=out
+<% end -%>
+
