@@ -2,16 +2,18 @@ import React from 'react';
 import { TimesIcon, CheckIcon } from '@patternfly/react-icons';
 import { translate as __ } from 'foremanReact/common/I18n';
 
-const formatSourceLink = (hostAttrs, { currentValue }) =>
+const formatSourceLink = currentValue =>
   `${__(currentValue.element)}: ${currentValue.elementName}`;
 
-export const formatSourceAttr = (hostAttrs, variable) =>
+export const formatSourceAttr = variable =>
   variable.currentValue
-    ? formatSourceLink(hostAttrs, variable)
+    ? formatSourceLink(variable.currentValue)
     : __('Default value');
 
 export const formatValue = variable => {
-  const value = variable.currentValue?.value || variable.defaultValue;
+  const value = variable.currentValue
+    ? variable.currentValue.value
+    : variable.defaultValue;
 
   switch (variable.parameterType) {
     case 'boolean':

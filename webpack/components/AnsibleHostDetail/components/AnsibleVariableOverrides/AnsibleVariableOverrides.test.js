@@ -118,13 +118,6 @@ const mocks = [
 
 const tick = () => new Promise(resolve => setTimeout(resolve, 0));
 
-const hostAttrs = {
-  operatingsystem_id: 6,
-  hostgroup_id: 7,
-  domain_id: 9,
-  id: hostId,
-};
-
 const TestComponent = props => (
   <MockedProvider mocks={mocks} addTypename={false}>
     <AnsibleVariableOverrides {...props} />
@@ -134,7 +127,7 @@ const TestComponent = props => (
 describe('AnsibleVariableOverrides', () => {
   it('should show skeleton when page is loading', () => {
     const { container } = render(
-      <TestComponent status="PENDING" hostAttrs={hostAttrs} />
+      <TestComponent status="PENDING" id={hostId} />
     );
     expect(
       container.getElementsByClassName('react-loading-skeleton')
@@ -143,7 +136,7 @@ describe('AnsibleVariableOverrides', () => {
   it('should load', async () => {
     render(
       <MemoryRouter>
-        <TestComponent status="RESOLVED" hostAttrs={hostAttrs} />
+        <TestComponent status="RESOLVED" id={hostId} />
       </MemoryRouter>
     );
     await waitFor(tick);

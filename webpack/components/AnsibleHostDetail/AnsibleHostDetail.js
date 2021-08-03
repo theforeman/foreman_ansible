@@ -24,10 +24,7 @@ const AnsibleHostDetail = ({ response, status }) => {
           >
             <div className="host-details-tab-item">
               <div className="ansible-host-detail">
-                <AnsibleVariableOverrides
-                  id={response.id}
-                  hostAttrs={response}
-                />
+                <AnsibleVariableOverrides id={response.id} />
               </div>
             </div>
           </Tab>
