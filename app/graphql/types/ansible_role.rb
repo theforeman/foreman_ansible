@@ -4,13 +4,13 @@ module Types
 
     global_id_field :id
 
-    field :name, String
-    field :ansible_variables_with_overrides, Types::OverridenAnsibleVariable.connection_type do
+    field :name, String, :null => false
+    field :ansible_variables_with_overrides, Types::OverridenAnsibleVariable.connection_type, :null => false do
       argument :host_id, Integer, 'Host Id', required: true
     end
 
     def ansible_variables_with_overrides(host_id:)
-      host = ::Host.find_by :id => host_id
+      host = ::Host.authorized.find_by :id => host_id
       return [] unless host
       context[:ansible_overrides_resolver] ||= ::ForemanAnsible::OverrideResolver.new(host)
 

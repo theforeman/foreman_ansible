@@ -10,9 +10,7 @@ import { encodeId } from '../../../../globalIdHelper';
 import { reorderVariables } from './AnsibleVariableOverridesHelper';
 import './AnsibleVariableOverrides.scss';
 
-const AnsibleVariableOverrides = ({ hostAttrs }) => {
-  const { id } = hostAttrs;
-
+const AnsibleVariableOverrides = ({ id }) => {
   const { loading, data, error } = useQuery(variableOverrides, {
     variables: { hostId: id, id: encodeId('Host', id) },
   });
@@ -28,13 +26,12 @@ const AnsibleVariableOverrides = ({ hostAttrs }) => {
   return (
     <AnsibleVariableOverridesTable
       variables={reorderVariables(data.host.allAnsibleRoles.nodes)}
-      hostAttrs={hostAttrs}
     />
   );
 };
 
 AnsibleVariableOverrides.propTypes = {
-  hostAttrs: PropTypes.object.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default AnsibleVariableOverrides;

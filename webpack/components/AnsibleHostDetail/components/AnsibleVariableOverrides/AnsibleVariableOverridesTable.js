@@ -15,7 +15,7 @@ import {
   formatSourceAttr,
 } from './AnsibleVariableOverridesTableHelper';
 
-const AnsibleVariableOverridesTable = ({ variables, hostAttrs }) => {
+const AnsibleVariableOverridesTable = ({ variables }) => {
   const columns = [
     __('Name'),
     __('Ansible Role'),
@@ -40,7 +40,7 @@ const AnsibleVariableOverridesTable = ({ variables, hostAttrs }) => {
             <Td>{variable.ansibleRoleName}</Td>
             <Td>{variable.parameterType}</Td>
             <Td>{formatValue(variable)}</Td>
-            <Td>{formatSourceAttr(hostAttrs, variable)}</Td>
+            <Td>{formatSourceAttr(variable)}</Td>
           </Tr>
         ))}
       </Tbody>
@@ -50,7 +50,6 @@ const AnsibleVariableOverridesTable = ({ variables, hostAttrs }) => {
 
 AnsibleVariableOverridesTable.propTypes = {
   variables: PropTypes.array.isRequired,
-  hostAttrs: PropTypes.object.isRequired,
 };
 
 export default AnsibleVariableOverridesTable;
