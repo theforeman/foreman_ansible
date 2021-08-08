@@ -55,4 +55,10 @@ class HostgroupExtensionsTest < ActiveSupport::TestCase
     @hostgroup.parent = @hostgroup_parent
     @hostgroup.inherited_and_own_ansible_roles.must_equal [@role2, @role1]
   end
+
+  describe '#cloned_ansibe_roles' do
+    test 'clone ansible roles from hostgroup parent' do
+      @hostgroup_parent.clone.all_ansible_roles.must_equal @hostgroup_parent.all_ansible_roles
+    end
+  end
 end
