@@ -13,6 +13,7 @@ module ForemanAnsible
                :dependent => :destroy
       accepts_nested_attributes_for :hostgroup_ansible_roles, :allow_destroy => true
       audit_associations :ansible_roles
+      include_in_clone :ansible_roles
 
       def inherited_ansible_roles
         ancestors.reduce([]) do |roles, hostgroup|
