@@ -24,5 +24,11 @@ module ForemanAnsible
       assert_nil OverrideResolver.new(another_host).resolve(first_var)
       assert_nil OverrideResolver.new(host).resolve(second_var)
     end
+
+    test 'should raise when no host specified' do
+      assert_raises Foreman::Exception do
+        OverrideResolver.new(nil)
+      end
+    end
   end
 end
