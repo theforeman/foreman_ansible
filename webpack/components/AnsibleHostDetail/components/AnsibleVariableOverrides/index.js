@@ -7,7 +7,7 @@ import variableOverrides from '../../../../graphql/queries/variableOverrides.gql
 import AnsibleVariableOverridesTable from './AnsibleVariableOverridesTable';
 
 import { encodeId } from '../../../../globalIdHelper';
-import { reorderVariables } from './AnsibleVariableOverridesHelper';
+import { extractVariables } from './AnsibleVariableOverridesHelper';
 import './AnsibleVariableOverrides.scss';
 
 const AnsibleVariableOverrides = ({ id }) => {
@@ -25,7 +25,7 @@ const AnsibleVariableOverrides = ({ id }) => {
 
   return (
     <AnsibleVariableOverridesTable
-      variables={reorderVariables(data.host.allAnsibleRoles.nodes)}
+      variables={extractVariables(data.host.allAnsibleRoles.nodes)}
     />
   );
 };
