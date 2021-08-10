@@ -38,6 +38,7 @@ if defined? ForemanRemoteExecution
 
         def secrets(host)
           {
+            :key_passphrase => Setting[:remote_execution_ssh_key_passphrase],
             'per-host' => {
               host.name => {
                 'ansible_password' => rex_ssh_password(host),
