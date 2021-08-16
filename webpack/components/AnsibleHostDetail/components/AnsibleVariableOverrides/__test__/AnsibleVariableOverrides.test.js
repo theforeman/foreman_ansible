@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import AnsibleVariableOverrides from '../AnsibleVariableOverrides';
+import AnsibleVariableOverrides from '../';
 import { mocks, hostId, hostAttrs } from './AnsibleVariableOverrides.fixtures';
 import { withRedux, withMockedProvider, tick } from '../../../../../testHelper';
 

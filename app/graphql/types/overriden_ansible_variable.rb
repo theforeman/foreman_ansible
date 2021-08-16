@@ -4,8 +4,15 @@ module Types
     model_class ::AnsibleVariable
 
     field :current_value, ::Types::AnsibleVariableOverride, :null => true
-    field :lookup_values, ::Types::LookupValue.connection_type, resolve: proc { |object|
-      CollectionLoader.for(object.ansible_variable.class, :lookup_values).load(object.ansible_variable)
-    }
+    field :lookup_values, ::Types::LookupValue.connection_type do
+      argument :match, String, required: false
+    end
+
+    def lookup_values(match:)
+      scope = lambda do |sc|
+        sc.where(:match => match)
+      end
+      CollectionLoader.for(object.ansible_variable.class, :lookup_values, scope).load(object.ansible_variable)
+    end
   end
 end

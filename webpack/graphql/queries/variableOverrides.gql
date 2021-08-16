@@ -1,4 +1,4 @@
-query($id: String!, $hostId: Int!) {
+query($id: String!, $hostId: Int!, $match: String) {
   host(id: $id) {
     allAnsibleRoles {
       nodes {
@@ -9,7 +9,7 @@ query($id: String!, $hostId: Int!) {
             defaultValue
             parameterType
             ansibleRoleName
-            lookupValues {
+            lookupValues(match: $match) {
               nodes {
                 id
                 match

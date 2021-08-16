@@ -4,8 +4,10 @@ import deleteAnsibleVariableOverride from '../../../../../graphql/mutations/dele
 export const hostId = 3;
 const hostGlobalId = 'MDE6SG9zdC0z';
 
+const name = 'centos-random.example.com';
+
 export const hostAttrs = {
-  name: 'centos-random.example.com',
+  name,
 };
 
 const overrideDeleteId = 'MDE6TG9va3VwVmFsdWUtODQ=';
@@ -19,6 +21,7 @@ export const mocks = [
       variables: {
         id: hostGlobalId,
         hostId,
+        match: `fqdn=${name}`,
       },
     },
     result: {
@@ -45,34 +48,6 @@ export const mocks = [
                         nodes: [
                           {
                             __typename: 'LookupValue',
-                            id: 'MDE6TG9va3VwVmFsdWUtMzE=',
-                            match: 'hostgroup=fail hostgroup',
-                            value: null,
-                            omit: true,
-                          },
-                          {
-                            __typename: 'LookupValue',
-                            id: 'MDE6TG9va3VwVmFsdWUtMzQ=',
-                            match: 'fqdn=moses-reavis.example.com',
-                            value: 30,
-                            omit: false,
-                          },
-                          {
-                            __typename: 'LookupValue',
-                            id: 'MDE6TG9va3VwVmFsdWUtNDE=',
-                            match: 'os=CentOS 7.8',
-                            value: 101,
-                            omit: false,
-                          },
-                          {
-                            __typename: 'LookupValue',
-                            id: 'MDE6TG9va3VwVmFsdWUtNDI=',
-                            match: 'hostgroup=parent',
-                            value: 99,
-                            omit: false,
-                          },
-                          {
-                            __typename: 'LookupValue',
                             id: overrideDeleteId,
                             match: 'fqdn=centos-random.example.com',
                             value: 21,
@@ -96,13 +71,6 @@ export const mocks = [
                       ansibleRoleName: 'test.role',
                       lookupValues: {
                         nodes: [
-                          {
-                            __typename: 'LookupValue',
-                            id: 'MDE6TG9va3VwVmFsdWUtMjY=',
-                            match: 'hostgroup=fail hostgroup',
-                            value: true,
-                            omit: false,
-                          },
                           {
                             __typename: 'LookupValue',
                             id: 'MDE6TG9va3VwVmFsdWUtODM=',

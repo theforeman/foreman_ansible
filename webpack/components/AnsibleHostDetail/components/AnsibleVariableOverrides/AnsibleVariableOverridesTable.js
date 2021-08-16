@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { sprintf, translate as __ } from 'foremanReact/common/I18n';
+import { useDispatch } from 'react-redux';
 import {
   TableComposable,
   Thead,
@@ -10,11 +11,12 @@ import {
   Td,
 } from '@patternfly/react-table';
 
+import { showToast } from '../../../../toastHelper';
+
 import {
   formatValue,
   formatSourceAttr,
-  prepareMutation,
-  submitDelete,
+  usePrepareMutation,
   findOverride,
 } from './AnsibleVariableOverridesTableHelper';
 
@@ -22,12 +24,7 @@ import { decodeId } from '../../../../globalIdHelper';
 
 import ConfirmModal from '../../../ConfirmModal';
 
-const AnsibleVariableOverridesTable = ({
-  variables,
-  hostAttrs,
-  hostId,
-  showToast,
-}) => {
+const AnsibleVariableOverridesTable = ({ variables, hostAttrs, hostId }) => {
   const columns = [
     __('Name'),
     __('Ansible Role'),
@@ -38,20 +35,21 @@ const AnsibleVariableOverridesTable = ({
 
   const [toDelete, setToDelete] = useState(null);
 
-  const toggleModal = (overrideToDelete = null) => {
-    setToDelete(overrideToDelete);
-  };
+  const [callMutation, { loading }] = usePrepareMutation(
+    setToDelete,
+    showToast(useDispatch())
+  );
 
   const deleteAction = variable => ({
     title: __('Delete'),
     onClick: () => {
-      toggleModal(variable);
+      setToDelete(variable);
     },
   });
 
   const actionsResolver = variable => {
     const actions = [];
-    if (variable.currentValue && variable.currentValue.element === 'fqdn') {
+    if (variable.currentValue?.element === 'fqdn') {
       actions.push(deleteAction(variable));
     }
     return actions;
@@ -91,11 +89,18 @@ const AnsibleVariableOverridesTable = ({
               )
             : ''
         }
-        onClose={toggleModal}
+        onClose={setToDelete}
         isOpen={!!toDelete}
-        onConfirm={submitDelete(hostId, toDelete ? decodeId(toDelete) : null)}
-        prepareMutation={prepareMutation(toggleModal, showToast)}
-        record={toDelete ? findOverride(toDelete, hostAttrs.name) : {}}
+        onConfirm={() =>
+          callMutation({
+            variables: {
+              id: findOverride(toDelete, hostAttrs.name).id,
+              hostId,
+              variableId: decodeId(toDelete),
+            },
+          })
+        }
+        loading={loading}
       />
     </React.Fragment>
   );
@@ -105,7 +110,6 @@ AnsibleVariableOverridesTable.propTypes = {
   variables: PropTypes.array.isRequired,
   hostAttrs: PropTypes.object.isRequired,
   hostId: PropTypes.number.isRequired,
-  showToast: PropTypes.func.isRequired,
 };
 
 export default AnsibleVariableOverridesTable;

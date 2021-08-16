@@ -6,14 +6,12 @@ import { translate as __ } from 'foremanReact/common/I18n';
 
 import './ConfirmModal.scss';
 
-const ConfirmModal = props => {
-  const [callMutation, { loading }] = props.prepareMutation();
-
+const ConfirmModal = ({ onConfirm, loading, onClose, title, isOpen, text }) => {
   const actions = [
     <Button
       key="confirm"
       variant="primary"
-      onClick={() => props.onConfirm(callMutation, props.record.id)}
+      onClick={onConfirm}
       isDisabled={loading}
     >
       {__('Confirm')}
@@ -21,7 +19,7 @@ const ConfirmModal = props => {
     <Button
       key="cancel"
       variant="link"
-      onClick={event => props.onClose()}
+      onClick={event => onClose()}
       isDisabled={loading}
     >
       {__('Cancel')}
@@ -35,29 +33,24 @@ const ConfirmModal = props => {
   return (
     <Modal
       variant={ModalVariant.medium}
-      title={props.title}
-      isOpen={props.isOpen}
+      title={title}
+      isOpen={isOpen}
       className="foreman-modal"
       showClose={false}
       actions={actions}
     >
-      {props.text}
+      {text}
     </Modal>
   );
 };
 
 ConfirmModal.propTypes = {
-  prepareMutation: PropTypes.func.isRequired,
   onConfirm: PropTypes.func.isRequired,
-  record: PropTypes.object,
   onClose: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   isOpen: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired,
-};
-
-ConfirmModal.defaultProps = {
-  record: null,
 };
 
 export default ConfirmModal;
