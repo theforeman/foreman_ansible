@@ -32,10 +32,10 @@ export const formatValue = variable => {
 
 const joinErrors = errors => errors.map(err => err.message).join(', ');
 
-const onCompleted = (toggleModal, showToast) => data => {
-  toggleModal();
+const onCompleted = (closeModal, showToast) => data => {
+  closeModal();
   const { errors } = data.deleteAnsibleVariableOverride;
-  if (Array.isArray(errors) && errors.lenght > 0) {
+  if (Array.isArray(errors) && errors.length > 0) {
     showToast({
       type: 'error',
       message: formatError(joinErrors(errors)),
@@ -67,12 +67,8 @@ const onError = showToast => error => {
   showToast({ type: 'error', message: formatError(error) });
 };
 
-export const prepareMutation = (toggleModal, showToast) => () =>
+export const usePrepareMutation = (toggleModal, showToast) =>
   useMutation(deleteAnsibleVariableOverride, {
     onCompleted: onCompleted(toggleModal, showToast),
     onError: onError(showToast),
   });
-
-export const submitDelete = (hostId, variableId) => (mutation, id) => {
-  mutation({ variables: { id, hostId, variableId } });
-};
