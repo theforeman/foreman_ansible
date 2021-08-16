@@ -62,4 +62,12 @@ class HostManagedExtensionsTest < ActiveSupport::TestCase
     FactoryBot.create(:host_ansible_role, :ansible_role_id => @role1.id, :position => 0, :host_id => host.id)
     host.all_ansible_roles.must_equal [@role2, @role1]
   end
+
+  test 'should find hosts with role2' do
+    host1 = FactoryBot.create(:host, :ansible_roles => [@role2])
+    host2 = FactoryBot.create(:host, :hostgroup => @hostgroup)
+    result = Host::Managed.search_for("ansible_role= #{@role2.name}").pluck(:id)
+    assert_include result, host1.id
+    assert_include result, host2.id
+  end
 end
