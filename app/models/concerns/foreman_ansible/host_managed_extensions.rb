@@ -16,7 +16,7 @@ module ForemanAnsible
                  :dependent => :destroy
         scoped_search :relation => :ansible_roles, :on => :name,
                       :complete_value => true, :rename => :ansible_role,
-                      :only_explicit => true
+                      :only_explicit => true, ext_method: :search_by_role
 
         before_provision :play_ansible_roles
         audit_associations :ansible_roles
@@ -63,6 +63,17 @@ module ForemanAnsible
           host = host_nic.host
         end
         host
+      end
+
+      def search_by_role(_key, operator, value)
+        conditions = sanitize_sql_for_conditions(["ansible_roles.name #{operator} ?", value_to_sql(operator, value)])
+        host_ids = ::Host::Managed.joins(:ansible_roles).where(conditions).distinct.pluck(:id)
+        hostgroup_ids = ::Hostgroup.unscoped.with_taxonomy_scope.joins(:ansible_roles).where(conditions).map(&:subtree_ids).flatten
+
+        conds = []
+        conds << "hosts.id IN(#{host_ids.join(',')})" if host_ids.present?
+        conds << "hosts.hostgroup_id IN(#{hostgroup_ids.uniq.join(',')})" if hostgroup_ids.present?
+        { conditions: conds.join(' OR ').presence || '1 = 0' }
       end
     end
   end
