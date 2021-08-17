@@ -1,0 +1,134 @@
+{
+  "action_input": {
+    "proxy_operation_name": "ansible-runner",
+    "tags": "",
+    "tags_flag": "include",
+    "ansible_inventory": {
+      "all": {
+        "hosts": [
+          "test-00.example.com"
+        ],
+        "vars": {
+          "command": "ls -la /"
+        }
+      },
+      "_meta": {
+        "hostvars": {
+          "test-00.example.com": {
+            "foreman": {
+              "hostname": "test-00.example.com",
+              "fqdn": "test-00.example.com",
+              "foreman_subnets": [],
+              "foreman_interfaces": [
+                {
+                  "ip": "127.0.0.1",
+                  "ip6": "",
+                  "mac": null,
+                  "name": "test-00.example.com",
+                  "attrs": {
+                  },
+                  "virtual": false,
+                  "link": true,
+                  "identifier": "",
+                  "managed": true,
+                  "primary": true,
+                  "provision": true,
+                  "subnet": null,
+                  "subnet6": null,
+                  "tag": null,
+                  "attached_to": null,
+                  "type": "Interface"
+                }
+              ],
+              "location": "Default Location",
+              "location_title": "Default Location",
+              "organization": "Default Organization",
+              "organization_title": "Default Organization",
+              "owner_name": "Admin User",
+              "owner_email": "root@localdomain.net",
+              "ssh_authorized_keys": [],
+              "foreman_users": {
+                "admin": {
+                  "firstname": "Admin",
+                  "lastname": "User",
+                  "mail": "root@localdomain.net",
+                  "description": "",
+                  "fullname": "Admin User",
+                  "name": "admin",
+                  "ssh_authorized_keys": []
+                }
+              },
+              "root_pw": null
+            },
+            "foreman_ansible_roles": [],
+            "ansible_connection": "ssh",
+            "ansible_ssh_private_key_file": null,
+            "ansible_winrm_server_cert_validation": "validate",
+            "ansible_user": "root",
+            "ansible_become_method": "su",
+            "ansible_port": 10022,
+            "ansible_host": "127.0.0.1",
+            "ansible_become_user": "root",
+            "ansible_become": true,
+            "ansible_ssh_port": 10022,
+            "ansible_ssh_user": "root",
+            "ansible_roles_check_mode": false,
+            "remote_execution_connect_by_ip": true,
+            "remote_execution_ssh_port": 10022,
+            "remote_execution_ssh_user": "root",
+            "remote_execution_effective_user_method": "su",
+            "host_packages": "",
+            "host_registration_insights": false,
+            "host_registration_remote_execution": true,
+            "remote_execution_ssh_keys": [
+              "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKmRrS05JsxHY1DyGqICH4EgmqQSM1PIWj97CU7VK5VZ aruzicka@fujiwara"
+            ]
+          }
+        }
+      }
+    },
+    "verbosity_level": "0",
+    "remote_execution_command": true,
+    "name": "test-00.example.com",
+    "check_mode": false,
+    "hostname": "127.0.0.1",
+    "script": "---\n- hosts: all\n  tasks:\n    - shell:\n        cmd: |\n          ls -la /\n      register: out\n    - debug: var=out",
+    "execution_timeout_interval": null,
+    "secrets": {
+      "ssh_password": null,
+      "key_passphrase": null,
+      "effective_user_password": null,
+      "per-host": {
+        "test-00.example.com": {
+          "ansible_password": "",
+          "ansible_become_password": ""
+        }
+      }
+    },
+    "use_batch_triggering": true,
+    "use_concurrency_control": false,
+    "first_execution": false,
+    "connection_options": {
+      "retry_interval": 15,
+      "retry_count": 4,
+      "proxy_batch_triggering": true
+    },
+    "proxy_url": "http://localhost:8000",
+    "proxy_action_name": "Proxy::Ansible::TaskLauncher::Playbook::PlaybookRunnerAction",
+    "proxy_version": {
+      "major": 2,
+      "minor": 5,
+      "patch": 0
+    },
+    "current_request_id": "cc71d081-62bb-42ae-8ad3-db05c48bff9c",
+    "current_timezone": "Europe/Prague",
+    "current_organization_id": 1,
+    "current_location_id": 2,
+    "current_user_id": 4,
+    "callback": {
+      "task_id": "6c23de44-45f5-4aed-8169-139136711222",
+      "step_id": 3
+    }
+  },
+  "action_class": "Proxy::Ansible::TaskLauncher::Playbook::PlaybookRunnerAction"
+}
