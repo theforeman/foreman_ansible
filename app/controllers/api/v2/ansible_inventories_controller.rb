@@ -90,7 +90,7 @@ module Api
       private
 
       def schedule_params
-        template_name = Setting::Ansible.find_by(:name => 'ansible_inventory_template').value
+        template_name = Setting['ansible_inventory_template']
         @report_template = ReportTemplate.find_by!(:name => template_name)
         params[:id] = @report_template.id
         params[:report_format] = 'json' if params[:report_format].blank?

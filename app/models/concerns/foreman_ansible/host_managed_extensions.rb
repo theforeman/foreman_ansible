@@ -39,7 +39,7 @@ module ForemanAnsible
       composer.triggering.mode = :future
       composer.triggering.start_at = (
         Time.zone.now +
-        Setting::Ansible[:ansible_post_provision_timeout].to_i.seconds
+        Setting[:ansible_post_provision_timeout].to_i.seconds
       )
       composer.trigger!
       logger.info("Task for Ansible roles on #{self} before_provision: "\
