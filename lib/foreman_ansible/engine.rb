@@ -19,12 +19,6 @@ module ForemanAnsible
     config.autoload_paths += Dir["#{config.root}/app/views"]
     config.autoload_paths += Dir["#{config.root}/app/lib"]
 
-    initializer 'foreman_ansible.load_default_settings',
-                :before => :load_config_initializers do
-      require_dependency(File.join(ForemanAnsible::Engine.root,
-                                   'app/models/setting/ansible.rb'))
-    end
-
     initializer 'foreman_ansible.register_gettext',
                 :after => :load_config_initializers do
       locale_dir = File.join(File.expand_path('../..', __dir__), 'locale')

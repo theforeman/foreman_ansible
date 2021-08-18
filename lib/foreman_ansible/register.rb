@@ -3,6 +3,81 @@
 Foreman::Plugin.register :foreman_ansible do
   requires_foreman '>= 2.6'
 
+  settings do
+    category :ansible, N_('Ansible') do
+      setting 'ansible_ssh_private_key_file',
+              type: :string,
+              description: N_('Use this to supply a path to an SSH Private Key '\
+                               'that Ansible will use in lieu of a password '\
+                               'Override with "ansible_ssh_private_key_file" '\
+                               'host parameter'),
+              default: '',
+              full_name: N_('Private Key Path')
+      setting 'ansible_connection',
+              type: :string,
+              description: N_('Use this connection type by default when running '\
+                               'Ansible playbooks. You can override this on hosts by '\
+                               'adding a parameter "ansible_connection"'),
+              default: 'ssh',
+              full_name: N_('Connection type')
+      setting 'ansible_winrm_server_cert_validation',
+              type: :string,
+              description: N_('Enable/disable WinRM server certificate '\
+                               'validation when running Ansible playbooks. You can override '\
+                               'this on hosts by adding a parameter '\
+                               '"ansible_winrm_server_cert_validation"'),
+              default: 'validate',
+              full_name: N_('WinRM cert Validation')
+      setting 'ansible_verbosity',
+              type: :integer,
+              description: N_('Foreman will add this level of verbosity for '\
+                               'additional debugging output when running Ansible playbooks.'),
+              default: '0',
+              full_name: N_('Default verbosity level'),
+              value: nil,
+              collection: proc {
+                { '0' => N_('Disabled'),
+                  '1' => N_('Level 1 (-v)'),
+                  '2' => N_('Level 2 (-vv)'),
+                  '3' => N_('Level 3 (-vvv)'),
+                  '4' => N_('Level 4 (-vvvv)') }
+              }
+      setting 'ansible_post_provision_timeout',
+              type: :integer,
+              description: N_('Timeout (in seconds) to set when Foreman will trigger a '\
+                               'play Ansible roles task after a host is fully provisioned. '\
+                               'Set this to the maximum time you expect a host to take '\
+                               'until it is ready after a reboot.'),
+              default: '360',
+              full_name: N_('Post-provision timeout')
+      setting 'ansible_interval',
+              type: :integer,
+              description: N_('Timeout (in minutes) when hosts should have reported.'),
+              default: '30',
+              full_name: N_('Ansible report timeout')
+      setting 'ansible_out_of_sync_disabled',
+              type: :boolean,
+              description: format(N_('Disable host configuration status turning to out of'\
+                               ' sync for %{cfgmgmt} after report does not arrive within'\
+                               ' configured interval'), :cfgmgmt => 'Ansible'),
+              default: false,
+              full_name: format(N_('%{cfgmgmt} out of sync disabled'), :cfgmgmt => 'Ansible')
+      setting  'ansible_inventory_template',
+               type: :string,
+               description: N_('Foreman will use this template to schedule the report '\
+                                 'with Ansible inventory'),
+               default: 'Ansible - Ansible Inventory',
+               full_name: N_('Default Ansible inventory report template')
+      setting 'ansible_roles_to_ignore',
+              type: :array,
+              description: N_('Those roles will be excluded when importing roles from smart proxy, '\
+                'The expected input is comma separated values and you can use * wildcard metacharacters'\
+                'For example: foo*, *b*,*bar'),
+              default: [],
+              full_name: N_('Ansible roles to ignore')
+    end
+  end
+
   security_block :foreman_ansible do
     permission :play_roles_on_host,
                { :hosts => [:play_roles, :multiple_play_roles],
