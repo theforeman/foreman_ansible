@@ -55,10 +55,6 @@ if defined? ForemanRemoteExecution
           host_setting(host, 'remote_execution_effective_user_password')
         end
 
-        def host_setting(host, setting)
-          host.params[setting.to_s] || Setting[setting]
-        end
-
         def supports_effective_user?
           true
         end

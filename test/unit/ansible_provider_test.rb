@@ -30,14 +30,11 @@ class AnsibleProviderTest < ActiveSupport::TestCase
     end
 
     context 'when using secrets' do
-      let(:host) { FactoryBot.build(:host) }
+      let(:host) { FactoryBot.create(:host) }
 
       it 'generates secrets properly' do
-        params = {
-          'remote_execution_ssh_password' => 'password',
-          'remote_execution_effective_user_password' => 'letmein'
-        }
-        host.expects(:params).twice.returns(params)
+        host.parameters << HostParameter.new(name: 'remote_execution_ssh_password', value: 'password')
+        host.parameters << HostParameter.new(name: 'remote_execution_effective_user_password', value: 'letmein')
         secrets = ForemanAnsible::AnsibleProvider.secrets(host)
         host_secrets = secrets['per-host'][host.name]
         assert_equal host_secrets['ansible_password'], 'password'
