@@ -20,7 +20,7 @@ const AnsibleHostDetail = ({ response, status }) => {
 
   return (
     <SkeletonLoader status={status} skeletonProps={{ count: 5 }}>
-      {response && (
+      {response.id && (
         <Tabs onSelect={handleTabClick} activeKey={activeTab} isSecondary>
           <Tab
             eventKey="roles"
