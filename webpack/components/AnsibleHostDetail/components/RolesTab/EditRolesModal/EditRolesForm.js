@@ -4,16 +4,12 @@ import PropTypes from 'prop-types';
 
 import { useMutation } from '@apollo/client';
 
-import {
-  Button,
-  DualListSelector,
-  Modal,
-  Spinner,
-} from '@patternfly/react-core';
+import { Button, Modal, Spinner } from '@patternfly/react-core';
 import { encodeId } from '../../../../../globalIdHelper';
 import assignAnsibleRoles from '../../../../../graphql/mutations/assignAnsibleRoles.gql';
-import { onCompleted, onError, roleNamesToIds } from './EditRolesModalHelper';
 import withLoading from '../../../../withLoading';
+import { onCompleted, onError, roleNamesToIds } from './EditRolesModalHelper';
+import DualList from '../../../../DualList';
 
 const EditRolesForm = props => {
   const {
@@ -25,13 +21,13 @@ const EditRolesForm = props => {
     actions,
   } = props;
 
-  const [chosenState, setChosenState] = useState({
+  const [formState, setFormState] = useState({
     availableOptions: [],
     chosenOptions: [],
   });
 
   useEffect(() => {
-    setChosenState({
+    setFormState({
       availableOptions: availableRoles.map(item => item.name),
       chosenOptions: assignedRoles.map(item => item.name) || [],
     });
@@ -46,7 +42,7 @@ const EditRolesForm = props => {
 
   const variables = {
     id: encodeId('Host', hostId),
-    ansibleRoleIds: roleNamesToIds(allRoles, chosenState.chosenOptions),
+    ansibleRoleIds: roleNamesToIds(allRoles, formState.chosenOptions),
   };
 
   const formActions = [
@@ -68,11 +64,11 @@ const EditRolesForm = props => {
 
   return (
     <Modal {...baseModalProps} actions={formActions}>
-      <DualListSelector
-        availableOptions={chosenState.availableOptions}
-        chosenOptions={chosenState.chosenOptions}
+      <DualList
+        availableOptions={formState.availableOptions}
+        chosenOptions={formState.chosenOptions}
         onListChange={(newAvailable, newChosen) =>
-          setChosenState({
+          setFormState({
             availableOptions: newAvailable,
             chosenOptions: newChosen,
           })

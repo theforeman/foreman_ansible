@@ -7,7 +7,7 @@
     "test": "test"
   },
   "peerDependencies": {
-    "@theforeman/vendor": ">= 6.0.0"
+    "@theforeman/vendor": ">= 8.16.0"
   },
   "dependencies": {
     "react-json-tree": "^0.11.0"
