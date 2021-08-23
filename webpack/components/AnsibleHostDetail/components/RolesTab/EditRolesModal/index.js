@@ -42,6 +42,7 @@ const EditRolesModal = ({ assignedRoles, isOpen, closeModal, hostId }) => {
 
   const useFetchFn = () =>
     useQuery(availableAnsibleRoles, { variables, fetchPolicy: 'network-only' });
+
   const renameData = data => ({
     availableRoles: data.host.availableAnsibleRoles.nodes,
   });

@@ -34,7 +34,7 @@ const RolesTable = props => {
       <TableComposable variant="compact">
         <Thead>
           <Tr>
-            {columns.map((col, idx) => (
+            {columns.map(col => (
               <Th key={col}>{col}</Th>
             ))}
           </Tr>
