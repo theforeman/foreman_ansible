@@ -1,60 +1,45 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Tabs, Tab, TabTitleText } from '@patternfly/react-core';
 import SkeletonLoader from 'foremanReact/components/common/SkeletonLoader';
 
-import { translate as __ } from 'foremanReact/common/I18n';
-
-import AnsibleVariableOverrides from './components/AnsibleVariableOverrides';
-
-import RolesTab from './components/RolesTab';
-import TabLayout from './components/TabLayout';
-
+import SecondaryTabRoutes from './components/SecondaryTabRoutes';
+import { SECONDARY_TABS } from './constants';
 import './AnsibleHostDetail.scss';
-import WrappedAnsibleHostInventory from './components/AnsibleHostInventory';
+import { hashRoute } from './helpers';
 
-const AnsibleHostDetail = ({ response, status }) => {
-  // https://projects.theforeman.org/issues/32398
-  const [activeTab, setActiveTab] = useState('roles');
-  const handleTabClick = (event, tab) => setActiveTab(tab);
-
-  return (
-    <SkeletonLoader status={status} skeletonProps={{ count: 5 }}>
-      {response && (
-        <Tabs onSelect={handleTabClick} activeKey={activeTab} isSecondary>
-          <Tab
-            eventKey="roles"
-            title={<TabTitleText>{__('Roles')}</TabTitleText>}
-          >
-            <TabLayout>
-              <RolesTab hostId={response.id} />
-            </TabLayout>
-          </Tab>
-          <Tab
-            eventKey="variables"
-            title={<TabTitleText>{__('Variables')}</TabTitleText>}
-          >
-            <TabLayout>
-              <AnsibleVariableOverrides id={response.id} />
-            </TabLayout>
-          </Tab>
-          <Tab
-            eventKey="inventory"
-            title={<TabTitleText>{__('Inventory')}</TabTitleText>}
-          >
-            <TabLayout>
-              <WrappedAnsibleHostInventory hostId={response.id} />
-            </TabLayout>
-          </Tab>
+const AnsibleHostDetail = ({
+  response: { id },
+  status,
+  location: { pathname },
+}) => (
+  <SkeletonLoader status={status} skeletonProps={{ count: 5 }}>
+    {id && (
+      <>
+        <Tabs activeKey={pathname?.split('/')[2]} isSecondary>
+          {SECONDARY_TABS.map(({ key, title }) => (
+            <Tab
+              key={key}
+              eventKey={key}
+              title={<TabTitleText>{title}</TabTitleText>}
+              href={hashRoute(key)}
+            />
+          ))}
         </Tabs>
-      )}
-    </SkeletonLoader>
-  );
-};
+        <SecondaryTabRoutes id={id} />
+      </>
+    )}
+  </SkeletonLoader>
+);
 
 AnsibleHostDetail.propTypes = {
   response: PropTypes.object.isRequired,
   status: PropTypes.string.isRequired,
+  location: PropTypes.object,
+};
+
+AnsibleHostDetail.defaultProps = {
+  location: { pathname: '' },
 };
 
 export default AnsibleHostDetail;

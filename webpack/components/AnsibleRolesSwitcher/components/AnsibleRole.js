@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { ListView, Tooltip, OverlayTrigger } from 'patternfly-react';
 import classNames from 'classnames';
@@ -57,4 +58,27 @@ const AnsibleRole = ({ role, icon, onClick, resourceName, index }) => {
   return listItem(clickHandler);
 };
 
+AnsibleRole.propTypes = {
+  icon: PropTypes.string,
+  index: PropTypes.number,
+  onClick: PropTypes.func,
+  resourceName: PropTypes.string,
+  role: PropTypes.shape({
+    id: PropTypes.number,
+    inherited: PropTypes.bool,
+    name: PropTypes.string,
+  }),
+};
+
+AnsibleRole.defaultProps = {
+  icon: undefined,
+  index: undefined,
+  onClick: undefined,
+  resourceName: undefined,
+  role: {
+    id: undefined,
+    inherited: false,
+    name: '',
+  },
+};
 export default AnsibleRole;
