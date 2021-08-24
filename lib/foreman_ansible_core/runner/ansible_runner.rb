@@ -133,7 +133,7 @@ module ForemanAnsibleCore
       end
 
       def check_mode?
-        @check_mode == true
+        @check_mode == true && @rex_command == false
       end
 
       def prepare_directory_structure
