@@ -32,7 +32,8 @@ if defined? ForemanRemoteExecution
               template_invocation.template
             ),
             :name => host.name,
-            :check_mode => host.host_param('ansible_roles_check_mode')
+            :check_mode => host.host_param('ansible_roles_check_mode'),
+            :cleanup_working_dirs => cleanup_working_dirs?(host)
           )
         end
 
