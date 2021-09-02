@@ -34,8 +34,10 @@ exports[`AvailableRolesList should render 1`] = `
   >
     <AnsibleRole
       icon="fa fa-plus-circle"
+      index={0}
       key="1"
       onClick={[Function]}
+      resourceName="host"
       role={
         Object {
           "id": 1,
@@ -45,8 +47,10 @@ exports[`AvailableRolesList should render 1`] = `
     />
     <AnsibleRole
       icon="fa fa-plus-circle"
+      index={1}
       key="2"
       onClick={[Function]}
+      resourceName="host"
       role={
         Object {
           "id": 2,

@@ -83,4 +83,8 @@ AnsibleRole.defaultProps = {
   },
 };
 
+AnsibleRole.defaultProps = {
+  resourceName: 'host',
+};
+
 export default AnsibleRole;

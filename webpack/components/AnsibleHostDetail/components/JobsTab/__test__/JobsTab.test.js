@@ -39,6 +39,7 @@ describe('JobsTab', () => {
       />
     );
     await waitFor(tick);
+    await waitFor(tick);
     screen
       .getAllByText('Run Ansible roles')
       .map(element => expect(element).toBeInTheDocument());
@@ -57,6 +58,7 @@ describe('JobsTab', () => {
         mocks={emptyScheduledMocks.concat(emptyPreviousMocks)}
       />
     );
+    await waitFor(tick);
     await waitFor(tick);
     expect(
       screen.getByText('No config job for Ansible roles scheduled')
