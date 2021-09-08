@@ -4,14 +4,14 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 
 import AnsibleVariableOverrides from './AnsibleVariableOverrides';
 import RolesTab from './RolesTab';
-import JobsTab from './components/JobsTab';
+import JobsTab from './JobsTab';
 import TabLayout from './TabLayout';
 
 import WrappedAnsibleHostInventory from './AnsibleHostInventory';
 import { ANSIBLE_KEY } from '../constants';
 import { route } from '../helpers';
 
-const SecondaryTabRoutes = ({ response }) => (
+const SecondaryTabRoutes = ({ response, router }) => (
   <Switch>
     <Route exact path={`/${ANSIBLE_KEY}`}>
       <Redirect to={route('roles')} />
@@ -33,7 +33,7 @@ const SecondaryTabRoutes = ({ response }) => (
     </Route>
     <Route path={route('jobs')}>
       <TabLayout>
-        <JobsTab response={response} />
+        <JobsTab response={response} router={router} />
       </TabLayout>
     </Route>
   </Switch>
@@ -41,6 +41,7 @@ const SecondaryTabRoutes = ({ response }) => (
 
 SecondaryTabRoutes.propTypes = {
   response: PropTypes.object.isRequired,
+  router: PropTypes.object.isRequired,
 };
 
 export default SecondaryTabRoutes;

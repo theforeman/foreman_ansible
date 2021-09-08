@@ -35,6 +35,7 @@ describe('JobsTab', () => {
     render(
       <ComponentWithIntl
         response={{ id: hostId }}
+        router={{ push: jest.fn() }}
         mocks={scheduledJobsMocks.concat(previousJobsMocks)}
       />
     );
@@ -55,6 +56,7 @@ describe('JobsTab', () => {
     render(
       <ComponentWithIntl
         response={{ id: hostId }}
+        router={{ push: jest.fn() }}
         mocks={emptyScheduledMocks.concat(emptyPreviousMocks)}
       />
     );

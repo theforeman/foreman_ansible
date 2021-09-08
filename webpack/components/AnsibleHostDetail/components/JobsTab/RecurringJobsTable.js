@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { translate as __ } from 'foremanReact/common/I18n';
 
 import RelativeDateTime from 'foremanReact/components/common/dates/RelativeDateTime';
@@ -22,7 +21,7 @@ const RecurringJobsTable = props => {
 
   return (
     <React.Fragment>
-      <h3>Scheduled recurring jobs</h3>
+      <h3>{__('Scheduled recurring jobs')}</h3>
       <TableComposable variant="compact">
         <Thead>
           <Tr>
@@ -35,9 +34,13 @@ const RecurringJobsTable = props => {
           {props.jobs.map(job => (
             <Tr key={job.id}>
               <Td>
-                <Link to={`/job_invocations/${decodeId(job.id)}`}>
+                <a
+                  onClick={() =>
+                    props.router.push(`/job_invocations/${decodeId(job.id)}`)
+                  }
+                >
                   {job.description}
-                </Link>
+                </a>
               </Td>
               <Td>{job.recurringLogic.cronLine}</Td>
               <Td>
@@ -53,6 +56,7 @@ const RecurringJobsTable = props => {
 
 RecurringJobsTable.propTypes = {
   jobs: PropTypes.array.isRequired,
+  router: PropTypes.object.isRequired,
 };
 
 export default withLoading(RecurringJobsTable);

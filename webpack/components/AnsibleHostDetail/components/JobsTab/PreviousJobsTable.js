@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { translate as __ } from 'foremanReact/common/I18n';
 
 import RelativeDateTime from 'foremanReact/components/common/dates/RelativeDateTime';
@@ -28,7 +27,7 @@ const PreviousJobsTable = props => {
 
   return (
     <React.Fragment>
-      <h3>Previously executed jobs</h3>
+      <h3>{__('Previously executed jobs')}</h3>
       <TableComposable variant="compact">
         <Thead>
           <Tr>
@@ -41,9 +40,13 @@ const PreviousJobsTable = props => {
           {props.jobs.map(job => (
             <Tr key={job.id}>
               <Td>
-                <Link to={`/job_invocations/${decodeId(job.id)}`}>
+                <a
+                  onClick={() =>
+                    props.router.push(`/job_invocations/${decodeId(job.id)}`)
+                  }
+                >
                   {job.description}
-                </Link>
+                </a>
               </Td>
               <Td>{job.task.result}</Td>
               <Td>{job.task.state}</Td>
@@ -61,6 +64,7 @@ const PreviousJobsTable = props => {
 
 PreviousJobsTable.propTypes = {
   jobs: PropTypes.array.isRequired,
+  router: PropTypes.object.isRequired,
 };
 
 export default withLoading(PreviousJobsTable);

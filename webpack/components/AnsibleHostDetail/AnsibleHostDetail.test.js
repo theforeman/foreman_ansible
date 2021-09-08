@@ -6,7 +6,7 @@ import AnsibleHostDetail from './';
 describe('AnsibleHostDetail', () => {
   it('should show skeleton when loading', () => {
     const { container } = render(
-      <AnsibleHostDetail status="PENDING" response={{ id: 5 }} />
+      <AnsibleHostDetail status="PENDING" response={{ id: 5 }} router={{}} />
     );
     expect(
       container.getElementsByClassName('react-loading-skeleton')

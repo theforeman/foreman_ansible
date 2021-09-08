@@ -8,27 +8,30 @@ import { fetchRecurringFn, fetchPreviousFn, renameData } from './JobsTabHelper';
 import RecurringJobsTable from './RecurringJobsTable';
 import PreviousJobsTable from './PreviousJobsTable';
 
-const JobsTab = props => (
+const JobsTab = ({ response, router }) => (
   <React.Fragment>
     <RecurringJobsTable
-      response={props.response}
+      response={response}
       fetchFn={fetchRecurringFn}
       renameData={renameData}
       resultPath="jobInvocations.nodes"
       emptyStateTitle={__('No config job for Ansible roles scheduled')}
+      router={router}
     />
     <PreviousJobsTable
-      response={props.response}
+      response={response}
       fetchFn={fetchPreviousFn}
       renameData={renameData}
       resultPath="jobInvocations.nodes"
       emptyStateTitle={__('No previous job executions found')}
+      router={router}
     />
   </React.Fragment>
 );
 
 JobsTab.propTypes = {
   response: PropTypes.object.isRequired,
+  router: PropTypes.object.isRequired,
 };
 
 export default JobsTab;
