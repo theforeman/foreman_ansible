@@ -6,7 +6,8 @@ class AnsibleRole < ApplicationRecord
   include Authorizable
 
   self.include_root_in_json = false
-  validates :name, :presence => true, :uniqueness => true
+  validates :name, :presence => true, :uniqueness => { scope: :organization_id }
+  belongs_to :organization
   has_many :host_ansible_roles
   has_many_hosts :through => :host_ansible_roles, :dependent => :destroy
   has_many :hostgroup_ansible_roles
@@ -37,5 +38,15 @@ class AnsibleRole < ApplicationRecord
   # Methods to be allowed in any template with safemode enabled
   class Jail < Safemode::Jail
     allow :name
+  end
+
+  def clone_to_org!(new_org_id = nil)
+    cloned = deep_clone
+    cloned.organization_id = new_org_id if new_org_id
+    cloned.save!
+    ansible_variables.each do |variable|
+      cloned.ansible_variables << variable.deep_clone(except: :ansible_role_id, include: :lookup_values)
+    end
+    cloned
   end
 end
