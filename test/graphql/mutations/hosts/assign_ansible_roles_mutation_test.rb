@@ -20,7 +20,7 @@ module Mutations
             assignAnsibleRoles(input: { id: $id, ansibleRoleIds: $ansibleRoleIds }) {
               host {
                 id
-                ansibleRoles {
+                ownAnsibleRoles {
                   nodes {
                     id
                     name
@@ -45,7 +45,7 @@ module Mutations
           assert_not_nil data
           assert_empty result['data']['assignAnsibleRoles']['errors']
 
-          assert_equal([role3, role2, role1].map { |role| Foreman::GlobalId.for role }, data['ansibleRoles']['nodes'].map { |node| node['id'] })
+          assert_equal([role3, role2, role1].map { |role| Foreman::GlobalId.for role }, data['ownAnsibleRoles']['nodes'].map { |node| node['id'] })
         end
       end
 
@@ -68,7 +68,7 @@ module Mutations
           assert_not_nil data
           assert_empty result['data']['assignAnsibleRoles']['errors']
 
-          assert_equal([role3, role2].map { |role| Foreman::GlobalId.for role }, data['ansibleRoles']['nodes'].map { |node| node['id'] })
+          assert_equal([role3, role2].map { |role| Foreman::GlobalId.for role }, data['ownAnsibleRoles']['nodes'].map { |node| node['id'] })
         end
       end
 

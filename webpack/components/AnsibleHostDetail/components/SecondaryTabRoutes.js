@@ -11,14 +11,14 @@ import WrappedAnsibleHostInventory from './AnsibleHostInventory';
 import { ANSIBLE_KEY } from '../constants';
 import { route } from '../helpers';
 
-const SecondaryTabRoutes = ({ response, router }) => (
+const SecondaryTabRoutes = ({ response, router, history }) => (
   <Switch>
     <Route exact path={`/${ANSIBLE_KEY}`}>
       <Redirect to={route('roles')} />
     </Route>
     <Route path={route('roles')}>
       <TabLayout>
-        <RolesTab hostId={response.id} />
+        <RolesTab hostId={response.id} history={history} />
       </TabLayout>
     </Route>
     <Route path={route('variables')}>
@@ -42,6 +42,7 @@ const SecondaryTabRoutes = ({ response, router }) => (
 SecondaryTabRoutes.propTypes = {
   response: PropTypes.object.isRequired,
   router: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export default SecondaryTabRoutes;

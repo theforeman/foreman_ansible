@@ -1,8 +1,0 @@
-query($search: String) {
-  ansibleRoles(search: $search) {
-    nodes {
-      id
-      name
-    }
-  }
-}

@@ -30,6 +30,14 @@ module ForemanAnsible
       hostgroup.inherited_and_own_ansible_roles
     end
 
+    def own_ansible_roles
+      ansible_roles.where.not(:id => inherited_ansible_roles.pluck(:id))
+    end
+
+    def available_ansible_roles
+      AnsibleRole.where.not(:id => all_ansible_roles.pluck(:id))
+    end
+
     # This one should be fixed, disabled for the moment as we're
     # in a rush to get the release out
     def play_ansible_roles
