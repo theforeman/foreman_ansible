@@ -1,0 +1,11 @@
+query($id: String!) {
+  host(id: $id) {
+    id
+    ownAnsibleRoles {
+      nodes {
+        id
+        name
+      }
+    }
+  }
+}

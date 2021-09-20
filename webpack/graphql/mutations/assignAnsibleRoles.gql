@@ -1,0 +1,17 @@
+mutation AssignAnsibleRoles($id: ID!, $ansibleRoleIds: [Int!]!) {
+  assignAnsibleRoles(input: { id: $id, ansibleRoleIds: $ansibleRoleIds }) {
+    host {
+      id
+      ownAnsibleRoles {
+        nodes {
+          id
+          name
+        }
+      }
+    }
+    errors {
+      path
+      message
+    }
+  }
+}

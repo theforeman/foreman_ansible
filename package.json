@@ -21,6 +21,7 @@
     "@theforeman/stories": "^8.4.1",
     "@theforeman/test": "^8.9.0",
     "@theforeman/vendor-dev": "^8.4.1",
+    "@testing-library/user-event": "^13.2.1",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2",
     "prettier": "^1.13.5"

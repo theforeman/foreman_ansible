@@ -13,6 +13,7 @@ const AnsibleHostDetail = ({
   status,
   router,
   location: { pathname },
+  history,
 }) => (
   <SkeletonLoader status={status} skeletonProps={{ count: 5 }}>
     {response?.id && (
@@ -27,7 +28,11 @@ const AnsibleHostDetail = ({
             />
           ))}
         </Tabs>
-        <SecondaryTabRoutes response={response} router={router} />
+        <SecondaryTabRoutes
+          response={response}
+          router={router}
+          history={history}
+        />
       </>
     )}
   </SkeletonLoader>
@@ -38,6 +43,7 @@ AnsibleHostDetail.propTypes = {
   status: PropTypes.string.isRequired,
   location: PropTypes.object,
   router: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 AnsibleHostDetail.defaultProps = {

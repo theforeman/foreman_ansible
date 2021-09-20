@@ -180,7 +180,8 @@ Foreman::Plugin.register :foreman_ansible do
 
   extend_graphql_type :type => ::Types::Host do
     field :all_ansible_roles, ::Types::AnsibleRole.connection_type, :null => true
-    field :ansible_roles, ::Types::AnsibleRole.connection_type, :null => true
+    field :own_ansible_roles, ::Types::AnsibleRole.connection_type, :null => true
+    field :available_ansible_roles, ::Types::AnsibleRole.connection_type, :null => true
   end
 
   register_graphql_query_field :ansible_roles, '::Types::AnsibleRole', :collection_field

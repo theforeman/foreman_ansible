@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { translate as __ } from 'foremanReact/common/I18n';
+import { Route, Link } from 'react-router-dom';
 
 import {
   TableComposable,
@@ -10,7 +11,9 @@ import {
   Th,
   Td,
 } from '@patternfly/react-table';
+import { Flex, FlexItem, Button } from '@patternfly/react-core';
 
+import EditRolesModal from './EditRolesModal';
 import withLoading from '../../../withLoading';
 
 const RolesTable = props => {
@@ -19,6 +22,15 @@ const RolesTable = props => {
   return (
     <React.Fragment>
       <h3>{__('Assigned Ansible Roles')}</h3>
+      <Flex>
+        <FlexItem>
+          <Link to="/Ansible/roles/edit">
+            <Button aria-label="edit ansible roles">
+              {__('Edit Ansible Roles')}
+            </Button>
+          </Link>
+        </FlexItem>
+      </Flex>
       <TableComposable variant="compact">
         <Thead>
           <Tr>
@@ -35,12 +47,22 @@ const RolesTable = props => {
           ))}
         </Tbody>
       </TableComposable>
+      <Route path="/Ansible/roles/edit">
+        <EditRolesModal
+          closeModal={() => props.history.push('/Ansible/roles')}
+          isOpen
+          assignedRoles={props.ansibleRoles}
+          hostId={props.hostId}
+        />
+      </Route>
     </React.Fragment>
   );
 };
 
 RolesTable.propTypes = {
   ansibleRoles: PropTypes.array.isRequired,
+  hostId: PropTypes.number.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export default withLoading(RolesTable);
