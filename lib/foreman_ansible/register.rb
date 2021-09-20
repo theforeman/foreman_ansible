@@ -105,9 +105,11 @@ Foreman::Plugin.register :foreman_ansible do
 
   extend_graphql_type :type => ::Types::Host do
     field :all_ansible_roles, ::Types::AnsibleRole.connection_type, :null => true
+    field :ansible_roles, ::Types::AnsibleRole.connection_type, :null => true
   end
 
   register_graphql_query_field :ansible_roles, '::Types::AnsibleRole', :collection_field
+  register_graphql_mutation_field :assign_ansible_roles, '::Mutations::Hosts::AssignAnsibleRoles'
 
   divider :top_menu, :caption => N_('Ansible'), :parent => :configure_menu
   menu :top_menu, :ansible_roles,
