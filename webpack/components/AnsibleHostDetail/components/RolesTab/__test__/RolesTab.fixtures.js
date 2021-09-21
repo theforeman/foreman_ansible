@@ -41,10 +41,12 @@ const role4 = {
 };
 
 const ansibleRolesMock = {
+  totalCount: 3,
   nodes: [role1, role2, role3],
 };
 
 const ansibleRolesUpdatedMock = {
+  totalCount: 3,
   nodes: [role1, role2, role4],
 };
 
@@ -108,7 +110,7 @@ const editModalData = {
 };
 
 export const mocks = ansibleRolesMockFactory(
-  { id: hostGlobalId },
+  { id: hostGlobalId, first: 20, last: 20 },
   { __typename: 'Host', id: hostGlobalId, ownAnsibleRoles: ansibleRolesMock }
 );
 

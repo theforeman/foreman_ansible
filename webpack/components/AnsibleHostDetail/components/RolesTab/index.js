@@ -6,17 +6,24 @@ import { translate as __ } from 'foremanReact/common/I18n';
 import ansibleRolesQuery from '../../../../graphql/queries/hostAnsibleRoles.gql';
 import { encodeId } from '../../../../globalIdHelper';
 import RolesTable from './RolesTable';
+import {
+  useParamsToVars,
+  useCurrentPagination,
+} from '../../../../helpers/pageParamsHelper';
 
 const RolesTab = ({ hostId, history }) => {
   const hostGlobalId = encodeId('Host', hostId);
+  const pagination = useCurrentPagination(history);
 
   const renameData = data => ({
     ansibleRoles: data.host.ownAnsibleRoles.nodes,
+    totalCount: data.host.ownAnsibleRoles.totalCount,
   });
 
   const useFetchFn = () =>
     useQuery(ansibleRolesQuery, {
-      variables: { id: hostGlobalId },
+      variables: { id: hostGlobalId, ...useParamsToVars(history) },
+      fetchPolicy: 'network-only',
     });
 
   return (
@@ -28,6 +35,7 @@ const RolesTab = ({ hostId, history }) => {
       hostId={hostId}
       history={history}
       hostGlobalId={hostGlobalId}
+      pagination={pagination}
     />
   );
 };
