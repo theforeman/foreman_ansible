@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { translate as __ } from 'foremanReact/common/I18n';
 import { Route, Link } from 'react-router-dom';
+import { usePaginationOptions } from 'foremanReact/components/Pagination/PaginationHooks';
 
 import {
   TableComposable,
@@ -11,20 +12,41 @@ import {
   Th,
   Td,
 } from '@patternfly/react-table';
-import { Flex, FlexItem, Button } from '@patternfly/react-core';
+import { Flex, FlexItem, Button, Pagination } from '@patternfly/react-core';
 
 import EditRolesModal from './EditRolesModal';
 
 import withLoading from '../../../withLoading';
 import AllRolesModal from './AllRolesModal';
+import {
+  preparePerPageOptions,
+  refreshPage,
+} from '../../../../helpers/paginationHelper';
 
-const RolesTable = props => {
+const RolesTable = ({
+  totalCount,
+  pagination,
+  history,
+  ansibleRoles,
+  hostId,
+  hostGlobalId,
+}) => {
   const columns = [__('Name')];
+
+  const handlePerPageSelected = (event, perPage) => {
+    refreshPage(history, { page: 1, perPage });
+  };
+
+  const handlePageSelected = (event, page) => {
+    refreshPage(history, { ...pagination, page });
+  };
+
+  const perPageOptions = preparePerPageOptions(usePaginationOptions());
 
   return (
     <React.Fragment>
       <h3>{__('Assigned Ansible Roles')}</h3>
-      <Flex>
+      <Flex className="pf-u-pt-md">
         <FlexItem>
           <Link to="/Ansible/roles/edit">
             <Button aria-label="edit ansible roles">
@@ -37,6 +59,17 @@ const RolesTable = props => {
             <Button variant="link">{__('View all assigned roles')}</Button>
           </Link>
         </FlexItem>
+        <FlexItem align={{ default: 'alignRight' }}>
+          <Pagination
+            itemCount={totalCount}
+            page={pagination.page}
+            perPage={pagination.perPage}
+            onSetPage={handlePageSelected}
+            onPerPageSelect={handlePerPageSelected}
+            perPageOptions={perPageOptions}
+            variant="top"
+          />
+        </FlexItem>
       </Flex>
       <TableComposable variant="compact">
         <Thead>
@@ -47,7 +80,7 @@ const RolesTable = props => {
           </Tr>
         </Thead>
         <Tbody>
-          {props.ansibleRoles.map(role => (
+          {ansibleRoles.map(role => (
             <Tr key={role.id}>
               <Td>{role.name}</Td>
             </Tr>
@@ -56,17 +89,17 @@ const RolesTable = props => {
       </TableComposable>
       <Route path="/Ansible/roles/edit">
         <EditRolesModal
-          closeModal={() => props.history.push('/Ansible/roles')}
+          closeModal={() => history.goBack()}
           isOpen
-          assignedRoles={props.ansibleRoles}
-          hostId={props.hostId}
+          assignedRoles={ansibleRoles}
+          hostId={hostId}
         />
       </Route>
       <Route path="/Ansible/roles/all">
         <AllRolesModal
-          onClose={() => props.history.push('/Ansible/roles')}
+          onClose={() => history.goBack()}
           isOpen
-          hostGlobalId={props.hostGlobalId}
+          hostGlobalId={hostGlobalId}
         />
       </Route>
     </React.Fragment>
@@ -78,6 +111,8 @@ RolesTable.propTypes = {
   hostId: PropTypes.number.isRequired,
   hostGlobalId: PropTypes.string.isRequired,
   history: PropTypes.object.isRequired,
+  pagination: PropTypes.object.isRequired,
+  totalCount: PropTypes.number.isRequired,
 };
 
 export default withLoading(RolesTable);

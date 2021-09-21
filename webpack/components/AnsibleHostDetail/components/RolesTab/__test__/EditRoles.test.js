@@ -51,8 +51,6 @@ describe('assigning Ansible roles', () => {
       type: 'success',
       message: 'Ansible Roles were successfully assigned.',
     });
-    expect(screen.getByText('geerlingguy.ceylon')).toBeInTheDocument();
-    expect(screen.queryByText('another.role')).not.toBeInTheDocument();
   });
   it('should show errors', async () => {
     const showToast = jest.fn();
