@@ -1,4 +1,6 @@
-import { testComponentSnapshotsWithFixtures } from '@theforeman/test';
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import ImportRolesAndVariablesTable from '../AnsibleRolesAndVariables';
 
 const rowsData = [
@@ -28,12 +30,15 @@ const columnsData = [
   { title: 'Hostgroups count' },
 ];
 
-const fixtures = {
-  'should render': {
-    rowsData,
-    columnsData,
-  },
-};
-
-describe('ImportRolesAndVariablesTable', () =>
-  testComponentSnapshotsWithFixtures(ImportRolesAndVariablesTable, fixtures));
+describe('ImportRolesAndVariablesTable', () => {
+  it('should render', () => {
+    render(
+      <ImportRolesAndVariablesTable
+        rowsData={rowsData}
+        columnsData={columnsData}
+      />
+    );
+    expect(screen.getByText('bennojoy.ntp')).toBeInTheDocument();
+    expect(screen.getByText('0ta2.git_role')).toBeInTheDocument();
+  });
+});
