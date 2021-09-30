@@ -103,7 +103,7 @@ module ForemanAnsible
         'ansible_port' => host_setting(host, 'remote_execution_ssh_port'),
         'ansible_host' => AnsibleProvider.find_ip_or_hostname(host)
       }
-      if @template_invocation.effective_user.present?
+      if @template_invocation.effective_user.present? && @template_invocation.effective_user != params['ansible_user']
         params['ansible_become_user'] = @template_invocation.effective_user
         params['ansible_become'] = true
       end
