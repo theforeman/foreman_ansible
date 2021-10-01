@@ -8,6 +8,7 @@ import { i18nProviderWrapperFactory } from 'foremanReact/common/i18nProviderWrap
 import {
   emptyMocks,
   scheduledAndPreviousMocks,
+  cancelMocks,
   createMocks,
   hostId,
   futureDate,
@@ -108,5 +109,41 @@ describe('JobsTab', () => {
     expect(
       screen.queryByText('No config job for Ansible roles scheduled')
     ).not.toBeInTheDocument();
+  });
+  it('should cancel existing recurring job', async () => {
+    const showToast = jest.fn();
+    jest.spyOn(toasts, 'showToast').mockImplementation(showToast);
+    render(
+      <ComponentWithIntl
+        resourceId={hostId}
+        resourceName="host"
+        router={{ push: jest.fn() }}
+        mocks={cancelMocks}
+      />
+    );
+    await waitFor(tick);
+    await waitFor(tick);
+    expect(
+      screen.queryByText('No config job for Ansible roles scheduled')
+    ).not.toBeInTheDocument();
+    userEvent.click(screen.getAllByRole('button', { name: 'Actions' })[0]);
+    userEvent.click(screen.getByText('Cancel'));
+    await waitFor(tick);
+    expect(
+      screen.getByText('Are you sure you want to cancel Ansible config job?')
+    ).toBeInTheDocument();
+    userEvent.click(screen.getByText('Confirm'));
+    await waitFor(tick);
+    await waitFor(tick);
+    expect(showToast).toHaveBeenCalledWith({
+      type: 'success',
+      message: 'Ansible job was successfully canceled.',
+    });
+    expect(
+      screen.queryByText('Are you sure you want to cancel Ansible config job?')
+    ).not.toBeInTheDocument();
+    expect(
+      screen.getByText('No config job for Ansible roles scheduled')
+    ).toBeInTheDocument();
   });
 });

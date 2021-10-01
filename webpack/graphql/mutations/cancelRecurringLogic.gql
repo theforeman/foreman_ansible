@@ -1,0 +1,12 @@
+mutation CancelRecurringLogic($id:ID!) {
+  cancelRecurringLogic(input: { id: $id }){
+    recurringLogic {
+      id
+      cronLine
+    }
+    errors {
+      message
+      path
+    }
+  }
+}
