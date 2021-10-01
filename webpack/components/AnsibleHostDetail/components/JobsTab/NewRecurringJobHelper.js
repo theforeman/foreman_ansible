@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 import { translate as __, sprintf } from 'foremanReact/common/I18n';
 
 import { showToast } from '../../../../toastHelper';
-import { ansiblePurpose } from './JobsTabHelper';
+import { ansiblePurpose, joinErrors } from './JobsTabHelper';
 
 export const frequencyOpts = [
   { id: 'hourly', name: __('hourly') },
@@ -46,7 +46,7 @@ export const toCron = (date, repeat) => {
 export const toVars = (resourceName, resourceId, date, repeat) => {
   const targeting =
     resourceName === 'host'
-      ? { hostId: resourceId }
+      ? { hostIds: [resourceId] }
       : { searchQuery: `hostgroup_id = ${resourceId}` };
 
   return {
@@ -66,8 +66,6 @@ export const toVars = (resourceName, resourceId, date, repeat) => {
     },
   };
 };
-
-const joinErrors = errors => errors.map(err => err.message).join(', ');
 
 const formatError = error =>
   sprintf(

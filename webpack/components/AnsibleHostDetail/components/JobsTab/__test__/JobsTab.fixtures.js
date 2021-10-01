@@ -3,6 +3,7 @@ import { admin, mockFactory } from '../../../../../testHelper';
 
 import recurringJobsQuery from '.../../../../graphql/queries/recurringJobs.gql';
 import createJobMutation from '../../../../../graphql/mutations/createJobInvocation.gql';
+import cancelRecurringLogicMutation from '../../../../../graphql/mutations/cancelRecurringLogic.gql';
 
 import { toVars, toCron } from '../NewRecurringJobHelper';
 
@@ -14,17 +15,21 @@ futureDate.setMilliseconds(0);
 futureDate.setSeconds(0);
 export { futureDate };
 
+const firstRecurringLogicGlobalId =
+  'MDE6Rm9yZW1hblRhc2tzOjpSZWN1cnJpbmdMb2dpYy0x';
+const firstRecurringLogic = {
+  __typename: 'ForemanTasks::RecurringLogic',
+  id: firstRecurringLogicGlobalId,
+  cronLine: toCron(futureDate, 'weekly'),
+};
+
 export const firstJob = {
   __typename: 'JobInvocation',
   id: 'MDE6Sm9iSW52b2NhdGlvbi0yNTY=',
   description: 'Run Ansible roles',
   startAt: futureDate.toISOString(),
   statusLabel: 'queued',
-  recurringLogic: {
-    __typename: 'ForemanTasks::RecurringLogic',
-    id: 'MDE6Rm9yZW1hblRhc2tzOjpSZWN1cnJpbmdMb2dpYy0x',
-    cronLine: toCron(futureDate, 'weekly'),
-  },
+  recurringLogic: firstRecurringLogic,
   task: {
     __typename: 'ForemanTasks::Task',
     id:
@@ -61,6 +66,11 @@ export const jobInvocationsMockFactory = mockFactory(
 export const jobCreateMockFactory = mockFactory(
   'createJobInvocation',
   createJobMutation
+);
+
+const jobCancelMockFactory = mockFactory(
+  'cancelRecurringLogic',
+  cancelRecurringLogicMutation
 );
 
 const emptyScheduledJobsMock = jobInvocationsMockFactory(
@@ -102,3 +112,24 @@ const createJobMock = jobCreateMockFactory(
 export const createMocks = emptyScheduledJobsRefetchMock
   .concat(emptyPreviousJobsMock)
   .concat(createJobMock);
+
+const scheduledWithRefetch = jobInvocationsMockFactory(
+  { search: scheduledJobsSearch('host', hostId) },
+  { nodes: [firstJob] },
+  { refetchData: { nodes: [] }, currentUser: admin }
+);
+
+const previousWithRefetch = jobInvocationsMockFactory(
+  { search: previousJobsSearch('host', hostId) },
+  { nodes: [] },
+  { refetchData: { nodes: [firstJob] }, currentUser: admin }
+);
+
+const cancelJobMock = jobCancelMockFactory(
+  { id: firstRecurringLogicGlobalId },
+  { recurringLogic: firstRecurringLogic, errors: [] }
+);
+
+export const cancelMocks = scheduledWithRefetch
+  .concat(previousWithRefetch)
+  .concat(cancelJobMock);
