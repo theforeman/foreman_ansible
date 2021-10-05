@@ -3,12 +3,12 @@ module ForemanAnsible
   class OverrideResolver
     attr_reader :overrides, :ansible_variables
 
-    def initialize(host, variables = [])
+    def initialize(host, variable_ids = [])
       raise(Foreman::Exception.new('OverrideResolver needs a host to resolve overrides')) unless host
-      @ansible_variables = if variables.empty?
+      @ansible_variables = if variable_ids.empty?
                              AnsibleVariable.where(:ansible_role_id => host.all_ansible_roles, :override => true)
                            else
-                             variables
+                             AnsibleVariable.where(:ansible_role_id => variable_ids, :override => true)
                            end
       @overrides = @ansible_variables.values_hash(host).raw
     end

@@ -11,7 +11,11 @@ const TestComponent = withRedux(withMockedProvider(AnsibleVariableOverrides));
 describe('AnsibleVariableOverrides', () => {
   it('should show skeleton when page is loading', () => {
     const { container } = render(
-      <TestComponent showToast={jest.fn()} id={hostId} hostAttrs={{}} />
+      <TestComponent
+        showToast={jest.fn()}
+        hostId={hostId}
+        hostAttrs={hostAttrs}
+      />
     );
     expect(
       container.getElementsByClassName('react-loading-skeleton')
@@ -21,7 +25,7 @@ describe('AnsibleVariableOverrides', () => {
     render(
       <TestComponent
         showToast={jest.fn()}
-        id={hostId}
+        hostId={hostId}
         mocks={mocks}
         hostAttrs={hostAttrs}
       />

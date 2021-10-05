@@ -19,7 +19,9 @@ const TestComponent = withRedux(withMockedProvider(AnsibleVariableOverrides));
 
 describe('AnsibleVariableOverrides', () => {
   it('should open and close delete modal', async () => {
-    render(<TestComponent mocks={mocks} id={hostId} hostAttrs={hostAttrs} />);
+    render(
+      <TestComponent mocks={mocks} hostId={hostId} hostAttrs={hostAttrs} />
+    );
     await waitFor(tick);
     userEvent.click(screen.getAllByRole('button', { name: 'Actions' })[0]);
     userEvent.click(screen.getByText('Delete'));
@@ -39,7 +41,7 @@ describe('AnsibleVariableOverrides', () => {
     render(
       <TestComponent
         mocks={mocks.concat(deleteMocks)}
-        id={hostId}
+        hostId={hostId}
         hostAttrs={hostAttrs}
       />
     );

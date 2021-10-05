@@ -13,15 +13,15 @@ module Mutations
 
       def resolve(id:, host_id:, variable_id:)
         host = Host.find_by :id => host_id
-        var = AnsibleVariable.find_by :id => variable_id
+        variable = AnsibleVariable.find_by :id => variable_id
         return resource_not_found(_('Host not found by id: %s'), host_id) unless host
-        return resource_not_found(_('Ansible Variable not found by id: %s'), variable_id) unless var
+        return resource_not_found(_('Ansible Variable not found by id: %s'), variable_id) unless variable
         authorize!(host, :view)
-        authorize!(var, :edit)
+        authorize!(variable, :edit)
 
-        res = super id: id
-        resolver = ::ForemanAnsible::OverrideResolver.new(host, [var])
-        res.merge :overriden_ansible_variable => ::OverridenAnsibleVariablePresenter.new(var, resolver)
+        result = super id: id
+        resolver = ::ForemanAnsible::OverrideResolver.new(host, [variable.id])
+        result.merge :overriden_ansible_variable => ::OverridenAnsibleVariablePresenter.new(variable, resolver)
       end
 
       def resource_not_found(message)
