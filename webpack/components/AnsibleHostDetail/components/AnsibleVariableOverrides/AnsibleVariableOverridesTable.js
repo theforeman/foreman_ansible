@@ -20,7 +20,7 @@ import {
   findOverride,
 } from './AnsibleVariableOverridesTableHelper';
 
-import { decodeId } from '../../../../globalIdHelper';
+import { decodeModelId } from '../../../../globalIdHelper';
 
 import ConfirmModal from '../../../ConfirmModal';
 
@@ -70,7 +70,7 @@ const AnsibleVariableOverridesTable = ({ variables, hostAttrs, hostId }) => {
           {variables.map(variable => (
             <Tr key={variable.key}>
               <Td>{variable.key}</Td>
-              <Td>{variable.roleName}</Td>
+              <Td>{variable.ansibleRoleName}</Td>
               <Td>{variable.parameterType}</Td>
               <Td>{formatValue(variable)}</Td>
               <Td>{formatSourceAttr(variable)}</Td>
@@ -96,7 +96,7 @@ const AnsibleVariableOverridesTable = ({ variables, hostAttrs, hostId }) => {
             variables: {
               id: findOverride(toDelete, hostAttrs.name).id,
               hostId,
-              variableId: decodeId(toDelete),
+              variableId: decodeModelId(toDelete),
             },
           })
         }
