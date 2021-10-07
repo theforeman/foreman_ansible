@@ -9,12 +9,13 @@ import './AnsibleHostDetail.scss';
 import { hashRoute } from './helpers';
 
 const AnsibleHostDetail = ({
-  response: { id },
+  response,
   status,
+  router,
   location: { pathname },
 }) => (
   <SkeletonLoader status={status} skeletonProps={{ count: 5 }}>
-    {id && (
+    {response?.id && (
       <>
         <Tabs activeKey={pathname?.split('/')[2]} isSecondary>
           {SECONDARY_TABS.map(({ key, title }) => (
@@ -26,7 +27,7 @@ const AnsibleHostDetail = ({
             />
           ))}
         </Tabs>
-        <SecondaryTabRoutes id={id} />
+        <SecondaryTabRoutes response={response} router={router} />
       </>
     )}
   </SkeletonLoader>
@@ -36,6 +37,7 @@ AnsibleHostDetail.propTypes = {
   response: PropTypes.object.isRequired,
   status: PropTypes.string.isRequired,
   location: PropTypes.object,
+  router: PropTypes.object.isRequired,
 };
 
 AnsibleHostDetail.defaultProps = {

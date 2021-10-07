@@ -25,12 +25,13 @@ const AvailableRolesList = ({
       />
     </div>
     <LoadingState loading={loading}>
-      {unassignedRoles.map(role => (
+      {unassignedRoles.map((role, index) => (
         <AnsibleRole
           key={role.id}
           role={role}
           icon="fa fa-plus-circle"
           onClick={onAddRole}
+          index={index}
         />
       ))}
     </LoadingState>
