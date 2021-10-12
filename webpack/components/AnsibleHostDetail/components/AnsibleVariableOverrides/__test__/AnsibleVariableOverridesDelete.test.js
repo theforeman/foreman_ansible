@@ -37,7 +37,7 @@ describe('AnsibleVariableOverrides', () => {
   });
   it('should delete override', async () => {
     const showToast = jest.fn();
-    jest.spyOn(toasts, 'showToast').mockImplementation(() => showToast);
+    jest.spyOn(toasts, 'showToast').mockImplementation(showToast);
     render(
       <TestComponent
         mocks={mocks.concat(deleteMocks)}
