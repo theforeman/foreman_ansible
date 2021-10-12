@@ -1,3 +1,4 @@
+import store from 'foremanReact/redux';
 import { addToast } from 'foremanReact/redux/actions/toasts';
 
-export const showToast = dispatch => toast => dispatch(addToast(toast));
+export const showToast = toast => store.dispatch(addToast(toast));

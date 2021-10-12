@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { sprintf, translate as __ } from 'foremanReact/common/I18n';
-import { useDispatch } from 'react-redux';
 import {
   TableComposable,
   Thead,
@@ -10,8 +9,6 @@ import {
   Th,
   Td,
 } from '@patternfly/react-table';
-
-import { showToast } from '../../../../toastHelper';
 
 import {
   formatValue,
@@ -35,10 +32,7 @@ const AnsibleVariableOverridesTable = ({ variables, hostAttrs, hostId }) => {
 
   const [toDelete, setToDelete] = useState(null);
 
-  const [callMutation, { loading }] = usePrepareMutation(
-    setToDelete,
-    showToast(useDispatch())
-  );
+  const [callMutation, { loading }] = usePrepareMutation(setToDelete);
 
   const deleteAction = variable => ({
     title: __('Delete'),

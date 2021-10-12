@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 import { sprintf, translate as __ } from 'foremanReact/common/I18n';
 
 import deleteAnsibleVariableOverride from '../../../../graphql/mutations/deleteAnsibleVariableOverride.gql';
+import { showToast } from '../../../../toastHelper';
 
 const formatSourceLink = currentValue =>
   `${__(currentValue.element)}: ${currentValue.elementName}`;
@@ -32,7 +33,7 @@ export const formatValue = variable => {
 
 const joinErrors = errors => errors.map(err => err.message).join(', ');
 
-const onCompleted = (closeModal, showToast) => data => {
+const onCompleted = closeModal => data => {
   closeModal();
   const { errors } = data.deleteAnsibleVariableOverride;
   if (Array.isArray(errors) && errors.length > 0) {
@@ -63,12 +64,12 @@ const formatError = error =>
     error
   );
 
-const onError = showToast => error => {
+const onError = error => {
   showToast({ type: 'error', message: formatError(error) });
 };
 
-export const usePrepareMutation = (toggleModal, showToast) =>
+export const usePrepareMutation = toggleModal =>
   useMutation(deleteAnsibleVariableOverride, {
-    onCompleted: onCompleted(toggleModal, showToast),
-    onError: onError(showToast),
+    onCompleted: onCompleted(toggleModal),
+    onError,
   });
