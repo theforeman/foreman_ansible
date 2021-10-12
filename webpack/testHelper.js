@@ -1,22 +1,16 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
 import { MockedProvider } from '@apollo/react-testing';
 
-import toasts from 'foremanReact/redux/reducers/toasts';
+import store from 'foremanReact/redux';
+import ConfirmModal from 'foremanReact/components/ConfirmModal';
 
-export const withRedux = Component => props => {
-  const combinedReducers = combineReducers({
-    toasts,
-  });
-
-  const store = createStore(combinedReducers);
-  return (
-    <Provider store={store}>
-      <Component {...props} />
-    </Provider>
-  );
-};
+export const withRedux = Component => props => (
+  <Provider store={store}>
+    <Component {...props} />
+    <ConfirmModal />
+  </Provider>
+);
 
 export const withMockedProvider = Component => props => {
   // eslint-disable-next-line react/prop-types

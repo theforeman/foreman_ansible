@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+
 import { sprintf, translate as __ } from 'foremanReact/common/I18n';
+import { openConfirmModal } from 'foremanReact/components/ConfirmModal';
 import {
   TableComposable,
   Thead,
@@ -19,8 +22,6 @@ import {
 
 import { decodeModelId } from '../../../../globalIdHelper';
 
-import ConfirmModal from '../../../ConfirmModal';
-
 const AnsibleVariableOverridesTable = ({ variables, hostAttrs, hostId }) => {
   const columns = [
     __('Name'),
@@ -30,14 +31,31 @@ const AnsibleVariableOverridesTable = ({ variables, hostAttrs, hostId }) => {
     __('Source attribute'),
   ];
 
-  const [toDelete, setToDelete] = useState(null);
-
-  const [callMutation, { loading }] = usePrepareMutation(setToDelete);
+  const dispatch = useDispatch();
+  const [callMutation] = usePrepareMutation();
 
   const deleteAction = variable => ({
     title: __('Delete'),
     onClick: () => {
-      setToDelete(variable);
+      dispatch(
+        openConfirmModal({
+          title: __('Delete Ansible Variable Override'),
+          message:
+            variable &&
+            sprintf(
+              __('Are you sure you want to delete override for %s?'),
+              variable.key
+            ),
+          onConfirm: () =>
+            callMutation({
+              variables: {
+                id: findOverride(variable, hostAttrs.name).id,
+                hostId,
+                variableId: decodeModelId(variable),
+              },
+            }),
+        })
+      );
     },
   });
 
@@ -73,29 +91,6 @@ const AnsibleVariableOverridesTable = ({ variables, hostAttrs, hostId }) => {
           ))}
         </Tbody>
       </TableComposable>
-      <ConfirmModal
-        title={__('Delete Ansible Variable Override')}
-        text={
-          toDelete
-            ? sprintf(
-                __('Are you sure you want to delete override for %s?'),
-                toDelete.key
-              )
-            : ''
-        }
-        onClose={setToDelete}
-        isOpen={!!toDelete}
-        onConfirm={() =>
-          callMutation({
-            variables: {
-              id: findOverride(toDelete, hostAttrs.name).id,
-              hostId,
-              variableId: decodeModelId(toDelete),
-            },
-          })
-        }
-        loading={loading}
-      />
     </React.Fragment>
   );
 };
