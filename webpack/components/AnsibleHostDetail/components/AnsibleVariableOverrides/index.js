@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Skeleton from 'react-loading-skeleton';
+import { translate as __ } from 'foremanReact/common/I18n';
 
 import { useQuery } from '@apollo/client';
 import variableOverrides from '../../../../graphql/queries/variableOverrides.gql';
@@ -13,24 +13,25 @@ import './AnsibleVariableOverrides.scss';
 const AnsibleVariableOverrides = ({ hostId, hostAttrs }) => {
   const hostGlobalId = encodeId('Host', hostId);
 
-  const { loading, data, error } = useQuery(variableOverrides, {
-    variables: { hostId, id: hostGlobalId, match: `fqdn=${hostAttrs.name}` },
+  const useFetchFn = () =>
+    useQuery(variableOverrides, {
+      variables: { hostId, id: hostGlobalId, match: `fqdn=${hostAttrs.name}` },
+    });
+
+  const renameData = data => ({
+    variables: extractVariables(data.host.allAnsibleRoles.nodes),
   });
-
-  if (loading) {
-    return <Skeleton count={5} />;
-  }
-
-  if (error) {
-    return <div>{error.message}</div>;
-  }
 
   return (
     <AnsibleVariableOverridesTable
-      variables={extractVariables(data.host.allAnsibleRoles.nodes)}
       hostId={hostId}
       hostAttrs={hostAttrs}
       hostGlobalId={hostGlobalId}
+      renameData={renameData}
+      fetchFn={useFetchFn}
+      renamedDataPath="variables"
+      emptyStateTitle={__('No Ansible Variables found for Host')}
+      permissions={['view_ansible_variables']}
     />
   );
 };

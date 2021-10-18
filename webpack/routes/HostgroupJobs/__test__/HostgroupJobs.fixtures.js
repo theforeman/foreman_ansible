@@ -12,6 +12,8 @@ import {
   futureDate,
 } from '../../../components/AnsibleHostDetail/components/JobsTab/__test__/JobsTab.fixtures';
 
+import { admin } from '../../../testHelper';
+
 export const hgId = 22;
 export const matchMock = {
   params: {
@@ -22,24 +24,28 @@ export { futureDate };
 
 const emptyScheduledJobsMock = jobInvocationsMockFactory(
   { search: scheduledJobsSearch('hostgroup', hgId) },
-  { nodes: [] }
+  { nodes: [] },
+  { currentUser: admin }
 );
 const emptyScheduledJobsRefetchMock = jobInvocationsMockFactory(
   { search: scheduledJobsSearch('hostgroup', hgId) },
   { nodes: [] },
-  { refetchData: { nodes: [firstJob] } }
+  { refetchData: { nodes: [firstJob] }, currentUser: admin }
 );
 const emptyPreviousJobsMock = jobInvocationsMockFactory(
   { search: previousJobsSearch('hostgroup', hgId) },
-  { nodes: [] }
+  { nodes: [] },
+  { currentUser: admin }
 );
 const scheduledJobsMocks = jobInvocationsMockFactory(
   { search: scheduledJobsSearch('hostgroup', hgId) },
-  { nodes: [firstJob] }
+  { nodes: [firstJob] },
+  { currentUser: admin }
 );
 const previousJobsMocks = jobInvocationsMockFactory(
   { search: previousJobsSearch('hostgroup', hgId) },
-  { nodes: [secondJob] }
+  { nodes: [secondJob] },
+  { currentUser: admin }
 );
 
 export const emptyMocks = emptyScheduledJobsMock.concat(emptyPreviousJobsMock);

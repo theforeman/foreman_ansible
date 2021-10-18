@@ -55,7 +55,7 @@ const EditRolesModal = ({ assignedRoles, isOpen, closeModal, hostId }) => {
       baseModalProps={baseModalProps}
       fetchFn={useFetchFn}
       renameData={renameData}
-      resultPath="host.availableAnsibleRoles.nodes"
+      renamedDataPath="availableRoles"
       assignedRoles={assignedRoles}
       closeModal={closeModal}
       hostId={hostId}

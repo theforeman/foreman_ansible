@@ -7,14 +7,21 @@ import {
   withMockedProvider,
   withReactRouter,
 } from '../../../../../testHelper';
-import { mocks, allRolesMocks, hostId } from './RolesTab.fixtures';
+
+import {
+  mocks,
+  hostId,
+  allRolesMocks,
+  unauthorizedMocks,
+  authorizedMocks,
+} from './RolesTab.fixtures';
 
 import RolesTab from '../';
 
 const TestComponent = withReactRouter(withMockedProvider(RolesTab));
 
 describe('RolesTab', () => {
-  it('should load Ansible Roles', async () => {
+  it('should load Ansible Roles as admin', async () => {
     render(<TestComponent hostId={hostId} mocks={mocks} />);
     await waitFor(tick);
     expect(screen.getByText('aardvaark.cube')).toBeInTheDocument();
@@ -35,5 +42,21 @@ describe('RolesTab', () => {
     userEvent.click(screen.getByRole('button', { name: 'Close' }));
     await waitFor(tick);
     expect(screen.queryByText('All Ansible Roles')).not.toBeInTheDocument();
+  });
+  it('should load Ansible Roles as viewer', async () => {
+    render(<TestComponent hostId={hostId} mocks={authorizedMocks} />);
+    await waitFor(tick);
+    expect(screen.getByText('aardvaark.cube')).toBeInTheDocument();
+  });
+  it('should not load Ansible Roles for unauthorized user', async () => {
+    render(<TestComponent hostId={hostId} mocks={unauthorizedMocks} />);
+    await waitFor(tick);
+    expect(screen.queryByText('aardvaark.cube')).not.toBeInTheDocument();
+    expect(screen.getByText('Permission denied')).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        'You are not authorized to view the page. Request the following permissions from administrator: view_ansible_roles.'
+      )
+    ).toBeInTheDocument();
   });
 });

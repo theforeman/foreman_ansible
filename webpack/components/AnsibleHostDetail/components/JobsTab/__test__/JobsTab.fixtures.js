@@ -1,8 +1,8 @@
 import { scheduledJobsSearch, previousJobsSearch } from '../JobsTabHelper';
+import { admin, mockFactory } from '../../../../../testHelper';
 
 import recurringJobsQuery from '.../../../../graphql/queries/recurringJobs.gql';
 import createJobMutation from '../../../../../graphql/mutations/createJobInvocation.gql';
-import { mockFactory } from '../../../../../testHelper';
 
 import { toVars, toCron } from '../NewRecurringJobHelper';
 
@@ -65,24 +65,28 @@ export const jobCreateMockFactory = mockFactory(
 
 const emptyScheduledJobsMock = jobInvocationsMockFactory(
   { search: scheduledJobsSearch('host', hostId) },
-  { nodes: [] }
+  { nodes: [] },
+  { currentUser: admin }
 );
 const emptyScheduledJobsRefetchMock = jobInvocationsMockFactory(
   { search: scheduledJobsSearch('host', hostId) },
   { nodes: [] },
-  { refetchData: { nodes: [firstJob] } }
+  { refetchData: { nodes: [firstJob] }, currentUser: admin }
 );
 const emptyPreviousJobsMock = jobInvocationsMockFactory(
   { search: previousJobsSearch('host', hostId) },
-  { nodes: [] }
+  { nodes: [] },
+  { currentUser: admin }
 );
 const scheduledJobsMocks = jobInvocationsMockFactory(
   { search: scheduledJobsSearch('host', hostId) },
-  { nodes: [firstJob] }
+  { nodes: [firstJob] },
+  { currentUser: admin }
 );
 const previousJobsMocks = jobInvocationsMockFactory(
   { search: previousJobsSearch('host', hostId) },
-  { nodes: [secondJob] }
+  { nodes: [secondJob] },
+  { currentUser: admin }
 );
 
 export const emptyMocks = emptyScheduledJobsMock.concat(emptyPreviousJobsMock);

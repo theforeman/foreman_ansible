@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 
 import Skeleton from 'react-loading-skeleton';
 import EmptyState from 'foremanReact/components/common/EmptyState/EmptyStatePattern';
+import { EmptyStateIcon } from '@patternfly/react-core';
+import { LockIcon } from '@patternfly/react-icons';
+import { permissionCheck, permissionDeniedMsg } from '../permissionsHelper';
 
 const pluckData = (data, path) => {
   const split = path.split('.');
@@ -23,13 +26,14 @@ const withLoading = Component => {
 
   const Subcomponent = ({
     fetchFn,
-    resultPath,
     renameData,
+    renamedDataPath,
     showEmptyState,
     emptyWrapper,
     loadingWrapper,
     wrapper,
     emptyStateProps,
+    permissions,
     ...rest
   }) => {
     const { loading, error, data } = fetchFn(rest);
@@ -42,7 +46,22 @@ const withLoading = Component => {
       return emptyWrapper(<div>{error.message}</div>);
     }
 
-    const result = pluckData(data, resultPath);
+    const check = permissionCheck(data.currentUser, permissions);
+
+    if (!check.allowed) {
+      return emptyWrapper(
+        <EmptyState
+          icon={<EmptyStateIcon icon={LockIcon} />}
+          header={__('Permission denied')}
+          description={permissionDeniedMsg(
+            check.permissions.map(item => item.name)
+          )}
+        />
+      );
+    }
+
+    const renamedData = renameData(data);
+    const result = pluckData(renamedData, renamedDataPath);
 
     if (
       showEmptyState &&
@@ -53,17 +72,19 @@ const withLoading = Component => {
       );
     }
 
-    return wrapper(<Component {...rest} {...renameData(data)} />);
+    return wrapper(<Component {...rest} {...renamedData} />);
   };
 
   Subcomponent.propTypes = {
     fetchFn: PropTypes.func.isRequired,
-    resultPath: PropTypes.string.isRequired,
+    renamedDataPath: PropTypes.string.isRequired,
     renameData: PropTypes.func,
     showEmptyState: PropTypes.bool,
     loadingWrapper: PropTypes.func,
     emptyWrapper: PropTypes.func,
     emptyStateProps: PropTypes.object,
+    wrapper: PropTypes.func,
+    permissions: PropTypes.array,
   };
 
   Subcomponent.defaultProps = {
@@ -73,6 +94,7 @@ const withLoading = Component => {
     emptyWrapper: child => child,
     wrapper: child => child,
     emptyStateProps: defaultEmptyStateProps,
+    permissions: [],
   };
 
   return Subcomponent;

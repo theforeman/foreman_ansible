@@ -3,6 +3,7 @@ import variableOverridesQuery from '../../../../../graphql/queries/variableOverr
 import deleteAnsibleVariableOverride from '../../../../../graphql/mutations/deleteAnsibleVariableOverride.gql';
 import updateAnsibleVariableOverride from '../../../../../graphql/mutations/updateAnsibleVariableOverride.gql';
 import createAnsibleVariableOverride from '../../../../../graphql/mutations/createAnsibleVariableOverride.gql';
+import { admin } from '../../../../../testHelper';
 
 export const hostId = 3;
 const hostGlobalId = 'MDE6SG9zdC0z';
@@ -32,6 +33,7 @@ export const mocks = [
     },
     result: {
       data: {
+        currentUser: admin,
         host: {
           allAnsibleRoles: {
             nodes: [

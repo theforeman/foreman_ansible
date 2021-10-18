@@ -1,3 +1,5 @@
+#import "./currentUserAttributes.gql"
+
 query($id: String!, $hostId: Int!, $match: String) {
   host(id: $id) {
     allAnsibleRoles {
@@ -29,5 +31,8 @@ query($id: String!, $hostId: Int!, $match: String) {
         }
       }
     }
+  }
+  currentUser {
+    ...CurrentUserAttributes
   }
 }
