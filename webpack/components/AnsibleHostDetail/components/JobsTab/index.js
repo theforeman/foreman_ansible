@@ -16,6 +16,12 @@ const JobsTab = ({ resourceName, resourceId }) => {
 
   const toggleModal = () => setModalOpen(!modalOpen);
 
+  const permissions = [
+    'view_job_invocations',
+    'view_recurring_logics',
+    'view_foreman_tasks',
+  ];
+
   const scheduleBtn = (
     <Button aria-label="schedule recurring job" onClick={toggleModal}>
       {__('Schedule recurring job')}
@@ -30,11 +36,12 @@ const JobsTab = ({ resourceName, resourceId }) => {
           resourceName={resourceName}
           fetchFn={fetchRecurringFn}
           renameData={renameData}
-          resultPath="jobInvocations.nodes"
+          renamedDataPath="jobs"
           emptyStateProps={{
             header: __('No config job for Ansible roles scheduled'),
             action: scheduleBtn,
           }}
+          permissions={permissions}
         />
       </GridItem>
       <GridItem span={12}>
@@ -44,7 +51,9 @@ const JobsTab = ({ resourceName, resourceId }) => {
           fetchFn={fetchPreviousFn}
           renameData={renameData}
           emptyWrapper={() => null}
-          resultPath="jobInvocations.nodes"
+          renamedDataPath="jobs"
+          emptyStateProps={{ header: __('No previous job executions found') }}
+          permissions={permissions}
         />
       </GridItem>
       <NewRecurringJobModal

@@ -49,7 +49,7 @@ const AllRolesModal = ({ hostGlobalId, onClose }) => {
       emptyWrapper={loadingWrapper}
       fetchFn={useFetchFn}
       renameData={renameData}
-      resultPath="host.allAnsibleRoles.nodes"
+      renamedDataPath="allAnsibleRoles"
       hostGlobalId={hostGlobalId}
       emptyStateTitle={__('No Ansible roles assigned')}
     />

@@ -54,14 +54,15 @@ export const withMockedProvider = Component => props => {
   );
 };
 
-// use to resolve async mock requests for apollo MockedProvider
-export const tick = () => new Promise(resolve => setTimeout(resolve, 0));
-
-export const historyMock = {
-  location: {
-    search: '',
+export const userFactory = (login, permissions = []) => ({
+  __typename: 'User',
+  id: 'MDE6VXNlci01',
+  login,
+  admin: false,
+  permissions: {
+    nodes: permissions,
   },
-};
+});
 
 export const admin = {
   __typename: 'User',
@@ -73,16 +74,6 @@ export const admin = {
   },
 };
 
-export const userFactory = (login, permissions = []) => ({
-  __typename: 'User',
-  id: 'MDE6VXNlci01',
-  login,
-  admin: false,
-  permissions: {
-    nodes: permissions,
-  },
-});
-
 export const intruder = userFactory('intruder', [
   {
     __typename: 'Permission',
@@ -91,6 +82,15 @@ export const intruder = userFactory('intruder', [
   },
 ]);
 
+// use to resolve async mock requests for apollo MockedProvider
+export const tick = () => new Promise(resolve => setTimeout(resolve, 0));
+
+export const historyMock = {
+  location: {
+    search: '',
+  },
+};
+
 export const mockFactory = (resultName, query) => (
   variables,
   modelResults,
@@ -98,11 +98,23 @@ export const mockFactory = (resultName, query) => (
 ) => {
   let called = false;
 
-  const returnData = results => ({
-    data: {
-      [resultName]: results,
-    },
-  });
+  const returnData = results => {
+    const result = {
+      data: {
+        [resultName]: results,
+      },
+    };
+
+    if (errors.length !== 0) {
+      result.errors = errors;
+    }
+
+    if (currentUser) {
+      result.data.currentUser = currentUser;
+    }
+
+    return result;
+  };
 
   const mock = {
     request: {
@@ -118,13 +130,6 @@ export const mockFactory = (resultName, query) => (
     },
   };
 
-  if (errors.length !== 0) {
-    mock.result.errors = errors;
-  }
-
-  if (currentUser) {
-    mock.result.data.currentUser = currentUser;
-  }
   return [mock];
 };
 

@@ -1,3 +1,5 @@
+#import "./currentUserAttributes.gql"
+
 query($search: String) {
   jobInvocations(search: $search) {
     nodes {
@@ -15,5 +17,8 @@ query($search: String) {
         result
       }
     }
+  }
+  currentUser {
+    ...CurrentUserAttributes
   }
 }

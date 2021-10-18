@@ -1,4 +1,10 @@
-import { mockFactory, advancedMockFactory } from '../../../../../testHelper';
+import {
+  mockFactory,
+  advancedMockFactory,
+  admin,
+  intruder,
+  userFactory,
+} from '../../../../../testHelper';
 import ansibleRolesQuery from '../../../../../graphql/queries/hostAnsibleRoles.gql';
 import allAnsibleRolesQuery from '../../../../../graphql/queries/allAnsibleRoles.gql';
 import availableAnsibleRolesQuery from '../../../../../graphql/queries/hostAvailableAnsibleRoles.gql';
@@ -15,6 +21,14 @@ const assignRolesMockFactory = mockFactory(
   assignAnsibleRolesMutation
 );
 const editModalDataFactory = advancedMockFactory(availableAnsibleRolesQuery);
+
+const viewer = userFactory('roles_viewer', [
+  {
+    __typename: 'Permission',
+    id: 'MDE6UGVybWlzc2lvbi0x',
+    name: 'view_ansible_roles',
+  },
+]);
 
 const role1 = {
   __typename: 'AnsibleRole',
@@ -111,7 +125,20 @@ const editModalData = {
 
 export const mocks = ansibleRolesMockFactory(
   { id: hostGlobalId, first: 20, last: 20 },
-  { __typename: 'Host', id: hostGlobalId, ownAnsibleRoles: ansibleRolesMock }
+  { __typename: 'Host', id: hostGlobalId, ownAnsibleRoles: ansibleRolesMock },
+  { currentUser: admin }
+);
+
+export const unauthorizedMocks = ansibleRolesMockFactory(
+  { id: hostGlobalId, first: 20, last: 20 },
+  { __typename: 'Host', id: hostGlobalId, ownAnsibleRoles: ansibleRolesMock },
+  { currentUser: intruder }
+);
+
+export const authorizedMocks = ansibleRolesMockFactory(
+  { id: hostGlobalId, first: 20, last: 20 },
+  { __typename: 'Host', id: hostGlobalId, ownAnsibleRoles: ansibleRolesMock },
+  { currentUser: viewer }
 );
 
 export const editModalOpenMocks = editModalDataFactory(

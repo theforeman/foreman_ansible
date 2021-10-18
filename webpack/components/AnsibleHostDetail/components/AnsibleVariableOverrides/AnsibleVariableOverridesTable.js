@@ -29,6 +29,8 @@ import {
   onError,
 } from './AnsibleVariableOverridesTableHelper';
 
+import withLoading from '../../../withLoading';
+
 const AnsibleVariableOverridesTable = ({
   variables,
   hostAttrs,
@@ -183,4 +185,4 @@ AnsibleVariableOverridesTable.propTypes = {
   hostGlobalId: PropTypes.string.isRequired,
 };
 
-export default AnsibleVariableOverridesTable;
+export default withLoading(AnsibleVariableOverridesTable);

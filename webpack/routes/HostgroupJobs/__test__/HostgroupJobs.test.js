@@ -50,9 +50,6 @@ describe('HostgroupJobs', () => {
     expect(
       screen.getByText('No config job for Ansible roles scheduled')
     ).toBeInTheDocument();
-    expect(
-      screen.getByText('No previous job executions found')
-    ).toBeInTheDocument();
   });
   it('should create new recurring job', async () => {
     const showToast = jest.fn();

@@ -1,0 +1,11 @@
+fragment CurrentUserAttributes on User {
+  id
+  login
+  admin
+  permissions {
+    nodes {
+      id
+      name
+    }
+  }
+}
