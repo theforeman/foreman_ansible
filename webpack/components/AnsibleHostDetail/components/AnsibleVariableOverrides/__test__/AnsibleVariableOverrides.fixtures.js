@@ -21,6 +21,93 @@ const variableId = 66;
 const barVariableGlobalId = 'MDE6QW5zaWJsZVZhcmlhYmxlLTU3Mw==';
 const barVariableId = 573;
 
+const withFqdnOverride = canEdit => ({
+  __typename: 'OverridenAnsibleVariable',
+  meta: {
+    __typename: 'Meta',
+    canEdit,
+  },
+  id: ansibleVariableId,
+  key: 'rectangle',
+  defaultValue: 17,
+  parameterType: 'integer',
+  ansibleRoleName: 'test.role',
+  validatorType: '',
+  validatorRule: null,
+  required: false,
+  lookupValues: {
+    nodes: [
+      {
+        __typename: 'LookupValue',
+        id: overrideUpdateDeleteId,
+        match,
+        value: 21,
+        omit: false,
+      },
+    ],
+  },
+  currentValue: {
+    __typename: 'AnsibleVariableOverride',
+    value: 21,
+    element: 'fqdn',
+    elementName: name,
+  },
+});
+
+const withDomainOverride = canEdit => ({
+  __typename: 'OverridenAnsibleVariable',
+  meta: {
+    __typename: 'Meta',
+    canEdit,
+  },
+  id: 'MDE6QW5zaWJsZVZhcmlhYmxlLTc4',
+  key: 'circle',
+  defaultValue: 'd',
+  parameterType: 'string',
+  ansibleRoleName: 'test.role',
+  validatorType: '',
+  validatorRule: null,
+  required: false,
+  lookupValues: {
+    nodes: [],
+  },
+  currentValue: {
+    __typename: 'AnsibleVariableOverride',
+    value: 'c',
+    element: 'domain',
+    elementName: 'example.com',
+  },
+});
+
+export const unauthorizedMocks = [
+  {
+    request: {
+      query: variableOverridesQuery,
+      variables: {
+        id: hostGlobalId,
+        hostId,
+        match,
+      },
+    },
+    result: {
+      data: {
+        currentUser: admin,
+        host: {
+          allAnsibleRoles: {
+            nodes: [
+              {
+                ansibleVariablesWithOverrides: {
+                  nodes: [withFqdnOverride(false), withDomainOverride(false)],
+                },
+              },
+            ],
+          },
+        },
+      },
+    },
+  },
+];
+
 export const mocks = [
   {
     request: {
@@ -45,36 +132,13 @@ export const mocks = [
               {
                 ansibleVariablesWithOverrides: {
                   nodes: [
+                    withFqdnOverride(true),
                     {
                       __typename: 'OverridenAnsibleVariable',
-                      id: ansibleVariableId,
-                      key: 'rectangle',
-                      defaultValue: 17,
-                      parameterType: 'integer',
-                      ansibleRoleName: 'test.role',
-                      validatorType: '',
-                      validatorRule: null,
-                      required: false,
-                      lookupValues: {
-                        nodes: [
-                          {
-                            __typename: 'LookupValue',
-                            id: overrideUpdateDeleteId,
-                            match,
-                            value: 21,
-                            omit: false,
-                          },
-                        ],
+                      meta: {
+                        __typename: 'Meta',
+                        canEdit: true,
                       },
-                      currentValue: {
-                        __typename: 'AnsibleVariableOverride',
-                        value: 21,
-                        element: 'fqdn',
-                        elementName: name,
-                      },
-                    },
-                    {
-                      __typename: 'OverridenAnsibleVariable',
                       id: barVariableGlobalId,
                       key: 'bar',
                       defaultValue: 'a',
@@ -96,8 +160,13 @@ export const mocks = [
                       },
                       currentValue: null,
                     },
+                    withDomainOverride(true),
                     {
                       __typename: 'OverridenAnsibleVariable',
+                      meta: {
+                        __typename: 'Meta',
+                        canEdit: true,
+                      },
                       id: 'MDE6QW5zaWJsZVZhcmlhYmxlLTY1',
                       key: 'square',
                       defaultValue: true,
@@ -113,26 +182,10 @@ export const mocks = [
                     },
                     {
                       __typename: 'OverridenAnsibleVariable',
-                      id: 'MDE6QW5zaWJsZVZhcmlhYmxlLTc4',
-                      key: 'circle',
-                      defaultValue: 'd',
-                      parameterType: 'string',
-                      ansibleRoleName: 'test.role',
-                      validatorType: '',
-                      validatorRule: null,
-                      required: false,
-                      lookupValues: {
-                        nodes: [],
+                      meta: {
+                        __typename: 'Meta',
+                        canEdit: true,
                       },
-                      currentValue: {
-                        __typename: 'AnsibleVariableOverride',
-                        value: 'c',
-                        element: 'domain',
-                        elementName: 'example.com',
-                      },
-                    },
-                    {
-                      __typename: 'OverridenAnsibleVariable',
                       id: 'MDE6QW5zaWJsZVZhcmlhYmxlLTc5',
                       key: 'ellipse',
                       defaultValue: ['seven', 'eight'],
@@ -153,6 +206,10 @@ export const mocks = [
                     },
                     {
                       __typename: 'OverridenAnsibleVariable',
+                      meta: {
+                        __typename: 'Meta',
+                        canEdit: true,
+                      },
                       id: 'MDE6QW5zaWJsZVZhcmlhYmxlLTY2Ng==',
                       key: 'spiral',
                       defaultValue: { one: 'one', two: 'two' },
@@ -168,6 +225,10 @@ export const mocks = [
                     },
                     {
                       __typename: 'OverridenAnsibleVariable',
+                      meta: {
+                        __typename: 'Meta',
+                        canEdit: true,
+                      },
                       id: 'MDE6QW5zaWJsZVZhcmlhYmxlLTY3Mg==',
                       key: 'sun',
                       defaultValue: "{ one: 'one', two: 'two' }",
@@ -184,6 +245,10 @@ export const mocks = [
                     {
                       __typename: 'OverridenAnsibleVariable',
                       id: 'MDE6QW5zaWJsZVZhcmlhYmxlLTY3Mw==',
+                      meta: {
+                        __typename: 'Meta',
+                        canEdit: true,
+                      },
                       key: 'moon',
                       defaultValue: [
                         { hosts: 'all', become: 'true', roles: ['foo'] },

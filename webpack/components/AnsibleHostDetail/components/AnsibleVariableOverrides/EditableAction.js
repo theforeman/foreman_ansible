@@ -93,6 +93,10 @@ const EditableAction = ({
     });
   };
 
+  if (!variable.meta.canEdit) {
+    return null;
+  }
+
   return (
     <React.Fragment>
       <div>
