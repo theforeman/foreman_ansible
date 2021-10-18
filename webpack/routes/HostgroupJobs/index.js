@@ -13,12 +13,14 @@ const HostgroupJobs = props => (
     <JobsPage
       resourceName="hostgroup"
       resourceId={parseInt(props.match.params.id, 10)}
+      history={props.history}
     />
   </React.Fragment>
 );
 
 HostgroupJobs.propTypes = {
   match: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export default HostgroupJobs;

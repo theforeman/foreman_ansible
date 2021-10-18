@@ -24,27 +24,27 @@ export { futureDate };
 
 const emptyScheduledJobsMock = jobInvocationsMockFactory(
   { search: scheduledJobsSearch('hostgroup', hgId) },
-  { nodes: [] },
+  { nodes: [], totalCount: 0 },
   { currentUser: admin }
 );
 const emptyScheduledJobsRefetchMock = jobInvocationsMockFactory(
   { search: scheduledJobsSearch('hostgroup', hgId) },
-  { nodes: [] },
-  { refetchData: { nodes: [firstJob] }, currentUser: admin }
+  { nodes: [], totalCount: 0 },
+  { refetchData: { nodes: [firstJob], totalCount: 1 }, currentUser: admin }
 );
 const emptyPreviousJobsMock = jobInvocationsMockFactory(
-  { search: previousJobsSearch('hostgroup', hgId) },
-  { nodes: [] },
+  { search: previousJobsSearch('hostgroup', hgId), first: 20, last: 20 },
+  { nodes: [], totalCount: 0 },
   { currentUser: admin }
 );
 const scheduledJobsMocks = jobInvocationsMockFactory(
   { search: scheduledJobsSearch('hostgroup', hgId) },
-  { nodes: [firstJob] },
+  { nodes: [firstJob], totalCount: 1 },
   { currentUser: admin }
 );
 const previousJobsMocks = jobInvocationsMockFactory(
-  { search: previousJobsSearch('hostgroup', hgId) },
-  { nodes: [secondJob] },
+  { search: previousJobsSearch('hostgroup', hgId), first: 20, last: 20 },
+  { nodes: [secondJob], totalCount: 1 },
   { currentUser: admin }
 );
 

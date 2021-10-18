@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 
 import { i18nProviderWrapperFactory } from 'foremanReact/common/i18nProviderWrapperFactory';
-
+import JobsTab from '../';
 import {
   emptyMocks,
   scheduledAndPreviousMocks,
@@ -13,7 +13,6 @@ import {
   hostId,
   futureDate,
 } from './JobsTab.fixtures';
-import JobsTab from '../';
 import * as toasts from '../../../../../toastHelper';
 
 import { toCron } from '../NewRecurringJobHelper';
@@ -23,6 +22,7 @@ import {
   withRouter,
   withMockedProvider,
   withRedux,
+  historyMock,
 } from '../../../../../testHelper';
 
 const TestComponent = withRedux(withRouter(withMockedProvider(JobsTab)));
@@ -37,6 +37,7 @@ describe('JobsTab', () => {
         resourceName="host"
         resourceId={hostId}
         mocks={scheduledAndPreviousMocks}
+        history={historyMock}
       />
     );
     await waitFor(tick);
@@ -55,6 +56,7 @@ describe('JobsTab', () => {
         resourceName="host"
         resourceId={hostId}
         mocks={emptyMocks}
+        history={historyMock}
       />
     );
     await waitFor(tick);
@@ -72,6 +74,7 @@ describe('JobsTab', () => {
         resourceName="host"
         resourceId={hostId}
         mocks={createMocks}
+        history={historyMock}
       />
     );
     await waitFor(tick);
@@ -104,6 +107,7 @@ describe('JobsTab', () => {
       type: 'success',
       message: 'Ansible job was successfully created.',
     });
+    await waitFor(tick);
     expect(screen.getByText(toCron(futureDate, 'weekly'))).toBeInTheDocument();
     expect(screen.getByText('in 3 days')).toBeInTheDocument();
     expect(

@@ -20,6 +20,7 @@ import {
   withRouter,
   withMockedProvider,
   withRedux,
+  historyMock,
 } from '../../../testHelper';
 
 import { toCron } from '../../../components/AnsibleHostDetail/components/JobsTab/NewRecurringJobHelper';
@@ -32,7 +33,11 @@ const ComponentWithIntl = i18nProviderWrapperFactory(now, 'UTC')(TestComponent);
 describe('HostgroupJobs', () => {
   it('should load the page', async () => {
     render(
-      <ComponentWithIntl match={matchMock} mocks={scheduledAndPreviousMocks} />
+      <ComponentWithIntl
+        match={matchMock}
+        mocks={scheduledAndPreviousMocks}
+        history={historyMock}
+      />
     );
     await waitFor(tick);
     await waitFor(tick);
@@ -44,7 +49,13 @@ describe('HostgroupJobs', () => {
     expect(screen.getByText('54 10 15 * *')).toBeInTheDocument();
   });
   it('should show empty state', async () => {
-    render(<ComponentWithIntl match={matchMock} mocks={emptyMocks} />);
+    render(
+      <ComponentWithIntl
+        match={matchMock}
+        mocks={emptyMocks}
+        history={historyMock}
+      />
+    );
     await waitFor(tick);
     await waitFor(tick);
     expect(
@@ -55,7 +66,13 @@ describe('HostgroupJobs', () => {
     const showToast = jest.fn();
     jest.spyOn(toasts, 'showToast').mockImplementation(showToast);
 
-    render(<ComponentWithIntl match={matchMock} mocks={createMocks} />);
+    render(
+      <ComponentWithIntl
+        match={matchMock}
+        mocks={createMocks}
+        history={historyMock}
+      />
+    );
     await waitFor(tick);
     userEvent.click(
       screen.getByRole('button', { name: 'schedule recurring job' })
