@@ -8,6 +8,13 @@ module Types
       argument :match, String, required: false
     end
 
+    field :meta, ::Types::Meta, resolve: (proc do |object|
+      {
+        :can_edit => ::User.current.can?(object.ansible_variable.permission_name(:edit), object.ansible_variable),
+        :can_destroy => ::User.current.can?(object.ansible_variable.permission_name(:destroy), object.ansible_variable)
+      }
+    end)
+
     def lookup_values(match: nil)
       return CollectionLoader.for(object.ansible_variable.class, :lookup_values).load(object.ansible_variable) unless match
 

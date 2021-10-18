@@ -8,6 +8,9 @@ query($id: String!, $hostId: Int!, $match: String) {
           nodes {
             id
             key
+            meta {
+              canEdit
+            }
             defaultValue
             parameterType
             ansibleRoleName

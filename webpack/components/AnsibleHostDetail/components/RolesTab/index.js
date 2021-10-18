@@ -31,13 +31,13 @@ const RolesTab = ({ hostId, history, canEditHost }) => {
       fetchFn={useFetchFn}
       renamedDataPath="ansibleRoles"
       renameData={renameData}
-      hostId={hostId}
-      hostGlobalId={hostGlobalId}
-      emptyStateProps={{ title: __('No Ansible roles assigned') }}
       permissions={['view_ansible_roles']}
       history={history}
+      hostGlobalId={hostGlobalId}
+      emptyStateProps={{ title: __('No Ansible roles assigned') }}
       pagination={pagination}
       canEditHost={canEditHost}
+      hostId={hostId}
     />
   );
 };

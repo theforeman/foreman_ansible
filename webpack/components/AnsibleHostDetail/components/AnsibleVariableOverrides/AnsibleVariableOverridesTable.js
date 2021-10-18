@@ -122,7 +122,7 @@ const AnsibleVariableOverridesTable = ({
 
   const actionsResolver = (variable, idx) => {
     const actions = [];
-    if (variable.currentValue?.element === 'fqdn') {
+    if (variable.currentValue?.element === 'fqdn' && variable.meta.canEdit) {
       actions.push(deleteAction(variable, idx));
     }
     return actions;
