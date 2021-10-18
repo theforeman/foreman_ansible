@@ -15,16 +15,19 @@ export const scheduledJobsSearch = (resourceName, resourceId) =>
 export const previousJobsSearch = (resourceName, resourceId) =>
   jobSearch(resourceName, resourceId, 'status != queued');
 
-const fetchJobsFn = searchFn => componentProps =>
+const fetchJobsFn = (searchFn, pagination = {}) => componentProps =>
   useQuery(jobsQuery, {
     variables: {
       search: searchFn(componentProps.resourceName, componentProps.resourceId),
+      ...pagination,
     },
   });
 
 export const fetchRecurringFn = fetchJobsFn(scheduledJobsSearch);
-export const fetchPreviousFn = fetchJobsFn(previousJobsSearch);
+export const fetchPreviousFn = pagination =>
+  fetchJobsFn(previousJobsSearch, pagination);
 
 export const renameData = data => ({
   jobs: data.jobInvocations.nodes,
+  totalCount: data.jobInvocations.totalCount,
 });

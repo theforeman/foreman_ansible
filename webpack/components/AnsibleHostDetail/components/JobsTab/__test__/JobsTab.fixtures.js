@@ -1,6 +1,5 @@
 import { scheduledJobsSearch, previousJobsSearch } from '../JobsTabHelper';
 import { admin, mockFactory } from '../../../../../testHelper';
-
 import recurringJobsQuery from '.../../../../graphql/queries/recurringJobs.gql';
 import createJobMutation from '../../../../../graphql/mutations/createJobInvocation.gql';
 
@@ -65,27 +64,27 @@ export const jobCreateMockFactory = mockFactory(
 
 const emptyScheduledJobsMock = jobInvocationsMockFactory(
   { search: scheduledJobsSearch('host', hostId) },
-  { nodes: [] },
+  { nodes: [], totalCount: 0 },
   { currentUser: admin }
 );
 const emptyScheduledJobsRefetchMock = jobInvocationsMockFactory(
   { search: scheduledJobsSearch('host', hostId) },
-  { nodes: [] },
-  { refetchData: { nodes: [firstJob] }, currentUser: admin }
+  { nodes: [], totalCount: 0 },
+  { refetchData: { nodes: [firstJob], totalCount: 1 }, currentUser: admin }
 );
 const emptyPreviousJobsMock = jobInvocationsMockFactory(
-  { search: previousJobsSearch('host', hostId) },
-  { nodes: [] },
+  { search: previousJobsSearch('host', hostId), first: 20, last: 20 },
+  { nodes: [], totalCount: 0 },
   { currentUser: admin }
 );
 const scheduledJobsMocks = jobInvocationsMockFactory(
   { search: scheduledJobsSearch('host', hostId) },
-  { nodes: [firstJob] },
+  { nodes: [firstJob], totalCount: 1 },
   { currentUser: admin }
 );
 const previousJobsMocks = jobInvocationsMockFactory(
-  { search: previousJobsSearch('host', hostId) },
-  { nodes: [secondJob] },
+  { search: previousJobsSearch('host', hostId), first: 20, last: 20 },
+  { nodes: [secondJob], totalCount: 1 },
   { currentUser: admin }
 );
 

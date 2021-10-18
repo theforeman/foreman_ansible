@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { translate as __ } from 'foremanReact/common/I18n';
+import { usePaginationOptions } from 'foremanReact/components/Pagination/PaginationHooks';
 
 import RelativeDateTime from 'foremanReact/components/common/dates/RelativeDateTime';
 
@@ -12,11 +13,16 @@ import {
   Th,
   Td,
 } from '@patternfly/react-table';
+import { Flex, FlexItem, Pagination } from '@patternfly/react-core';
 
 import { decodeId } from '../../../../globalIdHelper';
 import withLoading from '../../../withLoading';
+import {
+  preparePerPageOptions,
+  refreshPage,
+} from '../../../../helpers/paginationHelper';
 
-const PreviousJobsTable = props => {
+const PreviousJobsTable = ({ history, totalCount, jobs, pagination }) => {
   const columns = [
     __('Description'),
     __('Result'),
@@ -25,9 +31,32 @@ const PreviousJobsTable = props => {
     __('Schedule'),
   ];
 
+  const handlePerPageSelected = (event, perPage) => {
+    refreshPage(history, { page: 1, perPage });
+  };
+
+  const handlePageSelected = (event, page) => {
+    refreshPage(history, { ...pagination, page });
+  };
+
+  const perPageOptions = preparePerPageOptions(usePaginationOptions());
+
   return (
     <React.Fragment>
       <h3>{__('Previously executed jobs')}</h3>
+      <Flex className="pf-u-pt-md">
+        <FlexItem align={{ default: 'alignRight' }}>
+          <Pagination
+            itemCount={totalCount}
+            page={pagination.page}
+            perPage={pagination.perPage}
+            onSetPage={handlePageSelected}
+            onPerPageSelect={handlePerPageSelected}
+            perPageOptions={perPageOptions}
+            variant="top"
+          />
+        </FlexItem>
+      </Flex>
       <TableComposable variant="compact">
         <Thead>
           <Tr>
@@ -37,7 +66,7 @@ const PreviousJobsTable = props => {
           </Tr>
         </Thead>
         <Tbody>
-          {props.jobs.map(job => (
+          {jobs.map(job => (
             <Tr key={job.id}>
               <Td>
                 <a
@@ -66,6 +95,9 @@ const PreviousJobsTable = props => {
 
 PreviousJobsTable.propTypes = {
   jobs: PropTypes.array.isRequired,
+  history: PropTypes.object.isRequired,
+  totalCount: PropTypes.number.isRequired,
+  pagination: PropTypes.object.isRequired,
 };
 
 export default withLoading(PreviousJobsTable);

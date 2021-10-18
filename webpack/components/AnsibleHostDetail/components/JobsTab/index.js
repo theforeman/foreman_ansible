@@ -6,14 +6,17 @@ import { translate as __ } from 'foremanReact/common/I18n';
 import { Grid, GridItem, Button } from '@patternfly/react-core';
 
 import { fetchRecurringFn, fetchPreviousFn, renameData } from './JobsTabHelper';
+import {
+  useParamsToVars,
+  useCurrentPagination,
+} from '../../../../helpers/pageParamsHelper';
 
 import RecurringJobsTable from './RecurringJobsTable';
 import PreviousJobsTable from './PreviousJobsTable';
 import NewRecurringJobModal from './NewRecurringJobModal';
 
-const JobsTab = ({ resourceName, resourceId }) => {
+const JobsTab = ({ resourceName, resourceId, history }) => {
   const [modalOpen, setModalOpen] = useState(false);
-
   const toggleModal = () => setModalOpen(!modalOpen);
 
   const permissions = [
@@ -21,6 +24,8 @@ const JobsTab = ({ resourceName, resourceId }) => {
     'view_recurring_logics',
     'view_foreman_tasks',
   ];
+
+  const pagination = useCurrentPagination(history);
 
   const scheduleBtn = (
     <Button aria-label="schedule recurring job" onClick={toggleModal}>
@@ -48,12 +53,14 @@ const JobsTab = ({ resourceName, resourceId }) => {
         <PreviousJobsTable
           resourceId={resourceId}
           resourceName={resourceName}
-          fetchFn={fetchPreviousFn}
+          fetchFn={fetchPreviousFn(useParamsToVars(history))}
           renameData={renameData}
           emptyWrapper={() => null}
           renamedDataPath="jobs"
           emptyStateProps={{ header: __('No previous job executions found') }}
           permissions={permissions}
+          pagination={pagination}
+          history={history}
         />
       </GridItem>
       <NewRecurringJobModal
@@ -69,6 +76,7 @@ const JobsTab = ({ resourceName, resourceId }) => {
 JobsTab.propTypes = {
   resourceName: PropTypes.string.isRequired,
   resourceId: PropTypes.number.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export default JobsTab;

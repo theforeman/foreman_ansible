@@ -1,7 +1,8 @@
 #import "./currentUserAttributes.gql"
 
-query($search: String) {
-  jobInvocations(search: $search) {
+query($search: String, $first: Int, $last: Int) {
+  jobInvocations(search: $search, first: $first, last: $last) {
+    totalCount
     nodes {
       id
       description

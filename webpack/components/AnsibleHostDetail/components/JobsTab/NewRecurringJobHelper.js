@@ -46,7 +46,7 @@ export const toCron = (date, repeat) => {
 export const toVars = (resourceName, resourceId, date, repeat) => {
   const targeting =
     resourceName === 'host'
-      ? { hostId: resourceId }
+      ? { hostIds: [resourceId] }
       : { searchQuery: `hostgroup_id = ${resourceId}` };
 
   return {
