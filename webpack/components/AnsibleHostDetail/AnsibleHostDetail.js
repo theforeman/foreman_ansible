@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Tabs, Tab, TabTitleText } from '@patternfly/react-core';
+import { useHistory } from 'react-router-dom';
 import SkeletonLoader from 'foremanReact/components/common/SkeletonLoader';
 
 import SecondaryTabRoutes from './components/SecondaryTabRoutes';
 import { SECONDARY_TABS } from './constants';
 import './AnsibleHostDetail.scss';
-import { hashRoute } from './helpers';
 
 const AnsibleHostDetail = ({
   response,
@@ -14,29 +14,35 @@ const AnsibleHostDetail = ({
   router,
   location: { pathname },
   history,
-}) => (
-  <SkeletonLoader status={status} skeletonProps={{ count: 5 }}>
-    {response?.id && (
-      <>
-        <Tabs activeKey={pathname?.split('/')[2]} isSecondary>
-          {SECONDARY_TABS.map(({ key, title }) => (
-            <Tab
-              key={key}
-              eventKey={key}
-              title={<TabTitleText>{title}</TabTitleText>}
-              href={hashRoute(key)}
-            />
-          ))}
-        </Tabs>
-        <SecondaryTabRoutes
-          response={response}
-          router={router}
-          history={history}
-        />
-      </>
-    )}
-  </SkeletonLoader>
-);
+}) => {
+  const hashHistory = useHistory();
+  return (
+    <SkeletonLoader status={status} skeletonProps={{ count: 5 }}>
+      {response?.id && (
+        <>
+          <Tabs
+            onSelect={(evt, subTab) => hashHistory.push(subTab)}
+            activeKey={pathname?.split('/')[2]}
+            isSecondary
+          >
+            {SECONDARY_TABS.map(({ key, title }) => (
+              <Tab
+                key={key}
+                eventKey={key}
+                title={<TabTitleText>{title}</TabTitleText>}
+              />
+            ))}
+          </Tabs>
+          <SecondaryTabRoutes
+            response={response}
+            router={router}
+            history={history}
+          />
+        </>
+      )}
+    </SkeletonLoader>
+  );
+};
 
 AnsibleHostDetail.propTypes = {
   response: PropTypes.object.isRequired,
