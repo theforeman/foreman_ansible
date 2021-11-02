@@ -41,8 +41,8 @@ const JobsTab = ({ response }) => {
           hostId={response.id}
           fetchFn={fetchPreviousFn}
           renameData={renameData}
+          emptyWrapper={() => null}
           resultPath="jobInvocations.nodes"
-          emptyStateProps={{ header: __('No previous job executions found') }}
         />
       </GridItem>
       <NewRecurringJobModal
