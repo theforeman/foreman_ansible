@@ -3,7 +3,12 @@ import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 
-import { withRedux, withMockedProvider, tick } from '../../../../../testHelper';
+import {
+  withRedux,
+  withMockedProvider,
+  tick,
+  historyMock,
+} from '../../../../../testHelper';
 import {
   mocks,
   updateMocks,
@@ -30,6 +35,7 @@ describe('AnsibleVariableOverrides', () => {
         mocks={mocks.concat(updateMocks)}
         hostId={hostId}
         hostAttrs={hostAttrs}
+        history={historyMock}
       />
     );
 
@@ -64,7 +70,7 @@ describe('AnsibleVariableOverrides', () => {
         mocks={mocks.concat(updateErrorMocks)}
         hostId={hostId}
         hostAttrs={hostAttrs}
-        hostName={hostAttrs.name}
+        history={historyMock}
       />
     );
     await waitFor(tick);
@@ -102,7 +108,7 @@ describe('AnsibleVariableOverrides', () => {
         mocks={mocks}
         hostId={hostId}
         hostAttrs={hostAttrs}
-        hostName={hostAttrs.name}
+        history={historyMock}
       />
     );
     await waitFor(tick);
@@ -131,7 +137,7 @@ describe('AnsibleVariableOverrides', () => {
         mocks={mocks.concat(updateValidationMocks)}
         hostId={hostId}
         hostAttrs={hostAttrs}
-        hostName={hostAttrs.name}
+        history={historyMock}
       />
     );
     await waitFor(tick);
@@ -158,6 +164,7 @@ describe('AnsibleVariableOverrides', () => {
         mocks={mocks.concat(createMocks)}
         hostId={hostId}
         hostAttrs={hostAttrs}
+        history={historyMock}
       />
     );
     await waitFor(tick);

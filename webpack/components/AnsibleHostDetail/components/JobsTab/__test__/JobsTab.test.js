@@ -121,7 +121,7 @@ describe('JobsTab', () => {
       <ComponentWithIntl
         resourceId={hostId}
         resourceName="host"
-        router={{ push: jest.fn() }}
+        history={historyMock}
         mocks={cancelMocks}
       />
     );
@@ -146,6 +146,9 @@ describe('JobsTab', () => {
     expect(
       screen.queryByText('Are you sure you want to cancel Ansible config job?')
     ).not.toBeInTheDocument();
+    await waitFor(tick);
+    await waitFor(tick);
+    await waitFor(tick);
     expect(
       screen.getByText('No config job for Ansible roles scheduled')
     ).toBeInTheDocument();

@@ -27,7 +27,11 @@ const SecondaryTabRoutes = ({ response, router, history }) => (
     </Route>
     <Route path={route('variables')}>
       <TabLayout>
-        <AnsibleVariableOverrides hostId={response.id} hostAttrs={response} />
+        <AnsibleVariableOverrides
+          hostId={response.id}
+          hostAttrs={response}
+          history={history}
+        />
       </TabLayout>
     </Route>
     <Route path={route('inventory')}>

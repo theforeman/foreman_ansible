@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 
 import { sprintf, translate as __ } from 'foremanReact/common/I18n';
+import { usePaginationOptions } from 'foremanReact/components/Pagination/PaginationHooks';
 import { openConfirmModal } from 'foremanReact/components/ConfirmModal';
 import {
   TableComposable,
@@ -13,6 +14,7 @@ import {
   Th,
   Td,
 } from '@patternfly/react-table';
+import { Flex, FlexItem, Pagination } from '@patternfly/react-core';
 
 import deleteAnsibleVariableOverride from '../../../../graphql/mutations/deleteAnsibleVariableOverride.gql';
 import EditableAction from './EditableAction';
@@ -30,12 +32,19 @@ import {
 } from './AnsibleVariableOverridesTableHelper';
 
 import withLoading from '../../../withLoading';
+import {
+  preparePerPageOptions,
+  refreshPage,
+} from '../../../../helpers/paginationHelper';
 
 const AnsibleVariableOverridesTable = ({
   variables,
   hostAttrs,
   hostId,
   hostGlobalId,
+  totalCount,
+  pagination,
+  history,
 }) => {
   const columns = [
     __('Name'),
@@ -44,6 +53,16 @@ const AnsibleVariableOverridesTable = ({
     __('Value'),
     __('Source attribute'),
   ];
+
+  const handlePerPageSelected = (event, perPage) => {
+    refreshPage(history, { page: 1, perPage });
+  };
+
+  const handlePageSelected = (event, page) => {
+    refreshPage(history, { ...pagination, page });
+  };
+
+  const perPageOptions = preparePerPageOptions(usePaginationOptions());
 
   const [editableState, setEditableState] = useState(
     variables.map((variable, idx) => ({
@@ -129,52 +148,67 @@ const AnsibleVariableOverridesTable = ({
   };
 
   return (
-    <TableComposable variant="compact">
-      <Thead>
-        <Tr>
-          {columns.map(col => (
-            <Th key={col}>{col}</Th>
-          ))}
-          <Th />
-        </Tr>
-      </Thead>
-      <Tbody>
-        {variables.map((variable, idx) => (
-          <Tr key={idx}>
-            <Td>{variable.key}</Td>
-            <Td>{variable.ansibleRoleName}</Td>
-            <Td>{variable.parameterType}</Td>
-            <Td>
-              <EditableValue
-                variable={variable}
-                editing={editableState[idx].open}
-                onChange={onValueChange(idx, variable)}
-                value={editableState[idx].value}
-                validation={editableState[idx].validation}
-                working={editableState[idx].working}
-              />
-            </Td>
-            <Td>{formatSourceAttr(variable)}</Td>
-            <Td>
-              <EditableAction
-                open={editableState[idx].open}
-                onClose={toggleEditable(idx)}
-                onOpen={toggleEditable(idx)}
-                toggleWorking={toggleWorking(idx)}
-                variable={variable}
-                state={editableState[idx]}
-                hostId={hostId}
-                hostName={hostAttrs.name}
-                hostGlobalId={hostGlobalId}
-                onSubmitSuccess={onSubmitSuccess(idx, variable)}
-                onValidationError={onValidationError(idx)}
-              />
-            </Td>
-            <Td actions={{ items: actionsResolver(variable, idx) }} />
+    <React.Fragment>
+      <Flex>
+        <FlexItem align={{ default: 'alignRight' }}>
+          <Pagination
+            itemCount={totalCount}
+            page={pagination.page}
+            perPage={pagination.perPage}
+            onSetPage={handlePageSelected}
+            onPerPageSelect={handlePerPageSelected}
+            perPageOptions={perPageOptions}
+            variant="top"
+          />
+        </FlexItem>
+      </Flex>
+      <TableComposable variant="compact">
+        <Thead>
+          <Tr>
+            {columns.map(col => (
+              <Th key={col}>{col}</Th>
+            ))}
+            <Th />
           </Tr>
-        ))}
-      </Tbody>
-    </TableComposable>
+        </Thead>
+        <Tbody>
+          {variables.map((variable, idx) => (
+            <Tr key={idx}>
+              <Td>{variable.key}</Td>
+              <Td>{variable.ansibleRoleName}</Td>
+              <Td>{variable.parameterType}</Td>
+              <Td>
+                <EditableValue
+                  variable={variable}
+                  editing={editableState[idx].open}
+                  onChange={onValueChange(idx, variable)}
+                  value={editableState[idx].value}
+                  validation={editableState[idx].validation}
+                  working={editableState[idx].working}
+                />
+              </Td>
+              <Td>{formatSourceAttr(variable)}</Td>
+              <Td>
+                <EditableAction
+                  open={editableState[idx].open}
+                  onClose={toggleEditable(idx)}
+                  onOpen={toggleEditable(idx)}
+                  toggleWorking={toggleWorking(idx)}
+                  variable={variable}
+                  state={editableState[idx]}
+                  hostId={hostId}
+                  hostName={hostAttrs.name}
+                  hostGlobalId={hostGlobalId}
+                  onSubmitSuccess={onSubmitSuccess(idx, variable)}
+                  onValidationError={onValidationError(idx)}
+                />
+              </Td>
+              <Td actions={{ items: actionsResolver(variable, idx) }} />
+            </Tr>
+          ))}
+        </Tbody>
+      </TableComposable>
+    </React.Fragment>
   );
 };
 
@@ -183,6 +217,9 @@ AnsibleVariableOverridesTable.propTypes = {
   hostAttrs: PropTypes.object.isRequired,
   hostId: PropTypes.number.isRequired,
   hostGlobalId: PropTypes.string.isRequired,
+  totalCount: PropTypes.number.isRequired,
+  pagination: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export default withLoading(AnsibleVariableOverridesTable);

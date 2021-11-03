@@ -9,7 +9,12 @@ import {
   hostId,
   hostAttrs,
 } from './AnsibleVariableOverrides.fixtures';
-import { withMockedProvider, withRedux, tick } from '../../../../../testHelper';
+import {
+  withMockedProvider,
+  withRedux,
+  tick,
+  historyMock,
+} from '../../../../../testHelper';
 
 const TestComponent = withRedux(withMockedProvider(AnsibleVariableOverrides));
 
@@ -20,7 +25,7 @@ describe('AnsibleVariableOverrides', () => {
         hostId={hostId}
         hostAttrs={hostAttrs}
         mocks={mocks}
-        hostName="test.example.com"
+        history={historyMock}
       />
     );
     expect(
@@ -33,7 +38,7 @@ describe('AnsibleVariableOverrides', () => {
         hostId={hostId}
         mocks={mocks}
         hostAttrs={hostAttrs}
-        hostName="test.example.com"
+        history={historyMock}
       />
     );
     await waitFor(tick);
@@ -50,7 +55,7 @@ describe('AnsibleVariableOverrides', () => {
         hostId={hostId}
         mocks={unauthorizedMocks}
         hostAttrs={hostAttrs}
-        hostName="test.example.com"
+        history={historyMock}
       />
     );
     await waitFor(tick);

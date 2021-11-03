@@ -114,14 +114,14 @@ export const createMocks = emptyScheduledJobsRefetchMock
 
 const scheduledWithRefetch = jobInvocationsMockFactory(
   { search: scheduledJobsSearch('host', hostId) },
-  { nodes: [firstJob] },
-  { refetchData: { nodes: [] }, currentUser: admin }
+  { nodes: [firstJob], totalCount: 1 },
+  { refetchData: { nodes: [], totalCount: 0 }, currentUser: admin }
 );
 
 const previousWithRefetch = jobInvocationsMockFactory(
-  { search: previousJobsSearch('host', hostId) },
-  { nodes: [] },
-  { refetchData: { nodes: [firstJob] }, currentUser: admin }
+  { search: previousJobsSearch('host', hostId), first: 20, last: 20 },
+  { nodes: [], totalCount: 0 },
+  { refetchData: { nodes: [firstJob], totalCount: 1 }, currentUser: admin }
 );
 
 const cancelJobMock = jobCancelMockFactory(

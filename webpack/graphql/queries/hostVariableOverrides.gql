@@ -1,0 +1,39 @@
+#import "./currentUserAttributes.gql"
+
+query($id: String!, $match: String, $first: Int, $last: Int) {
+  host(id: $id) {
+    id
+    ansibleVariablesWithOverrides(first: $first, last: $last) {
+      totalCount
+      nodes {
+        id
+        key
+        meta {
+          canEdit
+        }
+        defaultValue
+        parameterType
+        ansibleRoleName
+        validatorType
+        validatorRule
+        required
+        lookupValues(match: $match) {
+          nodes {
+            id
+            match
+            value
+            omit
+          }
+        }
+        currentValue {
+          value
+          element
+          elementName
+        }
+      }
+    }
+  }
+  currentUser {
+    ...CurrentUserAttributes
+  }
+}
