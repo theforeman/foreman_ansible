@@ -5,13 +5,17 @@ template_inputs:
 - name: Activation Key
   required: true
   input_type: user
+  description: Set the activation key to assign the desired RHEL subscription and
+    life cycle environment to the converted machine at the registration step.
   advanced: false
-  value_type: plain
+  value_type: resource
   resource_type: Katello::ActivationKey
   hidden_value: false
 - name: Restart
   required: true
   input_type: user
+  description: Restart the system when it is successfully converted to RHEL to boot
+    the new RHEL kernel.
   options: "yes\r\nno"
   advanced: false
   value_type: plain
@@ -34,7 +38,7 @@ kind: job_template
         url: <%= subscription_manager_configuration_url(@host) %>
         dest: /usr/share/convert2rhel/subscription-manager/katello-ca-consumer-latest.noarch.rpm
     - name: Start convert2rhel
-      command: convert2rhel -y --activationkey "<%= input('Activation Key') %>" --org "<%= @host.organization.label %>" --keep-rhsm
+      command: convert2rhel -y --activationkey "<%= input_resource('Activation Key').name %>" --org "<%= @host.organization.label %>" --keep-rhsm
 <%- if input('Restart') == "yes" -%>
     - name: Reboot the machine
       reboot:
