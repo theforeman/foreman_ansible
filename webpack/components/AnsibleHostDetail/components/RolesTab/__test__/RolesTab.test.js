@@ -37,9 +37,9 @@ describe('RolesTab', () => {
       />
     );
     await waitFor(tick);
-    expect(screen.getByText('View all assigned roles')).toBeInTheDocument();
+    expect(screen.getByText('view all assigned roles')).toBeInTheDocument();
     expect(screen.queryByText('All Ansible Roles')).not.toBeInTheDocument();
-    userEvent.click(screen.getByText('View all assigned roles'));
+    userEvent.click(screen.getByText('view all assigned roles'));
     await waitFor(tick);
     expect(screen.getByText('All Ansible Roles')).toBeInTheDocument();
     expect(screen.getByText('Inherited from Hostgroup')).toBeInTheDocument();
