@@ -1,5 +1,5 @@
 /* eslint-disable max-lines */
-import variableOverridesQuery from '../../../../../graphql/queries/variableOverrides.gql';
+import variableOverridesQuery from '../../../../../graphql/queries/hostVariableOverrides.gql';
 import deleteAnsibleVariableOverride from '../../../../../graphql/mutations/deleteAnsibleVariableOverride.gql';
 import updateAnsibleVariableOverride from '../../../../../graphql/mutations/updateAnsibleVariableOverride.gql';
 import createAnsibleVariableOverride from '../../../../../graphql/mutations/createAnsibleVariableOverride.gql';
@@ -85,22 +85,19 @@ export const unauthorizedMocks = [
       query: variableOverridesQuery,
       variables: {
         id: hostGlobalId,
-        hostId,
         match,
+        first: 20,
+        last: 20,
       },
     },
     result: {
       data: {
         currentUser: admin,
         host: {
-          allAnsibleRoles: {
-            nodes: [
-              {
-                ansibleVariablesWithOverrides: {
-                  nodes: [withFqdnOverride(false), withDomainOverride(false)],
-                },
-              },
-            ],
+          id: hostGlobalId,
+          ansibleVariablesWithOverrides: {
+            totalCount: 2,
+            nodes: [withFqdnOverride(false), withDomainOverride(false)],
           },
         },
       },
@@ -114,157 +111,172 @@ export const mocks = [
       query: variableOverridesQuery,
       variables: {
         id: hostGlobalId,
-        hostId,
         match,
+        first: 20,
+        last: 20,
       },
     },
     result: {
       data: {
         currentUser: admin,
         host: {
-          allAnsibleRoles: {
+          id: hostGlobalId,
+          ansibleVariablesWithOverrides: {
+            totalCount: 8,
             nodes: [
+              withFqdnOverride(true),
               {
-                ansibleVariablesWithOverrides: {
-                  nodes: [],
+                __typename: 'OverridenAnsibleVariable',
+                meta: {
+                  __typename: 'Meta',
+                  canEdit: true,
                 },
-              },
-              {
-                ansibleVariablesWithOverrides: {
+                id: barVariableGlobalId,
+                key: 'bar',
+                defaultValue: 'a',
+                parameterType: 'string',
+                ansibleRoleName: 'test.role',
+                validatorType: 'list',
+                validatorRule: 'a,b,c',
+                required: true,
+                lookupValues: {
                   nodes: [
-                    withFqdnOverride(true),
                     {
-                      __typename: 'OverridenAnsibleVariable',
-                      meta: {
-                        __typename: 'Meta',
-                        canEdit: true,
-                      },
-                      id: barVariableGlobalId,
-                      key: 'bar',
-                      defaultValue: 'a',
-                      parameterType: 'string',
-                      ansibleRoleName: 'test.role',
-                      validatorType: 'list',
-                      validatorRule: 'a,b,c',
-                      required: true,
-                      lookupValues: {
-                        nodes: [
-                          {
-                            __typename: 'LookupValue',
-                            id: 'MDE6TG9va3VwVmFsdWUtODE=',
-                            match,
-                            value: 'b',
-                            omit: false,
-                          },
-                        ],
-                      },
-                      currentValue: null,
-                    },
-                    withDomainOverride(true),
-                    {
-                      __typename: 'OverridenAnsibleVariable',
-                      meta: {
-                        __typename: 'Meta',
-                        canEdit: true,
-                      },
-                      id: 'MDE6QW5zaWJsZVZhcmlhYmxlLTY1',
-                      key: 'square',
-                      defaultValue: true,
-                      parameterType: 'boolean',
-                      ansibleRoleName: 'test.role',
-                      validatorType: '',
-                      validatorRule: null,
-                      required: false,
-                      lookupValues: {
-                        nodes: [],
-                      },
-                      currentValue: null,
-                    },
-                    {
-                      __typename: 'OverridenAnsibleVariable',
-                      meta: {
-                        __typename: 'Meta',
-                        canEdit: true,
-                      },
-                      id: 'MDE6QW5zaWJsZVZhcmlhYmxlLTc5',
-                      key: 'ellipse',
-                      defaultValue: ['seven', 'eight'],
-                      parameterType: 'array',
-                      ansibleRoleName: 'test.role',
-                      validatorType: '',
-                      validatorRule: null,
-                      required: false,
-                      lookupValues: {
-                        nodes: [],
-                      },
-                      currentValue: {
-                        __typename: 'AnsibleVariableOverride',
-                        value: ['nine'],
-                        element: 'hostgroup',
-                        elementName: 'parent hostgroup',
-                      },
-                    },
-                    {
-                      __typename: 'OverridenAnsibleVariable',
-                      meta: {
-                        __typename: 'Meta',
-                        canEdit: true,
-                      },
-                      id: 'MDE6QW5zaWJsZVZhcmlhYmxlLTY2Ng==',
-                      key: 'spiral',
-                      defaultValue: { one: 'one', two: 'two' },
-                      parameterType: 'hash',
-                      ansibleRoleName: 'test.role',
-                      validatorType: '',
-                      validatorRule: null,
-                      required: false,
-                      lookupValues: {
-                        nodes: [],
-                      },
-                      currentValue: null,
-                    },
-                    {
-                      __typename: 'OverridenAnsibleVariable',
-                      meta: {
-                        __typename: 'Meta',
-                        canEdit: true,
-                      },
-                      id: 'MDE6QW5zaWJsZVZhcmlhYmxlLTY3Mg==',
-                      key: 'sun',
-                      defaultValue: "{ one: 'one', two: 'two' }",
-                      parameterType: 'json',
-                      ansibleRoleName: 'test.role',
-                      validatorType: '',
-                      validatorRule: null,
-                      required: false,
-                      lookupValues: {
-                        nodes: [],
-                      },
-                      currentValue: null,
-                    },
-                    {
-                      __typename: 'OverridenAnsibleVariable',
-                      id: 'MDE6QW5zaWJsZVZhcmlhYmxlLTY3Mw==',
-                      meta: {
-                        __typename: 'Meta',
-                        canEdit: true,
-                      },
-                      key: 'moon',
-                      defaultValue: [
-                        { hosts: 'all', become: 'true', roles: ['foo'] },
-                      ],
-                      parameterType: 'yaml',
-                      ansibleRoleName: 'test.role',
-                      validatorType: '',
-                      validatorRule: null,
-                      required: false,
-                      lookupValues: {
-                        nodes: [],
-                      },
-                      currentValue: null,
+                      __typename: 'LookupValue',
+                      id: 'MDE6TG9va3VwVmFsdWUtODE=',
+                      match,
+                      value: 'b',
+                      omit: false,
                     },
                   ],
                 },
+                currentValue: null,
+              },
+              {
+                __typename: 'OverridenAnsibleVariable',
+                meta: {
+                  __typename: 'Meta',
+                  canEdit: true,
+                },
+                id: 'MDE6QW5zaWJsZVZhcmlhYmxlLTY1',
+                key: 'square',
+                defaultValue: true,
+                parameterType: 'boolean',
+                ansibleRoleName: 'test.role',
+                validatorType: '',
+                validatorRule: null,
+                required: false,
+                lookupValues: {
+                  nodes: [],
+                },
+                currentValue: null,
+              },
+              {
+                __typename: 'OverridenAnsibleVariable',
+                meta: {
+                  __typename: 'Meta',
+                  canEdit: true,
+                },
+                id: 'MDE6QW5zaWJsZVZhcmlhYmxlLTc4',
+                key: 'circle',
+                defaultValue: 'd',
+                parameterType: 'string',
+                ansibleRoleName: 'test.role',
+                validatorType: '',
+                validatorRule: null,
+                required: false,
+                lookupValues: {
+                  nodes: [],
+                },
+                currentValue: {
+                  __typename: 'AnsibleVariableOverride',
+                  value: 'c',
+                  element: 'domain',
+                  elementName: 'example.com',
+                },
+              },
+              {
+                __typename: 'OverridenAnsibleVariable',
+                meta: {
+                  __typename: 'Meta',
+                  canEdit: true,
+                },
+                id: 'MDE6QW5zaWJsZVZhcmlhYmxlLTc5',
+                key: 'ellipse',
+                defaultValue: ['seven', 'eight'],
+                parameterType: 'array',
+                ansibleRoleName: 'test.role',
+                validatorType: '',
+                validatorRule: null,
+                required: false,
+                lookupValues: {
+                  nodes: [],
+                },
+                currentValue: {
+                  __typename: 'AnsibleVariableOverride',
+                  value: ['nine'],
+                  element: 'hostgroup',
+                  elementName: 'parent hostgroup',
+                },
+              },
+              {
+                __typename: 'OverridenAnsibleVariable',
+                meta: {
+                  __typename: 'Meta',
+                  canEdit: true,
+                },
+                id: 'MDE6QW5zaWJsZVZhcmlhYmxlLTY2Ng==',
+                key: 'spiral',
+                defaultValue: { one: 'one', two: 'two' },
+                parameterType: 'hash',
+                ansibleRoleName: 'test.role',
+                validatorType: '',
+                validatorRule: null,
+                required: false,
+                lookupValues: {
+                  nodes: [],
+                },
+                currentValue: null,
+              },
+              {
+                __typename: 'OverridenAnsibleVariable',
+                meta: {
+                  __typename: 'Meta',
+                  canEdit: true,
+                },
+                id: 'MDE6QW5zaWJsZVZhcmlhYmxlLTY3Mg==',
+                key: 'sun',
+                defaultValue: "{ one: 'one', two: 'two' }",
+                parameterType: 'json',
+                ansibleRoleName: 'test.role',
+                validatorType: '',
+                validatorRule: null,
+                required: false,
+                lookupValues: {
+                  nodes: [],
+                },
+                currentValue: null,
+              },
+              {
+                __typename: 'OverridenAnsibleVariable',
+                meta: {
+                  __typename: 'Meta',
+                  canEdit: true,
+                },
+                id: 'MDE6QW5zaWJsZVZhcmlhYmxlLTY3Mw==',
+                key: 'moon',
+                defaultValue: [
+                  { hosts: 'all', become: 'true', roles: ['foo'] },
+                ],
+                parameterType: 'yaml',
+                ansibleRoleName: 'test.role',
+                validatorType: '',
+                validatorRule: null,
+                required: false,
+                lookupValues: {
+                  nodes: [],
+                },
+                currentValue: null,
               },
             ],
           },

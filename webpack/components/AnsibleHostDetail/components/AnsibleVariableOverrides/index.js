@@ -3,23 +3,32 @@ import PropTypes from 'prop-types';
 import { translate as __ } from 'foremanReact/common/I18n';
 
 import { useQuery } from '@apollo/client';
-import variableOverrides from '../../../../graphql/queries/variableOverrides.gql';
+import variableOverrides from '../../../../graphql/queries/hostVariableOverrides.gql';
 import AnsibleVariableOverridesTable from './AnsibleVariableOverridesTable';
+import {
+  useParamsToVars,
+  useCurrentPagination,
+} from '../../../../helpers/pageParamsHelper';
 
 import { encodeId } from '../../../../globalIdHelper';
-import { extractVariables } from './AnsibleVariableOverridesHelper';
 import './AnsibleVariableOverrides.scss';
 
-const AnsibleVariableOverrides = ({ hostId, hostAttrs }) => {
+const AnsibleVariableOverrides = ({ hostId, hostAttrs, history }) => {
   const hostGlobalId = encodeId('Host', hostId);
+  const pagination = useCurrentPagination(history);
 
   const useFetchFn = () =>
     useQuery(variableOverrides, {
-      variables: { hostId, id: hostGlobalId, match: `fqdn=${hostAttrs.name}` },
+      variables: {
+        id: hostGlobalId,
+        match: `fqdn=${hostAttrs.name}`,
+        ...useParamsToVars(history),
+      },
     });
 
   const renameData = data => ({
-    variables: extractVariables(data.host.allAnsibleRoles.nodes),
+    variables: data.host.ansibleVariablesWithOverrides.nodes,
+    totalCount: data.host.ansibleVariablesWithOverrides.totalCount,
   });
 
   return (
@@ -32,6 +41,8 @@ const AnsibleVariableOverrides = ({ hostId, hostAttrs }) => {
       renamedDataPath="variables"
       emptyStateTitle={__('No Ansible Variables found for Host')}
       permissions={['view_ansible_variables']}
+      pagination={pagination}
+      history={history}
     />
   );
 };
@@ -39,6 +50,7 @@ const AnsibleVariableOverrides = ({ hostId, hostAttrs }) => {
 AnsibleVariableOverrides.propTypes = {
   hostId: PropTypes.number.isRequired,
   hostAttrs: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export default AnsibleVariableOverrides;

@@ -3,7 +3,12 @@ import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 
-import { withRedux, withMockedProvider, tick } from '../../../../../testHelper';
+import {
+  withRedux,
+  withMockedProvider,
+  tick,
+  historyMock,
+} from '../../../../../testHelper';
 import {
   deleteMocks,
   mocks,
@@ -20,7 +25,12 @@ const TestComponent = withRedux(withMockedProvider(AnsibleVariableOverrides));
 describe('AnsibleVariableOverrides', () => {
   it('should open and close delete modal', async () => {
     render(
-      <TestComponent mocks={mocks} hostId={hostId} hostAttrs={hostAttrs} />
+      <TestComponent
+        mocks={mocks}
+        hostId={hostId}
+        hostAttrs={hostAttrs}
+        history={historyMock}
+      />
     );
     await waitFor(tick);
     userEvent.click(screen.getAllByRole('button', { name: 'Actions' })[0]);
@@ -43,6 +53,7 @@ describe('AnsibleVariableOverrides', () => {
         mocks={mocks.concat(deleteMocks)}
         hostId={hostId}
         hostAttrs={hostAttrs}
+        history={historyMock}
       />
     );
     await waitFor(tick);

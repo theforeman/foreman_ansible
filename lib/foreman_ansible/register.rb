@@ -186,14 +186,20 @@ Foreman::Plugin.register :foreman_ansible do
   register_global_js_file 'global'
 
   extend_graphql_type :type => ::Types::Host do
-    field :all_ansible_roles, ::Types::InheritedAnsibleRole.connection_type, :null => true
+    field :all_ansible_roles, ::Types::InheritedAnsibleRole.connection_type, :null => true, :method => :present_all_ansible_roles
     field :own_ansible_roles, ::Types::AnsibleRole.connection_type, :null => true
     field :available_ansible_roles, ::Types::AnsibleRole.connection_type, :null => true
+    field :ansible_variables_with_overrides, Types::OverridenAnsibleVariable.connection_type, :null => false
 
-    def all_ansible_roles
+    def present_all_ansible_roles
       inherited_ansible_roles = object.inherited_ansible_roles.map { |role| ::Presenters::AnsibleRolePresenter.new(role, true) }
       ansible_roles = object.ansible_roles.map { |role| ::Presenters::AnsibleRolePresenter.new(role, false) }
       (inherited_ansible_roles + ansible_roles).uniq
+    end
+
+    def ansible_variables_with_overrides
+      resolver = ::ForemanAnsible::OverrideResolver.new(object)
+      AnsibleVariable.where(:ansible_role_id => object.all_ansible_roles.pluck(:id), :override => true).map { |variable| ::Presenters::OverridenAnsibleVariablePresenter.new variable, resolver }
     end
   end
 
