@@ -103,9 +103,10 @@ const RolesTable = ({
       </Route>
       <Route path="/Ansible/roles/all">
         <AllRolesModal
-          onClose={() => history.goBack()}
+          onClose={() => history.push('/Ansible/roles')}
           isOpen
           hostGlobalId={hostGlobalId}
+          history={history}
         />
       </Route>
     </React.Fragment>

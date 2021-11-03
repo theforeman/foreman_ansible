@@ -12,20 +12,29 @@ export const addSearch = (basePath, params) => {
   return `${basePath}${stringyfied}`;
 };
 
-export const useCurrentPagination = history => {
+export const useCurrentPagination = (
+  history,
+  keys = { page: 'page', perPage: 'perPage' }
+) => {
   const pageParams = parsePageParams(history);
   const uiSettings = useForemanSettings();
 
   return {
-    page: parseInt(pageParams.page, 10) || 1,
-    perPage: parseInt(pageParams.perPage, 10) || uiSettings.perPage,
+    [keys.page]: parseInt(pageParams[keys.page], 10) || 1,
+    [keys.perPage]:
+      parseInt(pageParams[keys.perPage], 10) || uiSettings.perPage,
   };
 };
 
-export const pageToVars = pagination => ({
-  first: pagination.page * pagination.perPage,
-  last: pagination.perPage,
+export const pageToVars = (
+  pagination,
+  keys = { page: 'page', perPage: 'perPage' }
+) => ({
+  first: pagination[keys.page] * pagination[keys.perPage],
+  last: pagination[keys.perPage],
 });
 
-export const useParamsToVars = history =>
-  pageToVars(useCurrentPagination(history));
+export const useParamsToVars = (
+  history,
+  keys = { page: 'page', perPage: 'perPage' }
+) => pageToVars(useCurrentPagination(history, keys), keys);

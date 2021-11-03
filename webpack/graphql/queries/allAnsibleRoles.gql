@@ -2,6 +2,7 @@ query($id: String!, $first: Int, $last: Int){
   host(id: $id) {
     id
     allAnsibleRoles(first: $first, last: $last) {
+      totalCount
       nodes {
         id
         name

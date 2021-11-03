@@ -96,11 +96,12 @@ const availableRoles = {
 };
 
 export const allRolesMocks = allAnsibleRolesMockFactory(
-  { id: hostGlobalId },
+  { id: hostGlobalId, first: 20, last: 20 },
   {
     __typename: 'Host',
     id: hostGlobalId,
     allAnsibleRoles: {
+      totalCount: 4,
       nodes: [
         {
           id: 'MDE6QW5zaWJsZVJvbGUtMg==',
