@@ -56,14 +56,17 @@ const RolesTable = ({
 
   return (
     <React.Fragment>
-      <h3>{__('Assigned Ansible Roles')}</h3>
-      <Flex className="pf-u-pt-md">
-        {editBtn}
+      <Flex>
         <FlexItem>
-          <Link to="/Ansible/roles/all">
-            <Button variant="link">{__('View all assigned roles')}</Button>
-          </Link>
+          <h3>
+            <span>{__('Ansible roles assigned directly to host')}</span>
+            <span>{' - '}</span>
+            <Link to="/Ansible/roles/all">{__('view all assigned roles')}</Link>
+          </h3>
         </FlexItem>
+      </Flex>
+      <Flex>
+        <FlexItem>{editBtn}</FlexItem>
         <FlexItem align={{ default: 'alignRight' }}>
           <Pagination
             itemCount={totalCount}
