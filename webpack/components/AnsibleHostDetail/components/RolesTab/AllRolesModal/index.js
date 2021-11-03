@@ -8,7 +8,12 @@ import { Modal, Button, ModalVariant } from '@patternfly/react-core';
 import allAnsibleRolesQuery from '../../../../../graphql/queries/allAnsibleRoles.gql';
 import AllRolesTable from './AllRolesTable';
 
-const AllRolesModal = ({ hostGlobalId, onClose }) => {
+import {
+  useParamsToVars,
+  useCurrentPagination,
+} from '../../../../../helpers/pageParamsHelper';
+
+const AllRolesModal = ({ hostGlobalId, onClose, history }) => {
   const baseModalProps = {
     variant: ModalVariant.large,
     isOpen: true,
@@ -17,6 +22,8 @@ const AllRolesModal = ({ hostGlobalId, onClose }) => {
     title: __('All Ansible Roles'),
     disableFocusTrap: true,
   };
+
+  const paginationKeys = { page: 'allPage', perPage: 'allPerPage' };
 
   const actions = [
     <Button variant="link" onClick={onClose} key="close">
@@ -34,13 +41,19 @@ const AllRolesModal = ({ hostGlobalId, onClose }) => {
 
   const useFetchFn = () =>
     useQuery(allAnsibleRolesQuery, {
-      variables: { id: hostGlobalId },
+      variables: {
+        id: hostGlobalId,
+        ...useParamsToVars(history, paginationKeys),
+      },
       fetchPolicy: 'network-only',
     });
 
   const renameData = data => ({
     allAnsibleRoles: data.host.allAnsibleRoles.nodes,
+    totalCount: data.host.allAnsibleRoles.totalCount,
   });
+
+  const pagination = useCurrentPagination(history, paginationKeys);
 
   return (
     <AllRolesTable
@@ -52,6 +65,8 @@ const AllRolesModal = ({ hostGlobalId, onClose }) => {
       resultPath="host.allAnsibleRoles.nodes"
       hostGlobalId={hostGlobalId}
       emptyStateTitle={__('No Ansible roles assigned')}
+      history={history}
+      pagination={pagination}
     />
   );
 };
@@ -59,6 +74,7 @@ const AllRolesModal = ({ hostGlobalId, onClose }) => {
 AllRolesModal.propTypes = {
   hostGlobalId: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export default AllRolesModal;
