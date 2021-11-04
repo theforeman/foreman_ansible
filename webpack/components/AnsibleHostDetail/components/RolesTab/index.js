@@ -11,7 +11,7 @@ import {
   useCurrentPagination,
 } from '../../../../helpers/pageParamsHelper';
 
-const RolesTab = ({ hostId, history }) => {
+const RolesTab = ({ hostId, history, canEditHost }) => {
   const hostGlobalId = encodeId('Host', hostId);
   const pagination = useCurrentPagination(history);
 
@@ -37,6 +37,7 @@ const RolesTab = ({ hostId, history }) => {
       permissions={['view_ansible_roles']}
       history={history}
       pagination={pagination}
+      canEditHost={canEditHost}
     />
   );
 };
@@ -44,6 +45,7 @@ const RolesTab = ({ hostId, history }) => {
 RolesTab.propTypes = {
   hostId: PropTypes.number.isRequired,
   history: PropTypes.object.isRequired,
+  canEditHost: PropTypes.bool.isRequired,
 };
 
 export default RolesTab;

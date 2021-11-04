@@ -18,7 +18,11 @@ const SecondaryTabRoutes = ({ response, router, history }) => (
     </Route>
     <Route path={route('roles')}>
       <TabLayout>
-        <RolesTab hostId={response.id} history={history} />
+        <RolesTab
+          hostId={response.id}
+          history={history}
+          canEditHost={response.permissions.edit_hosts}
+        />
       </TabLayout>
     </Route>
     <Route path={route('variables')}>

@@ -12,7 +12,13 @@ import { encodeId } from '../../../../../globalIdHelper';
 
 import './EditRolesModal.scss';
 
-const EditRolesModal = ({ assignedRoles, isOpen, closeModal, hostId }) => {
+const EditRolesModal = ({
+  assignedRoles,
+  isOpen,
+  closeModal,
+  hostId,
+  canEditHost,
+}) => {
   const baseModalProps = {
     variant: ModalVariant.large,
     isOpen,
@@ -59,6 +65,8 @@ const EditRolesModal = ({ assignedRoles, isOpen, closeModal, hostId }) => {
       assignedRoles={assignedRoles}
       closeModal={closeModal}
       hostId={hostId}
+      allowed={canEditHost}
+      requiredPermissions={['edit_hosts']}
     />
   );
 };
@@ -68,6 +76,7 @@ EditRolesModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
   hostId: PropTypes.number.isRequired,
+  canEditHost: PropTypes.bool.isRequired,
 };
 
 export default EditRolesModal;
