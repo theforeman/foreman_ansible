@@ -35,6 +35,8 @@ const withLoading = Component => {
     wrapper,
     emptyStateProps,
     permissions,
+    allowed,
+    requiredPermissions,
     ...rest
   }) => {
     const { loading, error, data } = fetchFn(rest);
@@ -57,6 +59,16 @@ const withLoading = Component => {
           description={permissionDeniedMsg(
             check.permissions.map(item => item.name)
           )}
+        />
+      );
+    }
+
+    if (!allowed) {
+      return emptyWrapper(
+        <EmptyState
+          icon={<EmptyStateIcon icon={LockIcon} />}
+          header={__('Permission denied')}
+          description={permissionDeniedMsg(requiredPermissions)}
         />
       );
     }
@@ -86,6 +98,7 @@ const withLoading = Component => {
     emptyStateProps: PropTypes.object,
     wrapper: PropTypes.func,
     permissions: PropTypes.array,
+    allowed: PropTypes.bool,
   };
 
   Subcomponent.defaultProps = {
@@ -96,6 +109,8 @@ const withLoading = Component => {
     wrapper: child => child,
     emptyStateProps: defaultEmptyStateProps,
     permissions: [],
+    requiredPermissions: [],
+    allowed: true,
   };
 
   return Subcomponent;

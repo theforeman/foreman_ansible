@@ -30,6 +30,7 @@ const RolesTable = ({
   ansibleRoles,
   hostId,
   hostGlobalId,
+  canEditHost,
 }) => {
   const columns = [__('Name')];
 
@@ -43,17 +44,21 @@ const RolesTable = ({
 
   const perPageOptions = preparePerPageOptions(usePaginationOptions());
 
+  const editBtn = canEditHost ? (
+    <FlexItem>
+      <Link to="/Ansible/roles/edit">
+        <Button aria-label="edit ansible roles">
+          {__('Edit Ansible Roles')}
+        </Button>
+      </Link>
+    </FlexItem>
+  ) : null;
+
   return (
     <React.Fragment>
       <h3>{__('Assigned Ansible Roles')}</h3>
       <Flex className="pf-u-pt-md">
-        <FlexItem>
-          <Link to="/Ansible/roles/edit">
-            <Button aria-label="edit ansible roles">
-              {__('Edit Ansible Roles')}
-            </Button>
-          </Link>
-        </FlexItem>
+        {editBtn}
         <FlexItem>
           <Link to="/Ansible/roles/all">
             <Button variant="link">{__('View all assigned roles')}</Button>
@@ -93,6 +98,7 @@ const RolesTable = ({
           isOpen
           assignedRoles={ansibleRoles}
           hostId={hostId}
+          canEditHost={canEditHost}
         />
       </Route>
       <Route path="/Ansible/roles/all">
@@ -113,6 +119,7 @@ RolesTable.propTypes = {
   history: PropTypes.object.isRequired,
   pagination: PropTypes.object.isRequired,
   totalCount: PropTypes.number.isRequired,
+  canEditHost: PropTypes.bool.isRequired,
 };
 
 export default withLoading(RolesTable);

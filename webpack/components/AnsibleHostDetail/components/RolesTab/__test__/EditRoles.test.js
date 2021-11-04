@@ -32,6 +32,7 @@ describe('assigning Ansible roles', () => {
       <TestComponent
         hostId={hostId}
         mocks={mocks.concat(editModalOpenMocks).concat(assignRolesSuccessMock)}
+        canEditHost
       />
     );
     await waitFor(tick);
@@ -60,6 +61,7 @@ describe('assigning Ansible roles', () => {
       <TestComponent
         hostId={hostId}
         mocks={mocks.concat(editModalOpenMocks).concat(assignRolesErrorMock)}
+        canEditHost
       />
     );
     await waitFor(tick);
