@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 
 import Skeleton from 'react-loading-skeleton';
 import EmptyState from 'foremanReact/components/common/EmptyState/EmptyStatePattern';
-import { EmptyStateIcon } from '@patternfly/react-core';
 import { LockIcon } from '@patternfly/react-icons';
+import { EmptyStateIcon } from '@patternfly/react-core';
 import { permissionCheck, permissionDeniedMsg } from '../permissionsHelper';
+import ErrorState from './ErrorState';
 
 const pluckData = (data, path) => {
   const split = path.split('.');
@@ -43,7 +44,7 @@ const withLoading = Component => {
     }
 
     if (error) {
-      return emptyWrapper(<div>{error.message}</div>);
+      return emptyWrapper(<ErrorState description={error.message} />);
     }
 
     const check = permissionCheck(data.currentUser, permissions);
