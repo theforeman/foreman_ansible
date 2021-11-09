@@ -40,3 +40,19 @@ export const permissionDeniedMsg = permissions => {
   }
   return msg;
 };
+
+export const allowPrimaryAction = (
+  emptyStateProps,
+  currentUser,
+  permissionsRequired
+) => {
+  if (!permissionCheck(currentUser, permissionsRequired).allowed) {
+    return Object.keys(emptyStateProps)
+      .filter(key => key !== 'action')
+      .reduce((memo, key) => {
+        memo[key] = emptyStateProps[key];
+        return memo;
+      }, {});
+  }
+  return emptyStateProps;
+};

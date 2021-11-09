@@ -35,6 +35,19 @@ const RecurringJobsTable = ({ jobs, resourceName, resourceId }) => {
     );
   };
 
+  const actionItems = job => {
+    const items = [];
+    if (job.recurringLogic.meta.canEdit) {
+      items.push({
+        title: __('Cancel'),
+        onClick: onJobCancel(job.recurringLogic.id),
+        key: 'cancel',
+      });
+    }
+
+    return { items };
+  };
+
   return (
     <React.Fragment>
       <h3>{__('Scheduled recurring jobs')}</h3>
@@ -65,17 +78,7 @@ const RecurringJobsTable = ({ jobs, resourceName, resourceId }) => {
               <Td>
                 <RelativeDateTime date={job.startAt} />
               </Td>
-              <Td
-                actions={{
-                  items: [
-                    {
-                      title: __('Cancel'),
-                      onClick: onJobCancel(job.recurringLogic.id),
-                      key: 'cancel',
-                    },
-                  ],
-                }}
-              />
+              <Td actions={actionItems(job)} />
             </Tr>
           ))}
         </Tbody>

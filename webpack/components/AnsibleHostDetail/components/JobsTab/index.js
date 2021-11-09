@@ -27,6 +27,11 @@ const JobsTab = ({ resourceName, resourceId, history }) => {
 
   const pagination = useCurrentPagination(history);
 
+  const primaryActionPermissions = [
+    'create_job_invocations',
+    'create_recurring_logics',
+  ];
+
   const scheduleBtn = (
     <Button aria-label="schedule recurring job" onClick={toggleModal}>
       {__('Schedule recurring job')}
@@ -47,6 +52,7 @@ const JobsTab = ({ resourceName, resourceId, history }) => {
             action: scheduleBtn,
           }}
           permissions={permissions}
+          primaryActionPermissions={primaryActionPermissions}
         />
       </GridItem>
       <GridItem span={12}>

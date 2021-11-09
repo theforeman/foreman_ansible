@@ -7,8 +7,10 @@ import { i18nProviderWrapperFactory } from 'foremanReact/common/i18nProviderWrap
 import JobsTab from '../';
 import {
   emptyMocks,
+  emptyViewerMocks,
   scheduledAndPreviousMocks,
   cancelMocks,
+  cancelViewerMocks,
   createMocks,
   hostId,
   futureDate,
@@ -64,6 +66,25 @@ describe('JobsTab', () => {
     expect(
       screen.getByText('No config job for Ansible roles scheduled')
     ).toBeInTheDocument();
+    expect(screen.getByText('Schedule recurring job')).toBeInTheDocument();
+  });
+  it('should not show create button for viewer', async () => {
+    render(
+      <ComponentWithIntl
+        resourceName="host"
+        resourceId={hostId}
+        mocks={emptyViewerMocks}
+        history={historyMock}
+      />
+    );
+    await waitFor(tick);
+    await waitFor(tick);
+    expect(
+      screen.getByText('No config job for Ansible roles scheduled')
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByText('Schedule recurring job')
+    ).not.toBeInTheDocument();
   });
   it('should create new recurring job', async () => {
     const showToast = jest.fn();
@@ -152,5 +173,23 @@ describe('JobsTab', () => {
     expect(
       screen.getByText('No config job for Ansible roles scheduled')
     ).toBeInTheDocument();
+  });
+  it('should not show cancel button if user is not allowed to cancel', async () => {
+    render(
+      <ComponentWithIntl
+        resourceId={hostId}
+        resourceName="host"
+        history={historyMock}
+        mocks={cancelViewerMocks}
+      />
+    );
+    await waitFor(tick);
+    await waitFor(tick);
+    expect(
+      screen.queryByText('No config job for Ansible roles scheduled')
+    ).not.toBeInTheDocument();
+    expect(screen.queryAllByRole('button', { name: 'Actions' })).toHaveLength(
+      0
+    );
   });
 });

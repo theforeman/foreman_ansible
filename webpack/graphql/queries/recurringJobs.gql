@@ -11,6 +11,9 @@ query($search: String, $first: Int, $last: Int) {
       recurringLogic {
         id
         cronLine
+        meta {
+          canEdit
+        }
       }
       task {
         id
