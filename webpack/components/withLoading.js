@@ -6,7 +6,11 @@ import Skeleton from 'react-loading-skeleton';
 import EmptyState from 'foremanReact/components/common/EmptyState/EmptyStatePattern';
 import { LockIcon } from '@patternfly/react-icons';
 import { EmptyStateIcon } from '@patternfly/react-core';
-import { permissionCheck, permissionDeniedMsg } from '../permissionsHelper';
+import {
+  permissionCheck,
+  permissionDeniedMsg,
+  allowPrimaryAction,
+} from '../permissionsHelper';
 import ErrorState from './ErrorState';
 
 const pluckData = (data, path) => {
@@ -37,6 +41,7 @@ const withLoading = Component => {
     permissions,
     allowed,
     requiredPermissions,
+    primaryActionPermissions,
     ...rest
   }) => {
     const { loading, error, data } = fetchFn(rest);
@@ -81,7 +86,16 @@ const withLoading = Component => {
       ((Array.isArray(result) && result.length === 0) || !result)
     ) {
       return emptyWrapper(
-        <EmptyState {...{ ...defaultEmptyStateProps, ...emptyStateProps }} />
+        <EmptyState
+          {...{
+            ...defaultEmptyStateProps,
+            ...allowPrimaryAction(
+              emptyStateProps,
+              data.currentUser,
+              primaryActionPermissions
+            ),
+          }}
+        />
       );
     }
 
@@ -99,6 +113,7 @@ const withLoading = Component => {
     wrapper: PropTypes.func,
     permissions: PropTypes.array,
     allowed: PropTypes.bool,
+    primaryActionPermissions: PropTypes.array,
   };
 
   Subcomponent.defaultProps = {
@@ -110,6 +125,7 @@ const withLoading = Component => {
     emptyStateProps: defaultEmptyStateProps,
     permissions: [],
     requiredPermissions: [],
+    primaryActionPermissions: [],
     allowed: true,
   };
 
