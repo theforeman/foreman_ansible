@@ -76,6 +76,10 @@ Foreman::Plugin.register :foreman_ansible do
                :resource_type => 'Hostgroup'
     permission :generate_ansible_inventory,
                { :'api/v2/ansible_inventories' => [:schedule] }
+    permission :import_ansible_playbooks,
+               { :'api/v2/ansible_playbooks' => [:sync] }
+    permission :fetch_ansible_playbooks,
+               { :'api/v2/ansible_playbooks' => [:fetch] }
   end
 
   role 'Ansible Roles Manager',
