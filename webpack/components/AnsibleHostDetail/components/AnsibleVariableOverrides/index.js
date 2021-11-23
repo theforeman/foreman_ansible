@@ -24,6 +24,7 @@ const AnsibleVariableOverrides = ({ hostId, hostAttrs, history }) => {
         match: `fqdn=${hostAttrs.name}`,
         ...useParamsToVars(history),
       },
+      fetchPolicy: 'network-only',
     });
 
   const renameData = data => ({
