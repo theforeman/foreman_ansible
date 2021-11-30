@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
@@ -23,10 +23,7 @@ import { decodeModelId } from '../../../../globalIdHelper';
 import {
   formatSourceAttr,
   findOverride,
-  changeOpen,
-  changeWorking,
-  changeValue,
-  setValidationError,
+  validateValue,
   onCompleted,
   onError,
 } from './AnsibleVariableOverridesTableHelper';
@@ -36,6 +33,24 @@ import {
   preparePerPageOptions,
   refreshPage,
 } from '../../../../helpers/paginationHelper';
+
+const reducer = (state, action) =>
+  state.map((item, index) => {
+    if (action.idx === index) {
+      return { ...item, ...action.payload };
+    }
+    return item;
+  });
+
+const initState = vars =>
+  vars.map((variable, idx) => ({
+    open: false,
+    value: variable.currentValue
+      ? variable.currentValue.value
+      : variable.defaultValue,
+    validation: { key: 'noval', msg: '' },
+    working: false,
+  }));
 
 const AnsibleVariableOverridesTable = ({
   variables,
@@ -64,50 +79,48 @@ const AnsibleVariableOverridesTable = ({
 
   const perPageOptions = preparePerPageOptions(usePaginationOptions());
 
-  const [editableState, setEditableState] = useState(
-    variables.map((variable, idx) => ({
-      open: false,
-      value: variable.currentValue
-        ? variable.currentValue.value
-        : variable.defaultValue,
-      validation: { key: 'noval', msg: '' },
-      working: false,
-    }))
+  const [editableState, innerDispatch] = useReducer(
+    reducer,
+    variables,
+    initState
   );
 
-  const updateState = idx => (...updaters) => {
-    setEditableState(
-      editableState.map((item, index) => {
-        if (idx === index) {
-          return updaters.reduce((memo, updater) => updater(memo), item);
-        }
-        return item;
-      })
-    );
+  const toggleWorking = idx => flag => {
+    innerDispatch({ idx, payload: { working: flag } });
   };
 
-  const toggleWorking = idx => label => {
-    updateState(idx)(changeWorking);
-  };
-
-  const toggleEditable = idx => () => {
-    updateState(idx)(changeOpen);
+  const setEditable = (idx, flag) => () => {
+    innerDispatch({ idx, payload: { open: flag } });
   };
 
   const onValueChange = (idx, variable) => value => {
-    updateState(idx)(changeValue(variable, value));
+    const payload = {
+      value,
+      validation: validateValue(variable, value),
+    };
+    innerDispatch({ idx, payload });
   };
 
   const onSubmitSuccess = (idx, variable) => newValue => {
-    updateState(idx)(
-      changeOpen,
-      changeWorking,
-      changeValue(variable, newValue)
-    );
+    innerDispatch({
+      idx,
+      payload: {
+        open: false,
+        working: false,
+        value: newValue,
+        validation: validateValue(variable, newValue),
+      },
+    });
   };
 
   const onValidationError = idx => error => {
-    updateState(idx)(setValidationError(error), changeWorking);
+    innerDispatch({
+      idx,
+      payload: {
+        working: false,
+        validation: { key: 'error', msg: error },
+      },
+    });
   };
 
   const dispatch = useDispatch();
@@ -191,8 +204,8 @@ const AnsibleVariableOverridesTable = ({
               <Td>
                 <EditableAction
                   open={editableState[idx].open}
-                  onClose={toggleEditable(idx)}
-                  onOpen={toggleEditable(idx)}
+                  onClose={setEditable(idx, false)}
+                  onOpen={setEditable(idx, true)}
                   toggleWorking={toggleWorking(idx)}
                   variable={variable}
                   state={editableState[idx]}

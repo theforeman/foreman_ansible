@@ -329,12 +329,15 @@ const updateMockFactory = (variableValue, returnValue, errors = []) => {
       result: {
         data: {
           updateAnsibleVariableOverride: {
+            __typename: 'UpdateAnsibleVariableOverrideMutationPayload',
             overridenAnsibleVariable: {
               __typename: 'OverridenAnsibleVariable',
               id: ansibleVariableId,
               lookupValues: {
+                __typename: 'LookupValueConnection',
                 nodes: [
                   {
+                    __typename: 'LookupValue',
                     id: 'MDE6TG9va3VwVmFsdWUtOTY=',
                     match: 'fqdn=centos-random.example.com',
                     value: returnValue,

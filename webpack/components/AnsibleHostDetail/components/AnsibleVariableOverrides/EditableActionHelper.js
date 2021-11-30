@@ -25,7 +25,7 @@ export const onCompleted = (
     ) {
       onValidationError(errors[0].message);
     } else {
-      toggleWorking();
+      toggleWorking(false);
       showToast({
         type: 'error',
         message: formatError(joinErrors(errors)),
@@ -41,7 +41,7 @@ export const onCompleted = (
 };
 
 export const onError = toggleWorking => error => {
-  toggleWorking();
+  toggleWorking(false);
   showToast({ type: 'error', message: formatError(error.message) });
 };
 
