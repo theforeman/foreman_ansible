@@ -94,7 +94,7 @@ const validateList = (variable, value) => {
   };
 };
 
-export const validate = (variable, value) => {
+export const validateValue = (variable, value) => {
   if (variable.required && !value) {
     return { key: 'error', msg: __('is required') };
   }
@@ -109,15 +109,3 @@ export const validate = (variable, value) => {
 
   return { key: 'noval', msg: '' };
 };
-
-export const changeWorking = item => ({ ...item, working: !item.working });
-export const changeOpen = item => ({ ...item, open: !item.open });
-export const changeValue = (variable, value) => item => ({
-  ...item,
-  value,
-  validation: validate(variable, value),
-});
-export const setValidationError = error => item => ({
-  ...item,
-  validation: { key: 'error', msg: error },
-});

@@ -68,7 +68,7 @@ const EditableAction = ({
     const lookupValue = variable.lookupValues.nodes.find(
       item => item.match === match
     );
-    toggleWorking();
+    toggleWorking(true);
     callUpdateMutation({
       variables: {
         id: lookupValue.id,
@@ -82,7 +82,7 @@ const EditableAction = ({
 
   const createOverride = () => {
     const match = createMatcher(hostName);
-    toggleWorking();
+    toggleWorking(true);
     callCreateMutation({
       variables: {
         hostId,
