@@ -25,6 +25,7 @@ const AnsibleVariableOverrides = ({ hostId, hostAttrs, history }) => {
         ...useParamsToVars(history),
       },
       fetchPolicy: 'network-only',
+      nextFetchPolicy: 'cache-first',
     });
 
   const renameData = data => ({
