@@ -7,7 +7,7 @@ import {
   DatePicker,
   TimePicker,
 } from '@patternfly/react-core';
-import ExclamationCircleIcon from '@patternfly/react-icons/dist/js/icons/exclamation-circle-icon';
+import { ExclamationCircleIcon } from '@patternfly/react-icons';
 
 const wrapFieldProps = fieldProps => {
   const { onChange } = fieldProps;
