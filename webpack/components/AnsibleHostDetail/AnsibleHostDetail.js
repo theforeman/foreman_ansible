@@ -21,6 +21,7 @@ const AnsibleHostDetail = ({
       {response?.id && (
         <>
           <Tabs
+            className="ansible-host-details-tabs"
             onSelect={(evt, subTab) => hashHistory.push(subTab)}
             activeKey={pathname?.split('/')[2]}
             isSecondary
