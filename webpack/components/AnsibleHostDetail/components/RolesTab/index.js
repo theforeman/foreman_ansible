@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useQuery } from '@apollo/client';
+import { Button } from '@patternfly/react-core';
 import { translate as __ } from 'foremanReact/common/I18n';
 
 import ansibleRolesQuery from '../../../../graphql/queries/hostAnsibleRoles.gql';
@@ -10,11 +11,12 @@ import {
   useParamsToVars,
   useCurrentPagination,
 } from '../../../../helpers/pageParamsHelper';
+import EditRolesModal from './EditRolesModal';
 
 const RolesTab = ({ hostId, history, canEditHost }) => {
   const hostGlobalId = encodeId('Host', hostId);
   const pagination = useCurrentPagination(history);
-
+  const [assignModal, setAssignModal] = useState(false);
   const renameData = data => ({
     ansibleRoles: data.host.ownAnsibleRoles.nodes,
     totalCount: data.host.ownAnsibleRoles.totalCount,
@@ -26,19 +28,41 @@ const RolesTab = ({ hostId, history, canEditHost }) => {
       fetchPolicy: 'network-only',
     });
 
+  const editBtn = canEditHost ? (
+    <Button
+      onClick={() => setAssignModal(true)}
+      aria-label="edit ansible roles"
+    >
+      {__('Assign Ansible Roles')}
+    </Button>
+  ) : null;
   return (
-    <RolesTable
-      fetchFn={useFetchFn}
-      renamedDataPath="ansibleRoles"
-      renameData={renameData}
-      permissions={['view_ansible_roles']}
-      history={history}
-      hostGlobalId={hostGlobalId}
-      emptyStateProps={{ title: __('No Ansible roles assigned') }}
-      pagination={pagination}
-      canEditHost={canEditHost}
-      hostId={hostId}
-    />
+    <>
+      <RolesTable
+        fetchFn={useFetchFn}
+        renamedDataPath="ansibleRoles"
+        renameData={renameData}
+        permissions={['view_ansible_roles']}
+        history={history}
+        hostGlobalId={hostGlobalId}
+        emptyStateProps={{
+          header: __('No Ansible roles assigned'),
+          action: editBtn,
+        }}
+        pagination={pagination}
+        canEditHost={canEditHost}
+        hostId={hostId}
+      />
+      {assignModal && (
+        <EditRolesModal
+          closeModal={() => setAssignModal(false)}
+          isOpen={assignModal}
+          assignedRoles={[]}
+          hostId={hostId}
+          canEditHost={canEditHost}
+        />
+      )}
+    </>
   );
 };
 
