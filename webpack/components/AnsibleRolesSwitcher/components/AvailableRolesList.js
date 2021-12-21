@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { ListView, LoadingState } from 'patternfly-react';
-import PaginationWrapper from 'foremanReact/components/Pagination/PaginationWrapper';
+import Pagination from 'foremanReact/components/Pagination';
 
 import AnsibleRole from './AnsibleRole';
 
@@ -16,7 +16,7 @@ const AvailableRolesList = ({
 }) => (
   <ListView>
     <div className="sticky-pagination">
-      <PaginationWrapper
+      <Pagination
         viewType="list"
         itemCount={itemCount}
         pagination={pagination}

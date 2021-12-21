@@ -27,7 +27,7 @@ const AllRolesModal = ({ hostGlobalId, onClose, history }) => {
     ),
   };
 
-  const paginationKeys = { page: 'allPage', perPage: 'allPerPage' };
+  const paginationKeys = { page: 'page', perPage: 'per_page' };
 
   const wrapper = child => <Modal {...baseModalProps}>{child}</Modal>;
 

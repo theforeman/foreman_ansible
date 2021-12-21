@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { translate as __ } from 'foremanReact/common/I18n';
-import { usePaginationOptions } from 'foremanReact/components/Pagination/PaginationHooks';
 
 import {
   TableComposable,
@@ -11,45 +10,18 @@ import {
   Th,
   Td,
 } from '@patternfly/react-table';
-
-import { Flex, FlexItem, Pagination } from '@patternfly/react-core';
+import { Flex, FlexItem } from '@patternfly/react-core';
+import Pagination from 'foremanReact/components/Pagination';
 import withLoading from '../../../../withLoading';
-import {
-  preparePerPageOptions,
-  refreshPage,
-} from '../../../../../helpers/paginationHelper';
 
-const AllRolesTable = ({
-  allAnsibleRoles,
-  totalCount,
-  pagination,
-  history,
-}) => {
+const AllRolesTable = ({ allAnsibleRoles, totalCount }) => {
   const columns = [__('Name'), __('Source')];
-
-  const handlePerPageSelected = (event, allPerPage) => {
-    refreshPage(history, { allPage: 1, allPerPage });
-  };
-
-  const handlePageSelected = (event, allPage) => {
-    refreshPage(history, { ...pagination, allPage });
-  };
-
-  const perPageOptions = preparePerPageOptions(usePaginationOptions());
 
   return (
     <React.Fragment>
       <Flex className="pf-u-pt-md">
         <FlexItem align={{ default: 'alignRight' }}>
-          <Pagination
-            itemCount={totalCount}
-            page={pagination.allPage}
-            perPage={pagination.allPerPage}
-            onSetPage={handlePageSelected}
-            onPerPageSelect={handlePerPageSelected}
-            perPageOptions={perPageOptions}
-            variant="top"
-          />
+          <Pagination updateParamsByUrl itemCount={totalCount} variant="top" />
         </FlexItem>
       </Flex>
       <TableComposable variant="compact">
@@ -82,8 +54,6 @@ const AllRolesTable = ({
 AllRolesTable.propTypes = {
   allAnsibleRoles: PropTypes.array.isRequired,
   totalCount: PropTypes.number.isRequired,
-  pagination: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
 };
 
 export default withLoading(AllRolesTable);

@@ -12,9 +12,8 @@ import {
   ToolbarContent,
   ToolbarItem,
   Checkbox,
-  Pagination,
 } from '@patternfly/react-core';
-
+import Pagination from 'foremanReact/components/Pagination';
 import PropTypes from 'prop-types';
 import { DEFAULT_PER_PAGE } from './AnsibleRolesAndVariablesConstants';
 import './AnsibleRolesAndVariables.scss';

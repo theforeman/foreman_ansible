@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { translate as __ } from 'foremanReact/common/I18n';
 import { Route, Link } from 'react-router-dom';
-import { usePaginationOptions } from 'foremanReact/components/Pagination/PaginationHooks';
+import Pagination from 'foremanReact/components/Pagination';
 
 import {
   TableComposable,
@@ -12,20 +12,15 @@ import {
   Th,
   Td,
 } from '@patternfly/react-table';
-import { Flex, FlexItem, Button, Pagination } from '@patternfly/react-core';
+import { Flex, FlexItem, Button } from '@patternfly/react-core';
 
 import EditRolesModal from './EditRolesModal';
 
 import withLoading from '../../../withLoading';
 import AllRolesModal from './AllRolesModal';
-import {
-  preparePerPageOptions,
-  refreshPage,
-} from '../../../../helpers/paginationHelper';
 
 const RolesTable = ({
   totalCount,
-  pagination,
   history,
   ansibleRoles,
   hostId,
@@ -33,16 +28,6 @@ const RolesTable = ({
   canEditHost,
 }) => {
   const columns = [__('Name')];
-
-  const handlePerPageSelected = (event, perPage) => {
-    refreshPage(history, { page: 1, perPage });
-  };
-
-  const handlePageSelected = (event, page) => {
-    refreshPage(history, { ...pagination, page });
-  };
-
-  const perPageOptions = preparePerPageOptions(usePaginationOptions());
 
   const editBtn = canEditHost ? (
     <FlexItem>
@@ -68,15 +53,7 @@ const RolesTable = ({
       <Flex>
         <FlexItem>{editBtn}</FlexItem>
         <FlexItem align={{ default: 'alignRight' }}>
-          <Pagination
-            itemCount={totalCount}
-            page={pagination.page}
-            perPage={pagination.perPage}
-            onSetPage={handlePageSelected}
-            onPerPageSelect={handlePerPageSelected}
-            perPageOptions={perPageOptions}
-            variant="top"
-          />
+          <Pagination updateParamsByUrl itemCount={totalCount} variant="top" />
         </FlexItem>
       </Flex>
       <TableComposable variant="compact">
@@ -123,7 +100,6 @@ RolesTable.propTypes = {
   hostId: PropTypes.number.isRequired,
   hostGlobalId: PropTypes.string.isRequired,
   history: PropTypes.object.isRequired,
-  pagination: PropTypes.object.isRequired,
   totalCount: PropTypes.number.isRequired,
   canEditHost: PropTypes.bool.isRequired,
 };
