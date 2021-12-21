@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 
 import { sprintf, translate as __ } from 'foremanReact/common/I18n';
-import { usePaginationOptions } from 'foremanReact/components/Pagination/PaginationHooks';
 import { openConfirmModal } from 'foremanReact/components/ConfirmModal';
 import {
   TableComposable,
@@ -14,8 +13,9 @@ import {
   Th,
   Td,
 } from '@patternfly/react-table';
-import { Flex, FlexItem, Pagination } from '@patternfly/react-core';
+import { Flex, FlexItem } from '@patternfly/react-core';
 
+import Pagination from 'foremanReact/components/Pagination';
 import deleteAnsibleVariableOverride from '../../../../graphql/mutations/deleteAnsibleVariableOverride.gql';
 import EditableAction from './EditableAction';
 import EditableValue from './EditableValue';
@@ -29,10 +29,6 @@ import {
 } from './AnsibleVariableOverridesTableHelper';
 
 import withLoading from '../../../withLoading';
-import {
-  preparePerPageOptions,
-  refreshPage,
-} from '../../../../helpers/paginationHelper';
 
 const reducer = (state, action) =>
   state.map((item, index) => {
@@ -58,8 +54,6 @@ const AnsibleVariableOverridesTable = ({
   hostId,
   hostGlobalId,
   totalCount,
-  pagination,
-  history,
 }) => {
   const columns = [
     __('Name'),
@@ -68,16 +62,6 @@ const AnsibleVariableOverridesTable = ({
     __('Value'),
     __('Source attribute'),
   ];
-
-  const handlePerPageSelected = (event, perPage) => {
-    refreshPage(history, { page: 1, perPage });
-  };
-
-  const handlePageSelected = (event, page) => {
-    refreshPage(history, { ...pagination, page });
-  };
-
-  const perPageOptions = preparePerPageOptions(usePaginationOptions());
 
   const [editableState, innerDispatch] = useReducer(
     reducer,
@@ -164,15 +148,7 @@ const AnsibleVariableOverridesTable = ({
     <React.Fragment>
       <Flex>
         <FlexItem align={{ default: 'alignRight' }}>
-          <Pagination
-            itemCount={totalCount}
-            page={pagination.page}
-            perPage={pagination.perPage}
-            onSetPage={handlePageSelected}
-            onPerPageSelect={handlePerPageSelected}
-            perPageOptions={perPageOptions}
-            variant="top"
-          />
+          <Pagination updateParamsByUrl itemCount={totalCount} variant="top" />
         </FlexItem>
       </Flex>
       <TableComposable variant="compact">
@@ -231,8 +207,6 @@ AnsibleVariableOverridesTable.propTypes = {
   hostId: PropTypes.number.isRequired,
   hostGlobalId: PropTypes.string.isRequired,
   totalCount: PropTypes.number.isRequired,
-  pagination: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
 };
 
 export default withLoading(AnsibleVariableOverridesTable);

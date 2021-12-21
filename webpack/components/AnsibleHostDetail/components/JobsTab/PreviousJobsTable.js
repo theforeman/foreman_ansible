@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { translate as __ } from 'foremanReact/common/I18n';
-import { usePaginationOptions } from 'foremanReact/components/Pagination/PaginationHooks';
-
 import RelativeDateTime from 'foremanReact/components/common/dates/RelativeDateTime';
 
 import {
@@ -13,14 +11,11 @@ import {
   Th,
   Td,
 } from '@patternfly/react-table';
-import { Flex, FlexItem, Pagination } from '@patternfly/react-core';
+import { Flex, FlexItem } from '@patternfly/react-core';
+import Pagination from 'foremanReact/components/Pagination';
 
 import { decodeId } from '../../../../globalIdHelper';
 import withLoading from '../../../withLoading';
-import {
-  preparePerPageOptions,
-  refreshPage,
-} from '../../../../helpers/paginationHelper';
 
 const PreviousJobsTable = ({ history, totalCount, jobs, pagination }) => {
   const columns = [
@@ -31,30 +26,12 @@ const PreviousJobsTable = ({ history, totalCount, jobs, pagination }) => {
     __('Schedule'),
   ];
 
-  const handlePerPageSelected = (event, perPage) => {
-    refreshPage(history, { page: 1, perPage });
-  };
-
-  const handlePageSelected = (event, page) => {
-    refreshPage(history, { ...pagination, page });
-  };
-
-  const perPageOptions = preparePerPageOptions(usePaginationOptions());
-
   return (
     <React.Fragment>
       <h3>{__('Previously executed jobs')}</h3>
       <Flex className="pf-u-pt-md">
         <FlexItem align={{ default: 'alignRight' }}>
-          <Pagination
-            itemCount={totalCount}
-            page={pagination.page}
-            perPage={pagination.perPage}
-            onSetPage={handlePageSelected}
-            onPerPageSelect={handlePerPageSelected}
-            perPageOptions={perPageOptions}
-            variant="top"
-          />
+          <Pagination updateParamsByUrl itemCount={totalCount} variant="top" />
         </FlexItem>
       </Flex>
       <TableComposable variant="compact">

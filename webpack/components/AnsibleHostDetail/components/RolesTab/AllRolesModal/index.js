@@ -23,7 +23,7 @@ const AllRolesModal = ({ hostGlobalId, onClose, history }) => {
     disableFocusTrap: true,
   };
 
-  const paginationKeys = { page: 'allPage', perPage: 'allPerPage' };
+  const paginationKeys = { page: 'page', perPage: 'per_page' };
 
   const actions = [
     <Button variant="link" onClick={onClose} key="close">

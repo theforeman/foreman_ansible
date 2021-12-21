@@ -14,7 +14,7 @@ export const addSearch = (basePath, params) => {
 
 export const useCurrentPagination = (
   history,
-  keys = { page: 'page', perPage: 'perPage' }
+  keys = { page: 'page', perPage: 'per_page' }
 ) => {
   const pageParams = parsePageParams(history);
   const uiSettings = useForemanSettings();
@@ -28,7 +28,7 @@ export const useCurrentPagination = (
 
 export const pageToVars = (
   pagination,
-  keys = { page: 'page', perPage: 'perPage' }
+  keys = { page: 'page', perPage: 'per_page' }
 ) => ({
   first: pagination[keys.page] * pagination[keys.perPage],
   last: pagination[keys.perPage],
@@ -36,5 +36,5 @@ export const pageToVars = (
 
 export const useParamsToVars = (
   history,
-  keys = { page: 'page', perPage: 'perPage' }
+  keys = { page: 'page', perPage: 'per_page' }
 ) => pageToVars(useCurrentPagination(history, keys), keys);
