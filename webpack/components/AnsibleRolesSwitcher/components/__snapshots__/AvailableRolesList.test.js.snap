@@ -7,21 +7,24 @@ exports[`AvailableRolesList should render 1`] = `
   <div
     className="sticky-pagination"
   >
-    <PaginationWrapper
-      className=""
-      disableNext={false}
-      disablePrev={false}
+    <Pagination
+      className={null}
       dropdownButtonId="available-ansible-roles-pagination-row-dropdown"
       itemCount={2}
+      noSidePadding={false}
       onChange={[Function]}
-      onPageSet={[Function]}
-      onPerPageSelect={[Function]}
+      onPerPageSelect={null}
+      onSetPage={null}
+      page={1}
       pagination={
         Object {
           "page": 1,
           "perPage": 25,
         }
       }
+      perPage={null}
+      updateParamsByUrl={true}
+      variant="bottom"
       viewType="list"
     />
   </div>
