@@ -1,0 +1,160 @@
+<%#
+name: Manage Windows Updates - Ansible Default
+snippet: false
+template_inputs:
+- name: reject_list
+  required: false
+  input_type: user
+  description: "A list of update titles or KB numbers that can be used to specify
+    which updates are to be excluded from installation.\r\nIf an available update
+    does match one of the entries, then it is skipped and not installed.\r\nEach entry
+    can either be the KB article or Update title as a regex according to the PowerShell
+    regex rules."
+  advanced: false
+- name: category_names
+  required: false
+  input_type: user
+  description: "A scalar or list of categories to install updates from. To get the
+    list of categories, run the module with state=searched. The category must be the
+    full category string, but is case insensitive.\r\nSome possible categories are
+    Application, Connectors, Critical Updates, Definition Updates, Developer Kits,
+    Feature Packs, Guidance, Security Updates, Service Packs, Tools, Update Rollups
+    and Updates.\r\n\r\nDefault is '[\"CriticalUpdates\", \"SecurityUpdates\", \"UpdateRollups\"]'"
+  advanced: false
+- name: log_path
+  required: false
+  input_type: user
+  description: If set, win_updates will append update progress to the specified file.
+    The directory must already exist.
+  advanced: false
+- name: reboot
+  required: false
+  input_type: user
+  description: "Ansible will automatically reboot the remote host if it is required
+    and continue to install updates after the reboot.\r\nThis can be used instead
+    of using a win_reboot task after this one and ensures all updates for that category
+    is installed in one go.\r\nAsync does not work when reboot=true.\r\n\r\nDefault
+    is 'false'"
+  options: "false\r\ntrue"
+  advanced: false
+- name: reboot_timeout
+  required: false
+  input_type: user
+  description: "The time in seconds to wait until the host is back online from a reboot.\r\nThis
+    is only used if reboot=true and a reboot is required.\r\n\r\nDefault is '1200'"
+  advanced: false
+- name: server_selection
+  required: false
+  input_type: user
+  description: "Defines the Windows Update source catalog.\r\ndefault Use the default
+    search source. For many systems default is set to the Microsoft Windows Update
+    catalog. Systems participating in Windows Server Update Services (WSUS), Systems
+    Center Configuration Manager (SCCM), or similar corporate update server environments
+    may default to those managed update sources instead of the Windows Update catalog.\r\nmanaged_server
+    Use a managed server catalog. For environments utilizing Windows Server Update
+    Services (WSUS), Systems Center Configuration Manager (SCCM), or similar corporate
+    update servers, this option selects the defined corporate update source.\r\nwindows_update
+    Use the Microsoft Windows Update catalog.\r\n\r\nDefault is 'default'"
+  options: "default\r\nmanaged_server\r\nwindows_update"
+  advanced: false
+- name: state
+  required: false
+  input_type: user
+  description: "Controls whether found updates are downloaded or installed or listed\r\nThis
+    module also supports Ansible check mode, which has the same effect as setting
+    state=searched\r\n\r\nDefault is 'searched'"
+  options: "installed\r\nsearched\r\ndownloaded"
+  advanced: false
+- name: use_scheduled_task
+  required: false
+  input_type: user
+  description: "Will not auto elevate the remote process with become and use a scheduled
+    task instead.\r\nSet this to true when using this module with async on Server
+    2008, 2008 R2, or Windows 7, or on Server 2008 that is not authenticated with
+    basic or credssp.\r\nCan also be set to true on newer hosts where become does
+    not work due to further privilege restrictions from the OS defaults."
+  options: "false\r\ntrue"
+  advanced: false
+- name: whitelist
+  required: false
+  input_type: user
+  description: "A list of update titles or KB numbers that can be used to specify
+    which updates are to be searched or installed.\r\nIf an available update does
+    not match one of the entries, then it is skipped and not installed.\r\nEach entry
+    can either be the KB article or Update title as a regex according to the PowerShell
+    regex rules.\r\nThe whitelist is only validated on updates that were found based
+    on category_names. It will not force the module to install an update if it was
+    not in the category specified."
+  advanced: false
+model: JobTemplate
+job_category: Ansible Playbook
+provider_type: Ansible
+kind: job_template
+organizations:
+- My_Organization
+locations:
+- My_Location
+%>
+
+- hosts: all
+  vars:
+    updates: []
+    <% if input('state').blank? %>
+    state: searched
+    <% else %>
+    state: <%= input('state') %>
+    <% end %>
+
+  tasks:
+    - name: "{{ state | replace('ed','') | capitalize }} Windows Updates"
+      win_updates:
+        <% unless input('reject_list').blank? %>
+        blacklist: <%= input('reject_list') %>
+        <% end -%>
+        <% if input('category_names').blank? %>
+        category_names: ["CriticalUpdates", "SecurityUpdates", "UpdateRollups"]
+        <% else %>
+        category_names: <%= input('category_names') %>
+        <% end %>
+        <% unless input('log_path').blank? %>
+        log_path: <%= input('log_path') %>
+        <% end -%>
+        <% if input('reboot').blank? %>
+        reboot: false
+        <% else %>
+        reboot: <%= input('reboot') %>
+        <% end %>
+        <% if input('reboot_timeout').blank? %>
+        reboot_timeout: 1200
+        <% else %>
+        reboot_timeout: <%= input('reboot_timeout') %>
+        <% end -%>
+        <% if input('server_selection').blank? %>
+        server_selection: default
+        <% else %>
+        server_selection: <%= input('server_selection') %>
+        <% end %>
+        state: "{{ state }}"
+        <% if input('use_scheduled_task').blank? %>
+        use_scheduled_task: false
+        <% else %>
+        use_scheduled_task: <%= input('use_scheduled_task') %>
+        <% end %>
+        <% if !input('whitelist').blank? %>
+        whitelist: <%= input('whitelist') %>
+        <% end -%>
+
+      register: found_updates
+      
+    - name: "Get all {{ state }} updates"
+      set_fact:
+        updates: "{{ updates + [ current_update ] }}"
+      vars:
+        current_update: "{{ item.value.title  }}"
+      loop: "{{ found_updates.updates | dict2items }}"
+      no_log: true
+
+    - name: "List {{ state }} Windows Updates"
+      debug: 
+        msg: "{{ item }}"
+      loop: "{{ updates }}"
