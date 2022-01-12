@@ -88,7 +88,7 @@ if defined? ForemanRemoteExecution
             :children => [
               {
                 :name => :tags,
-                :type => Array,
+                :type => String,
                 :opts => { :required => false, :desc => N_('A comma separated list of tags to use for Ansible run') }
               },
               {
