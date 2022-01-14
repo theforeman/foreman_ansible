@@ -63,7 +63,7 @@ const AnsibleVariableOverridesTable = ({
 }) => {
   const columns = [
     __('Name'),
-    __('Ansible Role'),
+    __('Ansible role'),
     __('Type'),
     __('Value'),
     __('Source attribute'),
