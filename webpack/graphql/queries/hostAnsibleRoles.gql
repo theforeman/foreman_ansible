@@ -8,6 +8,7 @@ query($id: String!, $first: Int, $last: Int) {
       nodes {
         id
         name
+        path
       }
     }
   }

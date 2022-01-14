@@ -67,7 +67,9 @@ const RolesTable = ({
         <Tbody>
           {ansibleRoles.map(role => (
             <Tr key={role.id}>
-              <Td>{role.name}</Td>
+              <Td>
+                <a href={role.path}>{role.name}</a>
+              </Td>
             </Tr>
           ))}
         </Tbody>
