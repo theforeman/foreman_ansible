@@ -187,7 +187,9 @@ const AnsibleVariableOverridesTable = ({
         <Tbody>
           {variables.map((variable, idx) => (
             <Tr key={idx}>
-              <Td>{variable.key}</Td>
+              <Td>
+                <a href={variable.path}>{variable.key}</a>
+              </Td>
               <Td>{variable.ansibleRoleName}</Td>
               <Td>{variable.parameterType}</Td>
               <Td>

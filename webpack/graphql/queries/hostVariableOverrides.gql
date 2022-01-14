@@ -8,6 +8,7 @@ query($id: String!, $match: String, $first: Int, $last: Int) {
       nodes {
         id
         key
+        path
         meta {
           canEdit
         }
