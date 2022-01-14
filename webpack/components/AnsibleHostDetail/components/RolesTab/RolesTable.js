@@ -33,7 +33,7 @@ const RolesTable = ({
     <FlexItem>
       <Link to="/Ansible/roles/edit">
         <Button aria-label="edit ansible roles">
-          {__('Edit Ansible Roles')}
+          {__('Edit Ansible roles')}
         </Button>
       </Link>
     </FlexItem>
