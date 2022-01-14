@@ -5,6 +5,7 @@ module Types
     global_id_field :id
 
     field :key, String
+    field :path, resolver: Resolvers::AnsibleVariable::Path
     field :override, Boolean
     field :description, String
     field :hidden_value, Boolean
