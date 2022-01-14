@@ -33,7 +33,7 @@ const RolesTab = ({ hostId, history, canEditHost }) => {
       onClick={() => setAssignModal(true)}
       aria-label="edit ansible roles"
     >
-      {__('Assign Ansible Roles')}
+      {__('Assign Ansible roles')}
     </Button>
   ) : null;
   return (
