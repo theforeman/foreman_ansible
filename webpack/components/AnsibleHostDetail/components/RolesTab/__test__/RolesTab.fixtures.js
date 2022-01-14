@@ -34,24 +34,28 @@ const role1 = {
   __typename: 'AnsibleRole',
   id: 'MDE6QW5zaWJsZVJvbGUtMw==',
   name: 'aardvaark.cube',
+  path: '/ansible/ansible_roles/search="name = aardvaark.cube"',
 };
 
 const role2 = {
   __typename: 'AnsibleRole',
   id: 'MDE6QW5zaWJsZVJvbGUtNQ==',
   name: 'aardvaark.sphere',
+  path: '/ansible/ansible_roles/search="name = aardvaark.sphere"',
 };
 
 const role3 = {
   __typename: 'AnsibleRole',
   id: 'MDE6QW5zaWJsZVJvbGUtMzA=',
   name: 'another.role',
+  path: '/ansible/ansible_roles/search="name = another.role"',
 };
 
 const role4 = {
   __typename: 'AnsibleRole',
   id: 'MDE6QW5zaWJsZVJvbGUtMzk=',
   name: 'geerlingguy.ceylon',
+  path: '/ansible/ansible_roles/search="name = geerlingguy.ceylon"',
 };
 
 const ansibleRolesMock = {
@@ -71,26 +75,32 @@ const availableRoles = {
       __typename: 'AnsibleRole',
       id: 'MDE6QW5zaWJsZVJvbGUtMQ==',
       name: 'theforeman.foreman_scap_client',
+      path:
+        '/ansible/ansible_roles/search="name = theforeman.foreman_scap_client"',
     },
     {
       __typename: 'AnsibleRole',
       id: 'MDE6QW5zaWJsZVJvbGUtMg==',
       name: 'adriagalin.motd',
+      path: '/ansible/ansible_roles/search="name = adriagalin.motd"',
     },
     {
       __typename: 'AnsibleRole',
       id: 'MDE6QW5zaWJsZVJvbGUtMjI=',
       name: 'geerlingguy.php',
+      path: '/ansible/ansible_roles/search="name = geerlingguy.php"',
     },
     {
       __typename: 'AnsibleRole',
       id: 'MDE6QW5zaWJsZVJvbGUtNTc=',
       name: 'robertdebock.epel',
+      path: '/ansible/ansible_roles/search="name = robertdebock.epel"',
     },
     {
       __typename: 'AnsibleRole',
       id: 'MDE6QW5zaWJsZVJvbGUtNTg=',
       name: 'geerlingguy.nfs',
+      path: '/ansible/ansible_roles/search="name = geerlingguy.nfs"',
     },
   ],
 };
@@ -106,6 +116,7 @@ export const allRolesMocks = allAnsibleRolesMockFactory(
         {
           id: 'MDE6QW5zaWJsZVJvbGUtMg==',
           name: 'adriagalin.motd',
+          path: '/ansible/ansible_roles/search="name = adriagalin.motd"',
           inherited: true,
         },
         { ...role1, inherited: false },
