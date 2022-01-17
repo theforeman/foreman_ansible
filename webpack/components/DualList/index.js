@@ -63,7 +63,7 @@ const DualList = props => {
   return (
     <div className="pf-c-dual-list-selector">
       <ListPane
-        title={__('Available options')}
+        title={__('Available Ansible roles')}
         items={props.availableOptions}
         paneClass="pf-m-available"
         onItemClick={onItemClick('availableSelected')}
@@ -81,7 +81,7 @@ const DualList = props => {
         removeSelectedDisabled={selectState.chosenSelected.length === 0}
       />
       <ListPane
-        title={__('Chosen options')}
+        title={__('Host assigned Ansible roles')}
         items={props.chosenOptions}
         paneClass="pf-m-chosen"
         draggable

@@ -39,7 +39,7 @@ describe('assigning Ansible roles', () => {
     userEvent.click(screen.getByRole('button', { name: 'edit ansible roles' }));
     await waitFor(tick);
     await waitFor(tick);
-    expect(screen.getByText('Available options')).toBeInTheDocument();
+    expect(screen.getByText('Available Ansible roles')).toBeInTheDocument();
     userEvent.click(screen.getAllByText('another.role')[1]);
     userEvent.click(screen.getByRole('button', { name: 'Remove selected' }));
     userEvent.click(screen.getByText('geerlingguy.ceylon'));
@@ -67,7 +67,7 @@ describe('assigning Ansible roles', () => {
     await waitFor(tick);
     userEvent.click(screen.getByRole('button', { name: 'edit ansible roles' }));
     await waitFor(tick);
-    expect(screen.getByText('Available options')).toBeInTheDocument();
+    expect(screen.getByText('Available Ansible roles')).toBeInTheDocument();
     userEvent.click(screen.getAllByText('another.role')[1]);
     userEvent.click(screen.getByRole('button', { name: 'Remove selected' }));
     userEvent.click(screen.getByText('geerlingguy.ceylon'));
