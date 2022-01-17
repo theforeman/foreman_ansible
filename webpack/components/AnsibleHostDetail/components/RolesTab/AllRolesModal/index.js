@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useQuery } from '@apollo/client';
 import { translate as __ } from 'foremanReact/common/I18n';
 
-import { Modal, Button, ModalVariant } from '@patternfly/react-core';
+import { Modal, ModalVariant } from '@patternfly/react-core';
 
 import allAnsibleRolesQuery from '../../../../../graphql/queries/allAnsibleRoles.gql';
 import AllRolesTable from './AllRolesTable';
@@ -17,25 +17,19 @@ const AllRolesModal = ({ hostGlobalId, onClose, history }) => {
   const baseModalProps = {
     variant: ModalVariant.large,
     isOpen: true,
+    onClose,
     className: 'foreman-modal',
-    showClose: false,
-    title: __('All Ansible Roles'),
+    showClose: true,
+    title: __('All assigned Ansible roles'),
     disableFocusTrap: true,
+    description: __(
+      'This list consists of host assigned roles and group assigned roles. Group assigned roles will always be executed prior to host assigned roles'
+    ),
   };
 
   const paginationKeys = { page: 'page', perPage: 'per_page' };
 
-  const actions = [
-    <Button variant="link" onClick={onClose} key="close">
-      {__('Close')}
-    </Button>,
-  ];
-
-  const wrapper = child => (
-    <Modal {...baseModalProps} actions={actions}>
-      {child}
-    </Modal>
-  );
+  const wrapper = child => <Modal {...baseModalProps}>{child}</Modal>;
 
   const loadingWrapper = child => <Modal {...baseModalProps}>{child}</Modal>;
 

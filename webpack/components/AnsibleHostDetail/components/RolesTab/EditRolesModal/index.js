@@ -2,7 +2,7 @@ import React from 'react';
 import { translate as __ } from 'foremanReact/common/I18n';
 import PropTypes from 'prop-types';
 
-import { Modal, Button, ModalVariant } from '@patternfly/react-core';
+import { Modal, Button } from '@patternfly/react-core';
 import { useQuery } from '@apollo/client';
 
 import EditRolesForm from './EditRolesForm';
@@ -20,12 +20,15 @@ const EditRolesModal = ({
   canEditHost,
 }) => {
   const baseModalProps = {
-    variant: ModalVariant.large,
+    width: '70%',
     isOpen,
     className: 'foreman-modal',
     showClose: false,
     title: __('Edit Ansible Roles'),
     disableFocusTrap: true,
+    description: __(
+      'Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles'
+    ),
   };
 
   const actions = [
