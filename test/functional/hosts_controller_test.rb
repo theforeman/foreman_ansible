@@ -20,7 +20,7 @@ class HostsControllerExtensionsTest < ActionController::TestCase
                  0 => { :ansible_role_id => @role.id, :position => 0 }
                } }
       post :create, :params => { :host => host }, :session => set_session_user
-      assert_redirected_to host_url(assigns('host'))
+      assert_redirected_to host_details_page_url(assigns('host'))
       assert assigns('host').ansible_roles, [@role]
     end
 
@@ -34,7 +34,7 @@ class HostsControllerExtensionsTest < ActionController::TestCase
              } }
            },
            :session => set_session_user
-      assert_redirected_to host_url(assigns('host'))
+      assert_redirected_to host_details_page_url(assigns('host'))
       assert_equal assigns('host').ansible_roles, [@role]
     end
 
