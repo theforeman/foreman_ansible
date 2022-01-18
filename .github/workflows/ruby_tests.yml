@@ -32,7 +32,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        foreman-core-branch: [develop]
+        foreman-core-branch: [3.1-stable]
         ruby-version: [2.5, 2.6]
         node-version: [12]
     steps:
