@@ -146,59 +146,68 @@ const AnsibleVariableOverridesTable = ({
 
   return (
     <React.Fragment>
-      <Flex>
+      <Flex direction={{ default: 'column' }}>
         <FlexItem align={{ default: 'alignRight' }}>
           <Pagination updateParamsByUrl itemCount={totalCount} variant="top" />
         </FlexItem>
+        <FlexItem>
+          <TableComposable variant="compact">
+            <Thead>
+              <Tr>
+                {columns.map(col => (
+                  <Th key={col}>{col}</Th>
+                ))}
+                <Th />
+              </Tr>
+            </Thead>
+            <Tbody>
+              {variables.map((variable, idx) => (
+                <Tr key={idx}>
+                  <Td>
+                    <a href={variable.path}>{variable.key}</a>
+                  </Td>
+                  <Td>{variable.ansibleRoleName}</Td>
+                  <Td>{variable.parameterType}</Td>
+                  <Td>
+                    <EditableValue
+                      variable={variable}
+                      editing={editableState[idx].open}
+                      onChange={onValueChange(idx, variable)}
+                      value={editableState[idx].value}
+                      validation={editableState[idx].validation}
+                      working={editableState[idx].working}
+                    />
+                  </Td>
+                  <Td>{formatSourceAttr(variable)}</Td>
+                  <Td>
+                    <EditableAction
+                      open={editableState[idx].open}
+                      onClose={setEditable(idx, false)}
+                      onOpen={setEditable(idx, true)}
+                      toggleWorking={toggleWorking(idx)}
+                      variable={variable}
+                      state={editableState[idx]}
+                      hostId={hostId}
+                      hostName={hostAttrs.name}
+                      hostGlobalId={hostGlobalId}
+                      onSubmitSuccess={onSubmitSuccess(idx, variable)}
+                      onValidationError={onValidationError(idx)}
+                    />
+                  </Td>
+                  <Td actions={{ items: actionsResolver(variable, idx) }} />
+                </Tr>
+              ))}
+            </Tbody>
+          </TableComposable>
+        </FlexItem>
+        <FlexItem align={{ default: 'alignRight' }}>
+          <Pagination
+            updateParamsByUrl
+            itemCount={totalCount}
+            variant="bottom"
+          />
+        </FlexItem>
       </Flex>
-      <TableComposable variant="compact">
-        <Thead>
-          <Tr>
-            {columns.map(col => (
-              <Th key={col}>{col}</Th>
-            ))}
-            <Th />
-          </Tr>
-        </Thead>
-        <Tbody>
-          {variables.map((variable, idx) => (
-            <Tr key={idx}>
-              <Td>
-                <a href={variable.path}>{variable.key}</a>
-              </Td>
-              <Td>{variable.ansibleRoleName}</Td>
-              <Td>{variable.parameterType}</Td>
-              <Td>
-                <EditableValue
-                  variable={variable}
-                  editing={editableState[idx].open}
-                  onChange={onValueChange(idx, variable)}
-                  value={editableState[idx].value}
-                  validation={editableState[idx].validation}
-                  working={editableState[idx].working}
-                />
-              </Td>
-              <Td>{formatSourceAttr(variable)}</Td>
-              <Td>
-                <EditableAction
-                  open={editableState[idx].open}
-                  onClose={setEditable(idx, false)}
-                  onOpen={setEditable(idx, true)}
-                  toggleWorking={toggleWorking(idx)}
-                  variable={variable}
-                  state={editableState[idx]}
-                  hostId={hostId}
-                  hostName={hostAttrs.name}
-                  hostGlobalId={hostGlobalId}
-                  onSubmitSuccess={onSubmitSuccess(idx, variable)}
-                  onValidationError={onValidationError(idx)}
-                />
-              </Td>
-              <Td actions={{ items: actionsResolver(variable, idx) }} />
-            </Tr>
-          ))}
-        </Tbody>
-      </TableComposable>
     </React.Fragment>
   );
 };
