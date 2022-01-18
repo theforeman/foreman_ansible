@@ -56,24 +56,35 @@ const RolesTable = ({
           <Pagination updateParamsByUrl itemCount={totalCount} variant="top" />
         </FlexItem>
       </Flex>
-      <TableComposable variant="compact">
-        <Thead>
-          <Tr>
-            {columns.map(col => (
-              <Th key={col}>{col}</Th>
-            ))}
-          </Tr>
-        </Thead>
-        <Tbody>
-          {ansibleRoles.map(role => (
-            <Tr key={role.id}>
-              <Td>
-                <a href={role.path}>{role.name}</a>
-              </Td>
-            </Tr>
-          ))}
-        </Tbody>
-      </TableComposable>
+      <Flex direction={{ default: 'column' }}>
+        <FlexItem>
+          <TableComposable variant="compact">
+            <Thead>
+              <Tr>
+                {columns.map(col => (
+                  <Th key={col}>{col}</Th>
+                ))}
+              </Tr>
+            </Thead>
+            <Tbody>
+              {ansibleRoles.map(role => (
+                <Tr key={role.id}>
+                  <Td>
+                    <a href={role.path}>{role.name}</a>
+                  </Td>
+                </Tr>
+              ))}
+            </Tbody>
+          </TableComposable>
+        </FlexItem>
+        <FlexItem align={{ default: 'alignRight' }}>
+          <Pagination
+            updateParamsByUrl
+            itemCount={totalCount}
+            variant="bottom"
+          />
+        </FlexItem>
+      </Flex>
       <Route path="/Ansible/roles/edit">
         <EditRolesModal
           closeModal={() => history.goBack()}

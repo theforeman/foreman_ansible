@@ -19,34 +19,41 @@ const AllRolesTable = ({ allAnsibleRoles, totalCount }) => {
 
   return (
     <React.Fragment>
-      <Flex className="pf-u-pt-md">
+      <Flex direction={{ default: 'column' }} className="pf-u-pt-md">
         <FlexItem align={{ default: 'alignRight' }}>
           <Pagination updateParamsByUrl itemCount={totalCount} variant="top" />
         </FlexItem>
-      </Flex>
-      <TableComposable variant="compact">
-        <Thead>
-          <Tr>
-            <Th />
-            {columns.map(col => (
-              <Th key={`${col}-all`}>{col}</Th>
-            ))}
-          </Tr>
-        </Thead>
-        <Tbody>
-          {allAnsibleRoles.map(role => (
-            <Tr key={`${role.id}-all`} id={role.id}>
-              <Td />
-              <Td>{role.name}</Td>
-              <Td>
-                {role.inherited
-                  ? __('Inherited from Hostgroup')
-                  : __('Directly assigned to Host')}
-              </Td>
+        <TableComposable variant="compact">
+          <Thead>
+            <Tr>
+              <Th />
+              {columns.map(col => (
+                <Th key={`${col}-all`}>{col}</Th>
+              ))}
             </Tr>
-          ))}
-        </Tbody>
-      </TableComposable>
+          </Thead>
+          <Tbody>
+            {allAnsibleRoles.map(role => (
+              <Tr key={`${role.id}-all`} id={role.id}>
+                <Td />
+                <Td>{role.name}</Td>
+                <Td>
+                  {role.inherited
+                    ? __('Inherited from Hostgroup')
+                    : __('Directly assigned to Host')}
+                </Td>
+              </Tr>
+            ))}
+          </Tbody>
+        </TableComposable>
+        <FlexItem align={{ default: 'alignRight' }}>
+          <Pagination
+            updateParamsByUrl
+            itemCount={totalCount}
+            variant="bottom"
+          />
+        </FlexItem>
+      </Flex>
     </React.Fragment>
   );
 };

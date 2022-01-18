@@ -30,45 +30,54 @@ const PreviousJobsTable = ({ history, totalCount, jobs, pagination }) => {
   return (
     <React.Fragment>
       <h3>{__('Previously executed jobs')}</h3>
-      <Flex className="pf-u-pt-md">
+      <Flex direction={{ default: 'column' }} className="pf-u-pt-md">
         <FlexItem align={{ default: 'alignRight' }}>
           <Pagination updateParamsByUrl itemCount={totalCount} variant="top" />
         </FlexItem>
+        <FlexItem>
+          <TableComposable variant="compact">
+            <Thead>
+              <Tr>
+                {columns.map(col => (
+                  <Th key={col}>{col}</Th>
+                ))}
+              </Tr>
+            </Thead>
+            <Tbody>
+              {jobs.map(job => (
+                <Tr key={job.id}>
+                  <Td>
+                    <a
+                      onClick={() =>
+                        window.tfm.nav.pushUrl(
+                          `/job_invocations/${decodeId(job.id)}`
+                        )
+                      }
+                    >
+                      {job.description}
+                    </a>
+                    &nbsp;
+                    {readablePurpose(job.recurringLogic.purpose)}
+                  </Td>
+                  <Td>{job.task.result}</Td>
+                  <Td>{job.task.state}</Td>
+                  <Td>
+                    <RelativeDateTime date={job.startAt} />
+                  </Td>
+                  <Td>{readableCron(job.recurringLogic.cronLine)}</Td>
+                </Tr>
+              ))}
+            </Tbody>
+          </TableComposable>
+        </FlexItem>
+        <FlexItem align={{ default: 'alignRight' }}>
+          <Pagination
+            updateParamsByUrl
+            itemCount={totalCount}
+            variant="bottom"
+          />
+        </FlexItem>
       </Flex>
-      <TableComposable variant="compact">
-        <Thead>
-          <Tr>
-            {columns.map(col => (
-              <Th key={col}>{col}</Th>
-            ))}
-          </Tr>
-        </Thead>
-        <Tbody>
-          {jobs.map(job => (
-            <Tr key={job.id}>
-              <Td>
-                <a
-                  onClick={() =>
-                    window.tfm.nav.pushUrl(
-                      `/job_invocations/${decodeId(job.id)}`
-                    )
-                  }
-                >
-                  {job.description}
-                </a>
-                &nbsp;
-                {readablePurpose(job.recurringLogic.purpose)}
-              </Td>
-              <Td>{job.task.result}</Td>
-              <Td>{job.task.state}</Td>
-              <Td>
-                <RelativeDateTime date={job.startAt} />
-              </Td>
-              <Td>{readableCron(job.recurringLogic.cronLine)}</Td>
-            </Tr>
-          ))}
-        </Tbody>
-      </TableComposable>
     </React.Fragment>
   );
 };
