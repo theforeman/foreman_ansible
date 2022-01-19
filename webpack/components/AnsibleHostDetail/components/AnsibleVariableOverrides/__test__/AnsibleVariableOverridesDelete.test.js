@@ -37,12 +37,12 @@ describe('AnsibleVariableOverrides', () => {
     userEvent.click(screen.getByText('Delete'));
     await waitFor(tick);
     expect(
-      screen.getByText('Delete Ansible Variable Override')
+      screen.getByText('Delete Ansible variable override')
     ).toBeInTheDocument();
     userEvent.click(screen.getByText('Cancel'));
     await waitFor(tick);
     expect(
-      screen.queryByText('Delete Ansible Variable Override')
+      screen.queryByText('Delete Ansible variable override')
     ).not.toBeInTheDocument();
   });
   it('should delete override', async () => {

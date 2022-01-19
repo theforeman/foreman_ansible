@@ -42,7 +42,7 @@ const AnsibleVariableOverrides = ({ hostId, hostAttrs, history }) => {
       fetchFn={useFetchFn}
       renamedDataPath="variables"
       emptyStateProps={{
-        header: __('No Ansible Variables found for Host'),
+        header: __('No Ansible variables found for Host'),
         description: __('Only variables marked to Override are shown here.'),
       }}
       permissions={['view_ansible_variables']}
