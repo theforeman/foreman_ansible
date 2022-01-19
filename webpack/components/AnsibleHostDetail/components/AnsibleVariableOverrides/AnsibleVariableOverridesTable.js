@@ -131,7 +131,7 @@ const AnsibleVariableOverridesTable = ({
     onClick: () => {
       dispatch(
         openConfirmModal({
-          title: __('Delete Ansible Variable Override'),
+          title: __('Delete Ansible variable override'),
           message:
             variable &&
             sprintf(
