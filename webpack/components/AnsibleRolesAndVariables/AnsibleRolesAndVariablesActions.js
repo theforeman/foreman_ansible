@@ -4,6 +4,7 @@ import { post } from 'foremanReact/redux/API';
 import { push } from 'connected-react-router';
 import { prepareResult } from './AnsibleRolesAndVariablesHelpers';
 import {
+  IMPORT_ANSIBLE_V_R,
   ANSIBLE_ROLE_CONFIRM_IMPORT_PATH,
   ANSIBLE_ROLES_INDEX,
 } from './AnsibleRolesAndVariablesConstants';
@@ -14,7 +15,7 @@ export const onSubmit = (rows, proxy) => dispatch => {
   const params = prepareResult(rows);
   dispatch(
     post({
-      key: 'import_ansible_v_r',
+      key: IMPORT_ANSIBLE_V_R,
       url: ANSIBLE_ROLE_CONFIRM_IMPORT_PATH,
       params: { changed: params, proxy },
       handleSuccess: () => {

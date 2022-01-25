@@ -24,6 +24,7 @@ const ImportRolesAndVariablesTable = ({
   proxy,
   onSubmit,
   onCancel,
+  isImporting,
 }) => {
   const columns = columnsData.map(col => ({
     ...col,
@@ -112,10 +113,15 @@ const ImportRolesAndVariablesTable = ({
     <div className="submit-cancel-btns">
       <br />
       <br />
-      <Button variant="primary" onClick={() => onSubmit(rows, proxy)}>
+      <Button
+        variant="primary"
+        onClick={() => onSubmit(rows, proxy)}
+        isLoading={isImporting}
+        isDisabled={isImporting || selectedRowsCount === 0}
+      >
         Submit
       </Button>
-      <Button variant="secondary" onClick={onCancel}>
+      <Button variant="secondary" onClick={onCancel} isDisabled={isImporting}>
         Cancel
       </Button>
     </div>
@@ -146,6 +152,7 @@ ImportRolesAndVariablesTable.defaultProps = {
   proxy: undefined,
   onSubmit: undefined,
   onCancel: undefined,
+  isImporting: false,
 };
 
 ImportRolesAndVariablesTable.propTypes = {
@@ -154,6 +161,7 @@ ImportRolesAndVariablesTable.propTypes = {
   proxy: PropTypes.number,
   onSubmit: PropTypes.func,
   onCancel: PropTypes.func,
+  isImporting: PropTypes.bool,
 };
 
 export default ImportRolesAndVariablesTable;
