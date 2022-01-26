@@ -1,0 +1,1 @@
+{ "template": "<%#\n  name: xprazak2.forklift_collection.foreman_provisioning.yml\n  snippet: false\n  job_category: Ansible Playbook - Imported\n  provider_type: Ansible\n  kind: job_template\n  model: JobTemplate\n%>\n- hosts: all\n  become: true\n  vars:\n    libvirt_tftp: true\n  roles:\n    - foreman\n    - libvirt\n    - foreman_provisioning\n"}
