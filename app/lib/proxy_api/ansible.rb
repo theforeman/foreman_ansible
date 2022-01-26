@@ -40,5 +40,18 @@ module ProxyAPI
       raise ProxyException.new(url, e,
                                N_('Unable to get roles/variables from Ansible'))
     end
+
+    def playbooks_names
+      parse(get('playbooks_names'))
+    rescue *PROXY_ERRORS => e
+      raise ProxyException.new(url, e, N_('Unable to get playbook\'s names from Ansible'))
+    end
+
+    def playbooks(playbooks_names = [])
+      playbooks_names = playbooks_names.join(',')
+      parse(get("playbooks/#{playbooks_names}"))
+    rescue *PROXY_ERRORS => e
+      raise ProxyException.new(url, e, N_('Unable to get playbooks from Ansible'))
+    end
   end
 end
