@@ -11,7 +11,7 @@ module ForemanAnsible
 
     def create
       ::Notification.create!(
-        :audience => Notification::AUDIENCE_ADMIN,
+        :audience => Notification::AUDIENCE_USER,
         :notification_blueprint => blueprint,
         :initiator => initiator,
         :message => message,
