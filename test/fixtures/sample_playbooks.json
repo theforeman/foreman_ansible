@@ -1,0 +1,10 @@
+[
+  {
+    "name": "xprazak2.forklift_collection.foreman_provisioning.yml",
+    "playbooks_content": "- hosts: all\n  become: true\n  vars:\n    libvirt_tftp: true\n  roles:\n    - foreman\n    - libvirt\n    - foreman_provisioning\n"
+  },
+  {
+    "name": "xprazak2.forklift_collection.collect_debug_draft.yml",
+    "playbooks_content": "---\n- hosts: all\n  become: true\n  vars:\n    bats_output_dir: '/root/bats_results'\n    remote_dir: \"/tmp/debug-{{ pipeline_type | default('foreman') }}-{{ pipeline_version | default('nightly') }}-{{ pipeline_os | default('el7') }}\"\n  roles:\n    - sos_report\n  tasks:\n    - name: \"Find bats files\"\n      find:\n        paths: \"{{ bats_output_dir }}\"\n        patterns: \"*.tap\"\n      register: bats_results\n\n    - name: \"Copy bats results\"\n      fetch:\n        src: \"{{ item.path }}\"\n        dest: \"{{ remote_dir }}\"\n      with_items: \"{{ bats_results.files }}\"\n\n    - name: \"Find smoker files\"\n      find:\n        paths: \"{{ smoker_output_dir }}\"\n        patterns: \"*.xml\"\n      register: smoker_results\n\n    - name: \"Copy smoker results\"\n      fetch:\n        src: \"{{ item.path }}\"\n        dest: \"{{ remote_dir }}\"\n      with_items: \"{{ smoker_results.files }}\"\n"
+  }
+]
