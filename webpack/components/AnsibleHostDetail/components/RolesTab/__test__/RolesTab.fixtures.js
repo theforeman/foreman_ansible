@@ -35,6 +35,9 @@ const role1 = {
   id: 'MDE6QW5zaWJsZVJvbGUtMw==',
   name: 'aardvaark.cube',
   path: '/ansible/ansible_roles/search="name = aardvaark.cube"',
+  ansibleVariables: {
+    totalCount: 1,
+  },
 };
 
 const role2 = {
@@ -42,6 +45,9 @@ const role2 = {
   id: 'MDE6QW5zaWJsZVJvbGUtNQ==',
   name: 'aardvaark.sphere',
   path: '/ansible/ansible_roles/search="name = aardvaark.sphere"',
+  ansibleVariables: {
+    totalCount: 2,
+  },
 };
 
 const role3 = {
@@ -49,6 +55,9 @@ const role3 = {
   id: 'MDE6QW5zaWJsZVJvbGUtMzA=',
   name: 'another.role',
   path: '/ansible/ansible_roles/search="name = another.role"',
+  ansibleVariables: {
+    totalCount: 3,
+  },
 };
 
 const role4 = {
@@ -56,6 +65,9 @@ const role4 = {
   id: 'MDE6QW5zaWJsZVJvbGUtMzk=',
   name: 'geerlingguy.ceylon',
   path: '/ansible/ansible_roles/search="name = geerlingguy.ceylon"',
+  ansibleVariables: {
+    totalCount: 4,
+  },
 };
 
 const ansibleRolesMock = {
@@ -77,30 +89,45 @@ const availableRoles = {
       name: 'theforeman.foreman_scap_client',
       path:
         '/ansible/ansible_roles/search="name = theforeman.foreman_scap_client"',
+      ansibleVariables: {
+        totalCount: 23,
+      },
     },
     {
       __typename: 'AnsibleRole',
       id: 'MDE6QW5zaWJsZVJvbGUtMg==',
       name: 'adriagalin.motd',
       path: '/ansible/ansible_roles/search="name = adriagalin.motd"',
+      ansibleVariables: {
+        totalCount: 23,
+      },
     },
     {
       __typename: 'AnsibleRole',
       id: 'MDE6QW5zaWJsZVJvbGUtMjI=',
       name: 'geerlingguy.php',
       path: '/ansible/ansible_roles/search="name = geerlingguy.php"',
+      ansibleVariables: {
+        totalCount: 23,
+      },
     },
     {
       __typename: 'AnsibleRole',
       id: 'MDE6QW5zaWJsZVJvbGUtNTc=',
       name: 'robertdebock.epel',
       path: '/ansible/ansible_roles/search="name = robertdebock.epel"',
+      ansibleVariables: {
+        totalCount: 23,
+      },
     },
     {
       __typename: 'AnsibleRole',
       id: 'MDE6QW5zaWJsZVJvbGUtNTg=',
       name: 'geerlingguy.nfs',
       path: '/ansible/ansible_roles/search="name = geerlingguy.nfs"',
+      ansibleVariables: {
+        totalCount: 23,
+      },
     },
   ],
 };
@@ -118,6 +145,9 @@ export const allRolesMocks = allAnsibleRolesMockFactory(
           name: 'adriagalin.motd',
           path: '/ansible/ansible_roles/search="name = adriagalin.motd"',
           inherited: true,
+          ansibleVariables: {
+            totalCount: 23,
+          },
         },
         { ...role1, inherited: false },
         { ...role2, inherited: false },
