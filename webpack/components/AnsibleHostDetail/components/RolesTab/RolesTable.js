@@ -27,7 +27,7 @@ const RolesTable = ({
   hostGlobalId,
   canEditHost,
 }) => {
-  const columns = [__('Name')];
+  const columns = [__('Name'), __('Variables')];
 
   const editBtn = canEditHost ? (
     <FlexItem>
@@ -71,6 +71,15 @@ const RolesTable = ({
                 <Tr key={role.id}>
                   <Td>
                     <a href={role.path}>{role.name}</a>
+                  </Td>
+                  <Td>
+                    <a
+                      href={`/ansible/ansible_variables?search=ansible_role=${role.name}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {role.ansibleVariables.totalCount}
+                    </a>
                   </Td>
                 </Tr>
               ))}

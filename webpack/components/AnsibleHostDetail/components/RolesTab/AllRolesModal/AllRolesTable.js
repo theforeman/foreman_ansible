@@ -15,7 +15,7 @@ import Pagination from 'foremanReact/components/Pagination';
 import withLoading from '../../../../withLoading';
 
 const AllRolesTable = ({ allAnsibleRoles, totalCount }) => {
-  const columns = [__('Name'), __('Source')];
+  const columns = [__('Name'), __('Variables'), __('Source')];
 
   return (
     <React.Fragment>
@@ -37,6 +37,16 @@ const AllRolesTable = ({ allAnsibleRoles, totalCount }) => {
               <Tr key={`${role.id}-all`} id={role.id}>
                 <Td />
                 <Td>{role.name}</Td>
+                <Td>
+                  <a
+                    href={`/ansible/ansible_variables?search=ansible_role=${role.name}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {role.ansibleVariables.totalCount}
+                  </a>
+                </Td>
+
                 <Td>
                   {role.inherited
                     ? __('Inherited from Hostgroup')

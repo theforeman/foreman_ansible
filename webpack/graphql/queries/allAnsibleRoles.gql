@@ -7,6 +7,9 @@ query($id: String!, $first: Int, $last: Int){
         id
         name
         inherited
+        ansibleVariables {
+          totalCount
+        }
       }
     }
   }
