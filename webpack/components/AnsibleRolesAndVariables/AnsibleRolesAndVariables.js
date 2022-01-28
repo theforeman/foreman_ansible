@@ -33,10 +33,13 @@ const ImportRolesAndVariablesTable = ({
 
   const [isChecked, setIsChecked] = useState(false);
   const [selectedRowsCount, setSelectRowsCount] = useState(0);
-
-  const [page, setPage] = useState();
-  const [perPage, setPerPage] = useState(DEFAULT_PER_PAGE);
-  const [paginatedRows, setPaginatedRows] = useState(rows.slice(0, perPage));
+  const [pagination, setPagination] = useState({
+    page: 1,
+    per_page: DEFAULT_PER_PAGE,
+  });
+  const [paginatedRows, setPaginatedRows] = useState(
+    rows.slice(0, pagination.per_page)
+  );
 
   const onSelect = (event, isSelected, rowId, row) => {
     const selectableRowLength = rows.filter(
@@ -67,43 +70,22 @@ const ImportRolesAndVariablesTable = ({
     onSelect(null, checked, -1);
   };
 
-  const handleSetPage = (event, newPage) => {
-    const startIdx = (newPage - 1) * perPage;
+  const handleSetPage = args => {
+    const startIdx = (args.page - 1) * args.per_page;
     const endIdx =
-      rows.length < newPage * perPage ? rows.length : newPage * perPage;
-    setPage(newPage);
+      rows.length < args.page * args.per_page
+        ? rows.length
+        : args.page * args.per_page;
+    setPagination(args);
     setPaginatedRows(rows.slice(startIdx, endIdx));
   };
 
-  const handlePerPageSelect = (
-    event,
-    newPerPage,
-    newPage,
-    startIdx,
-    endIdx
-  ) => {
-    setPerPage(newPerPage);
-    setPage(newPage);
-    setPaginatedRows(rows.slice(startIdx, endIdx));
-  };
-
-  const renderPagination = (variant = 'top') => (
+  const renderPagination = () => (
     <Pagination
       isCompact
       itemCount={rows.length}
-      page={page}
-      perPage={perPage}
-      defaultToFullPage
-      onSetPage={handleSetPage}
-      onPerPageSelect={handlePerPageSelect}
-      perPageOptions={[
-        { title: '3', value: 3 },
-        { title: '5', value: 5 },
-        { title: '10', value: 10 },
-      ]}
-      titles={{
-        paginationTitle: `${variant} pagination`,
-      }}
+      perPage={pagination.per_page}
+      onChange={args => handleSetPage(args)}
     />
   );
 
