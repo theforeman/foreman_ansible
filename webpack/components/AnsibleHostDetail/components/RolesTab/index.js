@@ -1,67 +1,61 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useQuery } from '@apollo/client';
-import { Button } from '@patternfly/react-core';
+import { Button, Checkbox, Flex, FlexItem } from '@patternfly/react-core';
+import { Link } from 'react-router-dom';
 import { translate as __ } from 'foremanReact/common/I18n';
-
-import ansibleRolesQuery from '../../../../graphql/queries/hostAnsibleRoles.gql';
 import { encodeId } from '../../../../globalIdHelper';
-import RolesTable from './RolesTable';
-import {
-  useParamsToVars,
-  useCurrentPagination,
-} from '../../../../helpers/pageParamsHelper';
-import EditRolesModal from './EditRolesModal';
+import HostRoles from './HostRoles';
+import AllRoles from './AllRoles';
 
 const RolesTab = ({ hostId, history, canEditHost }) => {
   const hostGlobalId = encodeId('Host', hostId);
-  const pagination = useCurrentPagination(history);
-  const [assignModal, setAssignModal] = useState(false);
-  const renameData = data => ({
-    ansibleRoles: data.host.ownAnsibleRoles.nodes,
-    totalCount: data.host.ownAnsibleRoles.totalCount,
-  });
+  const [showAll, setShowAll] = useState(false);
 
-  const useFetchFn = () =>
-    useQuery(ansibleRolesQuery, {
-      variables: { id: hostGlobalId, ...useParamsToVars(history) },
-      fetchPolicy: 'network-only',
-    });
+  const EditAnsibleRoles = () => (
+    <Flex>
+      <FlexItem>
+        <Link to="/Ansible/roles/edit">
+          <Button aria-label="edit ansible roles">
+            {__('Edit Ansible roles')}
+          </Button>
+        </Link>
+      </FlexItem>
+    </Flex>
+  );
 
-  const editBtn = canEditHost ? (
-    <Button
-      onClick={() => setAssignModal(true)}
-      aria-label="edit ansible roles"
-    >
-      {__('Assign Ansible roles')}
-    </Button>
-  ) : null;
+  const Navigation = () => (
+    <>
+      {canEditHost && <EditAnsibleRoles />}
+      <Flex>
+        <FlexItem>
+          <Checkbox
+            id="view_all_assigned_roles"
+            label={__('View all assigned roles')}
+            isChecked={showAll}
+            onChange={() => setShowAll(!showAll)}
+          />
+        </FlexItem>
+      </Flex>
+    </>
+  );
+
+  if (showAll) {
+    return (
+      <>
+        <Navigation />
+        <AllRoles hostGlobalId={hostGlobalId} history={history} />
+      </>
+    );
+  }
   return (
     <>
-      <RolesTable
-        fetchFn={useFetchFn}
-        renamedDataPath="ansibleRoles"
-        renameData={renameData}
-        permissions={['view_ansible_roles']}
-        history={history}
-        hostGlobalId={hostGlobalId}
-        emptyStateProps={{
-          header: __('No Ansible roles assigned'),
-          action: editBtn,
-        }}
-        pagination={pagination}
-        canEditHost={canEditHost}
+      <Navigation />
+      <HostRoles
         hostId={hostId}
+        hostGlobalId={hostGlobalId}
+        history={history}
+        canEditHost={canEditHost}
       />
-      {assignModal && (
-        <EditRolesModal
-          closeModal={() => setAssignModal(false)}
-          isOpen={assignModal}
-          assignedRoles={[]}
-          hostId={hostId}
-          canEditHost={canEditHost}
-        />
-      )}
     </>
   );
 };

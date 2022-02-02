@@ -12,6 +12,7 @@ import {
 } from '@patternfly/react-table';
 import { Flex, FlexItem } from '@patternfly/react-core';
 import Pagination from 'foremanReact/components/Pagination';
+
 import withLoading from '../../../../withLoading';
 
 const AllRolesTable = ({ allAnsibleRoles, totalCount }) => {
@@ -23,29 +24,33 @@ const AllRolesTable = ({ allAnsibleRoles, totalCount }) => {
         <FlexItem align={{ default: 'alignRight' }}>
           <Pagination updateParamsByUrl itemCount={totalCount} variant="top" />
         </FlexItem>
-        <TableComposable variant="compact">
-          <Thead>
-            <Tr>
-              <Th />
-              {columns.map(col => (
-                <Th key={`${col}-all`}>{col}</Th>
-              ))}
-            </Tr>
-          </Thead>
-          <Tbody>
-            {allAnsibleRoles.map(role => (
-              <Tr key={`${role.id}-all`} id={role.id}>
-                <Td />
-                <Td>{role.name}</Td>
-                <Td>
-                  {role.inherited
-                    ? __('Inherited from Hostgroup')
-                    : __('Directly assigned to Host')}
-                </Td>
+      </Flex>
+      <Flex direction={{ default: 'column' }}>
+        <FlexItem>
+          <TableComposable variant="compact">
+            <Thead>
+              <Tr>
+                <Th />
+                {columns.map(col => (
+                  <Th key={`${col}-all`}>{col}</Th>
+                ))}
               </Tr>
-            ))}
-          </Tbody>
-        </TableComposable>
+            </Thead>
+            <Tbody>
+              {allAnsibleRoles.map(role => (
+                <Tr key={`${role.id}-all`} id={role.id}>
+                  <Td />
+                  <Td>{role.name}</Td>
+                  <Td>
+                    {role.inherited
+                      ? __('Inherited from Hostgroup')
+                      : __('Directly assigned to Host')}
+                  </Td>
+                </Tr>
+              ))}
+            </Tbody>
+          </TableComposable>
+        </FlexItem>
         <FlexItem align={{ default: 'alignRight' }}>
           <Pagination
             updateParamsByUrl
