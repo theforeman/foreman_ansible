@@ -18,6 +18,7 @@ import {
 import * as toasts from '../../../../../toastHelper';
 
 import { toCron } from '../NewRecurringJobHelper';
+import { readableCron } from '../JobsTabHelper';
 
 import {
   tick,
@@ -49,8 +50,10 @@ describe('JobsTab', () => {
       .map(element => expect(element).toBeInTheDocument());
     expect(screen.getByText('Scheduled recurring jobs')).toBeInTheDocument();
     expect(screen.getByText('Previously executed jobs')).toBeInTheDocument();
-    expect(screen.getByText(toCron(futureDate, 'weekly'))).toBeInTheDocument();
-    expect(screen.getByText('54 10 15 * *')).toBeInTheDocument();
+    expect(
+      screen.getByText(readableCron(toCron(futureDate, 'weekly')))
+    ).toBeInTheDocument();
+    expect(screen.getByText('monthly')).toBeInTheDocument();
   });
   it('should show empty state', async () => {
     render(
@@ -129,7 +132,9 @@ describe('JobsTab', () => {
       message: 'Ansible job was successfully created.',
     });
     await waitFor(tick);
-    expect(screen.getByText(toCron(futureDate, 'weekly'))).toBeInTheDocument();
+    expect(
+      screen.getByText(readableCron(toCron(futureDate, 'weekly')))
+    ).toBeInTheDocument();
     expect(screen.getByText('in 3 days')).toBeInTheDocument();
     expect(
       screen.queryByText('No config job for Ansible roles scheduled')

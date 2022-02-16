@@ -17,6 +17,7 @@ import { Flex, FlexItem, Pagination } from '@patternfly/react-core';
 
 import { decodeId } from '../../../../globalIdHelper';
 import withLoading from '../../../withLoading';
+import { readableCron } from './JobsTabHelper';
 import {
   preparePerPageOptions,
   refreshPage,
@@ -84,7 +85,7 @@ const PreviousJobsTable = ({ history, totalCount, jobs, pagination }) => {
               <Td>
                 <RelativeDateTime date={job.startAt} />
               </Td>
-              <Td>{job.recurringLogic.cronLine}</Td>
+              <Td>{readableCron(job.recurringLogic.cronLine)}</Td>
             </Tr>
           ))}
         </Tbody>
