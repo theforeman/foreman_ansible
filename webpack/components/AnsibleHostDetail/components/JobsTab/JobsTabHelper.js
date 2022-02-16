@@ -77,3 +77,19 @@ export const useCancelMutation = (resourceName, resourceId) =>
       },
     ],
   });
+
+export const readableCron = (cron = '') => {
+  if (cron.match(/(\d+ \d+ \* \* \*)/)) {
+    return 'daily';
+  }
+
+  if (cron.match(/(\d+ \d+ \* \* \d+)/)) {
+    return 'weekly';
+  }
+
+  if (cron.match(/(\d+ \d+ \d+ \* \*)/)) {
+    return 'monthly';
+  }
+
+  return 'hourly';
+};

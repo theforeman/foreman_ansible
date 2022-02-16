@@ -24,6 +24,7 @@ import {
 } from '../../../testHelper';
 
 import { toCron } from '../../../components/AnsibleHostDetail/components/JobsTab/NewRecurringJobHelper';
+import { readableCron } from '../../../components/AnsibleHostDetail/components/JobsTab/JobsTabHelper';
 
 const TestComponent = withRedux(withRouter(withMockedProvider(HostgroupJobs)));
 
@@ -46,7 +47,7 @@ describe('HostgroupJobs', () => {
       .map(element => expect(element).toBeInTheDocument());
     expect(screen.getByText('Scheduled recurring jobs')).toBeInTheDocument();
     expect(screen.getByText('Previously executed jobs')).toBeInTheDocument();
-    expect(screen.getByText('54 10 15 * *')).toBeInTheDocument();
+    expect(screen.getByText(readableCron('54 10 15 * *'))).toBeInTheDocument();
   });
   it('should show empty state', async () => {
     render(
@@ -103,7 +104,9 @@ describe('HostgroupJobs', () => {
       type: 'success',
       message: 'Ansible job was successfully created.',
     });
-    expect(screen.getByText(toCron(futureDate, 'weekly'))).toBeInTheDocument();
+    expect(
+      screen.getByText(readableCron(toCron(futureDate, 'weekly')))
+    ).toBeInTheDocument();
     expect(screen.getByText('in 3 days')).toBeInTheDocument();
     expect(
       screen.queryByText('No config job for Ansible roles scheduled')
