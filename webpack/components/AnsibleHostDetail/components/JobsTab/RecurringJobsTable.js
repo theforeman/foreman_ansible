@@ -14,7 +14,7 @@ import {
   Td,
 } from '@patternfly/react-table';
 
-import { useCancelMutation } from './JobsTabHelper';
+import { useCancelMutation, readableCron } from './JobsTabHelper';
 import withLoading from '../../../withLoading';
 import { decodeId } from '../../../../globalIdHelper';
 
@@ -74,7 +74,7 @@ const RecurringJobsTable = ({ jobs, resourceName, resourceId }) => {
                   {job.description}
                 </a>
               </Td>
-              <Td>{job.recurringLogic.cronLine}</Td>
+              <Td>{readableCron(job.recurringLogic.cronLine)}</Td>
               <Td>
                 <RelativeDateTime date={job.startAt} />
               </Td>
