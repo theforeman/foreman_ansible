@@ -79,6 +79,10 @@ export const useCancelMutation = (resourceName, resourceId) =>
   });
 
 export const readableCron = (cron = '') => {
+  if (cron.match(/(\d+ \* \* \* \*)/)) {
+    return 'hourly';
+  }
+
   if (cron.match(/(\d+ \d+ \* \* \*)/)) {
     return 'daily';
   }
@@ -91,5 +95,5 @@ export const readableCron = (cron = '') => {
     return 'monthly';
   }
 
-  return 'hourly';
+  return 'custom';
 };
