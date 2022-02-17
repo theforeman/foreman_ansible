@@ -14,11 +14,20 @@ import {
   Td,
 } from '@patternfly/react-table';
 
-import { useCancelMutation, readableCron } from './JobsTabHelper';
+import {
+  useCancelMutation,
+  readableCron,
+  readablePurpose,
+} from './JobsTabHelper';
 import withLoading from '../../../withLoading';
 import { decodeId } from '../../../../globalIdHelper';
 
-const RecurringJobsTable = ({ jobs, resourceName, resourceId }) => {
+const RecurringJobsTable = ({
+  jobs,
+  resourceName,
+  resourceId,
+  hostGroupId,
+}) => {
   const columns = [__('Description'), __('Schedule'), __('Next Run')];
   const dispatch = useDispatch();
 
@@ -73,6 +82,8 @@ const RecurringJobsTable = ({ jobs, resourceName, resourceId }) => {
                 >
                   {job.description}
                 </a>
+                &nbsp;
+                {readablePurpose(job.recurringLogic.purpose)}
               </Td>
               <Td>{readableCron(job.recurringLogic.cronLine)}</Td>
               <Td>
@@ -91,6 +102,11 @@ RecurringJobsTable.propTypes = {
   jobs: PropTypes.array.isRequired,
   resourceId: PropTypes.number.isRequired,
   resourceName: PropTypes.string.isRequired,
+  hostGroupId: PropTypes.number,
+};
+
+RecurringJobsTable.defaultProps = {
+  hostGroupId: undefined,
 };
 
 export default withLoading(RecurringJobsTable);

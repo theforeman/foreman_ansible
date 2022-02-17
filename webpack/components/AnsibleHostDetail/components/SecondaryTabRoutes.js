@@ -44,6 +44,7 @@ const SecondaryTabRoutes = ({ response, router, history }) => (
         <JobsTab
           resourceId={response.id}
           resourceName="host"
+          hostGroupId={response.hostgroup_id}
           history={history}
         />
       </TabLayout>
