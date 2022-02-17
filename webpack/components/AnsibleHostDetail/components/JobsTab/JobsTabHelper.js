@@ -7,21 +7,36 @@ import { showToast } from '../../../../toastHelper';
 export const ansiblePurpose = (resourceName, resourceId) =>
   `ansible-${resourceName}-${resourceId}`;
 
-const jobSearch = (resourceName, resourceId, statusSearch) =>
-  `recurring = true && pattern_template_name = "Ansible Roles - Ansible Default" && ${statusSearch} && recurring_logic.purpose = ${ansiblePurpose(
+const jobSearch = (resourceName, resourceId, status, hostGroupId) => {
+  const search = `recurring = true && pattern_template_name = "Ansible Roles - Ansible Default"`;
+  const searchStatus = ` && ${status}`;
+  const searchHost = ` && recurring_logic.purpose = ${ansiblePurpose(
     resourceName,
     resourceId
   )}`;
+  const searchHostGroup = hostGroupId
+    ? ` or recurring_logic.purpose = ${ansiblePurpose(
+        'hostgroup',
+        hostGroupId
+      )}`
+    : '';
 
-export const scheduledJobsSearch = (resourceName, resourceId) =>
-  jobSearch(resourceName, resourceId, 'status = queued');
-export const previousJobsSearch = (resourceName, resourceId) =>
-  jobSearch(resourceName, resourceId, 'status != queued');
+  return search + searchStatus + searchHost + searchHostGroup;
+};
+
+export const scheduledJobsSearch = (resourceName, resourceId, hostGroupId) =>
+  jobSearch(resourceName, resourceId, 'status = queued', hostGroupId);
+export const previousJobsSearch = (resourceName, resourceId, hostGroupId) =>
+  jobSearch(resourceName, resourceId, 'status != queued', hostGroupId);
 
 const fetchJobsFn = (searchFn, pagination = {}) => componentProps =>
   useQuery(jobsQuery, {
     variables: {
-      search: searchFn(componentProps.resourceName, componentProps.resourceId),
+      search: searchFn(
+        componentProps.resourceName,
+        componentProps.resourceId,
+        componentProps.hostGroupId
+      ),
       ...pagination,
     },
   });
@@ -96,4 +111,11 @@ export const readableCron = (cron = '') => {
   }
 
   return 'custom';
+};
+
+export const readablePurpose = (purpose = '') => {
+  if (window.location.href.match(/ansible\/hostgroup/)) {
+    return '';
+  }
+  return purpose.match(/hostgroup/) ? __('(from host group)') : '';
 };
