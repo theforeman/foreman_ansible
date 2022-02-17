@@ -14,6 +14,7 @@ query($search: String, $first: Int, $last: Int) {
         meta {
           canEdit
         }
+        purpose
       }
       task {
         id

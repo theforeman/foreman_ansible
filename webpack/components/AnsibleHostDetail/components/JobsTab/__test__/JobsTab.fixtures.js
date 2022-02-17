@@ -23,10 +23,12 @@ const viewer = userFactory('viewer', [
 
 const firstRecurringLogicGlobalId =
   'MDE6Rm9yZW1hblRhc2tzOjpSZWN1cnJpbmdMb2dpYy0x';
+
 const firstRecurringLogic = {
   __typename: 'ForemanTasks::RecurringLogic',
   id: firstRecurringLogicGlobalId,
   cronLine: toCron(futureDate, 'weekly'),
+  purpose: '',
   meta: {
     canEdit: true,
   },
@@ -66,6 +68,7 @@ export const secondJob = {
     __typename: 'ForemanTasks::RecurringLogic',
     id: 'MDE6Rm9yZW1hblRhc2tzOjpSZWN1cnJpbmdMb2dpYy0yMw==',
     cronLine: '54 10 15 * *',
+    purpose: '',
     meta: {
       canEdit: true,
     },

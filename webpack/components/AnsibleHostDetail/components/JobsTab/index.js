@@ -15,7 +15,7 @@ import RecurringJobsTable from './RecurringJobsTable';
 import PreviousJobsTable from './PreviousJobsTable';
 import NewRecurringJobModal from './NewRecurringJobModal';
 
-const JobsTab = ({ resourceName, resourceId, history }) => {
+const JobsTab = ({ resourceName, resourceId, hostGroupId, history }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const toggleModal = () => setModalOpen(!modalOpen);
 
@@ -44,6 +44,7 @@ const JobsTab = ({ resourceName, resourceId, history }) => {
         <RecurringJobsTable
           resourceId={resourceId}
           resourceName={resourceName}
+          hostGroupId={hostGroupId}
           fetchFn={fetchRecurringFn}
           renameData={renameData}
           renamedDataPath="jobs"
@@ -59,6 +60,7 @@ const JobsTab = ({ resourceName, resourceId, history }) => {
         <PreviousJobsTable
           resourceId={resourceId}
           resourceName={resourceName}
+          hostGroupId={hostGroupId}
           fetchFn={fetchPreviousFn(useParamsToVars(history))}
           renameData={renameData}
           emptyWrapper={() => null}
@@ -81,8 +83,13 @@ const JobsTab = ({ resourceName, resourceId, history }) => {
 
 JobsTab.propTypes = {
   resourceName: PropTypes.string.isRequired,
+  hostGroupId: PropTypes.number,
   resourceId: PropTypes.number.isRequired,
   history: PropTypes.object.isRequired,
+};
+
+JobsTab.defaultProps = {
+  hostGroupId: undefined,
 };
 
 export default JobsTab;

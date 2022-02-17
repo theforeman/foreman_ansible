@@ -17,7 +17,7 @@ import { Flex, FlexItem, Pagination } from '@patternfly/react-core';
 
 import { decodeId } from '../../../../globalIdHelper';
 import withLoading from '../../../withLoading';
-import { readableCron } from './JobsTabHelper';
+import { readableCron, readablePurpose } from './JobsTabHelper';
 import {
   preparePerPageOptions,
   refreshPage,
@@ -79,6 +79,8 @@ const PreviousJobsTable = ({ history, totalCount, jobs, pagination }) => {
                 >
                   {job.description}
                 </a>
+                &nbsp;
+                {readablePurpose(job.recurringLogic.purpose)}
               </Td>
               <Td>{job.task.result}</Td>
               <Td>{job.task.state}</Td>
