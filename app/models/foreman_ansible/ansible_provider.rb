@@ -115,7 +115,8 @@ if defined? ForemanRemoteExecution
         end
 
         def proxy_batch_size
-          Setting['foreman_ansible_proxy_batch_size']
+          value = Setting['foreman_ansible_proxy_batch_size']
+          value.presence && value.to_i
         end
 
         private
