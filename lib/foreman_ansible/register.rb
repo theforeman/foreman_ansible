@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Foreman::Plugin.register :foreman_ansible do
-  requires_foreman '>= 3.0'
+  requires_foreman '>= 3.3'
 
   settings do
     category :ansible, N_('Ansible') do
