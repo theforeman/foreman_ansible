@@ -6,5 +6,6 @@ module Types
 
     field :name, String, :null => false
     field :path, resolver: Resolvers::AnsibleRole::Path
+    has_many :ansible_variables, ::Types::AnsibleVariable
   end
 end
