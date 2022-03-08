@@ -42,7 +42,8 @@ const RolesTable = ({
     refreshPage(history, { ...pagination, page });
   };
 
-  const perPageOptions = preparePerPageOptions(usePaginationOptions());
+  const options = usePaginationOptions();
+  const perPageOptions = preparePerPageOptions(options);
 
   const editBtn = canEditHost ? (
     <FlexItem>
