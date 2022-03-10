@@ -1,8 +1,8 @@
 module ImportPlaybooksJob
   module Async
     class SyncPlaybooks < ::Actions::EntryAction
-      def plan(proxy, playbooks_names)
-        plan_self(proxy: proxy, playbooks_names: playbooks_names)
+      def plan(proxy_id, playbooks_names)
+        plan_self(proxy_id: proxy_id, playbooks_names: playbooks_names)
       end
 
       def run
@@ -14,7 +14,7 @@ module ImportPlaybooksJob
       end
 
       def proxy
-        SmartProxy.find(input[:proxy])
+        SmartProxy.find(input[:proxy_id])
       end
 
       def playbooks_names

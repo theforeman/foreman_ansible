@@ -7,6 +7,8 @@ module Api
       include ::Api::Version2
       include ::ForemanAnsible::ProxyAPI
 
+      before_action :find_proxy, only: [:fetch, :sync]
+
       resource_description do
         api_version 'v2'
         api_base_url '/ansible/api'
@@ -16,8 +18,7 @@ module Api
       param :proxy_id, :identifier, :required => true, :desc => N_('Smart Proxy to sync from')
       param :playbooks_names, Array, N_('Ansible  playbooks names to be synced')
       def sync
-        # importer.import_playbooks(playbooks_names)
-        @task = plan_ansible_sync(proxy.id, playbooks_names)
+        @task = plan_ansible_sync(@proxy.id, playbooks_names)
       end
 
       api :GET, '/ansible_playbooks/fetch', N_('Fetch Ansible playbooks available to be synced')
@@ -30,47 +31,35 @@ module Api
 
       def action_permission
         case params[:action]
-        when 'sync'
-          :sync
-        when 'fetch'
-          :fetch
+        when 'sync', 'fetch'
+          :import
         else
           super
         end
       end
 
-      def plan_ansible_sync(proxy, playbooks_names)
-        ForemanTasks.async_task(ImportPlaybooksJob::Async::SyncPlaybooks, proxy, playbooks_names)
+      def plan_ansible_sync(proxy_id, playbooks_names)
+        ForemanTasks.async_task(ImportPlaybooksJob::Async::SyncPlaybooks, proxy_id, playbooks_names)
       end
 
       private
 
-      # rubocop:disable Layout/DotPosition
       def find_proxy
         unless params[:proxy_id]
           msg = _('Smart proxy id is required')
-          return render_error('custom_error', :status => :unprocessable_entity, :locals => { :message => msg })
+          render_error('custom_error', :status => :unprocessable_entity, :locals => { :message => msg })
+          return false
         end
-        SmartProxy.authorized(:view_smart_proxies)
-                  .find(params[:proxy_id])
+        @proxy = SmartProxy.find(params[:proxy_id])
       end
-      # rubocop:enable Layout/DotPosition
 
       def fetch_playbooks_names
-        proxy_api = find_proxy_api(proxy)
+        proxy_api = find_proxy_api(@proxy)
         proxy_api.playbooks_names if @proxy
       end
 
       def playbooks_names
         params.fetch(:playbooks_names, [])
-      end
-
-      def proxy
-        @proxy ||= find_proxy
-      end
-
-      def importer
-        @importer ||= ForemanAnsible::PlaybooksImporter.new(proxy)
       end
     end
   end
