@@ -158,6 +158,8 @@ Foreman::Plugin.register :foreman_ansible do
                :resource_type => 'Hostgroup'
     permission :generate_ansible_inventory,
                { :'api/v2/ansible_inventories' => [:schedule] }
+    permission :import_ansible_playbooks,
+               { :'api/v2/ansible_playbooks' => [:sync, :fetch] }
   end
 
   role 'Ansible Roles Manager',
@@ -167,7 +169,7 @@ Foreman::Plugin.register :foreman_ansible do
         :view_ansible_roles, :destroy_ansible_roles,
         :import_ansible_roles, :view_ansible_variables,
         :create_ansible_variables, :import_ansible_variables,
-        :edit_ansible_variables, :destroy_ansible_variables]
+        :edit_ansible_variables, :destroy_ansible_variables, :import_ansible_playbooks]
 
   role 'Ansible Tower Inventory Reader',
        [:view_hosts, :view_hostgroups, :view_facts, :generate_report_templates, :generate_ansible_inventory,

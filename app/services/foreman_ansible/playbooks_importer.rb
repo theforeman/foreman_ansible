@@ -55,6 +55,8 @@ module ForemanAnsible
     def create_job_template(playbook)
       job_template = JobTemplate.create(name: playbook[:name], template: playbook[:playbook_content], job_category: 'Ansible Playbook - Imported', provider_type: 'Ansible')
       # TODO: Add support for creating template inputs
+      job_template.organizations = Organization.unscoped.all
+      job_template.locations = Location.unscoped.all
       job_template.save
       { job_template.id => job_template.name }
     end

@@ -14,6 +14,12 @@ class AnsibleTest < ActiveSupport::TestCase
     assert_equal roles, @proxy_api.roles
   end
 
+  test 'should get ansible playbooks from proxy' do
+    playbooks = ['some_playbook.some_author', 'test_playbook.test_author']
+    @proxy_api.expects(:get).returns(fake_rest_client_response(playbooks))
+    assert_equal playbooks, @proxy_api.playbooks
+  end
+
   test 'should raise error with appropriate message' do
     message = 'Connection refused'
     @proxy_api.expects(:get).raises(Errno::ECONNREFUSED, message)

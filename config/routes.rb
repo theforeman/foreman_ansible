@@ -85,6 +85,13 @@ Rails.application.routes.draw do
           end
         end
 
+        resources :ansible_playbooks, :only => [] do
+          collection do
+            get :fetch
+            put :sync
+          end
+        end
+
         resources :ansible_variables, :only => [:show, :index, :destroy, :update, :create] do
           collection do
             put :import
