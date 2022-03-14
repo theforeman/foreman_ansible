@@ -187,7 +187,7 @@ Foreman::Plugin.register :foreman_ansible do
 
   register_global_js_file 'global'
 
-  extend_graphql_type :type => ::Types::Host do
+  extend_graphql_type :type => '::Types::Host' do
     field :all_ansible_roles, ::Types::InheritedAnsibleRole.connection_type, :null => true, :method => :present_all_ansible_roles
     field :own_ansible_roles, ::Types::AnsibleRole.connection_type, :null => true
     field :available_ansible_roles, ::Types::AnsibleRole.connection_type, :null => true
