@@ -4,7 +4,7 @@
 namespace :test do
   desc 'Foreman Ansible plugin tests'
   Rake::TestTask.new(:foreman_ansible) do |t|
-    test_dir = File.join(File.dirname(__FILE__), '../..', 'test')
+    test_dir = File.join(__dir__, '..', '..', 'test')
     t.libs << ['test', test_dir]
     t.pattern = "#{test_dir}/**/*_test.rb"
     t.verbose = false
