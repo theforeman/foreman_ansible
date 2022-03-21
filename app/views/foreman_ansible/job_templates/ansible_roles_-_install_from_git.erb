@@ -23,6 +23,9 @@ model: JobTemplate
 ---
 - hosts: all
   tasks:
-    - command: git clone <%= input('git_repository') %> <%= input('location') %>
+    - git:
+        repo: "<%= input('git_repository') %>"
+        dest: "<%= input('location') %>"
       register: out
+
     - debug: var=out
