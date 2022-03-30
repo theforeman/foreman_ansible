@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  match '/ansible/hostgroups' => 'react#index', :via => [:get]
-  match '/ansible/hostgroups/*page' => 'react#index', :via => [:get]
-
   namespace :api, defaults: { format: 'json' } do
     scope '(:apiv)',
           :module => :v2,
@@ -113,4 +110,7 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  match '/ansible/hostgroups' => 'react#index', :via => [:get]
+  match '/ansible/hostgroups/*page' => 'react#index', :via => [:get]
 end
