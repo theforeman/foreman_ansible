@@ -46,7 +46,10 @@ module ForemanAnsible
             find_resource
             return unless @hostgroup
 
-            @ansible_roles = @hostgroup.all_ansible_roles
+            @inherited_ansible_roles = @hostgroup.inherited_ansible_roles
+            @ansible_roles = (
+              @inherited_ansible_roles + @hostgroup.ansible_roles + @hostgroup.host_ansible_roles
+            ).uniq
           end
 
           api :POST, '/hostgroups/:id/assign_ansible_roles',
