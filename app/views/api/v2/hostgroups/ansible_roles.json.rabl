@@ -2,4 +2,8 @@
 
 collection @ansible_roles
 
-attributes :id, :name, :created_at, :updated_at
+extends 'api/v2/ansible_roles/show'
+
+node :inherited do |role|
+  @inherited_ansible_roles.include?(role)
+end
