@@ -2,8 +2,6 @@ import { testComponentSnapshotsWithFixtures } from '@theforeman/test';
 
 import AnsibleRolesSwitcher from '../AnsibleRolesSwitcher';
 
-jest.mock('foremanReact/components/Pagination/PaginationWrapper');
-
 const noop = () => {};
 
 const fixtures = {
