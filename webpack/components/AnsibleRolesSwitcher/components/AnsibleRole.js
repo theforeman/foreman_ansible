@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ListView, Tooltip, OverlayTrigger } from 'patternfly-react';
+import { ListView } from 'patternfly-react';
+import { Tooltip } from '@patternfly/react-core';
 import classNames from 'classnames';
 import { translate as __ } from 'foremanReact/common/I18n';
 
@@ -12,12 +13,6 @@ const AnsibleRole = ({ role, icon, onClick, resourceName, index }) => {
     resourceName === 'hostgroup'
       ? __('This Ansible role is inherited from parent host group')
       : __('This Ansible role is inherited from host group');
-
-  const tooltip = (
-    <Tooltip id={role.id}>
-      <span>{text}</span>
-    </Tooltip>
-  );
 
   const clickHandler = (onClickFn, ansibleRole) => event => {
     event.preventDefault();
@@ -48,11 +43,7 @@ const AnsibleRole = ({ role, icon, onClick, resourceName, index }) => {
   );
 
   if (role.inherited) {
-    return (
-      <OverlayTrigger overlay={tooltip} placement="top">
-        {listItem()}
-      </OverlayTrigger>
-    );
+    return <Tooltip content={<span>{text}</span>}>{listItem()}</Tooltip>;
   }
 
   return listItem(clickHandler);

@@ -1,22 +1,21 @@
 import React from 'react';
 import { translate as __ } from 'foremanReact/common/I18n';
-import { Tooltip, Icon, OverlayTrigger } from 'patternfly-react';
+import { Tooltip } from '@patternfly/react-core';
+import { InfoCircleIcon } from '@patternfly/react-icons';
 
 const OrderedRolesTooltip = props => {
-  const tooltip = (
-    <Tooltip id="assigned-ansible-roles-tooltip">
-      <span>
-        {__(
-          'Use drag and drop to change order of the roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly'
-        )}
-      </span>
-    </Tooltip>
+  const content = (
+    <span>
+      {__(
+        'Use drag and drop to change order of the roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly'
+      )}
+    </span>
   );
 
   return (
-    <OverlayTrigger overlay={tooltip} trigger={['hover', 'focus']}>
-      <Icon type="pf" name="info" style={{ 'margin-right': '10px' }} />
-    </OverlayTrigger>
+    <Tooltip content={content}>
+      <InfoCircleIcon style={{ marginRight: '10px' }} />
+    </Tooltip>
   );
 };
 

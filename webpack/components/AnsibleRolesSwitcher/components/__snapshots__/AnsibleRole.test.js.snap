@@ -65,25 +65,11 @@ exports[`AnsibleRole should render a role to remove 1`] = `
 `;
 
 exports[`AnsibleRole should render inherited role to remove 1`] = `
-<OverlayTrigger
-  defaultOverlayShown={false}
-  overlay={
-    <Tooltip
-      bsClass="tooltip"
-      id={5}
-      placement="right"
-    >
-      <span>
-        This Ansible role is inherited from host group
-      </span>
-    </Tooltip>
-  }
-  placement="top"
-  trigger={
-    Array [
-      "hover",
-      "focus",
-    ]
+<Tooltip
+  content={
+    <span>
+      This Ansible role is inherited from host group
+    </span>
   }
 >
   <ListViewItem
@@ -104,5 +90,5 @@ exports[`AnsibleRole should render inherited role to remove 1`] = `
     onExpandClose={[Function]}
     stacked={true}
   />
-</OverlayTrigger>
+</Tooltip>
 `;
