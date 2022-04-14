@@ -50,7 +50,8 @@ module ForemanAnsible
             return unless @host
 
             @inherited_ansible_roles = @host.inherited_ansible_roles
-            @ansible_roles = (@inherited_ansible_roles + @host.ansible_roles).uniq
+            @directly_assigned_roles = @host.ansible_roles
+            @ansible_roles = (@directly_assigned_roles + @inherited_ansible_roles).uniq
           end
 
           api :POST, '/hosts/:id/assign_ansible_roles',
