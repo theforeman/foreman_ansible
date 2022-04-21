@@ -31,14 +31,12 @@ module ForemanAnsible
     end
 
     def import_variables(role_variables, new_roles)
-      detect_changes(
-        role_variables.map do |role_name, variables|
-          next if variables.blank?
-          role = import_new_role(role_name, new_roles)
-          next if role.blank?
-          initialize_variables(variables, role)
-        end.select(&:present?).flatten.compact
-      )
+      detect_changes(role_variables.map do |role_name, variables|
+        next if variables.blank?
+        role = import_new_role(role_name, new_roles)
+        next if role.blank?
+        initialize_variables(variables, role)
+      end.select(&:present?).flatten.compact)
     end
 
     def import_variables_roles(roles)
@@ -96,7 +94,9 @@ module ForemanAnsible
       persisted, changes[:new] = imported.partition { |var| var.id.present? }
       changed, _old = persisted.partition(&:changed?)
       _overriden, changes[:update] = changed.partition(&:override?)
-      changes[:obsolete] = AnsibleVariable.where.not(:id => persisted.pluck(:id), :imported => false)
+      changes[:obsolete] = AnsibleVariable.where.not(id: persisted.pluck(:id)).
+                           where.not(imported: false)
+
       changes
     end
 

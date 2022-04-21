@@ -67,7 +67,6 @@ module ForemanAnsible
     config.to_prepare do
       ::Host::Managed.prepend ForemanAnsible::HostManagedExtensions
       ::Hostgroup.include ForemanAnsible::HostgroupExtensions
-      ::HostsHelper.include ForemanAnsible::HostsHelperExtensions
       ::HostsController.include ForemanAnsible::Concerns::HostsControllerExtensions
       ::Api::V2::HostsController.include ForemanAnsible::Api::V2::HostsControllerExtensions
       ::Api::V2::HostsController.include ForemanAnsible::Api::V2::HostsParamGroupExtensions
