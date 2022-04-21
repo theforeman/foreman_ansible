@@ -236,4 +236,8 @@ Foreman::Plugin.register :foreman_ansible do
     register_report_scanner ForemanAnsible::AnsibleReportScanner
     register_report_origin 'Ansible', 'ConfigReport'
   end
+
+  describe_host do
+    multiple_actions_provider :ansible_hosts_multiple_actions
+  end
 end
