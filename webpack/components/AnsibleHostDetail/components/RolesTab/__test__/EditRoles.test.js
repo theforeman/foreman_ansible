@@ -53,6 +53,7 @@ describe('assigning Ansible roles', () => {
       message: 'Ansible Roles were successfully assigned.',
     });
   }, 8000);
+
   it('should show errors', async () => {
     const showToast = jest.fn();
     jest.spyOn(toasts, 'showToast').mockImplementation(showToast);

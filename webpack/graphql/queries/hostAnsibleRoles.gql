@@ -3,7 +3,7 @@
 query($id: String!, $first: Int, $last: Int) {
   host(id: $id) {
     id
-    ownAnsibleRoles(first: $first, last: $last) {
+    allAnsibleRoles(first: $first, last: $last) {
       totalCount
       nodes {
         id
@@ -12,6 +12,7 @@ query($id: String!, $first: Int, $last: Int) {
         ansibleVariables {
           totalCount
         }
+        inherited
       }
     }
   }

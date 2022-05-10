@@ -6,7 +6,6 @@ import {
   userFactory,
 } from '../../../../../testHelper';
 import ansibleRolesQuery from '../../../../../graphql/queries/hostAnsibleRoles.gql';
-import allAnsibleRolesQuery from '../../../../../graphql/queries/allAnsibleRoles.gql';
 import availableAnsibleRolesQuery from '../../../../../graphql/queries/hostAvailableAnsibleRoles.gql';
 import assignAnsibleRolesMutation from '../../../../../graphql/mutations/assignAnsibleRoles.gql';
 import { decodeModelId } from '../../../../../globalIdHelper';
@@ -15,7 +14,6 @@ export const hostId = 3;
 const hostGlobalId = 'MDE6SG9zdC0z';
 
 const ansibleRolesMockFactory = mockFactory('host', ansibleRolesQuery);
-const allAnsibleRolesMockFactory = mockFactory('host', allAnsibleRolesQuery);
 const assignRolesMockFactory = mockFactory(
   'assignAnsibleRoles',
   assignAnsibleRolesMutation
@@ -38,6 +36,7 @@ const role1 = {
   ansibleVariables: {
     totalCount: 1,
   },
+  inherited: false,
 };
 
 const role2 = {
@@ -48,6 +47,7 @@ const role2 = {
   ansibleVariables: {
     totalCount: 2,
   },
+  inherited: false,
 };
 
 const role3 = {
@@ -58,6 +58,7 @@ const role3 = {
   ansibleVariables: {
     totalCount: 3,
   },
+  inherited: false,
 };
 
 const role4 = {
@@ -68,6 +69,7 @@ const role4 = {
   ansibleVariables: {
     totalCount: 4,
   },
+  inherited: false,
 };
 
 const ansibleRolesMock = {
@@ -132,54 +134,21 @@ const availableRoles = {
   ],
 };
 
-export const allRolesMocks = allAnsibleRolesMockFactory(
-  { id: hostGlobalId, first: 20, last: 20 },
-  {
-    __typename: 'Host',
-    id: hostGlobalId,
-    allAnsibleRoles: {
-      totalCount: 4,
-      nodes: [
-        {
-          id: 'MDE6QW5zaWJsZVJvbGUtMg==',
-          name: 'adriagalin.motd',
-          path: '/ansible/ansible_roles/search="name = adriagalin.motd"',
-          inherited: true,
-          ansibleVariables: {
-            totalCount: 23,
-          },
-        },
-        { ...role1, inherited: false },
-        { ...role2, inherited: false },
-        { ...role3, inherited: false },
-      ],
-    },
-  }
-);
-
-const editModalData = {
-  host: {
-    __typename: 'Host',
-    id: hostGlobalId,
-    availableAnsibleRoles: availableRoles,
-  },
-};
-
 export const mocks = ansibleRolesMockFactory(
   { id: hostGlobalId, first: 20, last: 20 },
-  { __typename: 'Host', id: hostGlobalId, ownAnsibleRoles: ansibleRolesMock },
+  { __typename: 'Host', id: hostGlobalId, allAnsibleRoles: ansibleRolesMock },
   { currentUser: admin }
 );
 
 export const unauthorizedMocks = ansibleRolesMockFactory(
   { id: hostGlobalId, first: 20, last: 20 },
-  { __typename: 'Host', id: hostGlobalId, ownAnsibleRoles: ansibleRolesMock },
+  { __typename: 'Host', id: hostGlobalId, allAnsibleRoles: ansibleRolesMock },
   { currentUser: intruder }
 );
 
 export const authorizedMocks = ansibleRolesMockFactory(
   { id: hostGlobalId, first: 20, last: 20 },
-  { __typename: 'Host', id: hostGlobalId, ownAnsibleRoles: ansibleRolesMock },
+  { __typename: 'Host', id: hostGlobalId, allAnsibleRoles: ansibleRolesMock },
   { currentUser: viewer }
 );
 
@@ -187,7 +156,13 @@ export const editModalOpenMocks = editModalDataFactory(
   {
     id: hostGlobalId,
   },
-  editModalData
+  {
+    host: {
+      __typename: 'Host',
+      id: hostGlobalId,
+      availableAnsibleRoles: availableRoles,
+    },
+  }
 );
 
 export const assignRolesSuccessMock = assignRolesMockFactory(

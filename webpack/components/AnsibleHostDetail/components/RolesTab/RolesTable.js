@@ -17,7 +17,6 @@ import { Flex, FlexItem, Button } from '@patternfly/react-core';
 import EditRolesModal from './EditRolesModal';
 
 import withLoading from '../../../withLoading';
-import AllRolesModal from './AllRolesModal';
 
 const RolesTable = ({
   totalCount,
@@ -27,7 +26,7 @@ const RolesTable = ({
   hostGlobalId,
   canEditHost,
 }) => {
-  const columns = [__('Name'), __('Variables')];
+  const columns = [__('Name'), __('Variables'), __('Source')];
 
   const editBtn = canEditHost ? (
     <FlexItem>
@@ -41,15 +40,6 @@ const RolesTable = ({
 
   return (
     <React.Fragment>
-      <Flex>
-        <FlexItem>
-          <h3>
-            <span>{__('Ansible roles assigned directly to host')}</span>
-            <span>{' - '}</span>
-            <Link to="/Ansible/roles/all">{__('view all assigned roles')}</Link>
-          </h3>
-        </FlexItem>
-      </Flex>
       <Flex>
         <FlexItem>{editBtn}</FlexItem>
         <FlexItem align={{ default: 'alignRight' }}>
@@ -81,6 +71,11 @@ const RolesTable = ({
                       {role.ansibleVariables.totalCount}
                     </a>
                   </Td>
+                  <Td>
+                    {role.inherited
+                      ? __('Inherited from the host group')
+                      : __('Directly assigned to the host')}
+                  </Td>
                 </Tr>
               ))}
             </Tbody>
@@ -98,17 +93,9 @@ const RolesTable = ({
         <EditRolesModal
           closeModal={() => history.goBack()}
           isOpen
-          assignedRoles={ansibleRoles}
+          assignedRoles={ansibleRoles.filter(role => !role.inherited)}
           hostId={hostId}
           canEditHost={canEditHost}
-        />
-      </Route>
-      <Route path="/Ansible/roles/all">
-        <AllRolesModal
-          onClose={() => history.push('/Ansible/roles')}
-          isOpen
-          hostGlobalId={hostGlobalId}
-          history={history}
         />
       </Route>
     </React.Fragment>

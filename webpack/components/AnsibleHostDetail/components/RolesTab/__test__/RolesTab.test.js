@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import userEvent from '@testing-library/user-event';
 import {
   tick,
   withMockedProvider,
@@ -11,7 +10,6 @@ import {
 import {
   mocks,
   hostId,
-  allRolesMocks,
   unauthorizedMocks,
   authorizedMocks,
 } from './RolesTab.fixtures';
@@ -28,29 +26,7 @@ describe('RolesTab', () => {
     expect(screen.getByText('aardvaark.sphere')).toBeInTheDocument();
     expect(screen.getByText('another.role')).toBeInTheDocument();
   });
-  it('should show all Ansible roles modal', async () => {
-    render(
-      <TestComponent
-        hostId={hostId}
-        mocks={mocks.concat(allRolesMocks)}
-        canEditHost
-      />
-    );
-    await waitFor(tick);
-    expect(screen.getByText('view all assigned roles')).toBeInTheDocument();
-    expect(
-      screen.queryByText('All assigned Ansible roles')
-    ).not.toBeInTheDocument();
-    userEvent.click(screen.getByText('view all assigned roles'));
-    await waitFor(tick);
-    expect(screen.getByText('All assigned Ansible roles')).toBeInTheDocument();
-    expect(screen.getByText('Inherited from Hostgroup')).toBeInTheDocument();
-    userEvent.click(screen.getByRole('button', { name: 'Close' }));
-    await waitFor(tick);
-    expect(
-      screen.queryByText('All assigned Ansible roles')
-    ).not.toBeInTheDocument();
-  });
+
   it('should load Ansible Roles as viewer', async () => {
     render(
       <TestComponent
@@ -63,6 +39,7 @@ describe('RolesTab', () => {
     expect(screen.getByText('aardvaark.cube')).toBeInTheDocument();
     expect(screen.queryByText('Edit Ansible Roles')).not.toBeInTheDocument();
   });
+
   it('should not load Ansible Roles for unauthorized user', async () => {
     render(
       <TestComponent hostId={hostId} mocks={unauthorizedMocks} canEditHost />

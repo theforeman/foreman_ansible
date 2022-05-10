@@ -18,8 +18,8 @@ const RolesTab = ({ hostId, history, canEditHost }) => {
   const pagination = useCurrentPagination(history);
   const [assignModal, setAssignModal] = useState(false);
   const renameData = data => ({
-    ansibleRoles: data.host.ownAnsibleRoles.nodes,
-    totalCount: data.host.ownAnsibleRoles.totalCount,
+    ansibleRoles: data.host.allAnsibleRoles.nodes,
+    totalCount: data.host.allAnsibleRoles.totalCount,
   });
 
   const useFetchFn = () =>
