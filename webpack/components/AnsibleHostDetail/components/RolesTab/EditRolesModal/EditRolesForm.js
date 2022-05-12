@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { translate as __ } from 'foremanReact/common/I18n';
 import PropTypes from 'prop-types';
 
@@ -21,17 +21,17 @@ const EditRolesForm = props => {
     actions,
   } = props;
 
-  const [formState, setFormState] = useState({
-    availableOptions: [],
-    chosenOptions: [],
-  });
+  const [availableOptions, setAvailableOptions] = useState(
+    availableRoles.map(item => item.name)
+  );
+  const [chosenOptions, setChosenOptions] = useState(
+    assignedRoles.map(item => item.name)
+  );
 
-  useEffect(() => {
-    setFormState({
-      availableOptions: availableRoles.map(item => item.name),
-      chosenOptions: assignedRoles.map(item => item.name) || [],
-    });
-  }, [availableRoles, assignedRoles]);
+  const onListChange = (nextAvailable, nextChosen) => {
+    setAvailableOptions(nextAvailable);
+    setChosenOptions(nextChosen);
+  };
 
   const [callMutation, { loading }] = useMutation(assignAnsibleRoles, {
     onCompleted: onCompleted(closeModal),
@@ -42,7 +42,7 @@ const EditRolesForm = props => {
 
   const variables = {
     id: encodeId('Host', hostId),
-    ansibleRoleIds: roleNamesToIds(allRoles, formState.chosenOptions),
+    ansibleRoleIds: roleNamesToIds(allRoles, chosenOptions),
   };
 
   const formActions = [
@@ -65,14 +65,9 @@ const EditRolesForm = props => {
   return (
     <Modal {...baseModalProps} actions={formActions}>
       <DualList
-        availableOptions={formState.availableOptions}
-        chosenOptions={formState.chosenOptions}
-        onListChange={(newAvailable, newChosen) =>
-          setFormState({
-            availableOptions: newAvailable,
-            chosenOptions: newChosen,
-          })
-        }
+        availableOptions={availableOptions}
+        chosenOptions={chosenOptions}
+        onListChange={onListChange}
       />
     </Modal>
   );
@@ -80,11 +75,16 @@ const EditRolesForm = props => {
 
 EditRolesForm.propTypes = {
   closeModal: PropTypes.func.isRequired,
-  assignedRoles: PropTypes.array.isRequired,
-  availableRoles: PropTypes.array.isRequired,
+  assignedRoles: PropTypes.array,
+  availableRoles: PropTypes.array,
   actions: PropTypes.array.isRequired,
   hostId: PropTypes.number.isRequired,
   baseModalProps: PropTypes.object.isRequired,
+};
+
+EditRolesForm.defaultProps = {
+  assignedRoles: [],
+  availableRoles: [],
 };
 
 export default withLoading(EditRolesForm);
