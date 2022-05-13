@@ -13,14 +13,12 @@ import {
 } from '../permissionsHelper';
 import ErrorState from './ErrorState';
 
-const pluckData = (data, path) => {
+const getResultsLength = (data, path) => {
   const split = path.split('.');
-  return split.reduce((memo, item) => {
-    if (item) {
-      return memo[item];
-    }
-    throw new Error('Unexpected empty segment in response data path');
-  }, data);
+  return split.reduce(
+    (prevValue, currentValue) => prevValue + data[currentValue]?.length || 0,
+    0
+  );
 };
 
 const withLoading = Component => {
@@ -79,12 +77,9 @@ const withLoading = Component => {
     }
 
     const renamedData = renameData(data);
-    const result = pluckData(renamedData, renamedDataPath);
+    const resultLength = getResultsLength(renamedData, renamedDataPath);
 
-    if (
-      showEmptyState &&
-      ((Array.isArray(result) && result.length === 0) || !result)
-    ) {
+    if (showEmptyState && !resultLength) {
       return emptyWrapper(
         <EmptyState
           {...{
