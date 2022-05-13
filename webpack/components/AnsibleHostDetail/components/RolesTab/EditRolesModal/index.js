@@ -54,6 +54,7 @@ const EditRolesModal = ({
 
   const renameData = data => ({
     availableRoles: data.host.availableAnsibleRoles.nodes,
+    assignedRoles,
   });
 
   return (
@@ -64,7 +65,7 @@ const EditRolesModal = ({
       baseModalProps={baseModalProps}
       fetchFn={useFetchFn}
       renameData={renameData}
-      renamedDataPath="availableRoles"
+      renamedDataPath="availableRoles.assignedRoles"
       assignedRoles={assignedRoles}
       closeModal={closeModal}
       hostId={hostId}
