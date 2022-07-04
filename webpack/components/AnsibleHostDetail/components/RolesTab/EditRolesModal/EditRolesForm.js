@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { translate as __ } from 'foremanReact/common/I18n';
 import PropTypes from 'prop-types';
-
+import { isEqual } from 'lodash';
 import { useMutation } from '@apollo/client';
 
 import { Button, Modal, Spinner } from '@patternfly/react-core';
@@ -21,12 +21,10 @@ const EditRolesForm = props => {
     actions,
   } = props;
 
-  const [availableOptions, setAvailableOptions] = useState(
-    availableRoles.map(item => item.name)
-  );
-  const [chosenOptions, setChosenOptions] = useState(
-    assignedRoles.map(item => item.name)
-  );
+  const initAvailableOpt = availableRoles.map(item => item.name);
+  const initChosenOpt = assignedRoles.map(item => item.name);
+  const [availableOptions, setAvailableOptions] = useState(initAvailableOpt);
+  const [chosenOptions, setChosenOptions] = useState(initChosenOpt);
 
   const onListChange = (nextAvailable, nextChosen) => {
     setAvailableOptions(nextAvailable);
@@ -45,12 +43,16 @@ const EditRolesForm = props => {
     ansibleRoleIds: roleNamesToIds(allRoles, chosenOptions),
   };
 
+  const didNotModifyOptions = () =>
+    isEqual(initAvailableOpt.sort(), availableOptions.sort()) &&
+    isEqual(initChosenOpt, chosenOptions); // The order of the chosen options is important.
+
   const formActions = [
     <Button
       key="confirm"
       variant="primary"
       onClick={() => callMutation({ variables })}
-      isDisabled={loading}
+      isDisabled={loading || didNotModifyOptions()}
       aria-label="submit ansible roles"
     >
       {__('Confirm')}
