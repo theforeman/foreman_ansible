@@ -20,7 +20,7 @@ const EditRolesModal = ({
   canEditHost,
 }) => {
   const baseModalProps = {
-    width: '70%',
+    width: '50%',
     isOpen,
     className: 'foreman-modal',
     showClose: false,
