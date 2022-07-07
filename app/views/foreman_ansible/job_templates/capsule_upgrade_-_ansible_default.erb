@@ -3,7 +3,7 @@ name: Capsule Upgrade Playbook
 snippet: false
 template_inputs:
 - name: target_version
-  required: true
+  required: false
   input_type: user
   advanced: false
   value_type: plain
@@ -23,7 +23,10 @@ feature: ansible_run_capsule_upgrade
 %>
 
 ---
+<% if plugin_present?('foreman_theme_satellite') -%>
 - hosts: all
+  vars:
+    satellite_version: "<%= input('target_version').present? ? input('target_version') : satellite_short_version %>"
   tasks:
     - name: Gather the rpm package facts
       package_facts:
@@ -44,7 +47,7 @@ feature: ansible_run_capsule_upgrade
                                "--whitelist=#{input('whitelist_options')}"
                              end -%>
       - name: Upgrade Capsule server using satellite-maintain
-        shell: satellite-maintain upgrade run --assumeyes --target-version=<%= input('target_version') %> <%= whitelist_option %>
+        shell: satellite-maintain upgrade run --assumeyes --target-version={{ satellite_version }} <%= whitelist_option %>
         register: result
 
       - name: Re-Gather the rpm package facts after the upgrade
@@ -71,3 +74,33 @@ feature: ansible_run_capsule_upgrade
         - name: satellite-maintain upgrade return code is non-zero
           fail:
             msg: "Failed! Capsule server upgrade failed. See /var/log/foreman-installer/capsule.log in the Capsule server for more information"
+<% else -%>
+- hosts: all
+  vars:
+    foreman_release_version: "<%= input('target_version').present? ? input('target_version') : foreman_short_version %>"
+  tasks:
+    - name: Gather the rpm package facts
+      package_facts:
+        manager: auto
+
+    - name: Fail if the target server is a Foreman server
+      fail:
+        msg: "This playbook cannot be executed on a Foreman server. Use only on a Smart Proxy server."
+      when: "'foreman' in ansible_facts.packages"
+
+    - name: Update foreman repositories
+      package:
+        name: https://yum.theforeman.org/releases/{{ foreman_release_version }}/el{{ ansible_distribution_major_version }}/{{ ansible_architecture }}/foreman-release.rpm
+        state: installed
+
+    - name: Clean yum metadata
+      command: yum clean all
+
+    - name: Update all packages
+      package:
+        name: '*'
+        state: latest
+
+    - name: Run the installer
+      shell: foreman-installer
+<% end -%>

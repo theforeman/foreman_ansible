@@ -244,4 +244,17 @@ Foreman::Plugin.register :foreman_ansible do
   describe_hostgroup do
     hostgroup_actions_provider :ansible_hostgroups_actions
   end
+
+  extend_page('smart_proxies/show') do |context|
+    context.add_pagelet :smart_proxy_title_actions,
+                        :name => _('Update Smart Proxy'),
+                        :partial => 'foreman/smart_proxies/update_smart_proxy',
+                        :onlyif => ->(proxy, view) { view.can_update_proxy?(proxy) }
+  end
+  extend_page('smart_proxies/index') do |context|
+    context.add_pagelet :smart_proxy_title_actions,
+                        :name => _('Update Smart Proxy'),
+                        :partial => 'foreman/smart_proxies/update_smart_proxy',
+                        :onlyif => ->(proxy, view) { view.can_update_proxy?(proxy) }
+  end
 end
