@@ -240,4 +240,8 @@ Foreman::Plugin.register :foreman_ansible do
   describe_host do
     multiple_actions_provider :ansible_hosts_multiple_actions
   end
+
+  describe_hostgroup do
+    hostgroup_actions_provider :ansible_hostgroups_actions
+  end
 end
