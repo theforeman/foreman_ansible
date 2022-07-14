@@ -12,13 +12,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [10, 12]
+        node-version: [12]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/checkout@v2
         with:
           repository: theforeman/foreman
-          ref: develop
+          ref: 3.3-stable
           path: foreman
       - name: Setup Node
         uses: actions/setup-node@v1
