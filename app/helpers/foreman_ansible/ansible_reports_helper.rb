@@ -57,10 +57,6 @@ module ForemanAnsible
       _('No additional data')
     end
 
-    def ansible_report_origin_icon
-      'foreman_ansible/Ansible.png'
-    end
-
     def ansible_report_origin_partial
       'foreman_ansible/config_reports/ansible'
     end
