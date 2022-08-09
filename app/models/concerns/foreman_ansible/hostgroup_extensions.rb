@@ -11,6 +11,9 @@ module ForemanAnsible
                -> { order('hostgroup_ansible_roles.position ASC') },
                :through => :hostgroup_ansible_roles,
                :dependent => :destroy
+      scoped_search :relation => :ansible_roles, :on => :name,
+                    :complete_value => true, :rename => :ansible_role,
+                    :only_explicit => true, :operators => ['= ', '!= ', '~ ', '!~ '], :ext_method => :search_by_role
       accepts_nested_attributes_for :hostgroup_ansible_roles, :allow_destroy => true
       audit_associations :ansible_roles
       include_in_clone :ansible_roles
@@ -36,6 +39,16 @@ module ForemanAnsible
       # either directly or through hostgroup
       def all_ansible_roles
         (inherited_ansible_roles + ansible_roles + host_ansible_roles).uniq
+      end
+    end
+
+    class_methods do
+      def search_by_role(_key, operator, value)
+        conditions = sanitize_sql_for_conditions(["ansible_roles.name #{operator} ?", value_to_sql(operator, value)])
+        hostgroup_ids = ::Hostgroup.joins(:ansible_roles).where(conditions).map(&:subtree_ids).flatten
+
+        conds = "hostgroups.id IN(#{hostgroup_ids.join(',')})" if hostgroup_ids.present?
+        { conditions: conds.presence || '1 = 0' }
       end
     end
   end

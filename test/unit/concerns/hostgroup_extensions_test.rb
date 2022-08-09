@@ -61,4 +61,9 @@ class HostgroupExtensionsTest < ActiveSupport::TestCase
       @hostgroup_parent.clone.all_ansible_roles.must_equal @hostgroup_parent.all_ansible_roles
     end
   end
+
+  test 'should find hostgroup with role' do
+    result = ::Hostgroup.search_for("ansible_role = #{@role1.name}").pluck(:id)
+    assert_include result, @hostgroup.id
+  end
 end

@@ -18,7 +18,7 @@
     <% @ansible_roles.each do |role| %>
       <tr>
         <td class="ellipsis"><%= role.name %></td>
-        <td class="ellipsis"><%= role.hostgroups.count %></td>
+        <td class="ellipsis"><%= link_to role.hostgroups.count, hostgroups_path(:search => "ansible_role = #{role.name}") %></td>
         <td class="ellipsis"><%= link_to role.hosts.count, hosts_path(:search => "ansible_role = #{role.name}")%></td>
         <td class="ellipsis"><%= link_to(role.ansible_variables.count, ansible_variables_path(:search => "ansible_role = #{role}")) %></td>
         <td class="ellipsis"><%= import_time role %></td>
