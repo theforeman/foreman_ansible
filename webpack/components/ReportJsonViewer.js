@@ -10,7 +10,17 @@ const theme = {
 
 const ReportJsonViewer = ({ data }) => (
   <div className="report-json-viewer">
-    <JSONTree data={data} hideRoot theme={theme} />
+    <JSONTree
+      data={data}
+      hideRoot
+      theme={theme}
+      shouldExpandNode={(keyPath, _myData, level) =>
+        keyPath[0] === '_meta' ||
+        keyPath[0] === 'hostvars' ||
+        level === 3 ||
+        keyPath[0] === 'foreman_ansible_roles'
+      }
+    />
   </div>
 );
 
