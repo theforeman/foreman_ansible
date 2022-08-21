@@ -19,7 +19,9 @@ const AvailableRolesList = ({
       <Pagination
         viewType="list"
         itemCount={itemCount}
-        pagination={pagination}
+        updateParamsByUrl={false}
+        page={pagination.page}
+        perPage={pagination.perPage}
         onChange={onListingChange}
         dropdownButtonId="available-ansible-roles-pagination-row-dropdown"
       />
