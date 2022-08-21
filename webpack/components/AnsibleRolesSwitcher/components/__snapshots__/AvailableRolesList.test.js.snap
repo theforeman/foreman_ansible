@@ -16,14 +16,8 @@ exports[`AvailableRolesList should render 1`] = `
       onPerPageSelect={null}
       onSetPage={null}
       page={1}
-      pagination={
-        Object {
-          "page": 1,
-          "perPage": 25,
-        }
-      }
-      perPage={null}
-      updateParamsByUrl={true}
+      perPage={25}
+      updateParamsByUrl={false}
       variant="bottom"
       viewType="list"
     />
