@@ -21,11 +21,16 @@ const AllRolesTable = ({ allAnsibleRoles, totalCount }) => {
     <React.Fragment>
       <Flex direction={{ default: 'column' }} className="pf-u-pt-md">
         <FlexItem align={{ default: 'alignRight' }}>
-          <Pagination updateParamsByUrl itemCount={totalCount} variant="top" />
+          <Pagination
+            ouiaId="pagination-top"
+            updateParamsByUrl
+            itemCount={totalCount}
+            variant="top"
+          />
         </FlexItem>
-        <TableComposable variant="compact">
+        <TableComposable ouiaId="table-composable-compact" variant="compact">
           <Thead>
-            <Tr>
+            <Tr ouiaId="row-header">
               <Th />
               {columns.map(col => (
                 <Th key={`${col}-all`}>{col}</Th>
@@ -34,7 +39,7 @@ const AllRolesTable = ({ allAnsibleRoles, totalCount }) => {
           </Thead>
           <Tbody>
             {allAnsibleRoles.map(role => (
-              <Tr key={`${role.id}-all`} id={role.id}>
+              <Tr key={`${role.id}-all`} id={role.id} ouiaId={`row-${role.id}`}>
                 <Td />
                 <Td>{role.name}</Td>
                 <Td>
@@ -58,6 +63,7 @@ const AllRolesTable = ({ allAnsibleRoles, totalCount }) => {
         </TableComposable>
         <FlexItem align={{ default: 'alignRight' }}>
           <Pagination
+            ouiaId="pagination-bottom"
             updateParamsByUrl
             itemCount={totalCount}
             variant="bottom"

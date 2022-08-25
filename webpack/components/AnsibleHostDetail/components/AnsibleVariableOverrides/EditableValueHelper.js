@@ -23,7 +23,11 @@ const withFormGroup = Component => componentProps => {
 export const SelectField = componentProps => {
   const { selectItems, ...rest } = componentProps;
   return (
-    <FormSelect className="without_select2" {...rest}>
+    <FormSelect
+      className="without_select2"
+      ouiaId="without-form-select"
+      {...rest}
+    >
       {selectItems.map(item => (
         <FormSelectOption key={item.id} value={item.value} label={item.name} />
       ))}

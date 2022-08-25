@@ -60,9 +60,9 @@ const RecurringJobsTable = ({
   return (
     <React.Fragment>
       <h3>{__('Scheduled recurring jobs')}</h3>
-      <TableComposable variant="compact">
+      <TableComposable ouiaId="table-composable-compact" variant="compact">
         <Thead>
-          <Tr>
+          <Tr ouiaId="row-header">
             {columns.map(col => (
               <Th key={col}>{col}</Th>
             ))}
@@ -71,7 +71,7 @@ const RecurringJobsTable = ({
         </Thead>
         <Tbody>
           {jobs.map(job => (
-            <Tr key={job.id}>
+            <Tr key={job.id} ouiaId={`row-${job.id}`}>
               <Td>
                 <a
                   onClick={() =>

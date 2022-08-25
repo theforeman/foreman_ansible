@@ -12,7 +12,7 @@ import { ANSIBLE_KEY } from '../constants';
 import { route } from '../helpers';
 
 const SecondaryTabRoutes = ({ response, router, history }) => (
-  <Switch>
+  <Switch ouiaId="switch">
     <Route exact path={`/${ANSIBLE_KEY}`}>
       <Redirect to={route('roles')} />
     </Route>

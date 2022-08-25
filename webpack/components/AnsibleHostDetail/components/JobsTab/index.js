@@ -33,7 +33,11 @@ const JobsTab = ({ resourceName, resourceId, hostGroupId, history }) => {
   ];
 
   const scheduleBtn = (
-    <Button aria-label="schedule recurring job" onClick={toggleModal}>
+    <Button
+      aria-label="schedule recurring job"
+      ouiaId="schedule-recurring-job"
+      onClick={toggleModal}
+    >
       {__('Schedule recurring job')}
     </Button>
   );

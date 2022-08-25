@@ -32,12 +32,17 @@ const PreviousJobsTable = ({ history, totalCount, jobs, pagination }) => {
       <h3>{__('Previously executed jobs')}</h3>
       <Flex direction={{ default: 'column' }} className="pf-u-pt-md">
         <FlexItem align={{ default: 'alignRight' }}>
-          <Pagination updateParamsByUrl itemCount={totalCount} variant="top" />
+          <Pagination
+            ouiaId="pagination-top"
+            updateParamsByUrl
+            itemCount={totalCount}
+            variant="top"
+          />
         </FlexItem>
         <FlexItem>
-          <TableComposable variant="compact">
+          <TableComposable ouiaId="table-composable-compact" variant="compact">
             <Thead>
-              <Tr>
+              <Tr ouiaId="row-header">
                 {columns.map(col => (
                   <Th key={col}>{col}</Th>
                 ))}
@@ -45,7 +50,7 @@ const PreviousJobsTable = ({ history, totalCount, jobs, pagination }) => {
             </Thead>
             <Tbody>
               {jobs.map(job => (
-                <Tr key={job.id}>
+                <Tr key={job.id} ouiaId={`row-${job.id}`}>
                   <Td>
                     <a
                       onClick={() =>
@@ -72,6 +77,7 @@ const PreviousJobsTable = ({ history, totalCount, jobs, pagination }) => {
         </FlexItem>
         <FlexItem align={{ default: 'alignRight' }}>
           <Pagination
+            ouiaId="pagination-bottom"
             updateParamsByUrl
             itemCount={totalCount}
             variant="bottom"

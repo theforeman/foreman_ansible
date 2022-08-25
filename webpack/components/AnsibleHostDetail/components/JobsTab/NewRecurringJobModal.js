@@ -57,6 +57,7 @@ const NewRecurringJobModal = props => {
         const actions = [
           <Button
             aria-label="submit creating job"
+            ouiaId="submit-creating-job"
             key="confirm"
             variant="primary"
             onClick={formProps.handleSubmit}
@@ -66,6 +67,7 @@ const NewRecurringJobModal = props => {
           </Button>,
           <Button
             aria-label="cancel creating job"
+            ouiaId="cancel-creating-job"
             key="cancel"
             variant="link"
             onClick={onClose}
@@ -83,6 +85,7 @@ const NewRecurringJobModal = props => {
           <Modal
             variant={ModalVariant.large}
             title="Create New Recurring Ansible Run"
+            ouiaId="modal-recurring-ansible-run"
             isOpen={props.isOpen}
             className="foreman-modal modal-high"
             showClose={false}

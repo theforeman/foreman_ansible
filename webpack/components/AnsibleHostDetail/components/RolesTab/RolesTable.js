@@ -32,7 +32,10 @@ const RolesTable = ({
   const editBtn = canEditHost ? (
     <FlexItem>
       <Link to="/Ansible/roles/edit">
-        <Button aria-label="edit ansible roles">
+        <Button
+          aria-label="edit ansible roles"
+          ouiaId="edit-ansible-roles-button"
+        >
           {__('Edit Ansible roles')}
         </Button>
       </Link>
@@ -53,14 +56,19 @@ const RolesTable = ({
       <Flex>
         <FlexItem>{editBtn}</FlexItem>
         <FlexItem align={{ default: 'alignRight' }}>
-          <Pagination updateParamsByUrl itemCount={totalCount} variant="top" />
+          <Pagination
+            ouiaId="pagination-top"
+            updateParamsByUrl
+            itemCount={totalCount}
+            variant="top"
+          />
         </FlexItem>
       </Flex>
       <Flex direction={{ default: 'column' }}>
         <FlexItem>
-          <TableComposable variant="compact">
+          <TableComposable variant="compact" ouiaId="table-composable-compact">
             <Thead>
-              <Tr>
+              <Tr ouiaId="row-header">
                 {columns.map(col => (
                   <Th key={col}>{col}</Th>
                 ))}
@@ -68,7 +76,7 @@ const RolesTable = ({
             </Thead>
             <Tbody>
               {ansibleRoles.map(role => (
-                <Tr key={role.id}>
+                <Tr key={role.id} ouiaId={`row-${role.id}`}>
                   <Td>
                     <a href={role.path}>{role.name}</a>
                   </Td>
@@ -88,6 +96,7 @@ const RolesTable = ({
         </FlexItem>
         <FlexItem align={{ default: 'alignRight' }}>
           <Pagination
+            ouiaId="pagination-bottom"
             updateParamsByUrl
             itemCount={totalCount}
             variant="bottom"
