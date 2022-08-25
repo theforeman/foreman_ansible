@@ -111,6 +111,7 @@ const EditableAction = ({
             onClick={onClose}
             isDisabled={state.working}
             aria-label="Cancel editing override button"
+            ouiaId="cancel-editing-override-button"
           >
             <TimesIcon />
           </Button>
@@ -119,6 +120,7 @@ const EditableAction = ({
             onClick={onSubmit}
             isDisabled={state.working || hasError(state)}
             aria-label="Submit editing override button"
+            ouiaId="submit-editing-override-button"
           >
             <CheckIcon />
           </Button>
@@ -136,6 +138,7 @@ const EditableAction = ({
             onClick={onOpen}
             variant="plain"
             aria-label="Edit override button"
+            ouiaId="edit-override-button"
           >
             <PencilAltIcon />
           </Button>

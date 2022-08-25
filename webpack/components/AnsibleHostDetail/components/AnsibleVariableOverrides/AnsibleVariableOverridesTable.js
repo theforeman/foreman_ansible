@@ -148,12 +148,17 @@ const AnsibleVariableOverridesTable = ({
     <React.Fragment>
       <Flex direction={{ default: 'column' }}>
         <FlexItem align={{ default: 'alignRight' }}>
-          <Pagination updateParamsByUrl itemCount={totalCount} variant="top" />
+          <Pagination
+            ouiaId="pagination-top"
+            updateParamsByUrl
+            itemCount={totalCount}
+            variant="top"
+          />
         </FlexItem>
         <FlexItem>
-          <TableComposable variant="compact">
+          <TableComposable ouiaId="table-composable-compact" variant="compact">
             <Thead>
-              <Tr>
+              <Tr ouiaId="row-header">
                 {columns.map(col => (
                   <Th key={col}>{col}</Th>
                 ))}
@@ -162,7 +167,7 @@ const AnsibleVariableOverridesTable = ({
             </Thead>
             <Tbody>
               {variables.map((variable, idx) => (
-                <Tr key={idx}>
+                <Tr key={idx} ouiaId={`row-${idx}`}>
                   <Td>
                     <a href={variable.path}>{variable.key}</a>
                   </Td>
@@ -202,6 +207,7 @@ const AnsibleVariableOverridesTable = ({
         </FlexItem>
         <FlexItem align={{ default: 'alignRight' }}>
           <Pagination
+            ouiaId="pagination-bottom"
             updateParamsByUrl
             itemCount={totalCount}
             variant="bottom"

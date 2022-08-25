@@ -15,6 +15,7 @@ import {
 
 const AllRolesModal = ({ hostGlobalId, onClose, history }) => {
   const baseModalProps = {
+    ouiaId: 'modal-ansible-roles',
     variant: ModalVariant.large,
     isOpen: true,
     onClose,

@@ -20,6 +20,7 @@ const EditRolesModal = ({
   canEditHost,
 }) => {
   const baseModalProps = {
+    ouiaId: 'edit-ansible-roles-modal',
     width: '50%',
     isOpen,
     className: 'foreman-modal',
@@ -32,7 +33,12 @@ const EditRolesModal = ({
   };
 
   const actions = [
-    <Button variant="link" onClick={event => closeModal()} key="close">
+    <Button
+      ouiaId="close-button"
+      variant="link"
+      onClick={event => closeModal()}
+      key="close"
+    >
       {__('Close')}
     </Button>,
   ];

@@ -54,6 +54,7 @@ const EditRolesForm = props => {
       onClick={() => callMutation({ variables })}
       isDisabled={loading || didNotModifyOptions()}
       aria-label="submit ansible roles"
+      ouiaId="submit-ansible-roles-button"
     >
       {__('Confirm')}
     </Button>,
@@ -65,7 +66,7 @@ const EditRolesForm = props => {
   }
 
   return (
-    <Modal {...baseModalProps} actions={formActions}>
+    <Modal ouiaId="modal-edit-roles" {...baseModalProps} actions={formActions}>
       <DualList
         availableOptions={availableOptions}
         chosenOptions={chosenOptions}
