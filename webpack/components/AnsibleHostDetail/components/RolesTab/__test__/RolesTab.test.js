@@ -6,6 +6,7 @@ import {
   tick,
   withMockedProvider,
   withReactRouter,
+  withRedux,
 } from '../../../../../testHelper';
 
 import {
@@ -18,7 +19,8 @@ import {
 
 import RolesTab from '../';
 
-const TestComponent = withReactRouter(withMockedProvider(RolesTab));
+jest.mock('axios');
+const TestComponent = withRedux(withReactRouter(withMockedProvider(RolesTab)));
 
 describe('RolesTab', () => {
   it('should load Ansible Roles as admin', async () => {

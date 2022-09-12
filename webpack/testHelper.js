@@ -1,15 +1,24 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import { applyMiddleware, createStore, compose, combineReducers } from 'redux';
 import { MockedProvider } from '@apollo/react-testing';
 import { Router, MemoryRouter } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 
-import store from 'foremanReact/redux';
-import ConfirmModal from 'foremanReact/components/ConfirmModal';
+import { reducers as apiReducer, APIMiddleware } from 'foremanReact/redux/API';
+import ConfirmModal, {
+  reducers as confirmModalReducers,
+} from 'foremanReact/components/ConfirmModal';
 import { getForemanContext } from 'foremanReact/Root/Context/ForemanContext';
 
+const reducers = combineReducers({ ...apiReducer, ...confirmModalReducers });
+
+export const generateStore = () =>
+  createStore(reducers, compose(applyMiddleware(thunk, APIMiddleware)));
+
 export const withRedux = Component => props => (
-  <Provider store={store}>
+  <Provider store={generateStore()}>
     <Component {...props} />
     <ConfirmModal />
   </Provider>
