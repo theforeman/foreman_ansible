@@ -21,7 +21,8 @@ import {
   assignRolesErrorMock,
 } from './RolesTab.fixtures';
 
-const TestComponent = withReactRouter(withRedux(withMockedProvider(RolesTab)));
+jest.mock('axios');
+const TestComponent = withRedux(withReactRouter(withMockedProvider(RolesTab)));
 
 describe('assigning Ansible roles', () => {
   it('should assign Ansible roles', async () => {
