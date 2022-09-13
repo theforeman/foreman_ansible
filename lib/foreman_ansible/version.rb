@@ -4,5 +4,5 @@
 # This way other parts of Foreman can just call ForemanAnsible::VERSION
 # and detect what version the plugin is running.
 module ForemanAnsible
-  VERSION = '7.1.3'
+  VERSION = '7.1.4'
 end
