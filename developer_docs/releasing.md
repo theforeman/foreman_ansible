@@ -1,7 +1,7 @@
 # Releasing new Ansible version
 **Before checks**
-* Foreman’s required version in [register.rb](https://github.com/theforeman/foreman_ansible/blob/master/lib/foreman_ansible/register.rb) needs to be changed?
-* Version bump in [version.rb](https://github.com/theforeman/foreman_ansible/blob/master/lib/foreman_ansible/version.rb) is in separate commit
+* Check if Foreman’s required version in [register.rb](https://github.com/theforeman/foreman_ansible/blob/master/lib/foreman_ansible/register.rb) needs to be changed.
+* In case you want to start doing the release in the same PR with another commit, make sure that the version bump in [version.rb](https://github.com/theforeman/foreman_ansible/blob/master/lib/foreman_ansible/version.rb) is in a separate commit.
 * All [redmine tickets](https://projects.theforeman.org/projects/ansible/issues) have correct release version
 * Correct versioning (see [Semantic versioning](https://semver.org/#semantic-versioning-200))
 
