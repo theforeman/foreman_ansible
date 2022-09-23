@@ -23,6 +23,7 @@ export const formatValue = variable => {
     case 'yaml':
     case 'hash':
     case 'array':
+    case 'json':
       return JSON.stringify(value);
     default:
       return value;
