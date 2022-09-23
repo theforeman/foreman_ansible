@@ -17,11 +17,12 @@ const EditableValue = props => {
 
   const type = props.variable.parameterType;
 
-  if (type === 'array' || type === 'hash') {
+  if (['json', 'yaml', 'array', 'hash'].includes(type)) {
     return (
       <TextAreaField
+        aria-label="Edit override field"
         onChange={props.onChange}
-        value={props.value}
+        value={JSON.stringify(props.value)}
         validation={props.validation}
         isDisabled={props.working}
       />
@@ -31,6 +32,7 @@ const EditableValue = props => {
   if (type === 'boolean') {
     return (
       <SelectField
+        aria-label="Edit override field"
         selectItems={[
           { id: 'trueSelectOpt', value: true, name: __('true') },
           { id: 'falseSelectOpt', value: false, name: __('false') },
