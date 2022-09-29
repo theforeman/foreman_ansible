@@ -3,15 +3,15 @@ require 'test_plugin_helper'
 module Mutations
   module Hosts
     class CreateMutationTest < GraphQLQueryTestCase
-      let(:tax_location) { FactoryBot.create(:location) }
+      let(:tax_location) { as_admin { FactoryBot.create(:location) } }
       let(:location_id) { Foreman::GlobalId.for(tax_location) }
-      let(:organization) { FactoryBot.create(:organization) }
+      let(:organization) { as_admin { FactoryBot.create(:organization) } }
       let(:organization_id) { Foreman::GlobalId.for(organization) }
 
-      let(:role1) { FactoryBot.create(:ansible_role) }
-      let(:role2) { FactoryBot.create(:ansible_role) }
-      let(:role3) { FactoryBot.create(:ansible_role) }
-      let(:host) { FactoryBot.create(:host, :ansible_roles => [role1, role2, role3], :organization => organization, :location => tax_location) }
+      let(:role1) { as_admin { FactoryBot.create(:ansible_role) } }
+      let(:role2) { as_admin { FactoryBot.create(:ansible_role) } }
+      let(:role3) { as_admin { FactoryBot.create(:ansible_role) } }
+      let(:host) { as_admin { FactoryBot.create(:host, :ansible_roles => [role1, role2, role3], :organization => organization, :location => tax_location) } }
 
       let(:variables) { { id: Foreman::GlobalId.for(host), ansibleRoleIds: [role3.id, role2.id, role1.id] } }
       let(:query) do
@@ -37,7 +37,7 @@ module Mutations
       end
 
       context 'with admin permissions' do
-        let(:context_user) { FactoryBot.create(:user, :admin) }
+        let(:context_user) { as_admin { FactoryBot.create(:user, :admin) } }
         let(:data) { result['data']['assignAnsibleRoles']['host'] }
 
         it 'reorderes ansible roles' do
