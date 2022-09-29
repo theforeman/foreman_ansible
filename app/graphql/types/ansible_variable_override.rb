@@ -1,5 +1,5 @@
 module Types
-  class AnsibleVariableOverride < GraphQL::Types::Relay::BaseObject
+  class AnsibleVariableOverride < GraphQL::Schema::Object
     description 'Override value for Ansible Variable'
 
     field :value, ::Types::RawJson, :null => false
