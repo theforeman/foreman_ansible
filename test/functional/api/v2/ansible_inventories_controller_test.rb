@@ -37,7 +37,7 @@ module Api
         Setting['ansible_inventory_template'] = report.name
         user = FactoryBot.create(:user)
         user.roles << Role.find_by(:name => 'Ansible Tower Inventory Reader')
-        post :schedule, { :session => set_session_user(user) }
+        post :schedule, session: set_session_user(user)
         assert_response :success
       end
 
