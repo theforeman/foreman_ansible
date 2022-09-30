@@ -77,5 +77,5 @@ jobs:
       - name: Run plugin tests
         if: github.event_name != 'push'
         run: |
-          bundle exec rake test:foreman_ansible
-          bundle exec rake test TEST="test/unit/foreman/access_permissions_test.rb"
+          bundle exec rake test:foreman_ansible -v --trace
+          bundle exec rake test TEST="test/unit/foreman/access_permissions_test.rb" -v --trace
