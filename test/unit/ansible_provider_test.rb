@@ -12,16 +12,15 @@ class AnsibleProviderTest < ActiveSupport::TestCase
       assert command_options['ansible_inventory']
     end
 
-    context 'when it is not using the ansible_run_host feature' do
+    context 'when ansible_callback_enabled is set to false' do
       it 'sets enables :remote_execution_command to true' do
         assert command_options[:remote_execution_command]
       end
     end
 
-    context 'when it is using the ansible_run_host feature' do
+    context 'when ansible_callback_enabled is set to true' do
       it 'has remote_execution_command false' do
-        rex_feature = RemoteExecutionFeature.where(:label => 'ansible_run_host', :name => 'Run Ansible roles').first_or_create
-        template_invocation.template.remote_execution_features << rex_feature
+        template_invocation.template.ansible_callback_enabled = true
         assert_not command_options[:remote_execution_command]
       end
     end
