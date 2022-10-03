@@ -237,6 +237,8 @@ Foreman::Plugin.register :foreman_ansible do
     register_report_origin 'Ansible', 'ConfigReport'
   end
 
+  extend_rabl_template 'api/v2/job_templates/show', 'api/v2/job_templates/job_templates'
+
   describe_host do
     multiple_actions_provider :ansible_hosts_multiple_actions
   end
@@ -256,5 +258,17 @@ Foreman::Plugin.register :foreman_ansible do
                         :name => _('Update Smart Proxy'),
                         :partial => 'foreman/smart_proxies/update_smart_proxy',
                         :onlyif => ->(proxy, view) { view.can_update_proxy?(proxy) }
+  end
+  extend_page('templates/_form') do |context|
+    context.add_pagelet :tab_headers,
+                        :name => _('Ansible'),
+                        :partial => 'job_templates/job_template_callback_tab_headers',
+                        :onlyif => ->(subject, _view) { subject.is_a? JobTemplate }
+  end
+  extend_page('templates/_form') do |context|
+    context.add_pagelet :tab_content,
+                        :name => _('Ansible'),
+                        :partial => 'job_templates/job_template_callback_tab_content',
+                        :onlyif => ->(subject, _view) { subject.is_a? JobTemplate }
   end
 end

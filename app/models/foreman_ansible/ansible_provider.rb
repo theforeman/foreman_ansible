@@ -123,7 +123,7 @@ if defined? ForemanRemoteExecution
 
         def ansible_command?(template)
           template.remote_execution_features.
-            where(:label => 'ansible_run_host').empty?
+            where(:label => 'ansible_run_host').empty? && !template.ansible_callback_enabled
         end
       end
     end

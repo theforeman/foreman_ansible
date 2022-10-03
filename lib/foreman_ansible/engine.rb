@@ -74,6 +74,9 @@ module ForemanAnsible
       ::Api::V2::HostgroupsController.include ForemanAnsible::Api::V2::HostgroupsControllerExtensions
       ::Api::V2::HostgroupsController.include ForemanAnsible::Api::V2::HostgroupsParamGroupExtensions
       ::ConfigReportImporter.include ForemanAnsible::AnsibleReportImporter
+      ::Api::V2::JobTemplatesController.include ForemanAnsible::Api::V2::JobTemplatesControllerExtensions
+      ::Api::V2::JobTemplatesController.include Foreman::Controller::Parameters::JobTemplateExtensions
+      ::JobTemplatesController.include Foreman::Controller::Parameters::JobTemplateExtensions
       ReportImporter.register_smart_proxy_feature('Ansible')
     rescue StandardError => e
       Rails.logger.warn "Foreman Ansible: skipping engine hook (#{e})"
