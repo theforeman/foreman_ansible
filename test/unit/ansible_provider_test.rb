@@ -20,7 +20,7 @@ class AnsibleProviderTest < ActiveSupport::TestCase
 
     context 'when it is using the ansible_run_host feature' do
       let(:rex_feature) do
-        RemoteExecutionFeature.where(:label => 'ansible_run_host').first
+        RemoteExecutionFeature.where(:label => 'ansible_run_host').first_or_create
       end
 
       it 'has remote_execution_command false' do
