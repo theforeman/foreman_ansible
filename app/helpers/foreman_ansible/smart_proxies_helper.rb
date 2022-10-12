@@ -24,7 +24,6 @@ module ForemanAnsible
 
       foreman_major > proxy_major ||
         (foreman_major == proxy_major && foreman_minor > proxy_minor)
-    rescue
     end
 
     def proxy_update_button(proxy)
