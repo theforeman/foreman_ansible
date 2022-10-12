@@ -30,9 +30,9 @@ module ForemanAnsible
       feature = RemoteExecutionFeature.feature(:ansible_run_capsule_upgrade)
       return if feature.nil?
 
-      path = job_invocations_path(:host_ids => proxy.infrastructure_host_facets.pluck(:host_id),
-                                  :feature => feature.label)
-      link_to(_('Upgrade'), path, :method => :post)
+      path = new_job_invocation_path(:host_ids => proxy.infrastructure_host_facets.pluck(:host_id),
+                                     :feature => feature.label)
+      link_to(_('Upgrade'), path)
     end
   end
 end
