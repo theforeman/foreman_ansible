@@ -88,6 +88,12 @@ feature: ansible_run_capsule_upgrade
         msg: "This playbook cannot be executed on a Foreman server. Use only on a Smart Proxy server."
       when: "'foreman' in ansible_facts.packages"
 
+    - name: Install foreman release gpg key
+      rpm_key:
+        state: present
+        key: http://yum.theforeman.org/releases/{{ foreman_release_version }}/RPM-GPG-KEY-foreman
+      when: foreman_release_version != "nightly"
+
     - name: Update foreman repositories
       package:
         name: https://yum.theforeman.org/releases/{{ foreman_release_version }}/el{{ ansible_distribution_major_version }}/{{ ansible_architecture }}/foreman-release.rpm
