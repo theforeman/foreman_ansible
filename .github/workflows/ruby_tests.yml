@@ -79,3 +79,10 @@ jobs:
         run: |
           bundle exec rake test:foreman_ansible -v --trace
           bundle exec rake test TEST="test/unit/foreman/access_permissions_test.rb" -v --trace
+      - name: 'Upload logs'
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: logs
+          path: log/*.log
+          retention-days: 5
