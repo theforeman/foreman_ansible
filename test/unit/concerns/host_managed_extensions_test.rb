@@ -18,23 +18,23 @@ class HostManagedExtensionsTest < ActiveSupport::TestCase
 
   describe '#all_ansible_roles' do
     test 'returns assigned roles for host without a hostgroup' do
-      @host.all_ansible_roles.must_equal [@role1]
+      assert_equal [@role1], @host.all_ansible_roles
     end
 
     test 'returns assigned and inherited roles for host with a hostgroup' do
       @host.hostgroup = @hostgroup
-      @host.all_ansible_roles.must_equal [@role2, @role1]
+      assert_equal [@role2, @role1], @host.all_ansible_roles
     end
   end
 
   describe '#inherited_ansible_roles' do
     test 'returns empty array for host without hostgroup' do
-      @host.inherited_ansible_roles.must_equal []
+      assert_equal [], @host.inherited_ansible_roles
     end
 
     test 'returns roles inherited from a hostgroup' do
       @host.hostgroup = @hostgroup
-      @host.inherited_ansible_roles.must_equal [@role2]
+      assert_equal [@role2], @host.inherited_ansible_roles
     end
   end
 
@@ -54,13 +54,13 @@ class HostManagedExtensionsTest < ActiveSupport::TestCase
     FactoryBot.create(:host_ansible_role, :ansible_role_id => @role1.id, :position => 1, :host_id => host.id)
     FactoryBot.create(:host_ansible_role, :ansible_role_id => @role2.id, :position => 2, :host_id => host.id)
     FactoryBot.create(:host_ansible_role, :ansible_role_id => @role3.id, :position => 0, :host_id => host.id)
-    host.ansible_roles.must_equal [@role3, @role1, @role2]
+    assert_equal [@role3, @role1, @role2], host.ansible_roles
   end
 
   test 'should order hostgroup roles before host roles' do
     host = FactoryBot.create(:host, :hostgroup => @hostgroup)
     FactoryBot.create(:host_ansible_role, :ansible_role_id => @role1.id, :position => 0, :host_id => host.id)
-    host.all_ansible_roles.must_equal [@role2, @role1]
+    assert_equal [@role2, @role1], host.all_ansible_roles
   end
 
   test 'should find hosts with role2' do
