@@ -20,45 +20,45 @@ class HostgroupExtensionsTest < ActiveSupport::TestCase
   describe '#all_ansible_roles' do
     test 'returns assigned roles without any parent hostgroup' do
       @hostgroup.host_ansible_roles
-      @hostgroup.all_ansible_roles.must_equal [@role1, @role3]
+      assert_equal [@role1, @role3], @hostgroup.all_ansible_roles
     end
 
     test 'returns assigned and inherited roles with from parent hostgroup' do
       @hostgroup.parent = @hostgroup_parent
-      @hostgroup.all_ansible_roles.must_equal [@role2, @role1, @role3]
+      assert_equal [@role2, @role1, @role3], @hostgroup.all_ansible_roles
     end
   end
 
   describe '#inherited_ansible_roles' do
     test 'returns empty array for hostgroup without any parent' do
-      @hostgroup.inherited_ansible_roles.must_equal []
+      assert_equal [], @hostgroup.inherited_ansible_roles
     end
 
     test 'returns roles inherited from a chain of parents' do
       @hostgroup.parent = @hostgroup_parent
-      @hostgroup.inherited_ansible_roles.must_equal [@role2]
+      assert_equal [@role2], @hostgroup.inherited_ansible_roles
     end
   end
 
   describe '#inherited_and_own_ansible_roles' do
     test 'returns only hostgroup roles' do
-      @hostgroup_parent.inherited_and_own_ansible_roles.must_equal [@role2]
+      assert_equal [@role2], @hostgroup_parent.inherited_and_own_ansible_roles
     end
 
     test 'returns only hostgroup roles including inheritance' do
       @hostgroup.parent = @hostgroup_parent
-      @hostgroup.inherited_and_own_ansible_roles.must_equal [@role2, @role1]
+      assert_equal [@role2, @role1], @hostgroup.inherited_and_own_ansible_roles
     end
   end
 
   test 'should return ordered roles for hostgroup' do
     @hostgroup.parent = @hostgroup_parent
-    @hostgroup.inherited_and_own_ansible_roles.must_equal [@role2, @role1]
+    assert_equal [@role2, @role1], @hostgroup.inherited_and_own_ansible_roles
   end
 
   describe '#cloned_ansibe_roles' do
     test 'clone ansible roles from hostgroup parent' do
-      @hostgroup_parent.clone.all_ansible_roles.must_equal @hostgroup_parent.all_ansible_roles
+      assert_equal @hostgroup_parent.all_ansible_roles, @hostgroup_parent.clone.all_ansible_roles
     end
   end
 

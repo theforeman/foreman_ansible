@@ -37,13 +37,15 @@ module Queries
       let(:data) { result['data']['host']['allAnsibleRoles'] }
 
       it 'allows to fetch inherited roles' do
-        value(data['totalCount']).must_equal(2)
+        assert_equal 2, data['totalCount']
+
         r1_data = data['nodes'].first
         r2_data = data['nodes'].second
-        value(r1_data['name']).must_equal(role1.name)
-        value(r1_data['inherited']).must_equal(true)
-        value(r2_data['name']).must_equal(role2.name)
-        value(r2_data['inherited']).must_equal(false)
+
+        assert_equal role1.name, r1_data['name']
+        assert r1_data['inherited']
+        assert_equal role2.name, r2_data['name']
+        assert_not r2_data['inherited']
       end
 
       it 'allow fetching variables' do
@@ -52,9 +54,10 @@ module Queries
         FactoryBot.create(:ansible_variable, ansible_role: role2, override: true)
         r1_vars = data['nodes'].first['ansibleVariables']
         r2_vars = data['nodes'].second['ansibleVariables']
-        value(r1_vars['totalCount']).must_equal(2)
-        value(r2_vars['totalCount']).must_equal(1)
-        value(r1_vars['nodes'].first['key']).must_equal(var1.key)
+
+        assert_equal 2, r1_vars['totalCount']
+        assert_equal 1, r2_vars['totalCount']
+        assert_equal var1.key, r1_vars['nodes'].first['key']
       end
     end
   end

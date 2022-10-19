@@ -51,12 +51,12 @@ class AnsibleProviderTest < ActiveSupport::TestCase
   describe '#proxy_batch_size' do
     it 'returns integer if setting is string' do
       Setting.expects(:[]).with('foreman_ansible_proxy_batch_size').returns('10')
-      _(ForemanAnsible::AnsibleProvider.proxy_batch_size).must_equal(10)
+      assert_equal 10, ForemanAnsible::AnsibleProvider.proxy_batch_size
     end
 
     it 'returns nil if setting is empty' do
       Setting.expects(:[]).with('foreman_ansible_proxy_batch_size').returns('')
-      _(ForemanAnsible::AnsibleProvider.proxy_batch_size).must_equal(nil)
+      assert_nil ForemanAnsible::AnsibleProvider.proxy_batch_size
     end
   end
 end
