@@ -28,7 +28,7 @@ const EditRolesModal = ({
     title: __('Edit Ansible Roles'),
     disableFocusTrap: true,
     description: __(
-      'Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles'
+      'Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles.'
     ),
   };
 
