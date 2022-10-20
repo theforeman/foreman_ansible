@@ -24,7 +24,7 @@ const AllRolesModal = ({ hostGlobalId, onClose, history }) => {
     title: __('All assigned Ansible roles'),
     disableFocusTrap: true,
     description: __(
-      'This list consists of host assigned roles and group assigned roles. Group assigned roles will always be executed prior to host assigned roles'
+      'This list consists of host assigned roles and group assigned roles. Group assigned roles will always be executed prior to host assigned roles.'
     ),
   };
 
