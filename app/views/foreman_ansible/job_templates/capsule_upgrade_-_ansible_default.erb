@@ -23,10 +23,10 @@ feature: ansible_run_capsule_upgrade
 %>
 
 ---
-<% if plugin_present?('foreman_theme_satellite') -%>
 - hosts: all
   vars:
-    satellite_version: "<%= input('target_version').present? ? input('target_version') : satellite_short_version %>"
+    target_version: "<%= input('target_version').present? ? input('target_version') : product_short_version %>"
+<% if plugin_present?('foreman_theme_satellite') -%>
   tasks:
     - name: Gather the rpm package facts
       package_facts:
@@ -47,7 +47,7 @@ feature: ansible_run_capsule_upgrade
                                "--whitelist=#{input('whitelist_options')}"
                              end -%>
       - name: Upgrade Capsule server using satellite-maintain
-        shell: satellite-maintain upgrade run --assumeyes --target-version={{ satellite_version }} <%= whitelist_option %>
+        shell: satellite-maintain upgrade run --assumeyes --target-version={{ target_version }} <%= whitelist_option %>
         register: result
 
       - name: Re-Gather the rpm package facts after the upgrade
@@ -75,9 +75,6 @@ feature: ansible_run_capsule_upgrade
           fail:
             msg: "Failed! Capsule server upgrade failed. See /var/log/foreman-installer/capsule.log in the Capsule server for more information"
 <% else -%>
-- hosts: all
-  vars:
-    foreman_release_version: "<%= input('target_version').present? ? input('target_version') : foreman_short_version %>"
   tasks:
     - name: Gather the rpm package facts
       package_facts:
@@ -91,12 +88,12 @@ feature: ansible_run_capsule_upgrade
     - name: Install foreman release gpg key
       rpm_key:
         state: present
-        key: http://yum.theforeman.org/releases/{{ foreman_release_version }}/RPM-GPG-KEY-foreman
-      when: foreman_release_version != "nightly"
+        key: http://yum.theforeman.org/releases/{{ target_version }}/RPM-GPG-KEY-foreman
+      when: target_version != "nightly"
 
     - name: Update foreman repositories
       package:
-        name: https://yum.theforeman.org/releases/{{ foreman_release_version }}/el{{ ansible_distribution_major_version }}/{{ ansible_architecture }}/foreman-release.rpm
+        name: https://yum.theforeman.org/releases/{{ target_version }}/el{{ ansible_distribution_major_version }}/{{ ansible_architecture }}/foreman-release.rpm
         state: installed
 
     - name: Clean yum metadata
