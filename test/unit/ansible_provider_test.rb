@@ -19,11 +19,8 @@ class AnsibleProviderTest < ActiveSupport::TestCase
     end
 
     context 'when it is using the ansible_run_host feature' do
-      let(:rex_feature) do
-        RemoteExecutionFeature.where(:label => 'ansible_run_host').first_or_create
-      end
-
       it 'has remote_execution_command false' do
+        rex_feature = RemoteExecutionFeature.where(:label => 'ansible_run_host', :name => 'Run Ansible roles').first_or_create
         template_invocation.template.remote_execution_features << rex_feature
         assert_not command_options[:remote_execution_command]
       end
