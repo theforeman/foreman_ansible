@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { push } from 'connected-react-router';
 import { Formik, Field as FormikField } from 'formik';
 import { useMutation } from '@apollo/client';
 import { translate as __ } from 'foremanReact/common/I18n';
@@ -33,6 +35,7 @@ import jobsQuery from '../../../../graphql/queries/recurringJobs.gql';
 
 const NewRecurringJobModal = props => {
   const { onClose, resourceId, resourceName } = props;
+  const dispatch = useDispatch();
 
   const [callMutation] = useMutation(createJobInvocation, {
     refetchQueries: [
@@ -81,10 +84,33 @@ const NewRecurringJobModal = props => {
           actions.push(<Spinner key="spinner" size="lg" />);
         }
 
+        const modalDescription = (
+          <>
+            {__(
+              'Schedule simple recurring Ansible roles job. This job will run all the assigned Ansible roles.'
+            )}
+            <br />
+            {__('For more advanced scheduling options')}{' '}
+            <Button
+              variant="link"
+              isInline
+              onClick={() =>
+                dispatch(
+                  push(`/job_invocations/new?host_ids%5B%5D=${resourceId}`)
+                )
+              }
+              key="schedule-job-action"
+            >
+              {__('view remote execution page.')}
+            </Button>
+          </>
+        );
+
         return (
           <Modal
             variant={ModalVariant.large}
-            title="Create New Recurring Ansible Run"
+            title={__('Create New Recurring Ansible Run')}
+            description={modalDescription}
             ouiaId="modal-recurring-ansible-run"
             isOpen={props.isOpen}
             className="foreman-modal modal-high"
