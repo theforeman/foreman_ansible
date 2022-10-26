@@ -86,9 +86,7 @@ const NewRecurringJobModal = props => {
 
         const modalDescription = (
           <>
-            {__(
-              'Schedule simple recurring Ansible roles job. This job will run all the assigned Ansible roles.'
-            )}
+            {__('This job will run all the assigned Ansible roles.')}
             <br />
             {__('For more advanced scheduling options')}{' '}
             <Button
@@ -108,8 +106,8 @@ const NewRecurringJobModal = props => {
 
         return (
           <Modal
-            variant={ModalVariant.large}
-            title={__('Create New Recurring Ansible Run')}
+            variant={ModalVariant.small}
+            title={__('Schedule recurring Ansible roles job')}
             description={modalDescription}
             ouiaId="modal-recurring-ansible-run"
             isOpen={props.isOpen}
@@ -129,14 +127,16 @@ const NewRecurringJobModal = props => {
               <FormikField
                 name="startTime"
                 component={TimePickerField}
-                label="Start Time"
+                label="Start time"
                 isRequired
                 is24Hour
+                width="250px"
+                menuAppendTo={() => document.body}
               />
               <FormikField
                 name="startDate"
                 component={DatePickerField}
-                label="Start Date"
+                label="Start date"
                 isRequired
                 validators={[rangeValidator]}
               />

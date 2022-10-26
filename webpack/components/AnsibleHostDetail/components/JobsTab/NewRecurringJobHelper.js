@@ -19,12 +19,12 @@ export const rangeValidator = date => {
 };
 
 export const createValidationSchema = () => {
-  const cantBeBlank = __("can't be blank");
+  const required = __('Required field');
 
   return Yup.object().shape({
-    repeat: Yup.string().required(cantBeBlank),
-    startTime: Yup.string().required(cantBeBlank),
-    startDate: Yup.string().required(cantBeBlank),
+    repeat: Yup.string().required(required),
+    startTime: Yup.string().required(required),
+    startDate: Yup.string().required(required),
   });
 };
 
