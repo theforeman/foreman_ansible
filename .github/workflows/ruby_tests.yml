@@ -1,9 +1,6 @@
 name: Ruby Testing
 on:
   pull_request:
-  push:
-    branches:
-    - master
 env:
   BUNDLE_WITHOUT: journald:development:console:libvirt
   RAILS_ENV: test
