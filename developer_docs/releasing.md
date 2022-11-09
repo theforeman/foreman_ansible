@@ -35,7 +35,7 @@ For setup of Foreman packaging follow instructions here: [rpm/develop](https://g
 **DEB**
 * Pull latest `deb/develop` or `deb/X.X-stable`
 * Create new branch
-* Bump version: `scripts/update_package.rb -n foreman-ansible -v X.X.X`
-* git commit -am "Updated foreman-ansible to X.X.X"
+* Bump version: `scripts/update_package.rb -n ruby-foreman-ansible -v X.X.X`
+* git commit -am "Updated ruby-foreman-ansible to X.X.X"
 * Push a PR
 
