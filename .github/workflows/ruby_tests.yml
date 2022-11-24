@@ -1,9 +1,6 @@
 name: Ruby Testing
 on:
   pull_request:
-  push:
-    branches:
-    - master
 env:
   BUNDLE_WITHOUT: journald:development:console:libvirt
   RAILS_ENV: test
@@ -56,7 +53,6 @@ jobs:
           ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true
       - name: Setup Node
-        if: github.event_name != 'push'
         uses: actions/setup-node@v1
         with:
           node-version:  ${{ matrix.node-version }}
@@ -66,16 +62,13 @@ jobs:
         run: npm install --omit=dev
         working-directory: ${{ github.workspace }}/foreman_ansible
       - name: Prepare test env
-        if: github.event_name != 'push'
         run: |
           bundle exec rake db:create
           bundle exec rake db:migrate
           bundle exec rake db:test:prepare
       - name: Prepare webpack
-        if: github.event_name != 'push'
         run: bundle exec rake webpack:compile
       - name: Run plugin tests
-        if: github.event_name != 'push'
         run: |
           bundle exec rake test:foreman_ansible -v --trace
           bundle exec rake test TEST="test/unit/foreman/access_permissions_test.rb" -v --trace
