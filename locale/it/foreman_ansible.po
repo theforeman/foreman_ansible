@@ -1,27 +1,33 @@
-# Italian translations for foreman_ansible package.
-# Copyright (C) 2018 THE PACKAGE'S COPYRIGHT HOLDER
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the foreman_ansible package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Translators:
+# Giuseppe Pignataro <rogepix@gmail.com>, 2018
+# Andrea Perotti, 2019
+# 0868a4d1af5275b3f70b0a6dac4c99a4, 2022
+# Bryan Kearney <bryan.kearney@gmail.com>, 2022
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 3.0.2\n"
+"Project-Id-Version: foreman_ansible 10.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2018-03-12 12:24-0400\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Italian\n"
-"Language: it\n"
+"PO-Revision-Date: 2018-11-14 21:36+0000\n"
+"Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>, 2022\n"
+"Language-Team: Italian (https://www.transifex.com/foreman/teams/114/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"\n"
+"Language: it\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 :"
+" 2;\n"
 
 msgid "%(selectedCount)s of %(totalCount)s items selected"
 msgstr ""
 
 msgid "%s ago"
-msgstr ""
+msgstr "%s fa"
 
 msgid "%{cfgmgmt} out of sync disabled"
 msgstr ""
@@ -36,10 +42,10 @@ msgid "Action with sub plans"
 msgstr ""
 
 msgid "Actions"
-msgstr ""
+msgstr "Azioni"
 
 msgid "Add"
-msgstr ""
+msgstr "Aggiungi"
 
 msgid "Add all"
 msgstr ""
@@ -47,7 +53,7 @@ msgstr ""
 msgid "Add selected"
 msgstr ""
 
-msgid "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles"
+msgid "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles."
 msgstr ""
 
 msgid "All assigned Ansible roles"
@@ -96,7 +102,7 @@ msgid "Ansible report timeout"
 msgstr ""
 
 msgid "Ansible role"
-msgstr ""
+msgstr "ruolo Ansible"
 
 msgid "Ansible role names to be imported"
 msgstr ""
@@ -117,7 +123,7 @@ msgid "Ansible roles to ignore"
 msgstr ""
 
 msgid "Ansible support in Foreman"
-msgstr ""
+msgstr "Supporto Ansible in Foreman"
 
 msgid "Ansible variable override successfully changed."
 msgstr ""
@@ -134,7 +140,7 @@ msgstr ""
 msgid "Are you sure you want to delete override for %s?"
 msgstr ""
 
-msgid "Assign Ansible roles"
+msgid "Assign roles directly to the host"
 msgstr ""
 
 msgid "Assigned Ansible Roles"
@@ -159,7 +165,7 @@ msgid "Before including these variables on your playbooks, Foreman will validate
 msgstr ""
 
 msgid "Cancel"
-msgstr ""
+msgstr "Cancella"
 
 msgid "Cancel Ansible config job"
 msgstr ""
@@ -167,20 +173,14 @@ msgstr ""
 msgid "Changed Ansible roles"
 msgstr ""
 
-msgid "Clone"
-msgstr ""
-
 msgid "Close"
-msgstr ""
-
-msgid "Configure Ansible Job"
-msgstr ""
+msgstr "Chiudi"
 
 msgid "Configure Recurring Job"
 msgstr ""
 
 msgid "Confirm"
-msgstr ""
+msgstr "Conferma"
 
 msgid "Connection type"
 msgstr ""
@@ -198,7 +198,7 @@ msgid "Create Ansible variable"
 msgstr ""
 
 msgid "Create an override value for a specific ansible variable"
-msgstr ""
+msgstr "Crea un valore override per una specifica smart variable"
 
 msgid "DEPRECATED: Import Ansible roles"
 msgstr ""
@@ -219,7 +219,7 @@ msgid "Default Behavior"
 msgstr ""
 
 msgid "Default value"
-msgstr ""
+msgstr "Valore predefinito"
 
 msgid "Default value of variable"
 msgstr ""
@@ -228,28 +228,28 @@ msgid "Default verbosity level"
 msgstr ""
 
 msgid "Delete"
-msgstr ""
+msgstr "Cancella"
 
 msgid "Delete %s?"
-msgstr ""
+msgstr "Cancella %s?"
 
 msgid "Delete Ansible variable override"
 msgstr ""
 
 msgid "Deletes Ansible role"
-msgstr ""
+msgstr "Cancella un ruolo Ansible"
 
 msgid "Deletes Ansible variable"
 msgstr ""
 
 msgid "Description"
-msgstr ""
+msgstr "Descrizione"
 
 msgid "Description of variable"
 msgstr ""
 
 msgid "Destroy an override value"
-msgstr ""
+msgstr "Elimina un valore di override"
 
 msgid "Directly assigned to Host"
 msgstr ""
@@ -258,10 +258,10 @@ msgid "Disable host configuration status turning to out of sync for %{cfgmgmt} a
 msgstr ""
 
 msgid "Disabled"
-msgstr ""
+msgstr "Disabilitato"
 
 msgid "Edit %s"
-msgstr ""
+msgstr "Modifica %s"
 
 msgid "Edit Ansible Roles"
 msgstr ""
@@ -293,6 +293,9 @@ msgstr ""
 msgid "Fetch Ansible roles available to be synced"
 msgstr ""
 
+msgid "For more advanced scheduling options"
+msgstr ""
+
 msgid "Foreman"
 msgstr ""
 
@@ -321,10 +324,10 @@ msgid "Host not found by id: %s"
 msgstr ""
 
 msgid "Hostgroups"
-msgstr ""
+msgstr "Hostgroup"
 
 msgid "Hosts"
-msgstr ""
+msgstr "Hosts"
 
 msgid "IDs of associated ansible roles"
 msgstr ""
@@ -342,22 +345,22 @@ msgid "IDs of hosts to play roles on"
 msgstr ""
 
 msgid "If checked, will raise an error if there is no default value and no matcher provide a value."
-msgstr ""
+msgstr "Se selezionato, verrà generato un errore se nessun valore predefinito è stato impostato, o se nessun dispositivo di confronto fornisce un valore. "
 
 msgid "Import"
-msgstr ""
+msgstr "Importa"
 
 msgid "Import Puppet classes"
-msgstr ""
+msgstr "Importa classi Puppet"
 
 msgid "Import Role"
 msgstr ""
 
 msgid "Import facts"
-msgstr ""
+msgstr "Importa gli eventi"
 
 msgid "Import from %s"
-msgstr ""
+msgstr "Importa da %s"
 
 msgid "Import playbooks has finished successfully"
 msgstr ""
@@ -393,7 +396,7 @@ msgid "Inherited from Hostgroup"
 msgstr ""
 
 msgid "Insights remediation on %{hosts_count} host(s) has finished successfully"
-msgstr ""
+msgstr "Le correzioni di Insights su %{hosts_count} host(s) si son concluse con successo"
 
 msgid "Invalid, expected one of: %s"
 msgstr ""
@@ -408,13 +411,13 @@ msgid "Job Details"
 msgstr ""
 
 msgid "Jobs"
-msgstr ""
+msgstr "Lavori"
 
 msgid "Learn more about this in the documentation."
 msgstr ""
 
 msgid "Level"
-msgstr ""
+msgstr "Livello"
 
 msgid "Level 1 (-v)"
 msgstr ""
@@ -429,7 +432,7 @@ msgid "Level 4 (-vvvv)"
 msgstr ""
 
 msgid "List Ansible roles"
-msgstr ""
+msgstr "Elenca tutti i ruoli Ansible"
 
 msgid "List Ansible variables"
 msgstr ""
@@ -447,22 +450,19 @@ msgid "Merge all matching values (only array/hash type)"
 msgstr ""
 
 msgid "Message"
-msgstr ""
+msgstr "Messaggio"
 
 msgid "Must not be in the past"
 msgstr ""
 
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 msgid "Name of variable"
 msgstr ""
 
-msgid "Nest"
-msgstr ""
-
 msgid "New Ansible Variable"
-msgstr ""
+msgstr "Nuova Variabile Ansible"
 
 msgid "Next Run"
 msgstr ""
@@ -491,7 +491,7 @@ msgid "No changes detected in specified Ansible Roles and their variables"
 msgstr ""
 
 msgid "No changes in variables detected on %s."
-msgstr ""
+msgstr "Nessuna modifica nelle variabili rilevata in %s."
 
 msgid "No config job for Ansible roles scheduled"
 msgstr ""
@@ -500,13 +500,16 @@ msgid "No previous job executions found"
 msgstr ""
 
 msgid "No proxy found to import variables from, ensure that the smart proxy has the Ansible feature enabled."
+msgstr "Nessun proxy trovato dal quale importare le variabili, assicurati di aver abilitato la funzione Ansible nello smart proxy."
+
+msgid "No roles assigned directly to the host"
 msgstr ""
 
 msgid "Nothing Found!"
 msgstr ""
 
 msgid "Nothing to show"
-msgstr ""
+msgstr "Niente da visualizzare"
 
 msgid "Notice that ansible roles run in check mode."
 msgstr ""
@@ -521,7 +524,7 @@ msgid "Optional Input Validator"
 msgstr ""
 
 msgid "Order"
-msgstr ""
+msgstr "Ordine"
 
 msgid "Override match"
 msgstr ""
@@ -539,7 +542,7 @@ msgid "Permission Denied"
 msgstr ""
 
 msgid "Permission denied"
-msgstr ""
+msgstr "Permessi negati"
 
 msgid "Playbooks"
 msgstr ""
@@ -548,9 +551,6 @@ msgid "Please request one of the required permissions listed below from a Forema
 msgstr ""
 
 msgid "Post-provision timeout"
-msgstr ""
-
-msgid "Preupgrade job"
 msgstr ""
 
 msgid "Previously executed jobs"
@@ -572,10 +572,10 @@ msgid "Remediation Plan"
 msgstr ""
 
 msgid "Remote action:"
-msgstr ""
+msgstr "Azione remota:"
 
 msgid "Remove"
-msgstr ""
+msgstr "Rimuovi"
 
 msgid "Remove Role"
 msgstr ""
@@ -595,20 +595,23 @@ msgstr ""
 msgid "Request the following permissions from administrator: %s."
 msgstr ""
 
-msgid "Result"
+msgid "Required field"
 msgstr ""
+
+msgid "Result"
+msgstr "Risultato"
 
 msgid "Role ID"
 msgstr ""
 
 msgid "Roles"
-msgstr ""
+msgstr "Ruoli"
 
 msgid "Role|Name"
-msgstr ""
+msgstr "Nome"
 
 msgid "Run Ansible roles"
-msgstr ""
+msgstr "Esegui ruoli Ansible"
 
 msgid "Run all Ansible roles"
 msgstr ""
@@ -644,9 +647,12 @@ msgid "Runs an Ansible playbook which contains all the roles defined for a host"
 msgstr ""
 
 msgid "Schedule"
-msgstr ""
+msgstr "Programmazione"
 
 msgid "Schedule generating of Ansible Inventory report"
+msgstr ""
+
+msgid "Schedule recurring Ansible roles job"
 msgstr ""
 
 msgid "Schedule recurring job"
@@ -665,7 +671,7 @@ msgid "Show Ansible inventory for hosts"
 msgstr ""
 
 msgid "Show role"
-msgstr ""
+msgstr "Mostra ruolo"
 
 msgid "Show variable"
 msgstr ""
@@ -674,7 +680,7 @@ msgid "Smart Proxy to fetch from"
 msgstr ""
 
 msgid "Smart Proxy to import from"
-msgstr ""
+msgstr "Smart Proxy da cui importare"
 
 msgid "Smart Proxy to sync from"
 msgstr ""
@@ -683,7 +689,7 @@ msgid "Smart proxy id is required"
 msgstr ""
 
 msgid "Source"
-msgstr ""
+msgstr "Sorgente"
 
 msgid "Source attribute"
 msgstr ""
@@ -692,10 +698,10 @@ msgid "Specify Matchers"
 msgstr ""
 
 msgid "State"
-msgstr ""
+msgstr "Stato"
 
 msgid "Submit"
-msgstr ""
+msgstr "Invia"
 
 msgid "Sync Ansible playbooks"
 msgstr ""
@@ -704,19 +710,19 @@ msgid "Sync Ansible roles"
 msgstr ""
 
 msgid "Tags"
-msgstr ""
+msgstr "Tag"
 
 msgid "Task"
-msgstr ""
+msgstr "Attività"
 
 msgid "Task Details"
-msgstr ""
+msgstr "Informazione attività"
 
 msgid "The order in which matchers keys are processed, first match wins.<br> You may use multiple attributes as a matcher key, for example, an order of <code>host group, environment</code> would expect a matcher such as <code>hostgroup = \"web servers\", environment = production</code>"
-msgstr ""
+msgstr "L'ordine con il quale vengono processate le chiavi per la corrispondenza, a tale scopo viene utilizzata la prima corrispondenza.<br> È possibile usare attributi multipli, per esempio l'ordine <code>host group, environment</code> prevede una corrispondenza del tipo  <code>hostgroup = \"web servers\", environment = production</code>"
 
 msgid "The order in which values are resolved"
-msgstr ""
+msgstr "L'ordine attraverso il quale vengono risolti i valori"
 
 msgid "There are no Ansible roles to play"
 msgstr ""
@@ -742,7 +748,10 @@ msgstr ""
 msgid "This Ansible role is inherited from parent host group"
 msgstr ""
 
-msgid "This list consists of host assigned roles and group assigned roles. Group assigned roles will always be executed prior to host assigned roles"
+msgid "This job will run all the assigned Ansible roles."
+msgstr ""
+
+msgid "This list consists of host assigned roles and group assigned roles. Group assigned roles will always be executed prior to host assigned roles."
 msgstr ""
 
 msgid "Those roles will be excluded when importing roles from smart proxy, The expected input is comma separated values and you can use * wildcard metacharactersFor example: foo*, *b*,*bar"
@@ -755,7 +764,7 @@ msgid "Timeout (in seconds) to set when Foreman will trigger a play Ansible role
 msgstr ""
 
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 msgid "Types of validation values"
 msgstr ""
@@ -776,12 +785,18 @@ msgid "Unable to get roles/variables from Ansible"
 msgstr ""
 
 msgid "Update"
-msgstr ""
+msgstr "Aggiorna"
 
 msgid "Update Role Variables"
 msgstr ""
 
+msgid "Update Smart Proxy"
+msgstr ""
+
 msgid "Updates Ansible variable"
+msgstr ""
+
+msgid "Upgrade"
 msgstr ""
 
 msgid "Upgrade Capsules on given Capsule server hosts"
@@ -806,18 +821,21 @@ msgid "Used to enforce certain values for the parameter values"
 msgstr ""
 
 msgid "Value"
-msgstr ""
+msgstr "Valore"
 
 msgid "Value to use when there is no match."
 msgstr ""
 
 msgid "Variables"
-msgstr ""
+msgstr "Variabili"
 
 msgid "Variable|Name"
 msgstr ""
 
 msgid "Variable|Role"
+msgstr ""
+
+msgid "View inherited roles"
 msgstr ""
 
 msgid "When enabled the parameter is hidden in the UI"
@@ -830,22 +848,19 @@ msgid "WinRM cert Validation"
 msgstr ""
 
 msgid "You are not authorized to perform this action."
-msgstr ""
+msgstr "Non sei autorizzato a eseguire questa azione."
 
 msgid "You are not authorized to view the page. "
 msgstr ""
 
-msgid "can't be blank"
-msgstr ""
-
 msgid "daily"
-msgstr ""
+msgstr "giornaliero"
 
 msgid "false"
 msgstr ""
 
 msgid "hourly"
-msgstr ""
+msgstr "ad ogni ora"
 
 msgid "is required"
 msgstr ""
@@ -859,8 +874,11 @@ msgstr ""
 msgid "view all assigned roles"
 msgstr ""
 
+msgid "view remote execution page."
+msgstr ""
+
 msgid "view the task in progress"
 msgstr ""
 
 msgid "weekly"
-msgstr ""
+msgstr "settimanalmente"

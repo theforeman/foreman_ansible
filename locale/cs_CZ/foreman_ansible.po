@@ -4,15 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# mhulan <mhulan@redhat.com>, 2018
-# Pavel Borecki <pavel.borecki@gmail.com>, 2020
+# mhulan <mhulan@redhat.com>, 2022
+# Lukáš Zapletal, 2022
+# Pavel Borecki <pavel.borecki@gmail.com>, 2022
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 3.0.2\n"
+"Project-Id-Version: foreman_ansible 10.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2020\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2022\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/foreman/teams"
 "/114/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -52,7 +53,7 @@ msgstr ""
 msgid "Add selected"
 msgstr ""
 
-msgid "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles"
+msgid "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles."
 msgstr ""
 
 msgid "All assigned Ansible roles"
@@ -139,7 +140,7 @@ msgstr ""
 msgid "Are you sure you want to delete override for %s?"
 msgstr ""
 
-msgid "Assign Ansible roles"
+msgid "Assign roles directly to the host"
 msgstr ""
 
 msgid "Assigned Ansible Roles"
@@ -172,20 +173,14 @@ msgstr ""
 msgid "Changed Ansible roles"
 msgstr "Změněné Ansible role"
 
-msgid "Clone"
-msgstr "Klonovat"
-
 msgid "Close"
-msgstr ""
-
-msgid "Configure Ansible Job"
-msgstr ""
+msgstr "Zavřít"
 
 msgid "Configure Recurring Job"
 msgstr ""
 
 msgid "Confirm"
-msgstr ""
+msgstr "Potvrdit"
 
 msgid "Connection type"
 msgstr "Typ připojení"
@@ -224,7 +219,7 @@ msgid "Default Behavior"
 msgstr "Výchozí chování"
 
 msgid "Default value"
-msgstr ""
+msgstr "Výchozí hodnota"
 
 msgid "Default value of variable"
 msgstr "Výchozí hodnota proměnné"
@@ -233,7 +228,7 @@ msgid "Default verbosity level"
 msgstr "Výchozí stupeň vypisovaných podrobností"
 
 msgid "Delete"
-msgstr ""
+msgstr "Smazat"
 
 msgid "Delete %s?"
 msgstr "Smazat %s?"
@@ -248,7 +243,7 @@ msgid "Deletes Ansible variable"
 msgstr "Smazat Ansible proměnnou"
 
 msgid "Description"
-msgstr ""
+msgstr "Popis"
 
 msgid "Description of variable"
 msgstr "Popis proměnné"
@@ -296,6 +291,9 @@ msgid "Fetch Ansible playbooks available to be synced"
 msgstr ""
 
 msgid "Fetch Ansible roles available to be synced"
+msgstr ""
+
+msgid "For more advanced scheduling options"
 msgstr ""
 
 msgid "Foreman"
@@ -463,9 +461,6 @@ msgstr "Název"
 msgid "Name of variable"
 msgstr "Název proměnné"
 
-msgid "Nest"
-msgstr "Vnořit"
-
 msgid "New Ansible Variable"
 msgstr "Nová Ansible proměnná"
 
@@ -507,6 +502,9 @@ msgstr ""
 msgid "No proxy found to import variables from, ensure that the smart proxy has the Ansible feature enabled."
 msgstr ""
 
+msgid "No roles assigned directly to the host"
+msgstr ""
+
 msgid "Nothing Found!"
 msgstr ""
 
@@ -544,7 +542,7 @@ msgid "Permission Denied"
 msgstr ""
 
 msgid "Permission denied"
-msgstr ""
+msgstr "Oprávnění odepřeno"
 
 msgid "Playbooks"
 msgstr ""
@@ -553,9 +551,6 @@ msgid "Please request one of the required permissions listed below from a Forema
 msgstr ""
 
 msgid "Post-provision timeout"
-msgstr ""
-
-msgid "Preupgrade job"
 msgstr ""
 
 msgid "Previously executed jobs"
@@ -600,8 +595,11 @@ msgstr ""
 msgid "Request the following permissions from administrator: %s."
 msgstr ""
 
-msgid "Result"
+msgid "Required field"
 msgstr ""
+
+msgid "Result"
+msgstr "Výsledek"
 
 msgid "Role ID"
 msgstr "Identif. role"
@@ -649,9 +647,12 @@ msgid "Runs an Ansible playbook which contains all the roles defined for a host"
 msgstr ""
 
 msgid "Schedule"
-msgstr ""
+msgstr "Plán"
 
 msgid "Schedule generating of Ansible Inventory report"
+msgstr ""
+
+msgid "Schedule recurring Ansible roles job"
 msgstr ""
 
 msgid "Schedule recurring job"
@@ -688,7 +689,7 @@ msgid "Smart proxy id is required"
 msgstr ""
 
 msgid "Source"
-msgstr ""
+msgstr "Zdroj"
 
 msgid "Source attribute"
 msgstr ""
@@ -697,10 +698,10 @@ msgid "Specify Matchers"
 msgstr ""
 
 msgid "State"
-msgstr ""
+msgstr "Stav"
 
 msgid "Submit"
-msgstr ""
+msgstr "Odeslat"
 
 msgid "Sync Ansible playbooks"
 msgstr ""
@@ -709,13 +710,13 @@ msgid "Sync Ansible roles"
 msgstr ""
 
 msgid "Tags"
-msgstr ""
+msgstr "Štítky"
 
 msgid "Task"
-msgstr ""
+msgstr "Úloha"
 
 msgid "Task Details"
-msgstr ""
+msgstr "Podrobnosti o úloze"
 
 msgid "The order in which matchers keys are processed, first match wins.<br> You may use multiple attributes as a matcher key, for example, an order of <code>host group, environment</code> would expect a matcher such as <code>hostgroup = \"web servers\", environment = production</code>"
 msgstr ""
@@ -747,7 +748,10 @@ msgstr ""
 msgid "This Ansible role is inherited from parent host group"
 msgstr ""
 
-msgid "This list consists of host assigned roles and group assigned roles. Group assigned roles will always be executed prior to host assigned roles"
+msgid "This job will run all the assigned Ansible roles."
+msgstr ""
+
+msgid "This list consists of host assigned roles and group assigned roles. Group assigned roles will always be executed prior to host assigned roles."
 msgstr ""
 
 msgid "Those roles will be excluded when importing roles from smart proxy, The expected input is comma separated values and you can use * wildcard metacharactersFor example: foo*, *b*,*bar"
@@ -786,8 +790,14 @@ msgstr "Aktualizovat"
 msgid "Update Role Variables"
 msgstr ""
 
+msgid "Update Smart Proxy"
+msgstr ""
+
 msgid "Updates Ansible variable"
 msgstr "Aktualizuje Ansible proměnné"
+
+msgid "Upgrade"
+msgstr ""
 
 msgid "Upgrade Capsules on given Capsule server hosts"
 msgstr ""
@@ -811,7 +821,7 @@ msgid "Used to enforce certain values for the parameter values"
 msgstr ""
 
 msgid "Value"
-msgstr ""
+msgstr "Hodnota"
 
 msgid "Value to use when there is no match."
 msgstr "Hodnota kterou použít, pokud není nalezena žádná shoda."
@@ -823,6 +833,9 @@ msgid "Variable|Name"
 msgstr ""
 
 msgid "Variable|Role"
+msgstr ""
+
+msgid "View inherited roles"
 msgstr ""
 
 msgid "When enabled the parameter is hidden in the UI"
@@ -840,17 +853,14 @@ msgstr ""
 msgid "You are not authorized to view the page. "
 msgstr ""
 
-msgid "can't be blank"
-msgstr ""
-
 msgid "daily"
-msgstr ""
+msgstr "denně"
 
 msgid "false"
 msgstr ""
 
 msgid "hourly"
-msgstr ""
+msgstr "každou hodinu"
 
 msgid "is required"
 msgstr ""
@@ -864,8 +874,11 @@ msgstr ""
 msgid "view all assigned roles"
 msgstr ""
 
+msgid "view remote execution page."
+msgstr ""
+
 msgid "view the task in progress"
 msgstr ""
 
 msgid "weekly"
-msgstr ""
+msgstr "týdně"

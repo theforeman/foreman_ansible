@@ -1,0 +1,880 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the foreman_ansible package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Translators:
+# NorwayFun <temuri.doghonadze@gmail.com>, 2022
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: foreman_ansible 10.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2018-11-14 21:36+0000\n"
+"Last-Translator: NorwayFun <temuri.doghonadze@gmail.com>, 2022\n"
+"Language-Team: Georgian (https://www.transifex.com/foreman/teams/114/ka/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ka\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+msgid "%(selectedCount)s of %(totalCount)s items selected"
+msgstr "მონიშნულია %(selectedCount)s ჩანაწერი %(totalCount)s -დან"
+
+msgid "%s ago"
+msgstr "%s-ის წინ"
+
+msgid "%{cfgmgmt} out of sync disabled"
+msgstr "%{cfgmgmt} დაუსინქავი, გამორთულია"
+
+msgid "(from host group)"
+msgstr "(ჰოსტების ჯგუფიდან)"
+
+msgid "A comma separated list of tags to use for Ansible run"
+msgstr "Ansible-ის გასაშვებად გამოყენებული მძიმით გამოყოფილი ჭდეების სია"
+
+msgid "Action with sub plans"
+msgstr "ქმედება ქვე-გეგმებით"
+
+msgid "Actions"
+msgstr "ქმედებები"
+
+msgid "Add"
+msgstr "დამატება"
+
+msgid "Add all"
+msgstr "ყველას დამატება"
+
+msgid "Add selected"
+msgstr "ყველა მონიშნული"
+
+msgid "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles."
+msgstr ""
+
+msgid "All assigned Ansible roles"
+msgstr "Ansible-ის ყველა მინიჭებული როლი"
+
+msgid "Ansible"
+msgstr "Ansible"
+
+msgid "Ansible  playbooks names to be synced"
+msgstr "Ansible-ის დასასინქრონიზებელი playbook-ის სახელები"
+
+msgid "Ansible Role"
+msgstr "Ansible-ის როლი"
+
+msgid "Ansible Roles"
+msgstr "Ansible-ის როლები"
+
+msgid "Ansible Roles were successfully assigned."
+msgstr "Ansible-ის როლები წარმატებით იქნა მინიჭებული."
+
+msgid "Ansible Variable Details"
+msgstr "Ansible-ის ცვლადის დეტალები"
+
+msgid "Ansible Variable Details (Imported)"
+msgstr "Ansible-ის ცვლადის დეტალები (შემოტანილი)"
+
+msgid "Ansible Variable not found by id: %s"
+msgstr "Ansible-ის ცვლადი ID-ით %s არ არსებობს"
+
+msgid "Ansible Variables"
+msgstr "Ansible-ის ცვლადები"
+
+msgid "Ansible check mode"
+msgstr "Ansible-ის შემოწმების რეჟიმი"
+
+msgid "Ansible job was successfully canceled."
+msgstr "Ansible-ის დავალება წარმატებით გაუქმდა."
+
+msgid "Ansible job was successfully created."
+msgstr "Ansible-ის კონფიგურაცის დავალება შექმნილია."
+
+msgid "Ansible provider specific inputs"
+msgstr "Ansible-ის მომწოდებლის სპეციფიკური ცვლადები"
+
+msgid "Ansible report timeout"
+msgstr "Ansible-ის ანგარიშის ვადა"
+
+msgid "Ansible role"
+msgstr "Ansible-ის როლი"
+
+msgid "Ansible role names to be imported"
+msgstr "Ansible-ის შემოსატანი როლების სახელები"
+
+msgid "Ansible role names to be synced"
+msgstr "Ansible-ის დასასინქრონიზებელი როლების სახელები"
+
+msgid "Ansible roles assigned directly to host"
+msgstr "პირდაპირ ჰოსტზე მიმაგრებული Ansiible-ის როლები"
+
+msgid "Ansible roles to assign to a host"
+msgstr "ჰოსტზე მისანიჭებელი Ansible-ის როლები"
+
+msgid "Ansible roles to assign to a hostgroup"
+msgstr "ჰოსტის ჯგუფზე მისანიჭებელი Ansible-ის როლები"
+
+msgid "Ansible roles to ignore"
+msgstr "Ansible-ის დასაიგნორებელი როლები"
+
+msgid "Ansible support in Foreman"
+msgstr "Ansible-ის მხარდაჭერა Foreman-ში"
+
+msgid "Ansible variable override successfully changed."
+msgstr "Ansible-ის ცვლადის გადაფარვა წარმატებით შეიცვალა."
+
+msgid "Ansible variable override was successfully deleted."
+msgstr "Ansible-ის ცვლადის გადაფარვა წარმატებით წაიშალა."
+
+msgid "Ansible: Run Insights maintenance plan"
+msgstr ""
+
+msgid "Are you sure you want to cancel Ansible config job?"
+msgstr ""
+
+msgid "Are you sure you want to delete override for %s?"
+msgstr "დარწმუნებული ბრძანდებით, რომ გნებავთ წაშალოთ '%s'-ის გადაფარვა?"
+
+msgid "Assign roles directly to the host"
+msgstr ""
+
+msgid "Assigned Ansible Roles"
+msgstr "Ansible-ის მინიჭებული როლები"
+
+msgid "Assigns Ansible roles to a host"
+msgstr "ჰოსტზე Ansible-ს როლის მინიჭება"
+
+msgid "Assigns Ansible roles to a hostgroup"
+msgstr "Ansible-ის როლების ჰოსტების ჯგუფზე მინიჭება"
+
+msgid "Available Ansible Roles"
+msgstr "Ansible-ის ხელმისაწვდომი როლები"
+
+msgid "Available Ansible roles"
+msgstr "Ansible-ის ხელმისაწვდომი როლები"
+
+msgid "Avoid duplicate values when merging them (only array type)?"
+msgstr "ავიცილო შერწყმისას თავიდან დუბლირებული მნიშვნელობები(მხოლოდ მასივის ტიპი)?"
+
+msgid "Before including these variables on your playbooks, Foreman will validate that your variables comply with the validation."
+msgstr ""
+
+msgid "Cancel"
+msgstr "გაუქმება"
+
+msgid "Cancel Ansible config job"
+msgstr "Ansible-ის კონფიგურაცის დავალების გაუქმება"
+
+msgid "Changed Ansible roles"
+msgstr "Ansible-ის როლები შეცვლილია"
+
+msgid "Close"
+msgstr "დახურვა"
+
+msgid "Configure Recurring Job"
+msgstr "განმეორებადი დავალების მორგება"
+
+msgid "Confirm"
+msgstr "დადასტურება"
+
+msgid "Connection type"
+msgstr "შეერთების ტიპი"
+
+msgid "Continue to look for matches after first find (only array/hash type)? Note: merging overrides ignores all matchers that are omitted."
+msgstr "გავაგრძელოთ შესატყვისების ძებნა პირველი პოვნის შემდეგ (მხოლოდ მასივი/ჰეშის ტიპი)? შენიშვნა: უგულებელყოფის შერწყმა უგულებელყოფს ყველა შესატყვისს, რომელიც გამოტოვებულია."
+
+msgid "Could not run Ansible roles for %{host}"
+msgstr "ჰოსტზე (%{host}) Ansible_ის როლის გაშვების შეცდომა"
+
+msgid "Create Ansible Variable"
+msgstr "Ansible-ის ცვლადის შექმნა"
+
+msgid "Create Ansible variable"
+msgstr "Ansible-ის ცვლადის შექმნა"
+
+msgid "Create an override value for a specific ansible variable"
+msgstr "Ansible-ის ცვლადის გადაფარვის მნიშვნელობის შექმნა"
+
+msgid "DEPRECATED: Import Ansible roles"
+msgstr "მოძველებული: Ansible-ის როლების შემოტანა"
+
+msgid "DEPRECATED: Import Ansible variables. This will only import variables for already existing roles, it will not import any new roles"
+msgstr ""
+
+msgid "DEPRECATED: Obsolete Ansible roles"
+msgstr "მოძველებული: Ansible-ის მოძველებული როლები"
+
+msgid "DEPRECATED: Obsolete Ansible variables. This will only obsolete variables for already existing roles, it will not delete any old roles"
+msgstr ""
+
+msgid "Default Ansible inventory report template"
+msgstr "Ansible-ის ინვენტორის ანგარიშის ნაგულისხმები შაბლონი"
+
+msgid "Default Behavior"
+msgstr "ნაგულისხმევი ქცევა"
+
+msgid "Default value"
+msgstr "ნაგულისხმები მნიშვნელობა"
+
+msgid "Default value of variable"
+msgstr "ცვლადის ნაგულისხმები მნიშვნელობა"
+
+msgid "Default verbosity level"
+msgstr "დიაგნოსტიკური შეტყობინებების ნაგულისხმები დონე"
+
+msgid "Delete"
+msgstr "წაშლა"
+
+msgid "Delete %s?"
+msgstr "წავშალო \"%s\"?"
+
+msgid "Delete Ansible variable override"
+msgstr "Ansible-ის ცვლადის გადაფარვის მნიშვნელობის წაშლა"
+
+msgid "Deletes Ansible role"
+msgstr "Ansible-ის როლის წაშლა"
+
+msgid "Deletes Ansible variable"
+msgstr "Ansible-ის ცვლადის წაშლა"
+
+msgid "Description"
+msgstr "აღწერა"
+
+msgid "Description of variable"
+msgstr "ცვლადის აღწერა"
+
+msgid "Destroy an override value"
+msgstr "მნიშვნელობის გადაფარვის მოცილება"
+
+msgid "Directly assigned to Host"
+msgstr "ჰოსტზე პირდაპირ მინიჭებული"
+
+msgid "Disable host configuration status turning to out of sync for %{cfgmgmt} after report does not arrive within configured interval"
+msgstr ""
+
+msgid "Disabled"
+msgstr "გამორთულია"
+
+msgid "Edit %s"
+msgstr "%s-ის ჩასწორება"
+
+msgid "Edit Ansible Roles"
+msgstr "Ansible-ის როლების ჩასწორება"
+
+msgid "Edit Ansible Variable"
+msgstr "Ansible-ის ცვლადის ჩასწორება"
+
+msgid "Edit Ansible roles"
+msgstr "Ansible-ის როლების ჩასწორება"
+
+msgid "Enable web console"
+msgstr "ვებ კონსოლის ჩართვა"
+
+msgid "Enable/disable WinRM server certificate validation when running Ansible playbooks. You can override this on hosts by adding a parameter \"ansible_winrm_server_cert_validation\""
+msgstr ""
+
+msgid "Error!"
+msgstr "შეცდომა!"
+
+msgid "Executed at"
+msgstr "შესრულების დრო"
+
+msgid "Failed to import roles and variables "
+msgstr "როლებისა და ცვლადების შემოტანის შეცდომა "
+
+msgid "Fetch Ansible playbooks available to be synced"
+msgstr "Ansble-ის დასასინქრონიზებლად ხელმისაწვდომი playbook-ის სახელების გამოთხოვა"
+
+msgid "Fetch Ansible roles available to be synced"
+msgstr "Ansble-ის დასასინქრონიზებლად ხელმისაწვდომი როლების გამოთხოვა"
+
+msgid "For more advanced scheduling options"
+msgstr ""
+
+msgid "Foreman"
+msgstr "Foreman"
+
+msgid "Foreman will add this level of verbosity for additional debugging output when running Ansible playbooks."
+msgstr ""
+
+msgid "Foreman will use this template to schedule the report with Ansible inventory"
+msgstr ""
+
+msgid "Hash of input values of type input=>value"
+msgstr ""
+
+msgid "Hidden Value"
+msgstr "დამალული მნიშვნელობა"
+
+msgid "Hide all values for this parameter."
+msgstr "პარამეტრის ყველა მნიშვნელობის დამალვა."
+
+msgid "Host assigned Ansible roles"
+msgstr "ჰოსტზე მინიჭებული Ansible-ის როლები"
+
+msgid "Host group has no associated hosts"
+msgstr "ჰოსტის ჯგუფი ცარიელია"
+
+msgid "Host not found by id: %s"
+msgstr "ID-ით ჰოსტის პოვნის შეცდომა: %s"
+
+msgid "Hostgroups"
+msgstr "ჰოსტის ჯგუფები"
+
+msgid "Hosts"
+msgstr "ჰოსტები"
+
+msgid "IDs of associated ansible roles"
+msgstr "ასოცირებული Ansible-ის როლების ID-ები"
+
+msgid "IDs of hostgroups included in inventory"
+msgstr "ინვენტარში მყოფი ჰოსტის ჯგუფების ID-ები"
+
+msgid "IDs of hostgroups to play roles on"
+msgstr "როლების გასაშვები ჰოსტის ჯგუფების ID-ები"
+
+msgid "IDs of hosts included in inventory"
+msgstr "ინვენტარში მყოფი ჰოსტების ID-ები"
+
+msgid "IDs of hosts to play roles on"
+msgstr "როლების გასაშვები ჰოსტების ID"
+
+msgid "If checked, will raise an error if there is no default value and no matcher provide a value."
+msgstr "თუ მონიშნულია, წარმოიქმნება შეცდომა, თუ არ არის ნაგულისხმევი მნიშვნელობა და არცერთი შესატყვისი არ იძლევა მნიშვნელობას."
+
+msgid "Import"
+msgstr "იმპორტი"
+
+msgid "Import Puppet classes"
+msgstr "Puppet-ის კლასების შემოტანა"
+
+msgid "Import Role"
+msgstr "როლის შემოტანა"
+
+msgid "Import facts"
+msgstr "ფაქტების შემოტანა"
+
+msgid "Import from %s"
+msgstr "%s-დან შემოტანა"
+
+msgid "Import playbooks has finished successfully"
+msgstr "Playbook-ების შემოტანა წარმატებით დასრულდა"
+
+msgid "Import roles And Variables"
+msgstr "როლებისა და ცვლადების შემოტანა"
+
+msgid "Import roles and variables has finished successfully"
+msgstr "როლებსა და ცვლადების შემოტანა წარმატებით დასრულდა"
+
+msgid "Import roles and variables started: "
+msgstr "როლებისა და ცვლადების შემოტანა დაწყებულია: "
+
+msgid "Imported at"
+msgstr "შემოტანის დრო"
+
+msgid "Imported?"
+msgstr "შემოტანილია?"
+
+msgid "Include default value when merging all matching values"
+msgstr "ყველა დამთხვეული მნიშვნელობის შერწყმისას ნაგულისხმები მნიშვნელობების გათვალისწნება"
+
+msgid "Include default value when merging all matching values."
+msgstr "ყველა დამთხვეული მნიშვნელობის შერწყმისას ნაგულისხმები მნიშვნელობების გათვალისწინება."
+
+msgid "Include/Exclude Tags"
+msgstr "ჭდეების ჩართვა/გამორიცხვა"
+
+msgid "Include\\Exclude tags for Ansible run"
+msgstr ""
+
+msgid "Inherited from Hostgroup"
+msgstr "მემკვიდრეობით ჰოსტების ჯგუფიდან"
+
+msgid "Insights remediation on %{hosts_count} host(s) has finished successfully"
+msgstr ""
+
+msgid "Invalid, expected one of: %s"
+msgstr "არასწორი. მოსალოდნელი იყო ერთერთ სიიდან: %s"
+
+msgid "Invalid, expected to match a regex: %s"
+msgstr "არასწორია. მოველოდი, რომ დაემთხვეოდა რეგ.გამოს-ს: %s"
+
+msgid "Inventory"
+msgstr "ინვენტარი"
+
+msgid "Job Details"
+msgstr "დავალების დეტალები"
+
+msgid "Jobs"
+msgstr "დავალებები"
+
+msgid "Learn more about this in the documentation."
+msgstr "შეიტყვეთ მეტი ამის შესახებ დოკუმენტაციაში."
+
+msgid "Level"
+msgstr "დონე"
+
+msgid "Level 1 (-v)"
+msgstr "დონე 1 (-v)"
+
+msgid "Level 2 (-vv)"
+msgstr "დონე 2 (-vv)"
+
+msgid "Level 3 (-vvv)"
+msgstr "დონე 3 (-vvv)"
+
+msgid "Level 4 (-vvvv)"
+msgstr "დონე 4 (-vvvv)"
+
+msgid "List Ansible roles"
+msgstr "Ansible-ის როლების სია"
+
+msgid "List Ansible variables"
+msgstr "Ansible-ის ცვლადების სია"
+
+msgid "List all Ansible roles for a host"
+msgstr "ჰოსტის Ansible-ის ყველა როლის სია"
+
+msgid "List all Ansible roles for a hostgroup"
+msgstr "ჰოსტის ჯგუფზე Ansible-ის ყველა როლის ჩვენება"
+
+msgid "Mark the variable to be managed by Foreman. When the Ansible role of this variable is assigned to a host, the default value will be added to Ansible inventory as a host variable. Specify matchers to set a different value for such variable."
+msgstr ""
+
+msgid "Merge all matching values (only array/hash type)"
+msgstr "ყველა ერთნაირი მნიშვნელობის შერწყმა (მხოლოდ მასივის/ჰეშის ტიპი)"
+
+msgid "Message"
+msgstr "შეტყობინება"
+
+msgid "Must not be in the past"
+msgstr "არ უნდა იყოს წარსულში"
+
+msgid "Name"
+msgstr "სახელი"
+
+msgid "Name of variable"
+msgstr "ცვლადის სახელი"
+
+msgid "New Ansible Variable"
+msgstr "Ansible-ის ახალი ცვლადი"
+
+msgid "Next Run"
+msgstr "შემდეგი გაშვება"
+
+msgid ""
+"No Ansible Roles were found in Foreman. If you want to assign roles to your hosts,\n"
+"             you have to import them first."
+msgstr ""
+
+msgid "No Ansible roles assigned"
+msgstr "Ansible-ის როლები მინიჭებული არ გაქვთ"
+
+msgid "No Ansible variables found for Host"
+msgstr "ჰოსტისთვის Ansible-ის ცვლადები ვერ ვიპოვე"
+
+msgid "No added or removed roles nor variables detected on %s."
+msgstr "%s-ზე არც ცვლადები, არც როლები არც წაშლილა, არც დამატებულა."
+
+msgid "No added or removed roles nor variables."
+msgstr "არც ცვლადები, არც როლები არც წაშლილა, არც დამატებულა."
+
+msgid "No additional data"
+msgstr "დამატებითი მონაცემების გარეშე"
+
+msgid "No changes detected in specified Ansible Roles and their variables"
+msgstr ""
+
+msgid "No changes in variables detected on %s."
+msgstr "%s-ზე ცვლადების ცვლილება ნაპოვნი არაა."
+
+msgid "No config job for Ansible roles scheduled"
+msgstr ""
+
+msgid "No previous job executions found"
+msgstr "დავალების წინა შესრულებები ვერ ვიპოვე"
+
+msgid "No proxy found to import variables from, ensure that the smart proxy has the Ansible feature enabled."
+msgstr ""
+
+msgid "No roles assigned directly to the host"
+msgstr ""
+
+msgid "Nothing Found!"
+msgstr "ვერაფერი ვიპოვე!"
+
+msgid "Nothing to show"
+msgstr "საჩვენებელი არაფერია"
+
+msgid "Notice that ansible roles run in check mode."
+msgstr "გაითვალისწინეთ, რომ Ansible-ის როლები შემოწმების რეჟიმშია გაშვებული."
+
+msgid "Number of tasks which should be sent to the smart proxy in one request, if foreman_tasks_proxy_batch_trigger is enabled. If set, overrides foreman_tasks_proxy_batch_size setting for Ansible jobs."
+msgstr ""
+
+msgid "Only variables marked to Override are shown here."
+msgstr "ნაჩვენებია მხოლოდ გადაფარვადად მონიშნული ცვლადები."
+
+msgid "Optional Input Validator"
+msgstr "შეყვანის არასავალდებულო შემოწმება"
+
+msgid "Order"
+msgstr "დალაგება"
+
+msgid "Override match"
+msgstr "დამთხვევის გადაფარვა"
+
+msgid "Override the default value of the Ansible variable."
+msgstr "Ansible-ის ცვლადის ნაგულისხმები მნიშვნელობის გადაფარვა."
+
+msgid "Override value, required if omit is false"
+msgstr "მნიშვნელობის გადაფარვა. საჭიროა, თუ ამოგდება გამორთულია"
+
+msgid "Overriden"
+msgstr "გადაფარული"
+
+msgid "Permission Denied"
+msgstr "წვდომა აკრძალულია"
+
+msgid "Permission denied"
+msgstr "წვდომა აკრძალულია"
+
+msgid "Playbooks"
+msgstr "Playbook-ები"
+
+msgid "Please request one of the required permissions listed below from a Foreman administrator:"
+msgstr ""
+
+msgid "Post-provision timeout"
+msgstr "სამუშაოდ მომზადების შემდეგ დალოდების დროის ვადა"
+
+msgid "Previously executed jobs"
+msgstr "ადრე შესრულებული სამუშაოები"
+
+msgid "Prioritize Attribute Order"
+msgstr "ატიბუტების მიმდევრობის პრიორიტეტების მიხედვით დალაგება"
+
+msgid "Private Key Path"
+msgstr "პირადი გასაღების ბილიკი"
+
+msgid "Proxy not found"
+msgstr "პროქსი სერვერი ნაპოვნი არაა"
+
+msgid "Proxy tasks batch size for Ansible"
+msgstr "პროქსის ამოცანების ნაკრების ზომა Ansible_ისთვის"
+
+msgid "Remediation Plan"
+msgstr "აღდგენის გეგმა"
+
+msgid "Remote action:"
+msgstr "დაშორებული ქმედება:"
+
+msgid "Remove"
+msgstr "წაშლა"
+
+msgid "Remove Role"
+msgstr "როლის წაშლა"
+
+msgid "Remove all"
+msgstr "ყველას წაშლა"
+
+msgid "Remove duplicate values (only array type)"
+msgstr "დუბლირებული მნიშვნელობების წაშლა (მხოლოდ მასივის ტიპი)"
+
+msgid "Remove selected"
+msgstr "მონიშნულის წაშლა"
+
+msgid "Report format, defaults to '%s'"
+msgstr "ანგარიშის ფორმატი. ნაგულისხმებად: '%s'"
+
+msgid "Request the following permissions from administrator: %s."
+msgstr "ადმინისტრატორისგან შემდეგი წვდომების გამოთხოვა: %s."
+
+msgid "Required field"
+msgstr ""
+
+msgid "Result"
+msgstr "შედეგი"
+
+msgid "Role ID"
+msgstr "როლის ID"
+
+msgid "Roles"
+msgstr "როლები"
+
+msgid "Role|Name"
+msgstr "როლი|სახელი"
+
+msgid "Run Ansible roles"
+msgstr "Ansible-ის როლების გაშვება"
+
+msgid "Run all Ansible roles"
+msgstr "Ansible-ის ყველა როლის გაშვება"
+
+msgid "Run all Ansible roles on hosts belonging to this host group"
+msgstr "Ansible-ის როლების ჰოსტების ამ ჯგუფში შემავალ ჰოსტებზე გაშვება"
+
+msgid "Run an Ansible playbook against given hosts"
+msgstr ""
+
+msgid "Run an Ansible playbook to enable web console on given hosts"
+msgstr ""
+
+msgid "Run playbook"
+msgstr "Playbook-ის გაშვება"
+
+msgid "Runs a given maintenance plan from Red Hat Access Insights given an ID."
+msgstr ""
+
+msgid "Runs all Ansible roles on a host"
+msgstr "ჰოსტზე Ansible-ის ყველა როლის გაშვება"
+
+msgid "Runs all Ansible roles on a hostgroup"
+msgstr "Ansible-ის როლების ჰოსტის ჯგუფზე გაშვება"
+
+msgid "Runs all Ansible roles on hostgroups"
+msgstr "Ansible-ის როლების ჰოსტის ჯგუფებზე გაშვება"
+
+msgid "Runs all Ansible roles on hosts"
+msgstr "ჰოსტებზე Ansible-ის ყველა როლის გაშვება"
+
+msgid "Runs an Ansible playbook which contains all the roles defined for a host"
+msgstr ""
+
+msgid "Schedule"
+msgstr "განრიგი"
+
+msgid "Schedule generating of Ansible Inventory report"
+msgstr "Ansible-ის ინვენტარის ანგარიშის მომზადების დაგეგმვა"
+
+msgid "Schedule recurring Ansible roles job"
+msgstr ""
+
+msgid "Schedule recurring job"
+msgstr "განმეორებადი დავალებების დაგეგმვა"
+
+msgid "Scheduled recurring jobs"
+msgstr "დაგეგმილი განმეორებითი დავალებები"
+
+msgid "Set the order in which values are resolved."
+msgstr "მიმდევრობა, რომლითაც მნიშვნელობების ამოხსნა ხდება."
+
+msgid "Show Ansible inventory for hostgroups"
+msgstr "Ansible-ის ინვენტარის ჩვენება ჰოსტის ჯგუფებისთვის"
+
+msgid "Show Ansible inventory for hosts"
+msgstr "Ansible-ის ინვენტარის ჩვენება ჰოსტებისთვის"
+
+msgid "Show role"
+msgstr "როლის ჩვენება"
+
+msgid "Show variable"
+msgstr "ცვლადის ჩვენება"
+
+msgid "Smart Proxy to fetch from"
+msgstr "გამოსათხოვი ჭკვიანი პროქსი"
+
+msgid "Smart Proxy to import from"
+msgstr "ჭკვიანი პროქსი"
+
+msgid "Smart Proxy to sync from"
+msgstr "გამოსათხოვი ჭკვიანი პროქსი"
+
+msgid "Smart proxy id is required"
+msgstr "საჭიროა ჭკვიანი პროქსის ID"
+
+msgid "Source"
+msgstr "წყარო"
+
+msgid "Source attribute"
+msgstr "საწყისი ატრიბუტი"
+
+msgid "Specify Matchers"
+msgstr "მიუთითეთ შესატყვისები"
+
+msgid "State"
+msgstr "State"
+
+msgid "Submit"
+msgstr "გაგზავნა"
+
+msgid "Sync Ansible playbooks"
+msgstr "Ansible-ის Playbook-ების სინქი"
+
+msgid "Sync Ansible roles"
+msgstr "Ansible-ის როლების სინქი"
+
+msgid "Tags"
+msgstr "ჭდეები"
+
+msgid "Task"
+msgstr "დავალება"
+
+msgid "Task Details"
+msgstr "ამოცანის დეტალები"
+
+msgid "The order in which matchers keys are processed, first match wins.<br> You may use multiple attributes as a matcher key, for example, an order of <code>host group, environment</code> would expect a matcher such as <code>hostgroup = \"web servers\", environment = production</code>"
+msgstr "თანმიმდევრობით, რომლითაც შესატყვისების გასაღებები დამუშავდება, პირველი მატჩი იმარჯვებს.<br> თქვენ შეგიძლიათ გამოიყენოთ მრავალი ატრიბუტი, როგორც შესატყვისი გასაღები, მაგალითად, <code>host group, environment</code> მოსალოდნელია შესატყვისი, როგორიცაა <code>hostgroup = \"web servers\", environment = production</code>"
+
+msgid "The order in which values are resolved"
+msgstr "მიმდევრობა, რომლითაც მნიშვნელობების ამოხსნა ხდება"
+
+msgid "There are no Ansible roles to play"
+msgstr "Ansible-ის გაშვებადი როლის გარეშე"
+
+msgid "There was a following error when assigning Ansible Roles: %s"
+msgstr ""
+
+msgid "There was a following error when changing Ansible variable override: %s"
+msgstr ""
+
+msgid "There was a following error when creating Ansible job: %s"
+msgstr ""
+
+msgid "There was a following error when deleting Ansible config job: %s"
+msgstr ""
+
+msgid "There was a following error when deleting Ansible variable override: %s"
+msgstr ""
+
+msgid "This Ansible role is inherited from host group"
+msgstr "Ansible-ის ეს როლი ჰოსტის ჯგუფიდანაა მემკვიდრეობით გადმოცემული"
+
+msgid "This Ansible role is inherited from parent host group"
+msgstr ""
+
+msgid "This job will run all the assigned Ansible roles."
+msgstr ""
+
+msgid "This list consists of host assigned roles and group assigned roles. Group assigned roles will always be executed prior to host assigned roles."
+msgstr ""
+
+msgid "Those roles will be excluded when importing roles from smart proxy, The expected input is comma separated values and you can use * wildcard metacharactersFor example: foo*, *b*,*bar"
+msgstr ""
+
+msgid "Timeout (in minutes) when hosts should have reported."
+msgstr "ვადა (წუთებში) როცა ჰოსტებს ინფორმაცია უნდა გადმოეცათ."
+
+msgid "Timeout (in seconds) to set when Foreman will trigger a play Ansible roles task after a host is fully provisioned. Set this to the maximum time you expect a host to take until it is ready after a reboot."
+msgstr ""
+
+msgid "Type"
+msgstr "ტიპი"
+
+msgid "Types of validation values"
+msgstr "შემოწმების მნიშვნელობის ტიპები"
+
+msgid "Types of variable values"
+msgstr "ცვლადის მნიშვნელობის ტიპები"
+
+msgid "Unable to get playbook's names from Ansible"
+msgstr "Ansible-დან Playbook-ის სახელების მიღების შეცდომა"
+
+msgid "Unable to get playbooks from Ansible"
+msgstr "Ansible-დან Playbook-ების მიღების შეცდომა"
+
+msgid "Unable to get roles from Ansible"
+msgstr "Ansible-დან როლების მიღების შეცდომა"
+
+msgid "Unable to get roles/variables from Ansible"
+msgstr "Ansible-დან როლების/ცვლადების მიღების შეცდომა"
+
+msgid "Update"
+msgstr "განახლება"
+
+msgid "Update Role Variables"
+msgstr "როლის ცვლადების გარეშე"
+
+msgid "Update Smart Proxy"
+msgstr ""
+
+msgid "Updates Ansible variable"
+msgstr "Ansible-ის ცვლადის განახლება"
+
+msgid "Upgrade"
+msgstr ""
+
+msgid "Upgrade Capsules on given Capsule server hosts"
+msgstr "კაფსულების სერვერის მითითებულ ჰოსტებზე კაფსულის გაუმჯობესება"
+
+msgid "Upgrade Capsules on given hosts"
+msgstr "მითითებულჰოსტებზე კაფსულის გაუმჯობესება"
+
+msgid "Use drag and drop to change order of the roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly"
+msgstr ""
+
+msgid "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled"
+msgstr ""
+
+msgid "Use this connection type by default when running Ansible playbooks. You can override this on hosts by adding a parameter \"ansible_connection\""
+msgstr ""
+
+msgid "Use this to supply a path to an SSH Private Key that Ansible will use in lieu of a password Override with \"ansible_ssh_private_key_file\" host parameter"
+msgstr ""
+
+msgid "Used to enforce certain values for the parameter values"
+msgstr "გამოიყენება ზოგიერთი მნიშვნელობების პარამეტრების მნიშვნელობებად ძალით დასაყენებლად"
+
+msgid "Value"
+msgstr "მნიშვნელობა"
+
+msgid "Value to use when there is no match."
+msgstr "მნიშვნელობა, რომელიც გამოიყენება, როცა დამთხვევები არაა."
+
+msgid "Variables"
+msgstr "ცვლადები"
+
+msgid "Variable|Name"
+msgstr "ცვლადი|სახელი"
+
+msgid "Variable|Role"
+msgstr "ცვლადი|როლი"
+
+msgid "View inherited roles"
+msgstr ""
+
+msgid "When enabled the parameter is hidden in the UI"
+msgstr "როცა ჩართულია, UI-ში პარმეტრი დამალულია"
+
+msgid "Whether to override variable or not"
+msgstr "გადაფარული იქნება ცვლადი, თუ არა"
+
+msgid "WinRM cert Validation"
+msgstr "WinRM-ის სერტიფიკატის დამოწმება"
+
+msgid "You are not authorized to perform this action."
+msgstr "ამ ქმედებისთვის საჭირო ავტორიზაცია არ გაგაჩნიათ."
+
+msgid "You are not authorized to view the page. "
+msgstr "ამ გვერდთან წვდომა არ გაგაჩნიათ. "
+
+msgid "daily"
+msgstr "დღეში ერთხელ"
+
+msgid "false"
+msgstr "მცდარი"
+
+msgid "hourly"
+msgstr "საათში ერთხელ"
+
+msgid "is required"
+msgstr "აუცილებელია"
+
+msgid "monthly"
+msgstr "თვეში ერთხელ"
+
+msgid "true"
+msgstr "სიმართლე"
+
+msgid "view all assigned roles"
+msgstr "ყველა მინიჭებული როლის ნახვა"
+
+msgid "view remote execution page."
+msgstr ""
+
+msgid "view the task in progress"
+msgstr "ამოცანის მიმდინარეობის ჩვენება"
+
+msgid "weekly"
+msgstr "კვირაში ერთხელ"

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foreman_ansible 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-03 08:41+0200\n"
-"PO-Revision-Date: 2022-05-03 08:41+0200\n"
+"POT-Creation-Date: 2022-11-24 19:10+0100\n"
+"PO-Revision-Date: 2022-11-24 19:10+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -330,6 +330,16 @@ msgstr ""
 msgid "Ansible Variable not found by id: %s"
 msgstr ""
 
+#: ../app/helpers/foreman_ansible/ansible_hostgroups_helper.rb:7
+#: ../app/helpers/foreman_ansible/ansible_hostgroups_helper.rb:9
+#: ../app/helpers/foreman_ansible/hosts_helper.rb:9
+msgid "Run all Ansible roles"
+msgstr ""
+
+#: ../app/helpers/foreman_ansible/ansible_hostgroups_helper.rb:9
+msgid "Run all Ansible roles on hosts belonging to this host group"
+msgstr ""
+
 #: ../app/helpers/foreman_ansible/ansible_reports_helper.rb:57
 msgid "No additional data"
 msgstr ""
@@ -374,10 +384,8 @@ msgstr ""
 msgid "%s ago"
 msgstr ""
 
-#: ../app/helpers/foreman_ansible/hosts_helper.rb:9
-#: ../app/views/foreman_ansible/ansible_roles/_hostgroup_ansible_roles_button.erb:3
-#: ../app/views/foreman_ansible/ansible_roles/_hostgroup_ansible_roles_button.erb:5
-msgid "Run all Ansible roles"
+#: ../app/helpers/foreman_ansible/smart_proxies_helper.rb:35
+msgid "Upgrade"
 msgstr ""
 
 #: ../app/jobs/sync_roles_and_variables.rb:18
@@ -633,26 +641,6 @@ msgstr ""
 msgid "Create Ansible Variable"
 msgstr ""
 
-#:
-#: ../app/views/foreman_ansible/ansible_roles/_hostgroup_ansible_roles_button.erb:5
-msgid "Run all Ansible roles on hosts belonging to this host group"
-msgstr ""
-
-#:
-#: ../app/views/foreman_ansible/ansible_roles/_hostgroup_ansible_roles_button.erb:8
-msgid "Configure Ansible Job"
-msgstr ""
-
-#:
-#: ../app/views/foreman_ansible/ansible_roles/_hostgroup_ansible_roles_button.erb:11
-msgid "Nest"
-msgstr ""
-
-#:
-#: ../app/views/foreman_ansible/ansible_roles/_hostgroup_ansible_roles_button.erb:12
-msgid "Clone"
-msgstr ""
-
 #: ../app/views/foreman_ansible/config_reports/_ansible.html.erb:5
 msgid "Ansible check mode"
 msgstr ""
@@ -831,6 +819,11 @@ msgstr ""
 msgid "Proxy tasks batch size for Ansible"
 msgstr ""
 
+#: ../lib/foreman_ansible/register.rb:250
+#: ../lib/foreman_ansible/register.rb:256
+msgid "Update Smart Proxy"
+msgstr ""
+
 #: ../lib/foreman_ansible/remote_execution.rb:20
 msgid "Run Ansible roles"
 msgstr ""
@@ -914,27 +907,27 @@ msgid "Default value"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:48
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:49
 msgid "Ansible variable override was successfully deleted."
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:62
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:63
 msgid "There was a following error when deleting Ansible variable override: %s"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:81
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:82
 msgid "Invalid, expected to match a regex: %s"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:93
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:94
 msgid "Invalid, expected one of: %s"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:99
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:100
 msgid "is required"
 msgstr ""
 
@@ -949,12 +942,12 @@ msgid "Ansible variable override successfully changed."
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/EditableValue.js:35
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/EditableValue.js:37
 msgid "true"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/EditableValue.js:36
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/EditableValue.js:38
 msgid "false"
 msgstr ""
 
@@ -1010,7 +1003,7 @@ msgstr ""
 
 #:
 #: ../webpack/components/AnsibleHostDetail/components/JobsTab/NewRecurringJobHelper.js:22
-msgid "can't be blank"
+msgid "Required field"
 msgstr ""
 
 #:
@@ -1024,14 +1017,34 @@ msgid "Ansible job was successfully created."
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/JobsTab/NewRecurringJobModal.js:65
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/NewRecurringJobModal.js:69
 msgid "Submit"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/JobsTab/NewRecurringJobModal.js:74
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/NewRecurringJobModal.js:79
 #: ../webpack/components/AnsibleHostDetail/components/JobsTab/RecurringJobsTable.js:51
 msgid "Cancel"
+msgstr ""
+
+#:
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/NewRecurringJobModal.js:89
+msgid "This job will run all the assigned Ansible roles."
+msgstr ""
+
+#:
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/NewRecurringJobModal.js:91
+msgid "For more advanced scheduling options"
+msgstr ""
+
+#:
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/NewRecurringJobModal.js:102
+msgid "view remote execution page."
+msgstr ""
+
+#:
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/NewRecurringJobModal.js:110
+msgid "Schedule recurring Ansible roles job"
 msgstr ""
 
 #:
@@ -1086,15 +1099,15 @@ msgstr ""
 msgid "Scheduled recurring jobs"
 msgstr ""
 
-#: ../webpack/components/AnsibleHostDetail/components/JobsTab/index.js:37
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/index.js:41
 msgid "Schedule recurring job"
 msgstr ""
 
-#: ../webpack/components/AnsibleHostDetail/components/JobsTab/index.js:52
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/index.js:56
 msgid "No config job for Ansible roles scheduled"
 msgstr ""
 
-#: ../webpack/components/AnsibleHostDetail/components/JobsTab/index.js:68
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/index.js:72
 msgid "No previous job executions found"
 msgstr ""
 
@@ -1104,35 +1117,34 @@ msgid "Source"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/AllRolesTable.js:52
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/AllRolesTable.js:57
 msgid "Inherited from Hostgroup"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/AllRolesTable.js:53
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/AllRolesTable.js:58
 msgid "Directly assigned to Host"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/index.js:23
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/index.js:24
 msgid "All assigned Ansible roles"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/index.js:25
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/index.js:26
 msgid ""
 "This list consists of host assigned roles and group assigned roles. Group assi"
-"gned roles will always be executed prior to host assigned roles"
+"gned roles will always be executed prior to host assigned roles."
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/index.js:61
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/index.js:49
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/index.js:62
 msgid "No Ansible roles assigned"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/EditRolesModal/EditRolesForm.js:56
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/EditRolesModal/EditRolesForm.js:59
 msgid "Confirm"
 msgstr ""
 
@@ -1147,37 +1159,45 @@ msgid "Ansible Roles were successfully assigned."
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/EditRolesModal/index.js:27
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/EditRolesModal/index.js:28
 msgid "Edit Ansible Roles"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/EditRolesModal/index.js:29
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/EditRolesModal/index.js:30
 msgid ""
 "Add, remove or reorder host assigned Ansible roles. This host has also group a"
 "ssigned roles that are not displayed here and will always be executed prior to"
-" host assigned roles"
+" host assigned roles."
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/EditRolesModal/index.js:36
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/EditRolesModal/index.js:42
 msgid "Close"
 msgstr ""
 
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/RolesTable.js:36
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/RolesTable.js:39
 msgid "Edit Ansible roles"
 msgstr ""
 
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/RolesTable.js:47
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/RolesTable.js:50
 msgid "Ansible roles assigned directly to host"
 msgstr ""
 
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/RolesTable.js:49
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/RolesTable.js:52
 msgid "view all assigned roles"
 msgstr ""
 
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/index.js:36
-msgid "Assign Ansible roles"
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/index.js:41
+msgid "Assign roles directly to the host"
+msgstr ""
+
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/index.js:59
+msgid "View inherited roles"
+msgstr ""
+
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/index.js:73
+msgid "No roles assigned directly to the host"
 msgstr ""
 
 #: ../webpack/components/AnsibleHostDetail/constants.js:7
@@ -1271,12 +1291,12 @@ msgstr ""
 msgid "Error!"
 msgstr ""
 
-#: ../webpack/components/withLoading.js:28
+#: ../webpack/components/withLoading.js:26
 msgid "Nothing Found!"
 msgstr ""
 
-#: ../webpack/components/withLoading.js:63
-#: ../webpack/components/withLoading.js:75
+#: ../webpack/components/withLoading.js:61
+#: ../webpack/components/withLoading.js:73
 msgid "Permission denied"
 msgstr ""
 
@@ -1293,11 +1313,11 @@ msgid "Configure Recurring Job"
 msgstr ""
 
 #: action_names.rb:2
-msgid "Preupgrade job"
+msgid "Action with sub plans"
 msgstr ""
 
 #: action_names.rb:3
-msgid "Remote action:"
+msgid "Import facts"
 msgstr ""
 
 #: action_names.rb:4
@@ -1305,11 +1325,7 @@ msgid "Import Puppet classes"
 msgstr ""
 
 #: action_names.rb:5
-msgid "Import facts"
-msgstr ""
-
-#: action_names.rb:6
-msgid "Action with sub plans"
+msgid "Remote action:"
 msgstr ""
 
 #: gemspec.rb:2

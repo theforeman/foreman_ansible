@@ -4,15 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# 0868a4d1af5275b3f70b0a6dac4c99a4, 2018
-# Andi Chandler <andi@gowling.com>, 2019
+# 0868a4d1af5275b3f70b0a6dac4c99a4, 2022
+# Andi Chandler <andi@gowling.com>, 2022
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 3.0.2\n"
+"Project-Id-Version: foreman_ansible 10.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
-"Last-Translator: Andi Chandler <andi@gowling.com>, 2019\n"
+"Last-Translator: Andi Chandler <andi@gowling.com>, 2022\n"
 "Language-Team: English (United Kingdom) (https://www.transifex.com/foreman/tea"
 "ms/114/en_GB/)\n"
 "MIME-Version: 1.0\n"
@@ -51,7 +51,7 @@ msgstr ""
 msgid "Add selected"
 msgstr ""
 
-msgid "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles"
+msgid "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles."
 msgstr ""
 
 msgid "All assigned Ansible roles"
@@ -138,7 +138,7 @@ msgstr ""
 msgid "Are you sure you want to delete override for %s?"
 msgstr ""
 
-msgid "Assign Ansible roles"
+msgid "Assign roles directly to the host"
 msgstr ""
 
 msgid "Assigned Ansible Roles"
@@ -171,13 +171,7 @@ msgstr ""
 msgid "Changed Ansible roles"
 msgstr ""
 
-msgid "Clone"
-msgstr ""
-
 msgid "Close"
-msgstr ""
-
-msgid "Configure Ansible Job"
 msgstr ""
 
 msgid "Configure Recurring Job"
@@ -232,7 +226,7 @@ msgid "Default verbosity level"
 msgstr ""
 
 msgid "Delete"
-msgstr ""
+msgstr "Delete"
 
 msgid "Delete %s?"
 msgstr "Delete %s?"
@@ -247,7 +241,7 @@ msgid "Deletes Ansible variable"
 msgstr ""
 
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 msgid "Description of variable"
 msgstr ""
@@ -295,6 +289,9 @@ msgid "Fetch Ansible playbooks available to be synced"
 msgstr ""
 
 msgid "Fetch Ansible roles available to be synced"
+msgstr ""
+
+msgid "For more advanced scheduling options"
 msgstr ""
 
 msgid "Foreman"
@@ -462,9 +459,6 @@ msgstr "Name"
 msgid "Name of variable"
 msgstr ""
 
-msgid "Nest"
-msgstr ""
-
 msgid "New Ansible Variable"
 msgstr ""
 
@@ -504,6 +498,9 @@ msgid "No previous job executions found"
 msgstr ""
 
 msgid "No proxy found to import variables from, ensure that the smart proxy has the Ansible feature enabled."
+msgstr ""
+
+msgid "No roles assigned directly to the host"
 msgstr ""
 
 msgid "Nothing Found!"
@@ -554,9 +551,6 @@ msgstr ""
 msgid "Post-provision timeout"
 msgstr ""
 
-msgid "Preupgrade job"
-msgstr ""
-
 msgid "Previously executed jobs"
 msgstr ""
 
@@ -599,8 +593,11 @@ msgstr ""
 msgid "Request the following permissions from administrator: %s."
 msgstr ""
 
-msgid "Result"
+msgid "Required field"
 msgstr ""
+
+msgid "Result"
+msgstr "Result"
 
 msgid "Role ID"
 msgstr ""
@@ -653,6 +650,9 @@ msgstr ""
 msgid "Schedule generating of Ansible Inventory report"
 msgstr ""
 
+msgid "Schedule recurring Ansible roles job"
+msgstr ""
+
 msgid "Schedule recurring job"
 msgstr ""
 
@@ -696,10 +696,10 @@ msgid "Specify Matchers"
 msgstr ""
 
 msgid "State"
-msgstr ""
+msgstr "State"
 
 msgid "Submit"
-msgstr ""
+msgstr "Submit"
 
 msgid "Sync Ansible playbooks"
 msgstr ""
@@ -708,7 +708,7 @@ msgid "Sync Ansible roles"
 msgstr ""
 
 msgid "Tags"
-msgstr ""
+msgstr "Tags"
 
 msgid "Task"
 msgstr ""
@@ -746,7 +746,10 @@ msgstr ""
 msgid "This Ansible role is inherited from parent host group"
 msgstr ""
 
-msgid "This list consists of host assigned roles and group assigned roles. Group assigned roles will always be executed prior to host assigned roles"
+msgid "This job will run all the assigned Ansible roles."
+msgstr ""
+
+msgid "This list consists of host assigned roles and group assigned roles. Group assigned roles will always be executed prior to host assigned roles."
 msgstr ""
 
 msgid "Those roles will be excluded when importing roles from smart proxy, The expected input is comma separated values and you can use * wildcard metacharactersFor example: foo*, *b*,*bar"
@@ -785,7 +788,13 @@ msgstr ""
 msgid "Update Role Variables"
 msgstr ""
 
+msgid "Update Smart Proxy"
+msgstr ""
+
 msgid "Updates Ansible variable"
+msgstr ""
+
+msgid "Upgrade"
 msgstr ""
 
 msgid "Upgrade Capsules on given Capsule server hosts"
@@ -810,7 +819,7 @@ msgid "Used to enforce certain values for the parameter values"
 msgstr ""
 
 msgid "Value"
-msgstr ""
+msgstr "Value"
 
 msgid "Value to use when there is no match."
 msgstr ""
@@ -824,6 +833,9 @@ msgstr ""
 msgid "Variable|Role"
 msgstr ""
 
+msgid "View inherited roles"
+msgstr ""
+
 msgid "When enabled the parameter is hidden in the UI"
 msgstr ""
 
@@ -834,12 +846,9 @@ msgid "WinRM cert Validation"
 msgstr ""
 
 msgid "You are not authorized to perform this action."
-msgstr ""
+msgstr "You are not authorised to perform this action."
 
 msgid "You are not authorized to view the page. "
-msgstr ""
-
-msgid "can't be blank"
 msgstr ""
 
 msgid "daily"
@@ -861,6 +870,9 @@ msgid "true"
 msgstr ""
 
 msgid "view all assigned roles"
+msgstr ""
+
+msgid "view remote execution page."
 msgstr ""
 
 msgid "view the task in progress"

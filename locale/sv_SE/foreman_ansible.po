@@ -5,15 +5,15 @@
 #
 # Translators:
 # 0868a4d1af5275b3f70b0a6dac4c99a4, 2018
-# Mikael Fridh <frimik@gmail.com>, 2018
-# johnny.westerlund <johnny.westerlund@gmail.com>, 2019
+# Mikael Fridh <frimik@gmail.com>, 2022
+# johnny.westerlund <johnny.westerlund@gmail.com>, 2022
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 3.0.2\n"
+"Project-Id-Version: foreman_ansible 10.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
-"Last-Translator: johnny.westerlund <johnny.westerlund@gmail.com>, 2019\n"
+"Last-Translator: johnny.westerlund <johnny.westerlund@gmail.com>, 2022\n"
 "Language-Team: Swedish (Sweden) (https://www.transifex.com/foreman/teams/114/s"
 "v_SE/)\n"
 "MIME-Version: 1.0\n"
@@ -52,7 +52,7 @@ msgstr ""
 msgid "Add selected"
 msgstr ""
 
-msgid "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles"
+msgid "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles."
 msgstr ""
 
 msgid "All assigned Ansible roles"
@@ -139,7 +139,7 @@ msgstr ""
 msgid "Are you sure you want to delete override for %s?"
 msgstr ""
 
-msgid "Assign Ansible roles"
+msgid "Assign roles directly to the host"
 msgstr ""
 
 msgid "Assigned Ansible Roles"
@@ -172,14 +172,8 @@ msgstr ""
 msgid "Changed Ansible roles"
 msgstr ""
 
-msgid "Clone"
-msgstr "Klona"
-
 msgid "Close"
-msgstr ""
-
-msgid "Configure Ansible Job"
-msgstr ""
+msgstr "Stäng"
 
 msgid "Configure Recurring Job"
 msgstr ""
@@ -224,7 +218,7 @@ msgid "Default Behavior"
 msgstr ""
 
 msgid "Default value"
-msgstr ""
+msgstr "Standardvärde"
 
 msgid "Default value of variable"
 msgstr ""
@@ -233,7 +227,7 @@ msgid "Default verbosity level"
 msgstr ""
 
 msgid "Delete"
-msgstr ""
+msgstr "Radera"
 
 msgid "Delete %s?"
 msgstr "Radera %s?"
@@ -248,7 +242,7 @@ msgid "Deletes Ansible variable"
 msgstr ""
 
 msgid "Description"
-msgstr ""
+msgstr "Beskrivning"
 
 msgid "Description of variable"
 msgstr ""
@@ -296,6 +290,9 @@ msgid "Fetch Ansible playbooks available to be synced"
 msgstr ""
 
 msgid "Fetch Ansible roles available to be synced"
+msgstr ""
+
+msgid "For more advanced scheduling options"
 msgstr ""
 
 msgid "Foreman"
@@ -463,9 +460,6 @@ msgstr "Namn"
 msgid "Name of variable"
 msgstr ""
 
-msgid "Nest"
-msgstr "Nästla"
-
 msgid "New Ansible Variable"
 msgstr ""
 
@@ -507,6 +501,9 @@ msgstr ""
 msgid "No proxy found to import variables from, ensure that the smart proxy has the Ansible feature enabled."
 msgstr ""
 
+msgid "No roles assigned directly to the host"
+msgstr ""
+
 msgid "Nothing Found!"
 msgstr ""
 
@@ -544,7 +541,7 @@ msgid "Permission Denied"
 msgstr ""
 
 msgid "Permission denied"
-msgstr ""
+msgstr "Tillåts ej"
 
 msgid "Playbooks"
 msgstr ""
@@ -553,9 +550,6 @@ msgid "Please request one of the required permissions listed below from a Forema
 msgstr ""
 
 msgid "Post-provision timeout"
-msgstr ""
-
-msgid "Preupgrade job"
 msgstr ""
 
 msgid "Previously executed jobs"
@@ -598,6 +592,9 @@ msgid "Report format, defaults to '%s'"
 msgstr ""
 
 msgid "Request the following permissions from administrator: %s."
+msgstr ""
+
+msgid "Required field"
 msgstr ""
 
 msgid "Result"
@@ -654,6 +651,9 @@ msgstr ""
 msgid "Schedule generating of Ansible Inventory report"
 msgstr ""
 
+msgid "Schedule recurring Ansible roles job"
+msgstr ""
+
 msgid "Schedule recurring job"
 msgstr ""
 
@@ -688,7 +688,7 @@ msgid "Smart proxy id is required"
 msgstr ""
 
 msgid "Source"
-msgstr ""
+msgstr "Källa"
 
 msgid "Source attribute"
 msgstr ""
@@ -697,10 +697,10 @@ msgid "Specify Matchers"
 msgstr ""
 
 msgid "State"
-msgstr ""
+msgstr "Tillstånd"
 
 msgid "Submit"
-msgstr ""
+msgstr "Sänd"
 
 msgid "Sync Ansible playbooks"
 msgstr ""
@@ -747,7 +747,10 @@ msgstr ""
 msgid "This Ansible role is inherited from parent host group"
 msgstr ""
 
-msgid "This list consists of host assigned roles and group assigned roles. Group assigned roles will always be executed prior to host assigned roles"
+msgid "This job will run all the assigned Ansible roles."
+msgstr ""
+
+msgid "This list consists of host assigned roles and group assigned roles. Group assigned roles will always be executed prior to host assigned roles."
 msgstr ""
 
 msgid "Those roles will be excluded when importing roles from smart proxy, The expected input is comma separated values and you can use * wildcard metacharactersFor example: foo*, *b*,*bar"
@@ -786,7 +789,13 @@ msgstr "Uppdatera"
 msgid "Update Role Variables"
 msgstr ""
 
+msgid "Update Smart Proxy"
+msgstr ""
+
 msgid "Updates Ansible variable"
+msgstr ""
+
+msgid "Upgrade"
 msgstr ""
 
 msgid "Upgrade Capsules on given Capsule server hosts"
@@ -811,7 +820,7 @@ msgid "Used to enforce certain values for the parameter values"
 msgstr ""
 
 msgid "Value"
-msgstr ""
+msgstr "Värde"
 
 msgid "Value to use when there is no match."
 msgstr ""
@@ -823,6 +832,9 @@ msgid "Variable|Name"
 msgstr ""
 
 msgid "Variable|Role"
+msgstr ""
+
+msgid "View inherited roles"
 msgstr ""
 
 msgid "When enabled the parameter is hidden in the UI"
@@ -838,9 +850,6 @@ msgid "You are not authorized to perform this action."
 msgstr ""
 
 msgid "You are not authorized to view the page. "
-msgstr ""
-
-msgid "can't be blank"
 msgstr ""
 
 msgid "daily"
@@ -862,6 +871,9 @@ msgid "true"
 msgstr ""
 
 msgid "view all assigned roles"
+msgstr ""
+
+msgid "view remote execution page."
 msgstr ""
 
 msgid "view the task in progress"

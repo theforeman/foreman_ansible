@@ -1,866 +1,890 @@
-# Portuguese translations for foreman_ansible package.
-# Copyright (C) 2018 THE PACKAGE'S COPYRIGHT HOLDER
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the foreman_ansible package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Translators:
+# Valeria S Silva <valeriassilva@live.com>, 2019
+# Felipe Nogaroto Gonzalez <felipeng84@gmail.com>, 2019
+# 0868a4d1af5275b3f70b0a6dac4c99a4, 2019
+# Luiz Henrique Vasconcelos <luizvasconceloss@yahoo.com.br>, 2019
+# Flamarion Jorge <jorge.flamarion@gmail.com>, 2022
+# Bryan Kearney <bryan.kearney@gmail.com>, 2022
+# Amit Upadhye <aupadhye@redhat.com>, 2022
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 3.0.2\n"
+"Project-Id-Version: foreman_ansible 10.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2018-03-12 12:24-0400\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Portuguese\n"
-"Language: pt_BR\n"
+"PO-Revision-Date: 2018-11-14 21:36+0000\n"
+"Last-Translator: Amit Upadhye <aupadhye@redhat.com>, 2022\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/foreman/teams/11"
+"4/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 100000"
+"0 == 0 ? 1 : 2;\n"
 
 msgid "%(selectedCount)s of %(totalCount)s items selected"
-msgstr ""
+msgstr "{0} itens selecionados"
 
 msgid "%s ago"
-msgstr ""
+msgstr "%s atrás"
 
 msgid "%{cfgmgmt} out of sync disabled"
-msgstr ""
+msgstr "%s fora de sincronização desabilitado"
 
 msgid "(from host group)"
-msgstr ""
+msgstr "(do grupo anfitrião)"
 
 msgid "A comma separated list of tags to use for Ansible run"
-msgstr ""
+msgstr "Uma lista separada por vírgulas de etiquetas a serem usadas para a execução Ansible run"
 
 msgid "Action with sub plans"
-msgstr ""
+msgstr "Ação com subplanos "
 
 msgid "Actions"
-msgstr ""
+msgstr "Ações"
 
 msgid "Add"
-msgstr ""
+msgstr "Adicionar"
 
 msgid "Add all"
-msgstr ""
+msgstr "Acrescentar tudo"
 
 msgid "Add selected"
-msgstr ""
+msgstr "Adicionar selecionados"
 
-msgid "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles"
+msgid "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles."
 msgstr ""
 
 msgid "All assigned Ansible roles"
-msgstr ""
+msgstr "Todos os papéis possíveis atribuídos"
 
 msgid "Ansible"
-msgstr ""
+msgstr "Ansible"
 
 msgid "Ansible  playbooks names to be synced"
-msgstr ""
+msgstr "Nomes possíveis de playbooks a serem sincronizados"
 
 msgid "Ansible Role"
-msgstr ""
+msgstr "Função do Ansible"
 
 msgid "Ansible Roles"
-msgstr ""
+msgstr "Funções do Ansible"
 
 msgid "Ansible Roles were successfully assigned."
-msgstr ""
+msgstr "Funções possíveis foram atribuídas com sucesso."
 
 msgid "Ansible Variable Details"
-msgstr ""
+msgstr "Detalhes das variáveis do Ansible"
 
 msgid "Ansible Variable Details (Imported)"
-msgstr ""
+msgstr "Detalhes das variáveis do Ansible (importadas)"
 
 msgid "Ansible Variable not found by id: %s"
-msgstr ""
+msgstr "Variável possível não encontrada por id: %s"
 
 msgid "Ansible Variables"
-msgstr ""
+msgstr "Variáveis do Ansible"
 
 msgid "Ansible check mode"
-msgstr ""
+msgstr "Modo de verificação possível"
 
 msgid "Ansible job was successfully canceled."
-msgstr ""
+msgstr "Um possível trabalho foi cancelado com sucesso."
 
 msgid "Ansible job was successfully created."
-msgstr ""
+msgstr "Um trabalho possível foi criado com sucesso."
 
 msgid "Ansible provider specific inputs"
-msgstr ""
+msgstr "Insumos específicos de fornecedores possíveis"
 
 msgid "Ansible report timeout"
-msgstr ""
+msgstr "Limite de tempo do relatório do Ansible"
 
 msgid "Ansible role"
-msgstr ""
+msgstr "Função do Ansible"
 
 msgid "Ansible role names to be imported"
-msgstr ""
+msgstr "Nomes possíveis de papéis a serem importados"
 
 msgid "Ansible role names to be synced"
-msgstr ""
+msgstr "Nomes possíveis de papéis a serem sincronizados"
 
 msgid "Ansible roles assigned directly to host"
-msgstr ""
+msgstr "Possíveis funções atribuídas diretamente ao anfitrião"
 
 msgid "Ansible roles to assign to a host"
-msgstr ""
+msgstr "Funções do Ansible para atribuir a um host"
 
 msgid "Ansible roles to assign to a hostgroup"
-msgstr ""
+msgstr "Funções do Ansible para atribuir a um grupo de hosts"
 
 msgid "Ansible roles to ignore"
-msgstr ""
+msgstr "Possíveis papéis a ignorar"
 
 msgid "Ansible support in Foreman"
-msgstr ""
+msgstr "Suporte do Ansible no Foreman"
 
 msgid "Ansible variable override successfully changed."
-msgstr ""
+msgstr "A substituição de variável possível foi alterada com sucesso."
 
 msgid "Ansible variable override was successfully deleted."
-msgstr ""
+msgstr "Uma possível substituição de variável foi eliminada com sucesso."
 
 msgid "Ansible: Run Insights maintenance plan"
-msgstr ""
+msgstr "Ansible: executar plano de manutenção de insights"
 
 msgid "Are you sure you want to cancel Ansible config job?"
-msgstr ""
+msgstr "Você tem certeza de que quer cancelar o trabalho de configuração de Ansible config?"
 
 msgid "Are you sure you want to delete override for %s?"
-msgstr ""
+msgstr "Você tem certeza de que deseja excluir a substituição para %s?"
 
-msgid "Assign Ansible roles"
+msgid "Assign roles directly to the host"
 msgstr ""
 
 msgid "Assigned Ansible Roles"
-msgstr ""
+msgstr "Atribuição de funções possíveis"
 
 msgid "Assigns Ansible roles to a host"
-msgstr ""
+msgstr "Atribui funções do Ansible a um host"
 
 msgid "Assigns Ansible roles to a hostgroup"
-msgstr ""
+msgstr "Atribui funções do Ansible a um grupo de hosts"
 
 msgid "Available Ansible Roles"
-msgstr ""
+msgstr "Funções possíveis disponíveis"
 
 msgid "Available Ansible roles"
-msgstr ""
+msgstr "Disponíveis Funções possíveis"
 
 msgid "Avoid duplicate values when merging them (only array type)?"
-msgstr ""
+msgstr "Evitar valores duplicados quando mesclando-os (somente tipo de matriz)?"
 
 msgid "Before including these variables on your playbooks, Foreman will validate that your variables comply with the validation."
-msgstr ""
+msgstr "Antes de incluir essas variáveis nos playbooks, o Foreman verificará se elas estão em conformidade com a validação."
 
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 msgid "Cancel Ansible config job"
-msgstr ""
+msgstr "Cancelar trabalho de configuração possível"
 
 msgid "Changed Ansible roles"
-msgstr ""
-
-msgid "Clone"
-msgstr ""
+msgstr "Funções do Ansible alteradas"
 
 msgid "Close"
-msgstr ""
-
-msgid "Configure Ansible Job"
-msgstr ""
+msgstr "Fechar"
 
 msgid "Configure Recurring Job"
-msgstr ""
+msgstr "Configurar Trabalho Recorrente"
 
 msgid "Confirm"
-msgstr ""
+msgstr "Confirmar"
 
 msgid "Connection type"
-msgstr ""
+msgstr "Tipo de conexão"
 
 msgid "Continue to look for matches after first find (only array/hash type)? Note: merging overrides ignores all matchers that are omitted."
-msgstr ""
+msgstr "Continuar a buscar correspondências após o primeiro resultado (somente tipo matriz/hash)? Observação: mesclar substituições ignora todas as correspondências que são omitidas."
 
 msgid "Could not run Ansible roles for %{host}"
-msgstr ""
+msgstr "Não foi possível executar as funções do Ansible para %{host}"
 
 msgid "Create Ansible Variable"
-msgstr ""
+msgstr "Criar uma variável do Ansible"
 
 msgid "Create Ansible variable"
-msgstr ""
+msgstr "Criar uma variável do Ansible"
 
 msgid "Create an override value for a specific ansible variable"
-msgstr ""
+msgstr "Criar um valor de substituição para uma variável específica do Ansible"
 
 msgid "DEPRECATED: Import Ansible roles"
-msgstr ""
+msgstr "DEPRECADO: Importação Funções possíveis"
 
 msgid "DEPRECATED: Import Ansible variables. This will only import variables for already existing roles, it will not import any new roles"
-msgstr ""
+msgstr "Importar variáveis do Ansible. Isso importará apenas variáveis para funções já existentes, não importará nenhuma função nova"
 
 msgid "DEPRECATED: Obsolete Ansible roles"
-msgstr ""
+msgstr "DEPRECADO: Obsoleto Funções possíveis"
 
 msgid "DEPRECATED: Obsolete Ansible variables. This will only obsolete variables for already existing roles, it will not delete any old roles"
-msgstr ""
+msgstr "Tornar obsoletas variáveis do Ansible. Isso tornará obsoletas apenas variáveis para funções já existentes, não excluirá nenhuma função antiga"
 
 msgid "Default Ansible inventory report template"
-msgstr ""
+msgstr "Template padrão de relatório de inventário do Ansible"
 
 msgid "Default Behavior"
-msgstr ""
+msgstr "Comportamento do parâmetro"
 
 msgid "Default value"
-msgstr ""
+msgstr "Valor padrão"
 
 msgid "Default value of variable"
-msgstr ""
+msgstr "Valor padrão da variável"
 
 msgid "Default verbosity level"
-msgstr ""
+msgstr "Nível do padrão de detalhamento"
 
 msgid "Delete"
-msgstr ""
+msgstr "Excluir"
 
 msgid "Delete %s?"
-msgstr ""
+msgstr "Excluir"
 
 msgid "Delete Ansible variable override"
-msgstr ""
+msgstr "Excluir Ansible variable override"
 
 msgid "Deletes Ansible role"
-msgstr ""
+msgstr "Excluir função do Ansible"
 
 msgid "Deletes Ansible variable"
-msgstr ""
+msgstr "Exclui variável do Ansible"
 
 msgid "Description"
-msgstr ""
+msgstr "Descrição"
 
 msgid "Description of variable"
-msgstr ""
+msgstr "Descrição da variável"
 
 msgid "Destroy an override value"
-msgstr ""
+msgstr "Destruir um valor de substituição"
 
 msgid "Directly assigned to Host"
-msgstr ""
+msgstr "Diretamente designado ao Host"
 
 msgid "Disable host configuration status turning to out of sync for %{cfgmgmt} after report does not arrive within configured interval"
-msgstr ""
+msgstr "Desabilitar o status de configuração do host para que fique fora de sincronização para %s depois que o relatório não chegar no intervalo configurado"
 
 msgid "Disabled"
-msgstr ""
+msgstr "Desativado"
 
 msgid "Edit %s"
-msgstr ""
+msgstr "Editar"
 
 msgid "Edit Ansible Roles"
-msgstr ""
+msgstr "Listar regras do Ansible"
 
 msgid "Edit Ansible Variable"
-msgstr ""
+msgstr "Editar variável do Ansible"
 
 msgid "Edit Ansible roles"
-msgstr ""
+msgstr "Listar regras do Ansible"
 
 msgid "Enable web console"
-msgstr ""
+msgstr "Habilitar console web"
 
 msgid "Enable/disable WinRM server certificate validation when running Ansible playbooks. You can override this on hosts by adding a parameter \"ansible_winrm_server_cert_validation\""
-msgstr ""
+msgstr "Ativar/desativar a validação do certificado do servidor WinRM ao executar playbooks do Ansible. Você pode substituir isso em hosts adicionando um parâmetro \"ansible_winrm_server_cert_validation\"."
 
 msgid "Error!"
-msgstr ""
+msgstr "Erro!"
 
 msgid "Executed at"
-msgstr ""
+msgstr "Executado em"
 
 msgid "Failed to import roles and variables "
-msgstr ""
+msgstr "Falha na importação de papéis e variáveis "
 
 msgid "Fetch Ansible playbooks available to be synced"
-msgstr ""
+msgstr "Buscar Livros didáticos possíveis a serem sincronizados"
 
 msgid "Fetch Ansible roles available to be synced"
+msgstr "Buscar funções do Ansible disponíveis a serem importadas"
+
+msgid "For more advanced scheduling options"
 msgstr ""
 
 msgid "Foreman"
-msgstr ""
+msgstr "Foreman"
 
 msgid "Foreman will add this level of verbosity for additional debugging output when running Ansible playbooks."
-msgstr ""
+msgstr "O Foreman adicionará esse nível de detalhamento para uma saída de depuração adicional ao executar os playbooks do Ansible."
 
 msgid "Foreman will use this template to schedule the report with Ansible inventory"
-msgstr ""
+msgstr "O Foreman usará esse template para agendar o relatório com o inventário do Ansible"
 
 msgid "Hash of input values of type input=>value"
-msgstr ""
+msgstr "Hash de valores de entrada do tipo input=>value"
 
 msgid "Hidden Value"
-msgstr ""
+msgstr "Valor oculto"
 
 msgid "Hide all values for this parameter."
-msgstr ""
+msgstr "Ocultar todos os valores para este parâmetro."
 
 msgid "Host assigned Ansible roles"
-msgstr ""
+msgstr "Anfitrião designado Funções possíveis"
 
 msgid "Host group has no associated hosts"
-msgstr ""
+msgstr "O grupo de hosts não tem hosts associados a ele"
 
 msgid "Host not found by id: %s"
-msgstr ""
+msgstr "Hospedeiro não encontrado por identificação: %s"
 
 msgid "Hostgroups"
-msgstr ""
+msgstr "Grupos de hosts"
 
 msgid "Hosts"
-msgstr ""
+msgstr "Hosts"
 
 msgid "IDs of associated ansible roles"
-msgstr ""
+msgstr "IDs das funções do Ansible associadas"
 
 msgid "IDs of hostgroups included in inventory"
-msgstr ""
+msgstr "IDs de grupos de hosts incluídos no inventário"
 
 msgid "IDs of hostgroups to play roles on"
-msgstr ""
+msgstr "IDs de grupos de hosts nas quais executar funções"
 
 msgid "IDs of hosts included in inventory"
-msgstr ""
+msgstr "IDs de hosts incluídos no inventário"
 
 msgid "IDs of hosts to play roles on"
-msgstr ""
+msgstr "IDs dos hosts nos quais executar funções"
 
 msgid "If checked, will raise an error if there is no default value and no matcher provide a value."
-msgstr ""
+msgstr "Se verificado, surgirá um erro caso não haja valor padrão e nenhum coincidente fornecer um valor."
 
 msgid "Import"
-msgstr ""
+msgstr "Importar"
 
 msgid "Import Puppet classes"
-msgstr ""
+msgstr "Importar classes de Puppet"
 
 msgid "Import Role"
-msgstr ""
+msgstr "Papel da importação"
 
 msgid "Import facts"
-msgstr ""
+msgstr "Importar fatos"
 
 msgid "Import from %s"
-msgstr ""
+msgstr "Importar de %s"
 
 msgid "Import playbooks has finished successfully"
-msgstr ""
+msgstr "A importação de livros didáticos foi concluída com sucesso"
 
 msgid "Import roles And Variables"
-msgstr ""
+msgstr "Papéis e variáveis de importação"
 
 msgid "Import roles and variables has finished successfully"
-msgstr ""
+msgstr "As funções e variáveis de importação terminaram com sucesso"
 
 msgid "Import roles and variables started: "
-msgstr ""
+msgstr "Início das funções e variáveis de importação: "
 
 msgid "Imported at"
-msgstr ""
+msgstr "Importado em"
 
 msgid "Imported?"
-msgstr ""
+msgstr "Importado?"
 
 msgid "Include default value when merging all matching values"
-msgstr ""
+msgstr "Incluir valor padrão quando mesclando todos os valores correspondentes "
 
 msgid "Include default value when merging all matching values."
-msgstr ""
+msgstr "Incluir valor padrão quando mesclando todos os valores correspondentes."
 
 msgid "Include/Exclude Tags"
-msgstr ""
+msgstr "Incluir/Excluir Tags"
 
 msgid "Include\\Exclude tags for Ansible run"
-msgstr ""
+msgstr "Incluir\\Excluir tags para execução possível"
 
 msgid "Inherited from Hostgroup"
-msgstr ""
+msgstr "Herdado do Hostgroup"
 
 msgid "Insights remediation on %{hosts_count} host(s) has finished successfully"
-msgstr ""
+msgstr "A remediação de insights no(s) host(s) %{hosts_count} foi concluída com êxito"
 
 msgid "Invalid, expected one of: %s"
-msgstr ""
+msgstr "Inválido, espera-se um dos: %s"
 
 msgid "Invalid, expected to match a regex: %s"
-msgstr ""
+msgstr "Inválido, esperado corresponder a um regex: %s"
 
 msgid "Inventory"
-msgstr ""
+msgstr "Inventário"
 
 msgid "Job Details"
-msgstr ""
+msgstr "Detalhes do trabalho"
 
 msgid "Jobs"
-msgstr ""
+msgstr "Trabalhos"
 
 msgid "Learn more about this in the documentation."
-msgstr ""
+msgstr "Para saber mais sobre isto, acesse a documentação."
 
 msgid "Level"
-msgstr ""
+msgstr "Nível"
 
 msgid "Level 1 (-v)"
-msgstr ""
+msgstr "Nível 1 (-v)"
 
 msgid "Level 2 (-vv)"
-msgstr ""
+msgstr "Nível 2 (-vv)"
 
 msgid "Level 3 (-vvv)"
-msgstr ""
+msgstr "Nível 3 (-vvv)"
 
 msgid "Level 4 (-vvvv)"
-msgstr ""
+msgstr "Nível 4 (-vvvv)"
 
 msgid "List Ansible roles"
-msgstr ""
+msgstr "Listar regras do Ansible"
 
 msgid "List Ansible variables"
-msgstr ""
+msgstr "Listar variáveis do Ansible"
 
 msgid "List all Ansible roles for a host"
-msgstr ""
+msgstr "Lista de todas as funções do Ansible para um host"
 
 msgid "List all Ansible roles for a hostgroup"
-msgstr ""
+msgstr "Lista de todas as funções do Ansible para um grupo de hosts"
 
 msgid "Mark the variable to be managed by Foreman. When the Ansible role of this variable is assigned to a host, the default value will be added to Ansible inventory as a host variable. Specify matchers to set a different value for such variable."
-msgstr ""
+msgstr "Marque a variável a ser gerenciada pelo Foreman. Quando a função do Ansible dessa variável estiver atribuída a um host, o valor padrão será adicionado ao inventário do Ansible como uma variável de host. Especifique as correspondências para definir um valor diferente para essa variável."
 
 msgid "Merge all matching values (only array/hash type)"
-msgstr ""
+msgstr "Mesclar todos os valores correspondentes (somente tipo de hash/ matriz)"
 
 msgid "Message"
-msgstr ""
+msgstr "Mensagem"
 
 msgid "Must not be in the past"
-msgstr ""
+msgstr "Não deve estar no passado"
 
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 msgid "Name of variable"
-msgstr ""
-
-msgid "Nest"
-msgstr ""
+msgstr "Nome da variável"
 
 msgid "New Ansible Variable"
-msgstr ""
+msgstr "Nova variável do Ansible"
 
 msgid "Next Run"
-msgstr ""
+msgstr "Próxima execução"
 
 msgid ""
 "No Ansible Roles were found in Foreman. If you want to assign roles to your hosts,\n"
 "             you have to import them first."
 msgstr ""
+"Nenhuma função do Ansible foi encontrada no Foreman. Se desejar atribuir funções a seus hosts,\n"
+"             importe-as primeiro."
 
 msgid "No Ansible roles assigned"
-msgstr ""
+msgstr "Nenhum papel possível atribuído"
 
 msgid "No Ansible variables found for Host"
-msgstr ""
+msgstr "Não foram encontradas variáveis possíveis para o Host"
 
 msgid "No added or removed roles nor variables detected on %s."
-msgstr ""
+msgstr "Nenhum papel adicionado ou removido nem variáveis detectadas em %s."
 
 msgid "No added or removed roles nor variables."
-msgstr ""
+msgstr "Nenhum papel adicionado ou removido, nem variáveis."
 
 msgid "No additional data"
-msgstr ""
+msgstr "Sem dados adicionais"
 
 msgid "No changes detected in specified Ansible Roles and their variables"
-msgstr ""
+msgstr "Nenhuma mudança detectada em funções possíveis especificadas e suas variáveis"
 
 msgid "No changes in variables detected on %s."
-msgstr ""
+msgstr "Nenhuma alteração em variáveis detectada em %s."
 
 msgid "No config job for Ansible roles scheduled"
-msgstr ""
+msgstr "Nenhum trabalho de configuração para funções possíveis programadas"
 
 msgid "No previous job executions found"
-msgstr ""
+msgstr "Não foram encontradas execuções de trabalhos anteriores"
 
 msgid "No proxy found to import variables from, ensure that the smart proxy has the Ansible feature enabled."
+msgstr "Não foi encontrado nenhum proxy para importar variáveis, certifique-se de que o proxy inteligente tenha o recurso Ansible habilitado."
+
+msgid "No roles assigned directly to the host"
 msgstr ""
 
 msgid "Nothing Found!"
-msgstr ""
+msgstr "Nada Encontrado!"
 
 msgid "Nothing to show"
-msgstr ""
+msgstr "Nada para exibir"
 
 msgid "Notice that ansible roles run in check mode."
-msgstr ""
+msgstr "Observe que as funções possíveis são executadas em modo de verificação."
 
 msgid "Number of tasks which should be sent to the smart proxy in one request, if foreman_tasks_proxy_batch_trigger is enabled. If set, overrides foreman_tasks_proxy_batch_size setting for Ansible jobs."
-msgstr ""
+msgstr "Número de tarefas que devem ser enviadas ao procurador inteligente em uma solicitação, se o acionador de tarefas do capataz estiver habilitado. Se definido, anula a configuração de tamanho do foreman_tasks_proxy_batch_size para trabalhos Ansible."
 
 msgid "Only variables marked to Override are shown here."
-msgstr ""
+msgstr "Somente variáveis marcadas para Substituir são mostradas aqui."
 
 msgid "Optional Input Validator"
-msgstr ""
+msgstr "Validador de entrada opcional"
 
 msgid "Order"
-msgstr ""
+msgstr "Ordem"
 
 msgid "Override match"
-msgstr ""
+msgstr "perfeita substituição"
 
 msgid "Override the default value of the Ansible variable."
-msgstr ""
+msgstr "Substitua o valor padrão da variável do Ansible."
 
 msgid "Override value, required if omit is false"
-msgstr ""
+msgstr "Valor de substituição, necessário se omitir for falso"
 
 msgid "Overriden"
-msgstr ""
+msgstr "Substituído"
 
 msgid "Permission Denied"
-msgstr ""
+msgstr "Permissão recusada"
 
 msgid "Permission denied"
-msgstr ""
+msgstr "Permissão recusada"
 
 msgid "Playbooks"
-msgstr ""
+msgstr "Livros didáticos"
 
 msgid "Please request one of the required permissions listed below from a Foreman administrator:"
-msgstr ""
+msgstr "Por favor, solicite uma das permissões necessárias listadas abaixo através de um administrador Foreman:"
 
 msgid "Post-provision timeout"
-msgstr ""
-
-msgid "Preupgrade job"
-msgstr ""
+msgstr "Tempo limite pós-provisão"
 
 msgid "Previously executed jobs"
-msgstr ""
+msgstr "Trabalhos executados anteriormente"
 
 msgid "Prioritize Attribute Order"
-msgstr ""
+msgstr "Priorizar ordem de atributos "
 
 msgid "Private Key Path"
-msgstr ""
+msgstr "Caminho da chave privada"
 
 msgid "Proxy not found"
-msgstr ""
+msgstr "Proxy não encontrado"
 
 msgid "Proxy tasks batch size for Ansible"
-msgstr ""
+msgstr "Tarefas de Proxy Tamanho do lote para Ansible"
 
 msgid "Remediation Plan"
-msgstr ""
+msgstr "Plano de remediação"
 
 msgid "Remote action:"
-msgstr ""
+msgstr "Ação remota:"
 
 msgid "Remove"
-msgstr ""
+msgstr "Remover"
 
 msgid "Remove Role"
-msgstr ""
+msgstr "Remover o papel"
 
 msgid "Remove all"
-msgstr ""
+msgstr "Remover tudo"
 
 msgid "Remove duplicate values (only array type)"
-msgstr ""
+msgstr "Remover valores duplicados (somente tipo de matriz)"
 
 msgid "Remove selected"
-msgstr ""
+msgstr "Remover selecionados"
 
 msgid "Report format, defaults to '%s'"
-msgstr ""
+msgstr "Formato do relatório, o padrão é '%s'"
 
 msgid "Request the following permissions from administrator: %s."
+msgstr "Solicite as seguintes permissões ao administrador: %s."
+
+msgid "Required field"
 msgstr ""
 
 msgid "Result"
-msgstr ""
+msgstr "Resultado"
 
 msgid "Role ID"
-msgstr ""
+msgstr "ID da função"
 
 msgid "Roles"
-msgstr ""
+msgstr "Papéis"
 
 msgid "Role|Name"
-msgstr ""
+msgstr "Nome"
 
 msgid "Run Ansible roles"
-msgstr ""
+msgstr "Executar funções do Ansible"
 
 msgid "Run all Ansible roles"
-msgstr ""
+msgstr "Executar todas as funções do Ansible"
 
 msgid "Run all Ansible roles on hosts belonging to this host group"
-msgstr ""
+msgstr "Executar todas as funções do Ansible em hosts pertencentes a este grupo de hosts"
 
 msgid "Run an Ansible playbook against given hosts"
-msgstr ""
+msgstr "Executar um playbook do Ansible em determinados hosts"
 
 msgid "Run an Ansible playbook to enable web console on given hosts"
-msgstr ""
+msgstr "Execute um livro de reprodução possível para habilitar o console web em determinados hosts"
 
 msgid "Run playbook"
-msgstr ""
+msgstr "Executar playbook"
 
 msgid "Runs a given maintenance plan from Red Hat Access Insights given an ID."
-msgstr ""
+msgstr "Executa um determinado plano de manutenção a partir do Red Hat Access Insights dada uma ID."
 
 msgid "Runs all Ansible roles on a host"
-msgstr ""
+msgstr "Executa todas as funções do Ansible em um host"
 
 msgid "Runs all Ansible roles on a hostgroup"
-msgstr ""
+msgstr "Executa todas as funções do Ansible em um grupo de hosts"
 
 msgid "Runs all Ansible roles on hostgroups"
-msgstr ""
+msgstr "Executa todas as funções do Ansible em grupos de hosts"
 
 msgid "Runs all Ansible roles on hosts"
-msgstr ""
+msgstr "Executa todas as funções do Ansible em hosts"
 
 msgid "Runs an Ansible playbook which contains all the roles defined for a host"
-msgstr ""
+msgstr "Executa um playbook do Ansible que contém todas as funções definidas por um host"
 
 msgid "Schedule"
-msgstr ""
+msgstr "Agendamento"
 
 msgid "Schedule generating of Ansible Inventory report"
+msgstr "Agendar geração de relatório de inventário do Ansible"
+
+msgid "Schedule recurring Ansible roles job"
 msgstr ""
 
 msgid "Schedule recurring job"
-msgstr ""
+msgstr "Programação de trabalhos recorrentes"
 
 msgid "Scheduled recurring jobs"
-msgstr ""
+msgstr "Trabalhos recorrentes programados"
 
 msgid "Set the order in which values are resolved."
-msgstr ""
+msgstr "Definir a ordem em que os valores serão resolvidos. "
 
 msgid "Show Ansible inventory for hostgroups"
-msgstr ""
+msgstr "Exibir inventário do Ansible para os grupos de hosts"
 
 msgid "Show Ansible inventory for hosts"
-msgstr ""
+msgstr "Exibir inventário do Ansible para os hosts"
 
 msgid "Show role"
-msgstr ""
+msgstr "Mostrar função"
 
 msgid "Show variable"
-msgstr ""
+msgstr "Exibir variável"
 
 msgid "Smart Proxy to fetch from"
-msgstr ""
+msgstr "Proxy inteligente a partir do qual buscar"
 
 msgid "Smart Proxy to import from"
-msgstr ""
+msgstr "Proxy inteligente a partir do qual importar"
 
 msgid "Smart Proxy to sync from"
-msgstr ""
+msgstr "Smart Proxy para sincronização a partir de"
 
 msgid "Smart proxy id is required"
-msgstr ""
+msgstr "É necessária a ID de proxy inteligente"
 
 msgid "Source"
-msgstr ""
+msgstr "Origem"
 
 msgid "Source attribute"
-msgstr ""
+msgstr "Atributo da fonte"
 
 msgid "Specify Matchers"
-msgstr ""
+msgstr "Especificar correspondências "
 
 msgid "State"
-msgstr ""
+msgstr "Estado"
 
 msgid "Submit"
-msgstr ""
+msgstr "Enviar"
 
 msgid "Sync Ansible playbooks"
-msgstr ""
+msgstr "Sync Ansible playbooks"
 
 msgid "Sync Ansible roles"
-msgstr ""
+msgstr "Sincronização Funções possíveis"
 
 msgid "Tags"
-msgstr ""
+msgstr "Tags"
 
 msgid "Task"
-msgstr ""
+msgstr "Tarefa"
 
 msgid "Task Details"
-msgstr ""
+msgstr "Detalhes da tarefa"
 
 msgid "The order in which matchers keys are processed, first match wins.<br> You may use multiple attributes as a matcher key, for example, an order of <code>host group, environment</code> would expect a matcher such as <code>hostgroup = \"web servers\", environment = production</code>"
-msgstr ""
+msgstr "A ordem em que as chaves de correspondência são processadas​​, a primeira combinação vence. <br> Você pode usar vários atributos como uma chave de correspondência, por exemplo, uma ordem de <code> grupo de host, ambiente </code>  esperaria uma correspondência como <code>hostgroup = \"web servers\", environment = production</code>."
 
 msgid "The order in which values are resolved"
-msgstr ""
+msgstr "A ordem na qual os valores são resolvidos"
 
 msgid "There are no Ansible roles to play"
-msgstr ""
+msgstr "Não há funções do Ansible a serem executadas"
 
 msgid "There was a following error when assigning Ansible Roles: %s"
-msgstr ""
+msgstr "Houve um erro seguinte na atribuição de funções possíveis: %s"
 
 msgid "There was a following error when changing Ansible variable override: %s"
-msgstr ""
+msgstr "Houve um erro seguinte ao alterar o Ansible variable override: %s"
 
 msgid "There was a following error when creating Ansible job: %s"
-msgstr ""
+msgstr "Houve um erro seguinte ao criar um Trabalho Possível: %s"
 
 msgid "There was a following error when deleting Ansible config job: %s"
-msgstr ""
+msgstr "Houve um erro seguinte ao excluir o trabalho de configuração do Ansible config: %s"
 
 msgid "There was a following error when deleting Ansible variable override: %s"
-msgstr ""
+msgstr "Houve um erro seguinte ao apagar o Ansible variable override: %s"
 
 msgid "This Ansible role is inherited from host group"
-msgstr ""
+msgstr "Este papel possível é herdado do grupo anfitrião"
 
 msgid "This Ansible role is inherited from parent host group"
+msgstr "Este papel possível é herdado do grupo anfitrião dos pais"
+
+msgid "This job will run all the assigned Ansible roles."
 msgstr ""
 
-msgid "This list consists of host assigned roles and group assigned roles. Group assigned roles will always be executed prior to host assigned roles"
+msgid "This list consists of host assigned roles and group assigned roles. Group assigned roles will always be executed prior to host assigned roles."
 msgstr ""
 
 msgid "Those roles will be excluded when importing roles from smart proxy, The expected input is comma separated values and you can use * wildcard metacharactersFor example: foo*, *b*,*bar"
-msgstr ""
+msgstr "Essas funções serão excluídas ao importar funções de proxy inteligente, A entrada esperada é valores separados por vírgula e você pode usar * metacaracteres wildcard Por exemplo: foo*, *b*,*bar"
 
 msgid "Timeout (in minutes) when hosts should have reported."
-msgstr ""
+msgstr "Limite de tempo (em minutos) em que os hosts devem ser reportados."
 
 msgid "Timeout (in seconds) to set when Foreman will trigger a play Ansible roles task after a host is fully provisioned. Set this to the maximum time you expect a host to take until it is ready after a reboot."
-msgstr ""
+msgstr "Tempo limite (em segundos) para definir quando o Foreman acionará a tarefa de funções do Ansible depois que um host é totalmente provisionado. Defina isso para o tempo máximo que você espera que um host leve até estar pronto após uma reinicialização."
 
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 msgid "Types of validation values"
-msgstr ""
+msgstr "Tipos de valores de validação"
 
 msgid "Types of variable values"
-msgstr ""
+msgstr "Tipos de valores de validação"
 
 msgid "Unable to get playbook's names from Ansible"
-msgstr ""
+msgstr "Incapaz de obter os nomes dos livros de brincar de Ansible"
 
 msgid "Unable to get playbooks from Ansible"
-msgstr ""
+msgstr "Incapaz de obter livros de leitura do Ansible"
 
 msgid "Unable to get roles from Ansible"
-msgstr ""
+msgstr "Não foi possível obter funções do Ansible"
 
 msgid "Unable to get roles/variables from Ansible"
-msgstr ""
+msgstr "Não foi possível obter funções/variáveis do Ansible"
 
 msgid "Update"
-msgstr ""
+msgstr "Atualizar"
 
 msgid "Update Role Variables"
+msgstr "Atualização de variáveis de função"
+
+msgid "Update Smart Proxy"
 msgstr ""
 
 msgid "Updates Ansible variable"
+msgstr "Atualiza a variável do Ansible"
+
+msgid "Upgrade"
 msgstr ""
 
 msgid "Upgrade Capsules on given Capsule server hosts"
-msgstr ""
+msgstr "Atualização de cápsulas em determinados hosts de servidor de cápsulas"
 
 msgid "Upgrade Capsules on given hosts"
-msgstr ""
+msgstr "Atualização de cápsulas em determinados anfitriões"
 
 msgid "Use drag and drop to change order of the roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly"
-msgstr ""
+msgstr "Use arrastar e soltar para mudar a ordem dos papéis. A ordenação dos papéis é respeitada para as corridas possíveis, os papéis herdados são sempre anteriores aos atribuídos diretamente."
 
 msgid "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled"
-msgstr ""
+msgstr "Use a sincronização em vez disso, para sincronizar papéis do Smart Proxy com o recurso Ansible habilitado"
 
 msgid "Use this connection type by default when running Ansible playbooks. You can override this on hosts by adding a parameter \"ansible_connection\""
-msgstr ""
+msgstr "Use esse tipo de conexão por padrão ao executar playbooks do Ansible. Você pode substituir isso em hosts adicionando um parâmetro \"ansible_connection\"."
 
 msgid "Use this to supply a path to an SSH Private Key that Ansible will use in lieu of a password Override with \"ansible_ssh_private_key_file\" host parameter"
-msgstr ""
+msgstr "Use isso para fornecer um caminho para uma chave privada de SSH que o Ansible usará no lugar de uma senha de substituição com o parâmetro de host \"ansible_ssh_private_key_file\""
 
 msgid "Used to enforce certain values for the parameter values"
-msgstr ""
+msgstr "Usado para impor certos valores aos valores do parâmetro "
 
 msgid "Value"
-msgstr ""
+msgstr "Valor"
 
 msgid "Value to use when there is no match."
-msgstr ""
+msgstr "Valor a ser usado quando não há correspondências. "
 
 msgid "Variables"
-msgstr ""
+msgstr "Variáveis"
 
 msgid "Variable|Name"
-msgstr ""
+msgstr "Variável|Nome"
 
 msgid "Variable|Role"
+msgstr "Variável|Função"
+
+msgid "View inherited roles"
 msgstr ""
 
 msgid "When enabled the parameter is hidden in the UI"
-msgstr ""
+msgstr "Quando habilitado, o parâmetro fica oculto na IU "
 
 msgid "Whether to override variable or not"
-msgstr ""
+msgstr "Se a variável deve ou não ser substituída"
 
 msgid "WinRM cert Validation"
-msgstr ""
+msgstr "Validação de certificado WinRM"
 
 msgid "You are not authorized to perform this action."
-msgstr ""
+msgstr "Você não está autorizado a executar essa ação."
 
 msgid "You are not authorized to view the page. "
-msgstr ""
-
-msgid "can't be blank"
-msgstr ""
+msgstr "Você não está autorizado a ver a página. "
 
 msgid "daily"
-msgstr ""
+msgstr "Diário"
 
 msgid "false"
-msgstr ""
+msgstr "false"
 
 msgid "hourly"
-msgstr ""
+msgstr "de hora em hora"
 
 msgid "is required"
-msgstr ""
+msgstr "é necessário"
 
 msgid "monthly"
-msgstr ""
+msgstr "Mensal"
 
 msgid "true"
-msgstr ""
+msgstr "verdadeiro"
 
 msgid "view all assigned roles"
+msgstr "ver todas as funções atribuídas"
+
+msgid "view remote execution page."
 msgstr ""
 
 msgid "view the task in progress"
-msgstr ""
+msgstr "ver a tarefa em andamento"
 
 msgid "weekly"
-msgstr ""
+msgstr "Semanal"
