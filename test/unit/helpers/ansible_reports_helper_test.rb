@@ -19,4 +19,18 @@ ANSIBLELOG
       ansible_module_message(log).to_s
     )
   end
+
+  test 'module message extraction with error' do
+    log_value = <<-ANSIBLELOG.strip_heredoc
+    {"msg": "AnsibleUndefinedVariable", "changed": false, "_ansible_no_log": false, "failed": true, "module": "template", "exception": "raise AnsibleUndefinedVariable"}
+ANSIBLELOG
+    message = FactoryBot.build(:message, value: log_value)
+    log = FactoryBot.build(:log, message: message)
+    log.message = message
+
+    assert_match(
+      'Execution error: AnsibleUndefinedVariable',
+      ansible_module_message(log).to_s
+    )
+  end
 end

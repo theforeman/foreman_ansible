@@ -27,6 +27,8 @@ module ForemanAnsible
 
     def ansible_module_message(log)
       msg_json = parsed_message_json(log)
+      return _("Execution error: #{msg_json['msg']}") if msg_json['failed'].present?
+
       module_action = msg_json['module']
       case module_action
       when 'package'
@@ -65,6 +67,17 @@ module ForemanAnsible
       module_name(log).present?
     rescue StandardError
       false
+    end
+
+    def show_full_error_message_value(message_value)
+      tag.div class: 'replace-hidden-value' do
+        link_to_function(icon_text('plus', '', class: 'small'), 'replace_value_control(this, "div")',
+                         title: _('Show full value'),
+                         class: 'replace-hidden-value pull-right') +
+          (tag.span class: 'full-value' do
+            message_value
+          end)
+      end
     end
 
     private

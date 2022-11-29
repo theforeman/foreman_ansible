@@ -29,8 +29,12 @@
                 <% end %>
               </ul>
             <% else %>
-              <%= log_message %>
-          <% end %>
+              <% allowed_length = 150 %>
+              <div class='pull-left'>
+                <%= truncate(log_message, length: allowed_length) %>
+              </div>
+              <%= show_full_error_message_value(log_message) if log_message.length > allowed_length %>
+            <% end %>
           </td>
         </tr>
       <% end %>
