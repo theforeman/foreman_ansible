@@ -6,13 +6,14 @@
 # make tx-update - download and merge translations from Transifex
 # make clean - clean everything
 #
-DOMAIN = foreman_ansible
-VERSION = $(shell ruby -e 'require "rubygems";spec = Gem::Specification::load(Dir.glob("../*.gemspec")[0]);puts spec.version')
+DOMAIN = $(shell ruby -rrubygems -e 'puts Gem::Specification::load(Dir.glob("../*.gemspec")[0]).name')
+VERSION = $(shell ruby -rrubygems -e 'puts Gem::Specification::load(Dir.glob("../*.gemspec")[0]).version')
 POTFILE = $(DOMAIN).pot
 MOFILE = $(DOMAIN).mo
-POFILES = $(shell find . -name '*.po')
+POFILES = $(shell find . -name '$(DOMAIN).po')
 MOFILES = $(patsubst %.po,%.mo,$(POFILES))
 POXFILES = $(patsubst %.po,%.pox,$(POFILES))
+EDITFILES = $(patsubst %.po,%.edit.po,$(POFILES))
 
 %.mo: %.po
 	mkdir -p $(shell dirname $@)/LC_MESSAGES
@@ -29,14 +30,10 @@ all-mo: $(MOFILES)
 	cat $@
 	! grep -q msgid $@
 
-check: $(POXFILES)
-	msgfmt -c ${POTFILE}
+%.edit.po:
+	touch $@
 
-# Merge PO files
-update-po:
-	for f in $(shell find ./ -name "*.po") ; do \
-		msgmerge -N --backup=none -U $$f ${POTFILE} ; \
-	done
+check: $(POXFILES)
 
 # Unify duplicate translations
 uniq-po:
@@ -44,24 +41,23 @@ uniq-po:
 		msguniq $$f -o $$f ; \
 	done
 
-tx-pull:
+tx-new:
+	tx pull --minimum-perc 50 --all
+
+tx-pull: tx-new $(EDITFILES)
 	tx pull -f
-	for f in $(POFILES) ; do \
+	for f in $(EDITFILES) ; do \
 		sed -i 's/^\("Project-Id-Version: \).*$$/\1$(DOMAIN) $(VERSION)\\n"/' $$f; \
 	done
-	-git commit -a -m "i18n - pulling from tx"
 
-reset-po:
-	# merging po files is unnecessary when using transifex.com
-	git checkout -- ../locale/*/*po
+tx-update: tx-pull
+	@echo
+	@echo Run rake plugin:gettext[$(DOMAIN)] from the Foreman installation, then make -C locale mo-files to finish
+	@echo
 
-tx-update: tx-pull reset-po $(MOFILES)
-	# amend mo files
-	git add ../locale/*/LC_MESSAGES
-	git commit -a --amend -m "i18n - pulling from tx"
-	-echo Changes commited!
+build-mo-files: $(MOFILES)
 
-mo-files: $(MOFILES)
+mo-files: build-mo-files
 	git add $(POFILES) $(POTFILE) ../locale/*/LC_MESSAGES
 	git commit -m "i18n - pulling from tx"
 	@echo
