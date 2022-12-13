@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foreman_ansible 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-24 19:10+0100\n"
-"PO-Revision-Date: 2022-11-24 19:10+0100\n"
+"POT-Creation-Date: 2023-02-14 19:24+0100\n"
+"PO-Revision-Date: 2023-02-14 19:24+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -310,6 +310,11 @@ msgid "Ansible roles to assign to a host"
 msgstr ""
 
 #:
+#: ../app/controllers/foreman_ansible/api/v2/job_templates_controller_extensions.rb:12
+msgid "Enable the callback plugin for this template"
+msgstr ""
+
+#:
 #: ../app/controllers/foreman_ansible/concerns/hostgroups_controller_extensions.rb:27
 msgid "Host group has no associated hosts"
 msgstr ""
@@ -330,18 +335,26 @@ msgstr ""
 msgid "Ansible Variable not found by id: %s"
 msgstr ""
 
-#: ../app/helpers/foreman_ansible/ansible_hostgroups_helper.rb:7
-#: ../app/helpers/foreman_ansible/ansible_hostgroups_helper.rb:9
+#: ../app/helpers/foreman_ansible/ansible_hostgroups_helper.rb:8
+#: ../app/helpers/foreman_ansible/ansible_hostgroups_helper.rb:10
 #: ../app/helpers/foreman_ansible/hosts_helper.rb:9
 msgid "Run all Ansible roles"
 msgstr ""
 
-#: ../app/helpers/foreman_ansible/ansible_hostgroups_helper.rb:9
+#: ../app/helpers/foreman_ansible/ansible_hostgroups_helper.rb:10
 msgid "Run all Ansible roles on hosts belonging to this host group"
 msgstr ""
 
-#: ../app/helpers/foreman_ansible/ansible_reports_helper.rb:57
+#: ../app/helpers/foreman_ansible/ansible_hostgroups_helper.rb:13
+msgid "Configure Ansible Job"
+msgstr ""
+
+#: ../app/helpers/foreman_ansible/ansible_reports_helper.rb:69
 msgid "No additional data"
+msgstr ""
+
+#: ../app/helpers/foreman_ansible/ansible_reports_helper.rb:85
+msgid "Show full value"
 msgstr ""
 
 #: ../app/helpers/foreman_ansible/ansible_roles_data_preparations.rb:5
@@ -661,8 +674,19 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: ../app/views/foreman_ansible/config_reports/_ansible.html.erb:39
+#: ../app/views/foreman_ansible/config_reports/_ansible.html.erb:43
 msgid "Nothing to show"
+msgstr ""
+
+#: ../app/views/job_templates/_job_template_callback_tab_content.html.erb:2
+msgid "Enable Ansible Callback"
+msgstr ""
+
+#: ../app/views/job_templates/_job_template_callback_tab_headers.html.erb:1
+#: ../lib/foreman_ansible/register.rb:7 ../lib/foreman_ansible/register.rb:214
+#: ../lib/foreman_ansible/register.rb:264
+#: ../lib/foreman_ansible/register.rb:270
+msgid "Ansible"
 msgstr ""
 
 #: ../db/seeds.d/90_notification_blueprints.rb:5
@@ -693,10 +717,6 @@ msgstr ""
 
 #: ../db/seeds.d/90_notification_blueprints.rb:38
 msgid "Import playbooks has finished successfully"
-msgstr ""
-
-#: ../lib/foreman_ansible/register.rb:7 ../lib/foreman_ansible/register.rb:214
-msgid "Ansible"
 msgstr ""
 
 #: ../lib/foreman_ansible/register.rb:10
@@ -819,8 +839,8 @@ msgstr ""
 msgid "Proxy tasks batch size for Ansible"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:250
-#: ../lib/foreman_ansible/register.rb:256
+#: ../lib/foreman_ansible/register.rb:252
+#: ../lib/foreman_ansible/register.rb:258
 msgid "Update Smart Proxy"
 msgstr ""
 
@@ -1300,11 +1320,11 @@ msgstr ""
 msgid "Permission denied"
 msgstr ""
 
-#: ../webpack/permissionsHelper.js:34
+#: ../webpack/permissionsHelper.js:37
 msgid "You are not authorized to view the page. "
 msgstr ""
 
-#: ../webpack/permissionsHelper.js:37
+#: ../webpack/permissionsHelper.js:40
 msgid "Request the following permissions from administrator: %s."
 msgstr ""
 
@@ -1317,11 +1337,11 @@ msgid "Action with sub plans"
 msgstr ""
 
 #: action_names.rb:3
-msgid "Import facts"
+msgid "Import Puppet classes"
 msgstr ""
 
 #: action_names.rb:4
-msgid "Import Puppet classes"
+msgid "Import facts"
 msgstr ""
 
 #: action_names.rb:5

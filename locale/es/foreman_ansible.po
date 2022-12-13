@@ -4,7 +4,6 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Lukáš Zapletal, 2018
 # fe37ea014ea122db60df81cd86b163af_742ef71 <ba9f59c06b0be83ac3724b1834a4c14b_93939>, 2018
 # francis <hackgo@gmail.com>, 2018
 # Carmela Rubiños <carmela.rubinos@gmail.com>, 2022
@@ -16,7 +15,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 10.1.0\n"
+"Project-Id-Version: foreman_ansible 10.2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Amit Upadhye <aupadhye@redhat.com>, 2022\n"
@@ -181,6 +180,9 @@ msgstr "Roles Ansible cambiados"
 msgid "Close"
 msgstr "Cerrar"
 
+msgid "Configure Ansible Job"
+msgstr ""
+
 msgid "Configure Recurring Job"
 msgstr "Configurar un trabajo recurrente"
 
@@ -276,6 +278,12 @@ msgstr "Editar variable Ansible"
 
 msgid "Edit Ansible roles"
 msgstr "Editar los roles de Ansible"
+
+msgid "Enable Ansible Callback"
+msgstr ""
+
+msgid "Enable the callback plugin for this template"
+msgstr ""
 
 msgid "Enable web console"
 msgstr "Habilitar la consola web"
@@ -676,6 +684,9 @@ msgstr "Mostrar el inventario de Ansible para los grupos de hosts"
 
 msgid "Show Ansible inventory for hosts"
 msgstr "Mostrar el inventario de Ansible para los hosts"
+
+msgid "Show full value"
+msgstr ""
 
 msgid "Show role"
 msgstr "Mostrar rol"

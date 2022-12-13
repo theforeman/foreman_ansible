@@ -8,7 +8,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 10.1.0\n"
+"Project-Id-Version: foreman_ansible 10.2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Carmela Rubiños <carmela.rubinos@gmail.com>, 2022\n"
@@ -172,6 +172,9 @@ msgstr ""
 msgid "Close"
 msgstr "Pechar"
 
+msgid "Configure Ansible Job"
+msgstr ""
+
 msgid "Configure Recurring Job"
 msgstr ""
 
@@ -266,6 +269,12 @@ msgid "Edit Ansible Variable"
 msgstr ""
 
 msgid "Edit Ansible roles"
+msgstr ""
+
+msgid "Enable Ansible Callback"
+msgstr ""
+
+msgid "Enable the callback plugin for this template"
 msgstr ""
 
 msgid "Enable web console"
@@ -664,6 +673,9 @@ msgid "Show Ansible inventory for hostgroups"
 msgstr ""
 
 msgid "Show Ansible inventory for hosts"
+msgstr ""
+
+msgid "Show full value"
 msgstr ""
 
 msgid "Show role"

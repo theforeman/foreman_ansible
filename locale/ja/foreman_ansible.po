@@ -13,7 +13,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 10.1.0\n"
+"Project-Id-Version: foreman_ansible 10.2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Amit Upadhye <aupadhye@redhat.com>, 2022\n"
@@ -177,6 +177,9 @@ msgstr "変更された Ansible ロール"
 msgid "Close"
 msgstr "閉じる"
 
+msgid "Configure Ansible Job"
+msgstr ""
+
 msgid "Configure Recurring Job"
 msgstr "繰り返しジョブの設定"
 
@@ -272,6 +275,12 @@ msgstr "Ansible 変数の編集"
 
 msgid "Edit Ansible roles"
 msgstr "Ansible ロールの編集"
+
+msgid "Enable Ansible Callback"
+msgstr ""
+
+msgid "Enable the callback plugin for this template"
+msgstr ""
 
 msgid "Enable web console"
 msgstr "Web コンソールの有効化"
@@ -673,6 +682,9 @@ msgstr "ホストグループの Ansible インベントリーを表示する"
 msgid "Show Ansible inventory for hosts"
 msgstr "ホストの Ansible インベントリーを表示する"
 
+msgid "Show full value"
+msgstr ""
+
 msgid "Show role"
 msgstr "ロールを表示します"
 
@@ -800,7 +812,7 @@ msgid "Updates Ansible variable"
 msgstr "Ansible 変数を更新します"
 
 msgid "Upgrade"
-msgstr ""
+msgstr "アップグレード"
 
 msgid "Upgrade Capsules on given Capsule server hosts"
 msgstr "指定された Capsule サーバーホストで Capsule をアップグレードします"

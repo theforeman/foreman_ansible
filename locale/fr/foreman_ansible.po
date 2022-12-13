@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 10.1.0\n"
+"Project-Id-Version: foreman_ansible 10.2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Amit Upadhye <aupadhye@redhat.com>, 2022\n"
@@ -57,7 +57,7 @@ msgid "Add selected"
 msgstr "Ajouter une sélection"
 
 msgid "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles."
-msgstr ""
+msgstr "Ajouter, supprimer ou réorganiser les rôles Ansible attribués à l'hôte. Cet hôte a également des rôles assignés par groupe qui ne sont pas affichés ici et qui seront toujours exécutés avant les rôles assignés par l'hôte."
 
 msgid "All assigned Ansible roles"
 msgstr "Tous les rôles Ansible assignés"
@@ -144,7 +144,7 @@ msgid "Are you sure you want to delete override for %s?"
 msgstr "Êtes-vous sûr de vouloir supprimer le remplacement pour %s?"
 
 msgid "Assign roles directly to the host"
-msgstr ""
+msgstr "Attribuer des rôles directement à l'hôte"
 
 msgid "Assigned Ansible Roles"
 msgstr "Rôles Ansible attribués"
@@ -179,6 +179,9 @@ msgstr "Rôles Ansible modifiés"
 msgid "Close"
 msgstr "Fermer"
 
+msgid "Configure Ansible Job"
+msgstr ""
+
 msgid "Configure Recurring Job"
 msgstr "Configurer un job récurrent"
 
@@ -192,7 +195,7 @@ msgid "Continue to look for matches after first find (only array/hash type)? Not
 msgstr "Continuer à chercher les valeurs correspondantes après une première recherche (type tableau ou hachage uniquement) ? Noter : la fusion ignore toutes les valeurs correspondantes omises."
 
 msgid "Could not run Ansible roles for %{host}"
-msgstr "Impossible d'exécuter des rôles pour %{host}"
+msgstr "Impossible d'exécuter des rôles pour %%{host}"
 
 msgid "Create Ansible Variable"
 msgstr "Créer Variable Ansible"
@@ -258,7 +261,7 @@ msgid "Directly assigned to Host"
 msgstr "Directement affecté à l'hôte"
 
 msgid "Disable host configuration status turning to out of sync for %{cfgmgmt} after report does not arrive within configured interval"
-msgstr "Désactiver l'état de la configuration de l'hôte à 'out of sync' pour %{cfgmgmt}, après que le rapport n'est pas arrivé dans l'intervalle configuré"
+msgstr "Désactiver l'état de la configuration de l'hôte à 'out of sync' pour %%{cfgmgmt}, après que le rapport n'est pas arrivé dans l'intervalle configuré"
 
 msgid "Disabled"
 msgstr "Désactivé"
@@ -274,6 +277,12 @@ msgstr "Modifier Variable Ansible"
 
 msgid "Edit Ansible roles"
 msgstr "Modifier les rôles Ansible"
+
+msgid "Enable Ansible Callback"
+msgstr ""
+
+msgid "Enable the callback plugin for this template"
+msgstr ""
 
 msgid "Enable web console"
 msgstr "Activer la console web"
@@ -297,7 +306,7 @@ msgid "Fetch Ansible roles available to be synced"
 msgstr "Récupérer les rôles Ansible disponibles à synchroniser"
 
 msgid "For more advanced scheduling options"
-msgstr ""
+msgstr "Pour des options de programmation plus avancées"
 
 msgid "Foreman"
 msgstr "Foreman"
@@ -399,7 +408,7 @@ msgid "Inherited from Hostgroup"
 msgstr "Héritée du groupe d’hôtes"
 
 msgid "Insights remediation on %{hosts_count} host(s) has finished successfully"
-msgstr "La remédiation Insights sur %{hosts_count}hôte(s) est terminé."
+msgstr "La remédiation Insights sur %%shôte(s) est terminé."
 
 msgid "Invalid, expected one of: %s"
 msgstr "Invalide, attendu un de : %s"
@@ -508,7 +517,7 @@ msgid "No proxy found to import variables from, ensure that the smart proxy has 
 msgstr "Aucun proxy trouvé pour l'import des variables. Assurez vous qu'un smart proxy ait la fonction Puppet active."
 
 msgid "No roles assigned directly to the host"
-msgstr ""
+msgstr "Aucun rôle assigné directement à l'hôte"
 
 msgid "Nothing Found!"
 msgstr "Rien trouvé !"
@@ -601,7 +610,7 @@ msgid "Request the following permissions from administrator: %s."
 msgstr "Demandez les permissions suivantes à l'administrateur : %s."
 
 msgid "Required field"
-msgstr ""
+msgstr "Champ obligatoire"
 
 msgid "Result"
 msgstr "Résultat"
@@ -658,7 +667,7 @@ msgid "Schedule generating of Ansible Inventory report"
 msgstr "Calendrier de production du rapport d'inventaire Ansible"
 
 msgid "Schedule recurring Ansible roles job"
-msgstr ""
+msgstr "Programmation des jobs de rôles Ansible récurrents"
 
 msgid "Schedule recurring job"
 msgstr "Planifier un job récurrent"
@@ -674,6 +683,9 @@ msgstr "Afficher l'inventaire Ansible des groupes d’hôtes"
 
 msgid "Show Ansible inventory for hosts"
 msgstr "Afficher l’inventaire Ansible des hôtes"
+
+msgid "Show full value"
+msgstr ""
 
 msgid "Show role"
 msgstr "Afficher un rôle"
@@ -754,10 +766,10 @@ msgid "This Ansible role is inherited from parent host group"
 msgstr "Ce rôle Ansible est hérité du groupe d'hôtes parent."
 
 msgid "This job will run all the assigned Ansible roles."
-msgstr ""
+msgstr "Cette tâche exécutera tous les rôles Ansible assignés."
 
 msgid "This list consists of host assigned roles and group assigned roles. Group assigned roles will always be executed prior to host assigned roles."
-msgstr ""
+msgstr "Cette liste comprend les rôles attribués par l'hôte et les rôles attribués par le groupe. Les rôles attribués par groupe seront toujours exécutés avant les rôles attribués par l'hôte."
 
 msgid "Those roles will be excluded when importing roles from smart proxy, The expected input is comma separated values and you can use * wildcard metacharactersFor example: foo*, *b*,*bar"
 msgstr "Ces rôles seront exclus lors de l'importation de rôles à partir de smart proxy, L'entrée attendue est des valeurs séparées par des virgules et vous pouvez utiliser des métacaractères de remplacement *Par exemple : foo*, *b*,*bar"
@@ -796,13 +808,13 @@ msgid "Update Role Variables"
 msgstr "Mise à jour des variables de rôle"
 
 msgid "Update Smart Proxy"
-msgstr ""
+msgstr "Mise à jour du smart proxy"
 
 msgid "Updates Ansible variable"
 msgstr "Mises à jour des variables Ansible"
 
 msgid "Upgrade"
-msgstr ""
+msgstr "Mettre à niveau"
 
 msgid "Upgrade Capsules on given Capsule server hosts"
 msgstr "Mise à jour des Capsules sur des hôtes donnés du serveur Capsule"
@@ -841,7 +853,7 @@ msgid "Variable|Role"
 msgstr "Variable|Role"
 
 msgid "View inherited roles"
-msgstr ""
+msgstr "Voir les rôles hérités"
 
 msgid "When enabled the parameter is hidden in the UI"
 msgstr "Quand activé, le paramètre est caché dans l'interface"
@@ -880,7 +892,7 @@ msgid "view all assigned roles"
 msgstr "voir tous les rôles attribués"
 
 msgid "view remote execution page."
-msgstr ""
+msgstr "Afficher la page d'exécution distante"
 
 msgid "view the task in progress"
 msgstr "visualiser la tâche en cours"

@@ -4,14 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# NorwayFun <temuri.doghonadze@gmail.com>, 2022
+# Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2022
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 10.1.0\n"
+"Project-Id-Version: foreman_ansible 10.2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
-"Last-Translator: NorwayFun <temuri.doghonadze@gmail.com>, 2022\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2022\n"
 "Language-Team: Georgian (https://www.transifex.com/foreman/teams/114/ka/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -128,16 +128,16 @@ msgid "Ansible variable override was successfully deleted."
 msgstr "Ansible-ის ცვლადის გადაფარვა წარმატებით წაიშალა."
 
 msgid "Ansible: Run Insights maintenance plan"
-msgstr ""
+msgstr "Ansible: Insights -ის რემონტის გეგმის გაშვება"
 
 msgid "Are you sure you want to cancel Ansible config job?"
-msgstr ""
+msgstr "დარწმუნებული ბრძანდებით, რომ გნებავთ, გააუქმოთ Ansible-ის კონფიგურაციის დავალება?"
 
 msgid "Are you sure you want to delete override for %s?"
 msgstr "დარწმუნებული ბრძანდებით, რომ გნებავთ წაშალოთ '%s'-ის გადაფარვა?"
 
 msgid "Assign roles directly to the host"
-msgstr ""
+msgstr "როლების პირდაპირ ჰოსტზე მინიჭება"
 
 msgid "Assigned Ansible Roles"
 msgstr "Ansible-ის მინიჭებული როლები"
@@ -171,6 +171,9 @@ msgstr "Ansible-ის როლები შეცვლილია"
 
 msgid "Close"
 msgstr "დახურვა"
+
+msgid "Configure Ansible Job"
+msgstr ""
 
 msgid "Configure Recurring Job"
 msgstr "განმეორებადი დავალების მორგება"
@@ -268,6 +271,12 @@ msgstr "Ansible-ის ცვლადის ჩასწორება"
 msgid "Edit Ansible roles"
 msgstr "Ansible-ის როლების ჩასწორება"
 
+msgid "Enable Ansible Callback"
+msgstr ""
+
+msgid "Enable the callback plugin for this template"
+msgstr ""
+
 msgid "Enable web console"
 msgstr "ვებ კონსოლის ჩართვა"
 
@@ -290,7 +299,7 @@ msgid "Fetch Ansible roles available to be synced"
 msgstr "Ansble-ის დასასინქრონიზებლად ხელმისაწვდომი როლების გამოთხოვა"
 
 msgid "For more advanced scheduling options"
-msgstr ""
+msgstr "დაგეგმარების მეტი დამატებითი პარამეტრი"
 
 msgid "Foreman"
 msgstr "Foreman"
@@ -302,7 +311,7 @@ msgid "Foreman will use this template to schedule the report with Ansible invent
 msgstr ""
 
 msgid "Hash of input values of type input=>value"
-msgstr ""
+msgstr "შემოტანა=>მნიშვნელობა ტიპის შეყვანილი მნიშვნელობების ჰეში"
 
 msgid "Hidden Value"
 msgstr "დამალული მნიშვნელობა"
@@ -386,7 +395,7 @@ msgid "Include/Exclude Tags"
 msgstr "ჭდეების ჩართვა/გამორიცხვა"
 
 msgid "Include\\Exclude tags for Ansible run"
-msgstr ""
+msgstr "Ansible-ის გაშვებისთვის ჭდეების ჩასმა/ამოღება"
 
 msgid "Inherited from Hostgroup"
 msgstr "მემკვიდრეობით ჰოსტების ჯგუფიდან"
@@ -484,22 +493,22 @@ msgid "No additional data"
 msgstr "დამატებითი მონაცემების გარეშე"
 
 msgid "No changes detected in specified Ansible Roles and their variables"
-msgstr ""
+msgstr "მითითებულ Ansible-ის როლებში და მათ ცვლადებში ცვლილებები ნაპოვნი არაა"
 
 msgid "No changes in variables detected on %s."
 msgstr "%s-ზე ცვლადების ცვლილება ნაპოვნი არაა."
 
 msgid "No config job for Ansible roles scheduled"
-msgstr ""
+msgstr "Ansible-ის როლებისთვის კონფიგურაციის დავალება დაგეგმილი არაა"
 
 msgid "No previous job executions found"
 msgstr "დავალების წინა შესრულებები ვერ ვიპოვე"
 
 msgid "No proxy found to import variables from, ensure that the smart proxy has the Ansible feature enabled."
-msgstr ""
+msgstr "პროქსი, რომლიდანაც ცვლადებს შემოვიტან, არ არსებობს. დარწმუნდით, რომ არსებობს ერთი ჭკვიანი პროქსი მაინც, რომელზეც 'Ansible' ფუნქცია ჩართულია."
 
 msgid "No roles assigned directly to the host"
-msgstr ""
+msgstr "პირდაპირ ამ ჰოსტზე როლები მინიჭებული არაა"
 
 msgid "Nothing Found!"
 msgstr "ვერაფერი ვიპოვე!"
@@ -544,7 +553,7 @@ msgid "Playbooks"
 msgstr "Playbook-ები"
 
 msgid "Please request one of the required permissions listed below from a Foreman administrator:"
-msgstr ""
+msgstr "საჭიროა ერთი ან მეტი ქვემოთ ჩამოთვლილი წვდომის გამოთხოვა Foreman-ის ადმინისტრატორისგან:"
 
 msgid "Post-provision timeout"
 msgstr "სამუშაოდ მომზადების შემდეგ დალოდების დროის ვადა"
@@ -592,7 +601,7 @@ msgid "Request the following permissions from administrator: %s."
 msgstr "ადმინისტრატორისგან შემდეგი წვდომების გამოთხოვა: %s."
 
 msgid "Required field"
-msgstr ""
+msgstr "ველის აუცილებელია"
 
 msgid "Result"
 msgstr "შედეგი"
@@ -616,10 +625,10 @@ msgid "Run all Ansible roles on hosts belonging to this host group"
 msgstr "Ansible-ის როლების ჰოსტების ამ ჯგუფში შემავალ ჰოსტებზე გაშვება"
 
 msgid "Run an Ansible playbook against given hosts"
-msgstr ""
+msgstr "მითითებულ ჰოსტებზე Ansible playbook-ის გაშვება"
 
 msgid "Run an Ansible playbook to enable web console on given hosts"
-msgstr ""
+msgstr "მითითებულ ჰოსტებზე ვებ-კონსოლის ჩასართავად Ansible playbook-ის გაშვება"
 
 msgid "Run playbook"
 msgstr "Playbook-ის გაშვება"
@@ -640,7 +649,7 @@ msgid "Runs all Ansible roles on hosts"
 msgstr "ჰოსტებზე Ansible-ის ყველა როლის გაშვება"
 
 msgid "Runs an Ansible playbook which contains all the roles defined for a host"
-msgstr ""
+msgstr "გაუშვებს Ansible-ის playbook-ს, რომელიც ჰოსტისთვის აღწერილ ყველა როლს შეიცავს"
 
 msgid "Schedule"
 msgstr "განრიგი"
@@ -649,7 +658,7 @@ msgid "Schedule generating of Ansible Inventory report"
 msgstr "Ansible-ის ინვენტარის ანგარიშის მომზადების დაგეგმვა"
 
 msgid "Schedule recurring Ansible roles job"
-msgstr ""
+msgstr "Ansible-ის როლების განმეორებადი დავალებების დაგეგმვა"
 
 msgid "Schedule recurring job"
 msgstr "განმეორებადი დავალებების დაგეგმვა"
@@ -665,6 +674,9 @@ msgstr "Ansible-ის ინვენტარის ჩვენება ჰ�
 
 msgid "Show Ansible inventory for hosts"
 msgstr "Ansible-ის ინვენტარის ჩვენება ჰოსტებისთვის"
+
+msgid "Show full value"
+msgstr ""
 
 msgid "Show role"
 msgstr "როლის ჩვენება"
@@ -724,28 +736,28 @@ msgid "There are no Ansible roles to play"
 msgstr "Ansible-ის გაშვებადი როლის გარეშე"
 
 msgid "There was a following error when assigning Ansible Roles: %s"
-msgstr ""
+msgstr "შეცდომა Ansible-ის როლების მინიჭებისას: %s"
 
 msgid "There was a following error when changing Ansible variable override: %s"
-msgstr ""
+msgstr "შეცდომა Ansible-ის ცვლადის გადაფარვის შეცვლისას: %s"
 
 msgid "There was a following error when creating Ansible job: %s"
-msgstr ""
+msgstr "შეცდომა Ansible-ის დავალების შექმნისას: %s"
 
 msgid "There was a following error when deleting Ansible config job: %s"
-msgstr ""
+msgstr "შეცდომა Ansible-ის კონფიგურაციის დავალების წაშლისას: %s"
 
 msgid "There was a following error when deleting Ansible variable override: %s"
-msgstr ""
+msgstr "შეცდომა Ansible-ის ცვლადის გადაფარვის წაშლისას: %s"
 
 msgid "This Ansible role is inherited from host group"
 msgstr "Ansible-ის ეს როლი ჰოსტის ჯგუფიდანაა მემკვიდრეობით გადმოცემული"
 
 msgid "This Ansible role is inherited from parent host group"
-msgstr ""
+msgstr "Ansible-ის ეს როლი ჰოსტის ჯგუფიდანაა მემკვიდრეობით გადმოცემული"
 
 msgid "This job will run all the assigned Ansible roles."
-msgstr ""
+msgstr "ეს დავალება ყველა მინიჭებულ Ansible-ის როლს გაუშვებს."
 
 msgid "This list consists of host assigned roles and group assigned roles. Group assigned roles will always be executed prior to host assigned roles."
 msgstr ""
@@ -787,13 +799,13 @@ msgid "Update Role Variables"
 msgstr "როლის ცვლადების გარეშე"
 
 msgid "Update Smart Proxy"
-msgstr ""
+msgstr "ჭკვიანი პროქსის განახლება"
 
 msgid "Updates Ansible variable"
 msgstr "Ansible-ის ცვლადის განახლება"
 
 msgid "Upgrade"
-msgstr ""
+msgstr "განახლება"
 
 msgid "Upgrade Capsules on given Capsule server hosts"
 msgstr "კაფსულების სერვერის მითითებულ ჰოსტებზე კაფსულის გაუმჯობესება"
@@ -832,7 +844,7 @@ msgid "Variable|Role"
 msgstr "ცვლადი|როლი"
 
 msgid "View inherited roles"
-msgstr ""
+msgstr "მემკვიდრეობით მიღებული როლების ნახვა"
 
 msgid "When enabled the parameter is hidden in the UI"
 msgstr "როცა ჩართულია, UI-ში პარმეტრი დამალულია"
@@ -871,7 +883,7 @@ msgid "view all assigned roles"
 msgstr "ყველა მინიჭებული როლის ნახვა"
 
 msgid "view remote execution page."
-msgstr ""
+msgstr "დაშორებული გაშვების გვერდის ნახვა."
 
 msgid "view the task in progress"
 msgstr "ამოცანის მიმდინარეობის ჩვენება"

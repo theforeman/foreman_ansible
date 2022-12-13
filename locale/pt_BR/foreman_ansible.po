@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 10.1.0\n"
+"Project-Id-Version: foreman_ansible 10.2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Amit Upadhye <aupadhye@redhat.com>, 2022\n"
@@ -28,13 +28,13 @@ msgstr ""
 "0 == 0 ? 1 : 2;\n"
 
 msgid "%(selectedCount)s of %(totalCount)s items selected"
-msgstr "{0} itens selecionados"
+msgstr "%(selectedCount)s de %(totalCount)s itens selecionados"
 
 msgid "%s ago"
 msgstr "%s atrás"
 
 msgid "%{cfgmgmt} out of sync disabled"
-msgstr "%s fora de sincronização desabilitado"
+msgstr "%{cfgmgmt} fora de sincronia desativado"
 
 msgid "(from host group)"
 msgstr "(do grupo anfitrião)"
@@ -130,7 +130,7 @@ msgid "Ansible support in Foreman"
 msgstr "Suporte do Ansible no Foreman"
 
 msgid "Ansible variable override successfully changed."
-msgstr "A substituição de variável possível foi alterada com sucesso."
+msgstr "Substituição possível da variável alterada com sucesso."
 
 msgid "Ansible variable override was successfully deleted."
 msgstr "Uma possível substituição de variável foi eliminada com sucesso."
@@ -180,6 +180,9 @@ msgstr "Funções do Ansible alteradas"
 msgid "Close"
 msgstr "Fechar"
 
+msgid "Configure Ansible Job"
+msgstr ""
+
 msgid "Configure Recurring Job"
 msgstr "Configurar Trabalho Recorrente"
 
@@ -193,7 +196,7 @@ msgid "Continue to look for matches after first find (only array/hash type)? Not
 msgstr "Continuar a buscar correspondências após o primeiro resultado (somente tipo matriz/hash)? Observação: mesclar substituições ignora todas as correspondências que são omitidas."
 
 msgid "Could not run Ansible roles for %{host}"
-msgstr "Não foi possível executar as funções do Ansible para %{host}"
+msgstr "Não foi possível executar papéis possíveis para %{host}"
 
 msgid "Create Ansible Variable"
 msgstr "Criar uma variável do Ansible"
@@ -208,13 +211,13 @@ msgid "DEPRECATED: Import Ansible roles"
 msgstr "DEPRECADO: Importação Funções possíveis"
 
 msgid "DEPRECATED: Import Ansible variables. This will only import variables for already existing roles, it will not import any new roles"
-msgstr "Importar variáveis do Ansible. Isso importará apenas variáveis para funções já existentes, não importará nenhuma função nova"
+msgstr "DEPRECADO: Importação de variáveis possíveis. Isto só importará variáveis para funções já existentes, não importará nenhuma nova função."
 
 msgid "DEPRECATED: Obsolete Ansible roles"
 msgstr "DEPRECADO: Obsoleto Funções possíveis"
 
 msgid "DEPRECATED: Obsolete Ansible variables. This will only obsolete variables for already existing roles, it will not delete any old roles"
-msgstr "Tornar obsoletas variáveis do Ansible. Isso tornará obsoletas apenas variáveis para funções já existentes, não excluirá nenhuma função antiga"
+msgstr "DEPRECADO: Variáveis obsoletas e possíveis. Isto só eliminará variáveis obsoletas para funções já existentes, não eliminará nenhuma função antiga."
 
 msgid "Default Ansible inventory report template"
 msgstr "Template padrão de relatório de inventário do Ansible"
@@ -235,7 +238,7 @@ msgid "Delete"
 msgstr "Excluir"
 
 msgid "Delete %s?"
-msgstr "Excluir"
+msgstr "Excluir %s?"
 
 msgid "Delete Ansible variable override"
 msgstr "Excluir Ansible variable override"
@@ -259,22 +262,28 @@ msgid "Directly assigned to Host"
 msgstr "Diretamente designado ao Host"
 
 msgid "Disable host configuration status turning to out of sync for %{cfgmgmt} after report does not arrive within configured interval"
-msgstr "Desabilitar o status de configuração do host para que fique fora de sincronização para %s depois que o relatório não chegar no intervalo configurado"
+msgstr "Desativar o status de configuração do host, ficando fora de sincronia para %{cfgmgmt} após o relatório não chegar dentro do intervalo configurado"
 
 msgid "Disabled"
 msgstr "Desativado"
 
 msgid "Edit %s"
-msgstr "Editar"
+msgstr "Editar %s"
 
 msgid "Edit Ansible Roles"
-msgstr "Listar regras do Ansible"
+msgstr "Editar funções possíveis"
 
 msgid "Edit Ansible Variable"
 msgstr "Editar variável do Ansible"
 
 msgid "Edit Ansible roles"
-msgstr "Listar regras do Ansible"
+msgstr "Editar Funções possíveis"
+
+msgid "Enable Ansible Callback"
+msgstr ""
+
+msgid "Enable the callback plugin for this template"
+msgstr ""
 
 msgid "Enable web console"
 msgstr "Habilitar console web"
@@ -295,7 +304,7 @@ msgid "Fetch Ansible playbooks available to be synced"
 msgstr "Buscar Livros didáticos possíveis a serem sincronizados"
 
 msgid "Fetch Ansible roles available to be synced"
-msgstr "Buscar funções do Ansible disponíveis a serem importadas"
+msgstr "Buscar Funções possíveis disponíveis para serem sincronizadas"
 
 msgid "For more advanced scheduling options"
 msgstr ""
@@ -358,13 +367,13 @@ msgid "Import Puppet classes"
 msgstr "Importar classes de Puppet"
 
 msgid "Import Role"
-msgstr "Papel da importação"
+msgstr "Papel de importação"
 
 msgid "Import facts"
 msgstr "Importar fatos"
 
 msgid "Import from %s"
-msgstr "Importar de %s"
+msgstr "Importação de %s"
 
 msgid "Import playbooks has finished successfully"
 msgstr "A importação de livros didáticos foi concluída com sucesso"
@@ -400,7 +409,7 @@ msgid "Inherited from Hostgroup"
 msgstr "Herdado do Hostgroup"
 
 msgid "Insights remediation on %{hosts_count} host(s) has finished successfully"
-msgstr "A remediação de insights no(s) host(s) %{hosts_count} foi concluída com êxito"
+msgstr "A remediação Insights em %{hosts_count} host(s) terminou com sucesso"
 
 msgid "Invalid, expected one of: %s"
 msgstr "Inválido, espera-se um dos: %s"
@@ -475,8 +484,8 @@ msgid ""
 "No Ansible Roles were found in Foreman. If you want to assign roles to your hosts,\n"
 "             you have to import them first."
 msgstr ""
-"Nenhuma função do Ansible foi encontrada no Foreman. Se desejar atribuir funções a seus hosts,\n"
-"             importe-as primeiro."
+"Nenhum papel possível foi encontrado no Foreman. Se você quiser atribuir papéis a seus anfitriões,\n"
+"             você tem que importá-los primeiro."
 
 msgid "No Ansible roles assigned"
 msgstr "Nenhum papel possível atribuído"
@@ -497,7 +506,7 @@ msgid "No changes detected in specified Ansible Roles and their variables"
 msgstr "Nenhuma mudança detectada em funções possíveis especificadas e suas variáveis"
 
 msgid "No changes in variables detected on %s."
-msgstr "Nenhuma alteração em variáveis detectada em %s."
+msgstr "Nenhuma mudança nas variáveis detectadas em %s."
 
 msgid "No config job for Ansible roles scheduled"
 msgstr "Nenhum trabalho de configuração para funções possíveis programadas"
@@ -545,7 +554,7 @@ msgid "Overriden"
 msgstr "Substituído"
 
 msgid "Permission Denied"
-msgstr "Permissão recusada"
+msgstr "Permissão negada"
 
 msgid "Permission denied"
 msgstr "Permissão recusada"
@@ -596,7 +605,7 @@ msgid "Remove selected"
 msgstr "Remover selecionados"
 
 msgid "Report format, defaults to '%s'"
-msgstr "Formato do relatório, o padrão é '%s'"
+msgstr "Formato do relatório, o padrão é '%s'."
 
 msgid "Request the following permissions from administrator: %s."
 msgstr "Solicite as seguintes permissões ao administrador: %s."
@@ -676,6 +685,9 @@ msgstr "Exibir inventário do Ansible para os grupos de hosts"
 msgid "Show Ansible inventory for hosts"
 msgstr "Exibir inventário do Ansible para os hosts"
 
+msgid "Show full value"
+msgstr ""
+
 msgid "Show role"
 msgstr "Mostrar função"
 
@@ -689,7 +701,7 @@ msgid "Smart Proxy to import from"
 msgstr "Proxy inteligente a partir do qual importar"
 
 msgid "Smart Proxy to sync from"
-msgstr "Smart Proxy para sincronização a partir de"
+msgstr "Smart Proxy para sincronizar de"
 
 msgid "Smart proxy id is required"
 msgstr "É necessária a ID de proxy inteligente"
@@ -725,7 +737,7 @@ msgid "Task Details"
 msgstr "Detalhes da tarefa"
 
 msgid "The order in which matchers keys are processed, first match wins.<br> You may use multiple attributes as a matcher key, for example, an order of <code>host group, environment</code> would expect a matcher such as <code>hostgroup = \"web servers\", environment = production</code>"
-msgstr "A ordem em que as chaves de correspondência são processadas​​, a primeira combinação vence. <br> Você pode usar vários atributos como uma chave de correspondência, por exemplo, uma ordem de <code> grupo de host, ambiente </code>  esperaria uma correspondência como <code>hostgroup = \"web servers\", environment = production</code>."
+msgstr "A ordem na qual as chaves dos matchers são processadas, a primeira partida ganha.<br> Você pode usar vários atributos como chave de fósforo, por exemplo, uma ordem de <code>grupo anfitrião, ambiente</code> esperaria um fósforo como <code>grupo anfitrião = \"servidores web\", ambiente = produção</code>"
 
 msgid "The order in which values are resolved"
 msgstr "A ordem na qual os valores são resolvidos"
@@ -857,13 +869,13 @@ msgid "You are not authorized to perform this action."
 msgstr "Você não está autorizado a executar essa ação."
 
 msgid "You are not authorized to view the page. "
-msgstr "Você não está autorizado a ver a página. "
+msgstr "Você não está autorizado a visualizar a página. "
 
 msgid "daily"
-msgstr "Diário"
+msgstr "diariamente"
 
 msgid "false"
-msgstr "false"
+msgstr "falso"
 
 msgid "hourly"
 msgstr "de hora em hora"
@@ -872,7 +884,7 @@ msgid "is required"
 msgstr "é necessário"
 
 msgid "monthly"
-msgstr "Mensal"
+msgstr "mensalmente"
 
 msgid "true"
 msgstr "verdadeiro"
@@ -887,4 +899,4 @@ msgid "view the task in progress"
 msgstr "ver a tarefa em andamento"
 
 msgid "weekly"
-msgstr "Semanal"
+msgstr "semanalmente"

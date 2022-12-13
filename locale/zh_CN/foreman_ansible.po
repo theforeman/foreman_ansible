@@ -11,7 +11,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 10.1.0\n"
+"Project-Id-Version: foreman_ansible 10.2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Amit Upadhye <aupadhye@redhat.com>, 2022\n"
@@ -54,7 +54,7 @@ msgid "Add selected"
 msgstr "添加选择的"
 
 msgid "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles."
-msgstr ""
+msgstr "添加、删除或重新排序主机分配的 Ansible 角色。此主机也对分配的角色进行分组，它们不会在这里显示，并在主机分配角色之前始终执行。"
 
 msgid "All assigned Ansible roles"
 msgstr "所有分配的 Ansible 角色"
@@ -141,7 +141,7 @@ msgid "Are you sure you want to delete override for %s?"
 msgstr "您确定要为 %s 删除覆盖吗？"
 
 msgid "Assign roles directly to the host"
-msgstr ""
+msgstr "直接为主机分配角色"
 
 msgid "Assigned Ansible Roles"
 msgstr "分配的 Ansible 角色"
@@ -175,6 +175,9 @@ msgstr "已更改的 Ansible 角色"
 
 msgid "Close"
 msgstr "关闭"
+
+msgid "Configure Ansible Job"
+msgstr ""
 
 msgid "Configure Recurring Job"
 msgstr "配置周期性作业"
@@ -272,6 +275,12 @@ msgstr "编辑 Ansible 变量"
 msgid "Edit Ansible roles"
 msgstr "编辑 Ansible 角色"
 
+msgid "Enable Ansible Callback"
+msgstr ""
+
+msgid "Enable the callback plugin for this template"
+msgstr ""
+
 msgid "Enable web console"
 msgstr "启用 Web 控制台"
 
@@ -294,7 +303,7 @@ msgid "Fetch Ansible roles available to be synced"
 msgstr "获取可以同步的 Ansible 角色"
 
 msgid "For more advanced scheduling options"
-msgstr ""
+msgstr "对于更高级的调度选项"
 
 msgid "Foreman"
 msgstr "Foreman"
@@ -505,7 +514,7 @@ msgid "No proxy found to import variables from, ensure that the smart proxy has 
 msgstr "没有找到可从中导入变量的代理服务器，请确定智能代理服务器启用了 Ansible 功能。"
 
 msgid "No roles assigned directly to the host"
-msgstr ""
+msgstr "没有直接分配给主机的角色"
 
 msgid "Nothing Found!"
 msgstr "未找到！"
@@ -598,7 +607,7 @@ msgid "Request the following permissions from administrator: %s."
 msgstr "连续管理员来获得以下权限：%s。"
 
 msgid "Required field"
-msgstr ""
+msgstr "必填字段"
 
 msgid "Result"
 msgstr "结果"
@@ -655,7 +664,7 @@ msgid "Schedule generating of Ansible Inventory report"
 msgstr "调度生成 Ansible 库存清单报告"
 
 msgid "Schedule recurring Ansible roles job"
-msgstr ""
+msgstr "调度周期性的 Ansible 角色作业"
 
 msgid "Schedule recurring job"
 msgstr "计划周期性作业"
@@ -671,6 +680,9 @@ msgstr "为主机组显示 Ansible 库存清单"
 
 msgid "Show Ansible inventory for hosts"
 msgstr "为主机显示 Ansible 库存清单"
+
+msgid "Show full value"
+msgstr ""
 
 msgid "Show role"
 msgstr "显示角色"
@@ -751,10 +763,10 @@ msgid "This Ansible role is inherited from parent host group"
 msgstr "此 Ansible 角色从父主机组继承"
 
 msgid "This job will run all the assigned Ansible roles."
-msgstr ""
+msgstr "此任务将运行所有分配的 Ansible 角色。"
 
 msgid "This list consists of host assigned roles and group assigned roles. Group assigned roles will always be executed prior to host assigned roles."
-msgstr ""
+msgstr "此列表包括主机分配的角色和组分配的角色。在主机分配的角色之前，将始终执行组分配的角色。"
 
 msgid "Those roles will be excluded when importing roles from smart proxy, The expected input is comma separated values and you can use * wildcard metacharactersFor example: foo*, *b*,*bar"
 msgstr "在从智能代理导入角色时这些角色将被排除。预期的输入为以逗号分隔的值，您可以使用 * 通配符元字符。例如：foo*, *b*,*bar"
@@ -793,13 +805,13 @@ msgid "Update Role Variables"
 msgstr "更新角色变量"
 
 msgid "Update Smart Proxy"
-msgstr ""
+msgstr "更新智能代理"
 
 msgid "Updates Ansible variable"
 msgstr "更新 Ansible 变量"
 
 msgid "Upgrade"
-msgstr ""
+msgstr "升级"
 
 msgid "Upgrade Capsules on given Capsule server hosts"
 msgstr "在给定的 Capsule 服务器主机上升级 Capsule"
@@ -838,7 +850,7 @@ msgid "Variable|Role"
 msgstr "变量|角色"
 
 msgid "View inherited roles"
-msgstr ""
+msgstr "查看继承的角色"
 
 msgid "When enabled the parameter is hidden in the UI"
 msgstr "何时将启用的参数隐藏到 UI 中"
@@ -877,7 +889,7 @@ msgid "view all assigned roles"
 msgstr "查看所有分配的角色"
 
 msgid "view remote execution page."
-msgstr ""
+msgstr "查看远程执行页。"
 
 msgid "view the task in progress"
 msgstr "查看正在进行中的任务"

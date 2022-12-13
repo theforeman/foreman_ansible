@@ -12,16 +12,16 @@
 # Crited <Alexander.Stoll@netways.de>, 2019
 # Bernhard Suttner <bernhard.suttner@atix.de>, 2019
 # Lukas Kallies <github.com@luke-web.de>, 2021
+# Patrick Dolinic, 2022
 # simon11 <transifex@stieger.co>, 2022
 # Arnold Bechtoldt <mail@arnoldbechtoldt.com>, 2022
-# Patrick Dolinic, 2022
 # Wiederoder <stefanwiederoder@googlemail.com>, 2022
 # Bryan Kearney <bryan.kearney@gmail.com>, 2022
 # Ettore Atalan <atalanttore@googlemail.com>, 2022
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 10.1.0\n"
+"Project-Id-Version: foreman_ansible 10.2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>, 2022\n"
@@ -185,6 +185,9 @@ msgstr "Geänderte Ansible-Rollen"
 msgid "Close"
 msgstr "Schließen"
 
+msgid "Configure Ansible Job"
+msgstr ""
+
 msgid "Configure Recurring Job"
 msgstr ""
 
@@ -279,6 +282,12 @@ msgid "Edit Ansible Variable"
 msgstr "Ansible Variable ändern"
 
 msgid "Edit Ansible roles"
+msgstr ""
+
+msgid "Enable Ansible Callback"
+msgstr ""
+
+msgid "Enable the callback plugin for this template"
 msgstr ""
 
 msgid "Enable web console"
@@ -678,6 +687,9 @@ msgstr "Zeige das Ansible-Inventar der Hostgruppen"
 
 msgid "Show Ansible inventory for hosts"
 msgstr "Zeige das Ansible-Inventar der Hosts"
+
+msgid "Show full value"
+msgstr ""
 
 msgid "Show role"
 msgstr "Zeige Rolle"
