@@ -28,6 +28,7 @@ module ForemanAnsible
     def ansible_module_message(log)
       msg_json = parsed_message_json(log)
       module_action = msg_json['module']
+      module_args = msg_json.fetch('invocation', {}).fetch('module_args', {})
       case module_action
       when 'package'
         msg_json['results'].empty? ? msg_json['msg'] : msg_json['results']

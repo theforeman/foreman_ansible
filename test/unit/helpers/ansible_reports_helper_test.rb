@@ -40,4 +40,17 @@ ANSIBLELOG
     end
     assert_equal expected_outputs, actual_outputs
   end
+
+  test 'accepting a censored message' do
+    log_value = <<-ANSIBLELOG.strip_heredoc
+    {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result", "changed": true, "failed": false, "module": "copy"}
+ANSIBLELOG
+    message = FactoryBot.build(:message, value: log_value)
+    log = FactoryBot.build(:log)
+    log.message = message
+    assert_match(
+      /Copy/,
+      ansible_module_message(log).to_s
+    )
+  end
 end
