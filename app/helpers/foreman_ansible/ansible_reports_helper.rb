@@ -30,11 +30,11 @@ module ForemanAnsible
       return _("Execution error: #{msg_json['msg']}") if msg_json['failed'].present?
 
       module_action = msg_json['module']
+      module_args = msg_json.fetch('invocation', {}).fetch('module_args', {})
       case module_action
       when 'package'
         msg_json['results'].empty? ? msg_json['msg'] : msg_json['results']
       when 'template'
-        module_args = msg_json['invocation']['module_args']
         _("Rendered template #{module_args['_original_basename']} to #{msg_json['dest']}")
       when 'service'
         _("Service #{msg_json['name']} #{msg_json['state']} (enabled: #{msg_json['enabled']})")
@@ -43,10 +43,8 @@ module ForemanAnsible
       when 'user'
         _("User #{msg_json['name']} #{msg_json['state']}, uid: #{msg_json['uid']}")
       when 'cron'
-        module_args = msg_json['invocation']['module_args']
         _("Cron job: #{module_args['minute']} #{module_args['hour']} #{module_args['day']} #{module_args['month']} #{module_args['weekday']} #{module_args['job']} (disabled: #{module_args['disabled']})")
       when 'copy'
-        module_args = msg_json['invocation']['module_args']
         _("Copy #{module_args['_original_basename']} to #{msg_json['dest']}")
       when 'command', 'shell'
         msg_json['stdout_lines']
