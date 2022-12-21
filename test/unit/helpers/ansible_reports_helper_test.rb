@@ -71,5 +71,24 @@ ANSIBLELOG
       /output has been hidden/,
       ansible_module_message(log).to_s
     )
+  test 'module message extraction with action' do
+    example_report = JSON.parse(File.read(ansible_fixture_file('report.json'))).second
+    report = ConfigReport.import(example_report)
+    expected_outputs = [
+      'No additional data',
+      ['Cron job: 0 5,2 * * * date > /dev/null (disabled: false)', 'Cron job: 0 5,2 * * * df > /dev/null (disabled: false)'],
+      ['Cron job: 0 5,2 * * * hostname > /dev/null (disabled: false)'],
+      ['Rendered template test1.txt.j2 to /tmp/test1.txt', 'Rendered template test2.txt.j2 to /tmp/test2.txt'],
+      ['Rendered template test3.txt.j2 to /tmp/test3.txt'],
+      ['Copy test4.txt to /tmp/test4.txt', 'Copy test5.txt to /tmp/test5.txt'],
+      ['Copy test6.txt to /tmp/test6.txt'],
+      ['Service chronyd started (enabled: )', 'Service firewalld started (enabled: )'],
+      ['Service chronyd started (enabled: )']
+    ]
+    actual_outputs = []
+    report.logs.each do |log|
+      actual_outputs << ansible_module_message(log)
+    end
+    assert_equal expected_outputs, actual_outputs
   end
 end
