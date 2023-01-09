@@ -41,9 +41,9 @@ ANSIBLELOG
     assert_equal expected_outputs, actual_outputs
   end
 
-  test 'accepting a censored message' do
+  test 'accepting an almost empty message' do
     log_value = <<-ANSIBLELOG.strip_heredoc
-    {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result", "changed": true, "failed": false, "module": "copy"}
+    {"changed": true, "failed": false, "module": "copy"}
 ANSIBLELOG
     message = FactoryBot.build(:message, value: log_value)
     log = FactoryBot.build(:log)
@@ -63,6 +63,19 @@ ANSIBLELOG
     log.message = message
     assert_match(
       /Nothing to do/,
+      ansible_module_message(log).to_s
+    )
+  end
+
+  test 'accepting a censored message' do
+    log_value = <<-ANSIBLELOG.strip_heredoc
+    {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result", "changed": true, "failed": false, "module": "copy"}
+ANSIBLELOG
+    message = FactoryBot.build(:message, value: log_value)
+    log = FactoryBot.build(:log)
+    log.message = message
+    assert_match(
+      /output has been hidden/,
       ansible_module_message(log).to_s
     )
   end
