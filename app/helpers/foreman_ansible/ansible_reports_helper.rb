@@ -95,7 +95,7 @@ module ForemanAnsible
     def get_results(msg_json)
       results = msg_json.key?('results') ? msg_json['results'] : [msg_json]
       results.map do |result|
-        module_args = result['invocation']['module_args']
+        module_args = result.fetch('invocation', {}).fetch('module_args', {})
         yield module_args, result
       end
     end
