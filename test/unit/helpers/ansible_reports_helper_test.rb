@@ -71,6 +71,8 @@ ANSIBLELOG
       /output has been hidden/,
       ansible_module_message(log).to_s
     )
+  end
+
   test 'module message extraction with action' do
     example_report = JSON.parse(File.read(ansible_fixture_file('report.json'))).second
     report = ConfigReport.import(example_report)
