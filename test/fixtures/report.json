@@ -1,4 +1,4 @@
-{
+[{
   "reporter": "ansible",
   "reported_at":"2018-01-15 17:31:36 521275",
   "metrics": {
@@ -24,4 +24,108 @@
       }
     }
   ]
-}
+},
+{
+  "reporter": "ansible",
+  "reported_at":"2022-12-22 10:52:48 521275",
+  "metrics": {
+    "time":
+      { "total":133 }
+  },
+  "host": "io.local",
+  "status": {
+    "applied": 8,
+    "failed": 0,
+    "skipped": 0
+  },
+  "logs": [
+    {
+      "log": {
+        "sources": {
+          "source": "Schedule multiple cronjobs"
+        },
+        "messages": {
+          "message": "{\"changed\": true, \"failed\": false, \"module\": \"cron\", \"msg\": \"All items completed\", \"results\": [{\"_ansible_item_label\": \"date\", \"_ansible_no_log\": false, \"ansible_loop_var\": \"item\", \"changed\": true, \"envs\": [], \"failed\": false, \"invocation\": {\"module_args\": {\"backup\": false, \"cron_file\": null, \"day\": \"*\", \"disabled\": false, \"env\": null, \"hour\": \"5,2\", \"insertafter\": null, \"insertbefore\": null, \"job\": \"date > /dev/null\", \"minute\": \"0\", \"month\": \"*\", \"name\": \"Cron date\", \"reboot\": false, \"special_time\": null, \"state\": \"present\", \"user\": null, \"weekday\": \"*\"}}, \"item\": \"date\", \"jobs\": [\"Cron date\"]}, {\"_ansible_item_label\": \"df\", \"_ansible_no_log\": false, \"ansible_loop_var\": \"item\", \"changed\": true, \"envs\": [], \"failed\": false, \"invocation\": {\"module_args\": {\"backup\": false, \"cron_file\": null, \"day\": \"*\", \"disabled\": false, \"env\": null, \"hour\": \"5,2\", \"insertafter\": null, \"insertbefore\": null, \"job\": \"df > /dev/null\", \"minute\": \"0\", \"month\": \"*\", \"name\": \"Cron df\", \"reboot\": false, \"special_time\": null, \"state\": \"present\", \"user\": null, \"weekday\": \"*\"}}, \"item\": \"df\", \"jobs\": [\"Cron date\", \"Cron df\"]}]}"
+        },
+        "level": "notice"
+      }
+    },
+    {
+      "log": {
+        "sources": {
+          "source": "Schedule one cronjob"
+        },
+        "messages": {
+          "message": "{\"_ansible_no_log\": false, \"changed\": true, \"envs\": [], \"failed\": false, \"invocation\": {\"module_args\": {\"backup\": false, \"cron_file\": null, \"day\": \"*\", \"disabled\": false, \"env\": null, \"hour\": \"5,2\", \"insertafter\": null, \"insertbefore\": null, \"job\": \"hostname > /dev/null\", \"minute\": \"0\", \"month\": \"*\", \"name\": \"Schedule hostname\", \"reboot\": false, \"special_time\": null, \"state\": \"present\", \"user\": null, \"weekday\": \"*\"}}, \"jobs\": [\"Cron date\", \"Cron df\", \"Schedule hostname\"], \"module\": \"cron\"}"
+        },
+        "level": "notice"
+      }
+    },
+    {
+      "log": {
+        "sources": {
+          "source": "Render multiple templates"
+        },
+        "messages": {
+          "message": "{\"changed\": true, \"failed\": false, \"module\": \"template\", \"msg\": \"All items completed\", \"results\": [{\"_ansible_item_label\": \"test1.txt\", \"_ansible_no_log\": false, \"ansible_loop_var\": \"item\", \"changed\": true, \"checksum\": \"dba7673010f19a94af4345453005933fd511bea9\", \"dest\": \"/tmp/test1.txt\", \"diff\": [], \"failed\": false, \"gid\": 0, \"group\": \"root\", \"invocation\": {\"module_args\": {\"_original_basename\": \"test1.txt.j2\", \"attributes\": null, \"backup\": false, \"checksum\": \"dba7673010f19a94af4345453005933fd511bea9\", \"content\": null, \"delimiter\": null, \"dest\": \"/tmp/test1.txt\", \"directory_mode\": null, \"follow\": false, \"force\": true, \"group\": null, \"local_follow\": null, \"mode\": null, \"owner\": null, \"regexp\": null, \"remote_src\": null, \"selevel\": null, \"serole\": null, \"setype\": null, \"seuser\": null, \"src\": \"/root/.ansible/tmp/ansible-tmp-1671670606.02-7241-175625077259447/source\", \"unsafe_writes\": false, \"validate\": null}}, \"item\": \"test1.txt\", \"md5sum\": null, \"mode\": \"0644\", \"owner\": \"root\", \"secontext\": \"unconfined_u:object_r:admin_home_t:s0\", \"size\": 6, \"src\": \"/root/.ansible/tmp/ansible-tmp-1671670606.02-7241-175625077259447/source\", \"state\": \"file\", \"uid\": 0}, {\"_ansible_item_label\": \"test2.txt\", \"_ansible_no_log\": false, \"ansible_loop_var\": \"item\", \"changed\": true, \"checksum\": \"9054fbe0b622c638224d50d20824d2ff6782e308\", \"dest\": \"/tmp/test2.txt\", \"diff\": [], \"failed\": false, \"gid\": 0, \"group\": \"root\", \"invocation\": {\"module_args\": {\"_original_basename\": \"test2.txt.j2\", \"attributes\": null, \"backup\": false, \"checksum\": \"9054fbe0b622c638224d50d20824d2ff6782e308\", \"content\": null, \"delimiter\": null, \"dest\": \"/tmp/test2.txt\", \"directory_mode\": null, \"follow\": false, \"force\": true, \"group\": null, \"local_follow\": null, \"mode\": null, \"owner\": null, \"regexp\": null, \"remote_src\": null, \"selevel\": null, \"serole\": null, \"setype\": null, \"seuser\": null, \"src\": \"/root/.ansible/tmp/ansible-tmp-1671670620.49-7241-225254470383476/source\", \"unsafe_writes\": false, \"validate\": null}}, \"item\": \"test2.txt\", \"md5sum\": null, \"mode\": \"0644\", \"owner\": \"root\", \"secontext\": \"unconfined_u:object_r:admin_home_t:s0\", \"size\": 6, \"src\": \"/root/.ansible/tmp/ansible-tmp-1671670620.49-7241-225254470383476/source\", \"state\": \"file\", \"uid\": 0}]}"
+        },
+        "level": "notice"
+      }
+    },
+    {
+      "log": {
+        "sources": {
+          "source": "Render one template"
+        },
+        "messages": {
+          "message": "{\"_ansible_no_log\": false, \"changed\": true, \"checksum\": \"41c5985fc771b6ecfe8feaa99f8fa9b77ac7d6ce\", \"dest\": \"/tmp/test3.txt\", \"diff\": [], \"failed\": false, \"gid\": 0, \"group\": \"root\", \"invocation\": {\"module_args\": {\"_original_basename\": \"test3.txt.j2\", \"attributes\": null, \"backup\": false, \"checksum\": \"41c5985fc771b6ecfe8feaa99f8fa9b77ac7d6ce\", \"content\": null, \"delimiter\": null, \"dest\": \"/tmp/test3.txt\", \"directory_mode\": null, \"follow\": false, \"force\": true, \"group\": null, \"local_follow\": null, \"mode\": null, \"owner\": null, \"regexp\": null, \"remote_src\": null, \"selevel\": null, \"serole\": null, \"setype\": null, \"seuser\": null, \"src\": \"/root/.ansible/tmp/ansible-tmp-1671670634.79-7306-243717749452063/source\", \"unsafe_writes\": false, \"validate\": null}}, \"md5sum\": null, \"mode\": \"0644\", \"module\": \"template\", \"owner\": \"root\", \"secontext\": \"unconfined_u:object_r:admin_home_t:s0\", \"size\": 6, \"src\": \"/root/.ansible/tmp/ansible-tmp-1671670634.79-7306-243717749452063/source\", \"state\": \"file\", \"uid\": 0}"
+        },
+        "level": "notice"
+      }
+    },
+    {
+      "log": {
+        "sources": {
+          "source": "Copy multiple local files"
+        },
+        "messages": {
+          "message": "{\"changed\": true, \"failed\": false, \"module\": \"copy\", \"msg\": \"All items completed\", \"results\": [{\"_ansible_item_label\": \"test4.txt\", \"_ansible_no_log\": false, \"ansible_loop_var\": \"item\", \"changed\": true, \"checksum\": \"ab2649b7e58f7e32b0c75be95d11e2979399d392\", \"dest\": \"/tmp/test4.txt\", \"diff\": [], \"failed\": false, \"gid\": 0, \"group\": \"root\", \"invocation\": {\"module_args\": {\"_original_basename\": \"test4.txt\", \"attributes\": null, \"backup\": false, \"checksum\": \"ab2649b7e58f7e32b0c75be95d11e2979399d392\", \"content\": null, \"delimiter\": null, \"dest\": \"/tmp/test4.txt\", \"directory_mode\": null, \"follow\": false, \"force\": true, \"group\": \"root\", \"local_follow\": null, \"mode\": 256, \"owner\": \"root\", \"regexp\": null, \"remote_src\": null, \"selevel\": null, \"serole\": null, \"setype\": null, \"seuser\": null, \"src\": \"/root/.ansible/tmp/ansible-tmp-1671670648.88-7343-91799014257533/source\", \"unsafe_writes\": false, \"validate\": null}}, \"item\": \"test4.txt\", \"md5sum\": null, \"mode\": \"0400\", \"owner\": \"root\", \"secontext\": \"unconfined_u:object_r:admin_home_t:s0\", \"size\": 6, \"src\": \"/root/.ansible/tmp/ansible-tmp-1671670648.88-7343-91799014257533/source\", \"state\": \"file\", \"uid\": 0}, {\"_ansible_item_label\": \"test5.txt\", \"_ansible_no_log\": false, \"ansible_loop_var\": \"item\", \"changed\": true, \"checksum\": \"4ea77484f3a1c7dde4c0cca2f5c40953388f19f5\", \"dest\": \"/tmp/test5.txt\", \"diff\": [], \"failed\": false, \"gid\": 0, \"group\": \"root\", \"invocation\": {\"module_args\": {\"_original_basename\": \"test5.txt\", \"attributes\": null, \"backup\": false, \"checksum\": \"4ea77484f3a1c7dde4c0cca2f5c40953388f19f5\", \"content\": null, \"delimiter\": null, \"dest\": \"/tmp/test5.txt\", \"directory_mode\": null, \"follow\": false, \"force\": true, \"group\": \"root\", \"local_follow\": null, \"mode\": 256, \"owner\": \"root\", \"regexp\": null, \"remote_src\": null, \"selevel\": null, \"serole\": null, \"setype\": null, \"seuser\": null, \"src\": \"/root/.ansible/tmp/ansible-tmp-1671670662.97-7343-50902792283881/source\", \"unsafe_writes\": false, \"validate\": null}}, \"item\": \"test5.txt\", \"md5sum\": null, \"mode\": \"0400\", \"owner\": \"root\", \"secontext\": \"unconfined_u:object_r:admin_home_t:s0\", \"size\": 6, \"src\": \"/root/.ansible/tmp/ansible-tmp-1671670662.97-7343-50902792283881/source\", \"state\": \"file\", \"uid\": 0}]}"
+        },
+        "level": "notice"
+      }
+    },
+    {
+      "log": {
+        "sources": {
+          "source": "Copy one local files"
+        },
+        "messages": {
+          "message": "{\"_ansible_no_log\": false, \"changed\": true, \"checksum\": \"ec4cddb45c3ce640bed61b3d8ab6c18e715dac78\", \"dest\": \"/tmp/test6.txt\", \"diff\": [], \"failed\": false, \"gid\": 0, \"group\": \"root\", \"invocation\": {\"module_args\": {\"_original_basename\": \"test6.txt\", \"attributes\": null, \"backup\": false, \"checksum\": \"ec4cddb45c3ce640bed61b3d8ab6c18e715dac78\", \"content\": null, \"delimiter\": null, \"dest\": \"/tmp/test6.txt\", \"directory_mode\": null, \"follow\": false, \"force\": true, \"group\": \"root\", \"local_follow\": null, \"mode\": 256, \"owner\": \"root\", \"regexp\": null, \"remote_src\": null, \"selevel\": null, \"serole\": null, \"setype\": null, \"seuser\": null, \"src\": \"/root/.ansible/tmp/ansible-tmp-1671670677.05-7408-75605497546833/source\", \"unsafe_writes\": false, \"validate\": null}}, \"md5sum\": null, \"mode\": \"0400\", \"module\": \"copy\", \"owner\": \"root\", \"secontext\": \"unconfined_u:object_r:admin_home_t:s0\", \"size\": 6, \"src\": \"/root/.ansible/tmp/ansible-tmp-1671670677.05-7408-75605497546833/source\", \"state\": \"file\", \"uid\": 0}"
+        },
+        "level": "notice"
+      }
+    },
+    {
+      "log": {
+        "sources": {
+          "source": "Restart multiple services"
+        },
+        "messages": {
+          "message": "{\"changed\":true,\"failed\":false,\"module\":\"service\",\"msg\":\"All items completed\",\"results\":[{\"_ansible_item_label\":\"chronyd\",\"_ansible_no_log\":false,\"ansible_loop_var\":\"item\",\"changed\":true,\"failed\":false,\"invocation\":{\"module_args\":{\"daemon_reexec\":false,\"daemon_reload\":false,\"enabled\":null,\"force\":null,\"masked\":null,\"name\":\"chronyd\",\"no_block\":false,\"scope\":null,\"state\":\"restarted\",\"user\":null}},\"item\":\"chronyd\",\"name\":\"chronyd\",\"state\":\"started\"},{\"_ansible_item_label\":\"firewalld\",\"_ansible_no_log\":false,\"ansible_loop_var\":\"item\",\"changed\":true,\"failed\":false,\"invocation\":{\"module_args\":{\"daemon_reexec\":false,\"daemon_reload\":false,\"enabled\":null,\"force\":null,\"masked\":null,\"name\":\"firewalld\",\"no_block\":false,\"scope\":null,\"state\":\"restarted\",\"user\":null}},\"item\":\"firewalld\",\"name\":\"firewalld\",\"state\":\"started\"}]}"
+        },
+        "level": "notice"
+      }
+    },
+    {
+      "log": {
+        "sources": {
+          "source": "Restart one service"
+        },
+        "messages": {
+          "message": "{\"_ansible_no_log\":false,\"changed\":true,\"failed\":false,\"invocation\":{\"module_args\":{\"daemon_reexec\":false,\"daemon_reload\":false,\"enabled\":null,\"force\":null,\"masked\":null,\"name\":\"chronyd\",\"no_block\":false,\"scope\":null,\"state\":\"restarted\",\"user\":null}},\"module\":\"service\",\"name\":\"chronyd\",\"state\":\"started\"}"
+        },
+        "level": "notice"
+      }
+    }
+  ]
+}]
