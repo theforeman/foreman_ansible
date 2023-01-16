@@ -32,20 +32,29 @@ module ForemanAnsible
       when 'package'
         msg_json['results'].empty? ? msg_json['msg'] : msg_json['results']
       when 'template'
-        module_args = msg_json['invocation']['module_args']
-        _("Rendered template #{module_args['_original_basename']} to #{msg_json['dest']}")
+        get_results(msg_json) do |module_args, result|
+          _("Rendered template #{module_args['_original_basename']} to #{result['dest']}")
+        end
       when 'service'
-        _("Service #{msg_json['name']} #{msg_json['state']} (enabled: #{msg_json['enabled']})")
+        get_results(msg_json) do |_, result|
+          _("Service #{result['name']} #{result['state']} (enabled: #{result['enabled']})")
+        end
       when 'group'
-        _("User group #{msg_json['name']} #{msg_json['state']}, gid: #{msg_json['gid']}")
+        get_results(msg_json) do |_, result|
+          _("User group #{result['name']} #{result['state']}, gid: #{result['gid']}")
+        end
       when 'user'
-        _("User #{msg_json['name']} #{msg_json['state']}, uid: #{msg_json['uid']}")
+        get_results(msg_json) do |_, result|
+          _("User #{result['name']} #{result['state']}, uid: #{result['uid']}")
+        end
       when 'cron'
-        module_args = msg_json['invocation']['module_args']
-        _("Cron job: #{module_args['minute']} #{module_args['hour']} #{module_args['day']} #{module_args['month']} #{module_args['weekday']} #{module_args['job']} (disabled: #{module_args['disabled']})")
+        get_results(msg_json) do |module_args, _|
+          _("Cron job: #{module_args['minute']} #{module_args['hour']} #{module_args['day']} #{module_args['month']} #{module_args['weekday']} #{module_args['job']} (disabled: #{module_args['disabled']})")
+        end
       when 'copy'
-        module_args = msg_json['invocation']['module_args']
-        _("Copy #{module_args['_original_basename']} to #{msg_json['dest']}")
+        get_results(msg_json) do |module_args, result|
+          _("Copy #{module_args['_original_basename']} to #{result['dest']}")
+        end
       when 'command', 'shell'
         msg_json['stdout_lines']
       else
@@ -68,6 +77,14 @@ module ForemanAnsible
     end
 
     private
+
+    def get_results(msg_json)
+      results = msg_json.key?('results') ? msg_json['results'] : [msg_json]
+      results.map do |result|
+        module_args = result.fetch('invocation', {}).fetch('module_args', {})
+        yield module_args, result
+      end
+    end
 
     def parsed_message_json(log)
       JSON.parse(log.message.value)
