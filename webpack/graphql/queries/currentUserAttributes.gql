@@ -8,4 +8,9 @@ fragment CurrentUserAttributes on User {
       name
     }
   }
+  usergroups {
+    nodes {
+      admin
+    }
+  }
 }
