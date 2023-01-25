@@ -11,7 +11,10 @@ export const permissionCheck = (user, permissionsRequired) => {
     );
   }
 
-  if (user.admin) {
+  if (
+    user.admin ||
+    user.usergroups.nodes.find(usergroup => usergroup.admin === true)
+  ) {
     return { allowed: true };
   }
 

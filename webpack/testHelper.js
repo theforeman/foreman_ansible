@@ -71,6 +71,9 @@ export const userFactory = (login, permissions = []) => ({
   permissions: {
     nodes: permissions,
   },
+  usergroups: {
+    nodes: [],
+  },
 });
 
 export const admin = {
@@ -79,6 +82,9 @@ export const admin = {
   login: 'admin',
   admin: true,
   permissions: {
+    nodes: [],
+  },
+  usergroups: {
     nodes: [],
   },
 };
