@@ -27,7 +27,13 @@ module ForemanAnsible
     end
 
     def proxy_update_button(proxy)
-      feature = RemoteExecutionFeature.feature(:ansible_run_capsule_upgrade)
+      name = if Foreman::Plugin.find('foreman_theme_satellite').present?
+               :ansible_run_capsule_upgrade
+             else
+               :ansible_run_smart_proxy_upgrade
+             end
+
+      feature = RemoteExecutionFeature.feature(name)
       return if feature.nil?
 
       path = new_job_invocation_path(:host_ids => proxy.infrastructure_host_facets.pluck(:host_id),
