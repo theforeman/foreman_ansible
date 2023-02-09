@@ -31,7 +31,6 @@ module ForemanAnsible
       return msg_json['censored'] if msg_json['censored'].present?
 
       module_action = msg_json.fetch('module', '').delete_prefix('ansible.builtin.').delete_prefix('ansible.legacy.')
-      module_args = msg_json.fetch('invocation', {}).fetch('module_args', {})
       case module_action
       when 'package'
         msg_json['results'].empty? ? msg_json['msg'] : msg_json['results']
