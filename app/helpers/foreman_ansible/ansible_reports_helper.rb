@@ -27,7 +27,10 @@ module ForemanAnsible
 
     def ansible_module_message(log)
       msg_json = parsed_message_json(log)
-      module_action = msg_json['module']
+      return _("Execution error: #{msg_json['msg']}") if msg_json['failed'].present?
+      return msg_json['censored'] if msg_json['censored'].present?
+
+      module_action = msg_json.fetch('module', '').delete_prefix('ansible.builtin.').delete_prefix('ansible.legacy.')
       case module_action
       when 'package'
         msg_json['results'].empty? ? msg_json['msg'] : msg_json['results']
