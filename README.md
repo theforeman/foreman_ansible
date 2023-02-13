@@ -17,7 +17,7 @@ Reporting and facts import from Ansible to Foreman.
 * Monitor playbook and Ansible runs runtime
 * Sends Ansible reports to Foreman that contain what changed on your system after an ansible run.
 * Stores a list of roles applicable to your hosts and 'plays' them
-* Looking for an Ansible dynamic inventory for Foreman? Use [foreman_ansible_inventory](https://github.com/theforeman/foreman_ansible_inventory/)
+* Looking for an Ansible dynamic inventory for Foreman? Use [theforeman.foreman.foreman](https://github.com/theforeman/foreman-ansible-modules/blob/develop/plugins/inventory/foreman.py)
 
 ## Documentation (installation and configuration)
 Check out the official manual at [theforeman.org](http://theforeman.org/plugins/foreman_ansible/2.x/index.html)
