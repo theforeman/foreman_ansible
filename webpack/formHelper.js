@@ -88,11 +88,12 @@ SelectField.defaultProps = {
   blankLabel: '',
 };
 
-const pickerWithHandlers = Component => {
+const pickerWithHandlers = ComponentType => {
   const Subcomponent = ({ form, field, isRequired, label, ...rest }) => {
     const { onChange, onBlur } = wrapPickerProps(field);
     const valid = shouldValidate(form, field.name);
 
+    const Component = ComponentType === 'date' ? DatePicker : TimePicker;
     return (
       <FormGroup
         label={label}
@@ -103,7 +104,11 @@ const pickerWithHandlers = Component => {
       >
         <Component
           aria-label={field.name}
-          onChange={onChange}
+          onChange={(a, b) => {
+            // datepicker: onChange	(event: React.FormEvent<HTMLInputElement>, value: string, date?: Date) => void
+            // timepicker: onChange	(time: string, hour?: number, minute?: number, seconds?: number, isValid?: boolean ) => void
+            ComponentType === 'date' ? onChange(b, a) : onChange(a);
+          }}
           onBlur={onBlur}
           {...rest}
           validated={valid}
@@ -127,5 +132,5 @@ const pickerWithHandlers = Component => {
   return Subcomponent;
 };
 
-export const DatePickerField = pickerWithHandlers(DatePicker);
-export const TimePickerField = pickerWithHandlers(TimePicker);
+export const DatePickerField = pickerWithHandlers('date');
+export const TimePickerField = pickerWithHandlers('time');
