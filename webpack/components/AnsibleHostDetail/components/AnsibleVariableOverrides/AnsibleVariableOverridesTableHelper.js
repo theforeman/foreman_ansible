@@ -85,12 +85,16 @@ const validateRegexp = (variable, value) => {
 };
 
 const validateList = (variable, value) => {
-  if (variable.validatorRule.split(',').find(item => item.trim() === value)) {
+  let { validatorRule } = variable;
+  if (typeof validatorRule !== 'string') {
+    validatorRule = validatorRule.toString();
+  }
+  if (validatorRule.split(',').find(item => item.trim() === value)) {
     return validationSuccess;
   }
   return {
     key: 'error',
-    msg: sprintf(__('Invalid, expected one of: %s'), variable.validatorRule),
+    msg: sprintf(__('Invalid, expected one of: %s'), validatorRule),
   };
 };
 
