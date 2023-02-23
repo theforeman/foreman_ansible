@@ -20,6 +20,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'acts_as_list', '~> 1.0.3'
   s.add_dependency 'deface', '< 2.0'
-  s.add_dependency 'foreman_remote_execution', '>= 4.4.0'
-  s.add_dependency 'foreman-tasks', '>= 5.2.0'
+  s.add_dependency 'foreman_remote_execution', '~> 7.2.2'
+  s.add_dependency 'foreman-tasks', '~> 6.0.3'
 end
