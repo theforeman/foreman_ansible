@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: theforeman/foreman
-          ref: develop
+          ref: 3.5-stable
           path: foreman
       - name: Setup Node
         uses: actions/setup-node@v1

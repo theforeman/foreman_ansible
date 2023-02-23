@@ -20,8 +20,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'acts_as_list', '~> 1.0.3'
   s.add_dependency 'deface', '< 2.0'
-  # foreman_remote_execution 9.0 requires Foreman 3.6+, while
-  # foreman_ansible still works with 3.5+, so we allow 8.2.x
   s.add_dependency 'foreman_remote_execution', '~> 8.2'
-  s.add_dependency 'foreman-tasks', '~> 7.1.1'
+  s.add_dependency 'foreman-tasks', '~> 7.1'
 end
