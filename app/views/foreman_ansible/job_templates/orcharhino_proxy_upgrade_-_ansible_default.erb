@@ -1,0 +1,81 @@
+<%#
+name: orcharhino Proxy Upgrade Playbook
+snippet: false
+template_inputs:
+- name: target_version
+  required: false
+  input_type: user
+  advanced: false
+  value_type: plain
+  hidden_value: false
+- name: whitelist_options
+  required: false
+  input_type: user
+  advanced: false
+  value_type: plain
+  hidden_value: false
+model: JobTemplate
+job_category: Maintenance Operations
+description_format: "%{template_name}"
+provider_type: Ansible
+kind: job_template
+feature: ansible_run_orcharhino_proxy_upgrade
+%>
+
+---
+- hosts: all
+  vars:
+    target_version: "<%= input('target_version').present? ? input('target_version') : product_short_version %>"
+  tasks:
+<% if plugin_present?('orcharhino_core') -%>
+    - name: Gather RPM package facts
+      ansible.builtin.package_facts:
+        manager: auto
+
+    - name: Fail if target is orcharhino Server
+      ansible.builtin.fail:
+        msg: "This playbook cannot be executed on orcharhino Server. Use only on orcharhino Proxy."
+      when: "'orcharhino' in ansible_facts.packages"
+
+    - name: Install|Update orcharhino-maintain if not present
+      ansible.builtin.package:
+        name: rubygem-foreman_maintain
+        state: latest
+
+    - block:
+      <%- whitelist_option = if input('whitelist_options').present?
+                               "--whitelist=#{input('whitelist_options')}"
+                             end -%>
+      - name: Upgrade orcharhino Proxy using orcharhino-maintain
+        ansible.builtin.shell: orcharhino-maintain upgrade run --assumeyes --target-version={{ target_version }} <%= whitelist_option %>
+        register: result
+
+      - name: Re-Gather RPM package facts after the upgrade
+        ansible.builtin.package_facts:
+          manager: auto
+
+      - name: orcharhino-maintain upgrade return code is zero
+        ansible.builtin.debug:
+          msg: "Success! orcharhino Proxy upgrade completed. Current version of orcharhino Proxy is {{ ansible_facts.packages['orcharhino-proxy'][0]['version'] }}."
+
+      rescue:
+        - name: Print orcharhino-maintain output
+          ansible.builtin.debug:
+            var: result
+
+        - name: Grep top 10 Error messages from /var/log/foreman-installer/foreman-proxy-content.log
+          ansible.builtin.shell: grep '^\[ERROR' /var/log/foreman-installer/foreman-proxy-content.log | head -n 10
+          register: output_grep
+
+        - name: Print grepped Error messages
+          ansible.builtin.debug:
+            var: output_grep.stdout_lines
+
+        - name: orcharhino-maintain upgrade return code is non-zero
+          ansible.builtin.fail:
+            msg: "Failed! orcharhino Proxy upgrade failed. For more information, see /var/log/foreman-installer/foreman-proxy-content.log on your orcharhino Proxy."
+<% else -%>
+    - name: Fail if orcharhino_core is missing
+      ansible.builtin.fail:
+        msg: "Failed! The plug-in orcharhino_core is not present. This playbook is only for use with orcharhino."
+<% end -%>
