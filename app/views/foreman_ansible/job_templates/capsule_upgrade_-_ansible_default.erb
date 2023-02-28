@@ -28,11 +28,11 @@ feature: ansible_run_capsule_upgrade
     target_version: "<%= input('target_version').present? ? input('target_version') : product_short_version %>"
   tasks:
 <% if plugin_present?('foreman_theme_satellite') -%>
-    - name: Gather the rpm package facts
+    - name: Gather RPM package facts
       ansible.builtin.package_facts:
         manager: auto
 
-    - name: Fail if the target server is a Satellite server
+    - name: Fail if target is a Satellite server
       ansible.builtin.fail:
         msg: "This playbook cannot be executed on a Satellite server. Use only on a Capsule server."
       when: "'satellite' in ansible_facts.packages"
@@ -50,13 +50,13 @@ feature: ansible_run_capsule_upgrade
         ansible.builtin.shell: satellite-maintain upgrade run --assumeyes --target-version={{ target_version }} <%= whitelist_option %>
         register: result
 
-      - name: Re-Gather the rpm package facts after the upgrade
+      - name: Re-Gather RPM package facts after the upgrade
         ansible.builtin.package_facts:
           manager: auto
 
       - name: satellite-maintain upgrade return code is zero
         ansible.builtin.debug:
-          msg: "Success! Capsule server upgrade completed. Current version of Capsule server server is {{ ansible_facts.packages['satellite-capsule'][0]['version'] }}."
+          msg: "Success! Capsule server upgrade completed. Current version of Capsule server is {{ ansible_facts.packages['satellite-capsule'][0]['version'] }}."
 
       rescue:
         - name: Print satellite-maintain output
@@ -73,7 +73,7 @@ feature: ansible_run_capsule_upgrade
 
         - name: satellite-maintain upgrade return code is non-zero
           ansible.builtin.fail:
-            msg: "Failed! Capsule server upgrade failed. See /var/log/foreman-installer/capsule.log in the Capsule server for more information"
+            msg: "Failed! Capsule server upgrade failed. For more information, see /var/log/foreman-installer/capsule.log on your Capsule server."
 <% else -%>
     - name: Fail if foreman_theme_satellite is missing
       ansible.builtin.fail:

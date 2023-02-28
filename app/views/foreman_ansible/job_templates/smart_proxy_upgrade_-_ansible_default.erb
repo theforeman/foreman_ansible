@@ -27,22 +27,22 @@ feature: ansible_run_smart_proxy_upgrade
   vars:
     target_version: "<%= input('target_version').present? ? input('target_version') : product_short_version %>"
   tasks:
-    - name: Gather the rpm package facts
+    - name: Gather RPM package facts
       ansible.builtin.package_facts:
         manager: auto
 
-    - name: Fail if the target server is a Foreman server
+    - name: Fail if target is a Foreman server
       ansible.builtin.fail:
         msg: "This playbook cannot be executed on a Foreman server. Use only on a Smart Proxy server."
       when: "'foreman' in ansible_facts.packages"
 
-    - name: Install foreman release gpg key
+    - name: Install Foreman release GPG key
       ansible.builtin.rpm_key:
         state: present
         key: http://yum.theforeman.org/releases/{{ target_version }}/RPM-GPG-KEY-foreman
       when: target_version != "nightly"
 
-    - name: Update foreman repositories
+    - name: Update Foreman repositories
       ansible.builtin.package:
         name: https://yum.theforeman.org/releases/{{ target_version }}/el{{ ansible_distribution_major_version }}/{{ ansible_architecture }}/foreman-release.rpm
         state: installed
