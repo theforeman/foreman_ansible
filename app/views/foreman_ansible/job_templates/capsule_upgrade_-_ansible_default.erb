@@ -29,16 +29,16 @@ feature: ansible_run_capsule_upgrade
   tasks:
 <% if plugin_present?('foreman_theme_satellite') -%>
     - name: Gather the rpm package facts
-      package_facts:
+      ansible.builtin.package_facts:
         manager: auto
 
     - name: Fail if the target server is a Satellite server
-      fail:
+      ansible.builtin.fail:
         msg: "This playbook cannot be executed on a Satellite server. Use only on a Capsule server."
       when: "'satellite' in ansible_facts.packages"
 
     - name: Install|Update satellite-maintain if not present
-      package:
+      ansible.builtin.package:
         name: rubygem-foreman_maintain
         state: latest
 
@@ -47,35 +47,35 @@ feature: ansible_run_capsule_upgrade
                                "--whitelist=#{input('whitelist_options')}"
                              end -%>
       - name: Upgrade Capsule server using satellite-maintain
-        shell: satellite-maintain upgrade run --assumeyes --target-version={{ target_version }} <%= whitelist_option %>
+        ansible.builtin.shell: satellite-maintain upgrade run --assumeyes --target-version={{ target_version }} <%= whitelist_option %>
         register: result
 
       - name: Re-Gather the rpm package facts after the upgrade
-        package_facts:
+        ansible.builtin.package_facts:
           manager: auto
 
       - name: satellite-maintain upgrade return code is zero
-        debug:
+        ansible.builtin.debug:
           msg: "Success! Capsule server upgrade completed. Current version of Capsule server server is {{ ansible_facts.packages['satellite-capsule'][0]['version'] }}."
 
       rescue:
         - name: Print satellite-maintain output
-          debug:
+          ansible.builtin.debug:
             var: result
 
         - name: Grep top 10 Error messages from /var/log/foreman-installer/capsule.log
-          shell: grep '^\[ERROR' /var/log/foreman-installer/capsule.log | head -n10
+          ansible.builtin.shell: grep '^\[ERROR' /var/log/foreman-installer/capsule.log | head -n10
           register: output_grep
 
         - name: Print grepped Error messages
-          debug:
+          ansible.builtin.debug:
             var: output_grep.stdout_lines
 
         - name: satellite-maintain upgrade return code is non-zero
-          fail:
+          ansible.builtin.fail:
             msg: "Failed! Capsule server upgrade failed. See /var/log/foreman-installer/capsule.log in the Capsule server for more information"
 <% else -%>
     - name: Fail if foreman_theme_satellite is missing
-      fail:
+      ansible.builtin.fail:
         msg: "Failed! The plugin foreman_theme_satellite is not present. This playbook is only for use with Satellite."
 <% end -%>
