@@ -33,7 +33,7 @@
               <div class='pull-left'>
                 <%= truncate(log_message, length: allowed_length) %>
               </div>
-              <%= show_full_error_message_value(log_message) if log_message.length > allowed_length %>
+              <%= show_full_error_message_value(log_message) if (log_message&.length || 0) > allowed_length %>
             <% end %>
           </td>
         </tr>
