@@ -15,6 +15,7 @@ module ForemanAnsible
         # rubocop:disable Rails/LexicallyScopedActionFilter
         included do
           before_action :find_ansible_roles, :only => [:assign_ansible_roles]
+          before_action :find_hostgroup_ansible_role, :only => [:add_ansible_role, :remove_ansible_role]
 
           api :POST, '/hostgroups/:id/play_roles',
               N_('Runs all Ansible roles on a hostgroup')
@@ -64,6 +65,30 @@ module ForemanAnsible
             find_resource
             process_response @hostgroup.update(:ansible_roles => @ansible_roles)
           end
+
+          api :PUT, '/hostgroups/:id/ansible_roles',
+              N_('Directly add an Ansible role to a hostgroup')
+          param :id, :identifier, :required => true
+          param :ansible_role_id, :identifier,
+                N_('Ansible role to add to a hostgroup'),
+                :required => true
+
+          def add_ansible_role
+            process_response @hostgroup.ansible_roles << @ansible_role
+          rescue ActiveRecord::RecordInvalid => e
+            render_exception(e, :status => :unprocessable_entity)
+          end
+
+          api :DELETE, '/hostgroups/:id/ansible_roles/:ansible_role_id',
+              N_('Remove directly assigned Ansible role from a hostgroup')
+          param :id, :identifier, :required => true
+          param :ansible_role_id, :identifier,
+                N_('Ansible role to remove from a hostgroup'),
+                :required => true
+
+          def remove_ansible_role
+            process_response @hostgroup.ansible_roles.delete(@ansible_role)
+          end
         end
         # rubocop:enable Rails/LexicallyScopedActionFilter
 
@@ -87,6 +112,8 @@ module ForemanAnsible
           when 'play_roles', 'multiple_play_roles', 'ansible_roles',
                'assign_ansible_roles'
             :view
+          when 'add_ansible_role', 'remove_ansible_role'
+            :edit
           else
             super
           end

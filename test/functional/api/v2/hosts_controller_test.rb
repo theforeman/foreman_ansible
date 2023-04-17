@@ -9,6 +9,7 @@ module Api
       setup do
         @ansible_role1 = FactoryBot.create(:ansible_role)
         @ansible_role2 = FactoryBot.create(:ansible_role)
+        @ansible_role3 = FactoryBot.create(:ansible_role)
         @host1 = FactoryBot.create(:host)
         @host2 = FactoryBot.create(:host)
         @host3 = FactoryBot.create(:host)
@@ -86,6 +87,34 @@ module Api
              :session => set_session_user
         assert_response :success
         assert_equal assigns('host').ansible_roles, [@ansible_role2, @ansible_role1]
+      end
+
+      test 'should append a role to a host with a correct ordering' do
+        host = FactoryBot.create(:host,
+                                 :managed => false,
+                                 :ansible_role_ids => [@ansible_role3.id])
+        post :add_ansible_role,
+             :params => {
+               :id => host.id,
+               :ansible_role_id => @ansible_role2.id
+             },
+             :session => set_session_user
+        assert_response 201
+        assert_equal assigns('host').ansible_roles, [@ansible_role3, @ansible_role2]
+      end
+
+      test 'should remove only specified roles from a host' do
+        host = FactoryBot.create(:host,
+                                 :managed => false,
+                                 :ansible_role_ids => [@ansible_role3.id, @ansible_role2.id, @ansible_role1.id])
+        delete :remove_ansible_role,
+               :params => {
+                 :id => host.id,
+                 :ansible_role_id => [@ansible_role2.id]
+               },
+               :session => set_session_user
+        assert_response :success
+        assert_equal assigns('host').ansible_roles, [@ansible_role3, @ansible_role1]
       end
     end
   end

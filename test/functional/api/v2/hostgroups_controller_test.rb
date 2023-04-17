@@ -63,6 +63,32 @@ module Api
         assert_response :success
         assert_equal assigns('hostgroup').ansible_roles, [@ansible_role2, @ansible_role1]
       end
+
+      test 'should append a role to a hostgroup with a correct ordering' do
+        hostgroup = FactoryBot.create(:hostgroup,
+                                      :ansible_role_ids => [@ansible_role1.id])
+        post :add_ansible_role,
+             :params => {
+               :id => hostgroup.id,
+               :ansible_role_id => [@ansible_role2.id]
+             },
+             :session => set_session_user
+        assert_response 201
+        assert_equal assigns('hostgroup').ansible_roles, [@ansible_role1, @ansible_role2]
+      end
+
+      test 'should remove only specified roles from a hostgroup' do
+        hostgroup = FactoryBot.create(:hostgroup,
+                                      :ansible_role_ids => [@ansible_role2.id, @ansible_role1.id])
+        delete :remove_ansible_role,
+               :params => {
+                 :id => hostgroup.id,
+                 :ansible_role_id => [@ansible_role2.id]
+               },
+               :session => set_session_user
+        assert_response :success
+        assert_equal assigns('hostgroup').ansible_roles, [@ansible_role1]
+      end
     end
   end
 end
