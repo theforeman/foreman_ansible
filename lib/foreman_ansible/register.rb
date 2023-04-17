@@ -151,10 +151,10 @@ Foreman::Plugin.register :foreman_ansible do
                  :'api/v2/ansible_inventories' => [:hostgroups] },
                :resource_type => 'Hostgroup'
     permission :edit_hosts,
-               { :'api/v2/hosts' => [:assign_ansible_roles] },
+               { :'api/v2/hosts' => [:assign_ansible_roles, :add_ansible_role, :remove_ansible_role] },
                :resource_type => 'Host'
     permission :edit_hostgroups,
-               { :'api/v2/hostgroups' => [:assign_ansible_roles] },
+               { :'api/v2/hostgroups' => [:assign_ansible_roles, :add_ansible_role, :remove_ansible_role] },
                :resource_type => 'Hostgroup'
     permission :generate_ansible_inventory,
                { :'api/v2/ansible_inventories' => [:schedule] }

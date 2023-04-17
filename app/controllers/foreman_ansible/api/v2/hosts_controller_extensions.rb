@@ -14,7 +14,9 @@ module ForemanAnsible
         # cannot extend the method properly.
         # rubocop:disable Rails/LexicallyScopedActionFilter
         included do
+          skip_before_action :find_resource, :only => [:add_ansible_role, :remove_ansible_role]
           before_action :find_ansible_roles, :only => [:assign_ansible_roles]
+          before_action :find_host_ansible_role, :only => [:add_ansible_role, :remove_ansible_role]
 
           def find_resource
             return true if params[:action] == 'multiple_play_roles'
@@ -64,6 +66,30 @@ module ForemanAnsible
           def assign_ansible_roles
             process_response @host.update(:ansible_roles => @ansible_roles)
           end
+
+          api :PUT, '/hosts/:id/ansible_roles',
+              N_('Directly add an Ansible role to a host')
+          param :id, :identifier, :required => true
+          param :ansible_role_id, :identifier,
+                N_('Ansible role to add to a host'),
+                :required => true
+
+          def add_ansible_role
+            process_response @host.ansible_roles << @ansible_role
+          rescue ActiveRecord::RecordInvalid => e
+            render_exception(e, :status => :unprocessable_entity)
+          end
+
+          api :DELETE, '/hosts/:id/ansible_roles/:ansible_role_id',
+              N_('Remove directly assigned Ansible role from a host')
+          param :id, :identifier, :required => true
+          param :ansible_role_id, :identifier,
+                N_('Ansible role to remove from a host'),
+                :required => true
+
+          def remove_ansible_role
+            process_response @host.ansible_roles.delete(@ansible_role)
+          end
         end
         # rubocop:enable Rails/LexicallyScopedActionFilter
 
@@ -74,6 +100,8 @@ module ForemanAnsible
           when 'play_roles', 'multiple_play_roles', 'ansible_roles',
                'assign_ansible_roles'
             :view
+          when 'add_ansible_role', 'remove_ansible_role'
+            :edit
           else
             super
           end
