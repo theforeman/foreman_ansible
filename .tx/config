@@ -1,9 +1,10 @@
 [main]
-host = https://www.transifex.com
+host = https://app.transifex.com
 
-[foreman.foreman_ansible]
-file_filter = locale/<lang>/foreman_ansible.edit.po
-source_file = locale/foreman_ansible.pot
-source_lang = en
-type = PO
-
+[o:foreman:p:foreman:r:foreman_ansible]
+file_filter   = locale/<lang>/foreman_ansible.po
+source_file   = locale/foreman_ansible.pot
+source_lang   = en
+type          = PO
+minimum_perc  = 0
+resource_name = foreman_ansible

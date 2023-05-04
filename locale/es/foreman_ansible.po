@@ -16,15 +16,15 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 10.1.0\n"
+"Project-Id-Version: foreman_ansible 11.2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Amit Upadhye <aupadhye@redhat.com>, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/foreman/teams/114/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 :"
 " 2;\n"
 
@@ -59,6 +59,9 @@ msgid "Add selected"
 msgstr "Añadir seleccionado"
 
 msgid "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles."
+msgstr ""
+
+msgid "Added: %{added}, Removed: %{obsolete}, Updated: %{updated}"
 msgstr ""
 
 msgid "All assigned Ansible roles"
@@ -181,6 +184,9 @@ msgstr "Roles Ansible cambiados"
 msgid "Close"
 msgstr "Cerrar"
 
+msgid "Configure Ansible Job"
+msgstr ""
+
 msgid "Configure Recurring Job"
 msgstr "Configurar un trabajo recurrente"
 
@@ -277,6 +283,12 @@ msgstr "Editar variable Ansible"
 msgid "Edit Ansible roles"
 msgstr "Editar los roles de Ansible"
 
+msgid "Enable Ansible Callback"
+msgstr ""
+
+msgid "Enable the callback plugin for this template"
+msgstr ""
+
 msgid "Enable web console"
 msgstr "Habilitar la consola web"
 
@@ -288,6 +300,9 @@ msgstr "Error"
 
 msgid "Executed at"
 msgstr "Ejecutado en"
+
+msgid "Failed to fetch Ansible Roles from server."
+msgstr ""
 
 msgid "Failed to import roles and variables "
 msgstr "Fallo en la importación de roles y variables "
@@ -322,11 +337,17 @@ msgstr "Ocultar todos los valores para este parámetro"
 msgid "Host assigned Ansible roles"
 msgstr "Roles de Ansible asignados al host"
 
+msgid "Host count"
+msgstr ""
+
 msgid "Host group has no associated hosts"
 msgstr "El grupo de hosts no tiene hosts asociados"
 
 msgid "Host not found by id: %s"
 msgstr "Anfitrión no encontrado por id: %s"
+
+msgid "Hostgroup count"
+msgstr ""
 
 msgid "Hostgroups"
 msgstr "Grupos de hosts"
@@ -366,6 +387,9 @@ msgstr "Importar datos"
 
 msgid "Import from %s"
 msgstr "Importar desde %s"
+
+msgid "Import of variables successfully finished."
+msgstr ""
 
 msgid "Import playbooks has finished successfully"
 msgstr "La importación de playbooks ha finalizado con éxito"
@@ -512,6 +536,9 @@ msgstr "No se encontró un proxy para importar variables, asegúrese de que el p
 msgid "No roles assigned directly to the host"
 msgstr ""
 
+msgid "No roles/hosts assigned"
+msgstr ""
+
 msgid "Nothing Found!"
 msgstr "No se ha encontrado nada."
 
@@ -526,6 +553,9 @@ msgstr "Número de tareas que deben enviarse al proxy inteligente en una solicit
 
 msgid "Only variables marked to Override are shown here."
 msgstr "Aquí sólo se muestran las variables marcadas para Anular."
+
+msgid "Operation"
+msgstr ""
 
 msgid "Optional Input Validator"
 msgstr "Validador de entrada opcional"
@@ -676,6 +706,9 @@ msgstr "Mostrar el inventario de Ansible para los grupos de hosts"
 
 msgid "Show Ansible inventory for hosts"
 msgstr "Mostrar el inventario de Ansible para los hosts"
+
+msgid "Show full value"
+msgstr ""
 
 msgid "Show role"
 msgstr "Mostrar rol"

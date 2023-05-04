@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { push } from 'connected-react-router';
 
 import { STATUS } from 'foremanReact/constants';
+import { translate as __ } from 'foremanReact/common/I18n';
 
 import ImportRolesAndVariablesTable from './AnsibleRolesAndVariables';
 import { onSubmit } from './AnsibleRolesAndVariablesActions';
@@ -11,11 +12,11 @@ import { selectApiImportStatus } from './AnsibleRolesAndVariablesSelectors';
 
 const WrappedImportRolesAndVariables = props => {
   const cols = [
-    { title: 'Name' },
-    { title: 'Operation' },
-    { title: 'Variables' },
-    { title: 'Hosts Count' },
-    { title: 'Hostgroups count' },
+    { title: __('Name') },
+    { title: __('Operation') },
+    { title: __('Variables') },
+    { title: __('Host count') },
+    { title: __('Hostgroup count') },
   ];
   const dispatch = useDispatch();
   const submit = (rows, proxy) => dispatch(onSubmit(rows, proxy));

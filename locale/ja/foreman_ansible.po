@@ -13,15 +13,15 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 10.1.0\n"
+"Project-Id-Version: foreman_ansible 11.2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Amit Upadhye <aupadhye@redhat.com>, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/foreman/teams/114/ja/)\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "%(selectedCount)s of %(totalCount)s items selected"
@@ -55,6 +55,9 @@ msgid "Add selected"
 msgstr "選択項目の追加"
 
 msgid "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles."
+msgstr ""
+
+msgid "Added: %{added}, Removed: %{obsolete}, Updated: %{updated}"
 msgstr ""
 
 msgid "All assigned Ansible roles"
@@ -177,6 +180,9 @@ msgstr "変更された Ansible ロール"
 msgid "Close"
 msgstr "閉じる"
 
+msgid "Configure Ansible Job"
+msgstr ""
+
 msgid "Configure Recurring Job"
 msgstr "繰り返しジョブの設定"
 
@@ -273,6 +279,12 @@ msgstr "Ansible 変数の編集"
 msgid "Edit Ansible roles"
 msgstr "Ansible ロールの編集"
 
+msgid "Enable Ansible Callback"
+msgstr ""
+
+msgid "Enable the callback plugin for this template"
+msgstr ""
+
 msgid "Enable web console"
 msgstr "Web コンソールの有効化"
 
@@ -284,6 +296,9 @@ msgstr "エラー!"
 
 msgid "Executed at"
 msgstr "実行"
+
+msgid "Failed to fetch Ansible Roles from server."
+msgstr ""
 
 msgid "Failed to import roles and variables "
 msgstr "ロールと変数のインポートに失敗しました "
@@ -318,11 +333,17 @@ msgstr "このパラメーターのすべての値を非表示にします。"
 msgid "Host assigned Ansible roles"
 msgstr "ホストに割り当てられた Ansible ロール"
 
+msgid "Host count"
+msgstr ""
+
 msgid "Host group has no associated hosts"
 msgstr "ホストグループに関連付けられたホストがありません"
 
 msgid "Host not found by id: %s"
 msgstr "id: %s でホストが見つかりません"
+
+msgid "Hostgroup count"
+msgstr ""
 
 msgid "Hostgroups"
 msgstr "ホストグループ"
@@ -362,6 +383,9 @@ msgstr "ファクトのインポート"
 
 msgid "Import from %s"
 msgstr "%s からのインポート"
+
+msgid "Import of variables successfully finished."
+msgstr ""
 
 msgid "Import playbooks has finished successfully"
 msgstr "Playbook のインポートが正常に終了しました"
@@ -508,6 +532,9 @@ msgstr "変数のインポート元となるプロキシーが見つかりませ
 msgid "No roles assigned directly to the host"
 msgstr ""
 
+msgid "No roles/hosts assigned"
+msgstr ""
+
 msgid "Nothing Found!"
 msgstr "何も見つかりません!"
 
@@ -522,6 +549,9 @@ msgstr "foreman_tasks_proxy_batch_trigger が有効な場合に、1つの要求�
 
 msgid "Only variables marked to Override are shown here."
 msgstr "オーバーライドとしてマークされた変数のみがここに表示されます。"
+
+msgid "Operation"
+msgstr ""
 
 msgid "Optional Input Validator"
 msgstr "オプションの入力バリデーター"
@@ -672,6 +702,9 @@ msgstr "ホストグループの Ansible インベントリーを表示する"
 
 msgid "Show Ansible inventory for hosts"
 msgstr "ホストの Ansible インベントリーを表示する"
+
+msgid "Show full value"
+msgstr ""
 
 msgid "Show role"
 msgstr "ロールを表示します"

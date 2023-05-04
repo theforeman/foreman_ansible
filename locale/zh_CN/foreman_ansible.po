@@ -11,16 +11,16 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 10.1.0\n"
+"Project-Id-Version: foreman_ansible 11.2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Amit Upadhye <aupadhye@redhat.com>, 2022\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/foreman/teams/114/zh"
 "_CN/)\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "%(selectedCount)s of %(totalCount)s items selected"
@@ -54,6 +54,9 @@ msgid "Add selected"
 msgstr "添加选择的"
 
 msgid "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles."
+msgstr ""
+
+msgid "Added: %{added}, Removed: %{obsolete}, Updated: %{updated}"
 msgstr ""
 
 msgid "All assigned Ansible roles"
@@ -176,6 +179,9 @@ msgstr "已更改的 Ansible 角色"
 msgid "Close"
 msgstr "关闭"
 
+msgid "Configure Ansible Job"
+msgstr ""
+
 msgid "Configure Recurring Job"
 msgstr "配置周期性作业"
 
@@ -272,6 +278,12 @@ msgstr "编辑 Ansible 变量"
 msgid "Edit Ansible roles"
 msgstr "编辑 Ansible 角色"
 
+msgid "Enable Ansible Callback"
+msgstr ""
+
+msgid "Enable the callback plugin for this template"
+msgstr ""
+
 msgid "Enable web console"
 msgstr "启用 Web 控制台"
 
@@ -283,6 +295,9 @@ msgstr "错误！"
 
 msgid "Executed at"
 msgstr "执行于"
+
+msgid "Failed to fetch Ansible Roles from server."
+msgstr ""
 
 msgid "Failed to import roles and variables "
 msgstr "导入角色和变量失败 "
@@ -317,11 +332,17 @@ msgstr "隐藏这个参数的所有值。"
 msgid "Host assigned Ansible roles"
 msgstr "主机分配的 Ansible 角色"
 
+msgid "Host count"
+msgstr ""
+
 msgid "Host group has no associated hosts"
 msgstr "主机组没有关联的主机"
 
 msgid "Host not found by id: %s"
 msgstr "未根据 id 找到主机：%s"
+
+msgid "Hostgroup count"
+msgstr ""
 
 msgid "Hostgroups"
 msgstr "主机组"
@@ -361,6 +382,9 @@ msgstr "导入事实"
 
 msgid "Import from %s"
 msgstr "从 %s 导入"
+
+msgid "Import of variables successfully finished."
+msgstr ""
 
 msgid "Import playbooks has finished successfully"
 msgstr "已成功导入 playbook"
@@ -507,6 +531,9 @@ msgstr "没有找到可从中导入变量的代理服务器，请确定智能代
 msgid "No roles assigned directly to the host"
 msgstr ""
 
+msgid "No roles/hosts assigned"
+msgstr ""
+
 msgid "Nothing Found!"
 msgstr "未找到！"
 
@@ -521,6 +548,9 @@ msgstr "如果启用了 foreman_tasks_proxy_batch_trigger，应发送到一个�
 
 msgid "Only variables marked to Override are shown here."
 msgstr "此处仅显示标记为覆盖的变量。"
+
+msgid "Operation"
+msgstr ""
 
 msgid "Optional Input Validator"
 msgstr "可选的输入验证程序"
@@ -671,6 +701,9 @@ msgstr "为主机组显示 Ansible 库存清单"
 
 msgid "Show Ansible inventory for hosts"
 msgstr "为主机显示 Ansible 库存清单"
+
+msgid "Show full value"
+msgstr ""
 
 msgid "Show role"
 msgstr "显示角色"
