@@ -19,14 +19,6 @@ module ForemanAnsible
     config.autoload_paths += Dir["#{config.root}/app/views"]
     config.autoload_paths += Dir["#{config.root}/app/lib"]
 
-    initializer 'foreman_ansible.register_gettext',
-                :after => :load_config_initializers do
-      locale_dir = File.join(File.expand_path('../..', __dir__), 'locale')
-      locale_domain = 'foreman_ansible'
-
-      Foreman::Gettext::Support.add_text_domain locale_domain, locale_dir
-    end
-
     initializer 'foreman_ansible.register_plugin', :before => :finisher_hook do
       require 'foreman_ansible/register'
     end
