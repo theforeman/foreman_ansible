@@ -67,7 +67,7 @@ module ForemanAnsible
             process_response @host.update(:ansible_roles => @ansible_roles)
           end
 
-          api :PUT, '/hosts/:id/ansible_roles',
+          api :PUT, '/hosts/:id/ansible_roles/:ansible_role_id',
               N_('Directly add an Ansible role to a host')
           param :id, :identifier, :required => true
           param :ansible_role_id, :identifier,
