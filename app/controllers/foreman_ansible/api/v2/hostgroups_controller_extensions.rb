@@ -66,7 +66,7 @@ module ForemanAnsible
             process_response @hostgroup.update(:ansible_roles => @ansible_roles)
           end
 
-          api :PUT, '/hostgroups/:id/ansible_roles',
+          api :PUT, '/hostgroups/:id/ansible_roles/:ansible_role_id',
               N_('Directly add an Ansible role to a hostgroup')
           param :id, :identifier, :required => true
           param :ansible_role_id, :identifier,
