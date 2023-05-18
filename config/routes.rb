@@ -13,7 +13,7 @@ Rails.application.routes.draw do
             post :play_roles
             get :ansible_roles
             post :assign_ansible_roles
-            put :ansible_roles, :to => 'hosts#add_ansible_role'
+            put 'ansible_roles/:ansible_role_id', :to => 'hosts#add_ansible_role', :constraints => { id: %r{[^\/]+} }
             delete 'ansible_roles/:ansible_role_id', :to => 'hosts#remove_ansible_role', :constraints => { id: %r{[^\/]+} }
           end
           collection do
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
             post :play_roles
             get :ansible_roles
             post :assign_ansible_roles
-            put :ansible_roles, :to => 'hostgroups#add_ansible_role'
+            put 'ansible_roles/:ansible_role_id', :to => 'hostgroups#add_ansible_role', :constraints => { id: %r{[^\/]+} }
             delete 'ansible_roles/:ansible_role_id', :to => 'hostgroups#remove_ansible_role', :constraints => { id: %r{[^\/]+} }
           end
           collection do
