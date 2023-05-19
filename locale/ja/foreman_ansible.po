@@ -111,6 +111,18 @@ msgstr "インポートする Ansible ロール名"
 msgid "Ansible role names to be synced"
 msgstr "同期する Ansible ロール名"
 
+msgid "Ansible role to add to a host"
+msgstr ""
+
+msgid "Ansible role to add to a hostgroup"
+msgstr ""
+
+msgid "Ansible role to remove from a host"
+msgstr ""
+
+msgid "Ansible role to remove from a hostgroup"
+msgstr ""
+
 msgid "Ansible roles assigned directly to host"
 msgstr "ホストに直接割り当てられた Ansible ロール"
 
@@ -176,6 +188,9 @@ msgstr "変更された Ansible ロール"
 
 msgid "Close"
 msgstr "閉じる"
+
+msgid "Configure Ansible Job"
+msgstr ""
 
 msgid "Configure Recurring Job"
 msgstr "繰り返しジョブの設定"
@@ -252,6 +267,12 @@ msgstr "変数の説明"
 msgid "Destroy an override value"
 msgstr "上書き値を破棄します"
 
+msgid "Directly add an Ansible role to a host"
+msgstr ""
+
+msgid "Directly add an Ansible role to a hostgroup"
+msgstr ""
+
 msgid "Directly assigned to Host"
 msgstr "ホストに直接割り当て"
 
@@ -272,6 +293,12 @@ msgstr "Ansible 変数の編集"
 
 msgid "Edit Ansible roles"
 msgstr "Ansible ロールの編集"
+
+msgid "Enable Ansible Callback"
+msgstr ""
+
+msgid "Enable the callback plugin for this template"
+msgstr ""
 
 msgid "Enable web console"
 msgstr "Web コンソールの有効化"
@@ -508,6 +535,9 @@ msgstr "変数のインポート元となるプロキシーが見つかりませ
 msgid "No roles assigned directly to the host"
 msgstr ""
 
+msgid "No roles/hosts assigned"
+msgstr ""
+
 msgid "Nothing Found!"
 msgstr "何も見つかりません!"
 
@@ -585,6 +615,12 @@ msgstr "ロールの削除"
 
 msgid "Remove all"
 msgstr "すべて削除"
+
+msgid "Remove directly assigned Ansible role from a host"
+msgstr ""
+
+msgid "Remove directly assigned Ansible role from a hostgroup"
+msgstr ""
 
 msgid "Remove duplicate values (only array type)"
 msgstr "重複する値の削除 (配列タイプのみ)"
@@ -672,6 +708,9 @@ msgstr "ホストグループの Ansible インベントリーを表示する"
 
 msgid "Show Ansible inventory for hosts"
 msgstr "ホストの Ansible インベントリーを表示する"
+
+msgid "Show full value"
+msgstr ""
 
 msgid "Show role"
 msgstr "ロールを表示します"

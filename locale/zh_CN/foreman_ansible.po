@@ -110,6 +110,18 @@ msgstr "要导入的 Ansible 角色名称"
 msgid "Ansible role names to be synced"
 msgstr "要同步的 Ansible 角色名称"
 
+msgid "Ansible role to add to a host"
+msgstr ""
+
+msgid "Ansible role to add to a hostgroup"
+msgstr ""
+
+msgid "Ansible role to remove from a host"
+msgstr ""
+
+msgid "Ansible role to remove from a hostgroup"
+msgstr ""
+
 msgid "Ansible roles assigned directly to host"
 msgstr "直接分配给主机的 Ansible 角色"
 
@@ -175,6 +187,9 @@ msgstr "已更改的 Ansible 角色"
 
 msgid "Close"
 msgstr "关闭"
+
+msgid "Configure Ansible Job"
+msgstr ""
 
 msgid "Configure Recurring Job"
 msgstr "配置周期性作业"
@@ -251,6 +266,12 @@ msgstr "变量描述"
 msgid "Destroy an override value"
 msgstr "销毁覆盖值"
 
+msgid "Directly add an Ansible role to a host"
+msgstr ""
+
+msgid "Directly add an Ansible role to a hostgroup"
+msgstr ""
+
 msgid "Directly assigned to Host"
 msgstr "直接分配给主机"
 
@@ -271,6 +292,12 @@ msgstr "编辑 Ansible 变量"
 
 msgid "Edit Ansible roles"
 msgstr "编辑 Ansible 角色"
+
+msgid "Enable Ansible Callback"
+msgstr ""
+
+msgid "Enable the callback plugin for this template"
+msgstr ""
 
 msgid "Enable web console"
 msgstr "启用 Web 控制台"
@@ -507,6 +534,9 @@ msgstr "没有找到可从中导入变量的代理服务器，请确定智能代
 msgid "No roles assigned directly to the host"
 msgstr ""
 
+msgid "No roles/hosts assigned"
+msgstr ""
+
 msgid "Nothing Found!"
 msgstr "未找到！"
 
@@ -584,6 +614,12 @@ msgstr "删除角色"
 
 msgid "Remove all"
 msgstr "删除所有"
+
+msgid "Remove directly assigned Ansible role from a host"
+msgstr ""
+
+msgid "Remove directly assigned Ansible role from a hostgroup"
+msgstr ""
 
 msgid "Remove duplicate values (only array type)"
 msgstr "删除重复值（仅用于阵列类型）"
@@ -671,6 +707,9 @@ msgstr "为主机组显示 Ansible 库存清单"
 
 msgid "Show Ansible inventory for hosts"
 msgstr "为主机显示 Ansible 库存清单"
+
+msgid "Show full value"
+msgstr ""
 
 msgid "Show role"
 msgstr "显示角色"

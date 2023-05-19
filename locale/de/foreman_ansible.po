@@ -119,6 +119,18 @@ msgstr ""
 msgid "Ansible role names to be synced"
 msgstr ""
 
+msgid "Ansible role to add to a host"
+msgstr ""
+
+msgid "Ansible role to add to a hostgroup"
+msgstr ""
+
+msgid "Ansible role to remove from a host"
+msgstr ""
+
+msgid "Ansible role to remove from a hostgroup"
+msgstr ""
+
 msgid "Ansible roles assigned directly to host"
 msgstr ""
 
@@ -184,6 +196,9 @@ msgstr "Geänderte Ansible-Rollen"
 
 msgid "Close"
 msgstr "Schließen"
+
+msgid "Configure Ansible Job"
+msgstr ""
 
 msgid "Configure Recurring Job"
 msgstr ""
@@ -260,6 +275,12 @@ msgstr "Beschreibung der Variable"
 msgid "Destroy an override value"
 msgstr "Überschreibungswert löschen"
 
+msgid "Directly add an Ansible role to a host"
+msgstr ""
+
+msgid "Directly add an Ansible role to a hostgroup"
+msgstr ""
+
 msgid "Directly assigned to Host"
 msgstr ""
 
@@ -279,6 +300,12 @@ msgid "Edit Ansible Variable"
 msgstr "Ansible Variable ändern"
 
 msgid "Edit Ansible roles"
+msgstr ""
+
+msgid "Enable Ansible Callback"
+msgstr ""
+
+msgid "Enable the callback plugin for this template"
 msgstr ""
 
 msgid "Enable web console"
@@ -514,6 +541,9 @@ msgstr "Es wurde kein Proxy gefunden, von dem Variablen importiert werden könne
 msgid "No roles assigned directly to the host"
 msgstr ""
 
+msgid "No roles/hosts assigned"
+msgstr ""
+
 msgid "Nothing Found!"
 msgstr ""
 
@@ -590,6 +620,12 @@ msgid "Remove Role"
 msgstr ""
 
 msgid "Remove all"
+msgstr ""
+
+msgid "Remove directly assigned Ansible role from a host"
+msgstr ""
+
+msgid "Remove directly assigned Ansible role from a hostgroup"
 msgstr ""
 
 msgid "Remove duplicate values (only array type)"
@@ -678,6 +714,9 @@ msgstr "Zeige das Ansible-Inventar der Hostgruppen"
 
 msgid "Show Ansible inventory for hosts"
 msgstr "Zeige das Ansible-Inventar der Hosts"
+
+msgid "Show full value"
+msgstr ""
 
 msgid "Show role"
 msgstr "Zeige Rolle"

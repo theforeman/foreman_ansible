@@ -107,6 +107,18 @@ msgstr ""
 msgid "Ansible role names to be synced"
 msgstr ""
 
+msgid "Ansible role to add to a host"
+msgstr ""
+
+msgid "Ansible role to add to a hostgroup"
+msgstr ""
+
+msgid "Ansible role to remove from a host"
+msgstr ""
+
+msgid "Ansible role to remove from a hostgroup"
+msgstr ""
+
 msgid "Ansible roles assigned directly to host"
 msgstr ""
 
@@ -172,6 +184,9 @@ msgstr ""
 
 msgid "Close"
 msgstr "종료 "
+
+msgid "Configure Ansible Job"
+msgstr ""
 
 msgid "Configure Recurring Job"
 msgstr ""
@@ -248,6 +263,12 @@ msgstr "변수 설명"
 msgid "Destroy an override value"
 msgstr ""
 
+msgid "Directly add an Ansible role to a host"
+msgstr ""
+
+msgid "Directly add an Ansible role to a hostgroup"
+msgstr ""
+
 msgid "Directly assigned to Host"
 msgstr ""
 
@@ -267,6 +288,12 @@ msgid "Edit Ansible Variable"
 msgstr ""
 
 msgid "Edit Ansible roles"
+msgstr ""
+
+msgid "Enable Ansible Callback"
+msgstr ""
+
+msgid "Enable the callback plugin for this template"
 msgstr ""
 
 msgid "Enable web console"
@@ -502,6 +529,9 @@ msgstr ""
 msgid "No roles assigned directly to the host"
 msgstr ""
 
+msgid "No roles/hosts assigned"
+msgstr ""
+
 msgid "Nothing Found!"
 msgstr ""
 
@@ -578,6 +608,12 @@ msgid "Remove Role"
 msgstr ""
 
 msgid "Remove all"
+msgstr ""
+
+msgid "Remove directly assigned Ansible role from a host"
+msgstr ""
+
+msgid "Remove directly assigned Ansible role from a hostgroup"
 msgstr ""
 
 msgid "Remove duplicate values (only array type)"
@@ -665,6 +701,9 @@ msgid "Show Ansible inventory for hostgroups"
 msgstr ""
 
 msgid "Show Ansible inventory for hosts"
+msgstr ""
+
+msgid "Show full value"
 msgstr ""
 
 msgid "Show role"
