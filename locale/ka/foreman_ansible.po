@@ -106,6 +106,18 @@ msgstr "Ansible-ის შემოსატანი როლების ს�
 msgid "Ansible role names to be synced"
 msgstr "Ansible-ის დასასინქრონიზებელი როლების სახელები"
 
+msgid "Ansible role to add to a host"
+msgstr ""
+
+msgid "Ansible role to add to a hostgroup"
+msgstr ""
+
+msgid "Ansible role to remove from a host"
+msgstr ""
+
+msgid "Ansible role to remove from a hostgroup"
+msgstr ""
+
 msgid "Ansible roles assigned directly to host"
 msgstr "პირდაპირ ჰოსტზე მიმაგრებული Ansiible-ის როლები"
 
@@ -171,6 +183,9 @@ msgstr "Ansible-ის როლები შეცვლილია"
 
 msgid "Close"
 msgstr "დახურვა"
+
+msgid "Configure Ansible Job"
+msgstr ""
 
 msgid "Configure Recurring Job"
 msgstr "განმეორებადი დავალების მორგება"
@@ -247,6 +262,12 @@ msgstr "ცვლადის აღწერა"
 msgid "Destroy an override value"
 msgstr "მნიშვნელობის გადაფარვის მოცილება"
 
+msgid "Directly add an Ansible role to a host"
+msgstr ""
+
+msgid "Directly add an Ansible role to a hostgroup"
+msgstr ""
+
 msgid "Directly assigned to Host"
 msgstr "ჰოსტზე პირდაპირ მინიჭებული"
 
@@ -267,6 +288,12 @@ msgstr "Ansible-ის ცვლადის ჩასწორება"
 
 msgid "Edit Ansible roles"
 msgstr "Ansible-ის როლების ჩასწორება"
+
+msgid "Enable Ansible Callback"
+msgstr ""
+
+msgid "Enable the callback plugin for this template"
+msgstr ""
 
 msgid "Enable web console"
 msgstr "ვებ კონსოლის ჩართვა"
@@ -501,6 +528,9 @@ msgstr ""
 msgid "No roles assigned directly to the host"
 msgstr ""
 
+msgid "No roles/hosts assigned"
+msgstr ""
+
 msgid "Nothing Found!"
 msgstr "ვერაფერი ვიპოვე!"
 
@@ -578,6 +608,12 @@ msgstr "როლის წაშლა"
 
 msgid "Remove all"
 msgstr "ყველას წაშლა"
+
+msgid "Remove directly assigned Ansible role from a host"
+msgstr ""
+
+msgid "Remove directly assigned Ansible role from a hostgroup"
+msgstr ""
 
 msgid "Remove duplicate values (only array type)"
 msgstr "დუბლირებული მნიშვნელობების წაშლა (მხოლოდ მასივის ტიპი)"
@@ -665,6 +701,9 @@ msgstr "Ansible-ის ინვენტარის ჩვენება ჰ�
 
 msgid "Show Ansible inventory for hosts"
 msgstr "Ansible-ის ინვენტარის ჩვენება ჰოსტებისთვის"
+
+msgid "Show full value"
+msgstr ""
 
 msgid "Show role"
 msgstr "როლის ჩვენება"

@@ -114,6 +114,18 @@ msgstr "Nomes possíveis de papéis a serem importados"
 msgid "Ansible role names to be synced"
 msgstr "Nomes possíveis de papéis a serem sincronizados"
 
+msgid "Ansible role to add to a host"
+msgstr ""
+
+msgid "Ansible role to add to a hostgroup"
+msgstr ""
+
+msgid "Ansible role to remove from a host"
+msgstr ""
+
+msgid "Ansible role to remove from a hostgroup"
+msgstr ""
+
 msgid "Ansible roles assigned directly to host"
 msgstr "Possíveis funções atribuídas diretamente ao anfitrião"
 
@@ -179,6 +191,9 @@ msgstr "Funções do Ansible alteradas"
 
 msgid "Close"
 msgstr "Fechar"
+
+msgid "Configure Ansible Job"
+msgstr ""
 
 msgid "Configure Recurring Job"
 msgstr "Configurar Trabalho Recorrente"
@@ -255,6 +270,12 @@ msgstr "Descrição da variável"
 msgid "Destroy an override value"
 msgstr "Destruir um valor de substituição"
 
+msgid "Directly add an Ansible role to a host"
+msgstr ""
+
+msgid "Directly add an Ansible role to a hostgroup"
+msgstr ""
+
 msgid "Directly assigned to Host"
 msgstr "Diretamente designado ao Host"
 
@@ -275,6 +296,12 @@ msgstr "Editar variável do Ansible"
 
 msgid "Edit Ansible roles"
 msgstr "Listar regras do Ansible"
+
+msgid "Enable Ansible Callback"
+msgstr ""
+
+msgid "Enable the callback plugin for this template"
+msgstr ""
 
 msgid "Enable web console"
 msgstr "Habilitar console web"
@@ -511,6 +538,9 @@ msgstr "Não foi encontrado nenhum proxy para importar variáveis, certifique-se
 msgid "No roles assigned directly to the host"
 msgstr ""
 
+msgid "No roles/hosts assigned"
+msgstr ""
+
 msgid "Nothing Found!"
 msgstr "Nada Encontrado!"
 
@@ -588,6 +618,12 @@ msgstr "Remover o papel"
 
 msgid "Remove all"
 msgstr "Remover tudo"
+
+msgid "Remove directly assigned Ansible role from a host"
+msgstr ""
+
+msgid "Remove directly assigned Ansible role from a hostgroup"
+msgstr ""
 
 msgid "Remove duplicate values (only array type)"
 msgstr "Remover valores duplicados (somente tipo de matriz)"
@@ -675,6 +711,9 @@ msgstr "Exibir inventário do Ansible para os grupos de hosts"
 
 msgid "Show Ansible inventory for hosts"
 msgstr "Exibir inventário do Ansible para os hosts"
+
+msgid "Show full value"
+msgstr ""
 
 msgid "Show role"
 msgstr "Mostrar função"

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foreman_ansible 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-24 19:10+0100\n"
-"PO-Revision-Date: 2022-11-24 19:10+0100\n"
+"POT-Creation-Date: 2023-05-19 10:13+0000\n"
+"PO-Revision-Date: 2023-05-19 10:13+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -250,33 +250,53 @@ msgid ""
 msgstr ""
 
 #:
-#: ../app/controllers/foreman_ansible/api/v2/hostgroups_controller_extensions.rb:20
+#: ../app/controllers/foreman_ansible/api/v2/hostgroups_controller_extensions.rb:21
 msgid "Runs all Ansible roles on a hostgroup"
 msgstr ""
 
 #:
-#: ../app/controllers/foreman_ansible/api/v2/hostgroups_controller_extensions.rb:30
+#: ../app/controllers/foreman_ansible/api/v2/hostgroups_controller_extensions.rb:31
 msgid "Runs all Ansible roles on hostgroups"
 msgstr ""
 
 #:
-#: ../app/controllers/foreman_ansible/api/v2/hostgroups_controller_extensions.rb:31
+#: ../app/controllers/foreman_ansible/api/v2/hostgroups_controller_extensions.rb:32
 msgid "IDs of hostgroups to play roles on"
 msgstr ""
 
 #:
-#: ../app/controllers/foreman_ansible/api/v2/hostgroups_controller_extensions.rb:42
+#: ../app/controllers/foreman_ansible/api/v2/hostgroups_controller_extensions.rb:43
 msgid "List all Ansible roles for a hostgroup"
 msgstr ""
 
 #:
-#: ../app/controllers/foreman_ansible/api/v2/hostgroups_controller_extensions.rb:57
+#: ../app/controllers/foreman_ansible/api/v2/hostgroups_controller_extensions.rb:58
 msgid "Assigns Ansible roles to a hostgroup"
 msgstr ""
 
 #:
-#: ../app/controllers/foreman_ansible/api/v2/hostgroups_controller_extensions.rb:60
+#: ../app/controllers/foreman_ansible/api/v2/hostgroups_controller_extensions.rb:61
 msgid "Ansible roles to assign to a hostgroup"
+msgstr ""
+
+#:
+#: ../app/controllers/foreman_ansible/api/v2/hostgroups_controller_extensions.rb:70
+msgid "Directly add an Ansible role to a hostgroup"
+msgstr ""
+
+#:
+#: ../app/controllers/foreman_ansible/api/v2/hostgroups_controller_extensions.rb:73
+msgid "Ansible role to add to a hostgroup"
+msgstr ""
+
+#:
+#: ../app/controllers/foreman_ansible/api/v2/hostgroups_controller_extensions.rb:83
+msgid "Remove directly assigned Ansible role from a hostgroup"
+msgstr ""
+
+#:
+#: ../app/controllers/foreman_ansible/api/v2/hostgroups_controller_extensions.rb:86
+msgid "Ansible role to remove from a hostgroup"
 msgstr ""
 
 #:
@@ -285,28 +305,49 @@ msgstr ""
 msgid "IDs of associated ansible roles"
 msgstr ""
 
-#: ../app/controllers/foreman_ansible/api/v2/hosts_controller_extensions.rb:26
+#: ../app/controllers/foreman_ansible/api/v2/hosts_controller_extensions.rb:28
 msgid "Runs all Ansible roles on a host"
 msgstr ""
 
-#: ../app/controllers/foreman_ansible/api/v2/hosts_controller_extensions.rb:35
+#: ../app/controllers/foreman_ansible/api/v2/hosts_controller_extensions.rb:37
 msgid "Runs all Ansible roles on hosts"
 msgstr ""
 
-#: ../app/controllers/foreman_ansible/api/v2/hosts_controller_extensions.rb:36
+#: ../app/controllers/foreman_ansible/api/v2/hosts_controller_extensions.rb:38
 msgid "IDs of hosts to play roles on"
 msgstr ""
 
-#: ../app/controllers/foreman_ansible/api/v2/hosts_controller_extensions.rb:46
+#: ../app/controllers/foreman_ansible/api/v2/hosts_controller_extensions.rb:48
 msgid "List all Ansible roles for a host"
 msgstr ""
 
-#: ../app/controllers/foreman_ansible/api/v2/hosts_controller_extensions.rb:58
+#: ../app/controllers/foreman_ansible/api/v2/hosts_controller_extensions.rb:60
 msgid "Assigns Ansible roles to a host"
 msgstr ""
 
-#: ../app/controllers/foreman_ansible/api/v2/hosts_controller_extensions.rb:61
+#: ../app/controllers/foreman_ansible/api/v2/hosts_controller_extensions.rb:63
 msgid "Ansible roles to assign to a host"
+msgstr ""
+
+#: ../app/controllers/foreman_ansible/api/v2/hosts_controller_extensions.rb:71
+msgid "Directly add an Ansible role to a host"
+msgstr ""
+
+#: ../app/controllers/foreman_ansible/api/v2/hosts_controller_extensions.rb:74
+msgid "Ansible role to add to a host"
+msgstr ""
+
+#: ../app/controllers/foreman_ansible/api/v2/hosts_controller_extensions.rb:84
+msgid "Remove directly assigned Ansible role from a host"
+msgstr ""
+
+#: ../app/controllers/foreman_ansible/api/v2/hosts_controller_extensions.rb:87
+msgid "Ansible role to remove from a host"
+msgstr ""
+
+#:
+#: ../app/controllers/foreman_ansible/api/v2/job_templates_controller_extensions.rb:12
+msgid "Enable the callback plugin for this template"
 msgstr ""
 
 #:
@@ -330,18 +371,31 @@ msgstr ""
 msgid "Ansible Variable not found by id: %s"
 msgstr ""
 
-#: ../app/helpers/foreman_ansible/ansible_hostgroups_helper.rb:7
-#: ../app/helpers/foreman_ansible/ansible_hostgroups_helper.rb:9
+#: ../app/helpers/foreman_ansible/ansible_hostgroups_helper.rb:12
+#: ../app/helpers/foreman_ansible/ansible_hostgroups_helper.rb:14
 #: ../app/helpers/foreman_ansible/hosts_helper.rb:9
 msgid "Run all Ansible roles"
 msgstr ""
 
-#: ../app/helpers/foreman_ansible/ansible_hostgroups_helper.rb:9
+#: ../app/helpers/foreman_ansible/ansible_hostgroups_helper.rb:14
 msgid "Run all Ansible roles on hosts belonging to this host group"
 msgstr ""
 
-#: ../app/helpers/foreman_ansible/ansible_reports_helper.rb:57
+#: ../app/helpers/foreman_ansible/ansible_hostgroups_helper.rb:23
+#: ../app/helpers/foreman_ansible/ansible_hostgroups_helper.rb:25
+msgid "Configure Ansible Job"
+msgstr ""
+
+#: ../app/helpers/foreman_ansible/ansible_hostgroups_helper.rb:36
+msgid "No roles/hosts assigned"
+msgstr ""
+
+#: ../app/helpers/foreman_ansible/ansible_reports_helper.rb:69
 msgid "No additional data"
+msgstr ""
+
+#: ../app/helpers/foreman_ansible/ansible_reports_helper.rb:85
+msgid "Show full value"
 msgstr ""
 
 #: ../app/helpers/foreman_ansible/ansible_roles_data_preparations.rb:5
@@ -384,7 +438,7 @@ msgstr ""
 msgid "%s ago"
 msgstr ""
 
-#: ../app/helpers/foreman_ansible/smart_proxies_helper.rb:35
+#: ../app/helpers/foreman_ansible/smart_proxies_helper.rb:41
 msgid "Upgrade"
 msgstr ""
 
@@ -475,7 +529,7 @@ msgstr ""
 
 #: ../app/views/ansible_roles/index.html.erb:12
 #: ../app/views/ansible_roles/index.html.erb:29
-#: ../lib/foreman_ansible/register.rb:220
+#: ../lib/foreman_ansible/register.rb:221
 #: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/AllRolesTable.js:18
 #: ../webpack/components/AnsibleHostDetail/components/RolesTab/RolesTable.js:30
 #: ../webpack/components/AnsibleHostDetail/constants.js:6
@@ -661,8 +715,19 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: ../app/views/foreman_ansible/config_reports/_ansible.html.erb:39
+#: ../app/views/foreman_ansible/config_reports/_ansible.html.erb:43
 msgid "Nothing to show"
+msgstr ""
+
+#: ../app/views/job_templates/_job_template_callback_tab_content.html.erb:2
+msgid "Enable Ansible Callback"
+msgstr ""
+
+#: ../app/views/job_templates/_job_template_callback_tab_headers.html.erb:1
+#: ../lib/foreman_ansible/register.rb:8 ../lib/foreman_ansible/register.rb:215
+#: ../lib/foreman_ansible/register.rb:265
+#: ../lib/foreman_ansible/register.rb:271
+msgid "Ansible"
 msgstr ""
 
 #: ../db/seeds.d/90_notification_blueprints.rb:5
@@ -677,7 +742,7 @@ msgstr ""
 #: ../db/seeds.d/90_notification_blueprints.rb:18
 #: ../db/seeds.d/90_notification_blueprints.rb:25
 #: ../db/seeds.d/90_notification_blueprints.rb:30
-#: ../lib/foreman_ansible/register.rb:216
+#: ../lib/foreman_ansible/register.rb:217
 #: ../webpack/components/AnsibleHostDetail/constants.js:5
 msgid "Roles"
 msgstr ""
@@ -695,132 +760,128 @@ msgstr ""
 msgid "Import playbooks has finished successfully"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:7 ../lib/foreman_ansible/register.rb:214
-msgid "Ansible"
-msgstr ""
-
-#: ../lib/foreman_ansible/register.rb:10
+#: ../lib/foreman_ansible/register.rb:11
 msgid ""
 "Use this to supply a path to an SSH Private Key that Ansible will use in lieu "
 "of a password Override with \"ansible_ssh_private_key_file\" host parameter"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:15
+#: ../lib/foreman_ansible/register.rb:16
 msgid "Private Key Path"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:18
+#: ../lib/foreman_ansible/register.rb:19
 msgid ""
 "Use this connection type by default when running Ansible playbooks. You can ov"
 "erride this on hosts by adding a parameter \"ansible_connection\""
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:22
+#: ../lib/foreman_ansible/register.rb:23
 msgid "Connection type"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:25
+#: ../lib/foreman_ansible/register.rb:26
 msgid ""
 "Enable/disable WinRM server certificate validation when running Ansible playbo"
 "oks. You can override this on hosts by adding a parameter \"ansible_winrm_serve"
 "r_cert_validation\""
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:30
+#: ../lib/foreman_ansible/register.rb:31
 msgid "WinRM cert Validation"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:33
+#: ../lib/foreman_ansible/register.rb:34
 msgid ""
 "Foreman will add this level of verbosity for additional debugging output when "
 "running Ansible playbooks."
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:36
+#: ../lib/foreman_ansible/register.rb:37
 msgid "Default verbosity level"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:39
+#: ../lib/foreman_ansible/register.rb:40
 msgid "Disabled"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:40
+#: ../lib/foreman_ansible/register.rb:41
 msgid "Level 1 (-v)"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:41
+#: ../lib/foreman_ansible/register.rb:42
 msgid "Level 2 (-vv)"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:42
+#: ../lib/foreman_ansible/register.rb:43
 msgid "Level 3 (-vvv)"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:43
+#: ../lib/foreman_ansible/register.rb:44
 msgid "Level 4 (-vvvv)"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:47
+#: ../lib/foreman_ansible/register.rb:48
 msgid ""
 "Timeout (in seconds) to set when Foreman will trigger a play Ansible roles tas"
 "k after a host is fully provisioned. Set this to the maximum time you expect a"
 " host to take until it is ready after a reboot."
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:52
+#: ../lib/foreman_ansible/register.rb:53
 msgid "Post-provision timeout"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:55
+#: ../lib/foreman_ansible/register.rb:56
 msgid "Timeout (in minutes) when hosts should have reported."
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:57
+#: ../lib/foreman_ansible/register.rb:58
 msgid "Ansible report timeout"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:60
+#: ../lib/foreman_ansible/register.rb:61
 msgid ""
 "Disable host configuration status turning to out of sync for %{cfgmgmt} after "
 "report does not arrive within configured interval"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:64
+#: ../lib/foreman_ansible/register.rb:65
 msgid "%{cfgmgmt} out of sync disabled"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:67
+#: ../lib/foreman_ansible/register.rb:68
 msgid "Foreman will use this template to schedule the report with Ansible inventory"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:70
+#: ../lib/foreman_ansible/register.rb:71
 msgid "Default Ansible inventory report template"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:73
+#: ../lib/foreman_ansible/register.rb:74
 msgid ""
 "Those roles will be excluded when importing roles from smart proxy, The expect"
 "ed input is comma separated values and you can use * wildcard metacharactersFo"
 "r example: foo*, *b*,*bar"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:77
+#: ../lib/foreman_ansible/register.rb:78
 msgid "Ansible roles to ignore"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:80
+#: ../lib/foreman_ansible/register.rb:81
 msgid ""
 "Number of tasks which should be sent to the smart proxy in one request, if for"
 "eman_tasks_proxy_batch_trigger is enabled. If set, overrides foreman_tasks_pro"
 "xy_batch_size setting for Ansible jobs."
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:84
+#: ../lib/foreman_ansible/register.rb:85
 msgid "Proxy tasks batch size for Ansible"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:250
-#: ../lib/foreman_ansible/register.rb:256
+#: ../lib/foreman_ansible/register.rb:253
+#: ../lib/foreman_ansible/register.rb:259
 msgid "Update Smart Proxy"
 msgstr ""
 
@@ -922,12 +983,12 @@ msgid "Invalid, expected to match a regex: %s"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:94
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:98
 msgid "Invalid, expected one of: %s"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:100
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:104
 msgid "is required"
 msgstr ""
 
@@ -1300,11 +1361,11 @@ msgstr ""
 msgid "Permission denied"
 msgstr ""
 
-#: ../webpack/permissionsHelper.js:34
+#: ../webpack/permissionsHelper.js:37
 msgid "You are not authorized to view the page. "
 msgstr ""
 
-#: ../webpack/permissionsHelper.js:37
+#: ../webpack/permissionsHelper.js:40
 msgid "Request the following permissions from administrator: %s."
 msgstr ""
 
@@ -1317,11 +1378,11 @@ msgid "Action with sub plans"
 msgstr ""
 
 #: action_names.rb:3
-msgid "Import facts"
+msgid "Import Puppet classes"
 msgstr ""
 
 #: action_names.rb:4
-msgid "Import Puppet classes"
+msgid "Import facts"
 msgstr ""
 
 #: action_names.rb:5
