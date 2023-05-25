@@ -3,6 +3,7 @@ import {
   propsToSnakeCase,
   propsToCamelCase,
 } from 'foremanReact/common/helpers';
+import { translate as __ } from 'foremanReact/common/I18n';
 
 import {
   ANSIBLE_ROLES_REQUEST,
@@ -48,7 +49,7 @@ export const getAnsibleRoles = (
 
 const errorHandler = (msg, err) => {
   const error = {
-    errorMsg: 'Failed to fetch Ansible Roles from server.',
+    errorMsg: __('Failed to fetch Ansible Roles from server.'),
     statusText: err.response.statusText,
   };
   return { type: msg, payload: { error } };

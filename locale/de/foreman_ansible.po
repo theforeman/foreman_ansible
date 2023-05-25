@@ -12,20 +12,20 @@
 # Crited <Alexander.Stoll@netways.de>, 2019
 # Bernhard Suttner <bernhard.suttner@atix.de>, 2019
 # Lukas Kallies <github.com@luke-web.de>, 2021
+# Patrick Dolinic, 2022
 # simon11 <transifex@stieger.co>, 2022
 # Arnold Bechtoldt <mail@arnoldbechtoldt.com>, 2022
-# Patrick Dolinic, 2022
 # Wiederoder <stefanwiederoder@googlemail.com>, 2022
 # Bryan Kearney <bryan.kearney@gmail.com>, 2022
-# Ettore Atalan <atalanttore@googlemail.com>, 2022
+# Ettore Atalan <atalanttore@googlemail.com>, 2023
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 10.1.0\n"
+"Project-Id-Version: foreman_ansible 12.0.3\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>, 2022\n"
-"Language-Team: German (https://www.transifex.com/foreman/teams/114/de/)\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>, 2023\n"
+"Language-Team: German (https://app.transifex.com/foreman/teams/114/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -75,25 +75,25 @@ msgid "Ansible  playbooks names to be synced"
 msgstr ""
 
 msgid "Ansible Role"
-msgstr "Ansible Rolle"
+msgstr "Ansible-Rolle"
 
 msgid "Ansible Roles"
-msgstr "Ansible Rollen"
+msgstr "Ansible-Rollen"
 
 msgid "Ansible Roles were successfully assigned."
 msgstr ""
 
 msgid "Ansible Variable Details"
-msgstr "Ansible Variablen Details"
+msgstr "Ansible-Variablendetails"
 
 msgid "Ansible Variable Details (Imported)"
-msgstr "Ansible Variablen Details (Importiert)"
+msgstr "Ansible-Variablendetails (Importiert)"
 
 msgid "Ansible Variable not found by id: %s"
 msgstr ""
 
 msgid "Ansible Variables"
-msgstr "Ansible Variablen"
+msgstr "Ansible-Variablen"
 
 msgid "Ansible check mode"
 msgstr ""
@@ -135,10 +135,10 @@ msgid "Ansible roles assigned directly to host"
 msgstr ""
 
 msgid "Ansible roles to assign to a host"
-msgstr "Ansible Rollen, die einem Host zugewiesen werden können"
+msgstr "Ansible-Rollen, die einem Host zugewiesen werden können"
 
 msgid "Ansible roles to assign to a hostgroup"
-msgstr "Ansible Rollen, die einer Hostgruppe zugewiesen werden können"
+msgstr "Ansible-Rollen, die einer Hostgruppe zugewiesen werden können"
 
 msgid "Ansible roles to ignore"
 msgstr ""
@@ -171,10 +171,10 @@ msgid "Assigns Ansible roles to a host"
 msgstr "Weist einem Host Ansible-Rollen zu"
 
 msgid "Assigns Ansible roles to a hostgroup"
-msgstr "Weißt Ansible Rollen einer Hostgruppe zu"
+msgstr "Weißt Ansible-Rollen einer Hostgruppe zu"
 
 msgid "Available Ansible Roles"
-msgstr ""
+msgstr "Verfügbare Ansible-Rollen"
 
 msgid "Available Ansible roles"
 msgstr ""
@@ -216,10 +216,10 @@ msgid "Could not run Ansible roles for %{host}"
 msgstr "Ansible-Rollen für %{host} konnten nicht ausgeführt werden"
 
 msgid "Create Ansible Variable"
-msgstr "Ansible Variable erstellen"
+msgstr "Ansible-Variable erstellen"
 
 msgid "Create Ansible variable"
-msgstr "Ansible Variable erstellen"
+msgstr "Ansible-Variable erstellen"
 
 msgid "Create an override value for a specific ansible variable"
 msgstr "Überschreibungswert für eine bestimmte Ansible-Variable erzeugen"
@@ -261,10 +261,10 @@ msgid "Delete Ansible variable override"
 msgstr ""
 
 msgid "Deletes Ansible role"
-msgstr "Ansible Rolle löschen"
+msgstr "Löscht die Ansible-Rolle"
 
 msgid "Deletes Ansible variable"
-msgstr "Ansible Variable löschen"
+msgstr "Löscht die Ansible-Variable"
 
 msgid "Description"
 msgstr "Beschreibung"
@@ -294,13 +294,13 @@ msgid "Edit %s"
 msgstr "%s bearbeiten"
 
 msgid "Edit Ansible Roles"
-msgstr ""
+msgstr "Ansible-Rollen bearbeiten"
 
 msgid "Edit Ansible Variable"
-msgstr "Ansible Variable ändern"
+msgstr "Ansible-Variable bearbeiten"
 
 msgid "Edit Ansible roles"
-msgstr ""
+msgstr "Ansible-Rollen bearbeiten"
 
 msgid "Enable Ansible Callback"
 msgstr ""
@@ -318,6 +318,9 @@ msgid "Error!"
 msgstr "Fehler!"
 
 msgid "Executed at"
+msgstr "Ausgeführt um"
+
+msgid "Failed to fetch Ansible Roles from server."
 msgstr ""
 
 msgid "Failed to import roles and variables "
@@ -353,10 +356,16 @@ msgstr "Alle Werte für diesen Parameter verbergen."
 msgid "Host assigned Ansible roles"
 msgstr ""
 
+msgid "Host count"
+msgstr ""
+
 msgid "Host group has no associated hosts"
 msgstr "Die Hostgruppe hat keine zugeordneten Hosts"
 
 msgid "Host not found by id: %s"
+msgstr ""
+
+msgid "Hostgroup count"
 msgstr ""
 
 msgid "Hostgroups"
@@ -384,19 +393,19 @@ msgid "If checked, will raise an error if there is no default value and no match
 msgstr "Falls aktiviert, wird dies einen Fehler erzeugen, wenn kein Standardwert vorhanden ist und kein Treffer einen Wert vorschlägt."
 
 msgid "Import"
-msgstr "Import"
+msgstr "Importieren"
 
 msgid "Import Puppet classes"
 msgstr "Puppet-Klassen importieren"
 
 msgid "Import Role"
-msgstr ""
+msgstr "Rolle importieren"
 
 msgid "Import facts"
 msgstr "Fakten importieren"
 
 msgid "Import from %s"
-msgstr "Importieren aus %s"
+msgstr "Aus %s importieren"
 
 msgid "Import playbooks has finished successfully"
 msgstr ""
@@ -441,13 +450,13 @@ msgid "Invalid, expected to match a regex: %s"
 msgstr ""
 
 msgid "Inventory"
-msgstr ""
+msgstr "Bestand"
 
 msgid "Job Details"
-msgstr "Job Details"
+msgstr "Auftragsdetails"
 
 msgid "Jobs"
-msgstr "Jobs"
+msgstr "Aufträge"
 
 msgid "Learn more about this in the documentation."
 msgstr "Mehr dazu in der Dokumentation."
@@ -468,16 +477,16 @@ msgid "Level 4 (-vvvv)"
 msgstr "Level 4 (-vvvv)"
 
 msgid "List Ansible roles"
-msgstr "Ansible Rollen auflisten"
+msgstr "Ansible-Rollen auflisten"
 
 msgid "List Ansible variables"
-msgstr "Ansible Variablen auflisten"
+msgstr "Ansible-Variablen auflisten"
 
 msgid "List all Ansible roles for a host"
-msgstr "Auflisten aller Ansible Rollen eines Hosts"
+msgstr "Alle Ansible-Rollen eines Hosts auflisten"
 
 msgid "List all Ansible roles for a hostgroup"
-msgstr "Auflisten aller Ansible Rollen einer Hostgruppe"
+msgstr "Auflisten aller Ansible-Rollen einer Hostgruppe"
 
 msgid "Mark the variable to be managed by Foreman. When the Ansible role of this variable is assigned to a host, the default value will be added to Ansible inventory as a host variable. Specify matchers to set a different value for such variable."
 msgstr "Markieren Sie die von Foreman zu verwaltende Variable. Wenn die Ansible-Rolle dieser Variablen einem Host zugewiesen wird, wird der Standardwert als Hostvariable zum Ansible-Inventar hinzugefügt. Geben Sie Matcher an, um einen anderen Wert für eine solche Variable festzulegen."
@@ -498,7 +507,7 @@ msgid "Name of variable"
 msgstr "Name der Variable"
 
 msgid "New Ansible Variable"
-msgstr "Neue Ansible Variable"
+msgstr "Neue Ansible-Variable"
 
 msgid "Next Run"
 msgstr ""
@@ -559,6 +568,9 @@ msgstr ""
 msgid "Only variables marked to Override are shown here."
 msgstr ""
 
+msgid "Operation"
+msgstr ""
+
 msgid "Optional Input Validator"
 msgstr "Optionaler Eingabe-Validator"
 
@@ -617,7 +629,7 @@ msgid "Remove"
 msgstr "Entfernen"
 
 msgid "Remove Role"
-msgstr ""
+msgstr "Rolle entfernen"
 
 msgid "Remove all"
 msgstr ""
@@ -659,10 +671,10 @@ msgid "Run Ansible roles"
 msgstr "Ansible-Rollen ausführen"
 
 msgid "Run all Ansible roles"
-msgstr "Führen Sie alle Ansible-Rollen aus"
+msgstr "Alle Ansible-Rollen ausführen"
 
 msgid "Run all Ansible roles on hosts belonging to this host group"
-msgstr "Führen Sie alle Ansible-Rollen auf Hosts aus, die zu dieser Hostgruppe gehören"
+msgstr "Alle Ansible-Rollen auf Hosts aus, die zu dieser Hostgruppe gehören, ausführen"
 
 msgid "Run an Ansible playbook against given hosts"
 msgstr "Führen Sie ein Ansible-Playbook gegen bestimmte Hosts aus"
@@ -719,7 +731,7 @@ msgid "Show full value"
 msgstr ""
 
 msgid "Show role"
-msgstr "Zeige Rolle"
+msgstr "Rolle anzeigen"
 
 msgid "Show variable"
 msgstr "Variable anzeigen"
@@ -761,10 +773,10 @@ msgid "Tags"
 msgstr "Tags"
 
 msgid "Task"
-msgstr "Task"
+msgstr "Aufgabe"
 
 msgid "Task Details"
-msgstr "Taskdetails"
+msgstr "Aufgabendetails"
 
 msgid "The order in which matchers keys are processed, first match wins.<br> You may use multiple attributes as a matcher key, for example, an order of <code>host group, environment</code> would expect a matcher such as <code>hostgroup = \"web servers\", environment = production</code>"
 msgstr "Die Reihenfolge, in der Prüfwertschlüssel verarbeitet werden. Die erste Übereinstimmung ist maßgeblich.<br> Sie können mehrere Attribute als Prüfwertschlüssel verwenden. Beispielsweise würde die Reihenfolge <code>host group, environment</code> einen Prüfwert wie etwa <code>hostgroup = \"web servers\", environment = production</code> erwarten."
@@ -836,13 +848,13 @@ msgid "Update"
 msgstr "Aktualisieren"
 
 msgid "Update Role Variables"
-msgstr ""
+msgstr "Rollenvariablen entfernen"
 
 msgid "Update Smart Proxy"
 msgstr ""
 
 msgid "Updates Ansible variable"
-msgstr "Ansible Variable aktualisieren"
+msgstr "Aktualisiert die Ansible-Variable"
 
 msgid "Upgrade"
 msgstr ""

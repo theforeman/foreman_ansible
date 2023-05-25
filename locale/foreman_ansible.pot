@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foreman_ansible 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-19 10:13+0000\n"
-"PO-Revision-Date: 2023-05-19 10:13+0000\n"
+"POT-Creation-Date: 2023-05-29 15:29+0200\n"
+"PO-Revision-Date: 2023-05-29 15:29+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -533,6 +533,7 @@ msgstr ""
 #: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/AllRolesTable.js:18
 #: ../webpack/components/AnsibleHostDetail/components/RolesTab/RolesTable.js:30
 #: ../webpack/components/AnsibleHostDetail/constants.js:6
+#: ../webpack/components/AnsibleRolesAndVariables/index.js:17
 msgid "Variables"
 msgstr ""
 
@@ -929,6 +930,7 @@ msgstr ""
 #: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTable.js:59
 #: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/AllRolesTable.js:18
 #: ../webpack/components/AnsibleHostDetail/components/RolesTab/RolesTable.js:30
+#: ../webpack/components/AnsibleRolesAndVariables/index.js:15
 msgid "Name"
 msgstr ""
 
@@ -1280,12 +1282,28 @@ msgstr ""
 msgid "Failed to import roles and variables "
 msgstr ""
 
+#: ../webpack/components/AnsibleRolesAndVariables/index.js:16
+msgid "Operation"
+msgstr ""
+
+#: ../webpack/components/AnsibleRolesAndVariables/index.js:18
+msgid "Host count"
+msgstr ""
+
+#: ../webpack/components/AnsibleRolesAndVariables/index.js:19
+msgid "Hostgroup count"
+msgstr ""
+
 #: ../webpack/components/AnsibleRolesSwitcher/AnsibleRolesSwitcher.js:73
 msgid "Available Ansible Roles"
 msgstr ""
 
 #: ../webpack/components/AnsibleRolesSwitcher/AnsibleRolesSwitcher.js:89
 msgid "Assigned Ansible Roles"
+msgstr ""
+
+#: ../webpack/components/AnsibleRolesSwitcher/AnsibleRolesSwitcherActions.js:52
+msgid "Failed to fetch Ansible Roles from server."
 msgstr ""
 
 #:
