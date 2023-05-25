@@ -38,3 +38,4 @@ exclude_paths:
 - config/
 - db/
 - test/
+- app/assets/javascripts/foreman_ansible/locale

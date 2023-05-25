@@ -9,11 +9,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 10.1.0\n"
+"Project-Id-Version: foreman_ansible 12.0.3\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Andi Chandler <andi@gowling.com>, 2022\n"
-"Language-Team: English (United Kingdom) (https://www.transifex.com/foreman/tea"
+"Language-Team: English (United Kingdom) (https://app.transifex.com/foreman/tea"
 "ms/114/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -309,6 +309,9 @@ msgstr ""
 msgid "Executed at"
 msgstr ""
 
+msgid "Failed to fetch Ansible Roles from server."
+msgstr ""
+
 msgid "Failed to import roles and variables "
 msgstr ""
 
@@ -342,10 +345,16 @@ msgstr ""
 msgid "Host assigned Ansible roles"
 msgstr ""
 
+msgid "Host count"
+msgstr ""
+
 msgid "Host group has no associated hosts"
 msgstr ""
 
 msgid "Host not found by id: %s"
+msgstr ""
+
+msgid "Hostgroup count"
 msgstr ""
 
 msgid "Hostgroups"
@@ -546,6 +555,9 @@ msgid "Number of tasks which should be sent to the smart proxy in one request, i
 msgstr ""
 
 msgid "Only variables marked to Override are shown here."
+msgstr ""
+
+msgid "Operation"
 msgstr ""
 
 msgid "Optional Input Validator"
