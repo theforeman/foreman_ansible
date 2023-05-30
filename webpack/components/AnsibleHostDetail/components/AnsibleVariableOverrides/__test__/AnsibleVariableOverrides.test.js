@@ -19,7 +19,7 @@ import {
 const TestComponent = withRedux(withMockedProvider(AnsibleVariableOverrides));
 
 describe('AnsibleVariableOverrides', () => {
-  it('should show skeleton when page is loading', () => {
+  it('should show skeleton when page is loading', async () => {
     const { container } = render(
       <TestComponent
         hostId={hostId}
@@ -31,6 +31,8 @@ describe('AnsibleVariableOverrides', () => {
     expect(
       container.getElementsByClassName('react-loading-skeleton')
     ).toHaveLength(5);
+
+    await waitFor(tick);
   });
   it('should load', async () => {
     render(
