@@ -35,7 +35,6 @@ Foreman::Plugin.register :foreman_ansible do
                                'additional debugging output when running Ansible playbooks.'),
               default: '0',
               full_name: N_('Default verbosity level'),
-              value: nil,
               collection: proc {
                 { '0' => N_('Disabled'),
                   '1' => N_('Level 1 (-v)'),
