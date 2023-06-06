@@ -30,9 +30,17 @@ const AllRolesModal = ({ hostGlobalId, onClose, history }) => {
 
   const paginationKeys = { page: 'page', perPage: 'per_page' };
 
-  const wrapper = child => <Modal {...baseModalProps}>{child}</Modal>;
+  const wrapper = child => (
+    <Modal ouiaId="modal-ansible-roles" {...baseModalProps}>
+      {child}
+    </Modal>
+  );
 
-  const loadingWrapper = child => <Modal {...baseModalProps}>{child}</Modal>;
+  const loadingWrapper = child => (
+    <Modal ouiaId="loading-modal-ansible-roles" {...baseModalProps}>
+      {child}
+    </Modal>
+  );
 
   const useFetchFn = () =>
     useQuery(allAnsibleRolesQuery, {

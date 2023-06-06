@@ -29,6 +29,7 @@ const AnsibleHostDetail = ({
           >
             {SECONDARY_TABS.map(({ key, title }) => (
               <Tab
+                ouiaId={`ansible-host-details-tabs-${title}`}
                 key={key}
                 eventKey={key}
                 title={<TabTitleText>{title}</TabTitleText>}

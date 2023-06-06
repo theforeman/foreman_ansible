@@ -58,6 +58,7 @@ export const SelectField = ({
       validated={valid}
     >
       <FormSelect
+        ouiaId={`select-${fieldProps.name}`}
         {...fieldProps}
         className="without_select2"
         aria-label={fieldProps.name}

@@ -90,6 +90,7 @@ const NewRecurringJobModal = props => {
             <br />
             {__('For more advanced scheduling options')}{' '}
             <Button
+              ouiaId="view-remote-execution-page"
               variant="link"
               isInline
               onClick={() =>
