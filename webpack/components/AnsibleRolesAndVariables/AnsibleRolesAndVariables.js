@@ -14,6 +14,7 @@ import {
   Checkbox,
 } from '@patternfly/react-core';
 import Pagination from 'foremanReact/components/Pagination';
+import { translate as __ } from 'foremanReact/common/I18n';
 import PropTypes from 'prop-types';
 import { DEFAULT_PER_PAGE } from './AnsibleRolesAndVariablesConstants';
 import './AnsibleRolesAndVariables.scss';
@@ -119,10 +120,10 @@ const ImportRolesAndVariablesTable = ({
         isLoading={isImporting}
         isDisabled={isImporting || selectedRowsCount === 0}
       >
-        Submit
+        {__('Submit')}
       </Button>
       <Button variant="secondary" onClick={onCancel} isDisabled={isImporting}>
-        Cancel
+        {__('Cancel')}
       </Button>
     </div>
   );
