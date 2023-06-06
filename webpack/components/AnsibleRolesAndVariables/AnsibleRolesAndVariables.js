@@ -92,11 +92,12 @@ const ImportRolesAndVariablesTable = ({
   );
 
   const renderSelectAll = () => (
-    <Toolbar>
+    <Toolbar ouiaId="ansible-roles-and-variables-table-toolbar">
       <ToolbarContent>
         <ToolbarGroup variant="icon-button-group">
           <ToolbarItem>
             <Checkbox
+              ouiaId="ansible-roles-and-variables-table-select-all-checkbox"
               isChecked={isChecked}
               onChange={SelectAll}
               aria-label="select all checkbox"
@@ -115,6 +116,7 @@ const ImportRolesAndVariablesTable = ({
       <br />
       <br />
       <Button
+        ouiaId="ansible-roles-variables-submit"
         variant="primary"
         onClick={() => onSubmit(rows, proxy)}
         isLoading={isImporting}
@@ -122,7 +124,12 @@ const ImportRolesAndVariablesTable = ({
       >
         {__('Submit')}
       </Button>
-      <Button variant="secondary" onClick={onCancel} isDisabled={isImporting}>
+      <Button
+        ouiaId="ansible-roles-variables-cancel"
+        variant="secondary"
+        onClick={onCancel}
+        isDisabled={isImporting}
+      >
         {__('Cancel')}
       </Button>
     </div>
@@ -132,6 +139,7 @@ const ImportRolesAndVariablesTable = ({
     <div id="import-ansible-roles-variables">
       {renderSelectAll()}
       <Table
+        ouiaId="ansible-roles-and-variables-table"
         aria-label="import roles and variables"
         onSelect={onSelect}
         rows={paginatedRows}

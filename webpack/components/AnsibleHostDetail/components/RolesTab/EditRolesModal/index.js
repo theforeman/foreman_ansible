@@ -44,12 +44,20 @@ const EditRolesModal = ({
   ];
 
   const emptyWrapper = child => (
-    <Modal {...baseModalProps} actions={actions}>
+    <Modal
+      ouiaId="empty-edit-modal-ansible-roles"
+      {...baseModalProps}
+      actions={actions}
+    >
       {child}
     </Modal>
   );
 
-  const loadingWrapper = child => <Modal {...baseModalProps}>{child}</Modal>;
+  const loadingWrapper = child => (
+    <Modal ouiaId="loading-edit-modal-ansible-roles" {...baseModalProps}>
+      {child}
+    </Modal>
+  );
 
   const variables = {
     id: encodeId('Host', hostId),
