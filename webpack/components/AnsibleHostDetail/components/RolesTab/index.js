@@ -23,7 +23,7 @@ const RolesTab = ({ hostId, history, canEditHost }) => {
   const [assignModal, setAssignModal] = useState(false);
   const renameData = data => ({
     ansibleRoles: data.host.ownAnsibleRoles.nodes,
-    totalCount: data.host.ownAnsibleRoles.totalCount,
+    totalCount: allAnsibleRoles.length,
   });
 
   const useFetchFn = () =>
