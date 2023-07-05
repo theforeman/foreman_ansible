@@ -50,7 +50,7 @@ module ForemanAnsible
             @inherited_ansible_roles = @hostgroup.inherited_ansible_roles
             @directly_assigned_roles = @hostgroup.ansible_roles
             @ansible_roles = (
-              @directly_assigned_roles + @inherited_ansible_roles + @hostgroup.host_ansible_roles
+              @directly_assigned_roles + @inherited_ansible_roles
             ).uniq
           end
 
