@@ -4,8 +4,13 @@ import { sprintf, translate as __ } from 'foremanReact/common/I18n';
 
 import { showToast } from '../../../../toastHelper';
 
-const formatSourceLink = currentValue =>
-  `${__(currentValue.element)}: ${currentValue.elementName}`;
+function formatSourceLink(currentValue) {
+  const element =
+    typeof currentValue.element !== 'string'
+      ? currentValue.element.toString()
+      : currentValue.element;
+  return `${__(element)}: ${currentValue.elementName}`;
+}
 
 export const formatSourceAttr = variable =>
   variable.currentValue
