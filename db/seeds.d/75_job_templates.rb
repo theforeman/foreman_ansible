@@ -2,6 +2,16 @@
 
 organizations = Organization.unscoped.all
 locations = Location.unscoped.all
+
+template_files = Dir[File.join("#{ForemanAnsible::Engine.root}/app/views/foreman_ansible/job_templates/**/*.erb")]
+
+unsupported_templates =
+  if Foreman::Plugin.find('foreman_theme_satellite').present?
+    { 'Smart Proxy Upgrade Playbook': 'smart_proxy_upgrade_-_ansible_default.erb' }
+  else
+    { 'Capsule Upgrade Playbook': 'capsule_upgrade_-_ansible_default.erb' }
+  end
+
 User.as_anonymous_admin do
   RemoteExecutionFeature.without_auditing do
     if Rails.env.test? || Foreman.in_rake?
@@ -13,8 +23,7 @@ User.as_anonymous_admin do
       ForemanAnsible::Engine.register_rex_feature
     end
     JobTemplate.without_auditing do
-      Dir[File.join("#{ForemanAnsible::Engine.root}/app/views/foreman_ansible/"\
-                    'job_templates/**/*.erb')].each do |template|
+      template_files.reject { |template| unsupported_templates.value?(File.basename(template)) }.each do |template|
         sync = !Rails.env.test? && Setting[:remote_execution_sync_templates]
         template = JobTemplate.import_raw!(File.read(template),
                                            :default => true,
@@ -22,6 +31,13 @@ User.as_anonymous_admin do
                                            :update => sync)
         template.organizations = organizations if template.present?
         template.locations = locations if template.present?
+      end
+
+      unsupported_templates_in_db = JobTemplate.where(name: unsupported_templates.keys)
+
+      if unsupported_templates_in_db.any?
+        unsupported_templates_in_db.update_all(locked: false)
+        unsupported_templates_in_db.destroy_all
       end
     end
   end
