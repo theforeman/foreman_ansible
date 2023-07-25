@@ -3,11 +3,10 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 12.0.3",
+        "Project-Id-Version": "foreman_ansible 12.0.4",
         "Report-Msgid-Bugs-To": "",
-        "POT-Creation-Date": "2023-05-29 15:29+0200",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
-        "Last-Translator": "Ettore Atalan <atalanttore@googlemail.com>, 2023",
+        "Last-Translator": "Wiederoder <stefanwiederoder@googlemail.com>, 2023",
         "Language-Team": "German (https://app.transifex.com/foreman/teams/114/de/)",
         "MIME-Version": "1.0",
         "Content-Type": "text/plain; charset=UTF-8",
@@ -838,7 +837,7 @@
         ""
       ],
       "Operation": [
-        ""
+        "Vorgang"
       ],
       "Host count": [
         ""
@@ -914,6 +913,12 @@
       ],
       "Action with sub plans": [
         "Aktion mit Unterplänen"
+      ],
+      "Check for long running tasks": [
+        ""
+      ],
+      "Deliver notifications about long running tasks": [
+        ""
       ],
       "Import Puppet classes": [
         "Puppet-Klassen importieren"

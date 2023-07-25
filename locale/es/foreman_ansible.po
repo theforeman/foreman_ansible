@@ -6,19 +6,19 @@
 # Translators:
 # fe37ea014ea122db60df81cd86b163af_742ef71 <ba9f59c06b0be83ac3724b1834a4c14b_93939>, 2018
 # francis <hackgo@gmail.com>, 2018
-# Carmela Rubiños <carmela.rubinos@gmail.com>, 2022
 # Jared Nelson <jared@ajpadilla.com>, 2022
 # Bryan Kearney <bryan.kearney@gmail.com>, 2022
 # Gustavo Varela <gustavo.varela@gmail.com>, 2022
 # Sergio Ocón-Cárdenas <sergio.ocon@redhat.com>, 2022
 # Amit Upadhye <aupadhye@redhat.com>, 2023
+# Carmela Rubiños <carmela.rubinos@gmail.com>, 2023
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 12.0.3\n"
+"Project-Id-Version: foreman_ansible 12.0.4\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
-"Last-Translator: Amit Upadhye <aupadhye@redhat.com>, 2023\n"
+"Last-Translator: Carmela Rubiños <carmela.rubinos@gmail.com>, 2023\n"
 "Language-Team: Spanish (https://app.transifex.com/foreman/teams/114/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -189,6 +189,9 @@ msgstr "Cancelar el trabajo de configuración de Ansible"
 msgid "Changed Ansible roles"
 msgstr "Roles Ansible cambiados"
 
+msgid "Check for long running tasks"
+msgstr ""
+
 msgid "Close"
 msgstr "Cerrar"
 
@@ -260,6 +263,9 @@ msgstr "Elimina rol Ansible"
 
 msgid "Deletes Ansible variable"
 msgstr "Elimina la variable Ansible"
+
+msgid "Deliver notifications about long running tasks"
+msgstr ""
 
 msgid "Description"
 msgstr "Descripción"
@@ -566,7 +572,7 @@ msgid "Only variables marked to Override are shown here."
 msgstr "Aquí sólo se muestran las variables marcadas como Anular."
 
 msgid "Operation"
-msgstr ""
+msgstr "Operación"
 
 msgid "Optional Input Validator"
 msgstr "Validador de entrada opcional"

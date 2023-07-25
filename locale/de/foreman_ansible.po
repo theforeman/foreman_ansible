@@ -12,19 +12,19 @@
 # Crited <Alexander.Stoll@netways.de>, 2019
 # Bernhard Suttner <bernhard.suttner@atix.de>, 2019
 # Lukas Kallies <github.com@luke-web.de>, 2021
-# Patrick Dolinic, 2022
+# pdolinic, 2022
 # simon11 <transifex@stieger.co>, 2022
 # Arnold Bechtoldt <mail@arnoldbechtoldt.com>, 2022
-# Wiederoder <stefanwiederoder@googlemail.com>, 2022
 # Bryan Kearney <bryan.kearney@gmail.com>, 2022
 # Ettore Atalan <atalanttore@googlemail.com>, 2023
+# Wiederoder <stefanwiederoder@googlemail.com>, 2023
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 12.0.3\n"
+"Project-Id-Version: foreman_ansible 12.0.4\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>, 2023\n"
+"Last-Translator: Wiederoder <stefanwiederoder@googlemail.com>, 2023\n"
 "Language-Team: German (https://app.transifex.com/foreman/teams/114/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -194,6 +194,9 @@ msgstr ""
 msgid "Changed Ansible roles"
 msgstr "Geänderte Ansible-Rollen"
 
+msgid "Check for long running tasks"
+msgstr ""
+
 msgid "Close"
 msgstr "Schließen"
 
@@ -265,6 +268,9 @@ msgstr "Löscht die Ansible-Rolle"
 
 msgid "Deletes Ansible variable"
 msgstr "Löscht die Ansible-Variable"
+
+msgid "Deliver notifications about long running tasks"
+msgstr ""
 
 msgid "Description"
 msgstr "Beschreibung"
@@ -569,7 +575,7 @@ msgid "Only variables marked to Override are shown here."
 msgstr ""
 
 msgid "Operation"
-msgstr ""
+msgstr "Vorgang"
 
 msgid "Optional Input Validator"
 msgstr "Optionaler Eingabe-Validator"

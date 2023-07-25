@@ -4,20 +4,22 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# 21966816214bc546c1fc8a185e75ca1c, 2018
 # Baptiste Agasse <baptiste.agasse@gmail.com>, 2019
 # Pierre-Emmanuel Dutang <dutangp@gmail.com>, 2022
 # Romain Vrignaud <rvrignaud@gmail.com>, 2022
 # Bryan Kearney <bryan.kearney@gmail.com>, 2022
 # Claer <transiblu@claer.hammock.fr>, 2022
 # Amit Upadhye <aupadhye@redhat.com>, 2023
+# 21966816214bc546c1fc8a185e75ca1c, 2023
+# Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2023
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 12.0.3\n"
+"Project-Id-Version: foreman_ansible 12.0.4\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
-"Last-Translator: Amit Upadhye <aupadhye@redhat.com>, 2023\n"
+"Last-Translator: Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarde"
+"n.nl>, 2023\n"
 "Language-Team: French (https://app.transifex.com/foreman/teams/114/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -114,16 +116,16 @@ msgid "Ansible role names to be synced"
 msgstr "Noms des rôles Ansible à synchroniser"
 
 msgid "Ansible role to add to a host"
-msgstr ""
+msgstr "Rôle Ansible à ajouter à un hôte"
 
 msgid "Ansible role to add to a hostgroup"
-msgstr ""
+msgstr "Rôle Ansible à ajouter à un groupe d'hôtes"
 
 msgid "Ansible role to remove from a host"
-msgstr ""
+msgstr "Rôle Ansible à supprimer d'un hôte"
 
 msgid "Ansible role to remove from a hostgroup"
-msgstr ""
+msgstr "Rôle Ansible à supprimer d'un groupe d'hôtes"
 
 msgid "Ansible roles assigned directly to host"
 msgstr "Rôles Ansible assignés directement à l'hôte"
@@ -187,6 +189,9 @@ msgstr "Annuler le job de configuration Ansible"
 
 msgid "Changed Ansible roles"
 msgstr "Rôles Ansible modifiés"
+
+msgid "Check for long running tasks"
+msgstr ""
 
 msgid "Close"
 msgstr "Fermer"
@@ -260,6 +265,9 @@ msgstr "Supprime le rôle Ansible"
 msgid "Deletes Ansible variable"
 msgstr "Supprime la variable Ansible"
 
+msgid "Deliver notifications about long running tasks"
+msgstr ""
+
 msgid "Description"
 msgstr "Description"
 
@@ -270,10 +278,10 @@ msgid "Destroy an override value"
 msgstr "Détruire une valeur de substitution"
 
 msgid "Directly add an Ansible role to a host"
-msgstr ""
+msgstr "Ajouter directement un rôle Ansible à un hôte"
 
 msgid "Directly add an Ansible role to a hostgroup"
-msgstr ""
+msgstr "Ajouter directement un rôle Ansible à un groupe d'hôtes"
 
 msgid "Directly assigned to Host"
 msgstr "Directement affecté à l'hôte"
@@ -297,10 +305,10 @@ msgid "Edit Ansible roles"
 msgstr "Modifier les rôles Ansible"
 
 msgid "Enable Ansible Callback"
-msgstr ""
+msgstr "Activer Ansible Callback"
 
 msgid "Enable the callback plugin for this template"
-msgstr ""
+msgstr "Activer le plugin de rappel pour ce modèle"
 
 msgid "Enable web console"
 msgstr "Activer la console web"
@@ -309,13 +317,13 @@ msgid "Enable/disable WinRM server certificate validation when running Ansible p
 msgstr "Activez/désactivez la validation du certificat du serveur WinRM lors de l'exécution de playbooks Ansible. Vous pouvez remplacer cela sur les hôtes en ajoutant un paramètre « ansible_winrm_server_cert_validation »"
 
 msgid "Error!"
-msgstr "Erreur."
+msgstr "Erreur !"
 
 msgid "Executed at"
 msgstr "Exécuté à"
 
 msgid "Failed to fetch Ansible Roles from server."
-msgstr ""
+msgstr "N’a pas pu extraire les Rôles Ansible du serveur."
 
 msgid "Failed to import roles and variables "
 msgstr "Échec de l'importation des rôles et des variables "
@@ -351,7 +359,7 @@ msgid "Host assigned Ansible roles"
 msgstr "Rôles Ansible attribués à l'hôte"
 
 msgid "Host count"
-msgstr ""
+msgstr "Nombre d'hôtes"
 
 msgid "Host group has no associated hosts"
 msgstr "Aucun hôte n'est associé au groupe d'hôtes"
@@ -360,7 +368,7 @@ msgid "Host not found by id: %s"
 msgstr "Hôte non trouvé par id : %s"
 
 msgid "Hostgroup count"
-msgstr ""
+msgstr "ID du groupe d'hôtes"
 
 msgid "Hostgroups"
 msgstr "Groupes d'hôtes"
@@ -435,7 +443,7 @@ msgid "Inherited from Hostgroup"
 msgstr "Héritée du groupe d’hôtes"
 
 msgid "Insights remediation on %{hosts_count} host(s) has finished successfully"
-msgstr "La remédiation Insights sur %{hosts_count} hôte(s) est terminé"
+msgstr "La remédiation Insights sur %%{hosts_count} hôte(s) est terminé"
 
 msgid "Invalid, expected one of: %s"
 msgstr "Invalide, attendu un de : %s"
@@ -547,7 +555,7 @@ msgid "No roles assigned directly to the host"
 msgstr "Aucun rôle assigné directement à l'hôte"
 
 msgid "No roles/hosts assigned"
-msgstr ""
+msgstr "Aucun rôle/hôte attribué"
 
 msgid "Nothing Found!"
 msgstr "Rien trouvé !"
@@ -565,7 +573,7 @@ msgid "Only variables marked to Override are shown here."
 msgstr "Seules les variables marquées \"Override\" sont affichées ici."
 
 msgid "Operation"
-msgstr ""
+msgstr "Opération"
 
 msgid "Optional Input Validator"
 msgstr "Validateur d'entrée optionnel"
@@ -631,10 +639,10 @@ msgid "Remove all"
 msgstr "Supprimer tout"
 
 msgid "Remove directly assigned Ansible role from a host"
-msgstr ""
+msgstr "Supprimer un rôle Ansible directement assigné à un hôte"
 
 msgid "Remove directly assigned Ansible role from a hostgroup"
-msgstr ""
+msgstr "Supprimer un rôle Ansible directement assigné à un groupe d'hôtes"
 
 msgid "Remove duplicate values (only array type)"
 msgstr "Supprime les valeurs dupliquées (seulement pour le type tableau)"
@@ -724,7 +732,7 @@ msgid "Show Ansible inventory for hosts"
 msgstr "Afficher l’inventaire Ansible des hôtes"
 
 msgid "Show full value"
-msgstr ""
+msgstr "Afficher la valeur complète"
 
 msgid "Show role"
 msgstr "Afficher un rôle"

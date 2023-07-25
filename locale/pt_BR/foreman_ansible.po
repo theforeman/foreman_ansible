@@ -7,17 +7,18 @@
 # Valeria S Silva <valeriassilva@live.com>, 2019
 # Felipe Nogaroto Gonzalez <felipeng84@gmail.com>, 2019
 # 0868a4d1af5275b3f70b0a6dac4c99a4, 2019
-# Luiz Henrique Vasconcelos <luizvasconceloss@yahoo.com.br>, 2019
 # Flamarion Jorge <jorge.flamarion@gmail.com>, 2022
 # Bryan Kearney <bryan.kearney@gmail.com>, 2022
 # Amit Upadhye <aupadhye@redhat.com>, 2023
+# Luiz Henrique Vasconcelos <luizvasconceloss@yahoo.com.br>, 2023
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 12.0.3\n"
+"Project-Id-Version: foreman_ansible 12.0.4\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
-"Last-Translator: Amit Upadhye <aupadhye@redhat.com>, 2023\n"
+"Last-Translator: Luiz Henrique Vasconcelos <luizvasconceloss@yahoo.com.br>, 20"
+"23\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/foreman/teams/11"
 "4/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -189,6 +190,9 @@ msgstr "Cancelar trabalho de configuração possível"
 msgid "Changed Ansible roles"
 msgstr "Funções do Ansible alteradas"
 
+msgid "Check for long running tasks"
+msgstr ""
+
 msgid "Close"
 msgstr "Fechar"
 
@@ -260,6 +264,9 @@ msgstr "Excluir função do Ansible"
 
 msgid "Deletes Ansible variable"
 msgstr "Exclui variável do Ansible"
+
+msgid "Deliver notifications about long running tasks"
+msgstr ""
 
 msgid "Description"
 msgstr "Descrição"
@@ -566,7 +573,7 @@ msgid "Only variables marked to Override are shown here."
 msgstr "Somente variáveis marcadas para Substituir são mostradas aqui."
 
 msgid "Operation"
-msgstr ""
+msgstr "Operação"
 
 msgid "Optional Input Validator"
 msgstr "Validador de entrada opcional"

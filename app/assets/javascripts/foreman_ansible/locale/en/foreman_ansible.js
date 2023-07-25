@@ -3,7 +3,7 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 12.0.3",
+        "Project-Id-Version": "foreman_ansible 12.0.4",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2014-08-20 08:54+0100",
         "Last-Translator": "Foreman Team <foreman-dev@googlegroups.com>",
@@ -912,6 +912,12 @@
         ""
       ],
       "Action with sub plans": [
+        ""
+      ],
+      "Check for long running tasks": [
+        ""
+      ],
+      "Deliver notifications about long running tasks": [
         ""
       ],
       "Import Puppet classes": [

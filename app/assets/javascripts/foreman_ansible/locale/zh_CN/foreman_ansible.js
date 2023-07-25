@@ -3,11 +3,10 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 12.0.3",
+        "Project-Id-Version": "foreman_ansible 12.0.4",
         "Report-Msgid-Bugs-To": "",
-        "POT-Creation-Date": "2023-05-29 15:29+0200",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
-        "Last-Translator": "Amit Upadhye <aupadhye@redhat.com>, 2023",
+        "Last-Translator": "Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2023",
         "Language-Team": "Chinese (China) (https://app.transifex.com/foreman/teams/114/zh_CN/)",
         "MIME-Version": "1.0",
         "Content-Type": "text/plain; charset=UTF-8",
@@ -196,16 +195,16 @@
         "分配给主机组的 Ansible 角色"
       ],
       "Directly add an Ansible role to a hostgroup": [
-        ""
+        "直接将 Ansible 角色添加到主机组"
       ],
       "Ansible role to add to a hostgroup": [
-        ""
+        "要添加到主机组的 Ansible 角色"
       ],
       "Remove directly assigned Ansible role from a hostgroup": [
-        ""
+        "从主机组中删除直接分配的 Ansible 角色"
       ],
       "Ansible role to remove from a hostgroup": [
-        ""
+        "从主机组中删除的 Ansible 角色"
       ],
       "IDs of associated ansible roles": [
         "相关 ansible 角色的 ID"
@@ -229,19 +228,19 @@
         "分配给主机的 Ansible 角色"
       ],
       "Directly add an Ansible role to a host": [
-        ""
+        "直接将 Ansible 角色添加到主机"
       ],
       "Ansible role to add to a host": [
-        ""
+        "要添加到主机的 Ansible 角色"
       ],
       "Remove directly assigned Ansible role from a host": [
-        ""
+        "从主机中删除直接分配的 Ansible 角色"
       ],
       "Ansible role to remove from a host": [
-        ""
+        "要从主机中删除的 Ansible 角色"
       ],
       "Enable the callback plugin for this template": [
-        ""
+        "为此模板启用回调插件"
       ],
       "Host group has no associated hosts": [
         "主机组没有关联的主机"
@@ -268,13 +267,13 @@
         "配置 Ansible 作业"
       ],
       "No roles/hosts assigned": [
-        ""
+        "没有分配角色/主机"
       ],
       "No additional data": [
         "没有额外的数据"
       ],
       "Show full value": [
-        ""
+        "显示全值"
       ],
       "Add": [
         "添加"
@@ -397,7 +396,7 @@
         "默认行为"
       ],
       "Override the default value of the Ansible variable.": [
-        "覆盖 Ansible 变量的默认值"
+        "覆盖 Ansible 变量的默认值。"
       ],
       "Mark the variable to be managed by Foreman. When the Ansible role of this variable is assigned to a host, the default value will be added to Ansible inventory as a host variable. Specify matchers to set a different value for such variable.": [
         "标记由 Foreman 管理的变量。当此变量的 Ansible 角色分配给主机后，默认值将作为主机变量添加到 Ansible 清单中。指定匹配器以为该变量设置不同的值。"
@@ -493,7 +492,7 @@
         "没有可显示的信息"
       ],
       "Enable Ansible Callback": [
-        ""
+        "启用 Ansible 回调"
       ],
       "Ansible": [
         "Ansible"
@@ -502,7 +501,7 @@
         "工作"
       ],
       "Insights remediation on %{hosts_count} host(s) has finished successfully": [
-        "%{hosts_count} 个主机的 Insights 补救计划已成功完成"
+        "%%{hosts_count} 个主机的 Insights 补救计划已成功完成"
       ],
       "Roles": [
         "角色"
@@ -772,7 +771,7 @@
         "未找到以前的作业执行"
       ],
       "Source": [
-        "來源："
+        "來源"
       ],
       "Inherited from Hostgroup": [
         "从主机组中继承"
@@ -838,13 +837,13 @@
         "导入角色和变量失败 "
       ],
       "Operation": [
-        ""
+        "操作"
       ],
       "Host count": [
-        ""
+        "主机数"
       ],
       "Hostgroup count": [
-        ""
+        "主机组数"
       ],
       "Available Ansible Roles": [
         "可用的 Ansible 角色"
@@ -853,7 +852,7 @@
         "分配的 Ansible 角色"
       ],
       "Failed to fetch Ansible Roles from server.": [
-        ""
+        "从服务器获取 Ansible 角色失败。"
       ],
       "You are not authorized to perform this action.": [
         "您没有执行这个操作的授权。"
@@ -871,7 +870,7 @@
         "此 Ansible 角色从主机组继承"
       ],
       "Use drag and drop to change order of the roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly": [
-        "使用拖放来更改角色的顺序。在 Ansible 运行时会遵循这个顺序，继承的角色始终位于直接分配的角色的前面。"
+        "使用拖放来更改角色的顺序。在 Ansible 运行时会遵循这个顺序，继承的角色始终位于直接分配的角色的前面"
       ],
       "Add selected": [
         "添加选择的"
@@ -914,6 +913,12 @@
       ],
       "Action with sub plans": [
         "有子计划的操作"
+      ],
+      "Check for long running tasks": [
+        ""
+      ],
+      "Deliver notifications about long running tasks": [
+        ""
       ],
       "Import Puppet classes": [
         "导入 Puppet 类"

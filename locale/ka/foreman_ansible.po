@@ -8,7 +8,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 12.0.3\n"
+"Project-Id-Version: foreman_ansible 12.0.4\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2023\n"
@@ -181,6 +181,9 @@ msgstr "Ansible-ის კონფიგურაცის დავალე�
 msgid "Changed Ansible roles"
 msgstr "Ansible-ის როლები შეცვლილია"
 
+msgid "Check for long running tasks"
+msgstr ""
+
 msgid "Close"
 msgstr "დახურვა"
 
@@ -252,6 +255,9 @@ msgstr "Ansible-ის როლის წაშლა"
 
 msgid "Deletes Ansible variable"
 msgstr "Ansible-ის ცვლადის წაშლა"
+
+msgid "Deliver notifications about long running tasks"
+msgstr ""
 
 msgid "Description"
 msgstr "აღწერა"
@@ -556,7 +562,7 @@ msgid "Only variables marked to Override are shown here."
 msgstr "ნაჩვენებია მხოლოდ გადაფარვადად მონიშნული ცვლადები."
 
 msgid "Operation"
-msgstr ""
+msgstr "ოეპრაცია"
 
 msgid "Optional Input Validator"
 msgstr "შეყვანის არასავალდებულო შემოწმება"

@@ -3,11 +3,10 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 12.0.3",
+        "Project-Id-Version": "foreman_ansible 12.0.4",
         "Report-Msgid-Bugs-To": "",
-        "POT-Creation-Date": "2023-05-29 15:29+0200",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
-        "Last-Translator": "Amit Upadhye <aupadhye@redhat.com>, 2023",
+        "Last-Translator": "Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2023",
         "Language-Team": "Japanese (https://app.transifex.com/foreman/teams/114/ja/)",
         "MIME-Version": "1.0",
         "Content-Type": "text/plain; charset=UTF-8",
@@ -19,655 +18,655 @@
         "plural_forms": "nplurals=1; plural=0;"
       },
       "No added or removed roles nor variables.": [
-        "追加または削除されたロールや変数はありません。"
+        "è¿½åŠ ã�¾ã�Ÿã�¯å‰Šé™¤ã�•ã‚Œã�Ÿãƒ­ãƒ¼ãƒ«ã‚„å¤‰æ•°ã�¯ã�‚ã‚Šã�¾ã�›ã‚“ã€‚"
       ],
       "No added or removed roles nor variables detected on %s.": [
-        "%s では、追加または削除されたロールや変数は検出されませんでした。"
+        "%s ã�§ã�¯ã€�è¿½åŠ ã�¾ã�Ÿã�¯å‰Šé™¤ã�•ã‚Œã�Ÿãƒ­ãƒ¼ãƒ«ã‚„å¤‰æ•°ã�¯æ¤œå‡ºã�•ã‚Œã�¾ã�›ã‚“ã�§ã�—ã�Ÿã€‚"
       ],
       "No changes in variables detected on %s.": [
-        "%s では、変数の変更が検出されませんでした。"
+        "%s ã�§ã�¯ã€�å¤‰æ•°ã�®å¤‰æ›´ã�Œæ¤œå‡ºã�•ã‚Œã�¾ã�›ã‚“ã�§ã�—ã�Ÿã€‚"
       ],
       "No proxy found to import variables from, ensure that the smart proxy has the Ansible feature enabled.": [
-        "変数のインポート元となるプロキシーが見つかりません。Smart Proxy で Ansible 機能が有効であることを確認してください。"
+        "å¤‰æ•°ã�®ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆå…ƒã�¨ã�ªã‚‹ãƒ—ãƒ­ã‚­ã‚·ãƒ¼ã�Œè¦‹ã�¤ã�‹ã‚Šã�¾ã�›ã‚“ã€‚Smart Proxy ã�§ Ansible æ©Ÿèƒ½ã�Œæœ‰åŠ¹ã�§ã�‚ã‚‹ã�“ã�¨ã‚’ç¢ºèª�ã�—ã�¦ã��ã� ã�•ã�„ã€‚"
       ],
       "Show Ansible inventory for hosts": [
-        "ホストの Ansible インベントリーを表示する"
+        "ãƒ›ã‚¹ãƒˆã�® Ansible ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªãƒ¼ã‚’è¡¨ç¤ºã�™ã‚‹"
       ],
       "IDs of hosts included in inventory": [
-        "インベントリーに含まれるホストの ID"
+        "ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªãƒ¼ã�«å�«ã�¾ã‚Œã‚‹ãƒ›ã‚¹ãƒˆã�® ID"
       ],
       "Show Ansible inventory for hostgroups": [
-        "ホストグループの Ansible インベントリーを表示する"
+        "ãƒ›ã‚¹ãƒˆã‚°ãƒ«ãƒ¼ãƒ—ã�® Ansible ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªãƒ¼ã‚’è¡¨ç¤ºã�™ã‚‹"
       ],
       "IDs of hostgroups included in inventory": [
-        "インベントリーに含まれるホストグループの ID"
+        "ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªãƒ¼ã�«å�«ã�¾ã‚Œã‚‹ãƒ›ã‚¹ãƒˆã‚°ãƒ«ãƒ¼ãƒ—ã�® ID"
       ],
       "Schedule generating of Ansible Inventory report": [
-        "Ansible インベントリーレポートの生成をスケジュールする"
+        "Ansible ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªãƒ¼ãƒ¬ãƒ�ãƒ¼ãƒˆã�®ç”Ÿæˆ�ã‚’ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã�™ã‚‹"
       ],
       "Hash of input values of type input=>value": [
-        "type input=>value の入力値のハッシュ"
+        "type input=>value ã�®å…¥åŠ›å€¤ã�®ãƒ�ãƒƒã‚·ãƒ¥"
       ],
       "Report format, defaults to '%s'": [
-        "レポート形式、デフォルトは「%s」"
+        "ãƒ¬ãƒ�ãƒ¼ãƒˆå½¢å¼�ã€�ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã�¯ã€Œ%sã€�"
       ],
       "Override match": [
-        "一致候補の上書き"
+        "ä¸€è‡´å€™è£œã�®ä¸Šæ›¸ã��"
       ],
       "Override value, required if omit is false": [
-        "上書き値 (omit が false の場合に必要)"
+        "ä¸Šæ›¸ã��å€¤ (omit ã�Œ false ã�®å ´å�ˆã�«å¿…è¦�)"
       ],
       "Create an override value for a specific ansible variable": [
-        "特定の Ansible 変数の上書き値を作成します"
+        "ç‰¹å®šã�® Ansible å¤‰æ•°ã�®ä¸Šæ›¸ã��å€¤ã‚’ä½œæˆ�ã�—ã�¾ã�™"
       ],
       "Destroy an override value": [
-        "上書き値を破棄します"
+        "ä¸Šæ›¸ã��å€¤ã‚’ç ´æ£„ã�—ã�¾ã�™"
       ],
       "Sync Ansible playbooks": [
-        "Ansible Playbook の同期"
+        "Ansible Playbook ã�®å�ŒæœŸ"
       ],
       "Smart Proxy to sync from": [
-        "同期元の Smart Proxy"
+        "å�ŒæœŸå…ƒã�® Smart Proxy"
       ],
       "Ansible  playbooks names to be synced": [
-        "同期する Ansible Playbook 名"
+        "å�ŒæœŸã�™ã‚‹ Ansible Playbook å��"
       ],
       "Fetch Ansible playbooks available to be synced": [
-        "同期可能な Ansible Playbook の取得"
+        "å�ŒæœŸå�¯èƒ½ã�ª Ansible Playbook ã�®å�–å¾—"
       ],
       "Smart Proxy to fetch from": [
-        "取得元となる Smart Proxy"
+        "å�–å¾—å…ƒã�¨ã�ªã‚‹ Smart Proxy"
       ],
       "Smart proxy id is required": [
-        "Smart Proxy ID が必要です"
+        "Smart Proxy ID ã�Œå¿…è¦�ã�§ã�™"
       ],
       "Show role": [
-        "ロールを表示します"
+        "ãƒ­ãƒ¼ãƒ«ã‚’è¡¨ç¤ºã�—ã�¾ã�™"
       ],
       "List Ansible roles": [
-        "Ansible ロールを一覧表示します"
+        "Ansible ãƒ­ãƒ¼ãƒ«ã‚’ä¸€è¦§è¡¨ç¤ºã�—ã�¾ã�™"
       ],
       "Deletes Ansible role": [
-        "Ansible ロールを削除します"
+        "Ansible ãƒ­ãƒ¼ãƒ«ã‚’å‰Šé™¤ã�—ã�¾ã�™"
       ],
       "DEPRECATED: Import Ansible roles": [
-        "非推奨: Ansible ロールのインポート"
+        "é��æ�¨å¥¨: Ansible ãƒ­ãƒ¼ãƒ«ã�®ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆ"
       ],
       "Smart Proxy to import from": [
-        "インポート元となる Smart Proxy"
+        "ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆå…ƒã�¨ã�ªã‚‹ Smart Proxy"
       ],
       "Ansible role names to be imported": [
-        "インポートする Ansible ロール名"
+        "ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆã�™ã‚‹ Ansible ãƒ­ãƒ¼ãƒ«å��"
       ],
       "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled": [
-        "代わりに同期を使用し、Ansible 機能を有効化して SmartProxy からロールを同期します"
+        "ä»£ã‚�ã‚Šã�«å�ŒæœŸã‚’ä½¿ç”¨ã�—ã€�Ansible æ©Ÿèƒ½ã‚’æœ‰åŠ¹åŒ–ã�—ã�¦ SmartProxy ã�‹ã‚‰ãƒ­ãƒ¼ãƒ«ã‚’å�ŒæœŸã�—ã�¾ã�™"
       ],
       "Sync Ansible roles": [
-        "Ansible ロールの同期"
+        "Ansible ãƒ­ãƒ¼ãƒ«ã�®å�ŒæœŸ"
       ],
       "Ansible role names to be synced": [
-        "同期する Ansible ロール名"
+        "å�ŒæœŸã�™ã‚‹ Ansible ãƒ­ãƒ¼ãƒ«å��"
       ],
       "No changes detected in specified Ansible Roles and their variables": [
-        "指定された Ansible ロールとその変数に変更は検出されませんでした"
+        "æŒ‡å®šã�•ã‚Œã�Ÿ Ansible ãƒ­ãƒ¼ãƒ«ã�¨ã��ã�®å¤‰æ•°ã�«å¤‰æ›´ã�¯æ¤œå‡ºã�•ã‚Œã�¾ã�›ã‚“ã�§ã�—ã�Ÿ"
       ],
       "DEPRECATED: Obsolete Ansible roles": [
-        "非推奨: Ansible ロールの廃止"
+        "é��æ�¨å¥¨: Ansible ãƒ­ãƒ¼ãƒ«ã�®å»ƒæ­¢"
       ],
       "Fetch Ansible roles available to be synced": [
-        "同期可能な Ansible ロールの取得"
+        "å�ŒæœŸå�¯èƒ½ã�ª Ansible ãƒ­ãƒ¼ãƒ«ã�®å�–å¾—"
       ],
       "Show variable": [
-        "変数を表示します"
+        "å¤‰æ•°ã‚’è¡¨ç¤ºã�—ã�¾ã�™"
       ],
       "List Ansible variables": [
-        "Ansible 変数を一覧表示します"
+        "Ansible å¤‰æ•°ã‚’ä¸€è¦§è¡¨ç¤ºã�—ã�¾ã�™"
       ],
       "Deletes Ansible variable": [
-        "Ansible 変数を削除します"
+        "Ansible å¤‰æ•°ã‚’å‰Šé™¤ã�—ã�¾ã�™"
       ],
       "Name of variable": [
-        "変数の名前"
+        "å¤‰æ•°ã�®å��å‰�"
       ],
       "Role ID": [
-        "ロール ID"
+        "ãƒ­ãƒ¼ãƒ« ID"
       ],
       "Default value of variable": [
-        "変数のデフォルト値"
+        "å¤‰æ•°ã�®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤"
       ],
       "When enabled the parameter is hidden in the UI": [
-        "有効な場合はパラメーターは UI で非表示になります"
+        "æœ‰åŠ¹ã�ªå ´å�ˆã�¯ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã�¯ UI ã�§é��è¡¨ç¤ºã�«ã�ªã‚Šã�¾ã�™"
       ],
       "The order in which values are resolved": [
-        "値が解決される順序"
+        "å€¤ã�Œè§£æ±ºã�•ã‚Œã‚‹é †åº�"
       ],
       "Description of variable": [
-        "変数の説明"
+        "å¤‰æ•°ã�®èª¬æ˜�"
       ],
       "Types of validation values": [
-        "検証値のタイプ"
+        "æ¤œè¨¼å€¤ã�®ã‚¿ã‚¤ãƒ—"
       ],
       "Used to enforce certain values for the parameter values": [
-        "パラメーター値の特定の値を適用するために使用されます"
+        "ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼å€¤ã�®ç‰¹å®šã�®å€¤ã‚’é�©ç”¨ã�™ã‚‹ã�Ÿã‚�ã�«ä½¿ç”¨ã�•ã‚Œã�¾ã�™"
       ],
       "Types of variable values": [
-        "変数値のタイプ"
+        "å¤‰æ•°å€¤ã�®ã‚¿ã‚¤ãƒ—"
       ],
       "Merge all matching values (only array/hash type)": [
-        "一致するすべての値のマージ (配列/ハッシュタイプのみ)"
+        "ä¸€è‡´ã�™ã‚‹ã�™ã�¹ã�¦ã�®å€¤ã�®ãƒ�ãƒ¼ã‚¸ (é…�åˆ—/ãƒ�ãƒƒã‚·ãƒ¥ã‚¿ã‚¤ãƒ—ã�®ã�¿)"
       ],
       "Include default value when merging all matching values": [
-        "一致するすべての値をマージするときにデフォルト値を含めます"
+        "ä¸€è‡´ã�™ã‚‹ã�™ã�¹ã�¦ã�®å€¤ã‚’ãƒ�ãƒ¼ã‚¸ã�™ã‚‹ã�¨ã��ã�«ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã‚’å�«ã‚�ã�¾ã�™"
       ],
       "Remove duplicate values (only array type)": [
-        "重複する値の削除 (配列タイプのみ)"
+        "é‡�è¤‡ã�™ã‚‹å€¤ã�®å‰Šé™¤ (é…�åˆ—ã‚¿ã‚¤ãƒ—ã�®ã�¿)"
       ],
       "Whether to override variable or not": [
-        "変数を上書きするかどうか"
+        "å¤‰æ•°ã‚’ä¸Šæ›¸ã��ã�™ã‚‹ã�‹ã�©ã�†ã�‹"
       ],
       "Create Ansible variable": [
-        "Ansible 変数を作成します"
+        "Ansible å¤‰æ•°ã‚’ä½œæˆ�ã�—ã�¾ã�™"
       ],
       "Updates Ansible variable": [
-        "Ansible 変数を更新します"
+        "Ansible å¤‰æ•°ã‚’æ›´æ–°ã�—ã�¾ã�™"
       ],
       "DEPRECATED: Import Ansible variables. This will only import variables for already existing roles, it will not import any new roles": [
-        "非推奨: Ansible 変数をインポートします。既存のロールの変数のみをインポートし、新規ロールはインポートしません。"
+        "é��æ�¨å¥¨: Ansible å¤‰æ•°ã‚’ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆã�—ã�¾ã�™ã€‚æ—¢å­˜ã�®ãƒ­ãƒ¼ãƒ«ã�®å¤‰æ•°ã�®ã�¿ã‚’ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆã�—ã€�æ–°è¦�ãƒ­ãƒ¼ãƒ«ã�¯ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆã�—ã�¾ã�›ã‚“ã€‚"
       ],
       "DEPRECATED: Obsolete Ansible variables. This will only obsolete variables for already existing roles, it will not delete any old roles": [
-        "非推奨: Ansible 変数が使用されないようにします。既存のロールの変数のみを使用されないようにするだけで、古くなったロールを削除するわけではありません。"
+        "é��æ�¨å¥¨: Ansible å¤‰æ•°ã�Œä½¿ç”¨ã�•ã‚Œã�ªã�„ã‚ˆã�†ã�«ã�—ã�¾ã�™ã€‚æ—¢å­˜ã�®ãƒ­ãƒ¼ãƒ«ã�®å¤‰æ•°ã�®ã�¿ã‚’ä½¿ç”¨ã�•ã‚Œã�ªã�„ã‚ˆã�†ã�«ã�™ã‚‹ã� ã�‘ã�§ã€�å�¤ã��ã�ªã�£ã�Ÿãƒ­ãƒ¼ãƒ«ã‚’å‰Šé™¤ã�™ã‚‹ã‚�ã�‘ã�§ã�¯ã�‚ã‚Šã�¾ã�›ã‚“ã€‚"
       ],
       "Runs all Ansible roles on a hostgroup": [
-        "ホストグループですべての Ansible ロールを実行します"
+        "ãƒ›ã‚¹ãƒˆã‚°ãƒ«ãƒ¼ãƒ—ã�§ã�™ã�¹ã�¦ã�® Ansible ãƒ­ãƒ¼ãƒ«ã‚’å®Ÿè¡Œã�—ã�¾ã�™"
       ],
       "Runs all Ansible roles on hostgroups": [
-        "ホストグループですべての Ansible ロールを実行します"
+        "ãƒ›ã‚¹ãƒˆã‚°ãƒ«ãƒ¼ãƒ—ã�§ã�™ã�¹ã�¦ã�® Ansible ãƒ­ãƒ¼ãƒ«ã‚’å®Ÿè¡Œã�—ã�¾ã�™"
       ],
       "IDs of hostgroups to play roles on": [
-        "ロールを実行するホストグループの ID"
+        "ãƒ­ãƒ¼ãƒ«ã‚’å®Ÿè¡Œã�™ã‚‹ãƒ›ã‚¹ãƒˆã‚°ãƒ«ãƒ¼ãƒ—ã�® ID"
       ],
       "List all Ansible roles for a hostgroup": [
-        "ホストグループの Ansible ロールをすべて一覧表示します"
+        "ãƒ›ã‚¹ãƒˆã‚°ãƒ«ãƒ¼ãƒ—ã�® Ansible ãƒ­ãƒ¼ãƒ«ã‚’ã�™ã�¹ã�¦ä¸€è¦§è¡¨ç¤ºã�—ã�¾ã�™"
       ],
       "Assigns Ansible roles to a hostgroup": [
-        "Ansible ロールをホストグループに割り当てます"
+        "Ansible ãƒ­ãƒ¼ãƒ«ã‚’ãƒ›ã‚¹ãƒˆã‚°ãƒ«ãƒ¼ãƒ—ã�«å‰²ã‚Šå½“ã�¦ã�¾ã�™"
       ],
       "Ansible roles to assign to a hostgroup": [
-        "ホストグループに割り当てる Ansible ロール"
+        "ãƒ›ã‚¹ãƒˆã‚°ãƒ«ãƒ¼ãƒ—ã�«å‰²ã‚Šå½“ã�¦ã‚‹ Ansible ãƒ­ãƒ¼ãƒ«"
       ],
       "Directly add an Ansible role to a hostgroup": [
-        ""
+        "Ansible ãƒ­ãƒ¼ãƒ«ã‚’ãƒ›ã‚¹ãƒˆã‚°ãƒ«ãƒ¼ãƒ—ã�«ç›´æ�¥è¿½åŠ ã�™ã‚‹"
       ],
       "Ansible role to add to a hostgroup": [
-        ""
+        "ãƒ›ã‚¹ãƒˆã‚°ãƒ«ãƒ¼ãƒ—ã�«è¿½åŠ ã�™ã‚‹ Ansible ãƒ­ãƒ¼ãƒ«"
       ],
       "Remove directly assigned Ansible role from a hostgroup": [
-        ""
+        "ãƒ›ã‚¹ãƒˆã‚°ãƒ«ãƒ¼ãƒ—ã�‹ã‚‰ç›´æ�¥å‰²ã‚Šå½“ã�¦ã‚‰ã‚Œã�Ÿ Ansible ãƒ­ãƒ¼ãƒ«ã‚’å‰Šé™¤ã�™ã‚‹"
       ],
       "Ansible role to remove from a hostgroup": [
-        ""
+        "ãƒ›ã‚¹ãƒˆã‚°ãƒ«ãƒ¼ãƒ—ã�‹ã‚‰å‰Šé™¤ã�™ã‚‹ Ansible ãƒ­ãƒ¼ãƒ«"
       ],
       "IDs of associated ansible roles": [
-        "関連する Ansible ロールの ID"
+        "é–¢é€£ã�™ã‚‹ Ansible ãƒ­ãƒ¼ãƒ«ã�® ID"
       ],
       "Runs all Ansible roles on a host": [
-        "ホスト上ですべての Ansible ロールを実行します"
+        "ãƒ›ã‚¹ãƒˆä¸Šã�§ã�™ã�¹ã�¦ã�® Ansible ãƒ­ãƒ¼ãƒ«ã‚’å®Ÿè¡Œã�—ã�¾ã�™"
       ],
       "Runs all Ansible roles on hosts": [
-        "ホスト上ですべての Ansible ロールを実行します"
+        "ãƒ›ã‚¹ãƒˆä¸Šã�§ã�™ã�¹ã�¦ã�® Ansible ãƒ­ãƒ¼ãƒ«ã‚’å®Ÿè¡Œã�—ã�¾ã�™"
       ],
       "IDs of hosts to play roles on": [
-        "ロールを実行するホストの ID"
+        "ãƒ­ãƒ¼ãƒ«ã‚’å®Ÿè¡Œã�™ã‚‹ãƒ›ã‚¹ãƒˆã�® ID"
       ],
       "List all Ansible roles for a host": [
-        "ホストの Ansible ロールをすべて一覧表示します"
+        "ãƒ›ã‚¹ãƒˆã�® Ansible ãƒ­ãƒ¼ãƒ«ã‚’ã�™ã�¹ã�¦ä¸€è¦§è¡¨ç¤ºã�—ã�¾ã�™"
       ],
       "Assigns Ansible roles to a host": [
-        "Ansible ロールをホストに割り当てます"
+        "Ansible ãƒ­ãƒ¼ãƒ«ã‚’ãƒ›ã‚¹ãƒˆã�«å‰²ã‚Šå½“ã�¦ã�¾ã�™"
       ],
       "Ansible roles to assign to a host": [
-        "ホストに割り当てる Ansible ロール"
+        "ãƒ›ã‚¹ãƒˆã�«å‰²ã‚Šå½“ã�¦ã‚‹ Ansible ãƒ­ãƒ¼ãƒ«"
       ],
       "Directly add an Ansible role to a host": [
-        ""
+        "Ansible ãƒ­ãƒ¼ãƒ«ã‚’ç›´æ�¥ãƒ›ã‚¹ãƒˆã�«è¿½åŠ ã�™ã‚‹"
       ],
       "Ansible role to add to a host": [
-        ""
+        "ãƒ›ã‚¹ãƒˆã�«è¿½åŠ ã�™ã‚‹ Ansible ãƒ­ãƒ¼ãƒ«"
       ],
       "Remove directly assigned Ansible role from a host": [
-        ""
+        "ãƒ›ã‚¹ãƒˆã�‹ã‚‰ç›´æ�¥å‰²ã‚Šå½“ã�¦ã‚‰ã‚Œã�Ÿ Ansible ãƒ­ãƒ¼ãƒ«ã‚’å‰Šé™¤ã�™ã‚‹"
       ],
       "Ansible role to remove from a host": [
-        ""
+        "ãƒ›ã‚¹ãƒˆã�‹ã‚‰å‰Šé™¤ã�™ã‚‹ Ansible ãƒ­ãƒ¼ãƒ«"
       ],
       "Enable the callback plugin for this template": [
-        ""
+        "ã�“ã�®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã�® callback ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚’æœ‰åŠ¹ã�«ã�™ã‚‹"
       ],
       "Host group has no associated hosts": [
-        "ホストグループに関連付けられたホストがありません"
+        "ãƒ›ã‚¹ãƒˆã‚°ãƒ«ãƒ¼ãƒ—ã�«é–¢é€£ä»˜ã�‘ã‚‰ã‚Œã�Ÿãƒ›ã‚¹ãƒˆã�Œã�‚ã‚Šã�¾ã�›ã‚“"
       ],
       "There are no Ansible roles to play": [
-        "実行する Ansible ロールはありません"
+        "å®Ÿè¡Œã�™ã‚‹ Ansible ãƒ­ãƒ¼ãƒ«ã�¯ã�‚ã‚Šã�¾ã�›ã‚“"
       ],
       "Could not run Ansible roles for %{host}": [
-        "%{host} の Ansible ロールを実行できませんでした"
+        "%{host} ã�® Ansible ãƒ­ãƒ¼ãƒ«ã‚’å®Ÿè¡Œã�§ã��ã�¾ã�›ã‚“ã�§ã�—ã�Ÿ"
       ],
       "Host not found by id: %s": [
-        "id: %s でホストが見つかりません"
+        "id: %s ã�§ãƒ›ã‚¹ãƒˆã�Œè¦‹ã�¤ã�‹ã‚Šã�¾ã�›ã‚“"
       ],
       "Ansible Variable not found by id: %s": [
-        "id: %s で Ansible 変数が見つかりません"
+        "id: %s ã�§ Ansible å¤‰æ•°ã�Œè¦‹ã�¤ã�‹ã‚Šã�¾ã�›ã‚“"
       ],
       "Run all Ansible roles": [
-        "すべての Ansible ロールの実行"
+        "ã�™ã�¹ã�¦ã�® Ansible ãƒ­ãƒ¼ãƒ«ã�®å®Ÿè¡Œ"
       ],
       "Run all Ansible roles on hosts belonging to this host group": [
-        "このホストグループに所属するホストですべての Ansible ロールを実行する"
+        "ã�“ã�®ãƒ›ã‚¹ãƒˆã‚°ãƒ«ãƒ¼ãƒ—ã�«æ‰€å±�ã�™ã‚‹ãƒ›ã‚¹ãƒˆã�§ã�™ã�¹ã�¦ã�® Ansible ãƒ­ãƒ¼ãƒ«ã‚’å®Ÿè¡Œã�™ã‚‹"
       ],
       "Configure Ansible Job": [
-        "Ansible ジョブの設定"
+        "Ansible ã‚¸ãƒ§ãƒ–ã�®è¨­å®š"
       ],
       "No roles/hosts assigned": [
-        ""
+        "ãƒ­ãƒ¼ãƒ«/ãƒ›ã‚¹ãƒˆã�Œå‰²ã‚Šå½“ã�¦ã‚‰ã‚Œã�¦ã�„ã�¾ã�›ã‚“"
       ],
       "No additional data": [
-        "追加データなし"
+        "è¿½åŠ ãƒ‡ãƒ¼ã‚¿ã�ªã�—"
       ],
       "Show full value": [
-        ""
+        "å®Œå…¨ã�ªå€¤ã�®è¡¨ç¤º"
       ],
       "Add": [
-        "追加"
+        "è¿½åŠ "
       ],
       "Remove": [
-        "削除"
+        "å‰Šé™¤"
       ],
       "Update": [
-        "更新"
+        "æ›´æ–°"
       ],
       "Import Role": [
-        "ロールのインポート"
+        "ãƒ­ãƒ¼ãƒ«ã�®ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆ"
       ],
       "Remove Role": [
-        "ロールの削除"
+        "ãƒ­ãƒ¼ãƒ«ã�®å‰Šé™¤"
       ],
       "Update Role Variables": [
-        "ロール変数の更新"
+        "ãƒ­ãƒ¼ãƒ«å¤‰æ•°ã�®æ›´æ–°"
       ],
       "Import from %s": [
-        "%s からのインポート"
+        "%s ã�‹ã‚‰ã�®ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆ"
       ],
       "Ansible Role": [
-        "Ansible ロール"
+        "Ansible ãƒ­ãƒ¼ãƒ«"
       ],
       "Import": [
-        "インポート"
+        "ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆ"
       ],
       "%s ago": [
-        "%s 前"
+        "%s å‰�"
       ],
       "Upgrade": [
-        "アップグレード"
+        "ã‚¢ãƒƒãƒ—ã‚°ãƒ¬ãƒ¼ãƒ‰"
       ],
       "Import roles And Variables": [
-        "ロールと変数のインポート"
+        "ãƒ­ãƒ¼ãƒ«ã�¨å¤‰æ•°ã�®ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆ"
       ],
       "Foreman": [
         "Foreman"
       ],
       "Unable to get roles from Ansible": [
-        "Ansible からロールを取得できません"
+        "Ansible ã�‹ã‚‰ãƒ­ãƒ¼ãƒ«ã‚’å�–å¾—ã�§ã��ã�¾ã�›ã‚“"
       ],
       "Unable to get roles/variables from Ansible": [
-        "Ansible からロール/変数を取得できません"
+        "Ansible ã�‹ã‚‰ãƒ­ãƒ¼ãƒ«/å¤‰æ•°ã‚’å�–å¾—ã�§ã��ã�¾ã�›ã‚“"
       ],
       "Unable to get playbook's names from Ansible": [
-        "Ansible から Playbook の名前を取得できません"
+        "Ansible ã�‹ã‚‰ Playbook ã�®å��å‰�ã‚’å�–å¾—ã�§ã��ã�¾ã�›ã‚“"
       ],
       "Unable to get playbooks from Ansible": [
-        "Ansible から Playbook を取得できません"
+        "Ansible ã�‹ã‚‰ Playbook ã‚’å�–å¾—ã�§ã��ã�¾ã�›ã‚“"
       ],
       "Tags": [
-        "タグ"
+        "ã‚¿ã‚°"
       ],
       "Include/Exclude Tags": [
-        "タグの追加/除外"
+        "ã‚¿ã‚°ã�®è¿½åŠ /é™¤å¤–"
       ],
       "Ansible provider specific inputs": [
-        "Ansible プロバイダー固有の入力"
+        "Ansible ãƒ—ãƒ­ãƒ�ã‚¤ãƒ€ãƒ¼å›ºæœ‰ã�®å…¥åŠ›"
       ],
       "A comma separated list of tags to use for Ansible run": [
-        "Ansible 実行に使用するタグのコンマ区切りリスト"
+        "Ansible å®Ÿè¡Œã�«ä½¿ç”¨ã�™ã‚‹ã‚¿ã‚°ã�®ã‚³ãƒ³ãƒ�åŒºåˆ‡ã‚Šãƒªã‚¹ãƒˆ"
       ],
       "Include\\\\Exclude tags for Ansible run": [
-        "Ansible の実行にタグを追加/除外"
+        "Ansible ã�®å®Ÿè¡Œã�«ã‚¿ã‚°ã‚’è¿½åŠ /é™¤å¤–"
       ],
       "Task Details": [
-        "タスクの詳細"
+        "ã‚¿ã‚¹ã‚¯ã�®è©³ç´°"
       ],
       "Remediation Plan": [
-        "修復プラン"
+        "ä¿®å¾©ãƒ—ãƒ©ãƒ³"
       ],
       "Job Details": [
-        "ジョブの詳細"
+        "ã‚¸ãƒ§ãƒ–ã�®è©³ç´°"
       ],
       "Proxy not found": [
-        "プロキシーが見つかりません"
+        "ãƒ—ãƒ­ã‚­ã‚·ãƒ¼ã�Œè¦‹ã�¤ã�‹ã‚Šã�¾ã�›ã‚“"
       ],
       "Changed Ansible roles": [
-        "変更された Ansible ロール"
+        "å¤‰æ›´ã�•ã‚Œã�Ÿ Ansible ãƒ­ãƒ¼ãƒ«"
       ],
       "Ansible Roles": [
-        "Ansible ロール"
+        "Ansible ãƒ­ãƒ¼ãƒ«"
       ],
       "Role|Name": [
-        "名前"
+        "å��å‰�"
       ],
       "Hostgroups": [
-        "ホストグループ"
+        "ãƒ›ã‚¹ãƒˆã‚°ãƒ«ãƒ¼ãƒ—"
       ],
       "Hosts": [
-        "ホスト"
+        "ãƒ›ã‚¹ãƒˆ"
       ],
       "Variables": [
-        "変数"
+        "å¤‰æ•°"
       ],
       "Imported at": [
-        "インポート場所"
+        "ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆå ´æ‰€"
       ],
       "Actions": [
-        "アクション"
+        "ã‚¢ã‚¯ã‚·ãƒ§ãƒ³"
       ],
       "Delete %s?": [
-        "%s を削除しますか?"
+        "%s ã‚’å‰Šé™¤ã�—ã�¾ã�™ã�‹?"
       ],
       "No Ansible Roles were found in Foreman. If you want to assign roles to your hosts,\\n             you have to import them first.": [
-        "Foreman で Ansible ロールが見つかりませんでした。ホストにロールを割りてる場合は、\\n             最初にロールをインポートする必要があります。"
+        "Foreman ã�§ Ansible ãƒ­ãƒ¼ãƒ«ã�Œè¦‹ã�¤ã�‹ã‚Šã�¾ã�›ã‚“ã�§ã�—ã�Ÿã€‚ãƒ›ã‚¹ãƒˆã�«ãƒ­ãƒ¼ãƒ«ã‚’å‰²ã‚Šã�¦ã‚‹å ´å�ˆã�¯ã€�\\n             æœ€åˆ�ã�«ãƒ­ãƒ¼ãƒ«ã‚’ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆã�™ã‚‹å¿…è¦�ã�Œã�‚ã‚Šã�¾ã�™ã€‚"
       ],
       "Learn more about this in the documentation.": [
-        "詳細についてはドキュメントを参照してください。"
+        "è©³ç´°ã�«ã�¤ã�„ã�¦ã�¯ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’å�‚ç…§ã�—ã�¦ã��ã� ã�•ã�„ã€‚"
       ],
       "Ansible Variable Details (Imported)": [
-        "Ansible 変数の詳細 (インポート済み)"
+        "Ansible å¤‰æ•°ã�®è©³ç´° (ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆæ¸ˆã�¿)"
       ],
       "Ansible Variable Details": [
-        "Ansible 変数の詳細"
+        "Ansible å¤‰æ•°ã�®è©³ç´°"
       ],
       "Default Behavior": [
-        "デフォルト動作"
+        "ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå‹•ä½œ"
       ],
       "Override the default value of the Ansible variable.": [
-        "Ansible 変数のデフォルト値を上書きします。"
+        "Ansible å¤‰æ•°ã�®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã‚’ä¸Šæ›¸ã��ã�—ã�¾ã�™ã€‚"
       ],
       "Mark the variable to be managed by Foreman. When the Ansible role of this variable is assigned to a host, the default value will be added to Ansible inventory as a host variable. Specify matchers to set a different value for such variable.": [
-        "Foreman が管理する変数をマークします。この変数の Ansible ロールがホストに割り当てられると、デフォルト値がホスト変数として Ansible インベントリーに追加されます。そのような変数に異なる値を設定するには、マッチャーを指定します。"
+        "Foreman ã�Œç®¡ç�†ã�™ã‚‹å¤‰æ•°ã‚’ãƒ�ãƒ¼ã‚¯ã�—ã�¾ã�™ã€‚ã�“ã�®å¤‰æ•°ã�® Ansible ãƒ­ãƒ¼ãƒ«ã�Œãƒ›ã‚¹ãƒˆã�«å‰²ã‚Šå½“ã�¦ã‚‰ã‚Œã‚‹ã�¨ã€�ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã�Œãƒ›ã‚¹ãƒˆå¤‰æ•°ã�¨ã�—ã�¦ Ansible ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªãƒ¼ã�«è¿½åŠ ã�•ã‚Œã�¾ã�™ã€‚ã��ã�®ã‚ˆã�†ã�ªå¤‰æ•°ã�«ç•°ã�ªã‚‹å€¤ã‚’è¨­å®šã�™ã‚‹ã�«ã�¯ã€�ãƒ�ãƒƒãƒ�ãƒ£ãƒ¼ã‚’æŒ‡å®šã�—ã�¾ã�™ã€‚"
       ],
       "Value to use when there is no match.": [
-        "一致がない場合に使用する値。"
+        "ä¸€è‡´ã�Œã�ªã�„å ´å�ˆã�«ä½¿ç”¨ã�™ã‚‹å€¤ã€‚"
       ],
       "Hidden Value": [
-        "非表示の値"
+        "é��è¡¨ç¤ºã�®å€¤"
       ],
       "Hide all values for this parameter.": [
-        "このパラメーターのすべての値を非表示にします。"
+        "ã�“ã�®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã�®ã�™ã�¹ã�¦ã�®å€¤ã‚’é��è¡¨ç¤ºã�«ã�—ã�¾ã�™ã€‚"
       ],
       "Optional Input Validator": [
-        "オプションの入力バリデーター"
+        "ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã�®å…¥åŠ›ãƒ�ãƒªãƒ‡ãƒ¼ã‚¿ãƒ¼"
       ],
       "Before including these variables on your playbooks, Foreman will validate that your variables comply with the validation.": [
-        "Playbook にこの変数を追加する前に、Foreman は変数がバリデーションに準拠していることを確認します。"
+        "Playbook ã�«ã�“ã�®å¤‰æ•°ã‚’è¿½åŠ ã�™ã‚‹å‰�ã�«ã€�Foreman ã�¯å¤‰æ•°ã�Œãƒ�ãƒªãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³ã�«æº–æ‹ ã�—ã�¦ã�„ã‚‹ã�“ã�¨ã‚’ç¢ºèª�ã�—ã�¾ã�™ã€‚"
       ],
       "If checked, will raise an error if there is no default value and no matcher provide a value.": [
-        "チェックが付けられていると、デフォルト値がなく Matcher が値を指定しない場合にエラーが出されます。"
+        "ãƒ�ã‚§ãƒƒã‚¯ã�Œä»˜ã�‘ã‚‰ã‚Œã�¦ã�„ã‚‹ã�¨ã€�ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã�Œã�ªã�� Matcher ã�Œå€¤ã‚’æŒ‡å®šã�—ã�ªã�„å ´å�ˆã�«ã‚¨ãƒ©ãƒ¼ã�Œå‡ºã�•ã‚Œã�¾ã�™ã€‚"
       ],
       "Prioritize Attribute Order": [
-        "属性の順序の優先順位付け"
+        "å±�æ€§ã�®é †åº�ã�®å„ªå…ˆé †ä½�ä»˜ã�‘"
       ],
       "Set the order in which values are resolved.": [
-        "値が解決される順序を設定します。"
+        "å€¤ã�Œè§£æ±ºã�•ã‚Œã‚‹é †åº�ã‚’è¨­å®šã�—ã�¾ã�™ã€‚"
       ],
       "Order": [
-        "順序"
+        "é †åº�"
       ],
       "The order in which matchers keys are processed, first match wins.<br> You may use multiple attributes as a matcher key, for example, an order of <code>host group, environment</code> would expect a matcher such as <code>hostgroup = \\\"web servers\\\", environment = production</code>": [
-        "Matcher キーが処理される順序です。先に一致したもの順になります。<br> 複数の属性を Matcher キーとして使用できます。たとえば、<code>host group, environment</code> の順序の場合には、<code>hostgroup = \\\"web servers\\\", environment = production</code> のような Matcher が予想されます"
+        "Matcher ã‚­ãƒ¼ã�Œå‡¦ç�†ã�•ã‚Œã‚‹é †åº�ã�§ã�™ã€‚å…ˆã�«ä¸€è‡´ã�—ã�Ÿã‚‚ã�®é †ã�«ã�ªã‚Šã�¾ã�™ã€‚<br> è¤‡æ•°ã�®å±�æ€§ã‚’ Matcher ã‚­ãƒ¼ã�¨ã�—ã�¦ä½¿ç”¨ã�§ã��ã�¾ã�™ã€‚ã�Ÿã�¨ã�ˆã�°ã€�<code>host group, environment</code> ã�®é †åº�ã�®å ´å�ˆã�«ã�¯ã€�<code>hostgroup = \\\"web servers\\\", environment = production</code> ã�®ã‚ˆã�†ã�ª Matcher ã�Œäºˆæƒ³ã�•ã‚Œã�¾ã�™"
       ],
       "Continue to look for matches after first find (only array/hash type)? Note: merging overrides ignores all matchers that are omitted.": [
-        "最初の検索後に継続して一致する候補を検索しますか (配列/ハッシュタイプのみ)? 注記: 上書きのマージにより、省略されたすべての Matcher が無視されます。"
+        "æœ€åˆ�ã�®æ¤œç´¢å¾Œã�«ç¶™ç¶šã�—ã�¦ä¸€è‡´ã�™ã‚‹å€™è£œã‚’æ¤œç´¢ã�—ã�¾ã�™ã�‹ (é…�åˆ—/ãƒ�ãƒƒã‚·ãƒ¥ã‚¿ã‚¤ãƒ—ã�®ã�¿)? æ³¨è¨˜: ä¸Šæ›¸ã��ã�®ãƒ�ãƒ¼ã‚¸ã�«ã‚ˆã‚Šã€�çœ�ç•¥ã�•ã‚Œã�Ÿã�™ã�¹ã�¦ã�® Matcher ã�Œç„¡è¦–ã�•ã‚Œã�¾ã�™ã€‚"
       ],
       "Include default value when merging all matching values.": [
-        "一致するすべての値をマージするときにデフォルト値を含めます。"
+        "ä¸€è‡´ã�™ã‚‹ã�™ã�¹ã�¦ã�®å€¤ã‚’ãƒ�ãƒ¼ã‚¸ã�™ã‚‹ã�¨ã��ã�«ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã‚’å�«ã‚�ã�¾ã�™ã€‚"
       ],
       "Avoid duplicate values when merging them (only array type)?": [
-        "値をマージするときに重複する値を回避しますか (配列タイプのみ)?"
+        "å€¤ã‚’ãƒ�ãƒ¼ã‚¸ã�™ã‚‹ã�¨ã��ã�«é‡�è¤‡ã�™ã‚‹å€¤ã‚’å›�é�¿ã�—ã�¾ã�™ã�‹ (é…�åˆ—ã‚¿ã‚¤ãƒ—ã�®ã�¿)?"
       ],
       "Specify Matchers": [
-        "Matcher の指定"
+        "Matcher ã�®æŒ‡å®š"
       ],
       "Ansible Variables": [
-        "Ansible 変数"
+        "Ansible å¤‰æ•°"
       ],
       "Edit %s": [
-        "%s の編集"
+        "%s ã�®ç·¨é›†"
       ],
       "Edit Ansible Variable": [
-        "Ansible 変数の編集"
+        "Ansible å¤‰æ•°ã�®ç·¨é›†"
       ],
       "New Ansible Variable": [
-        "新規 Ansible 変数"
+        "æ–°è¦� Ansible å¤‰æ•°"
       ],
       "Variable|Name": [
-        "名前"
+        "å��å‰�"
       ],
       "Variable|Role": [
-        "変数|ロール"
+        "å¤‰æ•°|ãƒ­ãƒ¼ãƒ«"
       ],
       "Type": [
-        "タイプ"
+        "ã‚¿ã‚¤ãƒ—"
       ],
       "Imported?": [
-        "インポートしましたか?"
+        "ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆã�—ã�¾ã�—ã�Ÿã�‹?"
       ],
       "Overriden": [
-        "上書き済み"
+        "ä¸Šæ›¸ã��æ¸ˆã�¿"
       ],
       "Create Ansible Variable": [
-        "Ansible 変数の作成"
+        "Ansible å¤‰æ•°ã�®ä½œæˆ�"
       ],
       "Ansible check mode": [
-        "Ansible チェックモード"
+        "Ansible ãƒ�ã‚§ãƒƒã‚¯ãƒ¢ãƒ¼ãƒ‰"
       ],
       "Notice that ansible roles run in check mode.": [
-        "Ansible ロールはチェックモードで実行されることに注意してください。"
+        "Ansible ãƒ­ãƒ¼ãƒ«ã�¯ãƒ�ã‚§ãƒƒã‚¯ãƒ¢ãƒ¼ãƒ‰ã�§å®Ÿè¡Œã�•ã‚Œã‚‹ã�“ã�¨ã�«æ³¨æ„�ã�—ã�¦ã��ã� ã�•ã�„ã€‚"
       ],
       "Level": [
-        "レベル"
+        "ãƒ¬ãƒ™ãƒ«"
       ],
       "Task": [
-        "タスク"
+        "ã‚¿ã‚¹ã‚¯"
       ],
       "Message": [
-        "メッセージ"
+        "ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸"
       ],
       "Nothing to show": [
-        "表示するものがありません"
+        "è¡¨ç¤ºã�™ã‚‹ã‚‚ã�®ã�Œã�‚ã‚Šã�¾ã�›ã‚“"
       ],
       "Enable Ansible Callback": [
-        ""
+        "Ansible ã‚³ãƒ¼ãƒ«ãƒ�ãƒƒã‚¯ã�®æœ‰åŠ¹åŒ–"
       ],
       "Ansible": [
         "Ansible"
       ],
       "Jobs": [
-        "ジョブ"
+        "ã‚¸ãƒ§ãƒ–"
       ],
       "Insights remediation on %{hosts_count} host(s) has finished successfully": [
-        "{hosts_count} 台のホストで Insights の修復が正常に完了しました"
+        "%{hosts_count} å�°ã�®ãƒ›ã‚¹ãƒˆã�§ Insights ã�®ä¿®å¾©ã�Œæ­£å¸¸ã�«å®Œäº†ã�—ã�¾ã�—ã�Ÿ"
       ],
       "Roles": [
-        "ロール"
+        "ãƒ­ãƒ¼ãƒ«"
       ],
       "Import roles and variables has finished successfully": [
-        "ロールと変数のインポートが正常に終了しました"
+        "ãƒ­ãƒ¼ãƒ«ã�¨å¤‰æ•°ã�®ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆã�Œæ­£å¸¸ã�«çµ‚äº†ã�—ã�¾ã�—ã�Ÿ"
       ],
       "Playbooks": [
         "Playbook"
       ],
       "Import playbooks has finished successfully": [
-        "Playbook のインポートが正常に終了しました"
+        "Playbook ã�®ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆã�Œæ­£å¸¸ã�«çµ‚äº†ã�—ã�¾ã�—ã�Ÿ"
       ],
       "Use this to supply a path to an SSH Private Key that Ansible will use in lieu of a password Override with \\\"ansible_ssh_private_key_file\\\" host parameter": [
-        "これを使用して、Ansible がパスワードの代わりに使用する SSH 秘密鍵へのパスを指定します。\\\"ansible_ssh_private_key_file\\\" ホストパラメータで上書きします"
+        "ã�“ã‚Œã‚’ä½¿ç”¨ã�—ã�¦ã€�Ansible ã�Œãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã�®ä»£ã‚�ã‚Šã�«ä½¿ç”¨ã�™ã‚‹ SSH ç§˜å¯†é�µã�¸ã�®ãƒ‘ã‚¹ã‚’æŒ‡å®šã�—ã�¾ã�™ã€‚\\\"ansible_ssh_private_key_file\\\" ãƒ›ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã�§ä¸Šæ›¸ã��ã�—ã�¾ã�™"
       ],
       "Private Key Path": [
-        "秘密鍵のパス"
+        "ç§˜å¯†é�µã�®ãƒ‘ã‚¹"
       ],
       "Use this connection type by default when running Ansible playbooks. You can override this on hosts by adding a parameter \\\"ansible_connection\\\"": [
-        "デフォルトでは、Ansible Playbook の実行時にこの接続タイプを使用します。ホストでこれを上書きするには、パラメーター \\\"ansible_connection\\\" を追加します。"
+        "ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã�§ã�¯ã€�Ansible Playbook ã�®å®Ÿè¡Œæ™‚ã�«ã�“ã�®æ�¥ç¶šã‚¿ã‚¤ãƒ—ã‚’ä½¿ç”¨ã�—ã�¾ã�™ã€‚ãƒ›ã‚¹ãƒˆã�§ã�“ã‚Œã‚’ä¸Šæ›¸ã��ã�™ã‚‹ã�«ã�¯ã€�ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ \\\"ansible_connection\\\" ã‚’è¿½åŠ ã�—ã�¾ã�™ã€‚"
       ],
       "Connection type": [
-        "接続タイプ"
+        "æ�¥ç¶šã‚¿ã‚¤ãƒ—"
       ],
       "Enable/disable WinRM server certificate validation when running Ansible playbooks. You can override this on hosts by adding a parameter \\\"ansible_winrm_server_cert_validation\\\"": [
-        "Ansible Playbook の実行時に、WinRM サーバー証明書の検証を有効または無効にします。ホスト上でこれを上書きするには、パラメーター \\\"ansible_winrm_server_cert_validation\\\" を追加します"
+        "Ansible Playbook ã�®å®Ÿè¡Œæ™‚ã�«ã€�WinRM ã‚µãƒ¼ãƒ�ãƒ¼è¨¼æ˜�æ›¸ã�®æ¤œè¨¼ã‚’æœ‰åŠ¹ã�¾ã�Ÿã�¯ç„¡åŠ¹ã�«ã�—ã�¾ã�™ã€‚ãƒ›ã‚¹ãƒˆä¸Šã�§ã�“ã‚Œã‚’ä¸Šæ›¸ã��ã�™ã‚‹ã�«ã�¯ã€�ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ \\\"ansible_winrm_server_cert_validation\\\" ã‚’è¿½åŠ ã�—ã�¾ã�™"
       ],
       "WinRM cert Validation": [
-        "WinRM 証明書の検証"
+        "WinRM è¨¼æ˜�æ›¸ã�®æ¤œè¨¼"
       ],
       "Foreman will add this level of verbosity for additional debugging output when running Ansible playbooks.": [
-        "Foreman では、詳細レベルをここまで上げ、Ansible Playbook の実行時に追加でデバッグ出力が表示されるようにします。"
+        "Foreman ã�§ã�¯ã€�è©³ç´°ãƒ¬ãƒ™ãƒ«ã‚’ã�“ã�“ã�¾ã�§ä¸Šã�’ã€�Ansible Playbook ã�®å®Ÿè¡Œæ™‚ã�«è¿½åŠ ã�§ãƒ‡ãƒ�ãƒƒã‚°å‡ºåŠ›ã�Œè¡¨ç¤ºã�•ã‚Œã‚‹ã‚ˆã�†ã�«ã�—ã�¾ã�™ã€‚"
       ],
       "Default verbosity level": [
-        "デフォルトのの詳細レベル"
+        "ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã�®ã�®è©³ç´°ãƒ¬ãƒ™ãƒ«"
       ],
       "Disabled": [
-        "無効化済み"
+        "ç„¡åŠ¹åŒ–æ¸ˆã�¿"
       ],
       "Level 1 (-v)": [
-        "レベル 1 (-v)"
+        "ãƒ¬ãƒ™ãƒ« 1 (-v)"
       ],
       "Level 2 (-vv)": [
-        "レベル 2 (-vv)"
+        "ãƒ¬ãƒ™ãƒ« 2 (-vv)"
       ],
       "Level 3 (-vvv)": [
-        "レベル 3 (-vvv)"
+        "ãƒ¬ãƒ™ãƒ« 3 (-vvv)"
       ],
       "Level 4 (-vvvv)": [
-        "レベル 4 (-vvvv)"
+        "ãƒ¬ãƒ™ãƒ« 4 (-vvvv)"
       ],
       "Timeout (in seconds) to set when Foreman will trigger a play Ansible roles task after a host is fully provisioned. Set this to the maximum time you expect a host to take until it is ready after a reboot.": [
-        "ホストが完全にプロビジョニングされた後に、Foreman が Ansible ロールのタスクのプレイをトリガーするタイミングを設定するタイムアウト (秒単位)。再起動後にホストが準備完了となるまでの最大時間に設定します。"
+        "ãƒ›ã‚¹ãƒˆã�Œå®Œå…¨ã�«ãƒ—ãƒ­ãƒ“ã‚¸ãƒ§ãƒ‹ãƒ³ã‚°ã�•ã‚Œã�Ÿå¾Œã�«ã€�Foreman ã�Œ Ansible ãƒ­ãƒ¼ãƒ«ã�®ã‚¿ã‚¹ã‚¯ã�®ãƒ—ãƒ¬ã‚¤ã‚’ãƒˆãƒªã‚¬ãƒ¼ã�™ã‚‹ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã‚’è¨­å®šã�™ã‚‹ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ (ç§’å�˜ä½�)ã€‚å†�èµ·å‹•å¾Œã�«ãƒ›ã‚¹ãƒˆã�Œæº–å‚™å®Œäº†ã�¨ã�ªã‚‹ã�¾ã�§ã�®æœ€å¤§æ™‚é–“ã�«è¨­å®šã�—ã�¾ã�™ã€‚"
       ],
       "Post-provision timeout": [
-        "プロビジョニング後のタイムアウト"
+        "ãƒ—ãƒ­ãƒ“ã‚¸ãƒ§ãƒ‹ãƒ³ã‚°å¾Œã�®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ"
       ],
       "Timeout (in minutes) when hosts should have reported.": [
-        "ホストがレポートするはずだった場合のタイムアウト (分単位)"
+        "ãƒ›ã‚¹ãƒˆã�Œãƒ¬ãƒ�ãƒ¼ãƒˆã�™ã‚‹ã�¯ã�šã� ã�£ã�Ÿå ´å�ˆã�®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ (åˆ†å�˜ä½�)"
       ],
       "Ansible report timeout": [
-        "Ansible レポートのタイムアウト"
+        "Ansible ãƒ¬ãƒ�ãƒ¼ãƒˆã�®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆ"
       ],
       "Disable host configuration status turning to out of sync for %{cfgmgmt} after report does not arrive within configured interval": [
-        "設定した間隔でレポートが到達しない場合に、%{cfgmgmt} のホスト設定ステータスが非同期に切り替わらないように無効にします"
+        "è¨­å®šã�—ã�Ÿé–“éš”ã�§ãƒ¬ãƒ�ãƒ¼ãƒˆã�Œåˆ°é�”ã�—ã�ªã�„å ´å�ˆã�«ã€�%{cfgmgmt} ã�®ãƒ›ã‚¹ãƒˆè¨­å®šã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã�Œé��å�ŒæœŸã�«åˆ‡ã‚Šæ›¿ã‚�ã‚‰ã�ªã�„ã‚ˆã�†ã�«ç„¡åŠ¹ã�«ã�—ã�¾ã�™"
       ],
       "%{cfgmgmt} out of sync disabled": [
-        "%{cfgmgmt} の非同期切り替えを無効にしました"
+        "%{cfgmgmt} ã�®é��å�ŒæœŸåˆ‡ã‚Šæ›¿ã�ˆã‚’ç„¡åŠ¹ã�«ã�—ã�¾ã�—ã�Ÿ"
       ],
       "Foreman will use this template to schedule the report with Ansible inventory": [
-        "Foreman は、このテンプレートを使用して Ansible インベントリーを使用したレポートのスケジューリングを行います。"
+        "Foreman ã�¯ã€�ã�“ã�®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚’ä½¿ç”¨ã�—ã�¦ Ansible ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªãƒ¼ã‚’ä½¿ç”¨ã�—ã�Ÿãƒ¬ãƒ�ãƒ¼ãƒˆã�®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒªãƒ³ã‚°ã‚’è¡Œã�„ã�¾ã�™ã€‚"
       ],
       "Default Ansible inventory report template": [
-        "Ansible インベントリーレポートのデフォルトテンプレート"
+        "Ansible ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªãƒ¼ãƒ¬ãƒ�ãƒ¼ãƒˆã�®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ"
       ],
       "Those roles will be excluded when importing roles from smart proxy, The expected input is comma separated values and you can use * wildcard metacharactersFor example: foo*, *b*,*bar": [
-        "Smart Proxy からロールをインポートする場合、これらのロールは除外されます。コンマで区切った値での入力が想定されており、* ワイルドカードメタ文字 (例: foo*、*b*、*bar) を使用できます。"
+        "Smart Proxy ã�‹ã‚‰ãƒ­ãƒ¼ãƒ«ã‚’ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆã�™ã‚‹å ´å�ˆã€�ã�“ã‚Œã‚‰ã�®ãƒ­ãƒ¼ãƒ«ã�¯é™¤å¤–ã�•ã‚Œã�¾ã�™ã€‚ã‚³ãƒ³ãƒ�ã�§åŒºåˆ‡ã�£ã�Ÿå€¤ã�§ã�®å…¥åŠ›ã�Œæƒ³å®šã�•ã‚Œã�¦ã�Šã‚Šã€�* ãƒ¯ã‚¤ãƒ«ãƒ‰ã‚«ãƒ¼ãƒ‰ãƒ¡ã‚¿æ–‡å­— (ä¾‹: foo*ã€�*b*ã€�*bar) ã‚’ä½¿ç”¨ã�§ã��ã�¾ã�™ã€‚"
       ],
       "Ansible roles to ignore": [
-        "無視する Ansible ロール"
+        "ç„¡è¦–ã�™ã‚‹ Ansible ãƒ­ãƒ¼ãƒ«"
       ],
       "Number of tasks which should be sent to the smart proxy in one request, if foreman_tasks_proxy_batch_trigger is enabled. If set, overrides foreman_tasks_proxy_batch_size setting for Ansible jobs.": [
-        "foreman_tasks_proxy_batch_trigger が有効な場合に、1つの要求で Smart Proxy に送信する必要があるタスクの数。設定されている場合、Ansible ジョブの foreman_tasks_proxy_batch_size 設定をオーバーライドします。"
+        "foreman_tasks_proxy_batch_trigger ã�Œæœ‰åŠ¹ã�ªå ´å�ˆã�«ã€�1ã�¤ã�®è¦�æ±‚ã�§ Smart Proxy ã�«é€�ä¿¡ã�™ã‚‹å¿…è¦�ã�Œã�‚ã‚‹ã‚¿ã‚¹ã‚¯ã�®æ•°ã€‚è¨­å®šã�•ã‚Œã�¦ã�„ã‚‹å ´å�ˆã€�Ansible ã‚¸ãƒ§ãƒ–ã�® foreman_tasks_proxy_batch_size è¨­å®šã‚’ã‚ªãƒ¼ãƒ�ãƒ¼ãƒ©ã‚¤ãƒ‰ã�—ã�¾ã�™ã€‚"
       ],
       "Proxy tasks batch size for Ansible": [
-        "Ansible のプロキシータスクのバッチサイズ"
+        "Ansible ã�®ãƒ—ãƒ­ã‚­ã‚·ãƒ¼ã‚¿ã‚¹ã‚¯ã�®ãƒ�ãƒƒãƒ�ã‚µã‚¤ã‚º"
       ],
       "Update Smart Proxy": [
-        "Smart Proxy の更新"
+        "Smart Proxy ã�®æ›´æ–°"
       ],
       "Run Ansible roles": [
-        "Ansible ロールの実行"
+        "Ansible ãƒ­ãƒ¼ãƒ«ã�®å®Ÿè¡Œ"
       ],
       "Runs an Ansible playbook which contains all the roles defined for a host": [
-        "ホスト用に定義したすべてのロールを含む Ansible Playbook の実行"
+        "ãƒ›ã‚¹ãƒˆç”¨ã�«å®šç¾©ã�—ã�Ÿã�™ã�¹ã�¦ã�®ãƒ­ãƒ¼ãƒ«ã‚’å�«ã‚€ Ansible Playbook ã�®å®Ÿè¡Œ"
       ],
       "Ansible: Run Insights maintenance plan": [
-        "Ansible: Insights メンテナンスプランの実行"
+        "Ansible: Insights ãƒ¡ãƒ³ãƒ†ãƒŠãƒ³ã‚¹ãƒ—ãƒ©ãƒ³ã�®å®Ÿè¡Œ"
       ],
       "Runs a given maintenance plan from Red Hat Access Insights given an ID.": [
-        "指定された ID の Red Hat Access Insights から指定されたメンテナンスプランを実行します。"
+        "æŒ‡å®šã�•ã‚Œã�Ÿ ID ã�® Red Hat Access Insights ã�‹ã‚‰æŒ‡å®šã�•ã‚Œã�Ÿãƒ¡ãƒ³ãƒ†ãƒŠãƒ³ã‚¹ãƒ—ãƒ©ãƒ³ã‚’å®Ÿè¡Œã�—ã�¾ã�™ã€‚"
       ],
       "Run playbook": [
-        "Playbook の実行"
+        "Playbook ã�®å®Ÿè¡Œ"
       ],
       "Run an Ansible playbook against given hosts": [
-        "指定したホストに Ansible Playbook を実行する"
+        "æŒ‡å®šã�—ã�Ÿãƒ›ã‚¹ãƒˆã�« Ansible Playbook ã‚’å®Ÿè¡Œã�™ã‚‹"
       ],
       "Enable web console": [
-        "Web コンソールの有効化"
+        "Web ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã�®æœ‰åŠ¹åŒ–"
       ],
       "Run an Ansible playbook to enable web console on given hosts": [
-        "Ansible Playbook を実行して、指定されたホストで Web コンソールを有効にします"
+        "Ansible Playbook ã‚’å®Ÿè¡Œã�—ã�¦ã€�æŒ‡å®šã�•ã‚Œã�Ÿãƒ›ã‚¹ãƒˆã�§ Web ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã‚’æœ‰åŠ¹ã�«ã�—ã�¾ã�™"
       ],
       "Upgrade Capsules on given hosts": [
-        "指定されたホストで Capsule をアップグレード"
+        "æŒ‡å®šã�•ã‚Œã�Ÿãƒ›ã‚¹ãƒˆã�§ Capsule ã‚’ã‚¢ãƒƒãƒ—ã‚°ãƒ¬ãƒ¼ãƒ‰"
       ],
       "Upgrade Capsules on given Capsule server hosts": [
-        "指定された Capsule サーバーホストで Capsule をアップグレードします"
+        "æŒ‡å®šã�•ã‚Œã�Ÿ Capsule ã‚µãƒ¼ãƒ�ãƒ¼ãƒ›ã‚¹ãƒˆã�§ Capsule ã‚’ã‚¢ãƒƒãƒ—ã‚°ãƒ¬ãƒ¼ãƒ‰ã�—ã�¾ã�™"
       ],
       "Name": [
-        "名前"
+        "å��å‰�"
       ],
       "Ansible role": [
-        "Ansible ロール"
+        "Ansible ãƒ­ãƒ¼ãƒ«"
       ],
       "Value": [
-        "値"
+        "å€¤"
       ],
       "Source attribute": [
-        "ソース属性"
+        "ã‚½ãƒ¼ã‚¹å±�æ€§"
       ],
       "Delete": [
-        "削除"
+        "å‰Šé™¤"
       ],
       "Delete Ansible variable override": [
-        "Ansible 変数のオーバーライドを削除します"
+        "Ansible å¤‰æ•°ã�®ã‚ªãƒ¼ãƒ�ãƒ¼ãƒ©ã‚¤ãƒ‰ã‚’å‰Šé™¤ã�—ã�¾ã�™"
       ],
       "Are you sure you want to delete override for %s?": [
-        "%s のオーバーライドを削除してもよろしいですか？"
+        "%s ã�®ã‚ªãƒ¼ãƒ�ãƒ¼ãƒ©ã‚¤ãƒ‰ã‚’å‰Šé™¤ã�—ã�¦ã‚‚ã‚ˆã‚�ã�—ã�„ã�§ã�™ã�‹ï¼Ÿ"
       ],
       "Default value": [
-        "デフォルト値"
+        "ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤"
       ],
       "Ansible variable override was successfully deleted.": [
-        "Ansible 変数のオーバーライドは正常に削除されました。"
+        "Ansible å¤‰æ•°ã�®ã‚ªãƒ¼ãƒ�ãƒ¼ãƒ©ã‚¤ãƒ‰ã�¯æ­£å¸¸ã�«å‰Šé™¤ã�•ã‚Œã�¾ã�—ã�Ÿã€‚"
       ],
       "There was a following error when deleting Ansible variable override: %s": [
-        "Ansible 変数のオーバーライドを削除する際に、次のエラーが発生しました: %s"
+        "Ansible å¤‰æ•°ã�®ã‚ªãƒ¼ãƒ�ãƒ¼ãƒ©ã‚¤ãƒ‰ã‚’å‰Šé™¤ã�™ã‚‹éš›ã�«ã€�æ¬¡ã�®ã‚¨ãƒ©ãƒ¼ã�Œç™ºç”Ÿã�—ã�¾ã�—ã�Ÿ: %s"
       ],
       "Invalid, expected to match a regex: %s": [
-        "無効です。正規表現に一致することが予想されます: %s"
+        "ç„¡åŠ¹ã�§ã�™ã€‚æ­£è¦�è¡¨ç�¾ã�«ä¸€è‡´ã�™ã‚‹ã�“ã�¨ã�Œäºˆæƒ³ã�•ã‚Œã�¾ã�™: %s"
       ],
       "Invalid, expected one of: %s": [
-        "無効です。次のいずれかが予想されます: %s"
+        "ç„¡åŠ¹ã�§ã�™ã€‚æ¬¡ã�®ã�„ã�šã‚Œã�‹ã�Œäºˆæƒ³ã�•ã‚Œã�¾ã�™: %s"
       ],
       "is required": [
-        "は必須です"
+        "ã�¯å¿…é ˆã�§ã�™"
       ],
       "There was a following error when changing Ansible variable override: %s": [
-        "Ansible 変数のオーバーライドを変更する際に、次のエラーが発生しました: %s"
+        "Ansible å¤‰æ•°ã�®ã‚ªãƒ¼ãƒ�ãƒ¼ãƒ©ã‚¤ãƒ‰ã‚’å¤‰æ›´ã�™ã‚‹éš›ã�«ã€�æ¬¡ã�®ã‚¨ãƒ©ãƒ¼ã�Œç™ºç”Ÿã�—ã�¾ã�—ã�Ÿ: %s"
       ],
       "Ansible variable override successfully changed.": [
-        "Ansible 変数のオーバーライドは正常に変更されました。"
+        "Ansible å¤‰æ•°ã�®ã‚ªãƒ¼ãƒ�ãƒ¼ãƒ©ã‚¤ãƒ‰ã�¯æ­£å¸¸ã�«å¤‰æ›´ã�•ã‚Œã�¾ã�—ã�Ÿã€‚"
       ],
       "true": [
         "true"
@@ -676,256 +675,262 @@
         "false"
       ],
       "No Ansible variables found for Host": [
-        "ホストの Ansible 変数が見つかりません"
+        "ãƒ›ã‚¹ãƒˆã�® Ansible å¤‰æ•°ã�Œè¦‹ã�¤ã�‹ã‚Šã�¾ã�›ã‚“"
       ],
       "Only variables marked to Override are shown here.": [
-        "オーバーライドとしてマークされた変数のみがここに表示されます。"
+        "ã‚ªãƒ¼ãƒ�ãƒ¼ãƒ©ã‚¤ãƒ‰ã�¨ã�—ã�¦ãƒ�ãƒ¼ã‚¯ã�•ã‚Œã�Ÿå¤‰æ•°ã�®ã�¿ã�Œã�“ã�“ã�«è¡¨ç¤ºã�•ã‚Œã�¾ã�™ã€‚"
       ],
       "There was a following error when deleting Ansible config job: %s": [
-        "Ansible 設定ジョブを削除する際に、次のエラーが発生しました: %s"
+        "Ansible è¨­å®šã‚¸ãƒ§ãƒ–ã‚’å‰Šé™¤ã�™ã‚‹éš›ã�«ã€�æ¬¡ã�®ã‚¨ãƒ©ãƒ¼ã�Œç™ºç”Ÿã�—ã�¾ã�—ã�Ÿ: %s"
       ],
       "Ansible job was successfully canceled.": [
-        "Ansible ジョブは正常にキャンセルされました。"
+        "Ansible ã‚¸ãƒ§ãƒ–ã�¯æ­£å¸¸ã�«ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã�•ã‚Œã�¾ã�—ã�Ÿã€‚"
       ],
       "(from host group)": [
-        "(ホストグループから)"
+        "(ãƒ›ã‚¹ãƒˆã‚°ãƒ«ãƒ¼ãƒ—ã�‹ã‚‰)"
       ],
       "hourly": [
-        "毎時"
+        "æ¯�æ™‚"
       ],
       "daily": [
-        "daily (毎日)"
+        "daily (æ¯�æ—¥)"
       ],
       "weekly": [
-        "毎週"
+        "æ¯�é€±"
       ],
       "monthly": [
-        "毎月"
+        "æ¯�æœˆ"
       ],
       "Must not be in the past": [
-        "過去は指定できません"
+        "é��å�»ã�¯æŒ‡å®šã�§ã��ã�¾ã�›ã‚“"
       ],
       "Required field": [
-        "必須フィールド"
+        "å¿…é ˆãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰"
       ],
       "There was a following error when creating Ansible job: %s": [
-        "Ansible ジョブを作成する際に、次のエラーが発生しました: %s"
+        "Ansible ã‚¸ãƒ§ãƒ–ã‚’ä½œæˆ�ã�™ã‚‹éš›ã�«ã€�æ¬¡ã�®ã‚¨ãƒ©ãƒ¼ã�Œç™ºç”Ÿã�—ã�¾ã�—ã�Ÿ: %s"
       ],
       "Ansible job was successfully created.": [
-        "Ansible ジョブは正常に作成されました。"
+        "Ansible ã‚¸ãƒ§ãƒ–ã�¯æ­£å¸¸ã�«ä½œæˆ�ã�•ã‚Œã�¾ã�—ã�Ÿã€‚"
       ],
       "Submit": [
-        "送信"
+        "é€�ä¿¡"
       ],
       "Cancel": [
-        "取り消し"
+        "å�–ã‚Šæ¶ˆã�—"
       ],
       "This job will run all the assigned Ansible roles.": [
-        "このジョブは割り当てられたすべての Ansible ロールを実行します。"
+        "ã�“ã�®ã‚¸ãƒ§ãƒ–ã�¯å‰²ã‚Šå½“ã�¦ã‚‰ã‚Œã�Ÿã�™ã�¹ã�¦ã�® Ansible ãƒ­ãƒ¼ãƒ«ã‚’å®Ÿè¡Œã�—ã�¾ã�™ã€‚"
       ],
       "For more advanced scheduling options": [
-        "詳細なスケジューリングオプションの場合"
+        "è©³ç´°ã�ªã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒªãƒ³ã‚°ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã�®å ´å�ˆ"
       ],
       "view remote execution page.": [
-        "リモート実行ページを表示します。"
+        "ãƒªãƒ¢ãƒ¼ãƒˆå®Ÿè¡Œãƒšãƒ¼ã‚¸ã‚’è¡¨ç¤ºã�—ã�¾ã�™ã€‚"
       ],
       "Schedule recurring Ansible roles job": [
-        "定期的な Ansible ロールジョブのスケジュール"
+        "å®šæœŸçš„ã�ª Ansible ãƒ­ãƒ¼ãƒ«ã‚¸ãƒ§ãƒ–ã�®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«"
       ],
       "Description": [
-        "説明"
+        "èª¬æ˜�"
       ],
       "Result": [
-        "結果"
+        "çµ�æ�œ"
       ],
       "State": [
-        "状態"
+        "çŠ¶æ…‹"
       ],
       "Executed at": [
-        "実行"
+        "å®Ÿè¡Œ"
       ],
       "Schedule": [
-        "スケジュール"
+        "ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«"
       ],
       "Previously executed jobs": [
-        "以前実行されたジョブ"
+        "ä»¥å‰�å®Ÿè¡Œã�•ã‚Œã�Ÿã‚¸ãƒ§ãƒ–"
       ],
       "Next Run": [
-        "次の実行"
+        "æ¬¡ã�®å®Ÿè¡Œ"
       ],
       "Cancel Ansible config job": [
-        "Ansible 設定ジョブのキャンセル"
+        "Ansible è¨­å®šã‚¸ãƒ§ãƒ–ã�®ã‚­ãƒ£ãƒ³ã‚»ãƒ«"
       ],
       "Are you sure you want to cancel Ansible config job?": [
-        "Ansible 設定ジョブをキャンセルしてよろしいですか?"
+        "Ansible è¨­å®šã‚¸ãƒ§ãƒ–ã‚’ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã�—ã�¦ã‚ˆã‚�ã�—ã�„ã�§ã�™ã�‹?"
       ],
       "Scheduled recurring jobs": [
-        "スケジュール済みの繰り返しジョブ"
+        "ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«æ¸ˆã�¿ã�®ç¹°ã‚Šè¿”ã�—ã‚¸ãƒ§ãƒ–"
       ],
       "Schedule recurring job": [
-        "繰り返しジョブのスケジュール"
+        "ç¹°ã‚Šè¿”ã�—ã‚¸ãƒ§ãƒ–ã�®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«"
       ],
       "No config job for Ansible roles scheduled": [
-        "Ansible ロールの設定ジョブはスケジュールされていません"
+        "Ansible ãƒ­ãƒ¼ãƒ«ã�®è¨­å®šã‚¸ãƒ§ãƒ–ã�¯ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã�•ã‚Œã�¦ã�„ã�¾ã�›ã‚“"
       ],
       "No previous job executions found": [
-        "以前のジョブ実行が見つかりません"
+        "ä»¥å‰�ã�®ã‚¸ãƒ§ãƒ–å®Ÿè¡Œã�Œè¦‹ã�¤ã�‹ã‚Šã�¾ã�›ã‚“"
       ],
       "Source": [
-        "ソース"
+        "ã‚½ãƒ¼ã‚¹"
       ],
       "Inherited from Hostgroup": [
-        "ホストグループから継承"
+        "ãƒ›ã‚¹ãƒˆã‚°ãƒ«ãƒ¼ãƒ—ã�‹ã‚‰ç¶™æ‰¿"
       ],
       "Directly assigned to Host": [
-        "ホストに直接割り当て"
+        "ãƒ›ã‚¹ãƒˆã�«ç›´æ�¥å‰²ã‚Šå½“ã�¦"
       ],
       "All assigned Ansible roles": [
-        "割り当てられたすべての Ansible ロール"
+        "å‰²ã‚Šå½“ã�¦ã‚‰ã‚Œã�Ÿã�™ã�¹ã�¦ã�® Ansible ãƒ­ãƒ¼ãƒ«"
       ],
       "This list consists of host assigned roles and group assigned roles. Group assigned roles will always be executed prior to host assigned roles.": [
-        "このリストは、ホストに割り当てられたロールとグループに割り当てられたロールで構成されています。グループに割り当てられたロールは、常にホストに割り当てられたロールの前に実行されます。"
+        "ã�“ã�®ãƒªã‚¹ãƒˆã�¯ã€�ãƒ›ã‚¹ãƒˆã�«å‰²ã‚Šå½“ã�¦ã‚‰ã‚Œã�Ÿãƒ­ãƒ¼ãƒ«ã�¨ã‚°ãƒ«ãƒ¼ãƒ—ã�«å‰²ã‚Šå½“ã�¦ã‚‰ã‚Œã�Ÿãƒ­ãƒ¼ãƒ«ã�§æ§‹æˆ�ã�•ã‚Œã�¦ã�„ã�¾ã�™ã€‚ã‚°ãƒ«ãƒ¼ãƒ—ã�«å‰²ã‚Šå½“ã�¦ã‚‰ã‚Œã�Ÿãƒ­ãƒ¼ãƒ«ã�¯ã€�å¸¸ã�«ãƒ›ã‚¹ãƒˆã�«å‰²ã‚Šå½“ã�¦ã‚‰ã‚Œã�Ÿãƒ­ãƒ¼ãƒ«ã�®å‰�ã�«å®Ÿè¡Œã�•ã‚Œã�¾ã�™ã€‚"
       ],
       "No Ansible roles assigned": [
-        "Ansible ロールは割り当てられていません"
+        "Ansible ãƒ­ãƒ¼ãƒ«ã�¯å‰²ã‚Šå½“ã�¦ã‚‰ã‚Œã�¦ã�„ã�¾ã�›ã‚“"
       ],
       "Confirm": [
-        "確認"
+        "ç¢ºèª�"
       ],
       "There was a following error when assigning Ansible Roles: %s": [
-        "Ansible ロールを割り当てる際に、次のエラーが発生しました: %s"
+        "Ansible ãƒ­ãƒ¼ãƒ«ã‚’å‰²ã‚Šå½“ã�¦ã‚‹éš›ã�«ã€�æ¬¡ã�®ã‚¨ãƒ©ãƒ¼ã�Œç™ºç”Ÿã�—ã�¾ã�—ã�Ÿ: %s"
       ],
       "Ansible Roles were successfully assigned.": [
-        "Ansible ロールは正常に割り当てられました。"
+        "Ansible ãƒ­ãƒ¼ãƒ«ã�¯æ­£å¸¸ã�«å‰²ã‚Šå½“ã�¦ã‚‰ã‚Œã�¾ã�—ã�Ÿã€‚"
       ],
       "Edit Ansible Roles": [
-        "Ansible ロールの編集"
+        "Ansible ãƒ­ãƒ¼ãƒ«ã�®ç·¨é›†"
       ],
       "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles.": [
-        "ホストに割り当てられた Ansible ロールを追加、削除、または並べ替えます。このホストには、グループに割り当てられたロールがあり、こちらに表示されていませんが、必ず、ホストに割り当てられたロールよりも前に実行されます。"
+        "ãƒ›ã‚¹ãƒˆã�«å‰²ã‚Šå½“ã�¦ã‚‰ã‚Œã�Ÿ Ansible ãƒ­ãƒ¼ãƒ«ã‚’è¿½åŠ ã€�å‰Šé™¤ã€�ã�¾ã�Ÿã�¯ä¸¦ã�¹æ›¿ã�ˆã�¾ã�™ã€‚ã�“ã�®ãƒ›ã‚¹ãƒˆã�«ã�¯ã€�ã‚°ãƒ«ãƒ¼ãƒ—ã�«å‰²ã‚Šå½“ã�¦ã‚‰ã‚Œã�Ÿãƒ­ãƒ¼ãƒ«ã�Œã�‚ã‚Šã€�ã�“ã�¡ã‚‰ã�«è¡¨ç¤ºã�•ã‚Œã�¦ã�„ã�¾ã�›ã‚“ã�Œã€�å¿…ã�šã€�ãƒ›ã‚¹ãƒˆã�«å‰²ã‚Šå½“ã�¦ã‚‰ã‚Œã�Ÿãƒ­ãƒ¼ãƒ«ã‚ˆã‚Šã‚‚å‰�ã�«å®Ÿè¡Œã�•ã‚Œã�¾ã�™ã€‚"
       ],
       "Close": [
-        "閉じる"
+        "é–‰ã�˜ã‚‹"
       ],
       "Edit Ansible roles": [
-        "Ansible ロールの編集"
+        "Ansible ãƒ­ãƒ¼ãƒ«ã�®ç·¨é›†"
       ],
       "Ansible roles assigned directly to host": [
-        "ホストに直接割り当てられた Ansible ロール"
+        "ãƒ›ã‚¹ãƒˆã�«ç›´æ�¥å‰²ã‚Šå½“ã�¦ã‚‰ã‚Œã�Ÿ Ansible ãƒ­ãƒ¼ãƒ«"
       ],
       "view all assigned roles": [
-        "割り当てられたロールをすべて表示"
+        "å‰²ã‚Šå½“ã�¦ã‚‰ã‚Œã�Ÿãƒ­ãƒ¼ãƒ«ã‚’ã�™ã�¹ã�¦è¡¨ç¤º"
       ],
       "Assign roles directly to the host": [
-        "ホストへのロールの直接割り当て"
+        "ãƒ›ã‚¹ãƒˆã�¸ã�®ãƒ­ãƒ¼ãƒ«ã�®ç›´æ�¥å‰²ã‚Šå½“ã�¦"
       ],
       "View inherited roles": [
-        "継承されたロールの表示"
+        "ç¶™æ‰¿ã�•ã‚Œã�Ÿãƒ­ãƒ¼ãƒ«ã�®è¡¨ç¤º"
       ],
       "No roles assigned directly to the host": [
-        "ホストに直接割り当てられたロールはありません"
+        "ãƒ›ã‚¹ãƒˆã�«ç›´æ�¥å‰²ã‚Šå½“ã�¦ã‚‰ã‚Œã�Ÿãƒ­ãƒ¼ãƒ«ã�¯ã�‚ã‚Šã�¾ã�›ã‚“"
       ],
       "Inventory": [
-        "インベントリー"
+        "ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªãƒ¼"
       ],
       "Import roles and variables started: ": [
-        "ロールと変数のインポートが開始されました: "
+        "ãƒ­ãƒ¼ãƒ«ã�¨å¤‰æ•°ã�®ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆã�Œé–‹å§‹ã�•ã‚Œã�¾ã�—ã�Ÿ: "
       ],
       "view the task in progress": [
-        "処理中のタスクを表示"
+        "å‡¦ç�†ä¸­ã�®ã‚¿ã‚¹ã‚¯ã‚’è¡¨ç¤º"
       ],
       "Failed to import roles and variables ": [
-        "ロールと変数のインポートに失敗しました "
+        "ãƒ­ãƒ¼ãƒ«ã�¨å¤‰æ•°ã�®ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆã�«å¤±æ•—ã�—ã�¾ã�—ã�Ÿ "
       ],
       "Operation": [
-        ""
+        "æ“�ä½œ"
       ],
       "Host count": [
-        ""
+        "ãƒ›ã‚¹ãƒˆæ•°"
       ],
       "Hostgroup count": [
-        ""
+        "ãƒ›ã‚¹ãƒˆã‚°ãƒ«ãƒ¼ãƒ—æ•°"
       ],
       "Available Ansible Roles": [
-        "利用可能な Ansible ロール"
+        "åˆ©ç”¨å�¯èƒ½ã�ª Ansible ãƒ­ãƒ¼ãƒ«"
       ],
       "Assigned Ansible Roles": [
-        "割り当てられた Ansible ロール"
+        "å‰²ã‚Šå½“ã�¦ã‚‰ã‚Œã�Ÿ Ansible ãƒ­ãƒ¼ãƒ«"
       ],
       "Failed to fetch Ansible Roles from server.": [
-        ""
+        "ã‚µãƒ¼ãƒ�ãƒ¼ã�‹ã‚‰ Ansible ãƒ­ãƒ¼ãƒ«ã‚’å�–å¾—ã�§ã��ã�¾ã�›ã‚“ã�§ã�—ã�Ÿã€‚"
       ],
       "You are not authorized to perform this action.": [
-        "このアクションを実行する権限がありません。"
+        "ã�“ã�®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’å®Ÿè¡Œã�™ã‚‹æ¨©é™�ã�Œã�‚ã‚Šã�¾ã�›ã‚“ã€‚"
       ],
       "Please request one of the required permissions listed below from a Foreman administrator:": [
-        "以下に一覧表示された必須パーミッションのいずれかを、Foreman 管理者に要求してください:"
+        "ä»¥ä¸‹ã�«ä¸€è¦§è¡¨ç¤ºã�•ã‚Œã�Ÿå¿…é ˆãƒ‘ãƒ¼ãƒŸãƒƒã‚·ãƒ§ãƒ³ã�®ã�„ã�šã‚Œã�‹ã‚’ã€�Foreman ç®¡ç�†è€…ã�«è¦�æ±‚ã�—ã�¦ã��ã� ã�•ã�„:"
       ],
       "Permission Denied": [
-        "パーミッションが拒否されました"
+        "ãƒ‘ãƒ¼ãƒŸãƒƒã‚·ãƒ§ãƒ³ã�Œæ‹’å�¦ã�•ã‚Œã�¾ã�—ã�Ÿ"
       ],
       "This Ansible role is inherited from parent host group": [
-        "この Ansible ロールは親ホストグループから継承されます"
+        "ã�“ã�® Ansible ãƒ­ãƒ¼ãƒ«ã�¯è¦ªãƒ›ã‚¹ãƒˆã‚°ãƒ«ãƒ¼ãƒ—ã�‹ã‚‰ç¶™æ‰¿ã�•ã‚Œã�¾ã�™"
       ],
       "This Ansible role is inherited from host group": [
-        "この Ansible ロールはホストグループから継承されます"
+        "ã�“ã�® Ansible ãƒ­ãƒ¼ãƒ«ã�¯ãƒ›ã‚¹ãƒˆã‚°ãƒ«ãƒ¼ãƒ—ã�‹ã‚‰ç¶™æ‰¿ã�•ã‚Œã�¾ã�™"
       ],
       "Use drag and drop to change order of the roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly": [
-        "ドラッグアンドドロップを使用して、ロールの順序を変更します。ロールの順序は Ansible 実行時に尊重され、継承されたロールは必ず直接割り当てられたロールよりも前になります"
+        "ãƒ‰ãƒ©ãƒƒã‚°ã‚¢ãƒ³ãƒ‰ãƒ‰ãƒ­ãƒƒãƒ—ã‚’ä½¿ç”¨ã�—ã�¦ã€�ãƒ­ãƒ¼ãƒ«ã�®é †åº�ã‚’å¤‰æ›´ã�—ã�¾ã�™ã€‚ãƒ­ãƒ¼ãƒ«ã�®é †åº�ã�¯ Ansible å®Ÿè¡Œæ™‚ã�«å°Šé‡�ã�•ã‚Œã€�ç¶™æ‰¿ã�•ã‚Œã�Ÿãƒ­ãƒ¼ãƒ«ã�¯å¿…ã�šç›´æ�¥å‰²ã‚Šå½“ã�¦ã‚‰ã‚Œã�Ÿãƒ­ãƒ¼ãƒ«ã‚ˆã‚Šã‚‚å‰�ã�«ã�ªã‚Šã�¾ã�™"
       ],
       "Add selected": [
-        "選択項目の追加"
+        "é�¸æŠ�é …ç›®ã�®è¿½åŠ "
       ],
       "Add all": [
-        "すべて追加"
+        "ã�™ã�¹ã�¦è¿½åŠ "
       ],
       "Remove all": [
-        "すべて削除"
+        "ã�™ã�¹ã�¦å‰Šé™¤"
       ],
       "Remove selected": [
-        "選択項目の削除"
+        "é�¸æŠ�é …ç›®ã�®å‰Šé™¤"
       ],
       "%(selectedCount)s of %(totalCount)s items selected": [
-        "%(selectedCount)s/%(totalCount)s 項目を選択"
+        "%(selectedCount)s/%(totalCount)s é …ç›®ã‚’é�¸æŠ�"
       ],
       "Available Ansible roles": [
-        "利用可能な Ansible ロール"
+        "åˆ©ç”¨å�¯èƒ½ã�ª Ansible ãƒ­ãƒ¼ãƒ«"
       ],
       "Host assigned Ansible roles": [
-        "ホストに割り当てられた Ansible ロール"
+        "ãƒ›ã‚¹ãƒˆã�«å‰²ã‚Šå½“ã�¦ã‚‰ã‚Œã�Ÿ Ansible ãƒ­ãƒ¼ãƒ«"
       ],
       "Error!": [
-        "エラー!"
+        "ã‚¨ãƒ©ãƒ¼!"
       ],
       "Nothing Found!": [
-        "何も見つかりません!"
+        "ä½•ã‚‚è¦‹ã�¤ã�‹ã‚Šã�¾ã�›ã‚“!"
       ],
       "Permission denied": [
-        "パーミッションが拒否されました。"
+        "ãƒ‘ãƒ¼ãƒŸãƒƒã‚·ãƒ§ãƒ³ã�Œæ‹’å�¦ã�•ã‚Œã�¾ã�—ã�Ÿã€‚"
       ],
       "You are not authorized to view the page. ": [
-        "ページを表示する権限がありません。 "
+        "ãƒšãƒ¼ã‚¸ã‚’è¡¨ç¤ºã�™ã‚‹æ¨©é™�ã�Œã�‚ã‚Šã�¾ã�›ã‚“ã€‚ "
       ],
       "Request the following permissions from administrator: %s.": [
-        "管理者に次のパーミッションを要求してください: %s。"
+        "ç®¡ç�†è€…ã�«æ¬¡ã�®ãƒ‘ãƒ¼ãƒŸãƒƒã‚·ãƒ§ãƒ³ã‚’è¦�æ±‚ã�—ã�¦ã��ã� ã�•ã�„: %sã€‚"
       ],
       "Configure Recurring Job": [
-        "繰り返しジョブの設定"
+        "ç¹°ã‚Šè¿”ã�—ã‚¸ãƒ§ãƒ–ã�®è¨­å®š"
       ],
       "Action with sub plans": [
-        "サブプランによるアクション"
+        "ã‚µãƒ–ãƒ—ãƒ©ãƒ³ã�«ã‚ˆã‚‹ã‚¢ã‚¯ã‚·ãƒ§ãƒ³"
+      ],
+      "Check for long running tasks": [
+        ""
+      ],
+      "Deliver notifications about long running tasks": [
+        ""
       ],
       "Import Puppet classes": [
-        "Puppet クラスのインポート"
+        "Puppet ã‚¯ãƒ©ã‚¹ã�®ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆ"
       ],
       "Import facts": [
-        "ファクトのインポート"
+        "ãƒ•ã‚¡ã‚¯ãƒˆã�®ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆ"
       ],
       "Remote action:": [
-        "リモートアクション:"
+        "ãƒªãƒ¢ãƒ¼ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³:"
       ],
       "Ansible support in Foreman": [
-        "Foreman での Ansible サポート"
+        "Foreman ã�§ã�® Ansible ã‚µãƒ�ãƒ¼ãƒˆ"
       ]
     }
   }

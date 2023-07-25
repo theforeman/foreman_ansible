@@ -8,13 +8,15 @@
 # tim123, 2022
 # Bryan Kearney <bryan.kearney@gmail.com>, 2022
 # Amit Upadhye <aupadhye@redhat.com>, 2023
+# Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2023
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 12.0.3\n"
+"Project-Id-Version: foreman_ansible 12.0.4\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
-"Last-Translator: Amit Upadhye <aupadhye@redhat.com>, 2023\n"
+"Last-Translator: Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarde"
+"n.nl>, 2023\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/foreman/teams/114/zh"
 "_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -111,16 +113,16 @@ msgid "Ansible role names to be synced"
 msgstr "要同步的 Ansible 角色名称"
 
 msgid "Ansible role to add to a host"
-msgstr ""
+msgstr "要添加到主机的 Ansible 角色"
 
 msgid "Ansible role to add to a hostgroup"
-msgstr ""
+msgstr "要添加到主机组的 Ansible 角色"
 
 msgid "Ansible role to remove from a host"
-msgstr ""
+msgstr "要从主机中删除的 Ansible 角色"
 
 msgid "Ansible role to remove from a hostgroup"
-msgstr ""
+msgstr "从主机组中删除的 Ansible 角色"
 
 msgid "Ansible roles assigned directly to host"
 msgstr "直接分配给主机的 Ansible 角色"
@@ -184,6 +186,9 @@ msgstr "取消 Ansible 配置任务"
 
 msgid "Changed Ansible roles"
 msgstr "已更改的 Ansible 角色"
+
+msgid "Check for long running tasks"
+msgstr ""
 
 msgid "Close"
 msgstr "关闭"
@@ -257,6 +262,9 @@ msgstr "删除 Ansible 角色"
 msgid "Deletes Ansible variable"
 msgstr "删除 Ansible 变量"
 
+msgid "Deliver notifications about long running tasks"
+msgstr ""
+
 msgid "Description"
 msgstr "描述"
 
@@ -267,10 +275,10 @@ msgid "Destroy an override value"
 msgstr "销毁覆盖值"
 
 msgid "Directly add an Ansible role to a host"
-msgstr ""
+msgstr "直接将 Ansible 角色添加到主机"
 
 msgid "Directly add an Ansible role to a hostgroup"
-msgstr ""
+msgstr "直接将 Ansible 角色添加到主机组"
 
 msgid "Directly assigned to Host"
 msgstr "直接分配给主机"
@@ -294,10 +302,10 @@ msgid "Edit Ansible roles"
 msgstr "编辑 Ansible 角色"
 
 msgid "Enable Ansible Callback"
-msgstr ""
+msgstr "启用 Ansible 回调"
 
 msgid "Enable the callback plugin for this template"
-msgstr ""
+msgstr "为此模板启用回调插件"
 
 msgid "Enable web console"
 msgstr "启用 Web 控制台"
@@ -312,7 +320,7 @@ msgid "Executed at"
 msgstr "执行于"
 
 msgid "Failed to fetch Ansible Roles from server."
-msgstr ""
+msgstr "从服务器获取 Ansible 角色失败。"
 
 msgid "Failed to import roles and variables "
 msgstr "导入角色和变量失败 "
@@ -348,7 +356,7 @@ msgid "Host assigned Ansible roles"
 msgstr "主机分配的 Ansible 角色"
 
 msgid "Host count"
-msgstr ""
+msgstr "主机数"
 
 msgid "Host group has no associated hosts"
 msgstr "主机组没有关联的主机"
@@ -357,7 +365,7 @@ msgid "Host not found by id: %s"
 msgstr "未根据 id 找到主机：%s"
 
 msgid "Hostgroup count"
-msgstr ""
+msgstr "主机组数"
 
 msgid "Hostgroups"
 msgstr "主机组"
@@ -432,7 +440,7 @@ msgid "Inherited from Hostgroup"
 msgstr "从主机组中继承"
 
 msgid "Insights remediation on %{hosts_count} host(s) has finished successfully"
-msgstr "%{hosts_count} 个主机的 Insights 补救计划已成功完成"
+msgstr "%%{hosts_count} 个主机的 Insights 补救计划已成功完成"
 
 msgid "Invalid, expected one of: %s"
 msgstr "无效，预期为 %s 之一"
@@ -544,7 +552,7 @@ msgid "No roles assigned directly to the host"
 msgstr "没有直接分配给主机的角色"
 
 msgid "No roles/hosts assigned"
-msgstr ""
+msgstr "没有分配角色/主机"
 
 msgid "Nothing Found!"
 msgstr "未找到！"
@@ -562,7 +570,7 @@ msgid "Only variables marked to Override are shown here."
 msgstr "此处仅显示标记为覆盖的变量。"
 
 msgid "Operation"
-msgstr ""
+msgstr "操作"
 
 msgid "Optional Input Validator"
 msgstr "可选的输入验证程序"
@@ -574,7 +582,7 @@ msgid "Override match"
 msgstr "替代匹配"
 
 msgid "Override the default value of the Ansible variable."
-msgstr "覆盖 Ansible 变量的默认值"
+msgstr "覆盖 Ansible 变量的默认值。"
 
 msgid "Override value, required if omit is false"
 msgstr "覆盖值，omit 为 false 时必需"
@@ -628,10 +636,10 @@ msgid "Remove all"
 msgstr "删除所有"
 
 msgid "Remove directly assigned Ansible role from a host"
-msgstr ""
+msgstr "从主机中删除直接分配的 Ansible 角色"
 
 msgid "Remove directly assigned Ansible role from a hostgroup"
-msgstr ""
+msgstr "从主机组中删除直接分配的 Ansible 角色"
 
 msgid "Remove duplicate values (only array type)"
 msgstr "删除重复值（仅用于阵列类型）"
@@ -721,7 +729,7 @@ msgid "Show Ansible inventory for hosts"
 msgstr "为主机显示 Ansible 库存清单"
 
 msgid "Show full value"
-msgstr ""
+msgstr "显示全值"
 
 msgid "Show role"
 msgstr "显示角色"
@@ -742,7 +750,7 @@ msgid "Smart proxy id is required"
 msgstr "需要智能代理 ID"
 
 msgid "Source"
-msgstr "來源："
+msgstr "來源"
 
 msgid "Source attribute"
 msgstr "源属性"
@@ -859,7 +867,7 @@ msgid "Upgrade Capsules on given hosts"
 msgstr "在给定主机上升级 Capsule"
 
 msgid "Use drag and drop to change order of the roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly"
-msgstr "使用拖放来更改角色的顺序。在 Ansible 运行时会遵循这个顺序，继承的角色始终位于直接分配的角色的前面。"
+msgstr "使用拖放来更改角色的顺序。在 Ansible 运行时会遵循这个顺序，继承的角色始终位于直接分配的角色的前面"
 
 msgid "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled"
 msgstr "改为使用同步，从启用了 Ansible 功能的智能代理中同步角色"
