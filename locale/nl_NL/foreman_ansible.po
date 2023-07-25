@@ -10,13 +10,15 @@
 # Wouter Wijsman <wwijsman@live.nl>, 2018
 # dschutterop <daniel@schutterop.nl>, 2022
 # Mark Olie <mark.transifex@oliekoets.nl>, 2022
+# Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2023
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 12.0.3\n"
+"Project-Id-Version: foreman_ansible 12.0.4\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
-"Last-Translator: Mark Olie <mark.transifex@oliekoets.nl>, 2022\n"
+"Last-Translator: Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarde"
+"n.nl>, 2023\n"
 "Language-Team: Dutch (Netherlands) (https://app.transifex.com/foreman/teams/11"
 "4/nl_NL/)\n"
 "MIME-Version: 1.0\n"
@@ -187,6 +189,9 @@ msgstr ""
 msgid "Changed Ansible roles"
 msgstr ""
 
+msgid "Check for long running tasks"
+msgstr ""
+
 msgid "Close"
 msgstr "Sluiten"
 
@@ -259,8 +264,11 @@ msgstr ""
 msgid "Deletes Ansible variable"
 msgstr ""
 
-msgid "Description"
+msgid "Deliver notifications about long running tasks"
 msgstr ""
+
+msgid "Description"
+msgstr "Beschrijving"
 
 msgid "Description of variable"
 msgstr "Beschrijving van een variabele"
@@ -413,7 +421,7 @@ msgid "Import roles and variables started: "
 msgstr ""
 
 msgid "Imported at"
-msgstr ""
+msgstr "Geïmporteerd op"
 
 msgid "Imported?"
 msgstr ""
@@ -568,7 +576,7 @@ msgid "Optional Input Validator"
 msgstr ""
 
 msgid "Order"
-msgstr ""
+msgstr "Volgorde"
 
 msgid "Override match"
 msgstr "Override overeenkomst"
@@ -649,7 +657,7 @@ msgid "Required field"
 msgstr ""
 
 msgid "Result"
-msgstr ""
+msgstr "Resultaat"
 
 msgid "Role ID"
 msgstr ""
@@ -817,7 +825,7 @@ msgid "Timeout (in seconds) to set when Foreman will trigger a play Ansible role
 msgstr ""
 
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 msgid "Types of validation values"
 msgstr "Types van validatie waarden"
@@ -880,7 +888,7 @@ msgid "Value to use when there is no match."
 msgstr ""
 
 msgid "Variables"
-msgstr ""
+msgstr "Variabelen"
 
 msgid "Variable|Name"
 msgstr ""

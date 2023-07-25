@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foreman_ansible 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-29 15:29+0200\n"
-"PO-Revision-Date: 2023-05-29 15:29+0200\n"
+"POT-Creation-Date: 2023-09-18 09:26+0200\n"
+"PO-Revision-Date: 2023-09-18 09:26+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -529,7 +529,7 @@ msgstr ""
 
 #: ../app/views/ansible_roles/index.html.erb:12
 #: ../app/views/ansible_roles/index.html.erb:29
-#: ../lib/foreman_ansible/register.rb:221
+#: ../lib/foreman_ansible/register.rb:220
 #: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/AllRolesTable.js:18
 #: ../webpack/components/AnsibleHostDetail/components/RolesTab/RolesTable.js:30
 #: ../webpack/components/AnsibleHostDetail/constants.js:6
@@ -725,9 +725,9 @@ msgid "Enable Ansible Callback"
 msgstr ""
 
 #: ../app/views/job_templates/_job_template_callback_tab_headers.html.erb:1
-#: ../lib/foreman_ansible/register.rb:8 ../lib/foreman_ansible/register.rb:215
-#: ../lib/foreman_ansible/register.rb:265
-#: ../lib/foreman_ansible/register.rb:271
+#: ../lib/foreman_ansible/register.rb:8 ../lib/foreman_ansible/register.rb:214
+#: ../lib/foreman_ansible/register.rb:264
+#: ../lib/foreman_ansible/register.rb:270
 msgid "Ansible"
 msgstr ""
 
@@ -743,7 +743,7 @@ msgstr ""
 #: ../db/seeds.d/90_notification_blueprints.rb:18
 #: ../db/seeds.d/90_notification_blueprints.rb:25
 #: ../db/seeds.d/90_notification_blueprints.rb:30
-#: ../lib/foreman_ansible/register.rb:217
+#: ../lib/foreman_ansible/register.rb:216
 #: ../webpack/components/AnsibleHostDetail/constants.js:5
 msgid "Roles"
 msgstr ""
@@ -802,87 +802,87 @@ msgstr ""
 msgid "Default verbosity level"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:40
+#: ../lib/foreman_ansible/register.rb:39
 msgid "Disabled"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:41
+#: ../lib/foreman_ansible/register.rb:40
 msgid "Level 1 (-v)"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:42
+#: ../lib/foreman_ansible/register.rb:41
 msgid "Level 2 (-vv)"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:43
+#: ../lib/foreman_ansible/register.rb:42
 msgid "Level 3 (-vvv)"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:44
+#: ../lib/foreman_ansible/register.rb:43
 msgid "Level 4 (-vvvv)"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:48
+#: ../lib/foreman_ansible/register.rb:47
 msgid ""
 "Timeout (in seconds) to set when Foreman will trigger a play Ansible roles tas"
 "k after a host is fully provisioned. Set this to the maximum time you expect a"
 " host to take until it is ready after a reboot."
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:53
+#: ../lib/foreman_ansible/register.rb:52
 msgid "Post-provision timeout"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:56
+#: ../lib/foreman_ansible/register.rb:55
 msgid "Timeout (in minutes) when hosts should have reported."
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:58
+#: ../lib/foreman_ansible/register.rb:57
 msgid "Ansible report timeout"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:61
+#: ../lib/foreman_ansible/register.rb:60
 msgid ""
 "Disable host configuration status turning to out of sync for %{cfgmgmt} after "
 "report does not arrive within configured interval"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:65
+#: ../lib/foreman_ansible/register.rb:64
 msgid "%{cfgmgmt} out of sync disabled"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:68
+#: ../lib/foreman_ansible/register.rb:67
 msgid "Foreman will use this template to schedule the report with Ansible inventory"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:71
+#: ../lib/foreman_ansible/register.rb:70
 msgid "Default Ansible inventory report template"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:74
+#: ../lib/foreman_ansible/register.rb:73
 msgid ""
 "Those roles will be excluded when importing roles from smart proxy, The expect"
 "ed input is comma separated values and you can use * wildcard metacharactersFo"
 "r example: foo*, *b*,*bar"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:78
+#: ../lib/foreman_ansible/register.rb:77
 msgid "Ansible roles to ignore"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:81
+#: ../lib/foreman_ansible/register.rb:80
 msgid ""
 "Number of tasks which should be sent to the smart proxy in one request, if for"
 "eman_tasks_proxy_batch_trigger is enabled. If set, overrides foreman_tasks_pro"
 "xy_batch_size setting for Ansible jobs."
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:85
+#: ../lib/foreman_ansible/register.rb:84
 msgid "Proxy tasks batch size for Ansible"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:253
-#: ../lib/foreman_ansible/register.rb:259
+#: ../lib/foreman_ansible/register.rb:252
+#: ../lib/foreman_ansible/register.rb:258
 msgid "Update Smart Proxy"
 msgstr ""
 
@@ -1081,12 +1081,14 @@ msgstr ""
 
 #:
 #: ../webpack/components/AnsibleHostDetail/components/JobsTab/NewRecurringJobModal.js:69
+#: ../webpack/components/AnsibleRolesAndVariables/AnsibleRolesAndVariables.js:125
 msgid "Submit"
 msgstr ""
 
 #:
 #: ../webpack/components/AnsibleHostDetail/components/JobsTab/NewRecurringJobModal.js:79
 #: ../webpack/components/AnsibleHostDetail/components/JobsTab/RecurringJobsTable.js:51
+#: ../webpack/components/AnsibleRolesAndVariables/AnsibleRolesAndVariables.js:133
 msgid "Cancel"
 msgstr ""
 
@@ -1101,12 +1103,12 @@ msgid "For more advanced scheduling options"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/JobsTab/NewRecurringJobModal.js:102
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/NewRecurringJobModal.js:103
 msgid "view remote execution page."
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/JobsTab/NewRecurringJobModal.js:110
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/NewRecurringJobModal.js:111
 msgid "Schedule recurring Ansible roles job"
 msgstr ""
 
@@ -1202,7 +1204,7 @@ msgid ""
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/index.js:62
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/index.js:70
 msgid "No Ansible roles assigned"
 msgstr ""
 
@@ -1294,11 +1296,11 @@ msgstr ""
 msgid "Hostgroup count"
 msgstr ""
 
-#: ../webpack/components/AnsibleRolesSwitcher/AnsibleRolesSwitcher.js:73
+#: ../webpack/components/AnsibleRolesSwitcher/AnsibleRolesSwitcher.js:72
 msgid "Available Ansible Roles"
 msgstr ""
 
-#: ../webpack/components/AnsibleRolesSwitcher/AnsibleRolesSwitcher.js:89
+#: ../webpack/components/AnsibleRolesSwitcher/AnsibleRolesSwitcher.js:88
 msgid "Assigned Ansible Roles"
 msgstr ""
 
@@ -1396,14 +1398,22 @@ msgid "Action with sub plans"
 msgstr ""
 
 #: action_names.rb:3
-msgid "Import Puppet classes"
+msgid "Check for long running tasks"
 msgstr ""
 
 #: action_names.rb:4
-msgid "Import facts"
+msgid "Deliver notifications about long running tasks"
 msgstr ""
 
 #: action_names.rb:5
+msgid "Import Puppet classes"
+msgstr ""
+
+#: action_names.rb:6
+msgid "Import facts"
+msgstr ""
+
+#: action_names.rb:7
 msgid "Remote action:"
 msgstr ""
 

@@ -3,11 +3,10 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 12.0.3",
+        "Project-Id-Version": "foreman_ansible 12.0.4",
         "Report-Msgid-Bugs-To": "",
-        "POT-Creation-Date": "2023-05-29 15:29+0200",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
-        "Last-Translator": "Amit Upadhye <aupadhye@redhat.com>, 2023",
+        "Last-Translator": "Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2023",
         "Language-Team": "French (https://app.transifex.com/foreman/teams/114/fr/)",
         "MIME-Version": "1.0",
         "Content-Type": "text/plain; charset=UTF-8",
@@ -196,16 +195,16 @@
         "Rôles Ansible à attribuer à un groupe d'hôtes"
       ],
       "Directly add an Ansible role to a hostgroup": [
-        ""
+        "Ajouter directement un rôle Ansible à un groupe d'hôtes"
       ],
       "Ansible role to add to a hostgroup": [
-        ""
+        "Rôle Ansible à ajouter à un groupe d'hôtes"
       ],
       "Remove directly assigned Ansible role from a hostgroup": [
-        ""
+        "Supprimer un rôle Ansible directement assigné à un groupe d'hôtes"
       ],
       "Ansible role to remove from a hostgroup": [
-        ""
+        "Rôle Ansible à supprimer d'un groupe d'hôtes"
       ],
       "IDs of associated ansible roles": [
         "ID des rôles Ansible associés"
@@ -229,19 +228,19 @@
         "Rôles possibles à attribuer à un hôte"
       ],
       "Directly add an Ansible role to a host": [
-        ""
+        "Ajouter directement un rôle Ansible à un hôte"
       ],
       "Ansible role to add to a host": [
-        ""
+        "Rôle Ansible à ajouter à un hôte"
       ],
       "Remove directly assigned Ansible role from a host": [
-        ""
+        "Supprimer un rôle Ansible directement assigné à un hôte"
       ],
       "Ansible role to remove from a host": [
-        ""
+        "Rôle Ansible à supprimer d'un hôte"
       ],
       "Enable the callback plugin for this template": [
-        ""
+        "Activer le plugin de rappel pour ce modèle"
       ],
       "Host group has no associated hosts": [
         "Aucun hôte n'est associé au groupe d'hôtes"
@@ -268,13 +267,13 @@
         "Configurer le job Ansible"
       ],
       "No roles/hosts assigned": [
-        ""
+        "Aucun rôle/hôte attribué"
       ],
       "No additional data": [
         "Pas de données supplémentaires"
       ],
       "Show full value": [
-        ""
+        "Afficher la valeur complète"
       ],
       "Add": [
         "Ajouter"
@@ -493,7 +492,7 @@
         "Rien à afficher"
       ],
       "Enable Ansible Callback": [
-        ""
+        "Activer Ansible Callback"
       ],
       "Ansible": [
         "Ansible"
@@ -502,7 +501,7 @@
         "Jobs"
       ],
       "Insights remediation on %{hosts_count} host(s) has finished successfully": [
-        "La remédiation Insights sur %{hosts_count} hôte(s) est terminé"
+        "La remédiation Insights sur %%{hosts_count} hôte(s) est terminé"
       ],
       "Roles": [
         "Rôles"
@@ -838,13 +837,13 @@
         "Échec de l'importation des rôles et des variables "
       ],
       "Operation": [
-        ""
+        "Opération"
       ],
       "Host count": [
-        ""
+        "Nombre d'hôtes"
       ],
       "Hostgroup count": [
-        ""
+        "ID du groupe d'hôtes"
       ],
       "Available Ansible Roles": [
         "Rôles Ansible disponibles"
@@ -853,7 +852,7 @@
         "Rôles Ansible attribués"
       ],
       "Failed to fetch Ansible Roles from server.": [
-        ""
+        "N’a pas pu extraire les Rôles Ansible du serveur."
       ],
       "You are not authorized to perform this action.": [
         "Vous n'êtes pas autorisé à effectuer cette action."
@@ -895,7 +894,7 @@
         "Rôles Ansible attribués à l'hôte"
       ],
       "Error!": [
-        "Erreur."
+        "Erreur !"
       ],
       "Nothing Found!": [
         "Rien trouvé !"
@@ -914,6 +913,12 @@
       ],
       "Action with sub plans": [
         "Action avec sous-plans"
+      ],
+      "Check for long running tasks": [
+        ""
+      ],
+      "Deliver notifications about long running tasks": [
+        ""
       ],
       "Import Puppet classes": [
         "Importer des classes Puppet"

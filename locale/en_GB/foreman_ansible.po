@@ -9,7 +9,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 12.0.3\n"
+"Project-Id-Version: foreman_ansible 12.0.4\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Andi Chandler <andi@gowling.com>, 2022\n"
@@ -183,6 +183,9 @@ msgstr ""
 msgid "Changed Ansible roles"
 msgstr ""
 
+msgid "Check for long running tasks"
+msgstr ""
+
 msgid "Close"
 msgstr ""
 
@@ -253,6 +256,9 @@ msgid "Deletes Ansible role"
 msgstr ""
 
 msgid "Deletes Ansible variable"
+msgstr ""
+
+msgid "Deliver notifications about long running tasks"
 msgstr ""
 
 msgid "Description"

@@ -3,11 +3,10 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 12.0.3",
+        "Project-Id-Version": "foreman_ansible 12.0.4",
         "Report-Msgid-Bugs-To": "",
-        "POT-Creation-Date": "2023-05-29 15:29+0200",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
-        "Last-Translator": "Mark Olie <mark.transifex@oliekoets.nl>, 2022",
+        "Last-Translator": "Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2023",
         "Language-Team": "Dutch (Netherlands) (https://app.transifex.com/foreman/teams/114/nl_NL/)",
         "MIME-Version": "1.0",
         "Content-Type": "text/plain; charset=UTF-8",
@@ -370,10 +369,10 @@
         ""
       ],
       "Variables": [
-        ""
+        "Variabelen"
       ],
       "Imported at": [
-        ""
+        "Geïmporteerd op"
       ],
       "Actions": [
         "Acties"
@@ -427,7 +426,7 @@
         ""
       ],
       "Order": [
-        ""
+        "Volgorde"
       ],
       "The order in which matchers keys are processed, first match wins.<br> You may use multiple attributes as a matcher key, for example, an order of <code>host group, environment</code> would expect a matcher such as <code>hostgroup = \\\"web servers\\\", environment = production</code>": [
         ""
@@ -463,7 +462,7 @@
         ""
       ],
       "Type": [
-        ""
+        "Type"
       ],
       "Imported?": [
         ""
@@ -733,10 +732,10 @@
         ""
       ],
       "Description": [
-        ""
+        "Beschrijving"
       ],
       "Result": [
-        ""
+        "Resultaat"
       ],
       "State": [
         ""
@@ -913,6 +912,12 @@
         ""
       ],
       "Action with sub plans": [
+        ""
+      ],
+      "Check for long running tasks": [
+        ""
+      ],
+      "Deliver notifications about long running tasks": [
         ""
       ],
       "Import Puppet classes": [

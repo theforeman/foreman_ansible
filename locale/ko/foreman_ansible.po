@@ -4,15 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# 0868a4d1af5275b3f70b0a6dac4c99a4, 2022
 # Bryan Kearney <bryan.kearney@gmail.com>, 2022
+# 0868a4d1af5275b3f70b0a6dac4c99a4, 2023
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 12.0.3\n"
+"Project-Id-Version: foreman_ansible 12.0.4\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
-"Last-Translator: Bryan Kearney <bryan.kearney@gmail.com>, 2022\n"
+"Last-Translator: 0868a4d1af5275b3f70b0a6dac4c99a4, 2023\n"
 "Language-Team: Korean (https://app.transifex.com/foreman/teams/114/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -182,6 +182,9 @@ msgstr ""
 msgid "Changed Ansible roles"
 msgstr ""
 
+msgid "Check for long running tasks"
+msgstr ""
+
 msgid "Close"
 msgstr "종료 "
 
@@ -252,6 +255,9 @@ msgid "Deletes Ansible role"
 msgstr ""
 
 msgid "Deletes Ansible variable"
+msgstr ""
+
+msgid "Deliver notifications about long running tasks"
 msgstr ""
 
 msgid "Description"
@@ -557,7 +563,7 @@ msgid "Only variables marked to Override are shown here."
 msgstr ""
 
 msgid "Operation"
-msgstr ""
+msgstr "작업 "
 
 msgid "Optional Input Validator"
 msgstr ""
