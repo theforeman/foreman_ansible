@@ -167,7 +167,8 @@ Foreman::Plugin.register :foreman_ansible do
         :create_job_invocations, :view_job_templates,      # to allow the play_roles
         :create_template_invocations, :view_smart_proxies, # ...
         :view_ansible_roles, :destroy_ansible_roles,
-        :import_ansible_roles, :view_ansible_variables,
+        :import_ansible_roles, :view_ansible_variables, :view_lookup_values,
+        :create_lookup_values, :edit_lookup_values, :destroy_lookup_values,
         :create_ansible_variables, :import_ansible_variables,
         :edit_ansible_variables, :destroy_ansible_variables, :import_ansible_playbooks]
 

@@ -24,7 +24,7 @@ module Api
       param_group :ansible_override_value, :as => :create
 
       def create
-        @ansible_variable = AnsibleVariable.authorized(:edit_external_variables).
+        @ansible_variable = AnsibleVariable.authorized(:edit_ansible_variables).
                             find_by(:id => params[:ansible_variable_id].to_i)
         @override_value = @ansible_variable.lookup_values.create!(lookup_value_params['override_value'])
         @ansible_variable.update_attribute(:override, true)
