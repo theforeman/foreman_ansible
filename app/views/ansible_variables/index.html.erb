@@ -22,7 +22,7 @@
             icon_text((variable.override ? "flag": ""), variable.key.to_s, :kind => 'fa', :title => _('Overriden')),
             hash_for_edit_ansible_variable_path(:id => variable).
             merge(:auth_object => variable,
-                  :permission => 'edit_external_parameters',
+                  :permission => 'edit_ansible_variables',
                   :authorizer => authorizer)
         ) %></td>
         <td class="ellipsis"><%= link_to_if_authorized(
