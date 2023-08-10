@@ -13,6 +13,7 @@
     "react-json-tree": "^0.11.0"
   },
   "devDependencies": {
+    "@adobe/css-tools": "~4.2.0",
     "@babel/core": "^7.7.0",
     "@testing-library/user-event": "^13.2.1",
     "@theforeman/builder": "^10.0",
