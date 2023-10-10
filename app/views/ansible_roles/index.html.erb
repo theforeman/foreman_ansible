@@ -1,7 +1,13 @@
+
+<%= webpacked_plugins_js_for :foreman_ansible %>
+
+<%= csrf_meta_tag %>
+
 <% title _("Ansible Roles") %>
 
-<% title_actions ansible_proxy_import(hash_for_import_ansible_roles_path),
-  documentation_button('#4.1ImportingRoles', :root_url => ansible_doc_url) %>
+<% title_actions ansible_proxy_import(hash_for_import_ansible_roles_path), vcs_import,
+   documentation_button('#4.1ImportingRoles', :root_url => ansible_doc_url)
+%>
 
 <table class="<%= table_css_classes 'table-fixed' %>">
   <thead>
@@ -43,5 +49,7 @@
     <% end %>
   </tbody>
 </table>
+
+<%= react_component('VcsCloneModalContent')%>
 
 <%= will_paginate_with_info @ansible_roles %>

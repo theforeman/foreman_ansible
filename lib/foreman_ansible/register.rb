@@ -160,6 +160,8 @@ Foreman::Plugin.register :foreman_ansible do
                { :'api/v2/ansible_inventories' => [:schedule] }
     permission :import_ansible_playbooks,
                { :'api/v2/ansible_playbooks' => [:sync, :fetch] }
+    permission :clone_from_vcs,
+               { :'api/v2/vcs_clone' => [:repository_metadata, :installed_roles, :install_role, :update_role, :delete_role] }
   end
 
   role 'Ansible Roles Manager',
@@ -170,7 +172,7 @@ Foreman::Plugin.register :foreman_ansible do
         :import_ansible_roles, :view_ansible_variables, :view_lookup_values,
         :create_lookup_values, :edit_lookup_values, :destroy_lookup_values,
         :create_ansible_variables, :import_ansible_variables,
-        :edit_ansible_variables, :destroy_ansible_variables, :import_ansible_playbooks]
+        :edit_ansible_variables, :destroy_ansible_variables, :import_ansible_playbooks, :clone_from_vcs]
 
   role 'Ansible Tower Inventory Reader',
        [:view_hosts, :view_hostgroups, :view_facts, :generate_report_templates, :generate_ansible_inventory,

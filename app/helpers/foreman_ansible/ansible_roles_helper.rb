@@ -31,6 +31,12 @@ module ForemanAnsible
                            ansible_proxy_links(hash))
     end
 
+    def vcs_import
+      select_action_button("",
+                           { :primary => true, :class => 'roles-import' },
+                           link_to(_("Download from Git"), "#vcs_download"))
+    end
+
     def import_time(role)
       _('%s ago') % time_ago_in_words(role.updated_at)
     end
