@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foreman_ansible 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-18 09:26+0200\n"
-"PO-Revision-Date: 2023-09-18 09:26+0200\n"
+"POT-Creation-Date: 2023-11-28 18:16+0100\n"
+"PO-Revision-Date: 2023-11-28 18:16+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -529,7 +529,7 @@ msgstr ""
 
 #: ../app/views/ansible_roles/index.html.erb:12
 #: ../app/views/ansible_roles/index.html.erb:29
-#: ../lib/foreman_ansible/register.rb:220
+#: ../lib/foreman_ansible/register.rb:221
 #: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/AllRolesTable.js:18
 #: ../webpack/components/AnsibleHostDetail/components/RolesTab/RolesTable.js:30
 #: ../webpack/components/AnsibleHostDetail/constants.js:6
@@ -725,9 +725,9 @@ msgid "Enable Ansible Callback"
 msgstr ""
 
 #: ../app/views/job_templates/_job_template_callback_tab_headers.html.erb:1
-#: ../lib/foreman_ansible/register.rb:8 ../lib/foreman_ansible/register.rb:214
-#: ../lib/foreman_ansible/register.rb:264
-#: ../lib/foreman_ansible/register.rb:270
+#: ../lib/foreman_ansible/register.rb:8 ../lib/foreman_ansible/register.rb:215
+#: ../lib/foreman_ansible/register.rb:265
+#: ../lib/foreman_ansible/register.rb:271
 msgid "Ansible"
 msgstr ""
 
@@ -743,7 +743,7 @@ msgstr ""
 #: ../db/seeds.d/90_notification_blueprints.rb:18
 #: ../db/seeds.d/90_notification_blueprints.rb:25
 #: ../db/seeds.d/90_notification_blueprints.rb:30
-#: ../lib/foreman_ansible/register.rb:216
+#: ../lib/foreman_ansible/register.rb:217
 #: ../webpack/components/AnsibleHostDetail/constants.js:5
 msgid "Roles"
 msgstr ""
@@ -881,8 +881,8 @@ msgstr ""
 msgid "Proxy tasks batch size for Ansible"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:252
-#: ../lib/foreman_ansible/register.rb:258
+#: ../lib/foreman_ansible/register.rb:253
+#: ../lib/foreman_ansible/register.rb:259
 msgid "Update Smart Proxy"
 msgstr ""
 
@@ -965,32 +965,32 @@ msgid "Are you sure you want to delete override for %s?"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:13
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:18
 msgid "Default value"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:49
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:54
 msgid "Ansible variable override was successfully deleted."
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:63
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:68
 msgid "There was a following error when deleting Ansible variable override: %s"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:82
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:87
 msgid "Invalid, expected to match a regex: %s"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:98
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:103
 msgid "Invalid, expected one of: %s"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:104
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:109
 msgid "is required"
 msgstr ""
 
