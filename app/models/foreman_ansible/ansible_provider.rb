@@ -61,19 +61,23 @@ if defined? ForemanRemoteExecution
           true
         end
 
-        def provider_inputs
+        def provider_inputs(provider_input_values = [])
+          tags = provider_input_values&.find { |input| input[:name] == 'tags' }&.fetch(:value) || ''
+          tags_flag = provider_input_values&.find { |input| input[:name] == 'tags_flag' }&.fetch(:value) || ''
           [
             ForemanRemoteExecution::ProviderInput.new(
               name: 'tags',
               label: _('Tags'),
-              value: '',
+              value: tags,
               value_type: 'plain',
+              default: '',
               description: 'Tags used for Ansible execution'
             ),
             ForemanRemoteExecution::ProviderInput.new(
               name: 'tags_flag',
               label: _('Include/Exclude Tags'),
-              value: 'include',
+              value: tags_flag,
+              default: 'include',
               description: 'Option whether to include or exclude tags',
               options: "include\nexclude"
             )
