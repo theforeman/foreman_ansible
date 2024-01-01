@@ -21,6 +21,13 @@ const RolesTab = ({ hostId, history, canEditHost }) => {
   const hostGlobalId = encodeId('Host', hostId);
   const pagination = useCurrentPagination(history);
   const [assignModal, setAssignModal] = useState(false);
+  const [totalItems, setTotalItems] = useState(0);
+  const setTotalCount = data => {
+    if (!data) return;
+    const { totalCount } = data.host.ownAnsibleRoles;
+    if (totalItems === 0) setTotalItems(totalCount);
+  };
+
   const renameData = data => ({
     ansibleRoles: data.host.ownAnsibleRoles.nodes,
     totalCount: data.host.ownAnsibleRoles.totalCount,
@@ -28,8 +35,9 @@ const RolesTab = ({ hostId, history, canEditHost }) => {
 
   const useFetchFn = () =>
     useQuery(ansibleRolesQuery, {
-      variables: { id: hostGlobalId, ...useParamsToVars(history) },
+      variables: { id: hostGlobalId, ...useParamsToVars(history, totalItems) },
       fetchPolicy: 'network-only',
+      onCompleted: setTotalCount,
     });
 
   const editBtn = canEditHost ? (
