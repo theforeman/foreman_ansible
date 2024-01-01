@@ -17,6 +17,11 @@ const AnsibleVariableOverrides = ({ hostId, hostAttrs, history }) => {
   const hostGlobalId = encodeId('Host', hostId);
   const pagination = useCurrentPagination(history);
   const [totalItems, setTotalItems] = useState(0);
+  const setTotalCount = data => {
+    if (!data) return;
+    const { totalCount } = data.host.ansibleVariablesWithOverrides;
+    if (totalItems === 0) setTotalItems(totalCount);
+  };
 
   const useFetchFn = () =>
     useQuery(variableOverrides, {
@@ -27,16 +32,13 @@ const AnsibleVariableOverrides = ({ hostId, hostAttrs, history }) => {
       },
       fetchPolicy: 'network-only',
       nextFetchPolicy: 'cache-first',
+      onCompleted: setTotalCount,
     });
 
-  const renameData = data => {
-    const { totalCount } = data.host.ansibleVariablesWithOverrides;
-    if (totalItems === 0) setTotalItems(totalCount);
-    return {
-      variables: data.host.ansibleVariablesWithOverrides.nodes,
-      totalCount,
-    };
-  };
+  const renameData = data => ({
+    variables: data.host.ansibleVariablesWithOverrides.nodes,
+    totalCount: data.host.ansibleVariablesWithOverrides.totalCount,
+  });
 
   return (
     <AnsibleVariableOverridesTable
