@@ -28,8 +28,6 @@ const AllRolesModal = ({ hostGlobalId, onClose, history }) => {
     ),
   };
 
-  const paginationKeys = { page: 'page', perPage: 'per_page' };
-
   const wrapper = child => (
     <Modal ouiaId="modal-ansible-roles" {...baseModalProps}>
       {child}
@@ -46,7 +44,7 @@ const AllRolesModal = ({ hostGlobalId, onClose, history }) => {
     useQuery(allAnsibleRolesQuery, {
       variables: {
         id: hostGlobalId,
-        ...useParamsToVars(history, paginationKeys),
+        ...useParamsToVars(history),
       },
       fetchPolicy: 'network-only',
     });
@@ -56,7 +54,7 @@ const AllRolesModal = ({ hostGlobalId, onClose, history }) => {
     totalCount: data.host.allAnsibleRoles.totalCount,
   });
 
-  const pagination = useCurrentPagination(history, paginationKeys);
+  const pagination = useCurrentPagination(history);
 
   return (
     <AllRolesTable
