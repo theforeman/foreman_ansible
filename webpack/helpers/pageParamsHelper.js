@@ -23,6 +23,12 @@ export const useCurrentPagination = (history) => {
   };
 };
 
+/**
+ * Since there is no easy way to do pagination with Graphql at the moment,
+ * we are using `first` and `last` variables in the query.
+ * to make the pagination work on tables where `page * per_page > totalCount`,
+ * we needed to add the following calculation for the `last` variable
+ */
 export const pageToVars = ({ page, per_page }, totalCount = 0) => ({
   first: page * per_page,
   last: page > 1 & totalCount > 0 ? totalCount - per_page : per_page,
