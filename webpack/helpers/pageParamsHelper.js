@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import URI from 'urijs';
 import { useForemanSettings } from 'foremanReact/Root/Context/ForemanContext';
 
@@ -12,14 +13,13 @@ export const addSearch = (basePath, params) => {
   return `${basePath}${stringyfied}`;
 };
 
-export const useCurrentPagination = (history) => {
+export const useCurrentPagination = history => {
   const pageParams = parsePageParams(history);
   const uiSettings = useForemanSettings();
 
   return {
     page: parseInt(pageParams.page, 10) || 1,
-    per_page:
-      parseInt(pageParams.per_page, 10) || uiSettings.perPage,
+    per_page: parseInt(pageParams.per_page, 10) || uiSettings.perPage,
   };
 };
 
@@ -31,7 +31,8 @@ export const useCurrentPagination = (history) => {
  */
 export const pageToVars = ({ page, per_page }, totalCount = 0) => ({
   first: page * per_page,
-  last: page > 1 & totalCount > 0 ? totalCount - per_page : per_page,
-})
+  last: page > 1 && totalCount > 0 ? totalCount - per_page : per_page,
+});
 
-export const useParamsToVars = (history, totalCount) => pageToVars(useCurrentPagination(history), totalCount);
+export const useParamsToVars = (history, totalCount) =>
+  pageToVars(useCurrentPagination(history), totalCount);
