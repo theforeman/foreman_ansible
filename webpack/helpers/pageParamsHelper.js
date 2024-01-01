@@ -12,33 +12,20 @@ export const addSearch = (basePath, params) => {
   return `${basePath}${stringyfied}`;
 };
 
-export const useCurrentPagination = (
-  history,
-  keys = { page: 'page', perPage: 'per_page' }
-) => {
+export const useCurrentPagination = (history) => {
   const pageParams = parsePageParams(history);
   const uiSettings = useForemanSettings();
 
   return {
-    [keys.page]: parseInt(pageParams[keys.page], 10) || 1,
-    [keys.perPage]:
-      parseInt(pageParams[keys.perPage], 10) || uiSettings.perPage,
+    page: parseInt(pageParams.page, 10) || 1,
+    per_page:
+      parseInt(pageParams.per_page, 10) || uiSettings.perPage,
   };
 };
 
-export const pageToVars = (
-  pagination,
-  totalCount = 0,
-  keys = { page: 'page', perPage: 'per_page' },
-) => {
-  return ({
-    first: pagination[keys.page] * pagination[keys.perPage],
-    last: pagination[keys.page] > 1 & totalCount > 0 ? totalCount - pagination[keys.perPage] : pagination[keys.perPage],
-  })
-};
+export const pageToVars = ({ page, per_page }, totalCount = 0) => ({
+  first: page * per_page,
+  last: page > 1 & totalCount > 0 ? totalCount - per_page : per_page,
+})
 
-export const useParamsToVars = (
-  history,
-  totalCount,
-  keys = { page: 'page', perPage: 'per_page' }
-) => pageToVars(useCurrentPagination(history, keys), totalCount, keys);
+export const useParamsToVars = (history, totalCount) => pageToVars(useCurrentPagination(history), totalCount);
