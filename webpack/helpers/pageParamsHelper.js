@@ -28,13 +28,17 @@ export const useCurrentPagination = (
 
 export const pageToVars = (
   pagination,
-  keys = { page: 'page', perPage: 'per_page' }
-) => ({
-  first: pagination[keys.page] * pagination[keys.perPage],
-  last: pagination[keys.perPage],
-});
+  totalCount = 0,
+  keys = { page: 'page', perPage: 'per_page' },
+) => {
+  return ({
+    first: pagination[keys.page] * pagination[keys.perPage],
+    last: pagination[keys.page] > 1 & totalCount > 0 ? totalCount - pagination[keys.perPage] : pagination[keys.perPage],
+  })
+};
 
 export const useParamsToVars = (
   history,
+  totalCount,
   keys = { page: 'page', perPage: 'per_page' }
-) => pageToVars(useCurrentPagination(history, keys), keys);
+) => pageToVars(useCurrentPagination(history, keys), totalCount, keys);
