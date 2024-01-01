@@ -30,12 +30,12 @@ const AnsibleVariableOverrides = ({ hostId, hostAttrs, history }) => {
     });
 
   const renameData = data => {
-    const totalCount = data.host.ansibleVariablesWithOverrides.totalCount;
+    const { totalCount } = data.host.ansibleVariablesWithOverrides;
     if (totalItems === 0) setTotalItems(totalCount);
-    return ({
+    return {
       variables: data.host.ansibleVariablesWithOverrides.nodes,
       totalCount,
-    })
+    };
   };
 
   return (
