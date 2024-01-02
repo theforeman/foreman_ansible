@@ -29,10 +29,13 @@ export const useCurrentPagination = history => {
  * to make the pagination work on tables where `page * per_page > totalCount`,
  * we needed to add the following calculation for the `last` variable
  */
-export const pageToVars = ({ page, per_page }, totalCount = 0) => ({
-  first: page * per_page,
-  last: page > 1 && totalCount > 0 ? totalCount - per_page : per_page,
-});
+export const pageToVars = ({ page, per_page }, totalCount = 0) => {
+  totalCount = totalCount || per_page;
+  return ({
+    first: Math.min(page * per_page, totalCount),
+    last: Math.min(per_page, totalCount - (page - 1) * per_page),
+  });
+}
 
 export const useParamsToVars = (history, totalCount) =>
   pageToVars(useCurrentPagination(history), totalCount);
