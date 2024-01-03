@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useQuery } from '@apollo/client';
 import { translate as __ } from 'foremanReact/common/I18n';
@@ -14,6 +14,12 @@ import {
 } from '../../../../../helpers/pageParamsHelper';
 
 const AllRolesModal = ({ hostGlobalId, onClose, history }) => {
+  const [totalItems, setTotalItems] = useState(0);
+  const setTotalCount = data => {
+    if (!data) return;
+    const { totalCount } = data.host.allAnsibleRoles;
+    if (totalItems === 0) setTotalItems(totalCount);
+  };
   const baseModalProps = {
     ouiaId: 'modal-ansible-roles',
     variant: ModalVariant.large,
@@ -44,9 +50,10 @@ const AllRolesModal = ({ hostGlobalId, onClose, history }) => {
     useQuery(allAnsibleRolesQuery, {
       variables: {
         id: hostGlobalId,
-        ...useParamsToVars(history),
+        ...useParamsToVars(history, totalItems),
       },
       fetchPolicy: 'network-only',
+      onCompleted: setTotalCount,
     });
 
   const renameData = data => ({
