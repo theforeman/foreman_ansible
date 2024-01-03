@@ -31,11 +31,11 @@ export const useCurrentPagination = history => {
  */
 export const pageToVars = ({ page, per_page }, totalCount = 0) => {
   totalCount = totalCount || per_page;
-  return ({
+  return {
     first: Math.min(page * per_page, totalCount),
     last: Math.min(per_page, totalCount - (page - 1) * per_page),
-  });
-}
+  };
+};
 
 export const useParamsToVars = (history, totalCount) =>
   pageToVars(useCurrentPagination(history), totalCount);
