@@ -22,7 +22,11 @@ const EditableValue = props => {
       <TextAreaField
         aria-label="Edit override field"
         onChange={props.onChange}
-        value={JSON.stringify(props.value)}
+        value={
+          typeof props.value === 'object'
+            ? JSON.stringify(props.value)
+            : props.value
+        }
         validation={props.validation}
         isDisabled={props.working}
       />
