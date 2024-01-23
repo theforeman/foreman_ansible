@@ -139,7 +139,8 @@ Foreman::Plugin.register :foreman_ansible do
     permission :import_ansible_variables,
                {
                  :ansible_variables => [:import, :confirm_import],
-                 :'api/v2/ansible_variables' => [:import]
+                 :'api/v2/ansible_variables' => [:import],
+                 :'api/v2/ansible_variables/import' => [:yaml_to_json, :from_yaml, :from_json]
                },
                :resource_type => 'AnsibleVariable'
     permission :view_hosts,

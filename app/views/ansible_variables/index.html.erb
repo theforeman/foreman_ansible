@@ -1,7 +1,11 @@
+<%= webpacked_plugins_js_for :foreman_ansible %>
+<%= webpacked_plugins_css_for :foreman_ansible %>
+
 <% title _("Ansible Variables") %>
 <%= stylesheet 'foreman_ansible/foreman-ansible' %>
 
 <%= title_actions display_link_if_authorized(_('New Ansible Variable'), hash_for_new_ansible_variable_path, :class => "btn btn-default no-float"),
+                  yaml_import,
       documentation_button('#4.3Variables', :root_url => ansible_doc_url)
        %>
 
@@ -46,5 +50,7 @@
     <% end %>
   </tbody>
 </table>
+
+<%= react_component('YamlVariablesImporterWrapper')%>
 
 <%= will_paginate_with_info @ansible_variables %>

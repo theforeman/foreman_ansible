@@ -12,9 +12,10 @@ module Api
         api_base_url '/ansible/api'
       end
 
+      skip_before_action :verify_authenticity_token
       before_action :find_resource, :only => [:show, :destroy, :update]
       before_action :find_proxy, :only => [:import, :obsolete]
-      before_action :create_importer, :only => [:import, :obsolete]
+      before_action :create_importer, :only => [:import, :obsolete, :from_json, :from_yaml, :yaml_to_json]
 
       api :GET, '/ansible_variables/:id', N_('Show variable')
       param :id, :identifier, :required => true
@@ -90,7 +91,105 @@ module Api
         @obsoleted = old_variables
       end
 
+      api :POST, '/ansible_variables/import/yaml_to_json',
+          N_('Converts the YAML-file into a JSON-representation the UI can work with')
+      param :data, Integer, N_('YAML-file as a base64-encoded string')
+      def yaml_to_json
+        enc_file = params.require(:data)
+        render json: encoded_yaml_to_hash(enc_file)
+      end
+
+      api :PUT, '/ansible_variables/import/from_yaml', N_('Import Ansible variables directly from YAML files')
+      param :data, Hash, N_('Dictionary of role names and base64-encoded YAML files')
+      # param structure:
+      # {
+      #   "data": {
+      #     <role_name>: {
+      #       "data": <base64-enc YAML-file>
+      #     },
+      #     <role_name>: {
+      #       "data": <base64-enc YAML-file>
+      #     }
+      #     ...
+      #   }
+      # }
+      # How to document this using apipie?
+      def from_yaml
+        level_zero_data = params.require(:data)
+        temp_hash = {}
+        level_zero_data.each do |role_name, data|
+          enc_file = data.require(:data)
+          yaml_hash = encoded_yaml_to_hash(enc_file)
+          temp_hash[role_name] = {} unless temp_hash[role_name]
+          temp_hash[role_name] = yaml_hash.merge(temp_hash[role_name])
+        end
+        from_hash(temp_hash)
+      end
+
+      api :PUT, '/ansible_variables/import/from_json', N_('Import Ansible variables from JSON. Allows finer control over names, types and default values.')
+      param :data, Hash, N_('Dictionary of role names and dictionaries of variable names and a hash containing variable value and type.')
+      # param structure:
+      # {
+      #   "data": {
+      #     <role_name>: {
+      #       <var_name>: {
+      #         "value": <var_value>,
+      #         "type": <var_type>
+      #       },
+      #       ...
+      #     },
+      #     <role_name>: {
+      #       <var_name>: {
+      #         "value": <var_value>,
+      #         "type": <var_type>
+      #       },
+      #       ...
+      #     },
+      #     ...
+      #   }
+      # }
+      # How to document this using apipie?
+      def from_json
+        data = params.require(:data).permit!.to_h
+        from_hash(data)
+      end
+
       private
+
+      def from_hash(data)
+        data.each do |role_name, variables|
+          variables.each do |variable_name, variable_data|
+            role = find_role(role_name)
+            return role if performed?
+            existing_variable = AnsibleRole.find_by(name: role_name).ansible_variables.find_by(key: variable_name)
+            if existing_variable.nil?
+              if !variable_data.key?(:type) || variable_data["type"] == "auto"
+                @importer.create_base_variable(variable_name, role, variable_data["value"], @importer.infer_key_type(variable_data["value"])).save
+              else
+                @importer.create_base_variable(variable_name, role, variable_data["value"], variable_data["type"]).save
+              end
+            else
+              existing_variable.update({ :override => true, :key_type => variable_data["type"], :default_value => variable_data["value"] })
+            end
+          end
+        end
+      end
+
+      def encoded_yaml_to_hash(encoded_string)
+        loaded_hash = YAML.safe_load(Base64.decode64(encoded_string))
+        loaded_hash.each do |variable_name, variable_value|
+          loaded_hash[variable_name] = {
+            :value => variable_value,
+            :type => @importer.infer_key_type(variable_value)
+          }
+        end
+        loaded_hash
+      end
+
+      def find_role(role_name)
+        role = AnsibleRole.find_by(name: role_name)
+        !role.nil? ? role : render_error('custom_error', :status => :unprocessable_entity, :locals => { :message => _("#{role_name} does not exist") })
+      end
 
       def find_proxy
         return nil unless params[:proxy_id]
