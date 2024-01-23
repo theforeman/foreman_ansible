@@ -30,8 +30,7 @@ template_inputs:
 provider_type: Ansible
 kind: job_template
 model: JobTemplate
-%>
-
+-%>
 # For Windows targets use the win_package module instead.
 ---
 - hosts: all
@@ -41,7 +40,7 @@ model: JobTemplate
   <%- end -%>
   tasks:
     - package:
-        name: <%= input('name') %>
+<%= indent(8) { to_yaml({"name" => input('name')}).gsub(/---\n/, '') } -%>
         state: <%= input('state') %>
   <%- if input('post_script').present? -%>
   post_tasks:
