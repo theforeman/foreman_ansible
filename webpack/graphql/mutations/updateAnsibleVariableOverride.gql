@@ -3,8 +3,9 @@ mutation UpdateAnsibleVariableOverride(
   $hostId: Int!,
   $ansibleVariableId: Int!,
   $value: RawJson!
-  $match: String!) {
-  updateAnsibleVariableOverride(input: { id: $id, hostId: $hostId, value: $value, ansibleVariableId: $ansibleVariableId }) {
+  $match: String!
+  $hiddenValue: Boolean!) {
+  updateAnsibleVariableOverride(input: { id: $id, hostId: $hostId, value: $value, ansibleVariableId: $ansibleVariableId, hiddenValue: $hiddenValue }) {
     overridenAnsibleVariable {
       id
       lookupValues(match: $match) {
@@ -15,6 +16,7 @@ mutation UpdateAnsibleVariableOverride(
           omit
         }
       }
+      hiddenValue
       currentValue {
         element
         value

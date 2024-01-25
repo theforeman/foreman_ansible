@@ -13,7 +13,7 @@ import {
   Th,
   Td,
 } from '@patternfly/react-table';
-import { Flex, FlexItem } from '@patternfly/react-core';
+import { Flex, FlexItem, Checkbox } from '@patternfly/react-core';
 
 import Pagination from 'foremanReact/components/Pagination';
 import deleteAnsibleVariableOverride from '../../../../graphql/mutations/deleteAnsibleVariableOverride.gql';
@@ -26,6 +26,7 @@ import {
   validateValue,
   onCompleted,
   onError,
+  formatValue,
 } from './AnsibleVariableOverridesTableHelper';
 
 import withLoading from '../../../withLoading';
@@ -44,6 +45,7 @@ const initState = vars =>
     value: variable.currentValue
       ? variable.currentValue.value
       : variable.defaultValue,
+    hiddenValue: variable.hiddenValue,
     validation: { key: 'noval', msg: '' },
     working: false,
   }));
@@ -75,6 +77,10 @@ const AnsibleVariableOverridesTable = ({
 
   const setEditable = (idx, flag) => () => {
     innerDispatch({ idx, payload: { open: flag } });
+  };
+
+  const setHiddenValue = idx => isHide => {
+    innerDispatch({ idx, payload: { hiddenValue: isHide } });
   };
 
   const onValueChange = (idx, variable) => value => {
@@ -174,14 +180,31 @@ const AnsibleVariableOverridesTable = ({
                   <Td>{variable.ansibleRoleName}</Td>
                   <Td>{variable.parameterType}</Td>
                   <Td>
-                    <EditableValue
-                      variable={variable}
-                      editing={editableState[idx].open}
-                      onChange={onValueChange(idx, variable)}
-                      value={editableState[idx].value}
-                      validation={editableState[idx].validation}
-                      working={editableState[idx].working}
-                    />
+                    {!editableState[idx].open ? (
+                      formatValue(variable)
+                    ) : (
+                      <>
+                        <EditableValue
+                          variable={variable}
+                          editing={editableState[idx].open}
+                          setHiddenValue={setHiddenValue(
+                            idx,
+                            variable.hiddenValue
+                          )}
+                          onChange={onValueChange(idx, variable)}
+                          value={editableState[idx].value}
+                          validation={editableState[idx].validation}
+                          working={editableState[idx].working}
+                        />
+                        <Checkbox
+                          ouiaId={`edit-parameters-table-row-hide-`}
+                          label={__('Hide value')}
+                          isChecked={editableState[idx].hiddenValue}
+                          onChange={setHiddenValue(idx)}
+                          id="hide value checkbox"
+                        />
+                      </>
+                    )}
                   </Td>
                   <Td>{formatSourceAttr(variable)}</Td>
                   <Td>
