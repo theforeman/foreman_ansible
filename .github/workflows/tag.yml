@@ -1,0 +1,13 @@
+name: Tag
+
+on:
+  push:
+    paths:
+      - "lib/foreman_ansible/version.rb"
+
+jobs:
+  release:
+    name: Create a tag
+    uses: theforeman/actions/.github/workflows/create_tag.yml@v0
+    with:
+      allowed_owner: theforeman
