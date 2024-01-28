@@ -9,7 +9,7 @@ on:
       - '*-stable'
 
 concurrency:
-  group: ${{ github.head_ref }}
+  group: ${{ github.ref_name }}-${{ github.workflow }}
   cancel-in-progress: true
 
 jobs:
