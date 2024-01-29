@@ -23,3 +23,5 @@ jobs:
     uses: theforeman/actions/.github/workflows/foreman_plugin.yml@v0
     with:
       plugin: foreman_ansible
+      foreman_version: prod_modules
+      foreman_repository: evgeni/foreman
