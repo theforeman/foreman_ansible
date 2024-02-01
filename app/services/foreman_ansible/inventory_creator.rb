@@ -97,7 +97,7 @@ module ForemanAnsible
 
     def remote_execution_options(host)
       params = {
-        'ansible_user' => host_setting(host, 'remote_execution_ssh_user'),
+        'ansible_user' => @template_invocation.job_invocation&.ssh_user || host_setting(host, 'remote_execution_ssh_user'),
         'ansible_become_method' => host_setting(host, 'remote_execution_effective_user_method'),
         'ansible_ssh_private_key_file' => ansible_ssh_private_key(host),
         'ansible_port' => host_setting(host, 'remote_execution_ssh_port'),
