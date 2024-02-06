@@ -232,6 +232,8 @@ Foreman::Plugin.register :foreman_ansible do
 
   register_info_provider ForemanAnsible::AnsibleInfo
 
+  register_template_dirs ["#{ForemanAnsible::Engine.root}/app/views/foreman_ansible/job_templates"]
+
   # For backwards compatiblity with 1.17
   if respond_to?(:register_report_scanner)
     register_report_scanner ForemanAnsible::AnsibleReportScanner
