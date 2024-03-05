@@ -911,24 +911,6 @@
       "Configure Recurring Job": [
         "განმეორებადი დავალების მორგება"
       ],
-      "Action with sub plans": [
-        "ქმედება ქვე-გეგმებით"
-      ],
-      "Check for long running tasks": [
-        ""
-      ],
-      "Deliver notifications about long running tasks": [
-        ""
-      ],
-      "Import Puppet classes": [
-        "Puppet-ის კლასების შემოტანა"
-      ],
-      "Import facts": [
-        "ფაქტების შემოტანა"
-      ],
-      "Remote action:": [
-        "დაშორებული ქმედება:"
-      ],
       "Ansible support in Foreman": [
         "Ansible-ის მხარდაჭერა Foreman-ში"
       ]

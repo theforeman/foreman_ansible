@@ -911,24 +911,6 @@
       "Configure Recurring Job": [
         ""
       ],
-      "Action with sub plans": [
-        "Akce s dílčími plány"
-      ],
-      "Check for long running tasks": [
-        ""
-      ],
-      "Deliver notifications about long running tasks": [
-        ""
-      ],
-      "Import Puppet classes": [
-        "Importovat Puppet třídy"
-      ],
-      "Import facts": [
-        "Importovat fakta"
-      ],
-      "Remote action:": [
-        "Akce na protějšku:"
-      ],
       "Ansible support in Foreman": [
         "Podpora Ansible ve Foreman"
       ]

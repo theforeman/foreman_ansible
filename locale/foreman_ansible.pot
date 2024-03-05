@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foreman_ansible 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-28 18:16+0100\n"
-"PO-Revision-Date: 2023-11-28 18:16+0100\n"
+"POT-Creation-Date: 2024-03-05 20:08+0100\n"
+"PO-Revision-Date: 2024-03-05 20:08+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -1005,12 +1005,12 @@ msgid "Ansible variable override successfully changed."
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/EditableValue.js:37
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/EditableValue.js:41
 msgid "true"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/EditableValue.js:38
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/EditableValue.js:42
 msgid "false"
 msgstr ""
 
@@ -1391,30 +1391,6 @@ msgstr ""
 
 #: ../webpack/routes/HostgroupJobs/index.js:11
 msgid "Configure Recurring Job"
-msgstr ""
-
-#: action_names.rb:2
-msgid "Action with sub plans"
-msgstr ""
-
-#: action_names.rb:3
-msgid "Check for long running tasks"
-msgstr ""
-
-#: action_names.rb:4
-msgid "Deliver notifications about long running tasks"
-msgstr ""
-
-#: action_names.rb:5
-msgid "Import Puppet classes"
-msgstr ""
-
-#: action_names.rb:6
-msgid "Import facts"
-msgstr ""
-
-#: action_names.rb:7
-msgid "Remote action:"
 msgstr ""
 
 #: gemspec.rb:2

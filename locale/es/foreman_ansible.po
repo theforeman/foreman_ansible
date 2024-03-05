@@ -42,9 +42,6 @@ msgstr "(del grupo anfitrión)"
 msgid "A comma separated list of tags to use for Ansible run"
 msgstr "Una lista separada por comas de las etiquetas a utilizar para la ejecución de Ansible"
 
-msgid "Action with sub plans"
-msgstr "Acción con subplanes"
-
 msgid "Actions"
 msgstr "Acciones"
 
@@ -189,9 +186,6 @@ msgstr "Cancelar el trabajo de configuración de Ansible"
 msgid "Changed Ansible roles"
 msgstr "Roles Ansible cambiados"
 
-msgid "Check for long running tasks"
-msgstr ""
-
 msgid "Close"
 msgstr "Cerrar"
 
@@ -263,9 +257,6 @@ msgstr "Elimina rol Ansible"
 
 msgid "Deletes Ansible variable"
 msgstr "Elimina la variable Ansible"
-
-msgid "Deliver notifications about long running tasks"
-msgstr ""
 
 msgid "Description"
 msgstr "Descripción"
@@ -396,14 +387,8 @@ msgstr "Al seleccionarlo, aparecerá un error si no existe un valor predetermina
 msgid "Import"
 msgstr "Importar"
 
-msgid "Import Puppet classes"
-msgstr "Importar clases Puppet"
-
 msgid "Import Role"
 msgstr "Función de importación"
-
-msgid "Import facts"
-msgstr "Importar datos"
 
 msgid "Import from %s"
 msgstr "Importar desde %s"
@@ -624,9 +609,6 @@ msgstr "Tamaño del lote de tareas proxy para Ansible"
 
 msgid "Remediation Plan"
 msgstr "Plan de reparación"
-
-msgid "Remote action:"
-msgstr "Acción remota:"
 
 msgid "Remove"
 msgstr "Eliminar"

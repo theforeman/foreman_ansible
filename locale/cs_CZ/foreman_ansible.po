@@ -38,9 +38,6 @@ msgstr ""
 msgid "A comma separated list of tags to use for Ansible run"
 msgstr ""
 
-msgid "Action with sub plans"
-msgstr "Akce s dílčími plány"
-
 msgid "Actions"
 msgstr "Akce"
 
@@ -185,9 +182,6 @@ msgstr ""
 msgid "Changed Ansible roles"
 msgstr "Změněné Ansible role"
 
-msgid "Check for long running tasks"
-msgstr ""
-
 msgid "Close"
 msgstr "Zavřít"
 
@@ -259,9 +253,6 @@ msgstr "Smazat Ansible roli"
 
 msgid "Deletes Ansible variable"
 msgstr "Smazat Ansible proměnnou"
-
-msgid "Deliver notifications about long running tasks"
-msgstr ""
 
 msgid "Description"
 msgstr "Popis"
@@ -392,14 +383,8 @@ msgstr ""
 msgid "Import"
 msgstr "Import"
 
-msgid "Import Puppet classes"
-msgstr "Importovat Puppet třídy"
-
 msgid "Import Role"
 msgstr ""
-
-msgid "Import facts"
-msgstr "Importovat fakta"
 
 msgid "Import from %s"
 msgstr "Importovat z %s"
@@ -618,9 +603,6 @@ msgstr ""
 
 msgid "Remediation Plan"
 msgstr ""
-
-msgid "Remote action:"
-msgstr "Akce na protějšku:"
 
 msgid "Remove"
 msgstr "Odebrat"

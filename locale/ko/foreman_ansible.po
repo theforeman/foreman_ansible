@@ -35,9 +35,6 @@ msgstr ""
 msgid "A comma separated list of tags to use for Ansible run"
 msgstr ""
 
-msgid "Action with sub plans"
-msgstr "하위 계획이 있는 작업"
-
 msgid "Actions"
 msgstr "동작 "
 
@@ -182,9 +179,6 @@ msgstr ""
 msgid "Changed Ansible roles"
 msgstr ""
 
-msgid "Check for long running tasks"
-msgstr ""
-
 msgid "Close"
 msgstr "종료 "
 
@@ -255,9 +249,6 @@ msgid "Deletes Ansible role"
 msgstr ""
 
 msgid "Deletes Ansible variable"
-msgstr ""
-
-msgid "Deliver notifications about long running tasks"
 msgstr ""
 
 msgid "Description"
@@ -389,14 +380,8 @@ msgstr "체크되어 있을 경우 기본값이 없고 matcher가 값을 지정�
 msgid "Import"
 msgstr "불러오기"
 
-msgid "Import Puppet classes"
-msgstr "Puppet 클래스 가져오기"
-
 msgid "Import Role"
 msgstr ""
-
-msgid "Import facts"
-msgstr "팩트 불러오기"
 
 msgid "Import from %s"
 msgstr "%s에서 가져오기 "
@@ -615,9 +600,6 @@ msgstr ""
 
 msgid "Remediation Plan"
 msgstr ""
-
-msgid "Remote action:"
-msgstr "원격 작업:"
 
 msgid "Remove"
 msgstr "삭제 "

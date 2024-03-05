@@ -43,9 +43,6 @@ msgstr "(du groupe hôte)"
 msgid "A comma separated list of tags to use for Ansible run"
 msgstr "Une liste de balises séparées par des virgules à utiliser pour l'exécution d'Ansible"
 
-msgid "Action with sub plans"
-msgstr "Action avec sous-plans"
-
 msgid "Actions"
 msgstr "Actions"
 
@@ -190,9 +187,6 @@ msgstr "Annuler le job de configuration Ansible"
 msgid "Changed Ansible roles"
 msgstr "Rôles Ansible modifiés"
 
-msgid "Check for long running tasks"
-msgstr ""
-
 msgid "Close"
 msgstr "Fermer"
 
@@ -264,9 +258,6 @@ msgstr "Supprime le rôle Ansible"
 
 msgid "Deletes Ansible variable"
 msgstr "Supprime la variable Ansible"
-
-msgid "Deliver notifications about long running tasks"
-msgstr ""
 
 msgid "Description"
 msgstr "Description"
@@ -397,14 +388,8 @@ msgstr "Si coché, Foreman va générer une erreur s'il n'y a pas de valeur par 
 msgid "Import"
 msgstr "Importation"
 
-msgid "Import Puppet classes"
-msgstr "Importer des classes Puppet"
-
 msgid "Import Role"
 msgstr "Rôle d'importation"
-
-msgid "Import facts"
-msgstr "Importer des faits"
 
 msgid "Import from %s"
 msgstr "Import depuis %s"
@@ -625,9 +610,6 @@ msgstr "Taille du lot des tâches de proxy pour Ansible"
 
 msgid "Remediation Plan"
 msgstr "Plan de remédiation"
-
-msgid "Remote action:"
-msgstr "Action distante :"
 
 msgid "Remove"
 msgstr "Supprimer"
