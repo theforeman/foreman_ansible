@@ -1,10 +1,9 @@
 name: JavaScript Testing
 on:
   pull_request:
-    paths:
-      - 'webpack/**'
-      - 'package.json'
-      - '.github/workflows/js_tests.yml'
+  push:
+    branches:
+      - "master"
 
 jobs:
   test_js:
