@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { applyMiddleware, createStore, compose, combineReducers } from 'redux';
@@ -42,20 +42,21 @@ export const withReactRouter = Component => props => {
 };
 
 export const withMockedProvider = Component => props => {
-  const ForemanContext = getForemanContext(ctx);
-  // eslint-disable-next-line react/prop-types
-  const { mocks, ...rest } = props;
-
-  const ctx = {
+  const [context, setContext] = useState({
     metadata: {
       UISettings: {
         perPage: 20,
       },
     },
-  };
+  });
+  const contextData = { context, setContext };
+  const ForemanContext = getForemanContext(contextData);
+
+  // eslint-disable-next-line react/prop-types
+  const { mocks, ...rest } = props;
 
   return (
-    <ForemanContext.Provider value={ctx}>
+    <ForemanContext.Provider value={contextData}>
       <MockedProvider mocks={mocks}>
         <Component {...rest} />
       </MockedProvider>
