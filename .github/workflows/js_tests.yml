@@ -1,35 +1,19 @@
 name: JavaScript Testing
+
 on:
   pull_request:
-    paths:
-      - 'webpack/**'
-      - 'package.json'
-      - '.github/workflows/js_tests.yml'
+  push:
+    branches:
+      - 'master'
+      - '*-stable'
+
+concurrency:
+  group: ${{ github.ref_name }}-${{ github.workflow }}
+  cancel-in-progress: true
 
 jobs:
-  test_js:
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        node-version: [12, 14]
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/checkout@v2
-        with:
-          repository: theforeman/foreman
-          ref: develop
-          path: foreman
-      - name: Setup Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Npm install
-        run: npm install
-      - name: Npm install for core
-        run: npm install
-        working-directory: ./foreman
-      - name: Run plugin linter
-        run: npm run lint
-      - name: Run plugin tests
-        run: npm run test
+  test:
+    name: JavaScript
+    uses: theforeman/actions/.github/workflows/foreman_plugin_js.yml@v0
+    with:
+      plugin: foreman_ansible
