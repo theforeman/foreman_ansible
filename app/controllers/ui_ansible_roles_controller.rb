@@ -8,7 +8,7 @@ class UiAnsibleRolesController < ::Api::V2::BaseController
   end
 
   # restore original method from find_common to ignore resource nesting
-  def resource_scope(options = {})
-    @resource_scope ||= scope_for(resource_class, options)
+  def resource_scope(**kwargs)
+    @resource_scope ||= scope_for(resource_class, **kwargs)
   end
 end
