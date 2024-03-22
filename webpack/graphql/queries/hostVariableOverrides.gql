@@ -13,6 +13,7 @@ query($id: String!, $match: String, $first: Int, $last: Int) {
           canEdit
         }
         defaultValue
+        hiddenValue
         parameterType
         ansibleRoleName
         validatorType

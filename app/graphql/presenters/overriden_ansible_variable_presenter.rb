@@ -3,7 +3,7 @@ module Presenters
     attr_reader :ansible_variable
 
     delegate :id, :key, :description, :override?,
-             :parameter_type, :hidden_value?, :omit, :required,
+             :parameter_type, :hidden_value, :omit, :required,
              :validator_type, :validator_rule, :default_value,
              :ansible_role, :current_value, :to => :ansible_variable
 

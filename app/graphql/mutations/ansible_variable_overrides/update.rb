@@ -11,6 +11,7 @@ module Mutations
       argument :omit, Boolean, required: false
       argument :host_id, Int, required: true
       argument :ansible_variable_id, Int, required: true
+      argument :hidden_value, Boolean, required: true
 
       field :overriden_ansible_variable, ::Types::OverridenAnsibleVariable, :null => true
 
