@@ -4,6 +4,7 @@ import ReportJsonViewer from './components/ReportJsonViewer';
 import AnsibleRolesSwitcher from './components/AnsibleRolesSwitcher';
 import WrappedImportRolesAndVariables from './components/AnsibleRolesAndVariables';
 import reducer from './reducer';
+import { AnsibleRolesTable } from './components/AnsibleRoles/AnsibleRolesTable';
 
 componentRegistry.register({
   name: 'ReportJsonViewer',
@@ -17,6 +18,11 @@ componentRegistry.register({
 componentRegistry.register({
   name: 'WrappedImportRolesAndVariables',
   type: WrappedImportRolesAndVariables,
+});
+
+componentRegistry.register({
+  name: 'AnsibleRolesTable',
+  type: AnsibleRolesTable,
 });
 
 injectReducer('foremanAnsible', reducer);
