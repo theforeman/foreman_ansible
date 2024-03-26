@@ -911,24 +911,6 @@
       "Configure Recurring Job": [
         ""
       ],
-      "Action with sub plans": [
-        "Aktion mit Unterplänen"
-      ],
-      "Check for long running tasks": [
-        ""
-      ],
-      "Deliver notifications about long running tasks": [
-        ""
-      ],
-      "Import Puppet classes": [
-        "Puppet-Klassen importieren"
-      ],
-      "Import facts": [
-        "Fakten importieren"
-      ],
-      "Remote action:": [
-        "Entfernte Aktion"
-      ],
       "Ansible support in Foreman": [
         "Ansible Unterstützung in Foreman"
       ]

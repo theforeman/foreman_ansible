@@ -40,9 +40,6 @@ msgstr "（从主机组中）"
 msgid "A comma separated list of tags to use for Ansible run"
 msgstr "用于 Ansible 运行的以逗号分隔的标签列表"
 
-msgid "Action with sub plans"
-msgstr "有子计划的操作"
-
 msgid "Actions"
 msgstr "操作"
 
@@ -187,9 +184,6 @@ msgstr "取消 Ansible 配置任务"
 msgid "Changed Ansible roles"
 msgstr "已更改的 Ansible 角色"
 
-msgid "Check for long running tasks"
-msgstr ""
-
 msgid "Close"
 msgstr "关闭"
 
@@ -261,9 +255,6 @@ msgstr "删除 Ansible 角色"
 
 msgid "Deletes Ansible variable"
 msgstr "删除 Ansible 变量"
-
-msgid "Deliver notifications about long running tasks"
-msgstr ""
 
 msgid "Description"
 msgstr "描述"
@@ -394,14 +385,8 @@ msgstr "检查后，如果没有默认值，且没有映射程序提供数值，
 msgid "Import"
 msgstr "导入"
 
-msgid "Import Puppet classes"
-msgstr "导入 Puppet 类"
-
 msgid "Import Role"
 msgstr "导入角色"
-
-msgid "Import facts"
-msgstr "导入事实"
 
 msgid "Import from %s"
 msgstr "从 %s 导入"
@@ -622,9 +607,6 @@ msgstr "Ansible 的代理任务的批处理大小"
 
 msgid "Remediation Plan"
 msgstr "补救计划"
-
-msgid "Remote action:"
-msgstr "远程操作："
 
 msgid "Remove"
 msgstr "移除"

@@ -911,24 +911,6 @@
       "Configure Recurring Job": [
         ""
       ],
-      "Action with sub plans": [
-        "有子計畫的動作"
-      ],
-      "Check for long running tasks": [
-        ""
-      ],
-      "Deliver notifications about long running tasks": [
-        ""
-      ],
-      "Import Puppet classes": [
-        "匯入 Puppet 類別"
-      ],
-      "Import facts": [
-        "匯入詳情"
-      ],
-      "Remote action:": [
-        "遠端動作："
-      ],
       "Ansible support in Foreman": [
         ""
       ]

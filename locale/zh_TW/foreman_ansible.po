@@ -36,9 +36,6 @@ msgstr ""
 msgid "A comma separated list of tags to use for Ansible run"
 msgstr ""
 
-msgid "Action with sub plans"
-msgstr "有子計畫的動作"
-
 msgid "Actions"
 msgstr "動作"
 
@@ -183,9 +180,6 @@ msgstr ""
 msgid "Changed Ansible roles"
 msgstr ""
 
-msgid "Check for long running tasks"
-msgstr ""
-
 msgid "Close"
 msgstr "關閉"
 
@@ -256,9 +250,6 @@ msgid "Deletes Ansible role"
 msgstr ""
 
 msgid "Deletes Ansible variable"
-msgstr ""
-
-msgid "Deliver notifications about long running tasks"
 msgstr ""
 
 msgid "Description"
@@ -390,14 +381,8 @@ msgstr "若選取而沒有預設值並且比對器未提供值的話，將會造
 msgid "Import"
 msgstr "匯入"
 
-msgid "Import Puppet classes"
-msgstr "匯入 Puppet 類別"
-
 msgid "Import Role"
 msgstr ""
-
-msgid "Import facts"
-msgstr "匯入詳情"
 
 msgid "Import from %s"
 msgstr "由 %s 匯入"
@@ -616,9 +601,6 @@ msgstr ""
 
 msgid "Remediation Plan"
 msgstr ""
-
-msgid "Remote action:"
-msgstr "遠端動作："
 
 msgid "Remove"
 msgstr "移除"
