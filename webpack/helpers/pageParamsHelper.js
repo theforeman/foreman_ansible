@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import URI from 'urijs';
 import { useForemanSettings } from 'foremanReact/Root/Context/ForemanContext';
 
@@ -12,29 +13,29 @@ export const addSearch = (basePath, params) => {
   return `${basePath}${stringyfied}`;
 };
 
-export const useCurrentPagination = (
-  history,
-  keys = { page: 'page', perPage: 'per_page' }
-) => {
+export const useCurrentPagination = history => {
   const pageParams = parsePageParams(history);
   const uiSettings = useForemanSettings();
 
   return {
-    [keys.page]: parseInt(pageParams[keys.page], 10) || 1,
-    [keys.perPage]:
-      parseInt(pageParams[keys.perPage], 10) || uiSettings.perPage,
+    page: parseInt(pageParams.page, 10) || 1,
+    per_page: parseInt(pageParams.per_page, 10) || uiSettings.perPage,
   };
 };
 
-export const pageToVars = (
-  pagination,
-  keys = { page: 'page', perPage: 'per_page' }
-) => ({
-  first: pagination[keys.page] * pagination[keys.perPage],
-  last: pagination[keys.perPage],
-});
+/**
+ * Since there is no easy way to do pagination with Graphql at the moment,
+ * we are using `first` and `last` variables in the query.
+ * to make the pagination work on tables where `page * per_page > totalCount`,
+ * we needed to add the following calculation for the `last` variable
+ */
+export const pageToVars = ({ page, per_page }, totalCount = 0) => {
+  totalCount = totalCount || per_page;
+  return {
+    first: Math.min(page * per_page, totalCount),
+    last: Math.min(per_page, totalCount - (page - 1) * per_page),
+  };
+};
 
-export const useParamsToVars = (
-  history,
-  keys = { page: 'page', perPage: 'per_page' }
-) => pageToVars(useCurrentPagination(history, keys), keys);
+export const useParamsToVars = (history, totalCount) =>
+  pageToVars(useCurrentPagination(history), totalCount);

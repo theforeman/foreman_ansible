@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { translate as __ } from 'foremanReact/common/I18n';
 
@@ -16,16 +16,23 @@ import './AnsibleVariableOverrides.scss';
 const AnsibleVariableOverrides = ({ hostId, hostAttrs, history }) => {
   const hostGlobalId = encodeId('Host', hostId);
   const pagination = useCurrentPagination(history);
+  const [totalItems, setTotalItems] = useState(0);
+  const setTotalCount = data => {
+    if (!data) return;
+    const { totalCount } = data.host.ansibleVariablesWithOverrides;
+    if (totalItems === 0) setTotalItems(totalCount);
+  };
 
   const useFetchFn = () =>
     useQuery(variableOverrides, {
       variables: {
         id: hostGlobalId,
         match: `fqdn=${hostAttrs.name}`,
-        ...useParamsToVars(history),
+        ...useParamsToVars(history, totalItems),
       },
       fetchPolicy: 'network-only',
       nextFetchPolicy: 'cache-first',
+      onCompleted: setTotalCount,
     });
 
   const renameData = data => ({
