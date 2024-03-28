@@ -1,8 +1,10 @@
 name: Release
 
 on:
-  create:
-    ref_type: tag
+  push:
+    # Pattern matched against refs/tags
+    tags:
+      - '**'
 
 jobs:
   release:
