@@ -1,10 +1,9 @@
 inherit_from:
   - .rubocop_todo.yml
 
-require:
-  - rubocop-performance
-  - rubocop-rails
-  - rubocop-minitest
+inherit_gem:
+  theforeman-rubocop:
+    - default.yml
 
 AllCops:
   TargetRubyVersion: 2.7
@@ -17,7 +16,7 @@ AllCops:
 
 # Just so it looks like core Foreman
 Layout/DotPosition:
-  EnforcedStyle: 'trailing'
+  EnforcedStyle: "trailing"
 
 Layout/EmptyLineAfterGuardClause:
   Enabled: false
@@ -30,12 +29,6 @@ Metrics:
 
 Performance/RegexpMatch:
   Enabled: false
-
-Rails:
-  Enabled: true
-
-Rails/ActionFilter:
-  EnforcedStyle: action
 
 Rails/SkipsModelValidations:
   Enabled: false
@@ -51,6 +44,3 @@ Style/RaiseArgs:
 
 Style/SymbolArray:
   EnforcedStyle: brackets
-
-Style/Documentation:
-  Enabled: false
