@@ -77,8 +77,7 @@ Foreman::Plugin.register :foreman_ansible do
               full_name: N_('Ansible roles to ignore')
       setting 'foreman_ansible_proxy_batch_size',
               type: :integer,
-              description: N_('Number of tasks which should be sent to the smart proxy in one request, '\
-                              'if foreman_tasks_proxy_batch_trigger is enabled. '\
+              description: N_('Number of tasks which should be sent to the smart proxy in one request. '\
                               'If set, overrides foreman_tasks_proxy_batch_size setting for Ansible jobs.'),
               default: nil,
               full_name: N_('Proxy tasks batch size for Ansible')
