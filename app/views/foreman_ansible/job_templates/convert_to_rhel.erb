@@ -1,6 +1,10 @@
 <%#
-name: Convert to RHEL
+name: Convert2RHEL conversion
 snippet: false
+model: JobTemplate
+job_category: Convert2RHEL
+provider_type: Ansible
+kind: job_template
 template_inputs:
 - name: Activation Key
   required: true
@@ -11,6 +15,7 @@ template_inputs:
   value_type: resource
   resource_type: Katello::ActivationKey
   hidden_value: false
+
 - name: Restart
   required: true
   input_type: user
@@ -19,8 +24,8 @@ template_inputs:
   options: "yes\r\nno"
   advanced: false
   value_type: plain
-  resource_type: Katello::ActivationKey
   hidden_value: false
+
 - name: Data telemetry
   required: true
   input_type: user
@@ -33,13 +38,8 @@ template_inputs:
   options: "yes\r\nno"
   advanced: false
   value_type: plain
-  resource_type: Katello::ActivationKey
   default: 'yes'
   hidden_value: false
-model: JobTemplate
-job_category: Convert 2 RHEL
-provider_type: Ansible
-kind: job_template
 %>
 ---
 - hosts: all
@@ -48,21 +48,20 @@ kind: job_template
     CONVERT2RHEL_DISABLE_TELEMETRY: 1
 <%- end -%>
   tasks:
-    - name: Install convert2rhel
+    - name: Install the convert2rhel
       ansible.builtin.package:
         name: convert2rhel
         state: present
-    - name: Prepopulate katello-ca-consumer
-      get_url:
-        url: <%= subscription_manager_configuration_url(@host) %>
-        dest: /usr/share/convert2rhel/subscription-manager/katello-ca-consumer-latest.noarch.rpm
+
     - name: Start convert2rhel
-      command: convert2rhel -y --activationkey "<%= input_resource('Activation Key').name %>" --org "<%= @host.organization.label %>" --keep-rhsm
+      command: convert2rhel -y --activationkey "<%= input_resource('Activation Key').name %>" --org "<%= @host.organization.label %>"
+
 <%- if input('Restart') == "yes" -%>
     - name: Reboot the machine
       reboot:
         reboot_timeout: 1800
 <%- end -%>
+
 <%- # This will update system facts in Satellite and link the correct OS of the host %->
     - name: Update system facts
       command: subscription-manager facts --update
