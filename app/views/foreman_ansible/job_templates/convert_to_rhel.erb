@@ -48,7 +48,7 @@ template_inputs:
     CONVERT2RHEL_DISABLE_TELEMETRY: 1
 <%- end -%>
   tasks:
-    - name: Install the convert2rhel
+    - name: Install the convert2rhel tool/utility
       ansible.builtin.package:
         name: convert2rhel
         state: present
