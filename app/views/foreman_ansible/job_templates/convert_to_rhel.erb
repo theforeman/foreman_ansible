@@ -20,21 +20,6 @@ template_inputs:
   advanced: false
   value_type: plain
   hidden_value: false
-- name: Data telemetry
-  required: true
-  input_type: user
-  description: "The convert2rhel utility uploads the following data about the system
-    conversion to Red Hat servers for the purpose of the utility usage analysis:<br>\r\n-
-    The convert2rhel command as executed<br>\r\n- The convert2rhel RPM version and
-    GPG signature<br>\r\n- Success or failure status of the conversion<br>\r\n- Conversion
-    start and end timestamps<br>\r\n- Source OS vendor and version<br>\r\n- Target
-    RHEL version<br>\r\n- convert2rhel related environment variables<br>"
-  options: "yes\r\nno"
-  advanced: false
-  value_type: plain
-  resource_type: Katello::ActivationKey
-  default: 'yes'
-  hidden_value: false
 model: JobTemplate
 job_category: Convert 2 RHEL
 provider_type: Ansible
@@ -42,10 +27,6 @@ kind: job_template
 %>
 ---
 - hosts: all
-<%- if input('Data telemetry') != "yes" -%>
-  environment:
-    CONVERT2RHEL_DISABLE_TELEMETRY: 1
-<%- end -%>
   tasks:
     - name: Install convert2rhel
       ansible.builtin.package:
