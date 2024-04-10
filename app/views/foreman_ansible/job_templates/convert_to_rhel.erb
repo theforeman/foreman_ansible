@@ -28,6 +28,8 @@ kind: job_template
 %>
 ---
 - hosts: all
+  environment:
+    CONVERT2RHEL_THROUGH_FOREMAN: 1
   tasks:
     - name: Install convert2rhel
       ansible.builtin.package:
