@@ -23,14 +23,6 @@ module ForemanAnsible
         :host_action_button => true
       )
       RemoteExecutionFeature.register(
-        :ansible_run_insights_plan,
-        N_('Ansible: Run Insights maintenance plan'),
-        :description => N_('Runs a given maintenance plan from Red Hat '\
-                           'Access Insights given an ID.'),
-        :provided_inputs => %w[organization_id plan_id],
-        :notification_builder => ForemanAnsible::InsightsNotificationBuilder
-      )
-      RemoteExecutionFeature.register(
         :ansible_run_playbook,
         N_('Run playbook'),
         :description => N_('Run an Ansible playbook against given hosts'),

@@ -178,8 +178,6 @@ Foreman::Plugin.register :foreman_ansible do
        'Permissions required for the user which is used by Ansible Tower Dynamic Inventory Item'
 
   add_all_permissions_to_default_roles
-  extend_template_helpers ForemanAnsible::RendererMethods
-  allowed_template_helpers :insights_remediation
 
   base_role_assignment_params = { :ansible_role_ids => [],
                                   :ansible_roles => [] }
