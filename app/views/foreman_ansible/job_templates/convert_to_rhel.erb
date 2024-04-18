@@ -19,7 +19,6 @@ template_inputs:
   options: "yes\r\nno"
   advanced: false
   value_type: plain
-  resource_type: Katello::ActivationKey
   hidden_value: false
 model: JobTemplate
 job_category: Convert 2 RHEL
@@ -33,12 +32,27 @@ kind: job_template
       ansible.builtin.package:
         name: convert2rhel
         state: present
+
+    - name: Gather package facts
+      package_facts:
+        manager: auto
+
+    - name: Set fact for package version
+      set_fact:
+        convert2rhel_version: "{{ ansible_facts.packages['convert2rhel'][0].version }}"
+      when: "'convert2rhel' in ansible_facts.packages"
+      no_log: true
+
     - name: Prepopulate katello-ca-consumer
       get_url:
         url: <%= subscription_manager_configuration_url(@host) %>
         dest: /usr/share/convert2rhel/subscription-manager/katello-ca-consumer-latest.noarch.rpm
+      when:
+        - "convert2rhel_version is version('2.0.0', '<')"
+
     - name: Start convert2rhel
-      command: convert2rhel -y --activationkey "<%= input_resource('Activation Key').name %>" --org "<%= @host.organization.label %>" --keep-rhsm
+      command: convert2rhel -y --activationkey "<%= input_resource('Activation Key').name %>" --org "<%= @host.organization.label %>"
+
 <%- if input('Restart') == "yes" -%>
     - name: Reboot the machine
       reboot:
