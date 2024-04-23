@@ -34,9 +34,6 @@ msgstr "(ჰოსტების ჯგუფიდან)"
 msgid "A comma separated list of tags to use for Ansible run"
 msgstr "Ansible-ის გასაშვებად გამოყენებული მძიმით გამოყოფილი ჭდეების სია"
 
-msgid "Action with sub plans"
-msgstr "ქმედება ქვე-გეგმებით"
-
 msgid "Actions"
 msgstr "ქმედებები"
 
@@ -181,9 +178,6 @@ msgstr "Ansible-ის კონფიგურაცის დავალე�
 msgid "Changed Ansible roles"
 msgstr "Ansible-ის როლები შეცვლილია"
 
-msgid "Check for long running tasks"
-msgstr ""
-
 msgid "Close"
 msgstr "დახურვა"
 
@@ -255,9 +249,6 @@ msgstr "Ansible-ის როლის წაშლა"
 
 msgid "Deletes Ansible variable"
 msgstr "Ansible-ის ცვლადის წაშლა"
-
-msgid "Deliver notifications about long running tasks"
-msgstr ""
 
 msgid "Description"
 msgstr "აღწერა"
@@ -388,14 +379,8 @@ msgstr "თუ მონიშნულია, წარმოიქმნებ
 msgid "Import"
 msgstr "იმპორტი"
 
-msgid "Import Puppet classes"
-msgstr "Puppet-ის კლასების შემოტანა"
-
 msgid "Import Role"
 msgstr "როლის შემოტანა"
-
-msgid "Import facts"
-msgstr "ფაქტების შემოტანა"
 
 msgid "Import from %s"
 msgstr "%s-დან შემოტანა"
@@ -614,9 +599,6 @@ msgstr "პროქსის ამოცანების ნაკრებ�
 
 msgid "Remediation Plan"
 msgstr "აღდგენის გეგმა"
-
-msgid "Remote action:"
-msgstr "დაშორებული ქმედება:"
 
 msgid "Remove"
 msgstr "წაშლა"
