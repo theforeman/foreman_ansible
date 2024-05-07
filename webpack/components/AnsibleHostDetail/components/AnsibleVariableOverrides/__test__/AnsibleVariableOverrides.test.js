@@ -70,4 +70,20 @@ describe('AnsibleVariableOverrides', () => {
     const actions = screen.queryAllByRole('button', { name: 'Actions' });
     expect(actions).toHaveLength(0);
   });
+  it('should hide hidden values', async () => {
+    const { container } = render(
+      <TestComponent
+        hostId={hostId}
+        mocks={mocks}
+        hostAttrs={hostAttrs}
+        history={historyMock}
+      />
+    );
+    await waitFor(tick);
+    expect(screen.getByText('ellipse')).toBeInTheDocument();
+    expect(screen.getByText('sun')).toBeInTheDocument();
+    expect(screen.getByText('moon')).toBeInTheDocument();
+    // number of hidden variables + 1 for pagination input
+    expect(container.getElementsByTagName('input')).toHaveLength(3 + 1);
+  });
 });
