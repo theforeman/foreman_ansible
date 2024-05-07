@@ -19,28 +19,32 @@ module ForemanAnsible
     # more advanced cases). Therefore we have only the 'all' group
     # with all hosts.
     def to_hash
+      to_hash_with_secrets_redacted(false)
+    end
+
+    def to_hash_with_secrets_redacted(redact_secrets = true)
       hosts = @hosts.map(&:name)
 
       { 'all' => { 'hosts' => hosts,
                    'vars' => template_inputs(@template_invocation) },
-        '_meta' => { 'hostvars' => hosts_vars } }
+        '_meta' => { 'hostvars' => hosts_vars(redact_secrets) } }
     end
 
-    def hosts_vars
+    def hosts_vars(redact_secrets = false)
       hosts.reduce({}) do |hash, host|
         hash.update(
-          host.name => host_vars(host)
+          host.name => host_vars(host, redact_secrets)
         )
       end
     end
 
-    def host_vars(host)
+    def host_vars(host, redact_secrets = false)
       {
         'foreman' => reduced_host_info(host).fetch('parameters', {}),
         'foreman_ansible_roles' => host_roles(host)
       }.merge(connection_params(host)).
         merge(host_params(host)).
-        merge(ansible_params(host))
+        merge(ansible_params(host, redact_secrets))
     end
 
     def connection_params(host)
@@ -62,8 +66,8 @@ module ForemanAnsible
       host.all_ansible_roles.map(&:name)
     end
 
-    def ansible_params(host)
-      ForemanAnsible::AnsibleInfo.new(host).ansible_params
+    def ansible_params(host, redact_secrets = false)
+      ForemanAnsible::AnsibleInfo.new(host).ansible_params(redact_secrets)
     end
 
     def reduced_host_info(host)

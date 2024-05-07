@@ -9,7 +9,10 @@ import AnsibleHostInventory from './AnsibleHostInventory';
 import ErrorState from '../../../ErrorState';
 
 const WrappedAnsibleHostInventory = ({ hostId }) => {
-  const params = useMemo(() => ({ params: { host_ids: [hostId] } }), [hostId]);
+  const params = useMemo(
+    () => ({ params: { host_ids: [hostId], redact_secrets: true } }),
+    [hostId]
+  );
 
   const url = hostId && foremanUrl('/ansible/api/ansible_inventories/hosts');
   const { response: inventory, status } = useAPI('get', url, params);

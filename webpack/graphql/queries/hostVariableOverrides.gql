@@ -18,6 +18,7 @@ query($id: String!, $match: String, $first: Int, $last: Int) {
         validatorType
         validatorRule
         required
+        hiddenValue
         lookupValues(match: $match) {
           nodes {
             id

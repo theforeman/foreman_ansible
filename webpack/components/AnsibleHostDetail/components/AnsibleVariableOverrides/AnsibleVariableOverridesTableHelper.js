@@ -1,4 +1,5 @@
 import React from 'react';
+import { TextInput } from '@patternfly/react-core';
 import { TimesIcon, CheckIcon } from '@patternfly/react-icons';
 import { sprintf, translate as __ } from 'foremanReact/common/I18n';
 
@@ -21,6 +22,21 @@ export const formatValue = variable => {
   const value = variable.currentValue
     ? variable.currentValue.value
     : variable.defaultValue;
+
+  if (variable.hiddenValue) {
+    return (
+      <TextInput
+        value="Not the secrets you're looking for..."
+        type="password"
+        aria-label="hidden ansible variable"
+        isDisabled
+        style={{
+          '--pf-c-form-control--BackgroundColor': 'white',
+          color: 'black',
+        }}
+      />
+    );
+  }
 
   switch (variable.parameterType) {
     case 'boolean':

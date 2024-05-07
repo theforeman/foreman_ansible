@@ -36,6 +36,7 @@ const withFqdnOverride = canEdit => ({
   validatorType: '',
   validatorRule: null,
   required: false,
+  hiddenValue: false,
   lookupValues: {
     nodes: [
       {
@@ -70,6 +71,7 @@ const withDomainOverride = canEdit => ({
   validatorType: '',
   validatorRule: null,
   required: false,
+  hiddenValue: false,
   lookupValues: {
     nodes: [],
   },
@@ -142,6 +144,7 @@ export const mocks = [
                 validatorType: 'list',
                 validatorRule: 'a,b,c',
                 required: true,
+                hiddenValue: false,
                 lookupValues: {
                   nodes: [
                     {
@@ -170,6 +173,7 @@ export const mocks = [
                 validatorType: '',
                 validatorRule: null,
                 required: false,
+                hiddenValue: false,
                 lookupValues: {
                   nodes: [],
                 },
@@ -190,6 +194,7 @@ export const mocks = [
                 validatorType: '',
                 validatorRule: null,
                 required: false,
+                hiddenValue: false,
                 lookupValues: {
                   nodes: [],
                 },
@@ -215,6 +220,7 @@ export const mocks = [
                 validatorType: '',
                 validatorRule: null,
                 required: false,
+                hiddenValue: true,
                 lookupValues: {
                   nodes: [],
                 },
@@ -240,6 +246,7 @@ export const mocks = [
                 validatorType: '',
                 validatorRule: null,
                 required: false,
+                hiddenValue: false,
                 lookupValues: {
                   nodes: [],
                 },
@@ -260,6 +267,7 @@ export const mocks = [
                 validatorType: '',
                 validatorRule: null,
                 required: false,
+                hiddenValue: true,
                 lookupValues: {
                   nodes: [],
                 },
@@ -282,6 +290,7 @@ export const mocks = [
                 validatorType: '',
                 validatorRule: null,
                 required: false,
+                hiddenValue: true,
                 lookupValues: {
                   nodes: [],
                 },
