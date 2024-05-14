@@ -1,6 +1,6 @@
 require 'test_plugin_helper'
 
-class UiAnsibleRolesControllerTest < ActionController::TestCase
+class UIAnsibleRolesControllerTest < ActionController::TestCase
   setup do
     @role = FactoryBot.create(:ansible_role)
   end

@@ -11,16 +11,10 @@ module ForemanAnsible
   class Engine < ::Rails::Engine
     engine_name 'foreman_ansible'
 
-    config.autoload_paths += Dir["#{config.root}/app/controllers/concerns"]
-    config.autoload_paths += Dir["#{config.root}/app/models"]
-    config.autoload_paths += Dir["#{config.root}/app/helpers"]
-    config.autoload_paths += Dir["#{config.root}/app/overrides"]
-    config.autoload_paths += Dir["#{config.root}/app/services"]
-    config.autoload_paths += Dir["#{config.root}/app/views"]
-    config.autoload_paths += Dir["#{config.root}/app/lib"]
-
-    initializer 'foreman_ansible.register_plugin', :before => :finisher_hook do
-      require 'foreman_ansible/register'
+    initializer 'foreman_ansible.register_plugin', :before => :finisher_hook do |app|
+      app.reloader.to_prepare do
+        require 'foreman_ansible/register'
+      end
     end
 
     initializer('foreman_ansible.require_dynflow',
