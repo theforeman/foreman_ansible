@@ -98,7 +98,7 @@ module Api
       # rubocop:enable Layout/DotPosition
 
       def create_importer
-        @roles_importer = ForemanAnsible::UiRolesImporter.new(@proxy)
+        @roles_importer = ForemanAnsible::UIRolesImporter.new(@proxy)
         @variables_importer = ForemanAnsible::VariablesImporter.new(@proxy)
         @importer = ForemanAnsible::ApiRolesImporter.new(@proxy)
       end

@@ -2,7 +2,7 @@ class SyncRolesAndVariables < ::ApplicationJob
   queue_as :default
 
   def perform(changed, proxy)
-    roles_importer = ForemanAnsible::UiRolesImporter.new(proxy)
+    roles_importer = ForemanAnsible::UIRolesImporter.new(proxy)
     variables_importer = ForemanAnsible::VariablesImporter.new(proxy)
     roles_importer.finish_import(changed)
     variables_importer.import_variables_roles(changed) if changed['new'] || changed['old']

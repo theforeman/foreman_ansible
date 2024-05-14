@@ -1,4 +1,4 @@
-class UiAnsibleRolesController < ::Api::V2::BaseController
+class UIAnsibleRolesController < ::Api::V2::BaseController
   def resource_name(resource = 'AnsibleRole')
     super resource
   end

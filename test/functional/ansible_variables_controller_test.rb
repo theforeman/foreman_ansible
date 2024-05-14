@@ -25,7 +25,7 @@ class AnsibleVariablesControllerTest < ActionController::TestCase
   test 'there are no problems when the import hash is empty' do
     ForemanAnsible::VariablesImporter.any_instance.
       expects(:import_variable_names).returns({})
-    ForemanAnsible::UiRolesImporter.any_instance.
+    ForemanAnsible::UIRolesImporter.any_instance.
       expects(:import_role_names).returns({})
 
     get :import,
