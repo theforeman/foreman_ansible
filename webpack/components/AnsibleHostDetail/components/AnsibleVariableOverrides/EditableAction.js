@@ -73,6 +73,7 @@ const EditableAction = ({
       variables: {
         id: lookupValue.id,
         value: state.value,
+        hiddenValue: state.hiddenValue,
         hostId,
         ansibleVariableId: decodeModelId(variable),
         match,

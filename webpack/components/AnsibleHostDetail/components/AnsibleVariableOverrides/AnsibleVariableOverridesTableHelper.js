@@ -12,6 +12,7 @@ function formatSourceLink(currentValue) {
   return `${__(element)}: ${currentValue.elementName}`;
 }
 
+//here we can add the condition for hidden value to "*****"
 export const formatSourceAttr = variable =>
   variable.currentValue
     ? formatSourceLink(variable.currentValue)
@@ -21,7 +22,9 @@ export const formatValue = variable => {
   const value = variable.currentValue
     ? variable.currentValue.value
     : variable.defaultValue;
-
+  if (variable.hiddenValue) {
+    return '••••••••';
+  }
   switch (variable.parameterType) {
     case 'boolean':
       return value ? <CheckIcon /> : <TimesIcon />;

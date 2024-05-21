@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { translate as __ } from 'foremanReact/common/I18n';
-
-import { formatValue } from './AnsibleVariableOverridesTableHelper';
-
 import {
   TextAreaField,
   TextInputField,
@@ -11,10 +8,6 @@ import {
 } from './EditableValueHelper';
 
 const EditableValue = props => {
-  if (!props.editing) {
-    return formatValue(props.variable);
-  }
-
   const type = props.variable.parameterType;
 
   if (['json', 'yaml', 'array', 'hash'].includes(type)) {
@@ -61,7 +54,6 @@ const EditableValue = props => {
 };
 
 EditableValue.propTypes = {
-  editing: PropTypes.bool.isRequired,
   variable: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.any,
