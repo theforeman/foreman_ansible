@@ -2,6 +2,8 @@
 
 # Represents the variables used in Ansible to parameterize playbooks
 class AnsibleVariable < LookupKey
+  include Foreman::ObservableModel
+
   belongs_to :ansible_role, :inverse_of => :ansible_variables
   validates :ansible_role_id, :presence => true
   before_validation :cast_default_value, :if => :override?
@@ -10,6 +12,8 @@ class AnsibleVariable < LookupKey
   scoped_search :on => :imported, :complete_value => { :true => true, :false => false }
   scoped_search :relation => :ansible_role, :on => :name,
                 :complete_value => true, :rename => :ansible_role
+
+  set_crud_hooks :ansible_variable
 
   def ansible?
     true
