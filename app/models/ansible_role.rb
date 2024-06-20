@@ -4,6 +4,7 @@
 class AnsibleRole < ApplicationRecord
   audited
   include Authorizable
+  include Foreman::ObservableModel
 
   self.include_root_in_json = false
   validates :name, :presence => true, :uniqueness => true
@@ -27,6 +28,8 @@ class AnsibleRole < ApplicationRecord
                 :on => :id, :rename => :hostgroup_id, :only_explicit => true
   scoped_search :relation => :hostgroups,
                 :on => :name, :rename => :hostgroup, :only_explicit => true
+
+  set_crud_hooks :ansible_role
 
   apipie :class, "A class representing #{model_name.human} object" do
     name 'Ansible role'
