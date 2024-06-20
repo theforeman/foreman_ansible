@@ -1,3 +1,6 @@
+<%= webpacked_plugins_js_for :foreman_ansible %>
+<%= webpacked_plugins_css_for :foreman_ansible %>
+
 <% content_for(:title, _("Ansible Roles")) %>
 <div class="blank-slate-pf">
   <div class="blank-slate-pf-icon">
@@ -10,5 +13,8 @@
   <p><%= link_to(_('Learn more about this in the documentation.'), documentation_url('#4.1ImportingRoles', :root_url => ansible_doc_url), target: '_blank') %></p>
   <div class="blank-slate-pf-secondary-action">
     <%= ansible_proxy_import(hash_for_import_ansible_roles_path) %>
+    <%= vcs_import %>
   </div>
 </div>
+
+<%= react_component('VcsCloneModalContent', {:title => "Get Ansible-Roles from VCS"})%>

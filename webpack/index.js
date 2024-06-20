@@ -4,6 +4,7 @@ import ReportJsonViewer from './components/ReportJsonViewer';
 import AnsibleRolesSwitcher from './components/AnsibleRolesSwitcher';
 import WrappedImportRolesAndVariables from './components/AnsibleRolesAndVariables';
 import reducer from './reducer';
+import { VcsCloneModalContent } from './components/VcsCloneModalContent/VcsCloneModalContent';
 
 componentRegistry.register({
   name: 'ReportJsonViewer',
@@ -17,6 +18,11 @@ componentRegistry.register({
 componentRegistry.register({
   name: 'WrappedImportRolesAndVariables',
   type: WrappedImportRolesAndVariables,
+});
+
+componentRegistry.register({
+  name: 'VcsCloneModalContent',
+  type: VcsCloneModalContent,
 });
 
 injectReducer('foremanAnsible', reducer);
