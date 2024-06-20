@@ -1,0 +1,24 @@
+<%#
+name: Download and execute a script
+job_category: Ansible Commands
+description_format: Download script from %{url} and execute it
+snippet: false
+template_inputs:
+- name: url
+  required: true
+  input_type: user
+  description: "URL of the script to download e.g: http://example.com/unattended/anonymous/my_script"
+  advanced: false
+provider_type: Ansible
+kind: job_template
+model: JobTemplate
+%>
+
+---
+- hosts: all
+  tasks:
+    - shell:
+        cmd: |
+<%=       indent(10) { "set -o pipefail && curl -sS #{input("url")} | bash" } %>
+      register: out
+    - debug: var=out
