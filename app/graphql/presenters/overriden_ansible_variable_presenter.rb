@@ -13,7 +13,11 @@ module Presenters
     end
 
     def current_value
-      @override_resolver.resolve @ansible_variable
+      resolved = @override_resolver.resolve @ansible_variable
+      unless resolved.nil?
+        resolved[:value] = '*****' unless ansible_variable.editable_by_user?
+      end
+      resolved
     end
   end
 end
