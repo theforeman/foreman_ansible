@@ -92,7 +92,7 @@ class AnsibleVariablesController < ::LookupKeysController
 
   def create_importer
     @importer = ForemanAnsible::VariablesImporter.new(@proxy)
-    @importer_roles = ForemanAnsible::UiRolesImporter.new(@proxy)
+    @importer_roles = ForemanAnsible::UIRolesImporter.new(@proxy)
   end
 
   def find_required_proxy
