@@ -77,16 +77,20 @@ module ForemanAnsible
 
     def initialize_variables(variables, role)
       variables.map do |variable_name, variable_default|
-        variable = AnsibleVariable.find_or_initialize_by(
-          :key => variable_name,
-          :ansible_role_id => role.id
-        )
-        variable.assign_attributes(:hidden_value => false,
-                                   :default_value => variable_default,
-                                   :key_type => infer_key_type(variable_default))
-        variable.imported = true if variable.new_record?
-        variable.valid? ? variable : nil
+        create_base_variable(variable_name, role, variable_default)
       end
+    end
+
+    def create_base_variable(variable_name, role, variable_default, variable_type = nil)
+      variable = AnsibleVariable.find_or_initialize_by(
+        :key => variable_name,
+        :ansible_role_id => role.id
+      )
+      variable.assign_attributes(:hidden_value => false,
+                                 :default_value => variable_default,
+                                 :key_type => variable_type || infer_key_type(variable_default))
+      variable.imported = true if variable.new_record?
+      variable.valid? ? variable : nil
     end
 
     def detect_changes(imported)
@@ -140,6 +144,10 @@ module ForemanAnsible
       end
     end
 
+    def infer_key_type(value)
+      VARIABLE_TYPES[value.class.to_s] || 'string'
+    end
+
     private
 
     def local_variables
@@ -150,9 +158,6 @@ module ForemanAnsible
       proxy_api.all_variables
     end
 
-    def infer_key_type(value)
-      VARIABLE_TYPES[value.class.to_s] || 'string'
-    end
 
     def iterate_over_variables(variables)
       variables.reduce([]) do |memo, (role, vars)|

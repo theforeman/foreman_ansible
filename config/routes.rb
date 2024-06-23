@@ -97,6 +97,11 @@ Rails.application.routes.draw do
           collection do
             put :import
             put :obsolete
+            scope '/import' do
+              put 'from_yaml', to: 'ansible_variables#from_yaml'
+              put 'from_json', to: 'ansible_variables#from_json'
+              post 'yaml_to_json', to: 'ansible_variables#yaml_to_json'
+            end
           end
         end
 
