@@ -103,7 +103,8 @@ Foreman::Plugin.register :foreman_ansible do
                :resource_type => 'AnsibleRole'
     permission :destroy_ansible_roles,
                { :ansible_roles => [:destroy],
-                 :'api/v2/ansible_roles' => [:destroy, :obsolete] },
+                 :'api/v2/ansible_roles' => [:destroy, :obsolete],
+                 :ui_ansible_roles => [:destroy] },
                :resource_type => 'AnsibleRole'
     permission :import_ansible_roles,
                { :ansible_roles => [:import, :confirm_import],
