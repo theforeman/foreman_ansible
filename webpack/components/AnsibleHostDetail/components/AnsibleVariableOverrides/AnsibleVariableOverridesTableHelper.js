@@ -1,4 +1,5 @@
 import React from 'react';
+import { isEqual } from 'lodash';
 import { TimesIcon, CheckIcon } from '@patternfly/react-icons';
 import { sprintf, translate as __ } from 'foremanReact/common/I18n';
 
@@ -48,7 +49,7 @@ export const onCompleted = onSubmitSuccess => response => {
       message: formatError(joinErrors(errors)),
     });
   } else {
-    onSubmitSuccess(overridenAnsibleVariable.currentValue.value);
+    onSubmitSuccess(overridenAnsibleVariable.defaultValue);
     showToast({
       type: 'success',
       message: __('Ansible variable override was successfully deleted.'),
@@ -59,7 +60,7 @@ export const onCompleted = onSubmitSuccess => response => {
 export const findOverride = (variable, hostname) =>
   variable.lookupValues.nodes.find(
     item =>
-      item.value === variable.currentValue.value &&
+      isEqual(item.value, variable.currentValue.value) &&
       item.match === `fqdn=${hostname}`
   );
 

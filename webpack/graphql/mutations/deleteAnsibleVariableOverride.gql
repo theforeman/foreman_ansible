@@ -3,6 +3,7 @@ mutation DeleteAnsibleVariableOverride($id: ID!, $hostId: Int!, $variableId: Int
     id
     overridenAnsibleVariable {
       id
+      defaultValue
       currentValue {
         value
         element

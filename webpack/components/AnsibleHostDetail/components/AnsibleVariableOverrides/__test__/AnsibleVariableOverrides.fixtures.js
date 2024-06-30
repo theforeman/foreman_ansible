@@ -309,6 +309,7 @@ export const deleteMocks = [
           overridenAnsibleVariable: {
             __typename: 'OverridenAnsibleVariable',
             id: ansibleVariableId,
+            defaultValue: 101,
             currentValue: {
               __typename: 'AnsibleVariableOverride',
               element: 'os',
