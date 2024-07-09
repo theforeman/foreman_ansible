@@ -24,7 +24,13 @@ module Api
       param_group :search_and_pagination, ::Api::V2::BaseController
       add_scoped_search_description_for(AnsibleVariable)
       def index
-        @ansible_variables = resource_scope_for_index
+        vars = resource_scope_for_index
+        unless User.current.can?(:edit_ansible_variables)
+          vars.each do |v|
+            v.value = v.hidden_value? ? v.hidden_value : v.value
+          end
+        end
+        @ansible_variables = vars
       end
 
       api :DELETE, '/ansible_variables/:id', N_('Deletes Ansible variable')

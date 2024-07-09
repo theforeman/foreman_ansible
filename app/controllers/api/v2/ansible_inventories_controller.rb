@@ -99,7 +99,7 @@ module Api
 
       def show_inventory(ids_key, condition_key)
         ids = params.fetch(ids_key, []).uniq
-        if Foreman::Cast.to_bool(params[:redact_secrets])
+        if Foreman::Cast.to_bool(params[:redact_secrets]) || !User.current.can?(:edit_ansible_variables)
           render :json => ForemanAnsible::InventoryCreator.new(Host.where(condition_key => ids)).to_hash_with_secrets_redacted.to_json
         else
           render :json => ForemanAnsible::InventoryCreator.new(Host.where(condition_key => ids)).to_hash.to_json
