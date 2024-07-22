@@ -2,8 +2,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
         var provider_type = $('#job_template_provider_type');
-        provider_type.change(setAnsibleTabVisibilityByProvider);
-        provider_type.change();
+        provider_type.trigger("change", setAnsibleTabVisibilityByProvider);
+        provider_type.trigger("change");
 
         function setAnsibleTabVisibilityByProvider() {
             var tab_header = $("#ansible_tab_header");
