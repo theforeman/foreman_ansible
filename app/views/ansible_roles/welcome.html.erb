@@ -7,7 +7,7 @@
   <p><%= _('No Ansible Roles were found in Foreman. If you want to assign roles to your hosts,
              you have to import them first.').html_safe %>
   </p>
-  <p><%= link_to(_('Learn more about this in the documentation.'), documentation_url('#4.1ImportingRoles', :root_url => ansible_doc_url), target: '_blank') %></p>
+  <p><%= link_to(_('Learn more about this in the documentation.'), documentation_url('Managing_Configurations_Ansible', type: 'docs',  chapter: 'Importing_Ansible_Roles_and_Variables_ansible'), target: '_blank') %></p>
   <div class="blank-slate-pf-secondary-action">
     <%= ansible_proxy_import(hash_for_import_ansible_roles_path) %>
   </div>
