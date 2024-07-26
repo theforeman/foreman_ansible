@@ -2,8 +2,7 @@
 <%= stylesheet 'foreman_ansible/foreman-ansible' %>
 
 <%= title_actions display_link_if_authorized(_('New Ansible Variable'), hash_for_new_ansible_variable_path, :class => "btn btn-default no-float"),
-      documentation_button('#4.3Variables', :root_url => ansible_doc_url)
-       %>
+      documentation_button('Managing_Configurations_Ansible', type: 'docs', chapter: 'Importing_Ansible_Roles_and_Variables_ansible') %>
 
 <table class="<%= table_css_classes 'table-fixed' %>">
   <thead>
