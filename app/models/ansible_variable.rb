@@ -15,6 +15,10 @@ class AnsibleVariable < LookupKey
     true
   end
 
+  def hidden_value
+    hidden_value?
+  end
+
   def self.humanize_class_name(options = nil)
     if options.present?
       super
