@@ -24,8 +24,6 @@ feature: ansible_run_capsule_upgrade
 
 ---
 - hosts: all
-  vars:
-    target_version: "<%= input('target_version').present? ? input('target_version') : product_short_version %>"
   tasks:
 <% if plugin_present?('foreman_theme_satellite') -%>
     - name: Gather the rpm package facts
@@ -47,7 +45,7 @@ feature: ansible_run_capsule_upgrade
                                "--whitelist=#{input('whitelist_options')}"
                              end -%>
       - name: Upgrade Capsule server using satellite-maintain
-        shell: satellite-maintain upgrade run --assumeyes --target-version={{ target_version }} <%= whitelist_option %>
+        shell: satellite-maintain upgrade run --assumeyes <%= whitelist_option %>
         register: result
 
       - name: Re-Gather the rpm package facts after the upgrade
