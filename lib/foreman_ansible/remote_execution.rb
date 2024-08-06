@@ -40,6 +40,12 @@ module ForemanAnsible
         :description => N_('Upgrade Capsules on given Capsule server hosts'),
         :proxy_selector_override => ::RemoteExecutionProxySelector::INTERNAL_PROXY
       )
+      RemoteExecutionFeature.register(
+        :ansible_run_capsule_update,
+        N_('Update Capsules on given hosts'),
+        :description => N_('Update Capsules on given Capsule server hosts'),
+        :proxy_selector_override => ::RemoteExecutionProxySelector::INTERNAL_PROXY
+      )
     end
   end
 end
