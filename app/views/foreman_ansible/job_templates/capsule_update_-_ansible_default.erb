@@ -1,0 +1,73 @@
+<%#
+name: Capsule Update Playbook
+snippet: false
+template_inputs:
+- name: whitelist_options
+  required: false
+  input_type: user
+  advanced: false
+  value_type: plain
+  hidden_value: false
+model: JobTemplate
+job_category: Maintenance Operations
+description_format: "%{template_name}"
+provider_type: Ansible
+kind: job_template
+feature: ansible_run_capsule_update
+%>
+
+---
+- hosts: all
+  tasks:
+<% if plugin_present?('foreman_theme_satellite') -%>
+    - name: Gather the rpm package facts
+      package_facts:
+        manager: auto
+
+    - name: Fail if the target server is a Satellite server
+      fail:
+        msg: "This playbook cannot be executed on a Satellite server. Use only on a Capsule server."
+      when: "'satellite' in ansible_facts.packages"
+
+    - name: Install|Update satellite-maintain if not present
+      package:
+        name: rubygem-foreman_maintain
+        state: latest
+
+    - block:
+      <%- whitelist_option = if input('whitelist_options').present?
+                               "--whitelist=#{input('whitelist_options')}"
+                             end -%>
+      - name: Update Capsule server using satellite-maintain
+        shell: satellite-maintain update run --assumeyes <%= whitelist_option %>
+        register: result
+
+      - name: Re-Gather the rpm package facts after the update
+        package_facts:
+          manager: auto
+
+      - name: satellite-maintain update return code is zero
+        debug:
+          msg: "Success! Capsule server update completed. Current version of Capsule server server is {{ ansible_facts.packages['satellite-capsule'][0]['version'] }}."
+
+      rescue:
+        - name: Print satellite-maintain output
+          debug:
+            var: result
+
+        - name: Grep top 10 Error messages from /var/log/foreman-installer/capsule.log
+          shell: grep '^\[ERROR' /var/log/foreman-installer/capsule.log | head -n10
+          register: output_grep
+
+        - name: Print grepped Error messages
+          debug:
+            var: output_grep.stdout_lines
+
+        - name: satellite-maintain update return code is non-zero
+          fail:
+            msg: "Failed! Capsule server update failed. See /var/log/foreman-installer/capsule.log in the Capsule server for more information"
+<% else -%>
+    - name: Fail if foreman_theme_satellite is missing
+      fail:
+        msg: "Failed! The plugin foreman_theme_satellite is not present. This playbook is only for use with Satellite."
+<% end -%>
