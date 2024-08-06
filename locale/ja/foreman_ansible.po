@@ -37,9 +37,6 @@ msgstr "(ãƒ›ã‚¹ãƒˆã‚°ãƒ«ãƒ¼ãƒ—ã�‹ã‚‰)"
 msgid "A comma separated list of tags to use for Ansible run"
 msgstr "Ansible å®Ÿè¡Œã�«ä½¿ç”¨ã�™ã‚‹ã‚¿ã‚°ã�®ã‚³ãƒ³ãƒ�åŒºåˆ‡ã‚Šãƒªã‚¹ãƒˆ"
 
-msgid "Action with sub plans"
-msgstr "ã‚µãƒ–ãƒ—ãƒ©ãƒ³ã�«ã‚ˆã‚‹ã‚¢ã‚¯ã‚·ãƒ§ãƒ³"
-
 msgid "Actions"
 msgstr "ã‚¢ã‚¯ã‚·ãƒ§ãƒ³"
 
@@ -184,9 +181,6 @@ msgstr "Ansible è¨­å®šã‚¸ãƒ§ãƒ–ã�®ã‚­ãƒ£ãƒ³ã‚�
 msgid "Changed Ansible roles"
 msgstr "å¤‰æ›´ã�•ã‚Œã�Ÿ Ansible ãƒ­ãƒ¼ãƒ«"
 
-msgid "Check for long running tasks"
-msgstr ""
-
 msgid "Close"
 msgstr "é–‰ã�˜ã‚‹"
 
@@ -258,9 +252,6 @@ msgstr "Ansible ãƒ­ãƒ¼ãƒ«ã‚’å‰Šé™¤ã�—ã�¾ã�™"
 
 msgid "Deletes Ansible variable"
 msgstr "Ansible å¤‰æ•°ã‚’å‰Šé™¤ã�—ã�¾ã�™"
-
-msgid "Deliver notifications about long running tasks"
-msgstr ""
 
 msgid "Description"
 msgstr "èª¬æ˜�"
@@ -391,14 +382,8 @@ msgstr "ãƒ�ã‚§ãƒƒã‚¯ã�Œä»˜ã�‘ã‚‰ã‚Œã�¦ã
 msgid "Import"
 msgstr "ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆ"
 
-msgid "Import Puppet classes"
-msgstr "Puppet ã‚¯ãƒ©ã‚¹ã�®ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆ"
-
 msgid "Import Role"
 msgstr "ãƒ­ãƒ¼ãƒ«ã�®ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆ"
-
-msgid "Import facts"
-msgstr "ãƒ•ã‚¡ã‚¯ãƒˆã�®ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆ"
 
 msgid "Import from %s"
 msgstr "%s ã�‹ã‚‰ã�®ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆ"
@@ -619,9 +604,6 @@ msgstr "Ansible ã�®ãƒ—ãƒ­ã‚­ã‚·ãƒ¼ã‚¿ã‚¹ã‚¯ã�
 
 msgid "Remediation Plan"
 msgstr "ä¿®å¾©ãƒ—ãƒ©ãƒ³"
-
-msgid "Remote action:"
-msgstr "ãƒªãƒ¢ãƒ¼ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³:"
 
 msgid "Remove"
 msgstr "å‰Šé™¤"

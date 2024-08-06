@@ -38,9 +38,6 @@ msgstr ""
 msgid "A comma separated list of tags to use for Ansible run"
 msgstr ""
 
-msgid "Action with sub plans"
-msgstr ""
-
 msgid "Actions"
 msgstr "Azioni"
 
@@ -185,9 +182,6 @@ msgstr ""
 msgid "Changed Ansible roles"
 msgstr ""
 
-msgid "Check for long running tasks"
-msgstr ""
-
 msgid "Close"
 msgstr "Chiudi"
 
@@ -258,9 +252,6 @@ msgid "Deletes Ansible role"
 msgstr "Cancella un ruolo Ansible"
 
 msgid "Deletes Ansible variable"
-msgstr ""
-
-msgid "Deliver notifications about long running tasks"
 msgstr ""
 
 msgid "Description"
@@ -392,14 +383,8 @@ msgstr "Se selezionato, verr√† generato un errore se nessun valore predefinito √
 msgid "Import"
 msgstr "Importa"
 
-msgid "Import Puppet classes"
-msgstr "Importa classi Puppet"
-
 msgid "Import Role"
 msgstr ""
-
-msgid "Import facts"
-msgstr "Importa gli eventi"
 
 msgid "Import from %s"
 msgstr "Importa da %s"
@@ -618,9 +603,6 @@ msgstr ""
 
 msgid "Remediation Plan"
 msgstr ""
-
-msgid "Remote action:"
-msgstr "Azione remota:"
 
 msgid "Remove"
 msgstr "Rimuovi"
