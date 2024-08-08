@@ -120,7 +120,7 @@ Foreman::Plugin.register :foreman_ansible do
                { :lookup_values => [:update],
                  :ansible_variables => [:edit, :update],
                  :'api/v2/ansible_variables' => [:update],
-                 :'api/v2/ansible_override_values' => [:create, :destroy] },
+                 :'api/v2/ansible_override_values' => [:create, :destroy, :update] },
                :resource_type => 'AnsibleVariable'
     permission :destroy_ansible_variables,
                {
