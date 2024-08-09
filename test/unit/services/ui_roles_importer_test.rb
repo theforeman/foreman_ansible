@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require 'test_plugin_helper'
-# unit tests for UiRolesImporter
-class UiRolesImporterTest < ActiveSupport::TestCase
+# unit tests for UIRolesImporter
+class UIRolesImporterTest < ActiveSupport::TestCase
   setup do
     changed_roles
-    @importer = ForemanAnsible::UiRolesImporter.new
+    @importer = ForemanAnsible::UIRolesImporter.new
   end
 
   test 'should create new role' do

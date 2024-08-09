@@ -6,7 +6,7 @@ module ForemanAnsible
     include ::ForemanAnsible::AnsibleRolesDataPreparations
 
     def import!(role_names)
-      @roles_importer = ForemanAnsible::UiRolesImporter.new(@ansible_proxy)
+      @roles_importer = ForemanAnsible::UIRolesImporter.new(@ansible_proxy)
       @variables_importer = ForemanAnsible::VariablesImporter.new(@ansible_proxy)
       params = { 'changed' => {} }
       roles = prepare_ansible_import_rows(@roles_importer.import!, @variables_importer, false)

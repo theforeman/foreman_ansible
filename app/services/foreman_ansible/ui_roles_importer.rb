@@ -2,7 +2,7 @@
 
 module ForemanAnsible
   # imports ansible roles through UI
-  class UiRolesImporter < RolesImporter
+  class UIRolesImporter < RolesImporter
     def import!
       import_role_names
     end

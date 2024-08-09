@@ -39,7 +39,7 @@ module Api
       end
 
       def plan_ansible_sync(proxy_id, playbooks_names)
-        ForemanTasks.async_task(ImportPlaybooksJob::Async::SyncPlaybooks, proxy_id, playbooks_names)
+        ForemanTasks.async_task(Actions::SyncPlaybooks, proxy_id, playbooks_names)
       end
 
       private
