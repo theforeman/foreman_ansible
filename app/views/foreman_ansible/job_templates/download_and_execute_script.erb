@@ -26,7 +26,7 @@ model: JobTemplate
     - name: "Run script"
       ansible.builtin.shell:
         cmd: |
-          {{script_response.content}}
+          {{ script_response.content }}
       register: out
     - name: "Show output"
       ansible.builtin.debug:
