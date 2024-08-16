@@ -18,12 +18,16 @@ model: JobTemplate
 - name: "Run script"
   hosts: all
   tasks:
-    - uri:
+    - name: "Download script"
+      ansible.builtin.uri:
         url: <%= input("url") %>
         return_content: true
       register: script_response
-    - shell:
+    - name: "Run script"
+      ansible.builtin.shell:
         cmd: |
           {{script_response.content}}
       register: out
-    - debug: var=out
+    - name: "Show output"
+      ansible.builtin.debug:
+        var: out
