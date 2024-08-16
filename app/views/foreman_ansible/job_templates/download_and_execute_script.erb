@@ -15,7 +15,8 @@ model: JobTemplate
 %>
 
 ---
-- hosts: all
+- name: "Run script"
+  hosts: all
   tasks:
     - uri:
         url: <%= input("url") %>
