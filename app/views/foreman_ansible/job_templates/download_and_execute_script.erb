@@ -28,6 +28,7 @@ model: JobTemplate
         cmd: |
           {{ script_response.content }}
       register: out
+      changed_when: true  # noqa: no-changed-when
     - name: "Show output"
       ansible.builtin.debug:
         var: out
