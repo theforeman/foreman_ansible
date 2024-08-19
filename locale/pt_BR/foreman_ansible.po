@@ -43,9 +43,6 @@ msgstr "(do grupo anfitrião)"
 msgid "A comma separated list of tags to use for Ansible run"
 msgstr "Uma lista separada por vírgulas de etiquetas a serem usadas para a execução Ansible run"
 
-msgid "Action with sub plans"
-msgstr "Ação com subplanos "
-
 msgid "Actions"
 msgstr "Ações"
 
@@ -148,9 +145,6 @@ msgstr "Substituição possível da variável alterada com sucesso."
 msgid "Ansible variable override was successfully deleted."
 msgstr "Uma possível substituição de variável foi eliminada com sucesso."
 
-msgid "Ansible: Run Insights maintenance plan"
-msgstr "Ansible: executar plano de manutenção de insights"
-
 msgid "Are you sure you want to cancel Ansible config job?"
 msgstr "Você tem certeza de que quer cancelar o trabalho de configuração de Ansible config?"
 
@@ -189,9 +183,6 @@ msgstr "Cancelar trabalho de configuração possível"
 
 msgid "Changed Ansible roles"
 msgstr "Funções do Ansible alteradas"
-
-msgid "Check for long running tasks"
-msgstr ""
 
 msgid "Close"
 msgstr "Fechar"
@@ -264,9 +255,6 @@ msgstr "Excluir função do Ansible"
 
 msgid "Deletes Ansible variable"
 msgstr "Exclui variável do Ansible"
-
-msgid "Deliver notifications about long running tasks"
-msgstr ""
 
 msgid "Description"
 msgstr "Descrição"
@@ -397,14 +385,8 @@ msgstr "Se verificado, surgirá um erro caso não haja valor padrão e nenhum co
 msgid "Import"
 msgstr "Importar"
 
-msgid "Import Puppet classes"
-msgstr "Importar classes de Puppet"
-
 msgid "Import Role"
 msgstr "Papel de importação"
-
-msgid "Import facts"
-msgstr "Importar fatos"
 
 msgid "Import from %s"
 msgstr "Importação de %s"
@@ -442,9 +424,6 @@ msgstr "Incluir\\Excluir tags para execução possível"
 msgid "Inherited from Hostgroup"
 msgstr "Herdado do Hostgroup"
 
-msgid "Insights remediation on %{hosts_count} host(s) has finished successfully"
-msgstr "A remediação Insights em %{hosts_count} host(s) terminou com sucesso"
-
 msgid "Invalid, expected one of: %s"
 msgstr "Inválido, espera-se um dos: %s"
 
@@ -453,9 +432,6 @@ msgstr "Inválido, esperado corresponder a um regex: %s"
 
 msgid "Inventory"
 msgstr "Inventário"
-
-msgid "Job Details"
-msgstr "Detalhes do trabalho"
 
 msgid "Jobs"
 msgstr "Trabalhos"
@@ -623,12 +599,6 @@ msgstr "Proxy não encontrado"
 msgid "Proxy tasks batch size for Ansible"
 msgstr "Tarefas de Proxy Tamanho do lote para Ansible"
 
-msgid "Remediation Plan"
-msgstr "Plano de remediação"
-
-msgid "Remote action:"
-msgstr "Ação remota:"
-
 msgid "Remove"
 msgstr "Remover"
 
@@ -688,9 +658,6 @@ msgstr "Execute um livro de reprodução possível para habilitar o console web 
 
 msgid "Run playbook"
 msgstr "Executar playbook"
-
-msgid "Runs a given maintenance plan from Red Hat Access Insights given an ID."
-msgstr "Executa um determinado plano de manutenção a partir do Red Hat Access Insights dada uma ID."
 
 msgid "Runs all Ansible roles on a host"
 msgstr "Executa todas as funções do Ansible em um host"
@@ -850,6 +817,12 @@ msgstr "Não foi possível obter funções/variáveis do Ansible"
 
 msgid "Update"
 msgstr "Atualizar"
+
+msgid "Update Capsules on given Capsule server hosts"
+msgstr ""
+
+msgid "Update Capsules on given hosts"
+msgstr ""
 
 msgid "Update Role Variables"
 msgstr "Atualização de variáveis de função"

@@ -34,9 +34,6 @@ msgstr "(ჰოსტების ჯგუფიდან)"
 msgid "A comma separated list of tags to use for Ansible run"
 msgstr "Ansible-ის გასაშვებად გამოყენებული მძიმით გამოყოფილი ჭდეების სია"
 
-msgid "Action with sub plans"
-msgstr "ქმედება ქვე-გეგმებით"
-
 msgid "Actions"
 msgstr "ქმედებები"
 
@@ -139,9 +136,6 @@ msgstr "Ansible-ის ცვლადის გადაფარვა წა�
 msgid "Ansible variable override was successfully deleted."
 msgstr "Ansible-ის ცვლადის გადაფარვა წარმატებით წაიშალა."
 
-msgid "Ansible: Run Insights maintenance plan"
-msgstr "Ansible: Insights -ის რემონტის გეგმის გაშვება"
-
 msgid "Are you sure you want to cancel Ansible config job?"
 msgstr "დარწმუნებული ბრძანდებით, რომ გნებავთ, გააუქმოთ Ansible-ის კონფიგურაციის დავალება?"
 
@@ -180,9 +174,6 @@ msgstr "Ansible-ის კონფიგურაცის დავალე�
 
 msgid "Changed Ansible roles"
 msgstr "Ansible-ის როლები შეცვლილია"
-
-msgid "Check for long running tasks"
-msgstr ""
 
 msgid "Close"
 msgstr "დახურვა"
@@ -255,9 +246,6 @@ msgstr "Ansible-ის როლის წაშლა"
 
 msgid "Deletes Ansible variable"
 msgstr "Ansible-ის ცვლადის წაშლა"
-
-msgid "Deliver notifications about long running tasks"
-msgstr ""
 
 msgid "Description"
 msgstr "აღწერა"
@@ -388,14 +376,8 @@ msgstr "თუ მონიშნულია, წარმოიქმნებ
 msgid "Import"
 msgstr "იმპორტი"
 
-msgid "Import Puppet classes"
-msgstr "Puppet-ის კლასების შემოტანა"
-
 msgid "Import Role"
 msgstr "როლის შემოტანა"
-
-msgid "Import facts"
-msgstr "ფაქტების შემოტანა"
 
 msgid "Import from %s"
 msgstr "%s-დან შემოტანა"
@@ -433,9 +415,6 @@ msgstr "Ansible-ის გაშვებისთვის ჭდეები�
 msgid "Inherited from Hostgroup"
 msgstr "მემკვიდრეობით ჰოსტების ჯგუფიდან"
 
-msgid "Insights remediation on %{hosts_count} host(s) has finished successfully"
-msgstr ""
-
 msgid "Invalid, expected one of: %s"
 msgstr "არასწორი. მოსალოდნელი იყო ერთერთ სიიდან: %s"
 
@@ -444,9 +423,6 @@ msgstr "არასწორია. მოველოდი, რომ და�
 
 msgid "Inventory"
 msgstr "ინვენტარი"
-
-msgid "Job Details"
-msgstr "დავალების დეტალები"
 
 msgid "Jobs"
 msgstr "დავალებები"
@@ -612,12 +588,6 @@ msgstr "პროქსი სერვერი ნაპოვნი არა
 msgid "Proxy tasks batch size for Ansible"
 msgstr "პროქსის ამოცანების ნაკრების ზომა Ansible_ისთვის"
 
-msgid "Remediation Plan"
-msgstr "აღდგენის გეგმა"
-
-msgid "Remote action:"
-msgstr "დაშორებული ქმედება:"
-
 msgid "Remove"
 msgstr "წაშლა"
 
@@ -677,9 +647,6 @@ msgstr "მითითებულ ჰოსტებზე ვებ-კონ
 
 msgid "Run playbook"
 msgstr "Playbook-ის გაშვება"
-
-msgid "Runs a given maintenance plan from Red Hat Access Insights given an ID."
-msgstr ""
 
 msgid "Runs all Ansible roles on a host"
 msgstr "ჰოსტზე Ansible-ის ყველა როლის გაშვება"
@@ -839,6 +806,12 @@ msgstr "Ansible-დან როლების/ცვლადების მ�
 
 msgid "Update"
 msgstr "განახლება"
+
+msgid "Update Capsules on given Capsule server hosts"
+msgstr ""
+
+msgid "Update Capsules on given hosts"
+msgstr ""
 
 msgid "Update Role Variables"
 msgstr "როლის ცვლადების გარეშე"

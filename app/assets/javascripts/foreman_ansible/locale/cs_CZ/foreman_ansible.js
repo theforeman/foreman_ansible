@@ -17,392 +17,314 @@
         "domain": "foreman_ansible",
         "plural_forms": "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;"
       },
-      "No added or removed roles nor variables.": [
+      "%(selectedCount)s of %(totalCount)s items selected": [
         ""
-      ],
-      "No added or removed roles nor variables detected on %s.": [
-        ""
-      ],
-      "No changes in variables detected on %s.": [
-        "U %s nezjištěny žádné změny v proměnných."
-      ],
-      "No proxy found to import variables from, ensure that the smart proxy has the Ansible feature enabled.": [
-        ""
-      ],
-      "Show Ansible inventory for hosts": [
-        "Zobrazit Ansible inventář pro stroje"
-      ],
-      "IDs of hosts included in inventory": [
-        "Identifikátory strojů, obsažených v inventáři"
-      ],
-      "Show Ansible inventory for hostgroups": [
-        ""
-      ],
-      "IDs of hostgroups included in inventory": [
-        ""
-      ],
-      "Schedule generating of Ansible Inventory report": [
-        ""
-      ],
-      "Hash of input values of type input=>value": [
-        ""
-      ],
-      "Report format, defaults to '%s'": [
-        ""
-      ],
-      "Override match": [
-        ""
-      ],
-      "Override value, required if omit is false": [
-        ""
-      ],
-      "Create an override value for a specific ansible variable": [
-        "Vytvořit přepisující hodnotu pro danou ansible proměnnou"
-      ],
-      "Destroy an override value": [
-        "Zlikvidovat přepisující hodnotu"
-      ],
-      "Sync Ansible playbooks": [
-        ""
-      ],
-      "Smart Proxy to sync from": [
-        ""
-      ],
-      "Ansible  playbooks names to be synced": [
-        ""
-      ],
-      "Fetch Ansible playbooks available to be synced": [
-        ""
-      ],
-      "Smart Proxy to fetch from": [
-        ""
-      ],
-      "Smart proxy id is required": [
-        ""
-      ],
-      "Show role": [
-        "Zobrazit roli"
-      ],
-      "List Ansible roles": [
-        "Vypsat Ansible role"
-      ],
-      "Deletes Ansible role": [
-        "Smazat Ansible roli"
-      ],
-      "DEPRECATED: Import Ansible roles": [
-        ""
-      ],
-      "Smart Proxy to import from": [
-        ""
-      ],
-      "Ansible role names to be imported": [
-        ""
-      ],
-      "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled": [
-        ""
-      ],
-      "Sync Ansible roles": [
-        ""
-      ],
-      "Ansible role names to be synced": [
-        ""
-      ],
-      "No changes detected in specified Ansible Roles and their variables": [
-        ""
-      ],
-      "DEPRECATED: Obsolete Ansible roles": [
-        ""
-      ],
-      "Fetch Ansible roles available to be synced": [
-        ""
-      ],
-      "Show variable": [
-        ""
-      ],
-      "List Ansible variables": [
-        "Vypsat Ansible proměnné"
-      ],
-      "Deletes Ansible variable": [
-        "Smazat Ansible proměnnou"
-      ],
-      "Name of variable": [
-        "Název proměnné"
-      ],
-      "Role ID": [
-        "Identif. role"
-      ],
-      "Default value of variable": [
-        "Výchozí hodnota proměnné"
-      ],
-      "When enabled the parameter is hidden in the UI": [
-        ""
-      ],
-      "The order in which values are resolved": [
-        "Pořadí ve kterém jsou hodnoty řešeny"
-      ],
-      "Description of variable": [
-        "Popis proměnné"
-      ],
-      "Types of validation values": [
-        "Typy hodnot ověřování"
-      ],
-      "Used to enforce certain values for the parameter values": [
-        ""
-      ],
-      "Types of variable values": [
-        "Typy hodnot proměnné"
-      ],
-      "Merge all matching values (only array/hash type)": [
-        ""
-      ],
-      "Include default value when merging all matching values": [
-        "Při slučování všech odpovídajících hodnota zahrnout výchozí hodnoty"
-      ],
-      "Remove duplicate values (only array type)": [
-        ""
-      ],
-      "Whether to override variable or not": [
-        "Zda hodnotu přepsat nebo ne"
-      ],
-      "Create Ansible variable": [
-        "Vytvořit Ansible proměnnou"
-      ],
-      "Updates Ansible variable": [
-        "Aktualizuje Ansible proměnné"
-      ],
-      "DEPRECATED: Import Ansible variables. This will only import variables for already existing roles, it will not import any new roles": [
-        ""
-      ],
-      "DEPRECATED: Obsolete Ansible variables. This will only obsolete variables for already existing roles, it will not delete any old roles": [
-        ""
-      ],
-      "Runs all Ansible roles on a hostgroup": [
-        ""
-      ],
-      "Runs all Ansible roles on hostgroups": [
-        ""
-      ],
-      "IDs of hostgroups to play roles on": [
-        ""
-      ],
-      "List all Ansible roles for a hostgroup": [
-        ""
-      ],
-      "Assigns Ansible roles to a hostgroup": [
-        "Přiřadit Ansible role skupině strojů"
-      ],
-      "Ansible roles to assign to a hostgroup": [
-        ""
-      ],
-      "Directly add an Ansible role to a hostgroup": [
-        ""
-      ],
-      "Ansible role to add to a hostgroup": [
-        ""
-      ],
-      "Remove directly assigned Ansible role from a hostgroup": [
-        ""
-      ],
-      "Ansible role to remove from a hostgroup": [
-        ""
-      ],
-      "IDs of associated ansible roles": [
-        ""
-      ],
-      "Runs all Ansible roles on a host": [
-        ""
-      ],
-      "Runs all Ansible roles on hosts": [
-        ""
-      ],
-      "IDs of hosts to play roles on": [
-        ""
-      ],
-      "List all Ansible roles for a host": [
-        "Vypsat všechny Ansible role pro daný stroj"
-      ],
-      "Assigns Ansible roles to a host": [
-        "Přiřadit stroji Ansible role"
-      ],
-      "Ansible roles to assign to a host": [
-        "Ansible role, které přidělit hostiteli"
-      ],
-      "Directly add an Ansible role to a host": [
-        ""
-      ],
-      "Ansible role to add to a host": [
-        ""
-      ],
-      "Remove directly assigned Ansible role from a host": [
-        ""
-      ],
-      "Ansible role to remove from a host": [
-        ""
-      ],
-      "Enable the callback plugin for this template": [
-        ""
-      ],
-      "Host group has no associated hosts": [
-        ""
-      ],
-      "There are no Ansible roles to play": [
-        "Nejsou zde žádné Ansible role pro přehrání"
-      ],
-      "Could not run Ansible roles for %{host}": [
-        ""
-      ],
-      "Host not found by id: %s": [
-        ""
-      ],
-      "Ansible Variable not found by id: %s": [
-        ""
-      ],
-      "Run all Ansible roles": [
-        ""
-      ],
-      "Run all Ansible roles on hosts belonging to this host group": [
-        ""
-      ],
-      "Configure Ansible Job": [
-        ""
-      ],
-      "No roles/hosts assigned": [
-        ""
-      ],
-      "No additional data": [
-        ""
-      ],
-      "Show full value": [
-        ""
-      ],
-      "Add": [
-        "Přidat"
-      ],
-      "Remove": [
-        "Odebrat"
-      ],
-      "Update": [
-        "Aktualizovat"
-      ],
-      "Import Role": [
-        ""
-      ],
-      "Remove Role": [
-        ""
-      ],
-      "Update Role Variables": [
-        ""
-      ],
-      "Import from %s": [
-        "Importovat z %s"
-      ],
-      "Ansible Role": [
-        "Ansible role"
-      ],
-      "Import": [
-        "Import"
       ],
       "%s ago": [
         "před %s"
       ],
-      "Upgrade": [
+      "%{cfgmgmt} out of sync disabled": [
         ""
       ],
-      "Import roles And Variables": [
-        ""
-      ],
-      "Foreman": [
-        "Foreman"
-      ],
-      "Unable to get roles from Ansible": [
-        "Nedaří se získat role z Ansible"
-      ],
-      "Unable to get roles/variables from Ansible": [
-        "Nedaří se získat role/proměnné z Ansible"
-      ],
-      "Unable to get playbook's names from Ansible": [
-        ""
-      ],
-      "Unable to get playbooks from Ansible": [
-        ""
-      ],
-      "Tags": [
-        "Štítky"
-      ],
-      "Include/Exclude Tags": [
-        ""
-      ],
-      "Ansible provider specific inputs": [
+      "(from host group)": [
         ""
       ],
       "A comma separated list of tags to use for Ansible run": [
         ""
       ],
-      "Include\\\\Exclude tags for Ansible run": [
+      "Actions": [
+        "Akce"
+      ],
+      "Add": [
+        "Přidat"
+      ],
+      "Add all": [
         ""
       ],
-      "Task Details": [
-        "Podrobnosti o úloze"
-      ],
-      "Remediation Plan": [
+      "Add selected": [
         ""
       ],
-      "Job Details": [
-        "Podrobnosti o úloze"
+      "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles.": [
+        ""
       ],
-      "Proxy not found": [
-        "Proxy nenalezena"
+      "All assigned Ansible roles": [
+        ""
       ],
-      "Changed Ansible roles": [
-        "Změněné Ansible role"
+      "Ansible": [
+        "Ansible"
+      ],
+      "Ansible  playbooks names to be synced": [
+        ""
+      ],
+      "Ansible Role": [
+        "Ansible role"
       ],
       "Ansible Roles": [
         "Ansilbe role"
       ],
-      "Role|Name": [
-        "Role|Název"
-      ],
-      "Hostgroups": [
-        "Skupiny strojů"
-      ],
-      "Hosts": [
-        "Stroje"
-      ],
-      "Variables": [
-        "Proměnné"
-      ],
-      "Imported at": [
-        "Importováno v"
-      ],
-      "Actions": [
-        "Akce"
-      ],
-      "Delete %s?": [
-        "Smazat %s?"
-      ],
-      "No Ansible Roles were found in Foreman. If you want to assign roles to your hosts,\\n             you have to import them first.": [
+      "Ansible Roles were successfully assigned.": [
         ""
-      ],
-      "Learn more about this in the documentation.": [
-        "Více o tomto naleznete v dokumentaci."
-      ],
-      "Ansible Variable Details (Imported)": [
-        "Podrobnosti o Ansible proměnné (importováno)"
       ],
       "Ansible Variable Details": [
         "Podrobnosti o Ansible proměnné"
       ],
+      "Ansible Variable Details (Imported)": [
+        "Podrobnosti o Ansible proměnné (importováno)"
+      ],
+      "Ansible Variable not found by id: %s": [
+        ""
+      ],
+      "Ansible Variables": [
+        "Ansible proměnné"
+      ],
+      "Ansible check mode": [
+        ""
+      ],
+      "Ansible job was successfully canceled.": [
+        ""
+      ],
+      "Ansible job was successfully created.": [
+        ""
+      ],
+      "Ansible provider specific inputs": [
+        ""
+      ],
+      "Ansible report timeout": [
+        ""
+      ],
+      "Ansible role": [
+        "Ansible role"
+      ],
+      "Ansible role names to be imported": [
+        ""
+      ],
+      "Ansible role names to be synced": [
+        ""
+      ],
+      "Ansible role to add to a host": [
+        ""
+      ],
+      "Ansible role to add to a hostgroup": [
+        ""
+      ],
+      "Ansible role to remove from a host": [
+        ""
+      ],
+      "Ansible role to remove from a hostgroup": [
+        ""
+      ],
+      "Ansible roles assigned directly to host": [
+        ""
+      ],
+      "Ansible roles to assign to a host": [
+        "Ansible role, které přidělit hostiteli"
+      ],
+      "Ansible roles to assign to a hostgroup": [
+        ""
+      ],
+      "Ansible roles to ignore": [
+        ""
+      ],
+      "Ansible support in Foreman": [
+        "Podpora Ansible ve Foreman"
+      ],
+      "Ansible variable override successfully changed.": [
+        ""
+      ],
+      "Ansible variable override was successfully deleted.": [
+        ""
+      ],
+      "Are you sure you want to cancel Ansible config job?": [
+        ""
+      ],
+      "Are you sure you want to delete override for %s?": [
+        ""
+      ],
+      "Assign roles directly to the host": [
+        ""
+      ],
+      "Assigned Ansible Roles": [
+        ""
+      ],
+      "Assigns Ansible roles to a host": [
+        "Přiřadit stroji Ansible role"
+      ],
+      "Assigns Ansible roles to a hostgroup": [
+        "Přiřadit Ansible role skupině strojů"
+      ],
+      "Available Ansible Roles": [
+        ""
+      ],
+      "Available Ansible roles": [
+        ""
+      ],
+      "Avoid duplicate values when merging them (only array type)?": [
+        ""
+      ],
+      "Before including these variables on your playbooks, Foreman will validate that your variables comply with the validation.": [
+        ""
+      ],
+      "Cancel": [
+        "Storno"
+      ],
+      "Cancel Ansible config job": [
+        ""
+      ],
+      "Changed Ansible roles": [
+        "Změněné Ansible role"
+      ],
+      "Close": [
+        "Zavřít"
+      ],
+      "Configure Ansible Job": [
+        ""
+      ],
+      "Configure Recurring Job": [
+        ""
+      ],
+      "Confirm": [
+        "Potvrdit"
+      ],
+      "Connection type": [
+        "Typ připojení"
+      ],
+      "Continue to look for matches after first find (only array/hash type)? Note: merging overrides ignores all matchers that are omitted.": [
+        ""
+      ],
+      "Could not run Ansible roles for %{host}": [
+        ""
+      ],
+      "Create Ansible Variable": [
+        "Vytvořit Ansible proměnnou"
+      ],
+      "Create Ansible variable": [
+        "Vytvořit Ansible proměnnou"
+      ],
+      "Create an override value for a specific ansible variable": [
+        "Vytvořit přepisující hodnotu pro danou ansible proměnnou"
+      ],
+      "DEPRECATED: Import Ansible roles": [
+        ""
+      ],
+      "DEPRECATED: Import Ansible variables. This will only import variables for already existing roles, it will not import any new roles": [
+        ""
+      ],
+      "DEPRECATED: Obsolete Ansible roles": [
+        ""
+      ],
+      "DEPRECATED: Obsolete Ansible variables. This will only obsolete variables for already existing roles, it will not delete any old roles": [
+        ""
+      ],
+      "Default Ansible inventory report template": [
+        ""
+      ],
       "Default Behavior": [
         "Výchozí chování"
       ],
-      "Override the default value of the Ansible variable.": [
-        "Přepsat výchozí hodnotu Ansible proměnné."
+      "Default value": [
+        "Výchozí hodnota"
       ],
-      "Mark the variable to be managed by Foreman. When the Ansible role of this variable is assigned to a host, the default value will be added to Ansible inventory as a host variable. Specify matchers to set a different value for such variable.": [
+      "Default value of variable": [
+        "Výchozí hodnota proměnné"
+      ],
+      "Default verbosity level": [
+        "Výchozí stupeň vypisovaných podrobností"
+      ],
+      "Delete": [
+        "Smazat"
+      ],
+      "Delete %s?": [
+        "Smazat %s?"
+      ],
+      "Delete Ansible variable override": [
         ""
       ],
-      "Value to use when there is no match.": [
-        "Hodnota kterou použít, pokud není nalezena žádná shoda."
+      "Deletes Ansible role": [
+        "Smazat Ansible roli"
+      ],
+      "Deletes Ansible variable": [
+        "Smazat Ansible proměnnou"
+      ],
+      "Description": [
+        "Popis"
+      ],
+      "Description of variable": [
+        "Popis proměnné"
+      ],
+      "Destroy an override value": [
+        "Zlikvidovat přepisující hodnotu"
+      ],
+      "Directly add an Ansible role to a host": [
+        ""
+      ],
+      "Directly add an Ansible role to a hostgroup": [
+        ""
+      ],
+      "Directly assigned to Host": [
+        ""
+      ],
+      "Disable host configuration status turning to out of sync for %{cfgmgmt} after report does not arrive within configured interval": [
+        ""
+      ],
+      "Disabled": [
+        "Vypnuto"
+      ],
+      "Edit %s": [
+        "Upravit %s"
+      ],
+      "Edit Ansible Roles": [
+        ""
+      ],
+      "Edit Ansible Variable": [
+        "Upravit Ansible proměnnou"
+      ],
+      "Edit Ansible roles": [
+        ""
+      ],
+      "Enable Ansible Callback": [
+        ""
+      ],
+      "Enable the callback plugin for this template": [
+        ""
+      ],
+      "Enable web console": [
+        ""
+      ],
+      "Enable/disable WinRM server certificate validation when running Ansible playbooks. You can override this on hosts by adding a parameter \\\"ansible_winrm_server_cert_validation\\\"": [
+        ""
+      ],
+      "Error!": [
+        ""
+      ],
+      "Executed at": [
+        ""
+      ],
+      "Failed to fetch Ansible Roles from server.": [
+        ""
+      ],
+      "Failed to import roles and variables ": [
+        ""
+      ],
+      "Fetch Ansible playbooks available to be synced": [
+        ""
+      ],
+      "Fetch Ansible roles available to be synced": [
+        ""
+      ],
+      "For more advanced scheduling options": [
+        ""
+      ],
+      "Foreman": [
+        "Foreman"
+      ],
+      "Foreman will add this level of verbosity for additional debugging output when running Ansible playbooks.": [
+        ""
+      ],
+      "Foreman will use this template to schedule the report with Ansible inventory": [
+        ""
+      ],
+      "Hash of input values of type input=>value": [
+        ""
       ],
       "Hidden Value": [
         "Skrytá hodnota"
@@ -410,137 +332,104 @@
       "Hide all values for this parameter.": [
         "Skrýt všechny hodnoty pro tento parametr."
       ],
-      "Optional Input Validator": [
-        "Volitelné ověřování zadání"
+      "Host assigned Ansible roles": [
+        ""
       ],
-      "Before including these variables on your playbooks, Foreman will validate that your variables comply with the validation.": [
+      "Host count": [
+        ""
+      ],
+      "Host group has no associated hosts": [
+        ""
+      ],
+      "Host not found by id: %s": [
+        ""
+      ],
+      "Hostgroup count": [
+        ""
+      ],
+      "Hostgroups": [
+        "Skupiny strojů"
+      ],
+      "Hosts": [
+        "Stroje"
+      ],
+      "IDs of associated ansible roles": [
+        ""
+      ],
+      "IDs of hostgroups included in inventory": [
+        ""
+      ],
+      "IDs of hostgroups to play roles on": [
+        ""
+      ],
+      "IDs of hosts included in inventory": [
+        "Identifikátory strojů, obsažených v inventáři"
+      ],
+      "IDs of hosts to play roles on": [
         ""
       ],
       "If checked, will raise an error if there is no default value and no matcher provide a value.": [
         ""
       ],
-      "Prioritize Attribute Order": [
+      "Import": [
+        "Import"
+      ],
+      "Import Role": [
         ""
       ],
-      "Set the order in which values are resolved.": [
-        "Nastavit pořadí, ve kterém jsou hodnoty překládány."
-      ],
-      "Order": [
-        "Pořadí"
-      ],
-      "The order in which matchers keys are processed, first match wins.<br> You may use multiple attributes as a matcher key, for example, an order of <code>host group, environment</code> would expect a matcher such as <code>hostgroup = \\\"web servers\\\", environment = production</code>": [
-        ""
-      ],
-      "Continue to look for matches after first find (only array/hash type)? Note: merging overrides ignores all matchers that are omitted.": [
-        ""
-      ],
-      "Include default value when merging all matching values.": [
-        ""
-      ],
-      "Avoid duplicate values when merging them (only array type)?": [
-        ""
-      ],
-      "Specify Matchers": [
-        ""
-      ],
-      "Ansible Variables": [
-        "Ansible proměnné"
-      ],
-      "Edit %s": [
-        "Upravit %s"
-      ],
-      "Edit Ansible Variable": [
-        "Upravit Ansible proměnnou"
-      ],
-      "New Ansible Variable": [
-        "Nová Ansible proměnná"
-      ],
-      "Variable|Name": [
-        ""
-      ],
-      "Variable|Role": [
-        ""
-      ],
-      "Type": [
-        "Typ"
-      ],
-      "Imported?": [
-        "Importováno?"
-      ],
-      "Overriden": [
-        "Přepsáno"
-      ],
-      "Create Ansible Variable": [
-        "Vytvořit Ansible proměnnou"
-      ],
-      "Ansible check mode": [
-        ""
-      ],
-      "Notice that ansible roles run in check mode.": [
-        ""
-      ],
-      "Level": [
-        "Úroveň"
-      ],
-      "Task": [
-        "Úloha"
-      ],
-      "Message": [
-        "Zpráva"
-      ],
-      "Nothing to show": [
-        "Není co zobrazit"
-      ],
-      "Enable Ansible Callback": [
-        ""
-      ],
-      "Ansible": [
-        "Ansible"
-      ],
-      "Jobs": [
-        "Úlohy"
-      ],
-      "Insights remediation on %{hosts_count} host(s) has finished successfully": [
-        ""
-      ],
-      "Roles": [
-        "Role"
-      ],
-      "Import roles and variables has finished successfully": [
-        ""
-      ],
-      "Playbooks": [
-        ""
+      "Import from %s": [
+        "Importovat z %s"
       ],
       "Import playbooks has finished successfully": [
         ""
       ],
-      "Use this to supply a path to an SSH Private Key that Ansible will use in lieu of a password Override with \\\"ansible_ssh_private_key_file\\\" host parameter": [
+      "Import roles And Variables": [
         ""
       ],
-      "Private Key Path": [
-        "Popis umístění soukromého klíče"
-      ],
-      "Use this connection type by default when running Ansible playbooks. You can override this on hosts by adding a parameter \\\"ansible_connection\\\"": [
+      "Import roles and variables has finished successfully": [
         ""
       ],
-      "Connection type": [
-        "Typ připojení"
-      ],
-      "Enable/disable WinRM server certificate validation when running Ansible playbooks. You can override this on hosts by adding a parameter \\\"ansible_winrm_server_cert_validation\\\"": [
+      "Import roles and variables started: ": [
         ""
       ],
-      "WinRM cert Validation": [
-        "Ověření WinRM certifikátu"
+      "Imported at": [
+        "Importováno v"
       ],
-      "Foreman will add this level of verbosity for additional debugging output when running Ansible playbooks.": [
+      "Imported?": [
+        "Importováno?"
+      ],
+      "Include default value when merging all matching values": [
+        "Při slučování všech odpovídajících hodnota zahrnout výchozí hodnoty"
+      ],
+      "Include default value when merging all matching values.": [
         ""
       ],
-      "Default verbosity level": [
-        "Výchozí stupeň vypisovaných podrobností"
+      "Include/Exclude Tags": [
+        ""
       ],
-      "Disabled": [
-        "Vypnuto"
+      "Include\\\\Exclude tags for Ansible run": [
+        ""
+      ],
+      "Inherited from Hostgroup": [
+        ""
+      ],
+      "Invalid, expected one of: %s": [
+        ""
+      ],
+      "Invalid, expected to match a regex: %s": [
+        ""
+      ],
+      "Inventory": [
+        ""
+      ],
+      "Jobs": [
+        "Úlohy"
+      ],
+      "Learn more about this in the documentation.": [
+        "Více o tomto naleznete v dokumentaci."
+      ],
+      "Level": [
+        "Úroveň"
       ],
       "Level 1 (-v)": [
         ""
@@ -554,215 +443,65 @@
       "Level 4 (-vvvv)": [
         "Stupeň 4 (-vvvv)"
       ],
-      "Timeout (in seconds) to set when Foreman will trigger a play Ansible roles task after a host is fully provisioned. Set this to the maximum time you expect a host to take until it is ready after a reboot.": [
+      "List Ansible roles": [
+        "Vypsat Ansible role"
+      ],
+      "List Ansible variables": [
+        "Vypsat Ansible proměnné"
+      ],
+      "List all Ansible roles for a host": [
+        "Vypsat všechny Ansible role pro daný stroj"
+      ],
+      "List all Ansible roles for a hostgroup": [
         ""
       ],
-      "Post-provision timeout": [
+      "Mark the variable to be managed by Foreman. When the Ansible role of this variable is assigned to a host, the default value will be added to Ansible inventory as a host variable. Specify matchers to set a different value for such variable.": [
         ""
       ],
-      "Timeout (in minutes) when hosts should have reported.": [
+      "Merge all matching values (only array/hash type)": [
         ""
       ],
-      "Ansible report timeout": [
-        ""
+      "Message": [
+        "Zpráva"
       ],
-      "Disable host configuration status turning to out of sync for %{cfgmgmt} after report does not arrive within configured interval": [
-        ""
-      ],
-      "%{cfgmgmt} out of sync disabled": [
-        ""
-      ],
-      "Foreman will use this template to schedule the report with Ansible inventory": [
-        ""
-      ],
-      "Default Ansible inventory report template": [
-        ""
-      ],
-      "Those roles will be excluded when importing roles from smart proxy, The expected input is comma separated values and you can use * wildcard metacharactersFor example: foo*, *b*,*bar": [
-        ""
-      ],
-      "Ansible roles to ignore": [
-        ""
-      ],
-      "Number of tasks which should be sent to the smart proxy in one request, if foreman_tasks_proxy_batch_trigger is enabled. If set, overrides foreman_tasks_proxy_batch_size setting for Ansible jobs.": [
-        ""
-      ],
-      "Proxy tasks batch size for Ansible": [
-        ""
-      ],
-      "Update Smart Proxy": [
-        ""
-      ],
-      "Run Ansible roles": [
-        "Spustit Ansible role"
-      ],
-      "Runs an Ansible playbook which contains all the roles defined for a host": [
-        ""
-      ],
-      "Ansible: Run Insights maintenance plan": [
-        ""
-      ],
-      "Runs a given maintenance plan from Red Hat Access Insights given an ID.": [
-        ""
-      ],
-      "Run playbook": [
-        ""
-      ],
-      "Run an Ansible playbook against given hosts": [
-        ""
-      ],
-      "Enable web console": [
-        ""
-      ],
-      "Run an Ansible playbook to enable web console on given hosts": [
-        ""
-      ],
-      "Upgrade Capsules on given hosts": [
-        ""
-      ],
-      "Upgrade Capsules on given Capsule server hosts": [
+      "Must not be in the past": [
         ""
       ],
       "Name": [
         "Název"
       ],
-      "Ansible role": [
-        "Ansible role"
+      "Name of variable": [
+        "Název proměnné"
       ],
-      "Value": [
-        "Hodnota"
+      "New Ansible Variable": [
+        "Nová Ansible proměnná"
       ],
-      "Source attribute": [
+      "Next Run": [
         ""
       ],
-      "Delete": [
-        "Smazat"
-      ],
-      "Delete Ansible variable override": [
+      "No Ansible Roles were found in Foreman. If you want to assign roles to your hosts,\\n             you have to import them first.": [
         ""
       ],
-      "Are you sure you want to delete override for %s?": [
-        ""
-      ],
-      "Default value": [
-        "Výchozí hodnota"
-      ],
-      "Ansible variable override was successfully deleted.": [
-        ""
-      ],
-      "There was a following error when deleting Ansible variable override: %s": [
-        ""
-      ],
-      "Invalid, expected to match a regex: %s": [
-        ""
-      ],
-      "Invalid, expected one of: %s": [
-        ""
-      ],
-      "is required": [
-        ""
-      ],
-      "There was a following error when changing Ansible variable override: %s": [
-        ""
-      ],
-      "Ansible variable override successfully changed.": [
-        ""
-      ],
-      "true": [
-        ""
-      ],
-      "false": [
+      "No Ansible roles assigned": [
         ""
       ],
       "No Ansible variables found for Host": [
         ""
       ],
-      "Only variables marked to Override are shown here.": [
+      "No added or removed roles nor variables detected on %s.": [
         ""
       ],
-      "There was a following error when deleting Ansible config job: %s": [
+      "No added or removed roles nor variables.": [
         ""
       ],
-      "Ansible job was successfully canceled.": [
+      "No additional data": [
         ""
       ],
-      "(from host group)": [
+      "No changes detected in specified Ansible Roles and their variables": [
         ""
       ],
-      "hourly": [
-        "každou hodinu"
-      ],
-      "daily": [
-        "denně"
-      ],
-      "weekly": [
-        "týdně"
-      ],
-      "monthly": [
-        ""
-      ],
-      "Must not be in the past": [
-        ""
-      ],
-      "Required field": [
-        ""
-      ],
-      "There was a following error when creating Ansible job: %s": [
-        ""
-      ],
-      "Ansible job was successfully created.": [
-        ""
-      ],
-      "Submit": [
-        "Odeslat"
-      ],
-      "Cancel": [
-        "Storno"
-      ],
-      "This job will run all the assigned Ansible roles.": [
-        ""
-      ],
-      "For more advanced scheduling options": [
-        ""
-      ],
-      "view remote execution page.": [
-        ""
-      ],
-      "Schedule recurring Ansible roles job": [
-        ""
-      ],
-      "Description": [
-        "Popis"
-      ],
-      "Result": [
-        "Výsledek"
-      ],
-      "State": [
-        "Stav"
-      ],
-      "Executed at": [
-        ""
-      ],
-      "Schedule": [
-        "Plán"
-      ],
-      "Previously executed jobs": [
-        ""
-      ],
-      "Next Run": [
-        ""
-      ],
-      "Cancel Ansible config job": [
-        ""
-      ],
-      "Are you sure you want to cancel Ansible config job?": [
-        ""
-      ],
-      "Scheduled recurring jobs": [
-        ""
-      ],
-      "Schedule recurring job": [
-        ""
+      "No changes in variables detected on %s.": [
+        "U %s nezjištěny žádné změny v proměnných."
       ],
       "No config job for Ansible roles scheduled": [
         ""
@@ -770,167 +509,401 @@
       "No previous job executions found": [
         ""
       ],
-      "Source": [
-        "Zdroj"
-      ],
-      "Inherited from Hostgroup": [
-        ""
-      ],
-      "Directly assigned to Host": [
-        ""
-      ],
-      "All assigned Ansible roles": [
-        ""
-      ],
-      "This list consists of host assigned roles and group assigned roles. Group assigned roles will always be executed prior to host assigned roles.": [
-        ""
-      ],
-      "No Ansible roles assigned": [
-        ""
-      ],
-      "Confirm": [
-        "Potvrdit"
-      ],
-      "There was a following error when assigning Ansible Roles: %s": [
-        ""
-      ],
-      "Ansible Roles were successfully assigned.": [
-        ""
-      ],
-      "Edit Ansible Roles": [
-        ""
-      ],
-      "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles.": [
-        ""
-      ],
-      "Close": [
-        "Zavřít"
-      ],
-      "Edit Ansible roles": [
-        ""
-      ],
-      "Ansible roles assigned directly to host": [
-        ""
-      ],
-      "view all assigned roles": [
-        ""
-      ],
-      "Assign roles directly to the host": [
-        ""
-      ],
-      "View inherited roles": [
+      "No proxy found to import variables from, ensure that the smart proxy has the Ansible feature enabled.": [
         ""
       ],
       "No roles assigned directly to the host": [
         ""
       ],
-      "Inventory": [
-        ""
-      ],
-      "Import roles and variables started: ": [
-        ""
-      ],
-      "view the task in progress": [
-        ""
-      ],
-      "Failed to import roles and variables ": [
-        ""
-      ],
-      "Operation": [
-        "Operace"
-      ],
-      "Host count": [
-        ""
-      ],
-      "Hostgroup count": [
-        ""
-      ],
-      "Available Ansible Roles": [
-        ""
-      ],
-      "Assigned Ansible Roles": [
-        ""
-      ],
-      "Failed to fetch Ansible Roles from server.": [
-        ""
-      ],
-      "You are not authorized to perform this action.": [
-        ""
-      ],
-      "Please request one of the required permissions listed below from a Foreman administrator:": [
-        ""
-      ],
-      "Permission Denied": [
-        ""
-      ],
-      "This Ansible role is inherited from parent host group": [
-        ""
-      ],
-      "This Ansible role is inherited from host group": [
-        ""
-      ],
-      "Use drag and drop to change order of the roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly": [
-        ""
-      ],
-      "Add selected": [
-        ""
-      ],
-      "Add all": [
-        ""
-      ],
-      "Remove all": [
-        ""
-      ],
-      "Remove selected": [
-        ""
-      ],
-      "%(selectedCount)s of %(totalCount)s items selected": [
-        ""
-      ],
-      "Available Ansible roles": [
-        ""
-      ],
-      "Host assigned Ansible roles": [
-        ""
-      ],
-      "Error!": [
+      "No roles/hosts assigned": [
         ""
       ],
       "Nothing Found!": [
         ""
       ],
+      "Nothing to show": [
+        "Není co zobrazit"
+      ],
+      "Notice that ansible roles run in check mode.": [
+        ""
+      ],
+      "Number of tasks which should be sent to the smart proxy in one request, if foreman_tasks_proxy_batch_trigger is enabled. If set, overrides foreman_tasks_proxy_batch_size setting for Ansible jobs.": [
+        ""
+      ],
+      "Only variables marked to Override are shown here.": [
+        ""
+      ],
+      "Operation": [
+        "Operace"
+      ],
+      "Optional Input Validator": [
+        "Volitelné ověřování zadání"
+      ],
+      "Order": [
+        "Pořadí"
+      ],
+      "Override match": [
+        ""
+      ],
+      "Override the default value of the Ansible variable.": [
+        "Přepsat výchozí hodnotu Ansible proměnné."
+      ],
+      "Override value, required if omit is false": [
+        ""
+      ],
+      "Overriden": [
+        "Přepsáno"
+      ],
+      "Permission Denied": [
+        ""
+      ],
       "Permission denied": [
         "Oprávnění odepřeno"
       ],
-      "You are not authorized to view the page. ": [
+      "Playbooks": [
+        ""
+      ],
+      "Please request one of the required permissions listed below from a Foreman administrator:": [
+        ""
+      ],
+      "Post-provision timeout": [
+        ""
+      ],
+      "Previously executed jobs": [
+        ""
+      ],
+      "Prioritize Attribute Order": [
+        ""
+      ],
+      "Private Key Path": [
+        "Popis umístění soukromého klíče"
+      ],
+      "Proxy not found": [
+        "Proxy nenalezena"
+      ],
+      "Proxy tasks batch size for Ansible": [
+        ""
+      ],
+      "Remove": [
+        "Odebrat"
+      ],
+      "Remove Role": [
+        ""
+      ],
+      "Remove all": [
+        ""
+      ],
+      "Remove directly assigned Ansible role from a host": [
+        ""
+      ],
+      "Remove directly assigned Ansible role from a hostgroup": [
+        ""
+      ],
+      "Remove duplicate values (only array type)": [
+        ""
+      ],
+      "Remove selected": [
+        ""
+      ],
+      "Report format, defaults to '%s'": [
         ""
       ],
       "Request the following permissions from administrator: %s.": [
         ""
       ],
-      "Configure Recurring Job": [
+      "Required field": [
         ""
       ],
-      "Action with sub plans": [
-        "Akce s dílčími plány"
+      "Result": [
+        "Výsledek"
       ],
-      "Check for long running tasks": [
+      "Role ID": [
+        "Identif. role"
+      ],
+      "Roles": [
+        "Role"
+      ],
+      "Role|Name": [
+        "Role|Název"
+      ],
+      "Run Ansible roles": [
+        "Spustit Ansible role"
+      ],
+      "Run all Ansible roles": [
         ""
       ],
-      "Deliver notifications about long running tasks": [
+      "Run all Ansible roles on hosts belonging to this host group": [
         ""
       ],
-      "Import Puppet classes": [
-        "Importovat Puppet třídy"
+      "Run an Ansible playbook against given hosts": [
+        ""
       ],
-      "Import facts": [
-        "Importovat fakta"
+      "Run an Ansible playbook to enable web console on given hosts": [
+        ""
       ],
-      "Remote action:": [
-        "Akce na protějšku:"
+      "Run playbook": [
+        ""
       ],
-      "Ansible support in Foreman": [
-        "Podpora Ansible ve Foreman"
+      "Runs all Ansible roles on a host": [
+        ""
+      ],
+      "Runs all Ansible roles on a hostgroup": [
+        ""
+      ],
+      "Runs all Ansible roles on hostgroups": [
+        ""
+      ],
+      "Runs all Ansible roles on hosts": [
+        ""
+      ],
+      "Runs an Ansible playbook which contains all the roles defined for a host": [
+        ""
+      ],
+      "Schedule": [
+        "Plán"
+      ],
+      "Schedule generating of Ansible Inventory report": [
+        ""
+      ],
+      "Schedule recurring Ansible roles job": [
+        ""
+      ],
+      "Schedule recurring job": [
+        ""
+      ],
+      "Scheduled recurring jobs": [
+        ""
+      ],
+      "Set the order in which values are resolved.": [
+        "Nastavit pořadí, ve kterém jsou hodnoty překládány."
+      ],
+      "Show Ansible inventory for hostgroups": [
+        ""
+      ],
+      "Show Ansible inventory for hosts": [
+        "Zobrazit Ansible inventář pro stroje"
+      ],
+      "Show full value": [
+        ""
+      ],
+      "Show role": [
+        "Zobrazit roli"
+      ],
+      "Show variable": [
+        ""
+      ],
+      "Smart Proxy to fetch from": [
+        ""
+      ],
+      "Smart Proxy to import from": [
+        ""
+      ],
+      "Smart Proxy to sync from": [
+        ""
+      ],
+      "Smart proxy id is required": [
+        ""
+      ],
+      "Source": [
+        "Zdroj"
+      ],
+      "Source attribute": [
+        ""
+      ],
+      "Specify Matchers": [
+        ""
+      ],
+      "State": [
+        "Stav"
+      ],
+      "Submit": [
+        "Odeslat"
+      ],
+      "Sync Ansible playbooks": [
+        ""
+      ],
+      "Sync Ansible roles": [
+        ""
+      ],
+      "Tags": [
+        "Štítky"
+      ],
+      "Task": [
+        "Úloha"
+      ],
+      "Task Details": [
+        "Podrobnosti o úloze"
+      ],
+      "The order in which matchers keys are processed, first match wins.<br> You may use multiple attributes as a matcher key, for example, an order of <code>host group, environment</code> would expect a matcher such as <code>hostgroup = \\\"web servers\\\", environment = production</code>": [
+        ""
+      ],
+      "The order in which values are resolved": [
+        "Pořadí ve kterém jsou hodnoty řešeny"
+      ],
+      "There are no Ansible roles to play": [
+        "Nejsou zde žádné Ansible role pro přehrání"
+      ],
+      "There was a following error when assigning Ansible Roles: %s": [
+        ""
+      ],
+      "There was a following error when changing Ansible variable override: %s": [
+        ""
+      ],
+      "There was a following error when creating Ansible job: %s": [
+        ""
+      ],
+      "There was a following error when deleting Ansible config job: %s": [
+        ""
+      ],
+      "There was a following error when deleting Ansible variable override: %s": [
+        ""
+      ],
+      "This Ansible role is inherited from host group": [
+        ""
+      ],
+      "This Ansible role is inherited from parent host group": [
+        ""
+      ],
+      "This job will run all the assigned Ansible roles.": [
+        ""
+      ],
+      "This list consists of host assigned roles and group assigned roles. Group assigned roles will always be executed prior to host assigned roles.": [
+        ""
+      ],
+      "Those roles will be excluded when importing roles from smart proxy, The expected input is comma separated values and you can use * wildcard metacharactersFor example: foo*, *b*,*bar": [
+        ""
+      ],
+      "Timeout (in minutes) when hosts should have reported.": [
+        ""
+      ],
+      "Timeout (in seconds) to set when Foreman will trigger a play Ansible roles task after a host is fully provisioned. Set this to the maximum time you expect a host to take until it is ready after a reboot.": [
+        ""
+      ],
+      "Type": [
+        "Typ"
+      ],
+      "Types of validation values": [
+        "Typy hodnot ověřování"
+      ],
+      "Types of variable values": [
+        "Typy hodnot proměnné"
+      ],
+      "Unable to get playbook's names from Ansible": [
+        ""
+      ],
+      "Unable to get playbooks from Ansible": [
+        ""
+      ],
+      "Unable to get roles from Ansible": [
+        "Nedaří se získat role z Ansible"
+      ],
+      "Unable to get roles/variables from Ansible": [
+        "Nedaří se získat role/proměnné z Ansible"
+      ],
+      "Update": [
+        "Aktualizovat"
+      ],
+      "Update Capsules on given Capsule server hosts": [
+        ""
+      ],
+      "Update Capsules on given hosts": [
+        ""
+      ],
+      "Update Role Variables": [
+        ""
+      ],
+      "Update Smart Proxy": [
+        ""
+      ],
+      "Updates Ansible variable": [
+        "Aktualizuje Ansible proměnné"
+      ],
+      "Upgrade": [
+        ""
+      ],
+      "Upgrade Capsules on given Capsule server hosts": [
+        ""
+      ],
+      "Upgrade Capsules on given hosts": [
+        ""
+      ],
+      "Use drag and drop to change order of the roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly": [
+        ""
+      ],
+      "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled": [
+        ""
+      ],
+      "Use this connection type by default when running Ansible playbooks. You can override this on hosts by adding a parameter \\\"ansible_connection\\\"": [
+        ""
+      ],
+      "Use this to supply a path to an SSH Private Key that Ansible will use in lieu of a password Override with \\\"ansible_ssh_private_key_file\\\" host parameter": [
+        ""
+      ],
+      "Used to enforce certain values for the parameter values": [
+        ""
+      ],
+      "Value": [
+        "Hodnota"
+      ],
+      "Value to use when there is no match.": [
+        "Hodnota kterou použít, pokud není nalezena žádná shoda."
+      ],
+      "Variables": [
+        "Proměnné"
+      ],
+      "Variable|Name": [
+        ""
+      ],
+      "Variable|Role": [
+        ""
+      ],
+      "View inherited roles": [
+        ""
+      ],
+      "When enabled the parameter is hidden in the UI": [
+        ""
+      ],
+      "Whether to override variable or not": [
+        "Zda hodnotu přepsat nebo ne"
+      ],
+      "WinRM cert Validation": [
+        "Ověření WinRM certifikátu"
+      ],
+      "You are not authorized to perform this action.": [
+        ""
+      ],
+      "You are not authorized to view the page. ": [
+        ""
+      ],
+      "daily": [
+        "denně"
+      ],
+      "false": [
+        ""
+      ],
+      "hourly": [
+        "každou hodinu"
+      ],
+      "is required": [
+        ""
+      ],
+      "monthly": [
+        ""
+      ],
+      "true": [
+        ""
+      ],
+      "view all assigned roles": [
+        ""
+      ],
+      "view remote execution page.": [
+        ""
+      ],
+      "view the task in progress": [
+        ""
+      ],
+      "weekly": [
+        "týdně"
       ]
     }
   }

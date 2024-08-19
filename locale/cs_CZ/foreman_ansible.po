@@ -38,9 +38,6 @@ msgstr ""
 msgid "A comma separated list of tags to use for Ansible run"
 msgstr ""
 
-msgid "Action with sub plans"
-msgstr "Akce s dílčími plány"
-
 msgid "Actions"
 msgstr "Akce"
 
@@ -143,9 +140,6 @@ msgstr ""
 msgid "Ansible variable override was successfully deleted."
 msgstr ""
 
-msgid "Ansible: Run Insights maintenance plan"
-msgstr ""
-
 msgid "Are you sure you want to cancel Ansible config job?"
 msgstr ""
 
@@ -184,9 +178,6 @@ msgstr ""
 
 msgid "Changed Ansible roles"
 msgstr "Změněné Ansible role"
-
-msgid "Check for long running tasks"
-msgstr ""
 
 msgid "Close"
 msgstr "Zavřít"
@@ -259,9 +250,6 @@ msgstr "Smazat Ansible roli"
 
 msgid "Deletes Ansible variable"
 msgstr "Smazat Ansible proměnnou"
-
-msgid "Deliver notifications about long running tasks"
-msgstr ""
 
 msgid "Description"
 msgstr "Popis"
@@ -392,14 +380,8 @@ msgstr ""
 msgid "Import"
 msgstr "Import"
 
-msgid "Import Puppet classes"
-msgstr "Importovat Puppet třídy"
-
 msgid "Import Role"
 msgstr ""
-
-msgid "Import facts"
-msgstr "Importovat fakta"
 
 msgid "Import from %s"
 msgstr "Importovat z %s"
@@ -437,9 +419,6 @@ msgstr ""
 msgid "Inherited from Hostgroup"
 msgstr ""
 
-msgid "Insights remediation on %{hosts_count} host(s) has finished successfully"
-msgstr ""
-
 msgid "Invalid, expected one of: %s"
 msgstr ""
 
@@ -448,9 +427,6 @@ msgstr ""
 
 msgid "Inventory"
 msgstr ""
-
-msgid "Job Details"
-msgstr "Podrobnosti o úloze"
 
 msgid "Jobs"
 msgstr "Úlohy"
@@ -616,12 +592,6 @@ msgstr "Proxy nenalezena"
 msgid "Proxy tasks batch size for Ansible"
 msgstr ""
 
-msgid "Remediation Plan"
-msgstr ""
-
-msgid "Remote action:"
-msgstr "Akce na protějšku:"
-
 msgid "Remove"
 msgstr "Odebrat"
 
@@ -680,9 +650,6 @@ msgid "Run an Ansible playbook to enable web console on given hosts"
 msgstr ""
 
 msgid "Run playbook"
-msgstr ""
-
-msgid "Runs a given maintenance plan from Red Hat Access Insights given an ID."
 msgstr ""
 
 msgid "Runs all Ansible roles on a host"
@@ -843,6 +810,12 @@ msgstr "Nedaří se získat role/proměnné z Ansible"
 
 msgid "Update"
 msgstr "Aktualizovat"
+
+msgid "Update Capsules on given Capsule server hosts"
+msgstr ""
+
+msgid "Update Capsules on given hosts"
+msgstr ""
 
 msgid "Update Role Variables"
 msgstr ""

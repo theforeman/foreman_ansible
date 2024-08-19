@@ -43,9 +43,6 @@ msgstr "(du groupe hôte)"
 msgid "A comma separated list of tags to use for Ansible run"
 msgstr "Une liste de balises séparées par des virgules à utiliser pour l'exécution d'Ansible"
 
-msgid "Action with sub plans"
-msgstr "Action avec sous-plans"
-
 msgid "Actions"
 msgstr "Actions"
 
@@ -148,9 +145,6 @@ msgstr "La variable Ansible a été modifiée avec succès."
 msgid "Ansible variable override was successfully deleted."
 msgstr "Le remplacement de la variable Ansible a été supprimé avec succès."
 
-msgid "Ansible: Run Insights maintenance plan"
-msgstr "Ansible : Exécuter un plan de maintenance Insights"
-
 msgid "Are you sure you want to cancel Ansible config job?"
 msgstr "Êtes-vous sûr de vouloir annuler le job de configuration Ansible ?"
 
@@ -189,9 +183,6 @@ msgstr "Annuler le job de configuration Ansible"
 
 msgid "Changed Ansible roles"
 msgstr "Rôles Ansible modifiés"
-
-msgid "Check for long running tasks"
-msgstr ""
 
 msgid "Close"
 msgstr "Fermer"
@@ -264,9 +255,6 @@ msgstr "Supprime le rôle Ansible"
 
 msgid "Deletes Ansible variable"
 msgstr "Supprime la variable Ansible"
-
-msgid "Deliver notifications about long running tasks"
-msgstr ""
 
 msgid "Description"
 msgstr "Description"
@@ -397,14 +385,8 @@ msgstr "Si coché, Foreman va générer une erreur s'il n'y a pas de valeur par 
 msgid "Import"
 msgstr "Importation"
 
-msgid "Import Puppet classes"
-msgstr "Importer des classes Puppet"
-
 msgid "Import Role"
 msgstr "Rôle d'importation"
-
-msgid "Import facts"
-msgstr "Importer des faits"
 
 msgid "Import from %s"
 msgstr "Import depuis %s"
@@ -442,9 +424,6 @@ msgstr "Balises d'inclusion/exclusion pour l'exécution d'Ansible"
 msgid "Inherited from Hostgroup"
 msgstr "Héritée du groupe d’hôtes"
 
-msgid "Insights remediation on %{hosts_count} host(s) has finished successfully"
-msgstr "La remédiation Insights sur %%{hosts_count} hôte(s) est terminé"
-
 msgid "Invalid, expected one of: %s"
 msgstr "Invalide, attendu un de : %s"
 
@@ -453,9 +432,6 @@ msgstr "Invalide, censé correspondre à une regex : %s"
 
 msgid "Inventory"
 msgstr "Inventaire"
-
-msgid "Job Details"
-msgstr "Détails Job"
 
 msgid "Jobs"
 msgstr "Jobs"
@@ -623,12 +599,6 @@ msgstr "Proxy non trouvé"
 msgid "Proxy tasks batch size for Ansible"
 msgstr "Taille du lot des tâches de proxy pour Ansible"
 
-msgid "Remediation Plan"
-msgstr "Plan de remédiation"
-
-msgid "Remote action:"
-msgstr "Action distante :"
-
 msgid "Remove"
 msgstr "Supprimer"
 
@@ -688,9 +658,6 @@ msgstr "Exécuter un playbook Ansible pour activer la console web sur des hôtes
 
 msgid "Run playbook"
 msgstr "Exécuter le playbook"
-
-msgid "Runs a given maintenance plan from Red Hat Access Insights given an ID."
-msgstr "Exécute un plan de maintenance donné à partir de Red Hat Access Insights sur la base d'un ID."
 
 msgid "Runs all Ansible roles on a host"
 msgstr "Exécute les rôles Ansible dans un hôte"
@@ -850,6 +817,12 @@ msgstr "Impossible d'obtenir les rôles/variables d'Ansible"
 
 msgid "Update"
 msgstr "Mise à jour"
+
+msgid "Update Capsules on given Capsule server hosts"
+msgstr ""
+
+msgid "Update Capsules on given hosts"
+msgstr ""
 
 msgid "Update Role Variables"
 msgstr "Mise à jour des variables de rôle"
