@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foreman_ansible 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-28 18:16+0100\n"
-"PO-Revision-Date: 2023-11-28 18:16+0100\n"
+"POT-Creation-Date: 2024-08-19 09:42+0200\n"
+"PO-Revision-Date: 2024-08-19 09:42+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -491,15 +491,6 @@ msgstr ""
 msgid "Task Details"
 msgstr ""
 
-#: ../app/services/foreman_ansible/insights_notification_builder.rb:49
-msgid "Remediation Plan"
-msgstr ""
-
-#: ../app/services/foreman_ansible/insights_notification_builder.rb:59
-#: ../db/seeds.d/90_notification_blueprints.rb:13
-msgid "Job Details"
-msgstr ""
-
 #: ../app/services/foreman_ansible/proxy_api.rb:13
 msgid "Proxy not found"
 msgstr ""
@@ -529,7 +520,7 @@ msgstr ""
 
 #: ../app/views/ansible_roles/index.html.erb:12
 #: ../app/views/ansible_roles/index.html.erb:29
-#: ../lib/foreman_ansible/register.rb:221
+#: ../lib/foreman_ansible/register.rb:219
 #: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/AllRolesTable.js:18
 #: ../webpack/components/AnsibleHostDetail/components/RolesTab/RolesTable.js:30
 #: ../webpack/components/AnsibleHostDetail/constants.js:6
@@ -542,12 +533,12 @@ msgid "Imported at"
 msgstr ""
 
 #: ../app/views/ansible_roles/index.html.erb:14
-#: ../app/views/ansible_variables/index.html.erb:15
+#: ../app/views/ansible_variables/index.html.erb:14
 msgid "Actions"
 msgstr ""
 
 #: ../app/views/ansible_roles/index.html.erb:35
-#: ../app/views/ansible_variables/index.html.erb:40
+#: ../app/views/ansible_variables/index.html.erb:39
 msgid "Delete %s?"
 msgstr ""
 
@@ -670,24 +661,24 @@ msgstr ""
 msgid "New Ansible Variable"
 msgstr ""
 
-#: ../app/views/ansible_variables/index.html.erb:11
+#: ../app/views/ansible_variables/index.html.erb:10
 msgid "Variable|Name"
 msgstr ""
 
-#: ../app/views/ansible_variables/index.html.erb:12
+#: ../app/views/ansible_variables/index.html.erb:11
 msgid "Variable|Role"
 msgstr ""
 
-#: ../app/views/ansible_variables/index.html.erb:13
+#: ../app/views/ansible_variables/index.html.erb:12
 #: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTable.js:61
 msgid "Type"
 msgstr ""
 
-#: ../app/views/ansible_variables/index.html.erb:14
+#: ../app/views/ansible_variables/index.html.erb:13
 msgid "Imported?"
 msgstr ""
 
-#: ../app/views/ansible_variables/index.html.erb:22
+#: ../app/views/ansible_variables/index.html.erb:21
 msgid "Overriden"
 msgstr ""
 
@@ -725,39 +716,30 @@ msgid "Enable Ansible Callback"
 msgstr ""
 
 #: ../app/views/job_templates/_job_template_callback_tab_headers.html.erb:1
-#: ../lib/foreman_ansible/register.rb:8 ../lib/foreman_ansible/register.rb:215
-#: ../lib/foreman_ansible/register.rb:265
-#: ../lib/foreman_ansible/register.rb:271
+#: ../lib/foreman_ansible/register.rb:8 ../lib/foreman_ansible/register.rb:213
+#: ../lib/foreman_ansible/register.rb:263
+#: ../lib/foreman_ansible/register.rb:269
 msgid "Ansible"
 msgstr ""
 
 #: ../db/seeds.d/90_notification_blueprints.rb:5
-#: ../webpack/components/AnsibleHostDetail/constants.js:8
-msgid "Jobs"
-msgstr ""
-
-#: ../db/seeds.d/90_notification_blueprints.rb:7
-msgid "Insights remediation on %{hosts_count} host(s) has finished successfully"
-msgstr ""
-
-#: ../db/seeds.d/90_notification_blueprints.rb:18
-#: ../db/seeds.d/90_notification_blueprints.rb:25
-#: ../db/seeds.d/90_notification_blueprints.rb:30
-#: ../lib/foreman_ansible/register.rb:217
+#: ../db/seeds.d/90_notification_blueprints.rb:12
+#: ../db/seeds.d/90_notification_blueprints.rb:17
+#: ../lib/foreman_ansible/register.rb:215
 #: ../webpack/components/AnsibleHostDetail/constants.js:5
 msgid "Roles"
 msgstr ""
 
-#: ../db/seeds.d/90_notification_blueprints.rb:20
+#: ../db/seeds.d/90_notification_blueprints.rb:7
 msgid "Import roles and variables has finished successfully"
 msgstr ""
 
-#: ../db/seeds.d/90_notification_blueprints.rb:36
-#: ../db/seeds.d/90_notification_blueprints.rb:43
+#: ../db/seeds.d/90_notification_blueprints.rb:23
+#: ../db/seeds.d/90_notification_blueprints.rb:30
 msgid "Playbooks"
 msgstr ""
 
-#: ../db/seeds.d/90_notification_blueprints.rb:38
+#: ../db/seeds.d/90_notification_blueprints.rb:25
 msgid "Import playbooks has finished successfully"
 msgstr ""
 
@@ -881,8 +863,8 @@ msgstr ""
 msgid "Proxy tasks batch size for Ansible"
 msgstr ""
 
-#: ../lib/foreman_ansible/register.rb:253
-#: ../lib/foreman_ansible/register.rb:259
+#: ../lib/foreman_ansible/register.rb:251
+#: ../lib/foreman_ansible/register.rb:257
 msgid "Update Smart Proxy"
 msgstr ""
 
@@ -895,35 +877,35 @@ msgid "Runs an Ansible playbook which contains all the roles defined for a host"
 msgstr ""
 
 #: ../lib/foreman_ansible/remote_execution.rb:27
-msgid "Ansible: Run Insights maintenance plan"
-msgstr ""
-
-#: ../lib/foreman_ansible/remote_execution.rb:28
-msgid "Runs a given maintenance plan from Red Hat Access Insights given an ID."
-msgstr ""
-
-#: ../lib/foreman_ansible/remote_execution.rb:35
 msgid "Run playbook"
 msgstr ""
 
-#: ../lib/foreman_ansible/remote_execution.rb:36
+#: ../lib/foreman_ansible/remote_execution.rb:28
 msgid "Run an Ansible playbook against given hosts"
 msgstr ""
 
-#: ../lib/foreman_ansible/remote_execution.rb:41
+#: ../lib/foreman_ansible/remote_execution.rb:33
 msgid "Enable web console"
 msgstr ""
 
-#: ../lib/foreman_ansible/remote_execution.rb:42
+#: ../lib/foreman_ansible/remote_execution.rb:34
 msgid "Run an Ansible playbook to enable web console on given hosts"
 msgstr ""
 
-#: ../lib/foreman_ansible/remote_execution.rb:47
+#: ../lib/foreman_ansible/remote_execution.rb:39
 msgid "Upgrade Capsules on given hosts"
 msgstr ""
 
-#: ../lib/foreman_ansible/remote_execution.rb:48
+#: ../lib/foreman_ansible/remote_execution.rb:40
 msgid "Upgrade Capsules on given Capsule server hosts"
+msgstr ""
+
+#: ../lib/foreman_ansible/remote_execution.rb:45
+msgid "Update Capsules on given hosts"
+msgstr ""
+
+#: ../lib/foreman_ansible/remote_execution.rb:46
+msgid "Update Capsules on given Capsule server hosts"
 msgstr ""
 
 #:
@@ -965,32 +947,32 @@ msgid "Are you sure you want to delete override for %s?"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:18
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:19
 msgid "Default value"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:54
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:55
 msgid "Ansible variable override was successfully deleted."
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:68
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:69
 msgid "There was a following error when deleting Ansible variable override: %s"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:87
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:88
 msgid "Invalid, expected to match a regex: %s"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:103
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:104
 msgid "Invalid, expected one of: %s"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:109
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTableHelper.js:110
 msgid "is required"
 msgstr ""
 
@@ -1005,12 +987,12 @@ msgid "Ansible variable override successfully changed."
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/EditableValue.js:37
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/EditableValue.js:41
 msgid "true"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/EditableValue.js:38
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/EditableValue.js:42
 msgid "false"
 msgstr ""
 
@@ -1269,6 +1251,10 @@ msgstr ""
 msgid "Inventory"
 msgstr ""
 
+#: ../webpack/components/AnsibleHostDetail/constants.js:8
+msgid "Jobs"
+msgstr ""
+
 #:
 #: ../webpack/components/AnsibleRolesAndVariables/AnsibleRolesAndVariablesActions.js:26
 msgid "Import roles and variables started: "
@@ -1391,30 +1377,6 @@ msgstr ""
 
 #: ../webpack/routes/HostgroupJobs/index.js:11
 msgid "Configure Recurring Job"
-msgstr ""
-
-#: action_names.rb:2
-msgid "Action with sub plans"
-msgstr ""
-
-#: action_names.rb:3
-msgid "Check for long running tasks"
-msgstr ""
-
-#: action_names.rb:4
-msgid "Deliver notifications about long running tasks"
-msgstr ""
-
-#: action_names.rb:5
-msgid "Import Puppet classes"
-msgstr ""
-
-#: action_names.rb:6
-msgid "Import facts"
-msgstr ""
-
-#: action_names.rb:7
-msgid "Remote action:"
 msgstr ""
 
 #: gemspec.rb:2

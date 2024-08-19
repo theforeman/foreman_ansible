@@ -37,9 +37,6 @@ msgstr "(ãƒ›ã‚¹ãƒˆã‚°ãƒ«ãƒ¼ãƒ—ã�‹ã‚‰)"
 msgid "A comma separated list of tags to use for Ansible run"
 msgstr "Ansible å®Ÿè¡Œã�«ä½¿ç”¨ã�™ã‚‹ã‚¿ã‚°ã�®ã‚³ãƒ³ãƒ�åŒºåˆ‡ã‚Šãƒªã‚¹ãƒˆ"
 
-msgid "Action with sub plans"
-msgstr "ã‚µãƒ–ãƒ—ãƒ©ãƒ³ã�«ã‚ˆã‚‹ã‚¢ã‚¯ã‚·ãƒ§ãƒ³"
-
 msgid "Actions"
 msgstr "ã‚¢ã‚¯ã‚·ãƒ§ãƒ³"
 
@@ -142,9 +139,6 @@ msgstr "Ansible å¤‰æ•°ã�®ã‚ªãƒ¼ãƒ�ãƒ¼ãƒ©ã‚¤ãƒ
 msgid "Ansible variable override was successfully deleted."
 msgstr "Ansible å¤‰æ•°ã�®ã‚ªãƒ¼ãƒ�ãƒ¼ãƒ©ã‚¤ãƒ‰ã�¯æ­£å¸¸ã�«å‰Šé™¤ã�•ã‚Œã�¾ã�—ã�Ÿã€‚"
 
-msgid "Ansible: Run Insights maintenance plan"
-msgstr "Ansible: Insights ãƒ¡ãƒ³ãƒ†ãƒŠãƒ³ã‚¹ãƒ—ãƒ©ãƒ³ã�®å®Ÿè¡Œ"
-
 msgid "Are you sure you want to cancel Ansible config job?"
 msgstr "Ansible è¨­å®šã‚¸ãƒ§ãƒ–ã‚’ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã�—ã�¦ã‚ˆã‚�ã�—ã�„ã�§ã�™ã�‹?"
 
@@ -183,9 +177,6 @@ msgstr "Ansible è¨­å®šã‚¸ãƒ§ãƒ–ã�®ã‚­ãƒ£ãƒ³ã‚�
 
 msgid "Changed Ansible roles"
 msgstr "å¤‰æ›´ã�•ã‚Œã�Ÿ Ansible ãƒ­ãƒ¼ãƒ«"
-
-msgid "Check for long running tasks"
-msgstr ""
 
 msgid "Close"
 msgstr "é–‰ã�˜ã‚‹"
@@ -258,9 +249,6 @@ msgstr "Ansible ãƒ­ãƒ¼ãƒ«ã‚’å‰Šé™¤ã�—ã�¾ã�™"
 
 msgid "Deletes Ansible variable"
 msgstr "Ansible å¤‰æ•°ã‚’å‰Šé™¤ã�—ã�¾ã�™"
-
-msgid "Deliver notifications about long running tasks"
-msgstr ""
 
 msgid "Description"
 msgstr "èª¬æ˜�"
@@ -391,14 +379,8 @@ msgstr "ãƒ�ã‚§ãƒƒã‚¯ã�Œä»˜ã�‘ã‚‰ã‚Œã�¦ã
 msgid "Import"
 msgstr "ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆ"
 
-msgid "Import Puppet classes"
-msgstr "Puppet ã‚¯ãƒ©ã‚¹ã�®ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆ"
-
 msgid "Import Role"
 msgstr "ãƒ­ãƒ¼ãƒ«ã�®ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆ"
-
-msgid "Import facts"
-msgstr "ãƒ•ã‚¡ã‚¯ãƒˆã�®ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆ"
 
 msgid "Import from %s"
 msgstr "%s ã�‹ã‚‰ã�®ã‚¤ãƒ³ãƒ�ãƒ¼ãƒˆ"
@@ -436,9 +418,6 @@ msgstr "Ansible ã�®å®Ÿè¡Œã�«ã‚¿ã‚°ã‚’è¿½åŠ /é�
 msgid "Inherited from Hostgroup"
 msgstr "ãƒ›ã‚¹ãƒˆã‚°ãƒ«ãƒ¼ãƒ—ã�‹ã‚‰ç¶™æ‰¿"
 
-msgid "Insights remediation on %{hosts_count} host(s) has finished successfully"
-msgstr "%{hosts_count} å�°ã�®ãƒ›ã‚¹ãƒˆã�§ Insights ã�®ä¿®å¾©ã�Œæ­£å¸¸ã�«å®Œäº†ã�—ã�¾ã�—ã�Ÿ"
-
 msgid "Invalid, expected one of: %s"
 msgstr "ç„¡åŠ¹ã�§ã�™ã€‚æ¬¡ã�®ã�„ã�šã‚Œã�‹ã�Œäºˆæƒ³ã�•ã‚Œã�¾ã�™: %s"
 
@@ -447,9 +426,6 @@ msgstr "ç„¡åŠ¹ã�§ã�™ã€‚æ­£è¦�è¡¨ç�¾ã�«ä�
 
 msgid "Inventory"
 msgstr "ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªãƒ¼"
-
-msgid "Job Details"
-msgstr "ã‚¸ãƒ§ãƒ–ã�®è©³ç´°"
 
 msgid "Jobs"
 msgstr "ã‚¸ãƒ§ãƒ–"
@@ -617,12 +593,6 @@ msgstr "ãƒ—ãƒ­ã‚­ã‚·ãƒ¼ã�Œè¦‹ã�¤ã�‹ã‚Šã�
 msgid "Proxy tasks batch size for Ansible"
 msgstr "Ansible ã�®ãƒ—ãƒ­ã‚­ã‚·ãƒ¼ã‚¿ã‚¹ã‚¯ã�®ãƒ�ãƒƒãƒ�ã‚µã‚¤ã‚º"
 
-msgid "Remediation Plan"
-msgstr "ä¿®å¾©ãƒ—ãƒ©ãƒ³"
-
-msgid "Remote action:"
-msgstr "ãƒªãƒ¢ãƒ¼ãƒˆã‚¢ã‚¯ã‚·ãƒ§ãƒ³:"
-
 msgid "Remove"
 msgstr "å‰Šé™¤"
 
@@ -682,9 +652,6 @@ msgstr "Ansible Playbook ã‚’å®Ÿè¡Œã�—ã�¦ã€�æŒ‡å®�
 
 msgid "Run playbook"
 msgstr "Playbook ã�®å®Ÿè¡Œ"
-
-msgid "Runs a given maintenance plan from Red Hat Access Insights given an ID."
-msgstr "æŒ‡å®šã�•ã‚Œã�Ÿ ID ã�® Red Hat Access Insights ã�‹ã‚‰æŒ‡å®šã�•ã‚Œã�Ÿãƒ¡ãƒ³ãƒ†ãƒŠãƒ³ã‚¹ãƒ—ãƒ©ãƒ³ã‚’å®Ÿè¡Œã�—ã�¾ã�™ã€‚"
 
 msgid "Runs all Ansible roles on a host"
 msgstr "ãƒ›ã‚¹ãƒˆä¸Šã�§ã�™ã�¹ã�¦ã�® Ansible ãƒ­ãƒ¼ãƒ«ã‚’å®Ÿè¡Œã�—ã�¾ã�™"
@@ -844,6 +811,12 @@ msgstr "Ansible ã�‹ã‚‰ãƒ­ãƒ¼ãƒ«/å¤‰æ•°ã‚’å��
 
 msgid "Update"
 msgstr "æ›´æ–°"
+
+msgid "Update Capsules on given Capsule server hosts"
+msgstr ""
+
+msgid "Update Capsules on given hosts"
+msgstr ""
 
 msgid "Update Role Variables"
 msgstr "ãƒ­ãƒ¼ãƒ«å¤‰æ•°ã�®æ›´æ–°"

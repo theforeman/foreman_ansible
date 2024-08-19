@@ -36,9 +36,6 @@ msgstr ""
 msgid "A comma separated list of tags to use for Ansible run"
 msgstr ""
 
-msgid "Action with sub plans"
-msgstr "有子計畫的動作"
-
 msgid "Actions"
 msgstr "動作"
 
@@ -141,9 +138,6 @@ msgstr ""
 msgid "Ansible variable override was successfully deleted."
 msgstr ""
 
-msgid "Ansible: Run Insights maintenance plan"
-msgstr ""
-
 msgid "Are you sure you want to cancel Ansible config job?"
 msgstr ""
 
@@ -181,9 +175,6 @@ msgid "Cancel Ansible config job"
 msgstr ""
 
 msgid "Changed Ansible roles"
-msgstr ""
-
-msgid "Check for long running tasks"
 msgstr ""
 
 msgid "Close"
@@ -256,9 +247,6 @@ msgid "Deletes Ansible role"
 msgstr ""
 
 msgid "Deletes Ansible variable"
-msgstr ""
-
-msgid "Deliver notifications about long running tasks"
 msgstr ""
 
 msgid "Description"
@@ -390,14 +378,8 @@ msgstr "若選取而沒有預設值並且比對器未提供值的話，將會造
 msgid "Import"
 msgstr "匯入"
 
-msgid "Import Puppet classes"
-msgstr "匯入 Puppet 類別"
-
 msgid "Import Role"
 msgstr ""
-
-msgid "Import facts"
-msgstr "匯入詳情"
 
 msgid "Import from %s"
 msgstr "由 %s 匯入"
@@ -435,9 +417,6 @@ msgstr ""
 msgid "Inherited from Hostgroup"
 msgstr ""
 
-msgid "Insights remediation on %{hosts_count} host(s) has finished successfully"
-msgstr ""
-
 msgid "Invalid, expected one of: %s"
 msgstr ""
 
@@ -445,9 +424,6 @@ msgid "Invalid, expected to match a regex: %s"
 msgstr ""
 
 msgid "Inventory"
-msgstr ""
-
-msgid "Job Details"
 msgstr ""
 
 msgid "Jobs"
@@ -614,12 +590,6 @@ msgstr ""
 msgid "Proxy tasks batch size for Ansible"
 msgstr ""
 
-msgid "Remediation Plan"
-msgstr ""
-
-msgid "Remote action:"
-msgstr "遠端動作："
-
 msgid "Remove"
 msgstr "移除"
 
@@ -678,9 +648,6 @@ msgid "Run an Ansible playbook to enable web console on given hosts"
 msgstr ""
 
 msgid "Run playbook"
-msgstr ""
-
-msgid "Runs a given maintenance plan from Red Hat Access Insights given an ID."
 msgstr ""
 
 msgid "Runs all Ansible roles on a host"
@@ -841,6 +808,12 @@ msgstr ""
 
 msgid "Update"
 msgstr "更新"
+
+msgid "Update Capsules on given Capsule server hosts"
+msgstr ""
+
+msgid "Update Capsules on given hosts"
+msgstr ""
 
 msgid "Update Role Variables"
 msgstr ""

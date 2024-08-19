@@ -47,9 +47,6 @@ msgstr ""
 msgid "A comma separated list of tags to use for Ansible run"
 msgstr ""
 
-msgid "Action with sub plans"
-msgstr "Aktion mit Unterplänen"
-
 msgid "Actions"
 msgstr "Aktionen"
 
@@ -152,9 +149,6 @@ msgstr ""
 msgid "Ansible variable override was successfully deleted."
 msgstr ""
 
-msgid "Ansible: Run Insights maintenance plan"
-msgstr "Ansible: Insights-Wartungsplan ausführen"
-
 msgid "Are you sure you want to cancel Ansible config job?"
 msgstr ""
 
@@ -193,9 +187,6 @@ msgstr ""
 
 msgid "Changed Ansible roles"
 msgstr "Geänderte Ansible-Rollen"
-
-msgid "Check for long running tasks"
-msgstr ""
 
 msgid "Close"
 msgstr "Schließen"
@@ -268,9 +259,6 @@ msgstr "Löscht die Ansible-Rolle"
 
 msgid "Deletes Ansible variable"
 msgstr "Löscht die Ansible-Variable"
-
-msgid "Deliver notifications about long running tasks"
-msgstr ""
 
 msgid "Description"
 msgstr "Beschreibung"
@@ -401,14 +389,8 @@ msgstr "Falls aktiviert, wird dies einen Fehler erzeugen, wenn kein Standardwert
 msgid "Import"
 msgstr "Importieren"
 
-msgid "Import Puppet classes"
-msgstr "Puppet-Klassen importieren"
-
 msgid "Import Role"
 msgstr "Rolle importieren"
-
-msgid "Import facts"
-msgstr "Fakten importieren"
 
 msgid "Import from %s"
 msgstr "Aus %s importieren"
@@ -446,9 +428,6 @@ msgstr ""
 msgid "Inherited from Hostgroup"
 msgstr ""
 
-msgid "Insights remediation on %{hosts_count} host(s) has finished successfully"
-msgstr "Insights-Korrektur auf %{hosts_count} Host(s) wurde erfolgreich abgeschlossen"
-
 msgid "Invalid, expected one of: %s"
 msgstr ""
 
@@ -457,9 +436,6 @@ msgstr ""
 
 msgid "Inventory"
 msgstr "Bestand"
-
-msgid "Job Details"
-msgstr "Auftragsdetails"
 
 msgid "Jobs"
 msgstr "Aufträge"
@@ -625,12 +601,6 @@ msgstr "Kein Proxy gefunden"
 msgid "Proxy tasks batch size for Ansible"
 msgstr ""
 
-msgid "Remediation Plan"
-msgstr "Sanierungsplan"
-
-msgid "Remote action:"
-msgstr "Entfernte Aktion"
-
 msgid "Remove"
 msgstr "Entfernen"
 
@@ -690,9 +660,6 @@ msgstr ""
 
 msgid "Run playbook"
 msgstr "Playbook ausführen"
-
-msgid "Runs a given maintenance plan from Red Hat Access Insights given an ID."
-msgstr "Führt einen bestimmten Wartungsplan von Red Hat Access Insights mit einer ID aus."
 
 msgid "Runs all Ansible roles on a host"
 msgstr "Führt alle Ansible-Rollen auf einem Host aus"
@@ -852,6 +819,12 @@ msgstr "Rollen/Variablen von Ansible können nicht abgerufen werden"
 
 msgid "Update"
 msgstr "Aktualisieren"
+
+msgid "Update Capsules on given Capsule server hosts"
+msgstr ""
+
+msgid "Update Capsules on given hosts"
+msgstr ""
 
 msgid "Update Role Variables"
 msgstr "Rollenvariablen entfernen"

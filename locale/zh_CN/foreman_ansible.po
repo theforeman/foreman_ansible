@@ -40,9 +40,6 @@ msgstr "（从主机组中）"
 msgid "A comma separated list of tags to use for Ansible run"
 msgstr "用于 Ansible 运行的以逗号分隔的标签列表"
 
-msgid "Action with sub plans"
-msgstr "有子计划的操作"
-
 msgid "Actions"
 msgstr "操作"
 
@@ -145,9 +142,6 @@ msgstr "Ansible 变量覆盖已成功更改。"
 msgid "Ansible variable override was successfully deleted."
 msgstr "Ansible 变量覆盖已成功删除。"
 
-msgid "Ansible: Run Insights maintenance plan"
-msgstr "Ansible：运行 Insights 维护计划"
-
 msgid "Are you sure you want to cancel Ansible config job?"
 msgstr "您确定要取消 Ansible 配置任务吗？"
 
@@ -186,9 +180,6 @@ msgstr "取消 Ansible 配置任务"
 
 msgid "Changed Ansible roles"
 msgstr "已更改的 Ansible 角色"
-
-msgid "Check for long running tasks"
-msgstr ""
 
 msgid "Close"
 msgstr "关闭"
@@ -261,9 +252,6 @@ msgstr "删除 Ansible 角色"
 
 msgid "Deletes Ansible variable"
 msgstr "删除 Ansible 变量"
-
-msgid "Deliver notifications about long running tasks"
-msgstr ""
 
 msgid "Description"
 msgstr "描述"
@@ -394,14 +382,8 @@ msgstr "检查后，如果没有默认值，且没有映射程序提供数值，
 msgid "Import"
 msgstr "导入"
 
-msgid "Import Puppet classes"
-msgstr "导入 Puppet 类"
-
 msgid "Import Role"
 msgstr "导入角色"
-
-msgid "Import facts"
-msgstr "导入事实"
 
 msgid "Import from %s"
 msgstr "从 %s 导入"
@@ -439,9 +421,6 @@ msgstr "用于 Ansible 运行的包括\\排除标签"
 msgid "Inherited from Hostgroup"
 msgstr "从主机组中继承"
 
-msgid "Insights remediation on %{hosts_count} host(s) has finished successfully"
-msgstr "%%{hosts_count} 个主机的 Insights 补救计划已成功完成"
-
 msgid "Invalid, expected one of: %s"
 msgstr "无效，预期为 %s 之一"
 
@@ -450,9 +429,6 @@ msgstr "无效，预期匹配的 与 regex ：%s"
 
 msgid "Inventory"
 msgstr "清单"
-
-msgid "Job Details"
-msgstr "作业详情"
 
 msgid "Jobs"
 msgstr "工作"
@@ -620,12 +596,6 @@ msgstr "找不到代理"
 msgid "Proxy tasks batch size for Ansible"
 msgstr "Ansible 的代理任务的批处理大小"
 
-msgid "Remediation Plan"
-msgstr "补救计划"
-
-msgid "Remote action:"
-msgstr "远程操作："
-
 msgid "Remove"
 msgstr "移除"
 
@@ -685,9 +655,6 @@ msgstr "运行 Ansible playbook 以在给定主机上启用 Web 控制台"
 
 msgid "Run playbook"
 msgstr "运行 playbook"
-
-msgid "Runs a given maintenance plan from Red Hat Access Insights given an ID."
-msgstr "运行给定 ID 的红帽 Access Insights 的给定维护计划。"
 
 msgid "Runs all Ansible roles on a host"
 msgstr "在一个主机上运行所有 Ansible 角色"
@@ -847,6 +814,12 @@ msgstr "无法从 Ansible 获取角色/变量"
 
 msgid "Update"
 msgstr "更新"
+
+msgid "Update Capsules on given Capsule server hosts"
+msgstr ""
+
+msgid "Update Capsules on given hosts"
+msgstr ""
 
 msgid "Update Role Variables"
 msgstr "更新角色变量"
