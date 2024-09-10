@@ -17,13 +17,11 @@ const AvailableRolesList = ({
   <ListView>
     <div className="sticky-pagination">
       <Pagination
-        viewType="list"
         itemCount={itemCount}
         updateParamsByUrl={false}
         page={pagination.page}
         perPage={pagination.perPage}
         onChange={onListingChange}
-        dropdownButtonId="available-ansible-roles-pagination-row-dropdown"
       />
     </div>
     <LoadingState loading={loading}>
