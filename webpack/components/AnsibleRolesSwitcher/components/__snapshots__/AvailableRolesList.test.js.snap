@@ -9,7 +9,6 @@ exports[`AvailableRolesList should render 1`] = `
   >
     <Pagination
       className={null}
-      dropdownButtonId="available-ansible-roles-pagination-row-dropdown"
       itemCount={2}
       noSidePadding={false}
       onChange={[Function]}
@@ -19,7 +18,6 @@ exports[`AvailableRolesList should render 1`] = `
       perPage={25}
       updateParamsByUrl={false}
       variant="bottom"
-      viewType="list"
     />
   </div>
   <LoadingState
