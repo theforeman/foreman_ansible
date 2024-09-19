@@ -31,8 +31,15 @@ all-mo: $(MOFILES)
 	cat $@
 	! grep -q msgid $@
 
-%.edit.po:
+%.edit.po: %.po.time_stamp
 	touch $@
+
+# gettext will trash the .edit.po file if the time stamp doesn't exist or is older than the po file
+%.po.time_stamp: %.po
+	touch --reference $< $@
+
+# Prevent make from treating this as an intermediate file to be cleaned up
+.PRECIOUS: %.po.time_stamp
 
 check: $(POXFILES)
 
@@ -43,7 +50,10 @@ uniq-po:
 	done
 
 tx-pull: $(EDITFILES)
-	cd .. && tx pull -f --all
+	# Initialize new languages
+	cd .. && tx pull -f --all --minimum-perc 50
+	# Force update all existing languages
+	cd .. && tx pull -f --minimum-perc 0
 	for f in $(EDITFILES) ; do \
 		sed -i 's/^\("Project-Id-Version: \).*$$/\1$(DOMAIN) $(VERSION)\\n"/' $$f; \
 	done
