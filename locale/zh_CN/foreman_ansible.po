@@ -8,15 +8,15 @@
 # tim123, 2022
 # Bryan Kearney <bryan.kearney@gmail.com>, 2022
 # Amit Upadhye <aupadhye@redhat.com>, 2023
-# Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2023
+# Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2024
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 12.0.4\n"
+"Project-Id-Version: foreman_ansible 15.0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarde"
-"n.nl>, 2023\n"
+"n.nl>, 2024\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/foreman/teams/114/zh"
 "_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -816,10 +816,10 @@ msgid "Update"
 msgstr "更新"
 
 msgid "Update Capsules on given Capsule server hosts"
-msgstr ""
+msgstr "在给定的 Capsule 服务器主机上更新 Capsule"
 
 msgid "Update Capsules on given hosts"
-msgstr ""
+msgstr "在给定主机上更新 Capsule"
 
 msgid "Update Role Variables"
 msgstr "更新角色变量"

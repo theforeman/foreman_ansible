@@ -3,7 +3,7 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 12.0.4",
+        "Project-Id-Version": "foreman_ansible 15.0.0",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
         "Last-Translator": "Carmela Rubiños <carmela.rubinos@gmail.com>, 2023",

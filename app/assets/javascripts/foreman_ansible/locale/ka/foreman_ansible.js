@@ -3,7 +3,7 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 12.0.4",
+        "Project-Id-Version": "foreman_ansible 15.0.0",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
         "Last-Translator": "Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2023",
@@ -102,13 +102,13 @@
         "Ansible-ის დასასინქრონიზებელი როლების სახელები"
       ],
       "Ansible role to add to a host": [
-        ""
+        "ჰოსტისთვის დასამატებელი Ansible-ის როლი"
       ],
       "Ansible role to add to a hostgroup": [
-        ""
+        "ჰოსტის ჯგუფისთვის დასამატებელი Ansible-ის როლი"
       ],
       "Ansible role to remove from a host": [
-        ""
+        "ჰოსტიდან წასაშლელი Ansible-ის როლი"
       ],
       "Ansible role to remove from a hostgroup": [
         ""
@@ -255,7 +255,7 @@
         "მნიშვნელობის გადაფარვის მოცილება"
       ],
       "Directly add an Ansible role to a host": [
-        ""
+        "Ansible-ის როლის ჰოსტზე პირდაპირი დამატება"
       ],
       "Directly add an Ansible role to a hostgroup": [
         ""
@@ -282,10 +282,10 @@
         "Ansible-ის როლების ჩასწორება"
       ],
       "Enable Ansible Callback": [
-        ""
+        "Ansible-ის უკუგამოძახების ჩართვა"
       ],
       "Enable the callback plugin for this template": [
-        ""
+        "უკუგამოძახების დამატების ჩართვა ამ ნიმუშისთვის"
       ],
       "Enable web console": [
         "ვებ კონსოლის ჩართვა"
@@ -300,7 +300,7 @@
         "შესრულების დრო"
       ],
       "Failed to fetch Ansible Roles from server.": [
-        ""
+        "Ansible-ის როლების სერვერიდან გამოთხოვა ჩავარდა."
       ],
       "Failed to import roles and variables ": [
         "როლებისა და ცვლადების შემოტანის შეცდომა "
@@ -336,7 +336,7 @@
         "ჰოსტზე მინიჭებული Ansible-ის როლები"
       ],
       "Host count": [
-        ""
+        "ჰოსტების რაოდენობა"
       ],
       "Host group has no associated hosts": [
         "ჰოსტის ჯგუფი ცარიელია"
@@ -345,7 +345,7 @@
         "ID-ით ჰოსტის პოვნის შეცდომა: %s"
       ],
       "Hostgroup count": [
-        ""
+        "ჰოსტის ჯგუფების რაოდენობა"
       ],
       "Hostgroups": [
         "ჰოსტის ჯგუფები"
@@ -516,7 +516,7 @@
         "პირდაპირ ამ ჰოსტზე როლები მინიჭებული არაა"
       ],
       "No roles/hosts assigned": [
-        ""
+        "როლები/ჰოსტები მინიჭებული არაა"
       ],
       "Nothing Found!": [
         "ვერაფერი ვიპოვე!"
@@ -684,7 +684,7 @@
         "Ansible-ის ინვენტარის ჩვენება ჰოსტებისთვის"
       ],
       "Show full value": [
-        ""
+        "სრული მნიშვნელობის ჩვენება"
       ],
       "Show role": [
         "როლის ჩვენება"
@@ -831,7 +831,7 @@
         ""
       ],
       "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled": [
-        ""
+        "ჭკვიანი პროქსიდან Ansible-ის ფუნქციებჩართული როლების სინქრონიზაციისთვის სინქრი გამოიყენეთ"
       ],
       "Use this connection type by default when running Ansible playbooks. You can override this on hosts by adding a parameter \\\"ansible_connection\\\"": [
         ""
