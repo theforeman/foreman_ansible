@@ -8,7 +8,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 12.0.4\n"
+"Project-Id-Version: foreman_ansible 15.0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2023\n"
@@ -104,13 +104,13 @@ msgid "Ansible role names to be synced"
 msgstr "Ansible-ის დასასინქრონიზებელი როლების სახელები"
 
 msgid "Ansible role to add to a host"
-msgstr ""
+msgstr "ჰოსტისთვის დასამატებელი Ansible-ის როლი"
 
 msgid "Ansible role to add to a hostgroup"
-msgstr ""
+msgstr "ჰოსტის ჯგუფისთვის დასამატებელი Ansible-ის როლი"
 
 msgid "Ansible role to remove from a host"
-msgstr ""
+msgstr "ჰოსტიდან წასაშლელი Ansible-ის როლი"
 
 msgid "Ansible role to remove from a hostgroup"
 msgstr ""
@@ -257,7 +257,7 @@ msgid "Destroy an override value"
 msgstr "მნიშვნელობის გადაფარვის მოცილება"
 
 msgid "Directly add an Ansible role to a host"
-msgstr ""
+msgstr "Ansible-ის როლის ჰოსტზე პირდაპირი დამატება"
 
 msgid "Directly add an Ansible role to a hostgroup"
 msgstr ""
@@ -284,10 +284,10 @@ msgid "Edit Ansible roles"
 msgstr "Ansible-ის როლების ჩასწორება"
 
 msgid "Enable Ansible Callback"
-msgstr ""
+msgstr "Ansible-ის უკუგამოძახების ჩართვა"
 
 msgid "Enable the callback plugin for this template"
-msgstr ""
+msgstr "უკუგამოძახების დამატების ჩართვა ამ ნიმუშისთვის"
 
 msgid "Enable web console"
 msgstr "ვებ კონსოლის ჩართვა"
@@ -302,7 +302,7 @@ msgid "Executed at"
 msgstr "შესრულების დრო"
 
 msgid "Failed to fetch Ansible Roles from server."
-msgstr ""
+msgstr "Ansible-ის როლების სერვერიდან გამოთხოვა ჩავარდა."
 
 msgid "Failed to import roles and variables "
 msgstr "როლებისა და ცვლადების შემოტანის შეცდომა "
@@ -338,7 +338,7 @@ msgid "Host assigned Ansible roles"
 msgstr "ჰოსტზე მინიჭებული Ansible-ის როლები"
 
 msgid "Host count"
-msgstr ""
+msgstr "ჰოსტების რაოდენობა"
 
 msgid "Host group has no associated hosts"
 msgstr "ჰოსტის ჯგუფი ცარიელია"
@@ -347,7 +347,7 @@ msgid "Host not found by id: %s"
 msgstr "ID-ით ჰოსტის პოვნის შეცდომა: %s"
 
 msgid "Hostgroup count"
-msgstr ""
+msgstr "ჰოსტის ჯგუფების რაოდენობა"
 
 msgid "Hostgroups"
 msgstr "ჰოსტის ჯგუფები"
@@ -520,7 +520,7 @@ msgid "No roles assigned directly to the host"
 msgstr "პირდაპირ ამ ჰოსტზე როლები მინიჭებული არაა"
 
 msgid "No roles/hosts assigned"
-msgstr ""
+msgstr "როლები/ჰოსტები მინიჭებული არაა"
 
 msgid "Nothing Found!"
 msgstr "ვერაფერი ვიპოვე!"
@@ -688,7 +688,7 @@ msgid "Show Ansible inventory for hosts"
 msgstr "Ansible-ის ინვენტარის ჩვენება ჰოსტებისთვის"
 
 msgid "Show full value"
-msgstr ""
+msgstr "სრული მნიშვნელობის ჩვენება"
 
 msgid "Show role"
 msgstr "როლის ჩვენება"
@@ -835,7 +835,7 @@ msgid "Use drag and drop to change order of the roles. Ordering of roles is resp
 msgstr ""
 
 msgid "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled"
-msgstr ""
+msgstr "ჭკვიანი პროქსიდან Ansible-ის ფუნქციებჩართული როლების სინქრონიზაციისთვის სინქრი გამოიყენეთ"
 
 msgid "Use this connection type by default when running Ansible playbooks. You can override this on hosts by adding a parameter \"ansible_connection\""
 msgstr ""

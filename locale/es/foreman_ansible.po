@@ -5,7 +5,6 @@
 #
 # Translators:
 # fe37ea014ea122db60df81cd86b163af_742ef71 <ba9f59c06b0be83ac3724b1834a4c14b_93939>, 2018
-# francis <hackgo@gmail.com>, 2018
 # Jared Nelson <jared@ajpadilla.com>, 2022
 # Bryan Kearney <bryan.kearney@gmail.com>, 2022
 # Gustavo Varela <gustavo.varela@gmail.com>, 2022
@@ -15,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 12.0.4\n"
+"Project-Id-Version: foreman_ansible 15.0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Carmela Rubiños <carmela.rubinos@gmail.com>, 2023\n"

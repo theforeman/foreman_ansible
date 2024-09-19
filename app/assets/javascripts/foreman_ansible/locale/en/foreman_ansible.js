@@ -3,19 +3,19 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 12.0.4",
+        "Project-Id-Version": "foreman_ansible 1.0.0",
         "Report-Msgid-Bugs-To": "",
-        "PO-Revision-Date": "2014-08-20 08:54+0100",
-        "Last-Translator": "Foreman Team <foreman-dev@googlegroups.com>",
-        "Language-Team": "Foreman Team <foreman-dev@googlegroups.com>",
+        "PO-Revision-Date": "2024-09-19 13:06+0200",
+        "Last-Translator": "FULL NAME <EMAIL@ADDRESS>",
+        "Language-Team": "LANGUAGE <LL@li.org>",
         "Language": "",
         "MIME-Version": "1.0",
         "Content-Type": "text/plain; charset=UTF-8",
         "Content-Transfer-Encoding": "8bit",
-        "Plural-Forms": "nplurals=2; plural=(n != 1);",
+        "Plural-Forms": "nplurals=INTEGER; plural=EXPRESSION;",
         "lang": "en",
         "domain": "foreman_ansible",
-        "plural_forms": "nplurals=2; plural=(n != 1);"
+        "plural_forms": "nplurals=INTEGER; plural=EXPRESSION;"
       },
       "%(selectedCount)s of %(totalCount)s items selected": [
         ""

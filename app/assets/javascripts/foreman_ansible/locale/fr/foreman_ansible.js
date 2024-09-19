@@ -3,10 +3,10 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 12.0.4",
+        "Project-Id-Version": "foreman_ansible 15.0.0",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
-        "Last-Translator": "Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2023",
+        "Last-Translator": "Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2024",
         "Language-Team": "French (https://app.transifex.com/foreman/teams/114/fr/)",
         "MIME-Version": "1.0",
         "Content-Type": "text/plain; charset=UTF-8",
@@ -804,10 +804,10 @@
         "Mise à jour"
       ],
       "Update Capsules on given Capsule server hosts": [
-        ""
+        "Mise à jour des Capsules sur des hôtes donnés du serveur Capsule"
       ],
       "Update Capsules on given hosts": [
-        ""
+        "Mise à jour des Capsules sur des hôtes donnés"
       ],
       "Update Role Variables": [
         "Mise à jour des variables de rôle"

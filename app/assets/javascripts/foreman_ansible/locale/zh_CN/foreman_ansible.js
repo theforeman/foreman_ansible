@@ -3,10 +3,10 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 12.0.4",
+        "Project-Id-Version": "foreman_ansible 15.0.0",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
-        "Last-Translator": "Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2023",
+        "Last-Translator": "Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2024",
         "Language-Team": "Chinese (China) (https://app.transifex.com/foreman/teams/114/zh_CN/)",
         "MIME-Version": "1.0",
         "Content-Type": "text/plain; charset=UTF-8",
@@ -804,10 +804,10 @@
         "更新"
       ],
       "Update Capsules on given Capsule server hosts": [
-        ""
+        "在给定的 Capsule 服务器主机上更新 Capsule"
       ],
       "Update Capsules on given hosts": [
-        ""
+        "在给定主机上更新 Capsule"
       ],
       "Update Role Variables": [
         "更新角色变量"
