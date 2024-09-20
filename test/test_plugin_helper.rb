@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'test_helper'
-require 'facets'
 
 def ansible_fixture_file(filename)
   File.join(
