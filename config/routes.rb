@@ -8,7 +8,7 @@ Rails.application.routes.draw do
           :apiv => /v2/,
           :constraints => ApiConstraints.new(version: 2, default: true) do
       constraints(:id => %r{[^\/]+}) do
-        resources :hosts, :only => [] do
+        resources :hosts, :except => [:new, :edit] do
           member do
             post :play_roles
             get :ansible_roles
