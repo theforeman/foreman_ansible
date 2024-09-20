@@ -7,30 +7,28 @@ Rails.application.routes.draw do
           :defaults => { apiv: 'v2' },
           :apiv => /v2/,
           :constraints => ApiConstraints.new(version: 2, default: true) do
-      constraints(:id => %r{[^\/]+}) do
-        resources :hosts, :only => [] do
-          member do
-            post :play_roles
-            get :ansible_roles
-            post :assign_ansible_roles
-            put 'ansible_roles/:ansible_role_id', :to => 'hosts#add_ansible_role', :constraints => { id: %r{[^\/]+} }
-            delete 'ansible_roles/:ansible_role_id', :to => 'hosts#remove_ansible_role', :constraints => { id: %r{[^\/]+} }
-          end
-          collection do
-            post :multiple_play_roles
-          end
+      resources :hosts, :only => [] do
+        member do
+          post :play_roles
+          get :ansible_roles
+          post :assign_ansible_roles
+          put 'ansible_roles/:ansible_role_id', :to => 'hosts#add_ansible_role'
+          delete 'ansible_roles/:ansible_role_id', :to => 'hosts#remove_ansible_role'
         end
-        resources :hostgroups, :only => [] do
-          member do
-            post :play_roles
-            get :ansible_roles
-            post :assign_ansible_roles
-            put 'ansible_roles/:ansible_role_id', :to => 'hostgroups#add_ansible_role', :constraints => { id: %r{[^\/]+} }
-            delete 'ansible_roles/:ansible_role_id', :to => 'hostgroups#remove_ansible_role', :constraints => { id: %r{[^\/]+} }
-          end
-          collection do
-            post :multiple_play_roles
-          end
+        collection do
+          post :multiple_play_roles
+        end
+      end
+      resources :hostgroups, :only => [] do
+        member do
+          post :play_roles
+          get :ansible_roles
+          post :assign_ansible_roles
+          put 'ansible_roles/:ansible_role_id', :to => 'hostgroups#add_ansible_role'
+          delete 'ansible_roles/:ansible_role_id', :to => 'hostgroups#remove_ansible_role'
+        end
+        collection do
+          post :multiple_play_roles
         end
       end
     end
