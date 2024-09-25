@@ -100,11 +100,7 @@ Rails.application.routes.draw do
           end
         end
 
-        resources :ansible_override_values, :only => [:create, :destroy] do
-          collection do
-            put :update
-          end
-        end
+        resources :ansible_override_values, :only => [:create, :destroy, :update]
 
         resources :ansible_inventories, :only => [] do
           collection do
