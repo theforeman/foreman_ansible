@@ -31,13 +31,13 @@ module Api
         render 'api/v2/ansible_override_values/show'
       end
 
-      api :PUT, "/ansible_override_values", N_("Update an override value")
-      param :ansible_variable_id, :identifier, :required => true
+      api :PUT, "/ansible_override_values/:id", N_("Update an override value")
+      param :id, :identifier, :required => true
       param_group :ansible_override_value, :as => :update
 
       def update
         @ansible_variable = AnsibleVariable.authorized(:edit_ansible_variables).
-                            find_by(:id => params[:ansible_variable_id].to_i)
+                            find_by(:id => params[:id].to_i)
         @override_value = @ansible_variable.lookup_values.find_by(:match => lookup_value_params['override_value']['match'])
 
         if @override_value
@@ -60,12 +60,6 @@ module Api
         else
           not_found
         end
-      end
-
-      private
-
-      def lookup_value_params
-        params.permit(:ansible_variable_id, override_value: [:match, :value])
       end
 
       def resource_name
