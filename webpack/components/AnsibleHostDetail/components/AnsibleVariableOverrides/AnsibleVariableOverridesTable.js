@@ -5,14 +5,7 @@ import { useMutation } from '@apollo/client';
 
 import { sprintf, translate as __ } from 'foremanReact/common/I18n';
 import { openConfirmModal } from 'foremanReact/components/ConfirmModal';
-import {
-  TableComposable,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-} from '@patternfly/react-table';
+import { Table, Thead, Tbody, Tr, Th, Td } from '@patternfly/react-table';
 import { Flex, FlexItem } from '@patternfly/react-core';
 
 import Pagination from 'foremanReact/components/Pagination';
@@ -77,7 +70,7 @@ const AnsibleVariableOverridesTable = ({
     innerDispatch({ idx, payload: { open: flag } });
   };
 
-  const onValueChange = (idx, variable) => value => {
+  const onValueChange = (idx, variable) => (e, value) => {
     const payload = {
       value,
       validation: validateValue(variable, value),
@@ -156,7 +149,7 @@ const AnsibleVariableOverridesTable = ({
           />
         </FlexItem>
         <FlexItem>
-          <TableComposable ouiaId="table-composable-compact" variant="compact">
+          <Table ouiaId="table-composable-compact" variant="compact">
             <Thead>
               <Tr ouiaId="row-header">
                 {columns.map(col => (
@@ -203,7 +196,7 @@ const AnsibleVariableOverridesTable = ({
                 </Tr>
               ))}
             </Tbody>
-          </TableComposable>
+          </Table>
         </FlexItem>
         <FlexItem align={{ default: 'alignRight' }}>
           <Pagination

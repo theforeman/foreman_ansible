@@ -58,16 +58,16 @@ const ListPane = ({
 
   return (
     <div
-      className={`pf-c-dual-list-selector__pane pf-m-available ${paneClass}`}
+      className={`pf-v5-c-dual-list-selector__pane pf-m-available ${paneClass}`}
     >
       <ListHeader title={title} />
       <SelectedStatus
         selectedCount={selected.length}
         totalCount={items.length}
       />
-      <div className="pf-c-dual-list-selector__menu">
+      <div className="pf-v5-c-dual-list-selector__menu">
         <DndProvider backend={HTML5Backend}>
-          <ul className="pf-c-dual-list-selector__list">
+          <ul className="pf-v5-c-dual-list-selector__list">
             {items.map(renderItem)}
           </ul>
         </DndProvider>

@@ -5,14 +5,7 @@ import { translate as __ } from 'foremanReact/common/I18n';
 import RelativeDateTime from 'foremanReact/components/common/dates/RelativeDateTime';
 import { openConfirmModal } from 'foremanReact/components/ConfirmModal';
 
-import {
-  TableComposable,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-} from '@patternfly/react-table';
+import { Table, Thead, Tbody, Tr, Th, Td } from '@patternfly/react-table';
 
 import {
   useCancelMutation,
@@ -60,7 +53,7 @@ const RecurringJobsTable = ({
   return (
     <React.Fragment>
       <h3>{__('Scheduled recurring jobs')}</h3>
-      <TableComposable ouiaId="table-composable-compact" variant="compact">
+      <Table ouiaId="table-composable-compact" variant="compact">
         <Thead>
           <Tr ouiaId="row-header">
             {columns.map(col => (
@@ -93,7 +86,7 @@ const RecurringJobsTable = ({
             </Tr>
           ))}
         </Tbody>
-      </TableComposable>
+      </Table>
     </React.Fragment>
   );
 };
