@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 
 const ListItem = props => {
   const draggableBtn = (
-    <div className="pf-c-dual-list-selector__draggable">
+    <div className="pf-v5-c-dual-list-selector__draggable">
       <button
-        className="pf-c-button pf-m-plain"
+        className="pf-v5-c-button pf-m-plain"
         type="button"
         aria-pressed="false"
         aria-label="Reorder"
@@ -24,27 +24,27 @@ const ListItem = props => {
   );
 
   return (
-    <li className="pf-c-dual-list-selector__list-item">
+    <li className="pf-v5-c-dual-list-selector__list-item">
       <div
-        className={classNames('pf-c-dual-list-selector__list-item-row ', {
+        className={classNames('pf-v5-c-dual-list-selector__list-item-row ', {
           'pf-m-selected': props.selected,
           'pf-m-ghost-row': props.dragging,
         })}
       >
         {props.draggable && draggableBtn}
         <button
-          className="pf-c-dual-list-selector__item"
+          className="pf-v5-c-dual-list-selector__item"
           type="button"
           onClick={props.onClick}
         >
-          <span className="pf-c-dual-list-selector__item-main">
-            <span className="pf-c-dual-list-selector__item-text">
+          <span className="pf-v5-c-dual-list-selector__item-main">
+            <span className="pf-v5-c-dual-list-selector__item-text">
               {props.draggable && orderBtn}
               <span>{props.name}</span>
             </span>
           </span>
-          <span className="pf-c-dual-list-selector__item-count">
-            <span className="pf-c-badge pf-m-read" />
+          <span className="pf-v5-c-dual-list-selector__item-count">
+            <span className="pf-v5-c-badge pf-m-read" />
           </span>
         </button>
       </div>
