@@ -10,6 +10,7 @@ module ForemanAnsible
         update_api(:create, :update) do
           param :job_template, Hash do
             param :ansible_callback_enabled, :bool, :desc => N_('Enable the callback plugin for this template')
+            param :ansible_check_mode, :bool, :desc => N_('Enable Ansible Check Mode for this template')
           end
         end
       end
