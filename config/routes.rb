@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     end
   end
   scope '/ansible' do
+    match '/ansible_roles' => 'react#index', :via => [:get]
     constraints(:id => %r{[^\/]+}) do
       resources :hosts, :only => [] do
         member do
@@ -52,7 +53,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :ansible_roles, :only => [:index, :destroy] do
+    resources :ansible_roles, :only => [:index] do
       collection do
         get :import
         post :confirm_import
@@ -60,7 +61,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :ui_ansible_roles, :only => [:index]
+    resources :ui_ansible_roles, :only => [:index, :destroy]
 
     resources :ansible_variables, :except => [:show] do
       resources :lookup_values, :only => [:index, :create, :update, :destroy]

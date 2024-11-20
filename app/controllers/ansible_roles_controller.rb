@@ -5,21 +5,6 @@ class AnsibleRolesController < ::ApplicationController
   include Foreman::Controller::AutoCompleteSearch
   include ForemanAnsible::Concerns::ImportControllerHelper
   include ::ForemanAnsible::AnsibleRolesDataPreparations
-  def index
-    @ansible_roles = resource_base.search_for(params[:search],
-                                              :order => params[:order]).
-                     paginate(:page => params[:page],
-                              :per_page => params[:per_page])
-  end
-
-  def destroy
-    if @ansible_role.destroy
-      process_success
-    else
-      process_error
-    end
-  end
-
   def import
     changed = @importer.import!
     @rows = prepare_ansible_import_rows(changed, @variables_importer)
