@@ -270,3 +270,6 @@ Style/TrailingCommaInArrayLiteral:
 # SupportedStylesForMultiline: comma, consistent_comma, no_comma
 Style/TrailingCommaInHashLiteral:
   Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
