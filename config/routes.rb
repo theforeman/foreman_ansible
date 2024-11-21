@@ -7,14 +7,14 @@ Rails.application.routes.draw do
           :defaults => { apiv: 'v2' },
           :apiv => /v2/,
           :constraints => ApiConstraints.new(version: 2, default: true) do
-      constraints(:id => %r{[^\/]+}) do
-        resources :hosts, :except => [:new, :edit] do
+      constraints(:id => /[^\/]+/) do
+        resources :hosts, :only => [] do
           member do
             post :play_roles
             get :ansible_roles
             post :assign_ansible_roles
-            put 'ansible_roles/:ansible_role_id', :to => 'hosts#add_ansible_role', :constraints => { id: %r{[^\/]+} }
-            delete 'ansible_roles/:ansible_role_id', :to => 'hosts#remove_ansible_role', :constraints => { id: %r{[^\/]+} }
+            put 'ansible_roles/:ansible_role_id', :to => 'hosts#add_ansible_role', :constraints => { id: /[^\/]+/ }
+            delete 'ansible_roles/:ansible_role_id', :to => 'hosts#remove_ansible_role', :constraints => { id: /[^\/]+/ }
           end
           collection do
             post :multiple_play_roles
@@ -25,8 +25,8 @@ Rails.application.routes.draw do
             post :play_roles
             get :ansible_roles
             post :assign_ansible_roles
-            put 'ansible_roles/:ansible_role_id', :to => 'hostgroups#add_ansible_role', :constraints => { id: %r{[^\/]+} }
-            delete 'ansible_roles/:ansible_role_id', :to => 'hostgroups#remove_ansible_role', :constraints => { id: %r{[^\/]+} }
+            put 'ansible_roles/:ansible_role_id', :to => 'hostgroups#add_ansible_role', :constraints => { id: /[^\/]+/ }
+            delete 'ansible_roles/:ansible_role_id', :to => 'hostgroups#remove_ansible_role', :constraints => { id: /[^\/]+/ }
           end
           collection do
             post :multiple_play_roles
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     end
   end
   scope '/ansible' do
-    constraints(:id => %r{[^\/]+}) do
+    constraints(:id => /[^\/]+/) do
       resources :hosts, :only => [] do
         member do
           get :play_roles
