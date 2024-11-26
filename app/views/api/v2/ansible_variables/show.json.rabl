@@ -19,3 +19,5 @@ end
 node :override_values_count do |lk|
   lk.lookup_values.count
 end
+
+node :hidden_value, &:hidden_value?
