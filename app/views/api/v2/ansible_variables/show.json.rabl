@@ -2,7 +2,7 @@ object @ansible_variable
 
 attribute :parameter
 attributes :id, :variable, :ansible_role, :ansible_role_id, :description, :override,
-           :variable_type, :hidden_value?, :validator_type,
+           :variable_type, :validator_type,
            :validator_rule, :merge_overrides, :merge_default,
            :avoid_duplicates, :override_value_order, :created_at, :updated_at,
            :default_value, :imported
@@ -19,3 +19,5 @@ end
 node :override_values_count do |lk|
   lk.lookup_values.count
 end
+
+node :hidden_value, &:hidden_value?
