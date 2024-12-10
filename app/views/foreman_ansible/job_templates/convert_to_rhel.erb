@@ -20,11 +20,25 @@ template_inputs:
   advanced: false
   value_type: plain
   hidden_value: false
+- name: ELS
+  required: false
+  input_type: user
+  description: Use an Extended Lifecycle Support (ELS) add-on subscription
+  advanced: false
+  value_type: plain
+  options: "yes\r\nno"
+  default: "no"
+  hidden_value: false
 model: JobTemplate
 job_category: Convert 2 RHEL
 provider_type: Ansible
 kind: job_template
 %>
+<%-
+  ack = " --activationkey \"#{input_resource('Activation Key').name}\""
+  org = " --org \"#{@host.organization.label}\""
+  els = input('ELS') == "yes" ? " --els" : ""
+-%>
 ---
 - hosts: all
   environment:
@@ -53,7 +67,7 @@ kind: job_template
         - "convert2rhel_version is version('2.0.0', '<')"
 
     - name: Start convert2rhel
-      command: convert2rhel -y --activationkey "<%= input_resource('Activation Key').name %>" --org "<%= @host.organization.label %>"
+      command: convert2rhel -y <%= ack + org + els %>
 
 <%- if input('Restart') == "yes" -%>
     - name: Reboot the machine
