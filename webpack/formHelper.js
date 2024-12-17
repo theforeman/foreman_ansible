@@ -6,6 +6,9 @@ import {
   FormSelectOption,
   DatePicker,
   TimePicker,
+  FormHelperText,
+  HelperText,
+  HelperTextItem,
 } from '@patternfly/react-core';
 import { ExclamationCircleIcon } from '@patternfly/react-icons';
 
@@ -50,13 +53,7 @@ export const SelectField = ({
   const valid = shouldValidate(form, field.name);
 
   return (
-    <FormGroup
-      label={label}
-      isRequired={isRequired}
-      helperTextInvalid={form.errors[field.name]}
-      helperTextInvalidIcon={<ExclamationCircleIcon />}
-      validated={valid}
-    >
+    <FormGroup label={label} isRequired={isRequired}>
       <FormSelect
         ouiaId={`select-${fieldProps.name}`}
         {...fieldProps}
@@ -70,6 +67,15 @@ export const SelectField = ({
           <FormSelectOption key={idx + 1} value={item.id} label={item.name} />
         ))}
       </FormSelect>
+      {valid === 'error' && (
+        <FormHelperText>
+          <HelperText>
+            <HelperTextItem variant="icon" icon={<ExclamationCircleIcon />}>
+              {form.errors[field.name]}
+            </HelperTextItem>
+          </HelperText>
+        </FormHelperText>
+      )}
     </FormGroup>
   );
 };
@@ -96,25 +102,26 @@ const pickerWithHandlers = ComponentType => {
 
     const Component = ComponentType === 'date' ? DatePicker : TimePicker;
     return (
-      <FormGroup
-        label={label}
-        isRequired={isRequired}
-        helperTextInvalid={form.errors[field.name]}
-        helperTextInvalidIcon={<ExclamationCircleIcon />}
-        validated={valid}
-      >
+      <FormGroup label={label} isRequired={isRequired}>
         <Component
           aria-label={field.name}
-          onChange={(a, b) => {
-            // datepicker: onChange	(event: React.FormEvent<HTMLInputElement>, value: string, date?: Date) => void
-            // timepicker: onChange	(time: string, hour?: number, minute?: number, seconds?: number, isValid?: boolean ) => void
-            ComponentType === 'date' ? onChange(b, a) : onChange(a);
+          onChange={(e, value) => {
+            onChange(value);
           }}
           onBlur={onBlur}
           {...rest}
           validated={valid}
           isDisabled={form.isSubmitting}
         />
+        {valid === 'error' && (
+          <FormHelperText>
+            <HelperText>
+              <HelperTextItem variant="icon" icon={<ExclamationCircleIcon />}>
+                {form.errors[field.name]}
+              </HelperTextItem>
+            </HelperText>
+          </FormHelperText>
+        )}
       </FormGroup>
     );
   };
