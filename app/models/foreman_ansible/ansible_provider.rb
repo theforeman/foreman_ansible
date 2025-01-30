@@ -33,6 +33,7 @@ if defined? ForemanRemoteExecution
             ),
             :name => host.name,
             :check_mode => host.host_param('ansible_roles_check_mode'),
+            :diff_mode => host.host_param('ansible_roles_diff_mode'),
             :cleanup_working_dirs => cleanup_working_dirs?(host)
           )
         end
