@@ -1,6 +1,6 @@
 name: Release
 
-on:
+on:  # yamllint disable-line rule:truthy
   push:
     # Pattern matched against refs/tags
     tags:
@@ -9,8 +9,12 @@ on:
 jobs:
   release:
     name: Release gem
-    uses: theforeman/actions/.github/workflows/release-gem.yml@v0
-    with:
-      allowed_owner: theforeman
-    secrets:
-      api_key: ${{ secrets.RUBYGEM_API_KEY }}
+    runs-on: ubuntu-latest
+    environment: release
+    if: github.repository_owner == 'theforeman'
+
+    permissions:
+      id-token: write
+
+    steps:
+      - uses: voxpupuli/ruby-release@v0
