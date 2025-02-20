@@ -8,13 +8,13 @@
 # Jared Nelson <jared@ajpadilla.com>, 2022
 # Bryan Kearney <bryan.kearney@gmail.com>, 2022
 # Gustavo Varela <gustavo.varela@gmail.com>, 2022
-# Sergio Ocón-Cárdenas <sergio.ocon@redhat.com>, 2022
+# Sergio Ocón-Cárdenas, 2022
 # Amit Upadhye <aupadhye@redhat.com>, 2023
 # Carmela Rubiños <carmela.rubinos@gmail.com>, 2023
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 15.0.0\n"
+"Project-Id-Version: foreman_ansible 15.0.5\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Carmela Rubiños <carmela.rubinos@gmail.com>, 2023\n"
@@ -291,6 +291,12 @@ msgid "Edit Ansible roles"
 msgstr "Editar roles de Ansible"
 
 msgid "Enable Ansible Callback"
+msgstr ""
+
+msgid "Enable Ansible Check Mode"
+msgstr ""
+
+msgid "Enable Ansible Check Mode for this template"
 msgstr ""
 
 msgid "Enable the callback plugin for this template"
@@ -826,6 +832,9 @@ msgid "Update Role Variables"
 msgstr "Actualizar variables de función"
 
 msgid "Update Smart Proxy"
+msgstr ""
+
+msgid "Update an override value"
 msgstr ""
 
 msgid "Updates Ansible variable"

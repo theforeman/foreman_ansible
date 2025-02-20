@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 15.0.0\n"
+"Project-Id-Version: foreman_ansible 15.0.5\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Luiz Henrique Vasconcelos <luizvasconceloss@yahoo.com.br>, 20"
@@ -293,6 +293,12 @@ msgid "Edit Ansible roles"
 msgstr "Editar Funções possíveis"
 
 msgid "Enable Ansible Callback"
+msgstr ""
+
+msgid "Enable Ansible Check Mode"
+msgstr ""
+
+msgid "Enable Ansible Check Mode for this template"
 msgstr ""
 
 msgid "Enable the callback plugin for this template"
@@ -828,6 +834,9 @@ msgid "Update Role Variables"
 msgstr "Atualização de variáveis de função"
 
 msgid "Update Smart Proxy"
+msgstr ""
+
+msgid "Update an override value"
 msgstr ""
 
 msgid "Updates Ansible variable"

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foreman_ansible 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-19 09:42+0200\n"
-"PO-Revision-Date: 2024-08-19 09:42+0200\n"
+"POT-Creation-Date: 2025-02-20 11:49+0100\n"
+"PO-Revision-Date: 2025-02-20 11:49+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -81,6 +81,10 @@ msgid "Create an override value for a specific ansible variable"
 msgstr ""
 
 #: ../app/controllers/api/v2/ansible_override_values_controller.rb:34
+msgid "Update an override value"
+msgstr ""
+
+#: ../app/controllers/api/v2/ansible_override_values_controller.rb:51
 msgid "Destroy an override value"
 msgstr ""
 
@@ -351,6 +355,11 @@ msgid "Enable the callback plugin for this template"
 msgstr ""
 
 #:
+#: ../app/controllers/foreman_ansible/api/v2/job_templates_controller_extensions.rb:13
+msgid "Enable Ansible Check Mode for this template"
+msgstr ""
+
+#:
 #: ../app/controllers/foreman_ansible/concerns/hostgroups_controller_extensions.rb:27
 msgid "Host group has no associated hosts"
 msgstr ""
@@ -466,23 +475,23 @@ msgstr ""
 msgid "Unable to get playbooks from Ansible"
 msgstr ""
 
-#: ../app/models/foreman_ansible/ansible_provider.rb:68
+#: ../app/models/foreman_ansible/ansible_provider.rb:69
 msgid "Tags"
 msgstr ""
 
-#: ../app/models/foreman_ansible/ansible_provider.rb:75
+#: ../app/models/foreman_ansible/ansible_provider.rb:76
 msgid "Include/Exclude Tags"
 msgstr ""
 
-#: ../app/models/foreman_ansible/ansible_provider.rb:87
+#: ../app/models/foreman_ansible/ansible_provider.rb:88
 msgid "Ansible provider specific inputs"
 msgstr ""
 
-#: ../app/models/foreman_ansible/ansible_provider.rb:92
+#: ../app/models/foreman_ansible/ansible_provider.rb:93
 msgid "A comma separated list of tags to use for Ansible run"
 msgstr ""
 
-#: ../app/models/foreman_ansible/ansible_provider.rb:97
+#: ../app/models/foreman_ansible/ansible_provider.rb:98
 msgid "Include\\Exclude tags for Ansible run"
 msgstr ""
 
@@ -713,6 +722,10 @@ msgstr ""
 
 #: ../app/views/job_templates/_job_template_callback_tab_content.html.erb:2
 msgid "Enable Ansible Callback"
+msgstr ""
+
+#: ../app/views/job_templates/_job_template_callback_tab_content.html.erb:3
+msgid "Enable Ansible Check Mode"
 msgstr ""
 
 #: ../app/views/job_templates/_job_template_callback_tab_headers.html.erb:1

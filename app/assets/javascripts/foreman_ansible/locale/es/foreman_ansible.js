@@ -3,7 +3,7 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 15.0.0",
+        "Project-Id-Version": "foreman_ansible 15.0.5",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
         "Last-Translator": "Carmela Rubiños <carmela.rubinos@gmail.com>, 2023",
@@ -282,6 +282,12 @@
         "Editar roles de Ansible"
       ],
       "Enable Ansible Callback": [
+        ""
+      ],
+      "Enable Ansible Check Mode": [
+        ""
+      ],
+      "Enable Ansible Check Mode for this template": [
         ""
       ],
       "Enable the callback plugin for this template": [
@@ -813,6 +819,9 @@
         "Actualizar variables de función"
       ],
       "Update Smart Proxy": [
+        ""
+      ],
+      "Update an override value": [
         ""
       ],
       "Updates Ansible variable": [
