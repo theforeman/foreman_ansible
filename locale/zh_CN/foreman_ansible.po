@@ -12,7 +12,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 15.0.0\n"
+"Project-Id-Version: foreman_ansible 15.0.5\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarde"
@@ -291,6 +291,12 @@ msgstr "编辑 Ansible 角色"
 
 msgid "Enable Ansible Callback"
 msgstr "启用 Ansible 回调"
+
+msgid "Enable Ansible Check Mode"
+msgstr ""
+
+msgid "Enable Ansible Check Mode for this template"
+msgstr ""
 
 msgid "Enable the callback plugin for this template"
 msgstr "为此模板启用回调插件"
@@ -826,6 +832,9 @@ msgstr "更新角色变量"
 
 msgid "Update Smart Proxy"
 msgstr "更新智能代理"
+
+msgid "Update an override value"
+msgstr ""
 
 msgid "Updates Ansible variable"
 msgstr "更新 Ansible 变量"
