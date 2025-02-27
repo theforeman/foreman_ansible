@@ -4,11 +4,7 @@ import { translate as __ } from 'foremanReact/common/I18n';
 
 import { formatValue } from './AnsibleVariableOverridesTableHelper';
 
-import {
-  TextAreaField,
-  TextInputField,
-  SelectField,
-} from './EditableValueHelper';
+import { TextAreaField, SelectField } from './EditableValueHelper';
 
 const EditableValue = props => {
   if (!props.editing) {
@@ -50,7 +46,7 @@ const EditableValue = props => {
   }
 
   return (
-    <TextInputField
+    <TextAreaField
       onChange={props.onChange}
       value={props.value}
       validation={props.validation}
