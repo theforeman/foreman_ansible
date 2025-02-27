@@ -6,7 +6,6 @@ import { formatValue } from './AnsibleVariableOverridesTableHelper';
 
 import {
   TextAreaField,
-  TextInputField,
   SelectField,
 } from './EditableValueHelper';
 
@@ -50,7 +49,7 @@ const EditableValue = props => {
   }
 
   return (
-    <TextInputField
+    <TextAreaField
       onChange={props.onChange}
       value={props.value}
       validation={props.validation}
