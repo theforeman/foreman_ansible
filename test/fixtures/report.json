@@ -108,6 +108,17 @@
     {
       "log": {
         "sources": {
+          "source": "Copy one local file with diff"
+        },
+        "messages": {
+          "message": "{\"_ansible_no_log\": false, \"changed\": true, \"checksum\": \"ec4cddb45c3ce640bed61b3d8ab6c18e715dac78\", \"dest\": \"/tmp/test7.txt\", \"report_diff\": \"--- /tmp/test7.txt\\n+++ /tmp/test7.txt\\n@@ -0,0 +1 @@\\n+Hello\\n\", \"failed\": false, \"gid\": 0, \"group\": \"root\", \"invocation\": {\"module_args\": {\"_original_basename\": \"test7.txt\", \"attributes\": null, \"backup\": false, \"checksum\": \"ec4cddb45c3ce640bed61b3d8ab6c18e715dac78\", \"content\": null, \"delimiter\": null, \"dest\": \"/tmp/test7.txt\", \"directory_mode\": null, \"follow\": false, \"force\": true, \"group\": \"root\", \"local_follow\": null, \"mode\": 256, \"owner\": \"root\", \"regexp\": null, \"remote_src\": null, \"selevel\": null, \"serole\": null, \"setype\": null, \"seuser\": null, \"src\": \"/root/.ansible/tmp/ansible-tmp-1671670677.05-7408-75605497546833/source\", \"unsafe_writes\": false, \"validate\": null}}, \"md5sum\": null, \"mode\": \"0400\", \"module\": \"copy\", \"owner\": \"root\", \"secontext\": \"unconfined_u:object_r:admin_home_t:s0\", \"size\": 6, \"src\": \"/root/.ansible/tmp/ansible-tmp-1671670677.05-7408-75605497546833/source\", \"state\": \"file\", \"uid\": 0}"
+        },
+        "level": "notice"
+      }
+    },
+    {
+      "log": {
+        "sources": {
           "source": "Restart multiple services"
         },
         "messages": {
