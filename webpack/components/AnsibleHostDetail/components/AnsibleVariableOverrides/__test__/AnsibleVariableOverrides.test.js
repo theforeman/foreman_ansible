@@ -67,7 +67,7 @@ describe('AnsibleVariableOverrides', () => {
       name: 'Edit override button',
     });
     expect(editBtns).toHaveLength(0);
-    const actions = screen.queryAllByRole('button', { name: 'Actions' });
+    const actions = screen.queryAllByRole('button', { name: 'Kebab toggle' });
     expect(actions).toHaveLength(0);
   });
 });
