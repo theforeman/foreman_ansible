@@ -5,17 +5,23 @@ import {
   FormGroup,
   FormSelect,
   FormSelectOption,
+  FormHelperText,
+  HelperText,
+  HelperTextItem,
 } from '@patternfly/react-core';
 
 const withFormGroup = Component => componentProps => {
   const { validation, ...rest } = componentProps;
   return (
-    <FormGroup
-      label=""
-      helperTextInvalid={validation.msg}
-      validated={validation.key}
-    >
+    <FormGroup label="">
       <Component {...rest} validated={validation.key} />
+      {validation.key === 'error' && (
+        <FormHelperText>
+          <HelperText>
+            <HelperTextItem>{validation.msg}</HelperTextItem>
+          </HelperText>
+        </FormHelperText>
+      )}
     </FormGroup>
   );
 };

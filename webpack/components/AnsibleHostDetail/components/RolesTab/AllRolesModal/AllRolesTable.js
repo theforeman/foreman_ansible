@@ -2,14 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { translate as __ } from 'foremanReact/common/I18n';
 
-import {
-  TableComposable,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-} from '@patternfly/react-table';
+import { Table, Thead, Tbody, Tr, Th, Td } from '@patternfly/react-table';
 import { Flex, FlexItem } from '@patternfly/react-core';
 import Pagination from 'foremanReact/components/Pagination';
 import withLoading from '../../../../withLoading';
@@ -28,7 +21,7 @@ const AllRolesTable = ({ allAnsibleRoles, totalCount }) => {
             variant="top"
           />
         </FlexItem>
-        <TableComposable ouiaId="table-composable-compact" variant="compact">
+        <Table ouiaId="table-composable-compact" variant="compact">
           <Thead>
             <Tr ouiaId="row-header">
               <Th />
@@ -60,7 +53,7 @@ const AllRolesTable = ({ allAnsibleRoles, totalCount }) => {
               </Tr>
             ))}
           </Tbody>
-        </TableComposable>
+        </Table>
         <FlexItem align={{ default: 'alignRight' }}>
           <Pagination
             ouiaId="pagination-bottom"

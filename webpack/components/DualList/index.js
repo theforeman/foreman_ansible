@@ -61,7 +61,7 @@ const DualList = props => {
     props.onListChange(props.availableOptions, items);
 
   return (
-    <div className="pf-c-dual-list-selector">
+    <div className="pf-v5-c-dual-list-selector">
       <ListPane
         title={__('Available Ansible roles')}
         items={props.availableOptions}

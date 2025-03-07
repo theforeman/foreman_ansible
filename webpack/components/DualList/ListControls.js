@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { translate as __ } from 'foremanReact/common/I18n';
 
 const ListControls = props => (
-  <div className="pf-c-dual-list-selector__controls">
-    <div className="pf-c-dual-list-selector__controls-item">
+  <div className="pf-v5-c-dual-list-selector__controls">
+    <div className="pf-v5-c-dual-list-selector__controls-item">
       <button
-        className="pf-c-button pf-m-plain"
+        className="pf-v5-c-button pf-m-plain"
         type="button"
         disabled={props.addSelectedDisabled}
         onClick={props.onAddSelected}
@@ -15,9 +15,9 @@ const ListControls = props => (
         <i className="fas fa-fw fa-angle-right" />
       </button>
     </div>
-    <div className="pf-c-dual-list-selector__controls-item">
+    <div className="pf-v5-c-dual-list-selector__controls-item">
       <button
-        className="pf-c-button pf-m-plain"
+        className="pf-v5-c-button pf-m-plain"
         type="button"
         disabled={props.addAllDisabled}
         onClick={props.onAddAll}
@@ -26,9 +26,9 @@ const ListControls = props => (
         <i className="fas fa-fw fa-angle-double-right" />
       </button>
     </div>
-    <div className="pf-c-dual-list-selector__controls-item">
+    <div className="pf-v5-c-dual-list-selector__controls-item">
       <button
-        className="pf-c-button pf-m-plain"
+        className="pf-v5-c-button pf-m-plain"
         type="button"
         disabled={props.removeAllDisabled}
         onClick={props.onRemoveAll}
@@ -37,9 +37,9 @@ const ListControls = props => (
         <i className="fas fa-fw fa-angle-double-left" />
       </button>
     </div>
-    <div className="pf-c-dual-list-selector__controls-item">
+    <div className="pf-v5-c-dual-list-selector__controls-item">
       <button
-        className="pf-c-button pf-m-plain"
+        className="pf-v5-c-button pf-m-plain"
         type="button"
         disabled={props.removeSelectedDisabled}
         onClick={props.onRemoveSelected}

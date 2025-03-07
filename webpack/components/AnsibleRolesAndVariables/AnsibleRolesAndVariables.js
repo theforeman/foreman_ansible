@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import { cellWidth } from '@patternfly/react-table';
 import {
   Table,
   TableHeader,
   TableBody,
-  cellWidth,
-} from '@patternfly/react-table';
+} from '@patternfly/react-table/deprecated';
 import {
   Button,
   Toolbar,
@@ -99,7 +99,7 @@ const ImportRolesAndVariablesTable = ({
             <Checkbox
               ouiaId="ansible-roles-and-variables-table-select-all-checkbox"
               isChecked={isChecked}
-              onChange={SelectAll}
+              onChange={(_event, checked) => SelectAll(checked)}
               aria-label="select all checkbox"
               id="select-all"
               name="select-all"

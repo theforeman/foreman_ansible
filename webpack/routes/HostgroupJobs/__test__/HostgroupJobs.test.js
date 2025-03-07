@@ -75,6 +75,7 @@ describe('HostgroupJobs', () => {
       />
     );
     await waitFor(tick);
+    await waitFor(tick);
     userEvent.click(
       screen.getByRole('button', { name: 'schedule recurring job' })
     );

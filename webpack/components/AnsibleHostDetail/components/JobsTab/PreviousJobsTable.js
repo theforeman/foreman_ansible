@@ -3,14 +3,7 @@ import PropTypes from 'prop-types';
 import { translate as __ } from 'foremanReact/common/I18n';
 import RelativeDateTime from 'foremanReact/components/common/dates/RelativeDateTime';
 
-import {
-  TableComposable,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-} from '@patternfly/react-table';
+import { Table, Thead, Tbody, Tr, Th, Td } from '@patternfly/react-table';
 import { Flex, FlexItem } from '@patternfly/react-core';
 import Pagination from 'foremanReact/components/Pagination';
 
@@ -40,7 +33,7 @@ const PreviousJobsTable = ({ history, totalCount, jobs, pagination }) => {
           />
         </FlexItem>
         <FlexItem>
-          <TableComposable ouiaId="table-composable-compact" variant="compact">
+          <Table ouiaId="table-composable-compact" variant="compact">
             <Thead>
               <Tr ouiaId="row-header">
                 {columns.map(col => (
@@ -73,7 +66,7 @@ const PreviousJobsTable = ({ history, totalCount, jobs, pagination }) => {
                 </Tr>
               ))}
             </Tbody>
-          </TableComposable>
+          </Table>
         </FlexItem>
         <FlexItem align={{ default: 'alignRight' }}>
           <Pagination

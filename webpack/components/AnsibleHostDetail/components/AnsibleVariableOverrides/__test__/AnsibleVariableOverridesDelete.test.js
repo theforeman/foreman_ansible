@@ -33,7 +33,7 @@ describe('AnsibleVariableOverrides', () => {
       />
     );
     await waitFor(tick);
-    userEvent.click(screen.getAllByRole('button', { name: 'Actions' })[0]);
+    userEvent.click(screen.getAllByRole('button', { name: 'Kebab toggle' })[0]);
     userEvent.click(screen.getByText('Delete'));
     await waitFor(tick);
     expect(
@@ -58,7 +58,7 @@ describe('AnsibleVariableOverrides', () => {
     );
     await waitFor(tick);
     expect(screen.queryByText('21')).toBeInTheDocument();
-    userEvent.click(screen.getAllByRole('button', { name: 'Actions' })[0]);
+    userEvent.click(screen.getAllByRole('button', { name: 'Kebab toggle' })[0]);
     userEvent.click(screen.getByText('Delete'));
     await waitFor(tick);
     userEvent.click(screen.getByText('Confirm'));

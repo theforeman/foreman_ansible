@@ -102,6 +102,7 @@ describe('JobsTab', () => {
       />
     );
     await waitFor(tick);
+    await waitFor(tick);
     userEvent.click(
       screen.getByRole('button', { name: 'schedule recurring job' })
     );
@@ -156,7 +157,7 @@ describe('JobsTab', () => {
     expect(
       screen.queryByText('No config job for Ansible roles scheduled')
     ).not.toBeInTheDocument();
-    userEvent.click(screen.getAllByRole('button', { name: 'Actions' })[0]);
+    userEvent.click(screen.getAllByRole('button', { name: 'Kebab toggle' })[0]);
     userEvent.click(screen.getByText('Cancel'));
     await waitFor(tick);
     expect(
