@@ -4,14 +4,7 @@ import { translate as __ } from 'foremanReact/common/I18n';
 import { Route, Link } from 'react-router-dom';
 import Pagination from 'foremanReact/components/Pagination';
 
-import {
-  TableComposable,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-} from '@patternfly/react-table';
+import { Table, Thead, Tbody, Tr, Th, Td } from '@patternfly/react-table';
 import { Flex, FlexItem, Button } from '@patternfly/react-core';
 
 import EditRolesModal from './EditRolesModal';
@@ -66,7 +59,7 @@ const RolesTable = ({
       </Flex>
       <Flex direction={{ default: 'column' }}>
         <FlexItem>
-          <TableComposable variant="compact" ouiaId="table-composable-compact">
+          <Table variant="compact" ouiaId="table-composable-compact">
             <Thead>
               <Tr ouiaId="row-header">
                 {columns.map(col => (
@@ -92,7 +85,7 @@ const RolesTable = ({
                 </Tr>
               ))}
             </Tbody>
-          </TableComposable>
+          </Table>
         </FlexItem>
         <FlexItem align={{ default: 'alignRight' }}>
           <Pagination
