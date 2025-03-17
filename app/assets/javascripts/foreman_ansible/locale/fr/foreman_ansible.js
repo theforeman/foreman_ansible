@@ -6,7 +6,7 @@
         "Project-Id-Version": "foreman_ansible 15.0.5",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
-        "Last-Translator": "Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2024",
+        "Last-Translator": "Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2025",
         "Language-Team": "French (https://app.transifex.com/foreman/teams/114/fr/)",
         "MIME-Version": "1.0",
         "Content-Type": "text/plain; charset=UTF-8",
@@ -285,10 +285,10 @@
         "Activer Ansible Callback"
       ],
       "Enable Ansible Check Mode": [
-        ""
+        "Activer le mode de vérification Ansible"
       ],
       "Enable Ansible Check Mode for this template": [
-        ""
+        "Activer le mode de vérification Ansible pour ce modèle"
       ],
       "Enable the callback plugin for this template": [
         "Activer le plugin de rappel pour ce modèle"
@@ -822,7 +822,7 @@
         "Mise à jour du smart proxy"
       ],
       "Update an override value": [
-        ""
+        "Mettre à jour une valeur de remplacement"
       ],
       "Updates Ansible variable": [
         "Mises à jour des variables Ansible"

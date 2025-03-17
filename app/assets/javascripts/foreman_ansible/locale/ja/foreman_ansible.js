@@ -201,7 +201,7 @@
         "Ansible 変数を作成します"
       ],
       "Create an override value for a specific ansible variable": [
-        "特定の Ansible 変数の上書き値を作成します"
+        "特定の Ansible 変数の上書き値を作成する"
       ],
       "DEPRECATED: Import Ansible roles": [
         "非推奨: Ansible ロールのインポート"
@@ -285,10 +285,10 @@
         "Ansible コールバックの有効化"
       ],
       "Enable Ansible Check Mode": [
-        ""
+        "Ansible チェックモードの有効化"
       ],
       "Enable Ansible Check Mode for this template": [
-        ""
+        "このテンプレートの Ansible チェックモードを有効にする"
       ],
       "Enable the callback plugin for this template": [
         "このテンプレートの callback プラグインを有効にする"
@@ -822,7 +822,7 @@
         "Smart Proxy の更新"
       ],
       "Update an override value": [
-        ""
+        "オーバーライド値の更新"
       ],
       "Updates Ansible variable": [
         "Ansible 変数を更新します"
