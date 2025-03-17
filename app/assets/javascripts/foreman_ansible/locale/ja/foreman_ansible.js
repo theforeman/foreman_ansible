@@ -3,10 +3,10 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 15.0.0",
+        "Project-Id-Version": "foreman_ansible 15.0.5",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
-        "Last-Translator": "Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2024",
+        "Last-Translator": "Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2025",
         "Language-Team": "Japanese (https://app.transifex.com/foreman/teams/114/ja/)",
         "MIME-Version": "1.0",
         "Content-Type": "text/plain; charset=UTF-8",
@@ -201,7 +201,7 @@
         "Ansible 変数を作成します"
       ],
       "Create an override value for a specific ansible variable": [
-        "特定の Ansible 変数の上書き値を作成します"
+        "特定の Ansible 変数の上書き値を作成する"
       ],
       "DEPRECATED: Import Ansible roles": [
         "非推奨: Ansible ロールのインポート"
@@ -283,6 +283,12 @@
       ],
       "Enable Ansible Callback": [
         "Ansible コールバックの有効化"
+      ],
+      "Enable Ansible Check Mode": [
+        "Ansible チェックモードの有効化"
+      ],
+      "Enable Ansible Check Mode for this template": [
+        "このテンプレートの Ansible チェックモードを有効にする"
       ],
       "Enable the callback plugin for this template": [
         "このテンプレートの callback プラグインを有効にする"
@@ -549,7 +555,7 @@
         "Ansible 変数のデフォルト値を上書きします。"
       ],
       "Override value, required if omit is false": [
-        "上書き値 (omit が false の場合に必要)"
+        "上書き値 (--omit が false の場合に必要)"
       ],
       "Overriden": [
         "上書き済み"
@@ -815,6 +821,9 @@
       "Update Smart Proxy": [
         "Smart Proxy の更新"
       ],
+      "Update an override value": [
+        "オーバーライド値の更新"
+      ],
       "Updates Ansible variable": [
         "Ansible 変数を更新します"
       ],
@@ -876,7 +885,7 @@
         "ページを表示する権限がありません。 "
       ],
       "daily": [
-        "daily (毎日)"
+        "毎日"
       ],
       "false": [
         "false"

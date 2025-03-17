@@ -3,10 +3,10 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 15.0.0",
+        "Project-Id-Version": "foreman_ansible 15.0.5",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
-        "Last-Translator": "Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2024",
+        "Last-Translator": "Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2025",
         "Language-Team": "Chinese (China) (https://app.transifex.com/foreman/teams/114/zh_CN/)",
         "MIME-Version": "1.0",
         "Content-Type": "text/plain; charset=UTF-8",
@@ -283,6 +283,12 @@
       ],
       "Enable Ansible Callback": [
         "启用 Ansible 回调"
+      ],
+      "Enable Ansible Check Mode": [
+        "启用 Ansible 检查模式"
+      ],
+      "Enable Ansible Check Mode for this template": [
+        "为此模板启用 Ansible 检查模式"
       ],
       "Enable the callback plugin for this template": [
         "为此模板启用回调插件"
@@ -814,6 +820,9 @@
       ],
       "Update Smart Proxy": [
         "更新智能代理"
+      ],
+      "Update an override value": [
+        "更新覆盖值"
       ],
       "Updates Ansible variable": [
         "更新 Ansible 变量"

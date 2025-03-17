@@ -8,15 +8,15 @@
 # tim123, 2022
 # Bryan Kearney <bryan.kearney@gmail.com>, 2022
 # Amit Upadhye <aupadhye@redhat.com>, 2023
-# Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2024
+# Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2025
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 15.0.0\n"
+"Project-Id-Version: foreman_ansible 15.0.5\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarde"
-"n.nl>, 2024\n"
+"n.nl>, 2025\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/foreman/teams/114/zh"
 "_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -291,6 +291,12 @@ msgstr "编辑 Ansible 角色"
 
 msgid "Enable Ansible Callback"
 msgstr "启用 Ansible 回调"
+
+msgid "Enable Ansible Check Mode"
+msgstr "启用 Ansible 检查模式"
+
+msgid "Enable Ansible Check Mode for this template"
+msgstr "为此模板启用 Ansible 检查模式"
 
 msgid "Enable the callback plugin for this template"
 msgstr "为此模板启用回调插件"
@@ -826,6 +832,9 @@ msgstr "更新角色变量"
 
 msgid "Update Smart Proxy"
 msgstr "更新智能代理"
+
+msgid "Update an override value"
+msgstr "更新覆盖值"
 
 msgid "Updates Ansible variable"
 msgstr "更新 Ansible 变量"

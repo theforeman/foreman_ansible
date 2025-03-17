@@ -11,15 +11,15 @@
 # Claer <transiblu@claer.hammock.fr>, 2022
 # Amit Upadhye <aupadhye@redhat.com>, 2023
 # 21966816214bc546c1fc8a185e75ca1c, 2023
-# Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2024
+# Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2025
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 15.0.0\n"
+"Project-Id-Version: foreman_ansible 15.0.5\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarde"
-"n.nl>, 2024\n"
+"n.nl>, 2025\n"
 "Language-Team: French (https://app.transifex.com/foreman/teams/114/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -294,6 +294,12 @@ msgstr "Modifier les rôles Ansible"
 
 msgid "Enable Ansible Callback"
 msgstr "Activer Ansible Callback"
+
+msgid "Enable Ansible Check Mode"
+msgstr "Activer le mode de vérification Ansible"
+
+msgid "Enable Ansible Check Mode for this template"
+msgstr "Activer le mode de vérification Ansible pour ce modèle"
 
 msgid "Enable the callback plugin for this template"
 msgstr "Activer le plugin de rappel pour ce modèle"
@@ -829,6 +835,9 @@ msgstr "Mise à jour des variables de rôle"
 
 msgid "Update Smart Proxy"
 msgstr "Mise à jour du smart proxy"
+
+msgid "Update an override value"
+msgstr "Mettre à jour une valeur de remplacement"
 
 msgid "Updates Ansible variable"
 msgstr "Mises à jour des variables Ansible"
