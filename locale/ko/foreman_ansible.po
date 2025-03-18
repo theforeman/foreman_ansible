@@ -290,10 +290,10 @@ msgid "Enable Ansible Callback"
 msgstr "Ansible 콜백 활성화"
 
 msgid "Enable Ansible Check Mode"
-msgstr ""
+msgstr "Ansible 확인 모드 활성화"
 
 msgid "Enable Ansible Check Mode for this template"
-msgstr ""
+msgstr "이 템플릿의 Ansible 확인 모드를 활성화합니다"
 
 msgid "Enable the callback plugin for this template"
 msgstr "이 템플릿에 대한 콜백 플러그인을 활성화합니다"
@@ -829,7 +829,7 @@ msgid "Update Smart Proxy"
 msgstr "스마트 프록시 업데이트"
 
 msgid "Update an override value"
-msgstr ""
+msgstr "덮어쓰기 값 업데이트"
 
 msgid "Updates Ansible variable"
 msgstr "Ansible 변수 업데이트"
