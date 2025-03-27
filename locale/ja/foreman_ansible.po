@@ -206,7 +206,7 @@ msgid "Create Ansible variable"
 msgstr "Ansible 変数を作成します"
 
 msgid "Create an override value for a specific ansible variable"
-msgstr "特定の Ansible 変数の上書き値を作成します"
+msgstr "特定の Ansible 変数の上書き値を作成する"
 
 msgid "DEPRECATED: Import Ansible roles"
 msgstr "非推奨: Ansible ロールのインポート"
@@ -290,10 +290,10 @@ msgid "Enable Ansible Callback"
 msgstr "Ansible コールバックの有効化"
 
 msgid "Enable Ansible Check Mode"
-msgstr ""
+msgstr "Ansible チェックモードの有効化"
 
 msgid "Enable Ansible Check Mode for this template"
-msgstr ""
+msgstr "このテンプレートの Ansible チェックモードを有効にする"
 
 msgid "Enable the callback plugin for this template"
 msgstr "このテンプレートの callback プラグインを有効にする"
@@ -831,7 +831,7 @@ msgid "Update Smart Proxy"
 msgstr "Smart Proxy の更新"
 
 msgid "Update an override value"
-msgstr ""
+msgstr "オーバーライド値の更新"
 
 msgid "Updates Ansible variable"
 msgstr "Ansible 変数を更新します"

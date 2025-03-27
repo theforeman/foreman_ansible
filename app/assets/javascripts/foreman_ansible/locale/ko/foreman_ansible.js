@@ -285,10 +285,10 @@
         "Ansible 콜백 활성화"
       ],
       "Enable Ansible Check Mode": [
-        ""
+        "Ansible 확인 모드 활성화"
       ],
       "Enable Ansible Check Mode for this template": [
-        ""
+        "이 템플릿의 Ansible 확인 모드를 활성화합니다"
       ],
       "Enable the callback plugin for this template": [
         "이 템플릿에 대한 콜백 플러그인을 활성화합니다"
@@ -822,7 +822,7 @@
         "스마트 프록시 업데이트"
       ],
       "Update an override value": [
-        ""
+        "덮어쓰기 값 업데이트"
       ],
       "Updates Ansible variable": [
         "Ansible 변수 업데이트"

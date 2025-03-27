@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foreman_ansible 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-20 11:49+0100\n"
-"PO-Revision-Date: 2025-02-20 11:49+0100\n"
+"POT-Creation-Date: 2025-03-17 19:38+0100\n"
+"PO-Revision-Date: 2025-03-17 19:38+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -1000,12 +1000,12 @@ msgid "Ansible variable override successfully changed."
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/EditableValue.js:41
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/EditableValue.js:37
 msgid "true"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/EditableValue.js:42
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/EditableValue.js:38
 msgid "false"
 msgstr ""
 
