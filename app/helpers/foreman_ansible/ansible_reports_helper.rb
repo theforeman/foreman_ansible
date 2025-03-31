@@ -36,7 +36,7 @@ module ForemanAnsible
         msg_json['results'].empty? ? msg_json['msg'] : msg_json['results']
       when 'template'
         get_results(msg_json) do |module_args, result|
-          _("Rendered template #{module_args['_original_basename']} to #{result['dest']}")
+          add_diff(_("Rendered template #{module_args['_original_basename']} to #{result['dest']}. "), result['dest'], result)
         end
       when 'service'
         get_results(msg_json) do |_, result|
@@ -56,12 +56,25 @@ module ForemanAnsible
         end
       when 'copy'
         get_results(msg_json) do |module_args, result|
-          _("Copy #{module_args['_original_basename']} to #{result['dest']}")
+          add_diff(_("Copy #{module_args['_original_basename']} to #{result['dest']}. "), result['dest'], result)
         end
       when 'command', 'shell'
         msg_json['stdout_lines']
       else
-        no_data_message
+        have_diff = false
+        get_results(msg_json) do |_, result|
+          if result['report_diff'].present?
+            have_diff = true
+            break
+          end
+        end
+        if have_diff
+          get_results(msg_json) do |module_args, result|
+            add_diff('', module_args['path'] || '', result) if result['report_diff'].present?
+          end
+        else
+          no_data_message
+        end
       end
     end
 
@@ -95,8 +108,10 @@ module ForemanAnsible
     def get_results(msg_json)
       results = msg_json.key?('results') ? msg_json['results'] : [msg_json]
       results.map do |result|
-        module_args = result.fetch('invocation', {}).fetch('module_args', {})
-        yield module_args, result
+        if result.is_a?(Hash)
+          module_args = result.fetch('invocation', {}).fetch('module_args', {})
+          yield module_args, result
+        end
       end
     end
 
@@ -105,6 +120,20 @@ module ForemanAnsible
     rescue StandardError => e
       Foreman::Logging.exception('Error while parsing ansible message json', e)
       {}
+    end
+
+    def add_diff(message, title, result)
+      diff = if result['report_diff'].blank?
+               _('No Diff')
+             else
+               # Add '\n' before the unified diff as the Javascript displaying the
+               # diff expects this.
+               link_to(_('Show Diff'), '#', data: { diff: "\n#{result['report_diff']}", title: title }, onclick: 'tfm.configReportsModalDiff.showDiff(this);')
+             end
+      # diff is already HTML safe and should not be escaped again. Hence escape
+      # the contents of message and concatenate it with diff and
+      # declare it HTML safe.
+      (h(message) + diff).html_safe # rubocop:disable Rails/OutputSafety
     end
   end
 end
