@@ -1,0 +1,22 @@
+<%#
+kind: snippet
+name: check_bootc_status
+provider_type: Ansible
+model: JobTemplate
+snippet: true
+description: |
+  This snippet checks if a host is a bootc (image mode) host.
+-%>
+    - name: Collect bootc status
+      shell:
+        cmd: 'bootc status --json'
+      register: bootc_status
+      ignore_errors: true
+    - name: Parse bootc status json
+      set_fact:
+        bootc_status_json: "{{ bootc_status.stdout | from_json }}"
+      when: bootc_status.rc == 0
+    - name: Determine host is a bootc host
+      set_fact:
+        is_bootc_host: "{{ bootc_status_json is defined and bootc_status_json['status']['booted'] != 'null' }}"
+
