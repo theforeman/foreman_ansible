@@ -39,7 +39,7 @@ model: JobTemplate
     - shell: "<%= input('pre_script') %>"
   <%- end -%>
   tasks:
-<%= snippet('check_bootc_status') %>
+<%= indent(4) { snippet('check_bootc_status') } %>
     - name: Enable bootc overlay
       shell:
         cmd: 'bootc usr-overlay'
