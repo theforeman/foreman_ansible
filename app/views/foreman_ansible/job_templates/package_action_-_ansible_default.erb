@@ -39,10 +39,26 @@ model: JobTemplate
     - shell: "<%= input('pre_script') %>"
   <%- end -%>
   tasks:
-    - package:
+<%= indent(4) { snippet('check_bootc_status') } %>
+    - name: Enable bootc overlay
+      shell:
+        cmd: 'bootc usr-overlay'
+      register: out
+      ignore_errors: true
+      when: is_bootc_host
+    - debug: var=out
+    - name: Install packages via dnf for image mode machines
+      package:
+        use: 'dnf'
 <%= indent(8) { to_yaml({"name" => input('name')}).gsub(/---\n/, '') } -%>
         state: <%= input('state') %>
-  <%- if input('post_script').present? -%>
+      when: is_bootc_host
+    - name: Install packages normally
+      package:
+<%= indent(8) { to_yaml({"name" => input('name')}).gsub(/---\n/, '') } -%>
+        state: <%= input('state') %>
+      when: not is_bootc_host
+<%- if input('post_script').present? -%>
   post_tasks:
     - shell: "<%= input('post_script') %>"
-  <%- end -%>
+<%- end -%>
