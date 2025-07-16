@@ -46,7 +46,7 @@ class HostsControllerExtensionsTest < ActionController::TestCase
       delete :destroy,
              :params => { :id => host.id },
              :session => set_session_user
-      assert_redirected_to hosts_url
+      assert_redirected_to new_hosts_index_page_url
       assert @role.hosts.empty?
     end
   end
