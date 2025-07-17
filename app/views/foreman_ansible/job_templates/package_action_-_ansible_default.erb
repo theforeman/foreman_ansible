@@ -34,26 +34,39 @@ model: JobTemplate
 # For Windows targets use the win_package module instead.
 ---
 - hosts: all
+  vars:
+    pkg_name: "<%= input('name') %>"
   <%- if input('pre_script').present? -%>
   pre_tasks:
     - shell: "<%= input('pre_script') %>"
   <%- end -%>
   tasks:
+    - name: Validate input
+      ansible.builtin.assert:
+        that:
+          - pkg_name is defined
+          - pkg_name | length > 0
+        fail_msg: "The 'name' input cannot be empty. A package name must be provided."
+        success_msg: "Valid 'name' input: '{{ pkg_name }}'"
 <%= indent(4) { snippet('check_bootc_status') } %>
-    - name: Enable bootc overlay
-      shell:
-        cmd: 'bootc usr-overlay'
-      register: out
-      ignore_errors: true
+  <%- if input('state') == 'present' -%>
+    - name: Ensure package is present transiently for image mode machines
+      shell: "dnf --transient install -y <%= input('name') %>"
       when: is_bootc_host
-    - debug: var=out
-    - name: Install packages via dnf for image mode machines
-      package:
-        use: 'dnf'
-<%= indent(8) { to_yaml({"name" => input('name')}).gsub(/---\n/, '') } -%>
-        state: <%= input('state') %>
+  <%- end -%>
+  <%- if input('state') == 'latest' -%>
+    - name: Ensure package is at the latest version transiently for image mode machines
+      shell: |
+        dnf --transient install -y <%= input('name') %>
+        dnf --transient update -y <%= input('name') %>
       when: is_bootc_host
-    - name: Install packages normally
+  <%- end -%>
+  <%- if input('state') == 'absent' -%>
+    - name: Remove packages transiently for image mode machines
+      shell: "dnf --transient remove -y <%= input('name') %>"
+      when: is_bootc_host
+  <%- end -%>
+    - name: Install or remove packages normally
       package:
 <%= indent(8) { to_yaml({"name" => input('name')}).gsub(/---\n/, '') } -%>
         state: <%= input('state') %>
