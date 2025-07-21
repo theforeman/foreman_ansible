@@ -36,6 +36,7 @@ model: JobTemplate
 - hosts: all
   vars:
     pkg_name: "<%= input('name') %>"
+    pkg_names_for_dnf: "<%= input('name').respond_to?(:join) ? input('name').join(' ') : input('name') %>"
   <%- if input('pre_script').present? -%>
   pre_tasks:
     - shell: "<%= input('pre_script') %>"
@@ -51,19 +52,19 @@ model: JobTemplate
 <%= indent(4) { snippet('check_bootc_status') } %>
   <%- if input('state') == 'present' -%>
     - name: Ensure package is present transiently for image mode machines
-      shell: "dnf --transient install -y <%= input('name') %>"
+      shell: "dnf --transient install -y {{ pkg_names_for_dnf }}"
       when: is_bootc_host
   <%- end -%>
   <%- if input('state') == 'latest' -%>
     - name: Ensure package is at the latest version transiently for image mode machines
       shell: |
-        dnf --transient install -y <%= input('name') %>
-        dnf --transient update -y <%= input('name') %>
+        dnf --transient install -y {{ pkg_names_for_dnf }}
+        dnf --transient update -y {{ pkg_names_for_dnf }}
       when: is_bootc_host
   <%- end -%>
   <%- if input('state') == 'absent' -%>
     - name: Remove packages transiently for image mode machines
-      shell: "dnf --transient remove -y <%= input('name') %>"
+      shell: "dnf --transient remove -y {{ pkg_names_for_dnf }}"
       when: is_bootc_host
   <%- end -%>
     - name: Install or remove packages normally
