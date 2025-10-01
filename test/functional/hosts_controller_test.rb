@@ -69,9 +69,7 @@ class HostsControllerExtensionsTest < ActionController::TestCase
           :params => { :id => @host.id },
           :session => set_session_user
       assert_response :redirect
-      assert_redirected_to(:controller => 'job_invocations',
-                           :action => 'show',
-                           :id => JobInvocation.last.id)
+      assert_redirected_to job_invocation_path(JobInvocation.last)
       assert flash['error'].empty?
     end
 
