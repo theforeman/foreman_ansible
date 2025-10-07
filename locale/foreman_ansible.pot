@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foreman_ansible 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-17 19:38+0100\n"
-"PO-Revision-Date: 2025-03-17 19:38+0100\n"
+"POT-Creation-Date: 2025-10-07 14:16+0200\n"
+"PO-Revision-Date: 2025-10-07 14:16+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -530,8 +530,8 @@ msgstr ""
 #: ../app/views/ansible_roles/index.html.erb:12
 #: ../app/views/ansible_roles/index.html.erb:29
 #: ../lib/foreman_ansible/register.rb:219
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/AllRolesTable.js:18
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/RolesTable.js:30
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/AllRolesTable.js:11
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/RolesTable.js:23
 #: ../webpack/components/AnsibleHostDetail/constants.js:6
 #: ../webpack/components/AnsibleRolesAndVariables/index.js:17
 msgid "Variables"
@@ -679,7 +679,7 @@ msgid "Variable|Role"
 msgstr ""
 
 #: ../app/views/ansible_variables/index.html.erb:12
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTable.js:61
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTable.js:54
 msgid "Type"
 msgstr ""
 
@@ -922,40 +922,40 @@ msgid "Update Capsules on given Capsule server hosts"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTable.js:59
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/AllRolesTable.js:18
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/RolesTable.js:30
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTable.js:52
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/AllRolesTable.js:11
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/RolesTable.js:23
 #: ../webpack/components/AnsibleRolesAndVariables/index.js:15
 msgid "Name"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTable.js:60
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTable.js:53
 msgid "Ansible role"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTable.js:62
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTable.js:55
 msgid "Value"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTable.js:63
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTable.js:56
 msgid "Source attribute"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTable.js:114
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTable.js:107
 msgid "Delete"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTable.js:118
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTable.js:111
 msgid "Delete Ansible variable override"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTable.js:122
+#: ../webpack/components/AnsibleHostDetail/components/AnsibleVariableOverrides/AnsibleVariableOverridesTable.js:115
 msgid "Are you sure you want to delete override for %s?"
 msgstr ""
 
@@ -1082,7 +1082,7 @@ msgstr ""
 
 #:
 #: ../webpack/components/AnsibleHostDetail/components/JobsTab/NewRecurringJobModal.js:79
-#: ../webpack/components/AnsibleHostDetail/components/JobsTab/RecurringJobsTable.js:51
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/RecurringJobsTable.js:44
 #: ../webpack/components/AnsibleRolesAndVariables/AnsibleRolesAndVariables.js:133
 msgid "Cancel"
 msgstr ""
@@ -1108,54 +1108,54 @@ msgid "Schedule recurring Ansible roles job"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/JobsTab/PreviousJobsTable.js:23
-#: ../webpack/components/AnsibleHostDetail/components/JobsTab/RecurringJobsTable.js:31
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/PreviousJobsTable.js:16
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/RecurringJobsTable.js:24
 msgid "Description"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/JobsTab/PreviousJobsTable.js:24
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/PreviousJobsTable.js:17
 msgid "Result"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/JobsTab/PreviousJobsTable.js:25
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/PreviousJobsTable.js:18
 msgid "State"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/JobsTab/PreviousJobsTable.js:26
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/PreviousJobsTable.js:19
 msgid "Executed at"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/JobsTab/PreviousJobsTable.js:27
-#: ../webpack/components/AnsibleHostDetail/components/JobsTab/RecurringJobsTable.js:31
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/PreviousJobsTable.js:20
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/RecurringJobsTable.js:24
 msgid "Schedule"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/JobsTab/PreviousJobsTable.js:32
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/PreviousJobsTable.js:25
 msgid "Previously executed jobs"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/JobsTab/RecurringJobsTable.js:31
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/RecurringJobsTable.js:24
 msgid "Next Run"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/JobsTab/RecurringJobsTable.js:39
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/RecurringJobsTable.js:32
 msgid "Cancel Ansible config job"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/JobsTab/RecurringJobsTable.js:40
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/RecurringJobsTable.js:33
 msgid "Are you sure you want to cancel Ansible config job?"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/JobsTab/RecurringJobsTable.js:62
+#: ../webpack/components/AnsibleHostDetail/components/JobsTab/RecurringJobsTable.js:55
 msgid "Scheduled recurring jobs"
 msgstr ""
 
@@ -1172,17 +1172,17 @@ msgid "No previous job executions found"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/AllRolesTable.js:18
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/AllRolesTable.js:11
 msgid "Source"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/AllRolesTable.js:57
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/AllRolesTable.js:50
 msgid "Inherited from Hostgroup"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/AllRolesTable.js:58
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/AllRolesModal/AllRolesTable.js:51
 msgid "Directly assigned to Host"
 msgstr ""
 
@@ -1236,15 +1236,15 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/RolesTable.js:39
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/RolesTable.js:32
 msgid "Edit Ansible roles"
 msgstr ""
 
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/RolesTable.js:50
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/RolesTable.js:43
 msgid "Ansible roles assigned directly to host"
 msgstr ""
 
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/RolesTable.js:52
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/RolesTable.js:45
 msgid "view all assigned roles"
 msgstr ""
 
