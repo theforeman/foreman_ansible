@@ -1,0 +1,129 @@
+<%#
+name: Upgrade orcharhino Proxy - Ansible Default
+snippet: false
+model: JobTemplate
+job_category: Maintenance Operations
+description_format: "%{template_name}"
+provider_type: Ansible
+kind: job_template
+feature: ansible_run_orcharhino_proxy_upgrade
+%>
+
+---
+- name: Upgrade orcharhino Proxy - Ansible Default
+  hosts: all
+  vars:
+    repository_regex: "<%= @host.organization %>_(Smart_Proxy_Atix|orcharhino_Proxy)_ATIX_orcharhino_Server_[a-zA-Z]{2}[0-9]_orcharhino_([0-9]+)_([0-9]+)(_EL[0-9]+)?"
+  tasks:
+<% if plugin_present?('orcharhino_core') -%>
+    - name: Gather RPM package facts
+      ansible.builtin.package_facts:
+        manager: auto
+
+    - name: Fail if target is orcharhino Server
+      ansible.builtin.fail:
+        msg: "This playbook cannot be executed on orcharhino Server. Use only on orcharhino Proxy."
+      when: "'orcharhino' in ansible_facts.packages"
+
+    - name: Check if orcharhino Proxy can be upgraded
+      block:
+
+        - name: Determine initial version of orcharhino-proxy
+          ansible.builtin.set_fact:
+            initial_proxy_version: "{{ ansible_facts.packages['orcharhino-proxy'][0]['version'] }}"
+
+        - name: Find repository to be enabled
+          ansible.builtin.shell:
+            cmd: >
+              set -o pipefail && /usr/bin/grep -oE
+              '{{ repository_regex }}'
+              /etc/yum.repos.d/redhat.repo
+              | sort
+              | tail -n1
+          changed_when: false
+          register: repository
+
+        - name: Set repository name
+          ansible.builtin.set_fact:
+            repository_name: "{{ repository.stdout_lines[0] }}"
+
+        - name: Extract repository version as major.minor
+          ansible.builtin.set_fact:
+            repository_version: >-
+              {{
+              repository_name
+              | regex_replace(repository_regex, '\2.\3')
+              }}
+
+        - name: Print repository version
+          ansible.builtin.debug:
+            msg: "orcharhino Proxy version available in the repository: {{ repository_version }}"
+
+        - name: Warn if repository is not newer than current orcharhino Proxy version
+          ansible.builtin.debug:
+            msg: >
+              WARNING: No upgrade seems necessary, currently installed version is {{ initial_proxy_version }}
+              (did you forget to sync and publish the orcharhino Proxy content?)
+          when: initial_proxy_version is version(repository_version, '>=')
+
+    - name: Perform orcharhino Proxy upgrade
+      block:
+
+        - name: Enable the orcharhino Proxy Repository
+          ansible.builtin.command:
+            cmd: "subscription-manager repos --enable {{ repository_name }}"
+          changed_when: true
+
+        - name: Update all packages on orcharhino Proxy
+          ansible.builtin.dnf:
+            name: "*"
+            state: latest
+          register: result
+
+        - name: Update package orcharhino-proxy
+          ansible.builtin.dnf:
+            name: "orcharhino-proxy"
+            state: latest
+          register: result
+
+        - name: Run orcharhino-installer
+          ansible.builtin.command: orcharhino-installer
+          changed_when: true
+          register: result
+
+        - name: Re-Gather RPM package facts after the upgrade
+          ansible.builtin.package_facts:
+            manager: auto
+
+        - name: Determine new version of orcharhino Proxy
+          ansible.builtin.set_fact:
+            final_proxy_version: "{{ ansible_facts.packages['orcharhino-proxy'][0]['version'] }}"
+
+        - name: Report when orcharhino Proxy version is unchanged
+          ansible.builtin.debug:
+            msg: >
+              Success! orcharhino Proxy upgrade completed.
+              orcharhino Proxy version ({{ final_proxy_version  }}) is unchanged
+          when: final_proxy_version == initial_proxy_version
+
+
+        - name: Report when orcharhino Proxy version changed
+          ansible.builtin.debug:
+            msg: >
+              Success! orcharhino Proxy upgrade completed.
+              New version of orcharhino Proxy is {{ final_proxy_version }}
+          when: final_proxy_version != initial_proxy_version
+
+      rescue:
+        - name: Hint to orcharhino Proxy log in case of failure
+          ansible.builtin.fail:
+            msg: >
+             Failed! orcharhino Proxy upgrade failed.
+             For more information,
+             see /var/log/foreman-installer/foreman-proxy-content.log
+             on your orcharhino Proxy."
+<% else -%>
+    - name: Fail if orcharhino_core is missing
+      ansible.builtin.fail:
+        msg: "Failed! The plug-in orcharhino_core is not present. This playbook is only for use with orcharhino."
+<%- end -%>
