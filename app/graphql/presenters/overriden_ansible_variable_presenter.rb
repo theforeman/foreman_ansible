@@ -15,5 +15,9 @@ module Presenters
     def current_value
       @override_resolver.resolve @ansible_variable
     end
+
+    def hidden_value
+      hidden_value?
+    end
   end
 end
