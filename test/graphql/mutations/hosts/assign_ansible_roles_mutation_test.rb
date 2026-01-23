@@ -53,6 +53,8 @@ module Mutations
         let(:context_user) do
           setup_user('edit', 'hosts') do |user|
             user.roles << Role.find_by(name: 'Viewer')
+            user.organizations << organization
+            user.locations << tax_location
           end
         end
         let(:data) { result['data']['assignAnsibleRoles']['host'] }
@@ -76,6 +78,8 @@ module Mutations
         let(:context_user) do
           setup_user('show', 'hosts') do |user|
             user.roles << Role.find_by(name: 'Viewer')
+            user.organizations << organization
+            user.locations << tax_location
           end
         end
 
