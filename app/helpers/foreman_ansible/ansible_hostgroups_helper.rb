@@ -13,7 +13,7 @@ module ForemanAnsible
                   else
                     display_link_if_authorized(_('Run all Ansible roles'), hash_for_play_roles_hostgroup_path(id: hostgroup), 'data-no-turbolink': true, title: _('Run all Ansible roles on hosts belonging to this host group'))
                   end,
-          priority: 31
+          priority: is_hostgroup_empty ? 131 : 31
         }
       end
 
@@ -24,7 +24,7 @@ module ForemanAnsible
                   else
                     link_to(_('Configure Ansible Job'), "/ansible/hostgroups/#{hostgroup.id}", class: 'la')
                   end,
-          priority: 32
+          priority: is_hostgroup_empty ? 132 : 32
         }
       end
 
