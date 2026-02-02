@@ -29,6 +29,8 @@ module ForemanAnsible
     def proxy_update_button(proxy)
       name = if Foreman::Plugin.find('foreman_theme_satellite').present?
                :ansible_run_capsule_upgrade
+             elsif Foreman::Plugin.find('orcharhino_core').present?
+               :ansible_run_orcharhino_proxy_upgrade
              else
                :ansible_run_smart_proxy_upgrade
              end

@@ -5,12 +5,20 @@ locations = Location.unscoped.all
 
 template_files = Dir[File.join("#{ForemanAnsible::Engine.root}/app/views/foreman_ansible/job_templates/**/*.erb")]
 
-unsupported_templates =
-  if Foreman::Plugin.find('foreman_theme_satellite').present?
-    { 'Smart Proxy Upgrade Playbook': 'smart_proxy_upgrade_-_ansible_default.erb' }
-  else
-    { 'Capsule Upgrade Playbook': 'capsule_upgrade_-_ansible_default.erb' }
-  end
+unsupported_templates = {
+  'Smart Proxy Upgrade Playbook': 'smart_proxy_upgrade_-_ansible_default.erb',
+  'Capsule Upgrade Playbook': 'capsule_upgrade_-_ansible_default.erb',
+  'Upgrade orcharhino Proxy - Ansible Default': 'orcharhino_proxy_upgrade_-_ansible_default.erb',
+}
+
+if Foreman::Plugin.find('foreman_theme_satellite').present?
+  unsupported_templates.delete(:'Capsule Upgrade Playbook')
+elsif Foreman::Plugin.find('orcharhino_core').present?
+  unsupported_templates.delete(:'orcharhino Proxy Upgrade Playbook')
+else
+  unsupported_templates.delete(:'Smart Proxy Upgrade Playbook')
+end
+
 
 User.as_anonymous_admin do
   RemoteExecutionFeature.without_auditing do
