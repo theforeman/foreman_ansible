@@ -33,7 +33,8 @@ module Api
         process_response @ansible_role.destroy
       end
 
-      api :PUT, '/ansible_roles/import', N_('DEPRECATED: Import Ansible roles'), deprecated: true
+      api :PUT, '/ansible_roles/import', N_('DEPRECATED: Import Ansible roles. Use sync instead'), deprecated: true
+      see 'ansible_roles#sync', 'Ansible roles sync'
       param :proxy_id, :identifier, :required => true, :desc => N_('Smart Proxy to import from')
       param :role_names, Array, N_('Ansible role names to be imported')
       def import
@@ -60,7 +61,8 @@ module Api
         end
       end
 
-      api :PUT, '/ansible_roles/obsolete', N_('DEPRECATED: Obsolete Ansible roles'), deprecated: true
+      api :PUT, '/ansible_roles/obsolete', N_('DEPRECATED: Obsolete Ansible roles. Use sync instead'), deprecated: true
+      see 'ansible_roles#sync', 'Ansible roles sync'
       param :proxy_id, :identifier, N_('Smart Proxy to import from')
       def obsolete
         Foreman::Deprecation.api_deprecation_warning(_('Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled'))
