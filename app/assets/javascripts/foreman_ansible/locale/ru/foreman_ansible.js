@@ -3,7 +3,7 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 17.0.2",
+        "Project-Id-Version": "foreman_ansible 17.0.3",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
         "Last-Translator": "0868a4d1af5275b3f70b0a6dac4c99a4, 2023",
@@ -203,13 +203,13 @@
       "Create an override value for a specific ansible variable": [
         ""
       ],
-      "DEPRECATED: Import Ansible roles": [
+      "DEPRECATED: Import Ansible roles. Use sync instead": [
         ""
       ],
       "DEPRECATED: Import Ansible variables. This will only import variables for already existing roles, it will not import any new roles": [
         ""
       ],
-      "DEPRECATED: Obsolete Ansible roles": [
+      "DEPRECATED: Obsolete Ansible roles. Use sync instead": [
         ""
       ],
       "DEPRECATED: Obsolete Ansible variables. This will only obsolete variables for already existing roles, it will not delete any old roles": [

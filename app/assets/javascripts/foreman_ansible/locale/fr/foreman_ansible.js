@@ -3,7 +3,7 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 17.0.2",
+        "Project-Id-Version": "foreman_ansible 17.0.3",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
         "Last-Translator": "Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2025",
@@ -203,14 +203,14 @@
       "Create an override value for a specific ansible variable": [
         "Créer une valeur de substitution pour une variable Ansible spécifique"
       ],
-      "DEPRECATED: Import Ansible roles": [
-        "DÉPRECÉ : Importer les rôles Ansible"
+      "DEPRECATED: Import Ansible roles. Use sync instead": [
+        ""
       ],
       "DEPRECATED: Import Ansible variables. This will only import variables for already existing roles, it will not import any new roles": [
         "DÉPRÉCIÉ : Importer les variables Ansible. Ceci n'importera que les variables pour les rôles déjà existants, il n'y aura pas d'importation de nouveaux rôles"
       ],
-      "DEPRECATED: Obsolete Ansible roles": [
-        "DÉPRÉCIÉ : Rôles Ansible obsolètes"
+      "DEPRECATED: Obsolete Ansible roles. Use sync instead": [
+        ""
       ],
       "DEPRECATED: Obsolete Ansible variables. This will only obsolete variables for already existing roles, it will not delete any old roles": [
         "DÉPRÉCIÉ : Variables Ansibles obsolètes. Il s'agit uniquement de variables obsolètes pour les rôles déjà existants, et non de la suppression d'anciens rôles"

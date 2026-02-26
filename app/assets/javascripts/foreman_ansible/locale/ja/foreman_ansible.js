@@ -3,7 +3,7 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 17.0.2",
+        "Project-Id-Version": "foreman_ansible 17.0.3",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
         "Last-Translator": "Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2025",
@@ -203,14 +203,14 @@
       "Create an override value for a specific ansible variable": [
         "特定の Ansible 変数の上書き値を作成する"
       ],
-      "DEPRECATED: Import Ansible roles": [
-        "非推奨: Ansible ロールのインポート"
+      "DEPRECATED: Import Ansible roles. Use sync instead": [
+        ""
       ],
       "DEPRECATED: Import Ansible variables. This will only import variables for already existing roles, it will not import any new roles": [
         "非推奨: Ansible 変数をインポートします。既存のロールの変数のみをインポートし、新規ロールはインポートしません。"
       ],
-      "DEPRECATED: Obsolete Ansible roles": [
-        "非推奨: Ansible ロールの廃止"
+      "DEPRECATED: Obsolete Ansible roles. Use sync instead": [
+        ""
       ],
       "DEPRECATED: Obsolete Ansible variables. This will only obsolete variables for already existing roles, it will not delete any old roles": [
         "非推奨: Ansible 変数が使用されないようにします。既存のロールの変数のみを使用されないようにするだけで、古くなったロールを削除するわけではありません。"

@@ -3,7 +3,7 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 17.0.2",
+        "Project-Id-Version": "foreman_ansible 17.0.3",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
         "Last-Translator": "Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2025",
@@ -203,14 +203,14 @@
       "Create an override value for a specific ansible variable": [
         "为一个特定的 ansible 变量创建一个覆盖值"
       ],
-      "DEPRECATED: Import Ansible roles": [
-        "已弃用：导入 Ansible 角色"
+      "DEPRECATED: Import Ansible roles. Use sync instead": [
+        ""
       ],
       "DEPRECATED: Import Ansible variables. This will only import variables for already existing roles, it will not import any new roles": [
         "已弃用：导入 Ansible 变量。这只会导入已存在角色的变量，不会导入任何新角色"
       ],
-      "DEPRECATED: Obsolete Ansible roles": [
-        "已弃用：过时的 Ansible 角色"
+      "DEPRECATED: Obsolete Ansible roles. Use sync instead": [
+        ""
       ],
       "DEPRECATED: Obsolete Ansible variables. This will only obsolete variables for already existing roles, it will not delete any old roles": [
         "已弃用：过时的 Ansible 变量。这只会使已存在角色的变量过时，而不会删除任何旧角色"
