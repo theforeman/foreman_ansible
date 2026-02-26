@@ -10,7 +10,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 17.0.2\n"
+"Project-Id-Version: foreman_ansible 17.0.3\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarde"
@@ -208,14 +208,14 @@ msgstr "Ansible 変数を作成します"
 msgid "Create an override value for a specific ansible variable"
 msgstr "特定の Ansible 変数の上書き値を作成する"
 
-msgid "DEPRECATED: Import Ansible roles"
-msgstr "非推奨: Ansible ロールのインポート"
+msgid "DEPRECATED: Import Ansible roles. Use sync instead"
+msgstr ""
 
 msgid "DEPRECATED: Import Ansible variables. This will only import variables for already existing roles, it will not import any new roles"
 msgstr "非推奨: Ansible 変数をインポートします。既存のロールの変数のみをインポートし、新規ロールはインポートしません。"
 
-msgid "DEPRECATED: Obsolete Ansible roles"
-msgstr "非推奨: Ansible ロールの廃止"
+msgid "DEPRECATED: Obsolete Ansible roles. Use sync instead"
+msgstr ""
 
 msgid "DEPRECATED: Obsolete Ansible variables. This will only obsolete variables for already existing roles, it will not delete any old roles"
 msgstr "非推奨: Ansible 変数が使用されないようにします。既存のロールの変数のみを使用されないようにするだけで、古くなったロールを削除するわけではありません。"

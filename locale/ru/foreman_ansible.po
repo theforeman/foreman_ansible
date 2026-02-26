@@ -15,7 +15,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 17.0.2\n"
+"Project-Id-Version: foreman_ansible 17.0.3\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: 0868a4d1af5275b3f70b0a6dac4c99a4, 2023\n"
@@ -214,13 +214,13 @@ msgstr ""
 msgid "Create an override value for a specific ansible variable"
 msgstr ""
 
-msgid "DEPRECATED: Import Ansible roles"
+msgid "DEPRECATED: Import Ansible roles. Use sync instead"
 msgstr ""
 
 msgid "DEPRECATED: Import Ansible variables. This will only import variables for already existing roles, it will not import any new roles"
 msgstr ""
 
-msgid "DEPRECATED: Obsolete Ansible roles"
+msgid "DEPRECATED: Obsolete Ansible roles. Use sync instead"
 msgstr ""
 
 msgid "DEPRECATED: Obsolete Ansible variables. This will only obsolete variables for already existing roles, it will not delete any old roles"

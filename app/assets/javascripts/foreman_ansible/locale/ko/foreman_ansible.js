@@ -3,7 +3,7 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 17.0.2",
+        "Project-Id-Version": "foreman_ansible 17.0.3",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
         "Last-Translator": "Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2025",
@@ -203,14 +203,14 @@
       "Create an override value for a specific ansible variable": [
         "특정 Ansible 변수에 대한 재정의 값 생성"
       ],
-      "DEPRECATED: Import Ansible roles": [
-        "더 이상 사용되지 않음: Ansible 역할 가져오기"
+      "DEPRECATED: Import Ansible roles. Use sync instead": [
+        ""
       ],
       "DEPRECATED: Import Ansible variables. This will only import variables for already existing roles, it will not import any new roles": [
         "더 이상 사용되지 않음: Ansible 변수 가져오기. 이는 기존 역할에 대한 변수만 가져오고, 새 역할은 가져오지 않습니다."
       ],
-      "DEPRECATED: Obsolete Ansible roles": [
-        "더 이상 사용되지 않음: 더 이상 사용되지 않는 Ansible 역할"
+      "DEPRECATED: Obsolete Ansible roles. Use sync instead": [
+        ""
       ],
       "DEPRECATED: Obsolete Ansible variables. This will only obsolete variables for already existing roles, it will not delete any old roles": [
         "더 이상 사용되지 않음: 더 이상 사용되지 않는 Ansible 변수. 이는 기존 역할에 대한 변수만 더 이상 사용되지 않게 하며, 이전 역할은 삭제하지 않습니다."

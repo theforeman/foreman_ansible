@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foreman_ansible 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-10 12:37+0100\n"
-"PO-Revision-Date: 2026-02-10 12:37+0100\n"
+"POT-Creation-Date: 2026-02-26 16:26+0100\n"
+"PO-Revision-Date: 2026-02-26 16:26+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -93,7 +93,7 @@ msgid "Sync Ansible playbooks"
 msgstr ""
 
 #: ../app/controllers/api/v2/ansible_playbooks_controller.rb:18
-#: ../app/controllers/api/v2/ansible_roles_controller.rb:52
+#: ../app/controllers/api/v2/ansible_roles_controller.rb:53
 msgid "Smart Proxy to sync from"
 msgstr ""
 
@@ -106,12 +106,12 @@ msgid "Fetch Ansible playbooks available to be synced"
 msgstr ""
 
 #: ../app/controllers/api/v2/ansible_playbooks_controller.rb:25
-#: ../app/controllers/api/v2/ansible_roles_controller.rb:72
+#: ../app/controllers/api/v2/ansible_roles_controller.rb:74
 msgid "Smart Proxy to fetch from"
 msgstr ""
 
 #: ../app/controllers/api/v2/ansible_playbooks_controller.rb:49
-#: ../app/controllers/api/v2/ansible_roles_controller.rb:92
+#: ../app/controllers/api/v2/ansible_roles_controller.rb:94
 msgid "Smart proxy id is required"
 msgstr ""
 
@@ -128,44 +128,44 @@ msgid "Deletes Ansible role"
 msgstr ""
 
 #: ../app/controllers/api/v2/ansible_roles_controller.rb:36
-msgid "DEPRECATED: Import Ansible roles"
+msgid "DEPRECATED: Import Ansible roles. Use sync instead"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_roles_controller.rb:37
-#: ../app/controllers/api/v2/ansible_roles_controller.rb:64
+#: ../app/controllers/api/v2/ansible_roles_controller.rb:38
+#: ../app/controllers/api/v2/ansible_roles_controller.rb:66
 #: ../app/controllers/api/v2/ansible_variables_controller.rb:74
 #: ../app/controllers/api/v2/ansible_variables_controller.rb:85
 msgid "Smart Proxy to import from"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_roles_controller.rb:38
+#: ../app/controllers/api/v2/ansible_roles_controller.rb:39
 msgid "Ansible role names to be imported"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_roles_controller.rb:40
-#: ../app/controllers/api/v2/ansible_roles_controller.rb:66
+#: ../app/controllers/api/v2/ansible_roles_controller.rb:41
+#: ../app/controllers/api/v2/ansible_roles_controller.rb:68
 #: ../app/controllers/api/v2/ansible_variables_controller.rb:76
 #: ../app/controllers/api/v2/ansible_variables_controller.rb:87
 msgid "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_roles_controller.rb:51
+#: ../app/controllers/api/v2/ansible_roles_controller.rb:52
 msgid "Sync Ansible roles"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_roles_controller.rb:53
+#: ../app/controllers/api/v2/ansible_roles_controller.rb:54
 msgid "Ansible role names to be synced"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_roles_controller.rb:59
+#: ../app/controllers/api/v2/ansible_roles_controller.rb:60
 msgid "No changes detected in specified Ansible Roles and their variables"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_roles_controller.rb:63
-msgid "DEPRECATED: Obsolete Ansible roles"
+#: ../app/controllers/api/v2/ansible_roles_controller.rb:64
+msgid "DEPRECATED: Obsolete Ansible roles. Use sync instead"
 msgstr ""
 
-#: ../app/controllers/api/v2/ansible_roles_controller.rb:71
+#: ../app/controllers/api/v2/ansible_roles_controller.rb:73
 msgid "Fetch Ansible roles available to be synced"
 msgstr ""
 
