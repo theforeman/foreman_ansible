@@ -34,6 +34,7 @@ const EditRolesForm = props => {
   const [callMutation, { loading }] = useMutation(assignAnsibleRoles, {
     onCompleted: onCompleted(closeModal),
     onError,
+    refetchQueries: ['HostAnsibleRoles'],
   });
 
   const allRoles = (availableRoles || []).concat(assignedRoles || []);

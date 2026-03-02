@@ -1,6 +1,6 @@
 #import "./currentUserAttributes.gql"
 
-query($id: String!, $first: Int, $last: Int) {
+query HostAnsibleRoles($id: String!, $first: Int, $last: Int) {
   host(id: $id) {
     id
     ownAnsibleRoles(first: $first, last: $last) {
