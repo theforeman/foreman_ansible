@@ -3,10 +3,10 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 17.0.3",
+        "Project-Id-Version": "foreman_ansible 17.0.4",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
-        "Last-Translator": "Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2025",
+        "Last-Translator": "Ondřej Gajdušek, 2026",
         "Language-Team": "Chinese (China) (https://app.transifex.com/foreman/teams/114/zh_CN/)",
         "MIME-Version": "1.0",
         "Content-Type": "text/plain; charset=UTF-8",
@@ -204,13 +204,13 @@
         "为一个特定的 ansible 变量创建一个覆盖值"
       ],
       "DEPRECATED: Import Ansible roles. Use sync instead": [
-        ""
+        "已启用: 导入 Ansible 角色。使用同步（sync）替代"
       ],
       "DEPRECATED: Import Ansible variables. This will only import variables for already existing roles, it will not import any new roles": [
         "已弃用：导入 Ansible 变量。这只会导入已存在角色的变量，不会导入任何新角色"
       ],
       "DEPRECATED: Obsolete Ansible roles. Use sync instead": [
-        ""
+        "已启用: 过期 Ansible 角色。使用同步（sync）替代"
       ],
       "DEPRECATED: Obsolete Ansible variables. This will only obsolete variables for already existing roles, it will not delete any old roles": [
         "已弃用：过时的 Ansible 变量。这只会使已存在角色的变量过时，而不会删除任何旧角色"

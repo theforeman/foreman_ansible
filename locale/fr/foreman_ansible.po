@@ -12,14 +12,14 @@
 # Amit Upadhye <aupadhye@redhat.com>, 2023
 # 21966816214bc546c1fc8a185e75ca1c, 2023
 # Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2025
+# Ondřej Gajdušek, 2026
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 17.0.3\n"
+"Project-Id-Version: foreman_ansible 17.0.4\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
-"Last-Translator: Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarde"
-"n.nl>, 2025\n"
+"Last-Translator: Ondřej Gajdušek, 2026\n"
 "Language-Team: French (https://app.transifex.com/foreman/teams/114/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -215,13 +215,13 @@ msgid "Create an override value for a specific ansible variable"
 msgstr "Créer une valeur de substitution pour une variable Ansible spécifique"
 
 msgid "DEPRECATED: Import Ansible roles. Use sync instead"
-msgstr ""
+msgstr "DÉPRECÉ : Importer les rôles Ansible. Utiliser la sync à la place."
 
 msgid "DEPRECATED: Import Ansible variables. This will only import variables for already existing roles, it will not import any new roles"
 msgstr "DÉPRÉCIÉ : Importer les variables Ansible. Ceci n'importera que les variables pour les rôles déjà existants, il n'y aura pas d'importation de nouveaux rôles"
 
 msgid "DEPRECATED: Obsolete Ansible roles. Use sync instead"
-msgstr ""
+msgstr "DÉPRECÉ : Rôles Ansible obsolètes. Utiliser la sync à la place."
 
 msgid "DEPRECATED: Obsolete Ansible variables. This will only obsolete variables for already existing roles, it will not delete any old roles"
 msgstr "DÉPRÉCIÉ : Variables Ansibles obsolètes. Il s'agit uniquement de variables obsolètes pour les rôles déjà existants, et non de la suppression d'anciens rôles"

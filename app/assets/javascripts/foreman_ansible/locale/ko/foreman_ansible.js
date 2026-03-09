@@ -3,10 +3,10 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 17.0.3",
+        "Project-Id-Version": "foreman_ansible 17.0.4",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
-        "Last-Translator": "Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2025",
+        "Last-Translator": "Ondřej Gajdušek, 2026",
         "Language-Team": "Korean (https://app.transifex.com/foreman/teams/114/ko/)",
         "MIME-Version": "1.0",
         "Content-Type": "text/plain; charset=UTF-8",
@@ -204,13 +204,13 @@
         "특정 Ansible 변수에 대한 재정의 값 생성"
       ],
       "DEPRECATED: Import Ansible roles. Use sync instead": [
-        ""
+        "사용 중단됨: Ansible 역할 가져오기. 대신 syn를 사용"
       ],
       "DEPRECATED: Import Ansible variables. This will only import variables for already existing roles, it will not import any new roles": [
         "더 이상 사용되지 않음: Ansible 변수 가져오기. 이는 기존 역할에 대한 변수만 가져오고, 새 역할은 가져오지 않습니다."
       ],
       "DEPRECATED: Obsolete Ansible roles. Use sync instead": [
-        ""
+        "사용 중단됨: 더 이상 사용되지 않는 Ansible 역할. 대신 sync를 사용"
       ],
       "DEPRECATED: Obsolete Ansible variables. This will only obsolete variables for already existing roles, it will not delete any old roles": [
         "더 이상 사용되지 않음: 더 이상 사용되지 않는 Ansible 변수. 이는 기존 역할에 대한 변수만 더 이상 사용되지 않게 하며, 이전 역할은 삭제하지 않습니다."

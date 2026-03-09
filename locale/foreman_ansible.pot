@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foreman_ansible 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-26 16:26+0100\n"
-"PO-Revision-Date: 2026-02-26 16:26+0100\n"
+"POT-Creation-Date: 2026-03-09 12:45+0000\n"
+"PO-Revision-Date: 2026-03-09 12:45+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -1204,7 +1204,7 @@ msgid "No Ansible roles assigned"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleHostDetail/components/RolesTab/EditRolesModal/EditRolesForm.js:59
+#: ../webpack/components/AnsibleHostDetail/components/RolesTab/EditRolesModal/EditRolesForm.js:60
 msgid "Confirm"
 msgstr ""
 
