@@ -3,10 +3,10 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 17.0.3",
+        "Project-Id-Version": "foreman_ansible 17.0.4",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
-        "Last-Translator": "Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2025",
+        "Last-Translator": "Ondřej Gajdušek, 2026",
         "Language-Team": "French (https://app.transifex.com/foreman/teams/114/fr/)",
         "MIME-Version": "1.0",
         "Content-Type": "text/plain; charset=UTF-8",
@@ -204,13 +204,13 @@
         "Créer une valeur de substitution pour une variable Ansible spécifique"
       ],
       "DEPRECATED: Import Ansible roles. Use sync instead": [
-        ""
+        "DÉPRECÉ : Importer les rôles Ansible. Utiliser la sync à la place."
       ],
       "DEPRECATED: Import Ansible variables. This will only import variables for already existing roles, it will not import any new roles": [
         "DÉPRÉCIÉ : Importer les variables Ansible. Ceci n'importera que les variables pour les rôles déjà existants, il n'y aura pas d'importation de nouveaux rôles"
       ],
       "DEPRECATED: Obsolete Ansible roles. Use sync instead": [
-        ""
+        "DÉPRECÉ : Rôles Ansible obsolètes. Utiliser la sync à la place."
       ],
       "DEPRECATED: Obsolete Ansible variables. This will only obsolete variables for already existing roles, it will not delete any old roles": [
         "DÉPRÉCIÉ : Variables Ansibles obsolètes. Il s'agit uniquement de variables obsolètes pour les rôles déjà existants, et non de la suppression d'anciens rôles"

@@ -7,14 +7,14 @@
 # Bryan Kearney <bryan.kearney@gmail.com>, 2018
 # Amit Upadhye <aupadhye@redhat.com>, 2022
 # Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2025
+# Ondřej Gajdušek, 2026
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 17.0.3\n"
+"Project-Id-Version: foreman_ansible 17.0.4\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
-"Last-Translator: Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarde"
-"n.nl>, 2025\n"
+"Last-Translator: Ondřej Gajdušek, 2026\n"
 "Language-Team: Japanese (https://app.transifex.com/foreman/teams/114/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -209,16 +209,16 @@ msgid "Create an override value for a specific ansible variable"
 msgstr "特定の Ansible 変数の上書き値を作成する"
 
 msgid "DEPRECATED: Import Ansible roles. Use sync instead"
-msgstr ""
+msgstr "非推奨: Ansible ロールのインポート。代わりに sync を使用してください"
 
 msgid "DEPRECATED: Import Ansible variables. This will only import variables for already existing roles, it will not import any new roles"
-msgstr "非推奨: Ansible 変数をインポートします。既存のロールの変数のみをインポートし、新規ロールはインポートしません。"
+msgstr "非推奨: Ansible 変数をインポートします。既存のロールの変数のみをインポートし、新規ロールはインポートしません"
 
 msgid "DEPRECATED: Obsolete Ansible roles. Use sync instead"
-msgstr ""
+msgstr "非推奨: 廃止予定の Ansible ロール。代わりに sync を使用してください"
 
 msgid "DEPRECATED: Obsolete Ansible variables. This will only obsolete variables for already existing roles, it will not delete any old roles"
-msgstr "非推奨: Ansible 変数が使用されないようにします。既存のロールの変数のみを使用されないようにするだけで、古くなったロールを削除するわけではありません。"
+msgstr "非推奨: Ansible 変数が使用されないようにします。既存のロールの変数のみを使用されないようにするだけで、古くなったロールを削除するわけではありません"
 
 msgid "Default Ansible inventory report template"
 msgstr "Ansible インベントリーレポートのデフォルトテンプレート"
@@ -332,7 +332,7 @@ msgid "Foreman will add this level of verbosity for additional debugging output 
 msgstr "Foreman では、詳細レベルをここまで上げ、Ansible Playbook の実行時に追加でデバッグ出力が表示されるようにします。"
 
 msgid "Foreman will use this template to schedule the report with Ansible inventory"
-msgstr "Foreman は、このテンプレートを使用して Ansible インベントリーを使用したレポートのスケジューリングを行います。"
+msgstr "Foreman は、このテンプレートを使用して Ansible インベントリーを使用したレポートのスケジューリングを行います"
 
 msgid "Hash of input values of type input=>value"
 msgstr "type input=>value の入力値のハッシュ"
@@ -573,7 +573,7 @@ msgid "Permission Denied"
 msgstr "パーミッションが拒否されました"
 
 msgid "Permission denied"
-msgstr "パーミッションが拒否されました。"
+msgstr "パーミッションが拒否されました"
 
 msgid "Playbooks"
 msgstr "Playbook"
@@ -786,7 +786,7 @@ msgid "This list consists of host assigned roles and group assigned roles. Group
 msgstr "このリストは、ホストに割り当てられたロールとグループに割り当てられたロールで構成されています。グループに割り当てられたロールは、常にホストに割り当てられたロールの前に実行されます。"
 
 msgid "Those roles will be excluded when importing roles from smart proxy, The expected input is comma separated values and you can use * wildcard metacharactersFor example: foo*, *b*,*bar"
-msgstr "Smart Proxy からロールをインポートする場合、これらのロールは除外されます。コンマで区切った値での入力が想定されており、* ワイルドカードメタ文字 (例: foo*、*b*、*bar) を使用できます。"
+msgstr "Smart Proxy からロールをインポートする場合、これらのロールは除外されます。コンマで区切った値での入力が想定されており、* ワイルドカードメタ文字 (例: foo*、*b*、*bar) を使用できます"
 
 msgid "Timeout (in minutes) when hosts should have reported."
 msgstr "ホストがレポートするはずだった場合のタイムアウト (分単位)"
@@ -852,7 +852,7 @@ msgid "Use sync instead, to sync roles from Smart Proxy with Ansible feature ena
 msgstr "代わりに同期を使用し、Ansible 機能を有効化して SmartProxy からロールを同期します"
 
 msgid "Use this connection type by default when running Ansible playbooks. You can override this on hosts by adding a parameter \"ansible_connection\""
-msgstr "デフォルトでは、Ansible Playbook の実行時にこの接続タイプを使用します。ホストでこれを上書きするには、パラメーター \"ansible_connection\" を追加します。"
+msgstr "デフォルトでは、Ansible Playbook の実行時にこの接続タイプを使用します。ホストでこれを上書きするには、パラメーター \"ansible_connection\" を追加します"
 
 msgid "Use this to supply a path to an SSH Private Key that Ansible will use in lieu of a password Override with \"ansible_ssh_private_key_file\" host parameter"
 msgstr "これを使用して、Ansible がパスワードの代わりに使用する SSH 秘密鍵へのパスを指定します。\"ansible_ssh_private_key_file\" ホストパラメータで上書きします"

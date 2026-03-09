@@ -3,10 +3,10 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 17.0.3",
+        "Project-Id-Version": "foreman_ansible 17.0.4",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
-        "Last-Translator": "Ewoud Kohl van Wijngaarden <ewoud+transifex@kohlvanwijngaarden.nl>, 2025",
+        "Last-Translator": "Ondřej Gajdušek, 2026",
         "Language-Team": "Japanese (https://app.transifex.com/foreman/teams/114/ja/)",
         "MIME-Version": "1.0",
         "Content-Type": "text/plain; charset=UTF-8",
@@ -204,16 +204,16 @@
         "特定の Ansible 変数の上書き値を作成する"
       ],
       "DEPRECATED: Import Ansible roles. Use sync instead": [
-        ""
+        "非推奨: Ansible ロールのインポート。代わりに sync を使用してください"
       ],
       "DEPRECATED: Import Ansible variables. This will only import variables for already existing roles, it will not import any new roles": [
-        "非推奨: Ansible 変数をインポートします。既存のロールの変数のみをインポートし、新規ロールはインポートしません。"
+        "非推奨: Ansible 変数をインポートします。既存のロールの変数のみをインポートし、新規ロールはインポートしません"
       ],
       "DEPRECATED: Obsolete Ansible roles. Use sync instead": [
-        ""
+        "非推奨: 廃止予定の Ansible ロール。代わりに sync を使用してください"
       ],
       "DEPRECATED: Obsolete Ansible variables. This will only obsolete variables for already existing roles, it will not delete any old roles": [
-        "非推奨: Ansible 変数が使用されないようにします。既存のロールの変数のみを使用されないようにするだけで、古くなったロールを削除するわけではありません。"
+        "非推奨: Ansible 変数が使用されないようにします。既存のロールの変数のみを使用されないようにするだけで、古くなったロールを削除するわけではありません"
       ],
       "Default Ansible inventory report template": [
         "Ansible インベントリーレポートのデフォルトテンプレート"
@@ -327,7 +327,7 @@
         "Foreman では、詳細レベルをここまで上げ、Ansible Playbook の実行時に追加でデバッグ出力が表示されるようにします。"
       ],
       "Foreman will use this template to schedule the report with Ansible inventory": [
-        "Foreman は、このテンプレートを使用して Ansible インベントリーを使用したレポートのスケジューリングを行います。"
+        "Foreman は、このテンプレートを使用して Ansible インベントリーを使用したレポートのスケジューリングを行います"
       ],
       "Hash of input values of type input=>value": [
         "type input=>value の入力値のハッシュ"
@@ -564,7 +564,7 @@
         "パーミッションが拒否されました"
       ],
       "Permission denied": [
-        "パーミッションが拒否されました。"
+        "パーミッションが拒否されました"
       ],
       "Playbooks": [
         "Playbook"
@@ -777,7 +777,7 @@
         "このリストは、ホストに割り当てられたロールとグループに割り当てられたロールで構成されています。グループに割り当てられたロールは、常にホストに割り当てられたロールの前に実行されます。"
       ],
       "Those roles will be excluded when importing roles from smart proxy, The expected input is comma separated values and you can use * wildcard metacharactersFor example: foo*, *b*,*bar": [
-        "Smart Proxy からロールをインポートする場合、これらのロールは除外されます。コンマで区切った値での入力が想定されており、* ワイルドカードメタ文字 (例: foo*、*b*、*bar) を使用できます。"
+        "Smart Proxy からロールをインポートする場合、これらのロールは除外されます。コンマで区切った値での入力が想定されており、* ワイルドカードメタ文字 (例: foo*、*b*、*bar) を使用できます"
       ],
       "Timeout (in minutes) when hosts should have reported.": [
         "ホストがレポートするはずだった場合のタイムアウト (分単位)"
@@ -843,7 +843,7 @@
         "代わりに同期を使用し、Ansible 機能を有効化して SmartProxy からロールを同期します"
       ],
       "Use this connection type by default when running Ansible playbooks. You can override this on hosts by adding a parameter \\\"ansible_connection\\\"": [
-        "デフォルトでは、Ansible Playbook の実行時にこの接続タイプを使用します。ホストでこれを上書きするには、パラメーター \\\"ansible_connection\\\" を追加します。"
+        "デフォルトでは、Ansible Playbook の実行時にこの接続タイプを使用します。ホストでこれを上書きするには、パラメーター \\\"ansible_connection\\\" を追加します"
       ],
       "Use this to supply a path to an SSH Private Key that Ansible will use in lieu of a password Override with \\\"ansible_ssh_private_key_file\\\" host parameter": [
         "これを使用して、Ansible がパスワードの代わりに使用する SSH 秘密鍵へのパスを指定します。\\\"ansible_ssh_private_key_file\\\" ホストパラメータで上書きします"
