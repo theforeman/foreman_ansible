@@ -6,6 +6,7 @@ module Api
     class AnsibleVariablesController < ::Api::V2::BaseController
       include ::Api::Version2
       include Foreman::Controller::Parameters::AnsibleVariable
+      hide_taxonomy_options
 
       resource_description do
         api_version 'v2'
