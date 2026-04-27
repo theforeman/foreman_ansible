@@ -22,6 +22,4 @@ Gem::Specification.new do |s|
   s.add_dependency 'deface', '< 2.0'
   s.add_dependency 'foreman_remote_execution', '>= 14.0', '< 17'
   s.add_dependency 'foreman-tasks', '>= 10.0', '< 13'
-
-  s.add_development_dependency 'theforeman-rubocop', '~> 0.1.0'
 end
