@@ -4,7 +4,7 @@ exports[`AnsibleRole should render a role to add 1`] = `
 <ListViewItem
   actions={
     <AnsibleRoleActionButton
-      icon="fa fa-plus-circle"
+      icon="plus-circle"
       role={
         Object {
           "id": 5,
@@ -36,7 +36,7 @@ exports[`AnsibleRole should render a role to remove 1`] = `
 <ListViewItem
   actions={
     <AnsibleRoleActionButton
-      icon="fa fa-minus-circle"
+      icon="minus-circle"
       role={
         Object {
           "id": 5,

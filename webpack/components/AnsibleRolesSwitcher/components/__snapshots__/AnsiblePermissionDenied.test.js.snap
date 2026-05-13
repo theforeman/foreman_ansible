@@ -22,7 +22,7 @@ exports[`AnsiblePermissionDenied should render 1`] = `
   }
   header="Permission Denied"
   icon="lock"
-  iconType="fa"
   secondaryActions={Array []}
+  variant="xl"
 />
 `;

@@ -29,7 +29,7 @@ const AvailableRolesList = ({
         <AnsibleRole
           key={role.id}
           role={role}
-          icon="fa fa-plus-circle"
+          icon="plus-circle"
           onClick={onAddRole}
           index={index}
         />

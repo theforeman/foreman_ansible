@@ -8,7 +8,7 @@ exports[`AssignedRolesList should render 1`] = `
     className=""
   >
     <DropTarget(DragSource(Orderable(AnsibleRole)))
-      icon="fa fa-minus-circle"
+      icon="minus-circle"
       index={0}
       key="1"
       moveValue={[Function]}
@@ -22,7 +22,7 @@ exports[`AssignedRolesList should render 1`] = `
       }
     />
     <DropTarget(DragSource(Orderable(AnsibleRole)))
-      icon="fa fa-minus-circle"
+      icon="minus-circle"
       index={1}
       key="2"
       moveValue={[Function]}
