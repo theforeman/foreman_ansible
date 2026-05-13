@@ -22,7 +22,6 @@ const AnsiblePermissionDenied = props => {
 
   return (
     <EmptyState
-      iconType="fa"
       icon="lock"
       header={__('Permission Denied')}
       description={description}

@@ -42,7 +42,7 @@ const AssignedRolesList = ({
       key={role.id}
       role={role}
       index={idx}
-      icon="fa fa-minus-circle"
+      icon="minus-circle"
       onClick={onRemoveRole}
       resourceName={resourceName}
     />
@@ -54,7 +54,7 @@ const AssignedRolesList = ({
       role={role}
       index={idx}
       moveValue={moveValue}
-      icon="fa fa-minus-circle"
+      icon="minus-circle"
       onClick={onRemoveRole}
       resourceName={resourceName}
     />
