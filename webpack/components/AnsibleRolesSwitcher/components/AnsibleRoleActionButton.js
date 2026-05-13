@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Icon } from 'patternfly-react';
+import { Icon } from '@patternfly/react-core';
 
 const AnsibleRoleActionButton = ({ icon }) => (
   <button href="#" className="role-add-remove-btn">
