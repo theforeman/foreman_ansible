@@ -20,7 +20,7 @@ const ListItem = props => {
   );
 
   const orderBtn = (
-    <span className="foreman-dual-list-order">{`${props.index + 1}.`}</span>
+    <span className="foreman-dual-list-order">{`${props.index + 1}. `}</span>
   );
 
   return (

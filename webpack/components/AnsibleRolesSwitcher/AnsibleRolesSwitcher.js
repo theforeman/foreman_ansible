@@ -1,107 +1,93 @@
-import React from 'react';
-import { Grid, Row, Col } from 'patternfly-react';
+import React, { useEffect } from 'react';
 import { lowerCase } from 'lodash';
 import PropTypes from 'prop-types';
+import { Spinner } from '@patternfly/react-core';
+import { InfoCircleIcon } from '@patternfly/react-icons';
 import { translate as __ } from 'foremanReact/common/I18n';
 
-import AvailableRolesList from './components/AvailableRolesList';
-import AssignedRolesList from './components/AssignedRolesList';
+import DualList from '../DualList';
 import AnsibleRolesSwitcherError from './components/AnsibleRolesSwitcherError';
-import OrderedRolesTooltip from './components/OrderedRolesTooltip';
-import { excludeAssignedRolesSearch } from './AnsibleRolesSwitcherHelpers';
+import AnsibleRoleInputs from './components/AnsibleRoleInputs';
+import InheritedRolesList from './components/InheritedRolesList';
+import { roleNames } from './AnsibleRolesSwitcherHelpers';
+import './AnsibleRolesSwitcher.scss';
 
-class AnsibleRolesSwitcher extends React.Component {
-  componentDidMount() {
-    const {
+const AnsibleRolesSwitcher = ({
+  initialAssignedRoles,
+  availableRolesUrl,
+  inheritedRoleIds,
+  resourceId,
+  resourceName,
+  getAnsibleRoles,
+  loading,
+  assignedRoles,
+  unassignedRoles,
+  toDestroyRoles,
+  dualListChange,
+  error,
+}) => {
+  useEffect(() => {
+    getAnsibleRoles(
+      availableRolesUrl,
       initialAssignedRoles,
-      availableRolesUrl,
       inheritedRoleIds,
       resourceId,
       resourceName,
-    } = this.props;
-
-    this.props.getAnsibleRoles(
-      availableRolesUrl,
-      initialAssignedRoles,
-      inheritedRoleIds,
-      resourceId,
-      resourceName,
-      excludeAssignedRolesSearch(initialAssignedRoles)
+      { perPage: 'all' }
     );
-  }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  render() {
-    const {
-      loading,
-      pagination,
-      itemCount,
-      addAnsibleRole,
-      removeAnsibleRole,
-      moveAnsibleRole,
-      getAnsibleRoles,
-      assignedRoles,
-      unassignedRoles,
-      toDestroyRoles,
-      error,
-    } = this.props;
+  const inheritedRoles = assignedRoles.filter(role => role.inherited);
+  const ownAssignedRoles = assignedRoles.filter(role => !role.inherited);
+  const resourceNameLower = lowerCase(resourceName || '');
 
-    const {
-      availableRolesUrl,
-      inheritedRoleIds,
-      resourceId,
-      resourceName,
-    } = this.props;
+  const onListChange = (_availableNames, chosenNames) =>
+    dualListChange(chosenNames);
 
-    const onListingChange = paginationArgs =>
-      getAnsibleRoles(
-        availableRolesUrl,
-        assignedRoles,
-        inheritedRoleIds,
-        resourceId,
-        resourceName,
-        paginationArgs,
-        excludeAssignedRolesSearch(assignedRoles)
-      );
+  const ownRolesForInputs = ownAssignedRoles.concat(toDestroyRoles);
 
-    return (
-      <Grid bsClass="container-fluid" id="ansibleRolesSwitcher">
-        <Row className="row-eq-height">
-          <AnsibleRolesSwitcherError error={error} />
-          <Col sm={6} className="available-roles-container">
-            <div className="available-roles-header">
-              <h2>{__('Available Ansible Roles')}</h2>
-            </div>
-            <AvailableRolesList
-              unassignedRoles={unassignedRoles}
-              pagination={pagination}
-              itemCount={itemCount}
-              onListingChange={onListingChange}
-              onAddRole={addAnsibleRole}
-              loading={loading}
+  return (
+    <div id="ansibleRolesSwitcher">
+      <AnsibleRolesSwitcherError error={error} />
+      {loading ? (
+        <Spinner size="lg" />
+      ) : (
+        <>
+          <InheritedRolesList
+            roles={inheritedRoles}
+            resourceName={resourceNameLower}
+          />
+          <DualList
+            availableOptions={roleNames(unassignedRoles)}
+            chosenOptions={roleNames(ownAssignedRoles)}
+            onListChange={onListChange}
+          />
+          <p className="ansible-roles-order-info">
+            <InfoCircleIcon
+              className="ansible-roles-order-info-icon"
+              aria-hidden
             />
-          </Col>
-
-          <Col sm={6} className="assigned-roles-container">
-            <div className="assigned-roles-header">
-              <h2>
-                <OrderedRolesTooltip />
-                {__('Assigned Ansible Roles')}
-              </h2>
-            </div>
-            <AssignedRolesList
-              assignedRoles={assignedRoles}
-              unassignedRoles={unassignedRoles}
-              onRemoveRole={removeAnsibleRole}
-              onMoveRole={moveAnsibleRole}
-              resourceName={lowerCase(resourceName || '')}
-              toDestroyRoles={toDestroyRoles}
-            />
-          </Col>
-        </Row>
-      </Grid>
-    );
-  }
-}
+            <span>
+              {__(
+                'Use drag and drop to change order of the assigned roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly'
+              )}
+            </span>
+          </p>
+          <div className="ansible-roles-hidden-inputs">
+            {ownRolesForInputs.map((role, idx) => (
+              <AnsibleRoleInputs
+                key={role.id}
+                role={role}
+                idx={idx}
+                resourceName={resourceNameLower}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
 
 AnsibleRolesSwitcher.propTypes = {
   initialAssignedRoles: PropTypes.arrayOf(PropTypes.object),
@@ -110,15 +96,8 @@ AnsibleRolesSwitcher.propTypes = {
   resourceId: PropTypes.number,
   resourceName: PropTypes.string,
   getAnsibleRoles: PropTypes.func.isRequired,
+  dualListChange: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
-  pagination: PropTypes.shape({
-    page: PropTypes.number,
-    perPage: PropTypes.number,
-  }).isRequired,
-  itemCount: PropTypes.number.isRequired,
-  addAnsibleRole: PropTypes.func.isRequired,
-  removeAnsibleRole: PropTypes.func.isRequired,
-  moveAnsibleRole: PropTypes.func.isRequired,
   assignedRoles: PropTypes.arrayOf(PropTypes.object).isRequired,
   toDestroyRoles: PropTypes.arrayOf(PropTypes.object).isRequired,
   unassignedRoles: PropTypes.arrayOf(PropTypes.object).isRequired,
