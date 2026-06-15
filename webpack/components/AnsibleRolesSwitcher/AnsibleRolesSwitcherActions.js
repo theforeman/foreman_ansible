@@ -9,10 +9,7 @@ import {
   ANSIBLE_ROLES_REQUEST,
   ANSIBLE_ROLES_SUCCESS,
   ANSIBLE_ROLES_FAILURE,
-  ANSIBLE_ROLES_ADD,
-  ANSIBLE_ROLES_REMOVE,
-  ANSIBLE_ROLES_MOVE,
-  ANSIBLE_ROLES_ASSIGNED_PAGE_CHANGE,
+  ANSIBLE_ROLES_DUAL_LIST_CHANGE,
 } from './AnsibleRolesSwitcherConstants';
 
 export const getAnsibleRoles = (
@@ -21,14 +18,12 @@ export const getAnsibleRoles = (
   inheritedRoleIds,
   resourceId,
   resourceName,
-  pagination,
-  search
+  pagination
 ) => async dispatch => {
   dispatch({ type: ANSIBLE_ROLES_REQUEST });
 
   const params = {
     ...propsToSnakeCase(pagination || {}),
-    ...(search || {}),
     ...propsToSnakeCase({ resourceId, resourceName }),
   };
 
@@ -43,34 +38,18 @@ export const getAnsibleRoles = (
       },
     });
   } catch (error) {
-    return dispatch(errorHandler(ANSIBLE_ROLES_FAILURE, error));
+    const err = {
+      errorMsg: __('Failed to fetch Ansible Roles from server.'),
+      statusText: error.response?.statusText,
+    };
+    return dispatch({
+      type: ANSIBLE_ROLES_FAILURE,
+      payload: { error: err },
+    });
   }
 };
 
-const errorHandler = (msg, err) => {
-  const error = {
-    errorMsg: __('Failed to fetch Ansible Roles from server.'),
-    statusText: err.response.statusText,
-  };
-  return { type: msg, payload: { error } };
-};
-
-export const addAnsibleRole = role => ({
-  type: ANSIBLE_ROLES_ADD,
-  payload: { role },
-});
-
-export const removeAnsibleRole = role => ({
-  type: ANSIBLE_ROLES_REMOVE,
-  payload: { role },
-});
-
-export const moveAnsibleRole = roles => ({
-  type: ANSIBLE_ROLES_MOVE,
-  payload: { roles },
-});
-
-export const changeAssignedPage = pagination => ({
-  type: ANSIBLE_ROLES_ASSIGNED_PAGE_CHANGE,
-  payload: { pagination },
+export const dualListChange = chosenNames => ({
+  type: ANSIBLE_ROLES_DUAL_LIST_CHANGE,
+  payload: { chosenNames },
 });

@@ -8,18 +8,12 @@ import withProtectedView from './components/withProtectedView';
 import {
   selectUnassignedRoles,
   selectAssignedRoles,
-  selectResults,
-  selectPaginationMemoized,
-  selectItemCount,
   selectLoading,
   selectError,
   selectToDestroyRoles,
 } from './AnsibleRolesSwitcherSelectors';
 
 const mapStateToProps = state => ({
-  results: selectResults(state),
-  pagination: selectPaginationMemoized(state),
-  itemCount: selectItemCount(state),
   loading: selectLoading(state),
   error: selectError(state),
   assignedRoles: selectAssignedRoles(state),

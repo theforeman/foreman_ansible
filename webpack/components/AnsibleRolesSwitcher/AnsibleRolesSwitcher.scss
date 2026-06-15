@@ -1,43 +1,55 @@
 @import 'foremanReact/common/variables';
 
 #ansibleRolesSwitcher {
-  .list-view-pf {
-    .list-group-item.ansible-role-disabled {
-      background-color: $color-pf-black-200;
-      color: $color-pf-black-500;
-      border-left-color: $color-pf-black-200;
-      border-right-color: $color-pf-black-200;
+  .pf-v5-c-dual-list-selector {
+    margin: var(--pf-v5-global--spacer--md) 0;
+  }
+
+  .ansible-inherited-roles {
+    --pf-v5-c-dual-list-selector__title-text--FontWeight: var(
+      --pf-v5-global--FontWeight--bold
+    );
+    --pf-v5-c-dual-list-selector__header--MarginBottom: var(
+      --pf-v5-global--spacer--sm
+    );
+
+    .pf-v5-c-dual-list-selector__header {
+      margin-block-end: var(--pf-v5-c-dual-list-selector__header--MarginBottom);
     }
 
-    .list-group-item.ansible-role-movable:hover {
-      cursor: grab;
+    .pf-v5-c-dual-list-selector__title-text {
+      font-weight: var(--pf-v5-c-dual-list-selector__title-text--FontWeight);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      padding: 0.5rem 0.75rem;
+      margin-bottom: 0.25rem;
+      background-color: var(--pf-v5-global--BackgroundColor--200);
+      color: var(--pf-v5-global--Color--200);
+      border-radius: 3px;
     }
   }
 
-  .loading-state-pf {
-    padding-top: 5%;
-    background-color: $color-pf-white;
+  .ansible-roles-order-info {
+    display: flex;
+    gap: var(--pf-v5-global--spacer--sm);
+    margin: 0;
+    font-size: var(--pf-v5-global--FontSize--sm);
+    color: var(--pf-v5-global--Color--200);
+
+    .ansible-roles-order-info-icon {
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
   }
 
-  .role-add-remove-btn {
-    background-color: initial;
-    border: none;
-    color: #0388ce;
-  }
-
-  .list-view-pf-main-info {
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-
-  .list-view-pf-actions {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  .list-group-item-heading {
-    margin-bottom: 0;
-    font-size: 12px;
-    font-weight: normal;
+  .ansible-roles-hidden-inputs {
+    display: none;
   }
 }

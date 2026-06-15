@@ -81,7 +81,7 @@ const DualList = props => {
         removeSelectedDisabled={selectState.chosenSelected.length === 0}
       />
       <ListPane
-        title={__('Host assigned Ansible roles')}
+        title={__('Assigned Ansible roles')}
         items={props.chosenOptions}
         paneClass="pf-m-chosen"
         draggable
