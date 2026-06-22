@@ -1,19 +1,20 @@
 import React from 'react';
-import { Col, Alert } from 'patternfly-react';
+import { Alert } from '@patternfly/react-core';
 import PropTypes from 'prop-types';
 
-const ErrorMsg = ({ error }) => {
+const errorMessage = error => {
+  if (!error) return '';
   const status = error.statusText ? `${error.statusText}: ` : '';
   return `${status}${error.errorMsg}`;
 };
 
 const AnsibleRolesSwitcherError = ({ error }) =>
-  error && error.errorMsg ? (
-    <Col sm={12}>
-      <Alert type="error">
-        <ErrorMsg error={error} />
-      </Alert>
-    </Col>
+  error?.errorMsg ? (
+    <Alert
+      ouiaId="ansible-roles-switcher-error"
+      variant="danger"
+      title={errorMessage(error)}
+    />
   ) : (
     ''
   );
