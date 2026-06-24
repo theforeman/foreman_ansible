@@ -21,5 +21,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'acts_as_list', '~> 1.2'
   s.add_dependency 'deface', '< 2.0'
   s.add_dependency 'foreman_remote_execution', '>= 14.0', '< 17'
-  s.add_dependency 'foreman-tasks', '>= 10.0', '< 13'
+  s.add_dependency 'foreman-tasks', '>= 10.0'
 end
