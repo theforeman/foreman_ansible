@@ -18,7 +18,13 @@ export const formatSourceAttr = variable =>
     ? formatSourceLink(variable.currentValue)
     : __('Default value');
 
+const HIDDEN_MASK = '*****';
+
 export const formatValue = variable => {
+  if (variable.hiddenValue) {
+    return HIDDEN_MASK;
+  }
+
   const value = variable.currentValue
     ? variable.currentValue.value
     : variable.defaultValue;
