@@ -43,8 +43,6 @@ template_inputs:
     - shell: |
 <%=     indent(8) { command } %>
       register: out
-      args:
-        warn: false
     - debug: var=out
   <%- if input('post_script').present? -%>
   post_tasks:
