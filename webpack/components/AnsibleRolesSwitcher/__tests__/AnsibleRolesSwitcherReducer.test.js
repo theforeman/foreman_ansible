@@ -72,4 +72,45 @@ describe('AnsibleRolesSwitcherReducer', () => {
     expect(state.inheritedRoleIds).toEqual([4]);
     expect(state.results).toEqual(ansibleRolesLong);
   });
+
+  it('restores removed roles without duplicating destroy entries', () => {
+    const ownRole = {
+      ...ansibleRolesLong[4],
+      host_ansible_role_id: 42,
+    };
+    const stateAfterRemoveAll = reducer(
+      successState.set('assignedRoles', [
+        ansibleRolesLong[3],
+        ownRole,
+        ansibleRolesLong[5],
+      ]),
+      {
+        type: ANSIBLE_ROLES_DUAL_LIST_CHANGE,
+        payload: { chosenNames: [] },
+      }
+    );
+
+    expect(stateAfterRemoveAll.toDestroyRoles).toEqual([
+      { ...ownRole, destroy: true },
+      { ...ansibleRolesLong[5], destroy: true },
+    ]);
+
+    const stateAfterReAdd = reducer(stateAfterRemoveAll, {
+      type: ANSIBLE_ROLES_DUAL_LIST_CHANGE,
+      payload: {
+        chosenNames: [ownRole.name, ansibleRolesLong[5].name],
+      },
+    });
+
+    expect(stateAfterReAdd.assignedRoles.map(role => role.name)).toEqual([
+      ansibleRolesLong[3].name,
+      ownRole.name,
+      ansibleRolesLong[5].name,
+    ]);
+    expect(stateAfterReAdd.assignedRoles[1]).toEqual({
+      ...ownRole,
+      destroy: false,
+    });
+    expect(stateAfterReAdd.toDestroyRoles).toEqual([]);
+  });
 });
