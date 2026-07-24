@@ -8,11 +8,13 @@ import AnsibleHostDetail from './components/AnsibleHostDetail';
 
 import { ANSIBLE_KEY } from './components/AnsibleHostDetail/constants';
 
+const ANSIBLE_TAB_WEIGHT = 500;
+
 addGlobalFill(
   'host-details-page-tabs',
   ANSIBLE_KEY,
   <AnsibleHostDetail key="ansible-host-detail" />,
-  500
+  ANSIBLE_TAB_WEIGHT
 );
 
 registerRoutes('foreman_ansible', routes);

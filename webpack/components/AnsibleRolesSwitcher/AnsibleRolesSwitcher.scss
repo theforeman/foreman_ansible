@@ -6,19 +6,12 @@
   }
 
   .ansible-inherited-roles {
-    --pf-v5-c-dual-list-selector__title-text--FontWeight: var(
-      --pf-v5-global--FontWeight--bold
-    );
-    --pf-v5-c-dual-list-selector__header--MarginBottom: var(
-      --pf-v5-global--spacer--sm
-    );
-
-    .pf-v5-c-dual-list-selector__header {
-      margin-block-end: var(--pf-v5-c-dual-list-selector__header--MarginBottom);
-    }
-
-    .pf-v5-c-dual-list-selector__title-text {
-      font-weight: var(--pf-v5-c-dual-list-selector__title-text--FontWeight);
+    .ansible-inherited-roles-title {
+      margin: 0 0 var(--pf-v5-global--spacer--sm);
+      font-family: var(--pf-v5-global--FontFamily--text);
+      font-size: var(--pf-v5-global--FontSize--sm);
+      font-weight: var(--pf-v5-global--FontWeight--bold);
+      line-height: var(--pf-v5-global--LineHeight--md);
     }
 
     ul {

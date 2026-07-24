@@ -9,6 +9,8 @@ import {
   ANSIBLE_ROLES_INDEX,
 } from './AnsibleRolesAndVariablesConstants';
 
+const REDIRECT_DELAY_MS = 500;
+
 export const foremanUrl = path => `${window.URL_PREFIX}${path}`;
 
 export const onSubmit = (rows, proxy) => dispatch => {
@@ -19,7 +21,10 @@ export const onSubmit = (rows, proxy) => dispatch => {
       url: ANSIBLE_ROLE_CONFIRM_IMPORT_PATH,
       params: { changed: params, proxy },
       handleSuccess: () => {
-        setTimeout(() => dispatch(push(ANSIBLE_ROLES_INDEX)), 500);
+        setTimeout(
+          () => dispatch(push(ANSIBLE_ROLES_INDEX)),
+          REDIRECT_DELAY_MS
+        );
       },
       successToast: response => (
         <span>
