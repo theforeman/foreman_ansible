@@ -34,6 +34,7 @@ const ansibleRoles = (state = initialState, action) => {
       return state.merge({ error: payload.error, loading: false });
     case ANSIBLE_ROLES_DUAL_LIST_CHANGE: {
       const { chosenNames } = payload;
+      const chosenNamesUnique = [...new Set(chosenNames)];
       const inherited = state.assignedRoles.filter(role =>
         state.inheritedRoleIds.includes(role.id)
       );
@@ -42,20 +43,24 @@ const ansibleRoles = (state = initialState, action) => {
       );
       const roleByName = name =>
         currentOwn.find(role => role.name === name) ||
-        state.results.find(role => role.name === name) ||
-        state.toDestroyRoles.find(role => role.name === name);
+        state.toDestroyRoles.find(role => role.name === name) ||
+        state.results.find(role => role.name === name);
 
       const removed = currentOwn.filter(
-        role => !chosenNames.includes(role.name)
+        role => !chosenNamesUnique.includes(role.name)
       );
-      const newOwn = chosenNames
+      const newOwn = chosenNamesUnique
         .map(name => roleByName(name))
-        .filter(role => role && !state.inheritedRoleIds.includes(role.id));
+        .filter(role => role && !state.inheritedRoleIds.includes(role.id))
+        .map(role => ({ ...role, destroy: false }));
+
+      const isSameRole = (left, right) =>
+        left.name === right.name || String(left.id) === String(right.id);
 
       return state.merge({
         assignedRoles: inherited.concat(newOwn),
         toDestroyRoles: state.toDestroyRoles
-          .filter(item => !newOwn.some(role => role.id === item.id))
+          .filter(item => !newOwn.some(role => isSameRole(role, item)))
           .concat(removed.map(role => ({ ...role, destroy: true }))),
       });
     }

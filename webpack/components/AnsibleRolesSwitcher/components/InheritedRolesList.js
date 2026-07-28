@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Tooltip } from '@patternfly/react-core';
+import { Title, Tooltip } from '@patternfly/react-core';
 import { translate as __ } from 'foremanReact/common/I18n';
-
-import ListHeader from '../../DualList/ListHeader';
 
 const InheritedRolesList = ({ roles, resourceName }) => {
   if (roles.length === 0) {
@@ -17,7 +15,14 @@ const InheritedRolesList = ({ roles, resourceName }) => {
 
   return (
     <div className="ansible-inherited-roles">
-      <ListHeader title={__('Inherited Ansible Roles')} />
+      <Title
+        headingLevel="h2"
+        size="md"
+        className="ansible-inherited-roles-title"
+        ouiaId="inherited-ansible-roles-title"
+      >
+        {__('Inherited Ansible Roles')}
+      </Title>
       <ul>
         {roles.map(role => (
           <li key={role.id}>
