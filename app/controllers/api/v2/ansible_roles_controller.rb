@@ -6,6 +6,7 @@ module Api
     class AnsibleRolesController < ::Api::V2::BaseController
       include ::Api::Version2
       include ::ForemanAnsible::AnsibleRolesDataPreparations
+      hide_taxonomy_options
 
       resource_description do
         api_version 'v2'
