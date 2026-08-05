@@ -21,6 +21,8 @@ import {
   withMockedProvider,
   withRedux,
   historyMock,
+  formatLocalDateInput,
+  formatLocalTimeInput,
 } from '../../../testHelper';
 
 import { toCron } from '../../../components/AnsibleHostDetail/components/JobsTab/NewRecurringJobHelper';
@@ -83,14 +85,11 @@ describe('HostgroupJobs', () => {
     userEvent.selectOptions(screen.getByLabelText(/repeat/), 'weekly');
     userEvent.type(
       screen.getByLabelText(/startTime/),
-      futureDate
-        .toISOString()
-        .split('T')[1]
-        .slice(0, 5)
+      formatLocalTimeInput(futureDate)
     );
     userEvent.type(
       screen.getByLabelText(/startDate/),
-      futureDate.toISOString().split('T')[0]
+      formatLocalDateInput(futureDate)
     );
     expect(
       screen.getByRole('button', { name: 'submit creating job' })
