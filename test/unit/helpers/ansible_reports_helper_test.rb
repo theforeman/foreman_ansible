@@ -5,6 +5,8 @@ require 'test_plugin_helper'
 class AnsibleReportsHelperTest < ActiveSupport::TestCase
   include ForemanAnsible::AnsibleReportsHelper
   include ActionView::Helpers::TagHelper
+  include ActionView::Helpers::UrlHelper
+  include ERB::Util
 
   test 'module message extraction' do
     log_value = <<-ANSIBLELOG.strip_heredoc
@@ -80,10 +82,11 @@ ANSIBLELOG
       'No additional data',
       ['Cron job: 0 5,2 * * * date > /dev/null (disabled: false)', 'Cron job: 0 5,2 * * * df > /dev/null (disabled: false)'],
       ['Cron job: 0 5,2 * * * hostname > /dev/null (disabled: false)'],
-      ['Rendered template test1.txt.j2 to /tmp/test1.txt', 'Rendered template test2.txt.j2 to /tmp/test2.txt'],
-      ['Rendered template test3.txt.j2 to /tmp/test3.txt'],
-      ['Copy test4.txt to /tmp/test4.txt', 'Copy test5.txt to /tmp/test5.txt'],
-      ['Copy test6.txt to /tmp/test6.txt'],
+      ['Rendered template test1.txt.j2 to /tmp/test1.txt. No Diff', 'Rendered template test2.txt.j2 to /tmp/test2.txt. No Diff'],
+      ['Rendered template test3.txt.j2 to /tmp/test3.txt. No Diff'],
+      ['Copy test4.txt to /tmp/test4.txt. No Diff', 'Copy test5.txt to /tmp/test5.txt. No Diff'],
+      ['Copy test6.txt to /tmp/test6.txt. No Diff'],
+      ["Copy test7.txt to /tmp/test7.txt. <a data-diff=\"\n--- /tmp/test7.txt\n+++ /tmp/test7.txt\n@@ -0,0 +1 @@\n+Hello\n\" data-title=\"/tmp/test7.txt\" onclick=\"tfm.configReportsModalDiff.showDiff(this);\" href=\"#\">Show Diff</a>"],
       ['Service chronyd started (enabled: )', 'Service firewalld started (enabled: )'],
       ['Service chronyd started (enabled: )']
     ]
