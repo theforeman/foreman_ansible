@@ -34,18 +34,27 @@ module ForemanAnsible
         :description => N_('Run an Ansible playbook to enable web console on given hosts'),
         :host_action_button => true
       )
-      RemoteExecutionFeature.register(
-        :ansible_run_capsule_upgrade,
-        N_('Upgrade Capsules on given hosts'),
-        :description => N_('Upgrade Capsules on given Capsule server hosts'),
-        :proxy_selector_override => ::RemoteExecutionProxySelector::INTERNAL_PROXY
-      )
-      RemoteExecutionFeature.register(
-        :ansible_run_capsule_update,
-        N_('Update Capsules on given hosts'),
-        :description => N_('Update Capsules on given Capsule server hosts'),
-        :proxy_selector_override => ::RemoteExecutionProxySelector::INTERNAL_PROXY
-      )
+      if Foreman::Plugin.find('foreman_theme_satellite').present?
+        RemoteExecutionFeature.register(
+          :ansible_run_capsule_upgrade,
+          N_('Upgrade Capsules on given hosts'),
+          :description => N_('Upgrade Capsules on given Capsule server hosts'),
+          :proxy_selector_override => ::RemoteExecutionProxySelector::INTERNAL_PROXY
+        )
+        RemoteExecutionFeature.register(
+          :ansible_run_capsule_update,
+          N_('Update Capsules on given hosts'),
+          :description => N_('Update Capsules on given Capsule server hosts'),
+          :proxy_selector_override => ::RemoteExecutionProxySelector::INTERNAL_PROXY
+        )
+      elsif Foreman::Plugin.find('orcharhino_core').present?
+        RemoteExecutionFeature.register(
+          :ansible_run_orcharhino_proxy_upgrade,
+          N_('Upgrade orcharhino Proxy on given hosts'),
+          :description => N_('Update orcharhino Proxy on given orcharhino Proxy server hosts'),
+          :proxy_selector_override => ::RemoteExecutionProxySelector::INTERNAL_PROXY
+        )
+      end
     end
   end
 end
