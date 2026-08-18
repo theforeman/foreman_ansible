@@ -101,6 +101,20 @@ export const intruder = userFactory('intruder', [
 // use to resolve async mock requests for apollo MockedProvider
 export const tick = () => new Promise(resolve => setTimeout(resolve, 0));
 
+export const formatLocalDateInput = date => {
+  const pad = value => String(value).padStart(2, '0');
+
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(
+    date.getDate()
+  )}`;
+};
+
+export const formatLocalTimeInput = date => {
+  const pad = value => String(value).padStart(2, '0');
+
+  return `${pad(date.getHours())}:${pad(date.getMinutes())}`;
+};
+
 export const historyMock = {
   location: {
     search: '',
