@@ -20,6 +20,7 @@ const SecondaryTabRoutes = ({ response, router, history }) => (
       <TabLayout>
         <RolesTab
           hostId={response.id}
+          hostUpdatedAt={response.updated_at}
           history={history}
           canEditHost={response.permissions.edit_hosts}
         />
