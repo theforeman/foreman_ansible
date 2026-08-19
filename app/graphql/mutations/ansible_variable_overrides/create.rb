@@ -1,6 +1,8 @@
 module Mutations
   module AnsibleVariableOverrides
     class Create < ::Mutations::CreateMutation
+      include Authorization
+
       graphql_name 'CreateAnsibleVariableOverrideMutation'
       description 'Creates Ansible Variable Override'
 
