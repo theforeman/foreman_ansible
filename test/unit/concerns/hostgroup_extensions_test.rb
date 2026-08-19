@@ -51,6 +51,15 @@ class HostgroupExtensionsTest < ActiveSupport::TestCase
     end
   end
 
+  describe '#hosts_in_subtree' do
+    test 'returns hosts from the hostgroup and its descendants' do
+      child = FactoryBot.create(:hostgroup, :parent => @hostgroup)
+      child_host = FactoryBot.create(:host, :hostgroup => child)
+
+      assert_same_elements [@host, child_host], @hostgroup.hosts_in_subtree
+    end
+  end
+
   test 'should return ordered roles for hostgroup' do
     @hostgroup.parent = @hostgroup_parent
     assert_equal [@role2, @role1], @hostgroup.inherited_and_own_ansible_roles

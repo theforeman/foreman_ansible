@@ -34,6 +34,10 @@ module ForemanAnsible
         hosts.includes(:host_ansible_roles).flat_map(&:ansible_roles)
       end
 
+      def hosts_in_subtree
+        Host::Managed.where(:hostgroup_id => subtree_ids)
+      end
+
       # includes also roles of all assigned hosts, useful to determine if
       # at least one host in this hostgroup has some ansible role assigned
       # either directly or through hostgroup
