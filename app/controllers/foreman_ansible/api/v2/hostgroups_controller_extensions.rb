@@ -23,7 +23,7 @@ module ForemanAnsible
 
           def play_roles
             find_resource
-            composer = job_composer(:ansible_run_host, "parent_hostgroup = \"#{@hostgroup.title}\"")
+            composer = job_composer(:ansible_run_host, hostgroup_search(@hostgroup))
             process_response composer.trigger!, composer.job_invocation
           end
 
@@ -34,9 +34,7 @@ module ForemanAnsible
 
           def multiple_play_roles
             find_multiple
-            hostgroup_ids = @hostgroups.flat_map(&:subtree_ids).uniq
-            hosts = Host::Managed.where(:hostgroup_id => hostgroup_ids)
-            composer = job_composer(:ansible_run_host, hosts)
+            composer = job_composer(:ansible_run_host, hostgroup_search(@hostgroups))
             process_response composer.trigger!, composer.job_invocation
           end
 
