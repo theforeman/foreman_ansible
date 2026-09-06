@@ -65,16 +65,6 @@ template_inputs:
     state=searched\r\n\r\nDefault is 'searched'"
   options: "installed\r\nsearched\r\ndownloaded"
   advanced: false
-- name: use_scheduled_task
-  required: false
-  input_type: user
-  description: "Will not auto elevate the remote process with become and use a scheduled
-    task instead.\r\nSet this to true when using this module with async on Server
-    2008, 2008 R2, or Windows 7, or on Server 2008 that is not authenticated with
-    basic or credssp.\r\nCan also be set to true on newer hosts where become does
-    not work due to further privilege restrictions from the OS defaults."
-  options: "false\r\ntrue"
-  advanced: false
 - name: whitelist
   required: false
   input_type: user
@@ -135,11 +125,6 @@ locations:
         server_selection: <%= input('server_selection') %>
         <% end %>
         state: "{{ state }}"
-        <% if input('use_scheduled_task').blank? %>
-        use_scheduled_task: false
-        <% else %>
-        use_scheduled_task: <%= input('use_scheduled_task') %>
-        <% end %>
         <% if !input('whitelist').blank? %>
         whitelist: <%= input('whitelist') %>
         <% end -%>
