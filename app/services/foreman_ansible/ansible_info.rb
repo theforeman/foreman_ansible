@@ -1,5 +1,7 @@
 module ForemanAnsible
   class AnsibleInfo < ::HostInfo::Provider
+    HIDDEN_VALUE = '*****'.freeze
+
     def host_info
       { 'parameters' => ansible_params }
     end
@@ -10,7 +12,8 @@ module ForemanAnsible
 
       variables.each_with_object({}) do |var, memo|
         value = values[var]
-        memo[var.key] = value unless value.nil?
+        next memo if value.nil?
+        memo[var.key] = var.hidden_value? ? HIDDEN_VALUE : value
         memo
       end
     end
