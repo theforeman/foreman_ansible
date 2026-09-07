@@ -40,8 +40,11 @@ module ForemanAnsible
 
           def multiple_play_roles
             host_ids = params.fetch(:host_ids, []).uniq
-            composer = job_composer(:ansible_run_host, host_ids)
+            hosts = Host.authorized(:view_hosts).find(host_ids)
+            composer = job_composer(:ansible_run_host, hosts)
             process_response composer.trigger!, composer.job_invocation
+          rescue ActiveRecord::RecordNotFound => e
+            not_found(e.message)
           end
 
           api :GET, '/hosts/:id/ansible_roles',
