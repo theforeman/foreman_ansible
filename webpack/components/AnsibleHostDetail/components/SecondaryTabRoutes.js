@@ -35,9 +35,13 @@ const SecondaryTabRoutes = ({ response, router, history }) => (
       </TabLayout>
     </Route>
     <Route path={route('inventory')}>
-      <TabLayout>
-        <WrappedAnsibleHostInventory hostId={response.id} />
-      </TabLayout>
+      {response.permissions.view_ansible_inventory ? (
+        <TabLayout>
+          <WrappedAnsibleHostInventory hostId={response.id} />
+        </TabLayout>
+      ) : (
+        <Redirect to={route('roles')} />
+      )}
     </Route>
     <Route path={route('jobs')}>
       <TabLayout>
