@@ -3,7 +3,7 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 17.0.4",
+        "Project-Id-Version": "foreman_ansible 18.0.3",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
         "Last-Translator": "Ondřej Gajdušek, 2026",
@@ -17,9 +17,6 @@
         "domain": "foreman_ansible",
         "plural_forms": "nplurals=1; plural=0;"
       },
-      "%(selectedCount)s of %(totalCount)s items selected": [
-        "%(selectedCount)s/%(totalCount)s 項目を選択"
-      ],
       "%s ago": [
         "%s 前"
       ],
@@ -37,12 +34,6 @@
       ],
       "Add": [
         "追加"
-      ],
-      "Add all": [
-        "すべて追加"
-      ],
-      "Add selected": [
-        "選択項目の追加"
       ],
       "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles.": [
         "ホストに割り当てられた Ansible ロールを追加、削除、または並べ替えます。このホストには、グループに割り当てられたロールがあり、こちらに表示されていませんが、必ず、ホストに割り当てられたロールよりも前に実行されます。"
@@ -143,17 +134,14 @@
       "Assign roles directly to the host": [
         "ホストへのロールの直接割り当て"
       ],
-      "Assigned Ansible Roles": [
-        "割り当てられた Ansible ロール"
+      "Assigned Ansible roles": [
+        ""
       ],
       "Assigns Ansible roles to a host": [
         "Ansible ロールをホストに割り当てます"
       ],
       "Assigns Ansible roles to a hostgroup": [
         "Ansible ロールをホストグループに割り当てます"
-      ],
-      "Available Ansible Roles": [
-        "利用可能な Ansible ロール"
       ],
       "Available Ansible roles": [
         "利用可能な Ansible ロール"
@@ -338,9 +326,6 @@
       "Hide all values for this parameter.": [
         "このパラメーターのすべての値を非表示にします。"
       ],
-      "Host assigned Ansible roles": [
-        "ホストに割り当てられた Ansible ロール"
-      ],
       "Host count": [
         "ホスト数"
       ],
@@ -415,6 +400,9 @@
       ],
       "Include\\\\Exclude tags for Ansible run": [
         "Ansible の実行にタグを追加/除外"
+      ],
+      "Inherited Ansible Roles": [
+        ""
       ],
       "Inherited from Hostgroup": [
         "ホストグループから継承"
@@ -596,9 +584,6 @@
       "Remove Role": [
         "ロールの削除"
       ],
-      "Remove all": [
-        "すべて削除"
-      ],
       "Remove directly assigned Ansible role from a host": [
         "ホストから直接割り当てられた Ansible ロールを削除する"
       ],
@@ -607,9 +592,6 @@
       ],
       "Remove duplicate values (only array type)": [
         "重複する値の削除 (配列タイプのみ)"
-      ],
-      "Remove selected": [
-        "選択項目の削除"
       ],
       "Report format, defaults to '%s'": [
         "レポート形式、デフォルトは「%s」"
@@ -836,8 +818,8 @@
       "Upgrade Capsules on given hosts": [
         "指定されたホストで Capsule をアップグレード"
       ],
-      "Use drag and drop to change order of the roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly": [
-        "ドラッグアンドドロップを使用して、ロールの順序を変更します。ロールの順序は Ansible 実行時に尊重され、継承されたロールは必ず直接割り当てられたロールよりも前になります"
+      "Use drag and drop to change order of the assigned roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly": [
+        ""
       ],
       "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled": [
         "代わりに同期を使用し、Ansible 機能を有効化して SmartProxy からロールを同期します"

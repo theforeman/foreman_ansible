@@ -3,10 +3,10 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 17.0.4",
+        "Project-Id-Version": "foreman_ansible 18.0.3",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
-        "Last-Translator": "Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2023",
+        "Last-Translator": "Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2026",
         "Language-Team": "Georgian (https://app.transifex.com/foreman/teams/114/ka/)",
         "MIME-Version": "1.0",
         "Content-Type": "text/plain; charset=UTF-8",
@@ -17,9 +17,6 @@
         "domain": "foreman_ansible",
         "plural_forms": "nplurals=2; plural=(n!=1);"
       },
-      "%(selectedCount)s of %(totalCount)s items selected": [
-        "მონიშნულია %(selectedCount)s ჩანაწერი %(totalCount)s -დან"
-      ],
       "%s ago": [
         "%s-ის წინ"
       ],
@@ -37,12 +34,6 @@
       ],
       "Add": [
         "დამატება"
-      ],
-      "Add all": [
-        "ყველას დამატება"
-      ],
-      "Add selected": [
-        "ყველა მონიშნული"
       ],
       "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles.": [
         ""
@@ -143,17 +134,14 @@
       "Assign roles directly to the host": [
         "როლების პირდაპირ ჰოსტზე მინიჭება"
       ],
-      "Assigned Ansible Roles": [
-        "Ansible-ის მინიჭებული როლები"
+      "Assigned Ansible roles": [
+        ""
       ],
       "Assigns Ansible roles to a host": [
         "ჰოსტზე Ansible-ს როლის მინიჭება"
       ],
       "Assigns Ansible roles to a hostgroup": [
         "Ansible-ის როლების ჰოსტების ჯგუფზე მინიჭება"
-      ],
-      "Available Ansible Roles": [
-        "Ansible-ის ხელმისაწვდომი როლები"
       ],
       "Available Ansible roles": [
         "Ansible-ის ხელმისაწვდომი როლები"
@@ -204,13 +192,13 @@
         "Ansible-ის ცვლადის გადაფარვის მნიშვნელობის შექმნა"
       ],
       "DEPRECATED: Import Ansible roles. Use sync instead": [
-        ""
+        "მოძველებული: Ansible-ის როლების შემოტანა. გამოიყენეთ სინქრონიზაცია"
       ],
       "DEPRECATED: Import Ansible variables. This will only import variables for already existing roles, it will not import any new roles": [
-        ""
+        "მოძველებული: Ansible-ის ცვლადების შემოტანა. ეს, მხოლოდ, უკვე არსებული როლის ცვლადებს შემოიტანს, ახალ როლებს კი - არა"
       ],
       "DEPRECATED: Obsolete Ansible roles. Use sync instead": [
-        ""
+        "მოძველებული: Ansible-ის მოძველებული როლები. გამოიყენეთ სინქრონიზაცია"
       ],
       "DEPRECATED: Obsolete Ansible variables. This will only obsolete variables for already existing roles, it will not delete any old roles": [
         ""
@@ -258,7 +246,7 @@
         "Ansible-ის როლის ჰოსტზე პირდაპირი დამატება"
       ],
       "Directly add an Ansible role to a hostgroup": [
-        ""
+        "Ansible-ის როლის პირდაპირ დამატება ჰოსტების ჯგუფში"
       ],
       "Directly assigned to Host": [
         "ჰოსტზე პირდაპირ მინიჭებული"
@@ -285,7 +273,7 @@
         "Ansible-ის უკუგამოძახების ჩართვა"
       ],
       "Enable Ansible Check Mode": [
-        ""
+        "Ansible-iის შემოწმების რეჟიმის ჩართვა"
       ],
       "Enable Ansible Check Mode for this template": [
         ""
@@ -337,9 +325,6 @@
       ],
       "Hide all values for this parameter.": [
         "პარამეტრის ყველა მნიშვნელობის დამალვა."
-      ],
-      "Host assigned Ansible roles": [
-        "ჰოსტზე მინიჭებული Ansible-ის როლები"
       ],
       "Host count": [
         "ჰოსტების რაოდენობა"
@@ -415,6 +400,9 @@
       ],
       "Include\\\\Exclude tags for Ansible run": [
         "Ansible-ის გაშვებისთვის ჭდეების ჩასმა/ამოღება"
+      ],
+      "Inherited Ansible Roles": [
+        ""
       ],
       "Inherited from Hostgroup": [
         "მემკვიდრეობით ჰოსტების ჯგუფიდან"
@@ -596,9 +584,6 @@
       "Remove Role": [
         "როლის წაშლა"
       ],
-      "Remove all": [
-        "ყველას წაშლა"
-      ],
       "Remove directly assigned Ansible role from a host": [
         ""
       ],
@@ -607,9 +592,6 @@
       ],
       "Remove duplicate values (only array type)": [
         "დუბლირებული მნიშვნელობების წაშლა (მხოლოდ მასივის ტიპი)"
-      ],
-      "Remove selected": [
-        "მონიშნულის წაშლა"
       ],
       "Report format, defaults to '%s'": [
         "ანგარიშის ფორმატი. ნაგულისხმებად: '%s'"
@@ -813,7 +795,7 @@
         ""
       ],
       "Update Capsules on given hosts": [
-        ""
+        "კაფსულების განახლება მითითებულ ჰოსტებზე"
       ],
       "Update Role Variables": [
         "როლის ცვლადების გარეშე"
@@ -822,7 +804,7 @@
         "ჭკვიანი პროქსის განახლება"
       ],
       "Update an override value": [
-        ""
+        "გადაფარვის მნიშვნელობის განახლება"
       ],
       "Updates Ansible variable": [
         "Ansible-ის ცვლადის განახლება"
@@ -836,7 +818,7 @@
       "Upgrade Capsules on given hosts": [
         "მითითებულჰოსტებზე კაფსულის გაუმჯობესება"
       ],
-      "Use drag and drop to change order of the roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly": [
+      "Use drag and drop to change order of the assigned roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly": [
         ""
       ],
       "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled": [

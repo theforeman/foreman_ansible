@@ -13,7 +13,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 17.0.4\n"
+"Project-Id-Version: foreman_ansible 18.0.3\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Ondřej Gajdušek, 2026\n"
@@ -24,9 +24,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-msgid "%(selectedCount)s of %(totalCount)s items selected"
-msgstr "%(totalCount)s 中的 %(selectedCount)s 个项目被选择"
 
 msgid "%s ago"
 msgstr "%s 前"
@@ -45,12 +42,6 @@ msgstr "操作"
 
 msgid "Add"
 msgstr "添加"
-
-msgid "Add all"
-msgstr "添加所有"
-
-msgid "Add selected"
-msgstr "添加选择的"
 
 msgid "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles."
 msgstr "添加、删除或重新排序主机分配的 Ansible 角色。此主机也对分配的角色进行分组，它们不会在这里显示，并在主机分配角色之前始终执行。"
@@ -151,17 +142,14 @@ msgstr "您确定要为 %s 删除覆盖吗？"
 msgid "Assign roles directly to the host"
 msgstr "直接为主机分配角色"
 
-msgid "Assigned Ansible Roles"
-msgstr "分配的 Ansible 角色"
+msgid "Assigned Ansible roles"
+msgstr ""
 
 msgid "Assigns Ansible roles to a host"
 msgstr "为主机分配 Ansible 角色"
 
 msgid "Assigns Ansible roles to a hostgroup"
 msgstr "为主机组分配 Ansible 角色"
-
-msgid "Available Ansible Roles"
-msgstr "可用的 Ansible 角色"
 
 msgid "Available Ansible roles"
 msgstr "可用的 Ansible 角色"
@@ -346,9 +334,6 @@ msgstr "隐藏值"
 msgid "Hide all values for this parameter."
 msgstr "隐藏这个参数的所有值。"
 
-msgid "Host assigned Ansible roles"
-msgstr "主机分配的 Ansible 角色"
-
 msgid "Host count"
 msgstr "主机数"
 
@@ -423,6 +408,9 @@ msgstr "包括/排除标签"
 
 msgid "Include\\Exclude tags for Ansible run"
 msgstr "用于 Ansible 运行的包括\\排除标签"
+
+msgid "Inherited Ansible Roles"
+msgstr ""
 
 msgid "Inherited from Hostgroup"
 msgstr "从主机组中继承"
@@ -608,9 +596,6 @@ msgstr "移除"
 msgid "Remove Role"
 msgstr "删除角色"
 
-msgid "Remove all"
-msgstr "删除所有"
-
 msgid "Remove directly assigned Ansible role from a host"
 msgstr "从主机中删除直接分配的 Ansible 角色"
 
@@ -619,9 +604,6 @@ msgstr "从主机组中删除直接分配的 Ansible 角色"
 
 msgid "Remove duplicate values (only array type)"
 msgstr "删除重复值（仅用于阵列类型）"
-
-msgid "Remove selected"
-msgstr "继续选择的"
 
 msgid "Report format, defaults to '%s'"
 msgstr "报告格式，默认为 '%s'"
@@ -848,8 +830,8 @@ msgstr "在给定的 Capsule 服务器主机上升级 Capsule"
 msgid "Upgrade Capsules on given hosts"
 msgstr "在给定主机上升级 Capsule"
 
-msgid "Use drag and drop to change order of the roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly"
-msgstr "使用拖放来更改角色的顺序。在 Ansible 运行时会遵循这个顺序，继承的角色始终位于直接分配的角色的前面"
+msgid "Use drag and drop to change order of the assigned roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly"
+msgstr ""
 
 msgid "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled"
 msgstr "改为使用同步，从启用了 Ansible 功能的智能代理中同步角色"

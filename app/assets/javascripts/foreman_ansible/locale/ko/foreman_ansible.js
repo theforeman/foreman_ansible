@@ -3,7 +3,7 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 17.0.4",
+        "Project-Id-Version": "foreman_ansible 18.0.3",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
         "Last-Translator": "Ondřej Gajdušek, 2026",
@@ -17,9 +17,6 @@
         "domain": "foreman_ansible",
         "plural_forms": "nplurals=1; plural=0;"
       },
-      "%(selectedCount)s of %(totalCount)s items selected": [
-        "%(selectedCount)s / %(totalCount)s 항목 선택"
-      ],
       "%s ago": [
         "%s 전 "
       ],
@@ -37,12 +34,6 @@
       ],
       "Add": [
         "추가 "
-      ],
-      "Add all": [
-        "모두 추가"
-      ],
-      "Add selected": [
-        "선택한 항목 추가"
       ],
       "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles.": [
         "호스트가 할당한 Ansible 역할을 추가, 제거 또는 재정렬합니다. 이 호스트에는 여기에 표시되지 않고 항상 호스트가 할당한 역할보다 먼저 실행되는 그룹 할당 역할도 있습니다."
@@ -143,17 +134,14 @@
       "Assign roles directly to the host": [
         "호스트에게 직접 역할 할당"
       ],
-      "Assigned Ansible Roles": [
-        "할당된 Ansible 역할"
+      "Assigned Ansible roles": [
+        ""
       ],
       "Assigns Ansible roles to a host": [
         "호스트에 Ansible 역할을 할당"
       ],
       "Assigns Ansible roles to a hostgroup": [
         "호스트 그룹에 Ansible 역할을 할당"
-      ],
-      "Available Ansible Roles": [
-        "사용 가능한 Ansible 역할"
       ],
       "Available Ansible roles": [
         "사용 가능한 Ansible 역할"
@@ -338,9 +326,6 @@
       "Hide all values for this parameter.": [
         "이 매개 변수의 값을 모두 숨깁니다."
       ],
-      "Host assigned Ansible roles": [
-        "호스트에 할당된 Ansible 역할"
-      ],
       "Host count": [
         "호스트 수"
       ],
@@ -415,6 +400,9 @@
       ],
       "Include\\\\Exclude tags for Ansible run": [
         "Ansible 실행을 위한 태그 포함/제외"
+      ],
+      "Inherited Ansible Roles": [
+        ""
       ],
       "Inherited from Hostgroup": [
         "호스트 그룹에서 상속됨"
@@ -596,9 +584,6 @@
       "Remove Role": [
         "역할 제거"
       ],
-      "Remove all": [
-        "모두 제거"
-      ],
       "Remove directly assigned Ansible role from a host": [
         "호스트에서 직접 할당된 Ansible 역할 제거"
       ],
@@ -607,9 +592,6 @@
       ],
       "Remove duplicate values (only array type)": [
         "중복 값 삭제(배열 유형만)"
-      ],
-      "Remove selected": [
-        "선택한 항목 제거"
       ],
       "Report format, defaults to '%s'": [
         "보고서 형식, 기본값은 '%s '"
@@ -836,8 +818,8 @@
       "Upgrade Capsules on given hosts": [
         "지정된 호스트에서 Capsule 업그레이드"
       ],
-      "Use drag and drop to change order of the roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly": [
-        "드래그 앤 드롭을 사용하여 역할 순서를 변경합니다. 역할 순서는 Ansible 실행에 대해 존중되며 상속된 역할은 항상 직접 할당된 역할보다 앞에 있습니다."
+      "Use drag and drop to change order of the assigned roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly": [
+        ""
       ],
       "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled": [
         "대신 동기화를 사용하여 Ansible 기능이 활성화된 Smart Proxy에서 역할을 동기화합니다."

@@ -4,23 +4,20 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2023
+# Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2026
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 17.0.4\n"
+"Project-Id-Version: foreman_ansible 18.0.3\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
-"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2023\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2026\n"
 "Language-Team: Georgian (https://app.transifex.com/foreman/teams/114/ka/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ka\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-
-msgid "%(selectedCount)s of %(totalCount)s items selected"
-msgstr "მონიშნულია %(selectedCount)s ჩანაწერი %(totalCount)s -დან"
 
 msgid "%s ago"
 msgstr "%s-ის წინ"
@@ -39,12 +36,6 @@ msgstr "ქმედებები"
 
 msgid "Add"
 msgstr "დამატება"
-
-msgid "Add all"
-msgstr "ყველას დამატება"
-
-msgid "Add selected"
-msgstr "ყველა მონიშნული"
 
 msgid "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles."
 msgstr ""
@@ -145,17 +136,14 @@ msgstr "დარწმუნებული ბრძანდებით, რ
 msgid "Assign roles directly to the host"
 msgstr "როლების პირდაპირ ჰოსტზე მინიჭება"
 
-msgid "Assigned Ansible Roles"
-msgstr "Ansible-ის მინიჭებული როლები"
+msgid "Assigned Ansible roles"
+msgstr ""
 
 msgid "Assigns Ansible roles to a host"
 msgstr "ჰოსტზე Ansible-ს როლის მინიჭება"
 
 msgid "Assigns Ansible roles to a hostgroup"
 msgstr "Ansible-ის როლების ჰოსტების ჯგუფზე მინიჭება"
-
-msgid "Available Ansible Roles"
-msgstr "Ansible-ის ხელმისაწვდომი როლები"
 
 msgid "Available Ansible roles"
 msgstr "Ansible-ის ხელმისაწვდომი როლები"
@@ -206,13 +194,13 @@ msgid "Create an override value for a specific ansible variable"
 msgstr "Ansible-ის ცვლადის გადაფარვის მნიშვნელობის შექმნა"
 
 msgid "DEPRECATED: Import Ansible roles. Use sync instead"
-msgstr ""
+msgstr "მოძველებული: Ansible-ის როლების შემოტანა. გამოიყენეთ სინქრონიზაცია"
 
 msgid "DEPRECATED: Import Ansible variables. This will only import variables for already existing roles, it will not import any new roles"
-msgstr ""
+msgstr "მოძველებული: Ansible-ის ცვლადების შემოტანა. ეს, მხოლოდ, უკვე არსებული როლის ცვლადებს შემოიტანს, ახალ როლებს კი - არა"
 
 msgid "DEPRECATED: Obsolete Ansible roles. Use sync instead"
-msgstr ""
+msgstr "მოძველებული: Ansible-ის მოძველებული როლები. გამოიყენეთ სინქრონიზაცია"
 
 msgid "DEPRECATED: Obsolete Ansible variables. This will only obsolete variables for already existing roles, it will not delete any old roles"
 msgstr ""
@@ -260,7 +248,7 @@ msgid "Directly add an Ansible role to a host"
 msgstr "Ansible-ის როლის ჰოსტზე პირდაპირი დამატება"
 
 msgid "Directly add an Ansible role to a hostgroup"
-msgstr ""
+msgstr "Ansible-ის როლის პირდაპირ დამატება ჰოსტების ჯგუფში"
 
 msgid "Directly assigned to Host"
 msgstr "ჰოსტზე პირდაპირ მინიჭებული"
@@ -287,7 +275,7 @@ msgid "Enable Ansible Callback"
 msgstr "Ansible-ის უკუგამოძახების ჩართვა"
 
 msgid "Enable Ansible Check Mode"
-msgstr ""
+msgstr "Ansible-iის შემოწმების რეჟიმის ჩართვა"
 
 msgid "Enable Ansible Check Mode for this template"
 msgstr ""
@@ -339,9 +327,6 @@ msgstr "დამალული მნიშვნელობა"
 
 msgid "Hide all values for this parameter."
 msgstr "პარამეტრის ყველა მნიშვნელობის დამალვა."
-
-msgid "Host assigned Ansible roles"
-msgstr "ჰოსტზე მინიჭებული Ansible-ის როლები"
 
 msgid "Host count"
 msgstr "ჰოსტების რაოდენობა"
@@ -417,6 +402,9 @@ msgstr "ჭდეების ჩართვა/გამორიცხვა"
 
 msgid "Include\\Exclude tags for Ansible run"
 msgstr "Ansible-ის გაშვებისთვის ჭდეების ჩასმა/ამოღება"
+
+msgid "Inherited Ansible Roles"
+msgstr ""
 
 msgid "Inherited from Hostgroup"
 msgstr "მემკვიდრეობით ჰოსტების ჯგუფიდან"
@@ -600,9 +588,6 @@ msgstr "წაშლა"
 msgid "Remove Role"
 msgstr "როლის წაშლა"
 
-msgid "Remove all"
-msgstr "ყველას წაშლა"
-
 msgid "Remove directly assigned Ansible role from a host"
 msgstr ""
 
@@ -611,9 +596,6 @@ msgstr ""
 
 msgid "Remove duplicate values (only array type)"
 msgstr "დუბლირებული მნიშვნელობების წაშლა (მხოლოდ მასივის ტიპი)"
-
-msgid "Remove selected"
-msgstr "მონიშნულის წაშლა"
 
 msgid "Report format, defaults to '%s'"
 msgstr "ანგარიშის ფორმატი. ნაგულისხმებად: '%s'"
@@ -817,7 +799,7 @@ msgid "Update Capsules on given Capsule server hosts"
 msgstr ""
 
 msgid "Update Capsules on given hosts"
-msgstr ""
+msgstr "კაფსულების განახლება მითითებულ ჰოსტებზე"
 
 msgid "Update Role Variables"
 msgstr "როლის ცვლადების გარეშე"
@@ -826,7 +808,7 @@ msgid "Update Smart Proxy"
 msgstr "ჭკვიანი პროქსის განახლება"
 
 msgid "Update an override value"
-msgstr ""
+msgstr "გადაფარვის მნიშვნელობის განახლება"
 
 msgid "Updates Ansible variable"
 msgstr "Ansible-ის ცვლადის განახლება"
@@ -840,7 +822,7 @@ msgstr "კაფსულების სერვერის მითით�
 msgid "Upgrade Capsules on given hosts"
 msgstr "მითითებულჰოსტებზე კაფსულის გაუმჯობესება"
 
-msgid "Use drag and drop to change order of the roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly"
+msgid "Use drag and drop to change order of the assigned roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly"
 msgstr ""
 
 msgid "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled"

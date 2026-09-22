@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 17.0.4\n"
+"Project-Id-Version: foreman_ansible 18.0.3\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Luiz Henrique Vasconcelos <luizvasconceloss@yahoo.com.br>, 20"
@@ -27,9 +27,6 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 100000"
 "0 == 0 ? 1 : 2;\n"
-
-msgid "%(selectedCount)s of %(totalCount)s items selected"
-msgstr "%(selectedCount)s de %(totalCount)s itens selecionados"
 
 msgid "%s ago"
 msgstr "%s atrás"
@@ -48,12 +45,6 @@ msgstr "Ações"
 
 msgid "Add"
 msgstr "Adicionar"
-
-msgid "Add all"
-msgstr "Acrescentar tudo"
-
-msgid "Add selected"
-msgstr "Adicionar selecionados"
 
 msgid "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles."
 msgstr ""
@@ -154,17 +145,14 @@ msgstr "Você tem certeza de que deseja excluir a substituição para %s?"
 msgid "Assign roles directly to the host"
 msgstr ""
 
-msgid "Assigned Ansible Roles"
-msgstr "Atribuição de funções possíveis"
+msgid "Assigned Ansible roles"
+msgstr ""
 
 msgid "Assigns Ansible roles to a host"
 msgstr "Atribui funções do Ansible a um host"
 
 msgid "Assigns Ansible roles to a hostgroup"
 msgstr "Atribui funções do Ansible a um grupo de hosts"
-
-msgid "Available Ansible Roles"
-msgstr "Funções possíveis disponíveis"
 
 msgid "Available Ansible roles"
 msgstr "Disponíveis Funções possíveis"
@@ -349,9 +337,6 @@ msgstr "Valor oculto"
 msgid "Hide all values for this parameter."
 msgstr "Ocultar todos os valores para este parâmetro."
 
-msgid "Host assigned Ansible roles"
-msgstr "Anfitrião designado Funções possíveis"
-
 msgid "Host count"
 msgstr ""
 
@@ -426,6 +411,9 @@ msgstr "Incluir/Excluir Tags"
 
 msgid "Include\\Exclude tags for Ansible run"
 msgstr "Incluir\\Excluir tags para execução possível"
+
+msgid "Inherited Ansible Roles"
+msgstr ""
 
 msgid "Inherited from Hostgroup"
 msgstr "Herdado do Hostgroup"
@@ -611,9 +599,6 @@ msgstr "Remover"
 msgid "Remove Role"
 msgstr "Remover o papel"
 
-msgid "Remove all"
-msgstr "Remover tudo"
-
 msgid "Remove directly assigned Ansible role from a host"
 msgstr ""
 
@@ -622,9 +607,6 @@ msgstr ""
 
 msgid "Remove duplicate values (only array type)"
 msgstr "Remover valores duplicados (somente tipo de matriz)"
-
-msgid "Remove selected"
-msgstr "Remover selecionados"
 
 msgid "Report format, defaults to '%s'"
 msgstr "Formato do relatório, o padrão é '%s'."
@@ -851,8 +833,8 @@ msgstr "Atualização de cápsulas em determinados hosts de servidor de cápsula
 msgid "Upgrade Capsules on given hosts"
 msgstr "Atualização de cápsulas em determinados anfitriões"
 
-msgid "Use drag and drop to change order of the roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly"
-msgstr "Use arrastar e soltar para mudar a ordem dos papéis. A ordenação dos papéis é respeitada para as corridas possíveis, os papéis herdados são sempre anteriores aos atribuídos diretamente."
+msgid "Use drag and drop to change order of the assigned roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly"
+msgstr ""
 
 msgid "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled"
 msgstr "Use a sincronização em vez disso, para sincronizar papéis do Smart Proxy com o recurso Ansible habilitado"

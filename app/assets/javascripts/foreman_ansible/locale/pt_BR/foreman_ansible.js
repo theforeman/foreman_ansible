@@ -3,7 +3,7 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 17.0.4",
+        "Project-Id-Version": "foreman_ansible 18.0.3",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
         "Last-Translator": "Luiz Henrique Vasconcelos <luizvasconceloss@yahoo.com.br>, 2023",
@@ -17,9 +17,6 @@
         "domain": "foreman_ansible",
         "plural_forms": "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
       },
-      "%(selectedCount)s of %(totalCount)s items selected": [
-        "%(selectedCount)s de %(totalCount)s itens selecionados"
-      ],
       "%s ago": [
         "%s atrás"
       ],
@@ -37,12 +34,6 @@
       ],
       "Add": [
         "Adicionar"
-      ],
-      "Add all": [
-        "Acrescentar tudo"
-      ],
-      "Add selected": [
-        "Adicionar selecionados"
       ],
       "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles.": [
         ""
@@ -143,17 +134,14 @@
       "Assign roles directly to the host": [
         ""
       ],
-      "Assigned Ansible Roles": [
-        "Atribuição de funções possíveis"
+      "Assigned Ansible roles": [
+        ""
       ],
       "Assigns Ansible roles to a host": [
         "Atribui funções do Ansible a um host"
       ],
       "Assigns Ansible roles to a hostgroup": [
         "Atribui funções do Ansible a um grupo de hosts"
-      ],
-      "Available Ansible Roles": [
-        "Funções possíveis disponíveis"
       ],
       "Available Ansible roles": [
         "Disponíveis Funções possíveis"
@@ -338,9 +326,6 @@
       "Hide all values for this parameter.": [
         "Ocultar todos os valores para este parâmetro."
       ],
-      "Host assigned Ansible roles": [
-        "Anfitrião designado Funções possíveis"
-      ],
       "Host count": [
         ""
       ],
@@ -415,6 +400,9 @@
       ],
       "Include\\\\Exclude tags for Ansible run": [
         "Incluir\\\\Excluir tags para execução possível"
+      ],
+      "Inherited Ansible Roles": [
+        ""
       ],
       "Inherited from Hostgroup": [
         "Herdado do Hostgroup"
@@ -596,9 +584,6 @@
       "Remove Role": [
         "Remover o papel"
       ],
-      "Remove all": [
-        "Remover tudo"
-      ],
       "Remove directly assigned Ansible role from a host": [
         ""
       ],
@@ -607,9 +592,6 @@
       ],
       "Remove duplicate values (only array type)": [
         "Remover valores duplicados (somente tipo de matriz)"
-      ],
-      "Remove selected": [
-        "Remover selecionados"
       ],
       "Report format, defaults to '%s'": [
         "Formato do relatório, o padrão é '%s'."
@@ -836,8 +818,8 @@
       "Upgrade Capsules on given hosts": [
         "Atualização de cápsulas em determinados anfitriões"
       ],
-      "Use drag and drop to change order of the roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly": [
-        "Use arrastar e soltar para mudar a ordem dos papéis. A ordenação dos papéis é respeitada para as corridas possíveis, os papéis herdados são sempre anteriores aos atribuídos diretamente."
+      "Use drag and drop to change order of the assigned roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly": [
+        ""
       ],
       "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled": [
         "Use a sincronização em vez disso, para sincronizar papéis do Smart Proxy com o recurso Ansible habilitado"

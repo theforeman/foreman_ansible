@@ -11,7 +11,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 17.0.4\n"
+"Project-Id-Version: foreman_ansible 18.0.3\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Ondřej Gajdušek, 2026\n"
@@ -21,9 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-msgid "%(selectedCount)s of %(totalCount)s items selected"
-msgstr "%(selectedCount)s/%(totalCount)s 項目を選択"
 
 msgid "%s ago"
 msgstr "%s 前"
@@ -42,12 +39,6 @@ msgstr "アクション"
 
 msgid "Add"
 msgstr "追加"
-
-msgid "Add all"
-msgstr "すべて追加"
-
-msgid "Add selected"
-msgstr "選択項目の追加"
 
 msgid "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles."
 msgstr "ホストに割り当てられた Ansible ロールを追加、削除、または並べ替えます。このホストには、グループに割り当てられたロールがあり、こちらに表示されていませんが、必ず、ホストに割り当てられたロールよりも前に実行されます。"
@@ -148,17 +139,14 @@ msgstr "%s のオーバーライドを削除してもよろしいですか？"
 msgid "Assign roles directly to the host"
 msgstr "ホストへのロールの直接割り当て"
 
-msgid "Assigned Ansible Roles"
-msgstr "割り当てられた Ansible ロール"
+msgid "Assigned Ansible roles"
+msgstr ""
 
 msgid "Assigns Ansible roles to a host"
 msgstr "Ansible ロールをホストに割り当てます"
 
 msgid "Assigns Ansible roles to a hostgroup"
 msgstr "Ansible ロールをホストグループに割り当てます"
-
-msgid "Available Ansible Roles"
-msgstr "利用可能な Ansible ロール"
 
 msgid "Available Ansible roles"
 msgstr "利用可能な Ansible ロール"
@@ -343,9 +331,6 @@ msgstr "非表示の値"
 msgid "Hide all values for this parameter."
 msgstr "このパラメーターのすべての値を非表示にします。"
 
-msgid "Host assigned Ansible roles"
-msgstr "ホストに割り当てられた Ansible ロール"
-
 msgid "Host count"
 msgstr "ホスト数"
 
@@ -420,6 +405,9 @@ msgstr "タグの追加/除外"
 
 msgid "Include\\Exclude tags for Ansible run"
 msgstr "Ansible の実行にタグを追加/除外"
+
+msgid "Inherited Ansible Roles"
+msgstr ""
 
 msgid "Inherited from Hostgroup"
 msgstr "ホストグループから継承"
@@ -605,9 +593,6 @@ msgstr "削除"
 msgid "Remove Role"
 msgstr "ロールの削除"
 
-msgid "Remove all"
-msgstr "すべて削除"
-
 msgid "Remove directly assigned Ansible role from a host"
 msgstr "ホストから直接割り当てられた Ansible ロールを削除する"
 
@@ -616,9 +601,6 @@ msgstr "ホストグループから直接割り当てられた Ansible ロール
 
 msgid "Remove duplicate values (only array type)"
 msgstr "重複する値の削除 (配列タイプのみ)"
-
-msgid "Remove selected"
-msgstr "選択項目の削除"
 
 msgid "Report format, defaults to '%s'"
 msgstr "レポート形式、デフォルトは「%s」"
@@ -845,8 +827,8 @@ msgstr "指定された Capsule サーバーホストで Capsule をアップグ
 msgid "Upgrade Capsules on given hosts"
 msgstr "指定されたホストで Capsule をアップグレード"
 
-msgid "Use drag and drop to change order of the roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly"
-msgstr "ドラッグアンドドロップを使用して、ロールの順序を変更します。ロールの順序は Ansible 実行時に尊重され、継承されたロールは必ず直接割り当てられたロールよりも前になります"
+msgid "Use drag and drop to change order of the assigned roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly"
+msgstr ""
 
 msgid "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled"
 msgstr "代わりに同期を使用し、Ansible 機能を有効化して SmartProxy からロールを同期します"

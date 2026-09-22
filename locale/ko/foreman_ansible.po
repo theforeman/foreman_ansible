@@ -11,7 +11,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: foreman_ansible 17.0.4\n"
+"Project-Id-Version: foreman_ansible 18.0.3\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2018-11-14 21:36+0000\n"
 "Last-Translator: Ondřej Gajdušek, 2026\n"
@@ -21,9 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-msgid "%(selectedCount)s of %(totalCount)s items selected"
-msgstr "%(selectedCount)s / %(totalCount)s 항목 선택"
 
 msgid "%s ago"
 msgstr "%s 전 "
@@ -42,12 +39,6 @@ msgstr "동작 "
 
 msgid "Add"
 msgstr "추가 "
-
-msgid "Add all"
-msgstr "모두 추가"
-
-msgid "Add selected"
-msgstr "선택한 항목 추가"
 
 msgid "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles."
 msgstr "호스트가 할당한 Ansible 역할을 추가, 제거 또는 재정렬합니다. 이 호스트에는 여기에 표시되지 않고 항상 호스트가 할당한 역할보다 먼저 실행되는 그룹 할당 역할도 있습니다."
@@ -148,17 +139,14 @@ msgstr "%s의 덮어쓰기를 삭제하시겠습니까?"
 msgid "Assign roles directly to the host"
 msgstr "호스트에게 직접 역할 할당"
 
-msgid "Assigned Ansible Roles"
-msgstr "할당된 Ansible 역할"
+msgid "Assigned Ansible roles"
+msgstr ""
 
 msgid "Assigns Ansible roles to a host"
 msgstr "호스트에 Ansible 역할을 할당"
 
 msgid "Assigns Ansible roles to a hostgroup"
 msgstr "호스트 그룹에 Ansible 역할을 할당"
-
-msgid "Available Ansible Roles"
-msgstr "사용 가능한 Ansible 역할"
 
 msgid "Available Ansible roles"
 msgstr "사용 가능한 Ansible 역할"
@@ -343,9 +331,6 @@ msgstr "숨겨진 값"
 msgid "Hide all values for this parameter."
 msgstr "이 매개 변수의 값을 모두 숨깁니다."
 
-msgid "Host assigned Ansible roles"
-msgstr "호스트에 할당된 Ansible 역할"
-
 msgid "Host count"
 msgstr "호스트 수"
 
@@ -420,6 +405,9 @@ msgstr "태그 포함/제외"
 
 msgid "Include\\Exclude tags for Ansible run"
 msgstr "Ansible 실행을 위한 태그 포함/제외"
+
+msgid "Inherited Ansible Roles"
+msgstr ""
 
 msgid "Inherited from Hostgroup"
 msgstr "호스트 그룹에서 상속됨"
@@ -603,9 +591,6 @@ msgstr "삭제 "
 msgid "Remove Role"
 msgstr "역할 제거"
 
-msgid "Remove all"
-msgstr "모두 제거"
-
 msgid "Remove directly assigned Ansible role from a host"
 msgstr "호스트에서 직접 할당된 Ansible 역할 제거"
 
@@ -614,9 +599,6 @@ msgstr "호스트 그룹에서 직접 할당된 Ansible 역할 제거"
 
 msgid "Remove duplicate values (only array type)"
 msgstr "중복 값 삭제(배열 유형만)"
-
-msgid "Remove selected"
-msgstr "선택한 항목 제거"
 
 msgid "Report format, defaults to '%s'"
 msgstr "보고서 형식, 기본값은 '%s '"
@@ -843,8 +825,8 @@ msgstr "지정된 Capsule 서버 호스트에서 Capsule 업그레이드"
 msgid "Upgrade Capsules on given hosts"
 msgstr "지정된 호스트에서 Capsule 업그레이드"
 
-msgid "Use drag and drop to change order of the roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly"
-msgstr "드래그 앤 드롭을 사용하여 역할 순서를 변경합니다. 역할 순서는 Ansible 실행에 대해 존중되며 상속된 역할은 항상 직접 할당된 역할보다 앞에 있습니다."
+msgid "Use drag and drop to change order of the assigned roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly"
+msgstr ""
 
 msgid "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled"
 msgstr "대신 동기화를 사용하여 Ansible 기능이 활성화된 Smart Proxy에서 역할을 동기화합니다."

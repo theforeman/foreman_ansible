@@ -3,7 +3,7 @@
   "locale_data": {
     "foreman_ansible": {
       "": {
-        "Project-Id-Version": "foreman_ansible 17.0.4",
+        "Project-Id-Version": "foreman_ansible 18.0.3",
         "Report-Msgid-Bugs-To": "",
         "PO-Revision-Date": "2018-11-14 21:36+0000",
         "Last-Translator": "Ondřej Gajdušek, 2026",
@@ -17,9 +17,6 @@
         "domain": "foreman_ansible",
         "plural_forms": "nplurals=1; plural=0;"
       },
-      "%(selectedCount)s of %(totalCount)s items selected": [
-        "%(totalCount)s 中的 %(selectedCount)s 个项目被选择"
-      ],
       "%s ago": [
         "%s 前"
       ],
@@ -37,12 +34,6 @@
       ],
       "Add": [
         "添加"
-      ],
-      "Add all": [
-        "添加所有"
-      ],
-      "Add selected": [
-        "添加选择的"
       ],
       "Add, remove or reorder host assigned Ansible roles. This host has also group assigned roles that are not displayed here and will always be executed prior to host assigned roles.": [
         "添加、删除或重新排序主机分配的 Ansible 角色。此主机也对分配的角色进行分组，它们不会在这里显示，并在主机分配角色之前始终执行。"
@@ -143,17 +134,14 @@
       "Assign roles directly to the host": [
         "直接为主机分配角色"
       ],
-      "Assigned Ansible Roles": [
-        "分配的 Ansible 角色"
+      "Assigned Ansible roles": [
+        ""
       ],
       "Assigns Ansible roles to a host": [
         "为主机分配 Ansible 角色"
       ],
       "Assigns Ansible roles to a hostgroup": [
         "为主机组分配 Ansible 角色"
-      ],
-      "Available Ansible Roles": [
-        "可用的 Ansible 角色"
       ],
       "Available Ansible roles": [
         "可用的 Ansible 角色"
@@ -338,9 +326,6 @@
       "Hide all values for this parameter.": [
         "隐藏这个参数的所有值。"
       ],
-      "Host assigned Ansible roles": [
-        "主机分配的 Ansible 角色"
-      ],
       "Host count": [
         "主机数"
       ],
@@ -415,6 +400,9 @@
       ],
       "Include\\\\Exclude tags for Ansible run": [
         "用于 Ansible 运行的包括\\\\排除标签"
+      ],
+      "Inherited Ansible Roles": [
+        ""
       ],
       "Inherited from Hostgroup": [
         "从主机组中继承"
@@ -596,9 +584,6 @@
       "Remove Role": [
         "删除角色"
       ],
-      "Remove all": [
-        "删除所有"
-      ],
       "Remove directly assigned Ansible role from a host": [
         "从主机中删除直接分配的 Ansible 角色"
       ],
@@ -607,9 +592,6 @@
       ],
       "Remove duplicate values (only array type)": [
         "删除重复值（仅用于阵列类型）"
-      ],
-      "Remove selected": [
-        "继续选择的"
       ],
       "Report format, defaults to '%s'": [
         "报告格式，默认为 '%s'"
@@ -836,8 +818,8 @@
       "Upgrade Capsules on given hosts": [
         "在给定主机上升级 Capsule"
       ],
-      "Use drag and drop to change order of the roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly": [
-        "使用拖放来更改角色的顺序。在 Ansible 运行时会遵循这个顺序，继承的角色始终位于直接分配的角色的前面"
+      "Use drag and drop to change order of the assigned roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly": [
+        ""
       ],
       "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled": [
         "改为使用同步，从启用了 Ansible 功能的智能代理中同步角色"

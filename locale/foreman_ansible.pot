@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foreman_ansible 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 12:45+0000\n"
-"PO-Revision-Date: 2026-03-09 12:45+0000\n"
+"POT-Creation-Date: 2026-09-22 17:32+0000\n"
+"PO-Revision-Date: 2026-09-22 17:32+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -1269,17 +1269,17 @@ msgid "Jobs"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleRolesAndVariables/AnsibleRolesAndVariablesActions.js:26
+#: ../webpack/components/AnsibleRolesAndVariables/AnsibleRolesAndVariablesActions.js:31
 msgid "Import roles and variables started: "
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleRolesAndVariables/AnsibleRolesAndVariablesActions.js:32
+#: ../webpack/components/AnsibleRolesAndVariables/AnsibleRolesAndVariablesActions.js:37
 msgid "view the task in progress"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleRolesAndVariables/AnsibleRolesAndVariablesActions.js:37
+#: ../webpack/components/AnsibleRolesAndVariables/AnsibleRolesAndVariablesActions.js:42
 msgid "Failed to import roles and variables "
 msgstr ""
 
@@ -1295,15 +1295,14 @@ msgstr ""
 msgid "Hostgroup count"
 msgstr ""
 
-#: ../webpack/components/AnsibleRolesSwitcher/AnsibleRolesSwitcher.js:72
-msgid "Available Ansible Roles"
+#: ../webpack/components/AnsibleRolesSwitcher/AnsibleRolesSwitcher.js:71
+msgid ""
+"Use drag and drop to change order of the assigned roles. Ordering of roles is "
+"respected for Ansible runs, inherited roles are always before those assigned d"
+"irectly"
 msgstr ""
 
-#: ../webpack/components/AnsibleRolesSwitcher/AnsibleRolesSwitcher.js:88
-msgid "Assigned Ansible Roles"
-msgstr ""
-
-#: ../webpack/components/AnsibleRolesSwitcher/AnsibleRolesSwitcherActions.js:52
+#: ../webpack/components/AnsibleRolesSwitcher/AnsibleRolesSwitcherActions.js:42
 msgid "Failed to fetch Ansible Roles from server."
 msgstr ""
 
@@ -1320,51 +1319,31 @@ msgid ""
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleRolesSwitcher/components/AnsiblePermissionDenied.js:27
+#: ../webpack/components/AnsibleRolesSwitcher/components/AnsiblePermissionDenied.js:26
 msgid "Permission Denied"
 msgstr ""
 
-#: ../webpack/components/AnsibleRolesSwitcher/components/AnsibleRole.js:14
+#:
+#: ../webpack/components/AnsibleRolesSwitcher/components/InheritedRolesList.js:13
 msgid "This Ansible role is inherited from parent host group"
 msgstr ""
 
-#: ../webpack/components/AnsibleRolesSwitcher/components/AnsibleRole.js:15
+#:
+#: ../webpack/components/AnsibleRolesSwitcher/components/InheritedRolesList.js:14
 msgid "This Ansible role is inherited from host group"
 msgstr ""
 
 #:
-#: ../webpack/components/AnsibleRolesSwitcher/components/OrderedRolesTooltip.js:9
-msgid ""
-"Use drag and drop to change order of the roles. Ordering of roles is respected"
-" for Ansible runs, inherited roles are always before those assigned directly"
+#: ../webpack/components/AnsibleRolesSwitcher/components/InheritedRolesList.js:24
+msgid "Inherited Ansible Roles"
 msgstr ""
 
-#: ../webpack/components/DualList/ListControls.js:13
-msgid "Add selected"
-msgstr ""
-
-#: ../webpack/components/DualList/ListControls.js:24
-msgid "Add all"
-msgstr ""
-
-#: ../webpack/components/DualList/ListControls.js:35
-msgid "Remove all"
-msgstr ""
-
-#: ../webpack/components/DualList/ListControls.js:46
-msgid "Remove selected"
-msgstr ""
-
-#: ../webpack/components/DualList/SelectedStatus.js:8
-msgid "%(selectedCount)s of %(totalCount)s items selected"
-msgstr ""
-
-#: ../webpack/components/DualList/index.js:66
+#: ../webpack/components/DualList/index.js:41
 msgid "Available Ansible roles"
 msgstr ""
 
-#: ../webpack/components/DualList/index.js:84
-msgid "Host assigned Ansible roles"
+#: ../webpack/components/DualList/index.js:42
+msgid "Assigned Ansible roles"
 msgstr ""
 
 #: ../webpack/components/ErrorState.js:13
