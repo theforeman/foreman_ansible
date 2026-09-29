@@ -135,13 +135,13 @@
         "ホストへのロールの直接割り当て"
       ],
       "Assigned Ansible roles": [
-        ""
+        "割り当てられた Ansible ロール"
       ],
       "Assigns Ansible roles to a host": [
-        "Ansible ロールをホストに割り当てます"
+        "Ansible ロールをホストに割り当てる"
       ],
       "Assigns Ansible roles to a hostgroup": [
-        "Ansible ロールをホストグループに割り当てます"
+        "Ansible ロールをホストグループに割り当てる"
       ],
       "Available Ansible roles": [
         "利用可能な Ansible ロール"
@@ -177,7 +177,7 @@
         "接続タイプ"
       ],
       "Continue to look for matches after first find (only array/hash type)? Note: merging overrides ignores all matchers that are omitted.": [
-        "最初の検索後に継続して一致する候補を検索しますか (配列/ハッシュタイプのみ)? 注記: 上書きのマージにより、省略されたすべての Matcher が無視されます。"
+        "最初の検索後に継続して一致する候補を検索しますか (配列/ハッシュタイプのみ)? 注記: オーバーライドのマージにより、省略されたすべての Matcher が無視されます。"
       ],
       "Could not run Ansible roles for %{host}": [
         "%{host} の Ansible ロールを実行できませんでした"
@@ -186,10 +186,10 @@
         "Ansible 変数の作成"
       ],
       "Create Ansible variable": [
-        "Ansible 変数を作成します"
+        "Ansible 変数を作成する"
       ],
       "Create an override value for a specific ansible variable": [
-        "特定の Ansible 変数の上書き値を作成する"
+        "特定の Ansible 変数のオーバーライド値を作成する"
       ],
       "DEPRECATED: Import Ansible roles. Use sync instead": [
         "非推奨: Ansible ロールのインポート。代わりに sync を使用してください"
@@ -228,10 +228,10 @@
         "Ansible 変数のオーバーライドを削除します"
       ],
       "Deletes Ansible role": [
-        "Ansible ロールを削除します"
+        "Ansible ロールを削除する"
       ],
       "Deletes Ansible variable": [
-        "Ansible 変数を削除します"
+        "Ansible 変数を削除する"
       ],
       "Description": [
         "説明"
@@ -240,7 +240,7 @@
         "変数の説明"
       ],
       "Destroy an override value": [
-        "上書き値を破棄します"
+        "オーバーライド値を破棄する"
       ],
       "Directly add an Ansible role to a host": [
         "Ansible ロールを直接ホストに追加する"
@@ -285,7 +285,7 @@
         "Web コンソールの有効化"
       ],
       "Enable/disable WinRM server certificate validation when running Ansible playbooks. You can override this on hosts by adding a parameter \\\"ansible_winrm_server_cert_validation\\\"": [
-        "Ansible Playbook の実行時に、WinRM サーバー証明書の検証を有効または無効にします。ホスト上でこれを上書きするには、パラメーター \\\"ansible_winrm_server_cert_validation\\\" を追加します"
+        "Ansible Playbook の実行時に、WinRM サーバー証明書の検証を有効または無効にします。ホスト上でこれをオーバーライドするには、パラメーター \\\"ansible_winrm_server_cert_validation\\\" を追加します"
       ],
       "Error!": [
         "エラー!"
@@ -300,10 +300,10 @@
         "ロールと変数のインポートに失敗しました "
       ],
       "Fetch Ansible playbooks available to be synced": [
-        "同期可能な Ansible Playbook の取得"
+        "同期可能な Ansible Playbook を取得する"
       ],
       "Fetch Ansible roles available to be synced": [
-        "同期可能な Ansible ロールの取得"
+        "同期可能な Ansible ロールを取得する"
       ],
       "For more advanced scheduling options": [
         "詳細なスケジューリングオプションの場合"
@@ -402,7 +402,7 @@
         "Ansible の実行にタグを追加/除外"
       ],
       "Inherited Ansible Roles": [
-        ""
+        "継承された Ansible ロール"
       ],
       "Inherited from Hostgroup": [
         "ホストグループから継承"
@@ -438,16 +438,16 @@
         "レベル 4 (-vvvv)"
       ],
       "List Ansible roles": [
-        "Ansible ロールを一覧表示します"
+        "Ansible ロールを一覧表示する"
       ],
       "List Ansible variables": [
-        "Ansible 変数を一覧表示します"
+        "Ansible 変数をリスト表示する"
       ],
       "List all Ansible roles for a host": [
-        "ホストの Ansible ロールをすべて一覧表示します"
+        "ホストの Ansible ロールをすべてリスト表示する"
       ],
       "List all Ansible roles for a hostgroup": [
-        "ホストグループの Ansible ロールをすべて一覧表示します"
+        "ホストグループの Ansible ロールをすべてリスト表示する"
       ],
       "Mark the variable to be managed by Foreman. When the Ansible role of this variable is assigned to a host, the default value will be added to Ansible inventory as a host variable. Specify matchers to set a different value for such variable.": [
         "Foreman が管理する変数をマークします。この変数の Ansible ロールがホストに割り当てられると、デフォルト値がホスト変数として Ansible インベントリーに追加されます。そのような変数に異なる値を設定するには、マッチャーを指定します。"
@@ -522,7 +522,7 @@
         "Ansible ロールはチェックモードで実行されることに注意してください。"
       ],
       "Number of tasks which should be sent to the smart proxy in one request, if foreman_tasks_proxy_batch_trigger is enabled. If set, overrides foreman_tasks_proxy_batch_size setting for Ansible jobs.": [
-        "foreman_tasks_proxy_batch_trigger が有効な場合に、1つの要求で Smart Proxy に送信する必要があるタスクの数。設定されている場合、Ansible ジョブの foreman_tasks_proxy_batch_size 設定をオーバーライドします。"
+        "foreman_tasks_proxy_batch_trigger が有効な場合に、1 つの要求で Smart Proxy に送信する必要があるタスクの数。設定されている場合、Ansible ジョブの foreman_tasks_proxy_batch_size 設定をオーバーライドします。"
       ],
       "Only variables marked to Override are shown here.": [
         "オーバーライドとしてマークされた変数のみがここに表示されます。"
@@ -537,16 +537,16 @@
         "順序"
       ],
       "Override match": [
-        "一致候補の上書き"
+        "オーバーライドの一致"
       ],
       "Override the default value of the Ansible variable.": [
-        "Ansible 変数のデフォルト値を上書きします。"
+        "Ansible 変数のデフォルト値をオーバーライドします。"
       ],
       "Override value, required if omit is false": [
-        "上書き値 (--omit が false の場合に必要)"
+        "オーバーライド値 (omit が false の場合に必要)"
       ],
       "Overriden": [
-        "上書き済み"
+        "オーバーライド済み"
       ],
       "Permission Denied": [
         "パーミッションが拒否されました"
@@ -633,16 +633,16 @@
         "Playbook の実行"
       ],
       "Runs all Ansible roles on a host": [
-        "ホスト上ですべての Ansible ロールを実行します"
+        "ホスト上ですべての Ansible ロールを実行する"
       ],
       "Runs all Ansible roles on a hostgroup": [
-        "ホストグループですべての Ansible ロールを実行します"
+        "ホストグループですべての Ansible ロールを実行する"
       ],
       "Runs all Ansible roles on hostgroups": [
-        "ホストグループですべての Ansible ロールを実行します"
+        "ホストグループですべての Ansible ロールを実行する"
       ],
       "Runs all Ansible roles on hosts": [
-        "ホスト上ですべての Ansible ロールを実行します"
+        "ホスト上ですべての Ansible ロールを実行する"
       ],
       "Runs an Ansible playbook which contains all the roles defined for a host": [
         "ホスト用に定義したすべてのロールを含む Ansible Playbook の実行"
@@ -678,7 +678,7 @@
         "ロールを表示します"
       ],
       "Show variable": [
-        "変数を表示します"
+        "変数を表示する"
       ],
       "Smart Proxy to fetch from": [
         "取得元となる Smart Proxy"
@@ -708,7 +708,7 @@
         "送信"
       ],
       "Sync Ansible playbooks": [
-        "Ansible Playbook の同期"
+        "Ansible Playbook を同期する"
       ],
       "Sync Ansible roles": [
         "Ansible ロールの同期"
@@ -804,10 +804,10 @@
         "Smart Proxy の更新"
       ],
       "Update an override value": [
-        "オーバーライド値の更新"
+        "オーバーライド値を更新する"
       ],
       "Updates Ansible variable": [
-        "Ansible 変数を更新します"
+        "Ansible 変数を更新する"
       ],
       "Upgrade": [
         "アップグレード"
@@ -819,16 +819,16 @@
         "指定されたホストで Capsule をアップグレード"
       ],
       "Use drag and drop to change order of the assigned roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly": [
-        ""
+        "ドラッグアンドドロップを使用して、割り当て済みロールの順序を変更します。ロールの順序は Ansible の実行時に考慮され、継承されたロールは常に直接割り当てられたロールよりも前に配置されます"
       ],
       "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled": [
         "代わりに同期を使用し、Ansible 機能を有効化して SmartProxy からロールを同期します"
       ],
       "Use this connection type by default when running Ansible playbooks. You can override this on hosts by adding a parameter \\\"ansible_connection\\\"": [
-        "デフォルトでは、Ansible Playbook の実行時にこの接続タイプを使用します。ホストでこれを上書きするには、パラメーター \\\"ansible_connection\\\" を追加します"
+        "デフォルトでは、Ansible Playbook の実行時にこの接続タイプを使用します。ホストでこれをオーバーライドするには、パラメーター \\\"ansible_connection\\\" を追加します"
       ],
       "Use this to supply a path to an SSH Private Key that Ansible will use in lieu of a password Override with \\\"ansible_ssh_private_key_file\\\" host parameter": [
-        "これを使用して、Ansible がパスワードの代わりに使用する SSH 秘密鍵へのパスを指定します。\\\"ansible_ssh_private_key_file\\\" ホストパラメータで上書きします"
+        "これを使用して、Ansible がパスワードの代わりに使用する SSH 秘密鍵へのパスを指定します。\\\"ansible_ssh_private_key_file\\\" ホストパラメータでオーバーライドします"
       ],
       "Used to enforce certain values for the parameter values": [
         "パラメーター値の特定の値を適用するために使用されます"
@@ -855,7 +855,7 @@
         "有効な場合はパラメーターは UI で非表示になります"
       ],
       "Whether to override variable or not": [
-        "変数を上書きするかどうか"
+        "変数をオーバーライドするかどうか"
       ],
       "WinRM cert Validation": [
         "WinRM 証明書の検証"

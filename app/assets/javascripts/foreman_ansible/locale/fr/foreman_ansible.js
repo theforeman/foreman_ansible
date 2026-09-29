@@ -135,7 +135,7 @@
         "Attribuer des rôles directement à l'hôte"
       ],
       "Assigned Ansible roles": [
-        ""
+        "Rôles Ansible attribués"
       ],
       "Assigns Ansible roles to a host": [
         "Attribuer des rôles Ansible à un hôte"
@@ -402,7 +402,7 @@
         "Balises d'inclusion/exclusion pour l'exécution d'Ansible"
       ],
       "Inherited Ansible Roles": [
-        ""
+        "Rôles Ansible hérités"
       ],
       "Inherited from Hostgroup": [
         "Héritée du groupe d’hôtes"
@@ -819,7 +819,7 @@
         "Mise à jour des capsules sur des hôtes donnés"
       ],
       "Use drag and drop to change order of the assigned roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly": [
-        ""
+        "Utilisez le glisser-déposer pour modifier l'ordre des rôles attribués. L'ordre des rôles est respecté lors des exécutions Ansible ; les rôles hérités sont toujours prioritaires sur ceux attribués directement."
       ],
       "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled": [
         "Utilisez sync à la place, pour synchroniser les rôles de Smart Proxy avec la fonction Ansible activée"

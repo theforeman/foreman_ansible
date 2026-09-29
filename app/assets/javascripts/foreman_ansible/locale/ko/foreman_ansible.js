@@ -135,7 +135,7 @@
         "호스트에게 직접 역할 할당"
       ],
       "Assigned Ansible roles": [
-        ""
+        "할당된 Ansible 역할"
       ],
       "Assigns Ansible roles to a host": [
         "호스트에 Ansible 역할을 할당"
@@ -258,7 +258,7 @@
         "사용 안함"
       ],
       "Edit %s": [
-        "%s 편집 "
+        "%s 편집"
       ],
       "Edit Ansible Roles": [
         "Ansible 역할 편집"
@@ -402,7 +402,7 @@
         "Ansible 실행을 위한 태그 포함/제외"
       ],
       "Inherited Ansible Roles": [
-        ""
+        "상속된 Ansible 역할"
       ],
       "Inherited from Hostgroup": [
         "호스트 그룹에서 상속됨"
@@ -819,7 +819,7 @@
         "지정된 호스트에서 Capsule 업그레이드"
       ],
       "Use drag and drop to change order of the assigned roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly": [
-        ""
+        "드래그 앤 드롭을 사용하여 할당된 역할의 순서를 변경합니다. 역할 순서는 Ansible 실행 시 적용되며, 상속된 역할은 직접 할당된 역할보다 우선하여 앞에 배치됩니다."
       ],
       "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled": [
         "대신 동기화를 사용하여 Ansible 기능이 활성화된 Smart Proxy에서 역할을 동기화합니다."
