@@ -135,7 +135,7 @@
         "直接为主机分配角色"
       ],
       "Assigned Ansible roles": [
-        ""
+        "分配的 Ansible 角色"
       ],
       "Assigns Ansible roles to a host": [
         "为主机分配 Ansible 角色"
@@ -402,7 +402,7 @@
         "用于 Ansible 运行的包括\\\\排除标签"
       ],
       "Inherited Ansible Roles": [
-        ""
+        "继承的 Ansible 角色"
       ],
       "Inherited from Hostgroup": [
         "从主机组中继承"
@@ -819,7 +819,7 @@
         "在给定主机上升级 Capsule"
       ],
       "Use drag and drop to change order of the assigned roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly": [
-        ""
+        "使用拖放来更改分配的角色的顺序。Ansible 运行遵循角色顺序，继承的角色总是排在直接分配的角色之前。"
       ],
       "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled": [
         "改为使用同步，从启用了 Ansible 功能的智能代理中同步角色"

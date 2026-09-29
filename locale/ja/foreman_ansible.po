@@ -140,13 +140,13 @@ msgid "Assign roles directly to the host"
 msgstr "ホストへのロールの直接割り当て"
 
 msgid "Assigned Ansible roles"
-msgstr ""
+msgstr "割り当てられた Ansible ロール"
 
 msgid "Assigns Ansible roles to a host"
-msgstr "Ansible ロールをホストに割り当てます"
+msgstr "Ansible ロールをホストに割り当てる"
 
 msgid "Assigns Ansible roles to a hostgroup"
-msgstr "Ansible ロールをホストグループに割り当てます"
+msgstr "Ansible ロールをホストグループに割り当てる"
 
 msgid "Available Ansible roles"
 msgstr "利用可能な Ansible ロール"
@@ -182,7 +182,7 @@ msgid "Connection type"
 msgstr "接続タイプ"
 
 msgid "Continue to look for matches after first find (only array/hash type)? Note: merging overrides ignores all matchers that are omitted."
-msgstr "最初の検索後に継続して一致する候補を検索しますか (配列/ハッシュタイプのみ)? 注記: 上書きのマージにより、省略されたすべての Matcher が無視されます。"
+msgstr "最初の検索後に継続して一致する候補を検索しますか (配列/ハッシュタイプのみ)? 注記: オーバーライドのマージにより、省略されたすべての Matcher が無視されます。"
 
 msgid "Could not run Ansible roles for %{host}"
 msgstr "%{host} の Ansible ロールを実行できませんでした"
@@ -191,10 +191,10 @@ msgid "Create Ansible Variable"
 msgstr "Ansible 変数の作成"
 
 msgid "Create Ansible variable"
-msgstr "Ansible 変数を作成します"
+msgstr "Ansible 変数を作成する"
 
 msgid "Create an override value for a specific ansible variable"
-msgstr "特定の Ansible 変数の上書き値を作成する"
+msgstr "特定の Ansible 変数のオーバーライド値を作成する"
 
 msgid "DEPRECATED: Import Ansible roles. Use sync instead"
 msgstr "非推奨: Ansible ロールのインポート。代わりに sync を使用してください"
@@ -233,10 +233,10 @@ msgid "Delete Ansible variable override"
 msgstr "Ansible 変数のオーバーライドを削除します"
 
 msgid "Deletes Ansible role"
-msgstr "Ansible ロールを削除します"
+msgstr "Ansible ロールを削除する"
 
 msgid "Deletes Ansible variable"
-msgstr "Ansible 変数を削除します"
+msgstr "Ansible 変数を削除する"
 
 msgid "Description"
 msgstr "説明"
@@ -245,7 +245,7 @@ msgid "Description of variable"
 msgstr "変数の説明"
 
 msgid "Destroy an override value"
-msgstr "上書き値を破棄します"
+msgstr "オーバーライド値を破棄する"
 
 msgid "Directly add an Ansible role to a host"
 msgstr "Ansible ロールを直接ホストに追加する"
@@ -290,7 +290,7 @@ msgid "Enable web console"
 msgstr "Web コンソールの有効化"
 
 msgid "Enable/disable WinRM server certificate validation when running Ansible playbooks. You can override this on hosts by adding a parameter \"ansible_winrm_server_cert_validation\""
-msgstr "Ansible Playbook の実行時に、WinRM サーバー証明書の検証を有効または無効にします。ホスト上でこれを上書きするには、パラメーター \"ansible_winrm_server_cert_validation\" を追加します"
+msgstr "Ansible Playbook の実行時に、WinRM サーバー証明書の検証を有効または無効にします。ホスト上でこれをオーバーライドするには、パラメーター \"ansible_winrm_server_cert_validation\" を追加します"
 
 msgid "Error!"
 msgstr "エラー!"
@@ -305,10 +305,10 @@ msgid "Failed to import roles and variables "
 msgstr "ロールと変数のインポートに失敗しました "
 
 msgid "Fetch Ansible playbooks available to be synced"
-msgstr "同期可能な Ansible Playbook の取得"
+msgstr "同期可能な Ansible Playbook を取得する"
 
 msgid "Fetch Ansible roles available to be synced"
-msgstr "同期可能な Ansible ロールの取得"
+msgstr "同期可能な Ansible ロールを取得する"
 
 msgid "For more advanced scheduling options"
 msgstr "詳細なスケジューリングオプションの場合"
@@ -407,7 +407,7 @@ msgid "Include\\Exclude tags for Ansible run"
 msgstr "Ansible の実行にタグを追加/除外"
 
 msgid "Inherited Ansible Roles"
-msgstr ""
+msgstr "継承された Ansible ロール"
 
 msgid "Inherited from Hostgroup"
 msgstr "ホストグループから継承"
@@ -443,16 +443,16 @@ msgid "Level 4 (-vvvv)"
 msgstr "レベル 4 (-vvvv)"
 
 msgid "List Ansible roles"
-msgstr "Ansible ロールを一覧表示します"
+msgstr "Ansible ロールを一覧表示する"
 
 msgid "List Ansible variables"
-msgstr "Ansible 変数を一覧表示します"
+msgstr "Ansible 変数をリスト表示する"
 
 msgid "List all Ansible roles for a host"
-msgstr "ホストの Ansible ロールをすべて一覧表示します"
+msgstr "ホストの Ansible ロールをすべてリスト表示する"
 
 msgid "List all Ansible roles for a hostgroup"
-msgstr "ホストグループの Ansible ロールをすべて一覧表示します"
+msgstr "ホストグループの Ansible ロールをすべてリスト表示する"
 
 msgid "Mark the variable to be managed by Foreman. When the Ansible role of this variable is assigned to a host, the default value will be added to Ansible inventory as a host variable. Specify matchers to set a different value for such variable."
 msgstr "Foreman が管理する変数をマークします。この変数の Ansible ロールがホストに割り当てられると、デフォルト値がホスト変数として Ansible インベントリーに追加されます。そのような変数に異なる値を設定するには、マッチャーを指定します。"
@@ -531,7 +531,7 @@ msgid "Notice that ansible roles run in check mode."
 msgstr "Ansible ロールはチェックモードで実行されることに注意してください。"
 
 msgid "Number of tasks which should be sent to the smart proxy in one request, if foreman_tasks_proxy_batch_trigger is enabled. If set, overrides foreman_tasks_proxy_batch_size setting for Ansible jobs."
-msgstr "foreman_tasks_proxy_batch_trigger が有効な場合に、1つの要求で Smart Proxy に送信する必要があるタスクの数。設定されている場合、Ansible ジョブの foreman_tasks_proxy_batch_size 設定をオーバーライドします。"
+msgstr "foreman_tasks_proxy_batch_trigger が有効な場合に、1 つの要求で Smart Proxy に送信する必要があるタスクの数。設定されている場合、Ansible ジョブの foreman_tasks_proxy_batch_size 設定をオーバーライドします。"
 
 msgid "Only variables marked to Override are shown here."
 msgstr "オーバーライドとしてマークされた変数のみがここに表示されます。"
@@ -546,16 +546,16 @@ msgid "Order"
 msgstr "順序"
 
 msgid "Override match"
-msgstr "一致候補の上書き"
+msgstr "オーバーライドの一致"
 
 msgid "Override the default value of the Ansible variable."
-msgstr "Ansible 変数のデフォルト値を上書きします。"
+msgstr "Ansible 変数のデフォルト値をオーバーライドします。"
 
 msgid "Override value, required if omit is false"
-msgstr "上書き値 (--omit が false の場合に必要)"
+msgstr "オーバーライド値 (omit が false の場合に必要)"
 
 msgid "Overriden"
-msgstr "上書き済み"
+msgstr "オーバーライド済み"
 
 msgid "Permission Denied"
 msgstr "パーミッションが拒否されました"
@@ -642,16 +642,16 @@ msgid "Run playbook"
 msgstr "Playbook の実行"
 
 msgid "Runs all Ansible roles on a host"
-msgstr "ホスト上ですべての Ansible ロールを実行します"
+msgstr "ホスト上ですべての Ansible ロールを実行する"
 
 msgid "Runs all Ansible roles on a hostgroup"
-msgstr "ホストグループですべての Ansible ロールを実行します"
+msgstr "ホストグループですべての Ansible ロールを実行する"
 
 msgid "Runs all Ansible roles on hostgroups"
-msgstr "ホストグループですべての Ansible ロールを実行します"
+msgstr "ホストグループですべての Ansible ロールを実行する"
 
 msgid "Runs all Ansible roles on hosts"
-msgstr "ホスト上ですべての Ansible ロールを実行します"
+msgstr "ホスト上ですべての Ansible ロールを実行する"
 
 msgid "Runs an Ansible playbook which contains all the roles defined for a host"
 msgstr "ホスト用に定義したすべてのロールを含む Ansible Playbook の実行"
@@ -687,7 +687,7 @@ msgid "Show role"
 msgstr "ロールを表示します"
 
 msgid "Show variable"
-msgstr "変数を表示します"
+msgstr "変数を表示する"
 
 msgid "Smart Proxy to fetch from"
 msgstr "取得元となる Smart Proxy"
@@ -717,7 +717,7 @@ msgid "Submit"
 msgstr "送信"
 
 msgid "Sync Ansible playbooks"
-msgstr "Ansible Playbook の同期"
+msgstr "Ansible Playbook を同期する"
 
 msgid "Sync Ansible roles"
 msgstr "Ansible ロールの同期"
@@ -813,10 +813,10 @@ msgid "Update Smart Proxy"
 msgstr "Smart Proxy の更新"
 
 msgid "Update an override value"
-msgstr "オーバーライド値の更新"
+msgstr "オーバーライド値を更新する"
 
 msgid "Updates Ansible variable"
-msgstr "Ansible 変数を更新します"
+msgstr "Ansible 変数を更新する"
 
 msgid "Upgrade"
 msgstr "アップグレード"
@@ -828,16 +828,16 @@ msgid "Upgrade Capsules on given hosts"
 msgstr "指定されたホストで Capsule をアップグレード"
 
 msgid "Use drag and drop to change order of the assigned roles. Ordering of roles is respected for Ansible runs, inherited roles are always before those assigned directly"
-msgstr ""
+msgstr "ドラッグアンドドロップを使用して、割り当て済みロールの順序を変更します。ロールの順序は Ansible の実行時に考慮され、継承されたロールは常に直接割り当てられたロールよりも前に配置されます"
 
 msgid "Use sync instead, to sync roles from Smart Proxy with Ansible feature enabled"
 msgstr "代わりに同期を使用し、Ansible 機能を有効化して SmartProxy からロールを同期します"
 
 msgid "Use this connection type by default when running Ansible playbooks. You can override this on hosts by adding a parameter \"ansible_connection\""
-msgstr "デフォルトでは、Ansible Playbook の実行時にこの接続タイプを使用します。ホストでこれを上書きするには、パラメーター \"ansible_connection\" を追加します"
+msgstr "デフォルトでは、Ansible Playbook の実行時にこの接続タイプを使用します。ホストでこれをオーバーライドするには、パラメーター \"ansible_connection\" を追加します"
 
 msgid "Use this to supply a path to an SSH Private Key that Ansible will use in lieu of a password Override with \"ansible_ssh_private_key_file\" host parameter"
-msgstr "これを使用して、Ansible がパスワードの代わりに使用する SSH 秘密鍵へのパスを指定します。\"ansible_ssh_private_key_file\" ホストパラメータで上書きします"
+msgstr "これを使用して、Ansible がパスワードの代わりに使用する SSH 秘密鍵へのパスを指定します。\"ansible_ssh_private_key_file\" ホストパラメータでオーバーライドします"
 
 msgid "Used to enforce certain values for the parameter values"
 msgstr "パラメーター値の特定の値を適用するために使用されます"
@@ -864,7 +864,7 @@ msgid "When enabled the parameter is hidden in the UI"
 msgstr "有効な場合はパラメーターは UI で非表示になります"
 
 msgid "Whether to override variable or not"
-msgstr "変数を上書きするかどうか"
+msgstr "変数をオーバーライドするかどうか"
 
 msgid "WinRM cert Validation"
 msgstr "WinRM 証明書の検証"
