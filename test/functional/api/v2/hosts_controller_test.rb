@@ -43,6 +43,13 @@ module Api
         assert_job_invocation_is_ok(response, targets)
       end
 
+      test 'should return an not_found due to non-existent host_id in multiple_play_roles' do
+        post :multiple_play_roles, :params => { :host_ids => [@host1.id, 'non-existent'] }
+        response = JSON.parse(@response.body)
+        refute_empty response
+        assert_response :not_found
+      end
+
       test 'should create a host with ansible_role_ids param' do
         post :create,
              :params => { :host => { :ansible_role_ids => @ansible_role1.id,
