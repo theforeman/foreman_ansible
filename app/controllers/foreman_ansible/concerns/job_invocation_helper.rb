@@ -17,6 +17,14 @@ module ForemanAnsible
               end
         raise ::Foreman::Exception.new(msg)
       end
+
+      private
+
+      def hostgroup_search(hostgroups)
+        Array(hostgroups).map do |hostgroup|
+          %Q[parent_hostgroup = "#{hostgroup.title}"]
+        end.join(' or ')
+      end
     end
   end
 end

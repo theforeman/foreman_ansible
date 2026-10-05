@@ -23,7 +23,7 @@ module ForemanAnsible
 
           def play_roles
             find_resource
-            composer = job_composer(:ansible_run_host, @hostgroup.hosts)
+            composer = job_composer(:ansible_run_host, hostgroup_search(@hostgroup))
             process_response composer.trigger!, composer.job_invocation
           end
 
@@ -34,8 +34,7 @@ module ForemanAnsible
 
           def multiple_play_roles
             find_multiple
-            composer = job_composer(:ansible_run_host,
-                                    @hostgroups.map(&:host_ids).flatten.uniq)
+            composer = job_composer(:ansible_run_host, hostgroup_search(@hostgroups))
             process_response composer.trigger!, composer.job_invocation
           end
 
