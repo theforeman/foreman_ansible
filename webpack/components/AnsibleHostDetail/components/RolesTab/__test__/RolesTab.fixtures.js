@@ -171,6 +171,16 @@ export const mocks = ansibleRolesMockFactory(
   { currentUser: admin }
 );
 
+export const emptyRolesMocks = ansibleRolesMockFactory(
+  { id: hostGlobalId, first: 20, last: 20 },
+  {
+    __typename: 'Host',
+    id: hostGlobalId,
+    ownAnsibleRoles: { totalCount: 0, nodes: [] },
+  },
+  { currentUser: admin }
+);
+
 export const unauthorizedMocks = ansibleRolesMockFactory(
   { id: hostGlobalId, first: 20, last: 20 },
   { __typename: 'Host', id: hostGlobalId, ownAnsibleRoles: ansibleRolesMock },

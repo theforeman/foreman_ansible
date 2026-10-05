@@ -17,7 +17,7 @@ import {
 import EditRolesModal from './EditRolesModal';
 import AllRolesModal from './AllRolesModal';
 
-const RolesTab = ({ hostId, history, canEditHost }) => {
+const RolesTab = ({ hostId, hostUpdatedAt, history, canEditHost }) => {
   const hostGlobalId = encodeId('Host', hostId);
   const pagination = useCurrentPagination(history);
   const [assignModal, setAssignModal] = useState(false);
@@ -44,7 +44,7 @@ const RolesTab = ({ hostId, history, canEditHost }) => {
 
   const url = hostId && foremanUrl(`/api/v2/hosts/${hostId}/ansible_roles`);
   const { response: allAnsibleRoles } = useAPI('get', url, {
-    key: 'ANSIBLE_ROLES',
+    key: `ANSIBLE_ROLES_${hostId}_${hostUpdatedAt}`,
   });
   const emptyStateDescription = allAnsibleRoles.length > 0 && (
     <>
@@ -93,8 +93,13 @@ const RolesTab = ({ hostId, history, canEditHost }) => {
 
 RolesTab.propTypes = {
   hostId: PropTypes.number.isRequired,
+  hostUpdatedAt: PropTypes.string,
   history: PropTypes.object.isRequired,
   canEditHost: PropTypes.bool.isRequired,
+};
+
+RolesTab.defaultProps = {
+  hostUpdatedAt: '',
 };
 
 export default RolesTab;
