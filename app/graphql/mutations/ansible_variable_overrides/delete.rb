@@ -1,6 +1,8 @@
 module Mutations
   module AnsibleVariableOverrides
     class Delete < ::Mutations::DeleteMutation
+      include Authorization
+
       graphql_name 'DeleteAnsibleVariableOverride'
       description 'Deletes Ansible Variable Override'
 

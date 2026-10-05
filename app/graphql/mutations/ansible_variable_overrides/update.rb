@@ -1,6 +1,8 @@
 module Mutations
   module AnsibleVariableOverrides
     class Update < ::Mutations::UpdateMutation
+      include Authorization
+
       graphql_name 'UpdateAnsibleVariableOverrideMutation'
       description 'Updates Ansible Variable Override'
 
