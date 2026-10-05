@@ -41,6 +41,18 @@ module Api
         assert_response :success
       end
 
+      test 'inventory reader can see host parameters' do
+        parameter = FactoryBot.create(:host_parameter, :host => @host1)
+        user = FactoryBot.create(:user)
+        user.roles << Role.find_by(:name => 'Ansible Tower Inventory Reader')
+
+        get :hosts, :params => { :host_ids => [@host1.id] }, :session => set_session_user(user)
+
+        assert_response :success
+        hostvars = JSON.parse(@response.body).dig('_meta', 'hostvars', @host1.name)
+        assert_equal parameter.value, hostvars[parameter.name]
+      end
+
       private
 
       def hosts_inventory_assertions(hosts)
