@@ -40,6 +40,7 @@ module ForemanAnsible
 
           def multiple_play_roles
             host_ids = params.fetch(:host_ids, []).uniq
+            host_ids = Host.authorized(:view_hosts).where(:id => host_ids).pluck(:id)
             composer = job_composer(:ansible_run_host, host_ids)
             process_response composer.trigger!, composer.job_invocation
           end
