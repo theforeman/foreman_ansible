@@ -52,6 +52,7 @@ module ForemanAnsible
 
     config.to_prepare do
       ::Host::Managed.prepend ForemanAnsible::HostManagedExtensions
+      ::JobTemplate.prepend ForemanAnsible::JobTemplateExtensions
       ::Hostgroup.include ForemanAnsible::HostgroupExtensions
       ::HostsController.include ForemanAnsible::Concerns::HostsControllerExtensions
       ::Api::V2::HostsController.include ForemanAnsible::Api::V2::HostsControllerExtensions
