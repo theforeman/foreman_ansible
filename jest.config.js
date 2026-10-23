@@ -1,21 +1,14 @@
-const tfmConfig = require('@theforeman/test/src/pluginConfig');
+const path = require('path');
+const findForemanRoot = require('./findForemanRoot');
 
-// Find where foreman is located
-const { foremanRelativePath, foremanLocation } = require('@theforeman/find-foreman');
-const foremanReactRelative = 'webpack/assets/javascripts/react_app';
-const foremanFull = foremanLocation();
-const foremanReactFull = foremanRelativePath(foremanReactRelative);
+const foremanRoot = findForemanRoot();
 
-// Find correct path to foremanReact so we do not have to mock it in tests
-tfmConfig.moduleNameMapper['^foremanReact(.*)$'] = `${foremanReactFull}/$1`;
-
-// Do not use default resolver
-tfmConfig.resolver = null;
-// Specify module dirs instead
-tfmConfig.moduleDirectories = [
-  `${foremanFull}/node_modules`,
-  `${foremanFull}/node_modules/@theforeman/vendor-core/node_modules`,
-  'node_modules',
-]
-
-module.exports = tfmConfig;
+module.exports = {
+  moduleDirectories: [path.join(foremanRoot, 'node_modules'), 'node_modules'],
+  transform: {
+    '^.+\\.svg$': require.resolve('jest-svg-transformer', {
+      paths: [path.join(foremanRoot, 'node_modules')],
+    }),
+  },
+  setupFilesAfterEnv: [path.join(__dirname, 'webpack/test_setup.js')],
+};
