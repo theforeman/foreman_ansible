@@ -1,5 +1,4 @@
 import React from 'react';
-import { isEqual } from 'lodash';
 import { TimesIcon, CheckIcon } from '@patternfly/react-icons';
 import { sprintf, translate as __ } from 'foremanReact/common/I18n';
 
@@ -58,11 +57,7 @@ export const onCompleted = onSubmitSuccess => response => {
 };
 
 export const findOverride = (variable, hostname) =>
-  variable.lookupValues.nodes.find(
-    item =>
-      isEqual(item.value, variable.currentValue.value) &&
-      item.match === `fqdn=${hostname}`
-  );
+  variable.lookupValues.nodes.find(item => item.match === `fqdn=${hostname}`);
 
 const formatError = error =>
   sprintf(
