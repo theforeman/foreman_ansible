@@ -173,8 +173,8 @@ Foreman::Plugin.register :foreman_ansible do
         :edit_ansible_variables, :destroy_ansible_variables, :import_ansible_playbooks]
 
   role 'Ansible Tower Inventory Reader',
-       [:view_hosts, :view_hostgroups, :view_facts, :generate_report_templates, :generate_ansible_inventory,
-        :view_report_templates],
+       [:view_hosts, :view_hostgroups, :view_facts, :view_params, :generate_report_templates,
+        :generate_ansible_inventory, :view_report_templates],
        'Permissions required for the user which is used by Ansible Tower Dynamic Inventory Item'
 
   add_all_permissions_to_default_roles
