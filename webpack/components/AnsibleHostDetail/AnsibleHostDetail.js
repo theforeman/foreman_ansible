@@ -16,6 +16,11 @@ const AnsibleHostDetail = ({
   history,
 }) => {
   const hashHistory = useHistory();
+  const canViewInventory = response?.permissions?.['view_ansible_inventory'];
+  const tabs = canViewInventory
+    ? SECONDARY_TABS
+    : SECONDARY_TABS.filter(({ key }) => key !== 'inventory');
+
   return (
     <SkeletonLoader status={status} skeletonProps={{ count: 5 }}>
       {response?.id && (
@@ -27,7 +32,7 @@ const AnsibleHostDetail = ({
             activeKey={pathname?.split('/')[2]}
             isSecondary
           >
-            {SECONDARY_TABS.map(({ key, title }) => (
+            {tabs.map(({ key, title }) => (
               <Tab
                 ouiaId={`ansible-host-details-tabs-${title}`}
                 key={key}
