@@ -32,6 +32,20 @@ module Api
         assert_job_invocation_is_ok(response, target.id)
       end
 
+      test 'should trigger task on hosts in nested host groups' do
+        load File.join(ForemanAnsible::Engine.root,
+                       '/db/seeds.d/75_job_templates.rb')
+        ::JobInvocationComposer.any_instance.expects(:trigger!).returns(true)
+        parent = FactoryBot.create(:hostgroup)
+        child = FactoryBot.create(:hostgroup, :parent => parent)
+        target = FactoryBot.create(:host, :hostgroup => child)
+
+        post :play_roles, :params => { :id => parent.id }
+
+        response = JSON.parse(@response.body)
+        assert_job_invocation_is_ok(response, target.id)
+      end
+
       test 'should trigger two host group tasks' do
         load File.join(ForemanAnsible::Engine.root,
                        '/db/seeds.d/75_job_templates.rb')
@@ -42,6 +56,22 @@ module Api
         }
         response = JSON.parse(@response.body)
         assert_job_invocation_is_ok(response, target.map(&:id))
+      end
+
+      test 'should trigger nested host group tasks without duplicates' do
+        load File.join(ForemanAnsible::Engine.root,
+                       '/db/seeds.d/75_job_templates.rb')
+        ::JobInvocationComposer.any_instance.expects(:trigger!).returns(true)
+        parent = FactoryBot.create(:hostgroup)
+        child = FactoryBot.create(:hostgroup, :parent => parent)
+        target = FactoryBot.create(:host, :hostgroup => child)
+
+        post :multiple_play_roles, :params => {
+          :hostgroup_ids => [parent.id, child.id]
+        }
+
+        response = JSON.parse(@response.body)
+        assert_job_invocation_is_ok(response, target.id)
       end
 
       test 'should list ansible roles for a host group' do
