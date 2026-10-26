@@ -17,6 +17,7 @@ import {
   hasError,
   createMatcher,
 } from './EditableActionHelper';
+import { findOverride } from './AnsibleVariableOverridesTableHelper';
 
 const EditableAction = ({
   onValidationError,
@@ -56,18 +57,16 @@ const EditableAction = ({
     }
   );
 
-  const onSubmit = event => {
-    if (!variable.currentValue || variable.currentValue.element !== 'fqdn') {
-      return createOverride();
+  const onSubmit = () => {
+    const match = createMatcher(hostName);
+    const lookupValue = findOverride(variable, hostName);
+    if (lookupValue) {
+      return updateOverride(lookupValue, match);
     }
-    return updateOverride();
+    return createOverride(match);
   };
 
-  const updateOverride = () => {
-    const match = createMatcher(variable.currentValue.elementName);
-    const lookupValue = variable.lookupValues.nodes.find(
-      item => item.match === match
-    );
+  const updateOverride = (lookupValue, match) => {
     toggleWorking(true);
     callUpdateMutation({
       variables: {
@@ -80,8 +79,7 @@ const EditableAction = ({
     });
   };
 
-  const createOverride = () => {
-    const match = createMatcher(hostName);
+  const createOverride = match => {
     toggleWorking(true);
     callCreateMutation({
       variables: {
