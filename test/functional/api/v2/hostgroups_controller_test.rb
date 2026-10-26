@@ -1,12 +1,15 @@
 # frozen_string_literal: true
 
 require 'test_plugin_helper'
+require 'ansible_role_assertions'
 require 'dynflow/testing'
 
 module Api
   module V2
     # Tests for the extra methods to play roles on Hostgroup
     class HostgroupsControllerTest < ActionController::TestCase
+      include AnsibleRoleAssertions
+
       setup do
         @ansible_role1 = FactoryBot.create(:ansible_role)
         @ansible_role2 = FactoryBot.create(:ansible_role)
@@ -88,6 +91,81 @@ module Api
                :session => set_session_user
         assert_response :success
         assert_equal assigns('hostgroup').ansible_roles, [@ansible_role1]
+      end
+
+      # Migrated from Robottelo TestAnsibleCfgMgmt::test_add_and_remove_ansible_role_hostgroup
+      test 'should preserve nested role inheritance through assignment and removal' do
+        role3 = FactoryBot.create(:ansible_role)
+        role4 = FactoryBot.create(:ansible_role)
+        host_role = FactoryBot.create(:ansible_role)
+        parent_hg = FactoryBot.create(:hostgroup)
+        child_hg = FactoryBot.create(:hostgroup, :parent => parent_hg)
+        FactoryBot.create(:host, :managed => false, :hostgroup => child_hg, :ansible_roles => [host_role])
+
+        post :assign_ansible_roles,
+             :params => { :id => parent_hg.id, :ansible_role_ids => [@ansible_role1.id, @ansible_role2.id, role3.id] },
+             :session => set_session_user
+        assert_response :success
+        get :ansible_roles, :params => { :id => parent_hg.id }
+        assert_response :success
+        assert_ansible_roles JSON.parse(response.body), :directly_assigned => [@ansible_role1, @ansible_role2, role3], :inherited => []
+
+        put :add_ansible_role,
+            :params => { :id => child_hg.id, :ansible_role_id => role4.id },
+            :session => set_session_user
+        assert_response :ok
+        get :ansible_roles, :params => { :id => child_hg.id }
+        assert_response :success
+        assert_ansible_roles JSON.parse(response.body), :directly_assigned => [role4], :inherited => [@ansible_role1, @ansible_role2, role3]
+        get :ansible_roles, :params => { :id => parent_hg.id }
+        assert_response :success
+        assert_ansible_roles JSON.parse(response.body), :directly_assigned => [@ansible_role1, @ansible_role2, role3], :inherited => []
+
+        delete :remove_ansible_role,
+               :params => { :id => parent_hg.id, :ansible_role_id => @ansible_role1.id },
+               :session => set_session_user
+        assert_response :success
+        get :ansible_roles, :params => { :id => parent_hg.id }
+        assert_response :success
+        assert_ansible_roles JSON.parse(response.body), :directly_assigned => [@ansible_role2, role3], :inherited => []
+        get :ansible_roles, :params => { :id => child_hg.id }
+        assert_response :success
+        assert_ansible_roles JSON.parse(response.body), :directly_assigned => [role4], :inherited => [@ansible_role2, role3]
+
+        put :add_ansible_role,
+            :params => { :id => child_hg.id, :ansible_role_id => @ansible_role2.id },
+            :session => set_session_user
+        assert_response :ok
+        get :ansible_roles, :params => { :id => child_hg.id }
+        assert_response :success
+        assert_ansible_roles JSON.parse(response.body), :directly_assigned => [role4, @ansible_role2], :inherited => [@ansible_role2, role3]
+
+        delete :remove_ansible_role,
+               :params => { :id => child_hg.id, :ansible_role_id => @ansible_role2.id },
+               :session => set_session_user
+        assert_response :success
+        get :ansible_roles, :params => { :id => child_hg.id }
+        assert_response :success
+        assert_ansible_roles JSON.parse(response.body), :directly_assigned => [role4], :inherited => [@ansible_role2, role3]
+
+        post :assign_ansible_roles,
+             :params => { :id => parent_hg.id, :ansible_role_ids => [] },
+             :session => set_session_user
+        assert_response :success
+        get :ansible_roles, :params => { :id => parent_hg.id }
+        assert_response :success
+        assert_ansible_roles JSON.parse(response.body), :directly_assigned => [], :inherited => []
+        get :ansible_roles, :params => { :id => child_hg.id }
+        assert_response :success
+        assert_ansible_roles JSON.parse(response.body), :directly_assigned => [role4], :inherited => []
+
+        delete :remove_ansible_role,
+               :params => { :id => child_hg.id, :ansible_role_id => role4.id },
+               :session => set_session_user
+        assert_response :success
+        get :ansible_roles, :params => { :id => child_hg.id }
+        assert_response :success
+        assert_ansible_roles JSON.parse(response.body), :directly_assigned => [], :inherited => []
       end
     end
   end
