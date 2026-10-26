@@ -42,6 +42,8 @@ module ForemanAnsible
             host_ids = params.fetch(:host_ids, []).uniq
             composer = job_composer(:ansible_run_host, host_ids)
             process_response composer.trigger!, composer.job_invocation
+          rescue ActiveRecord::RecordNotFound => e
+            not_found(e.message)
           end
 
           api :GET, '/hosts/:id/ansible_roles',
