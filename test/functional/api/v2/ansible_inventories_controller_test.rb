@@ -22,6 +22,46 @@ module Api
         hosts_inventory_assertions(hosts)
       end
 
+      test 'applies view_hosts filters to host inventory' do
+        setup_user('view', 'hosts', "hostgroup_id = #{@hostgroup.id}")
+
+        get :hosts, :params => { :host_ids => [@host1.id, @host3.id] },
+                    :session => set_session_user(@one)
+
+        inventory = JSON.parse(@response.body)
+        hostvars = inventory['_meta']['hostvars']
+        assert_equal [@host1.name], inventory['all']['hosts']
+        assert_not hostvars.key?(@host3.name)
+
+        get :hosts, :params => { :host_ids => [@host3.id] },
+                    :session => set_session_user(@one)
+
+        inventory = JSON.parse(@response.body)
+        assert_empty inventory['all']['hosts']
+        assert_empty inventory['_meta']['hostvars']
+      end
+
+      test 'applies view_hosts filters to hostgroup inventory' do
+        forbidden_hostgroup = FactoryBot.create(:hostgroup)
+        forbidden_host = FactoryBot.create(:host, :hostgroup_id => forbidden_hostgroup.id)
+        setup_user('view', 'hosts', "hostgroup_id = #{@hostgroup.id}")
+        setup_user('view', 'hostgroups')
+
+        get :hostgroups,
+            :params => { :hostgroup_ids => [@hostgroup.id, forbidden_hostgroup.id] },
+            :session => set_session_user(@one)
+
+        hosts_inventory_assertions(@hostgroup.hosts)
+        assert_not JSON.parse(@response.body)['_meta']['hostvars'].key?(forbidden_host.name)
+
+        get :hostgroups, :params => { :hostgroup_ids => [forbidden_hostgroup.id] },
+                         :session => set_session_user(@one)
+
+        inventory = JSON.parse(@response.body)
+        assert_empty inventory['all']['hosts']
+        assert_empty inventory['_meta']['hostvars']
+      end
+
       test 'should show inventory for hostgroup by GET' do
         get :hostgroups, :params => { :hostgroup_ids => [@hostgroup.id] }, :session => set_session_user
         hosts_inventory_assertions(@hostgroup.hosts)
