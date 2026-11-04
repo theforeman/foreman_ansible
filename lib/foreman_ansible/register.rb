@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Foreman::Plugin.register :foreman_ansible do
-  requires_foreman '>= 5.0'
+  requires_foreman '>= 5.1'
   register_gettext
 
   settings do

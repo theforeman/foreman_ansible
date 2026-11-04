@@ -10,7 +10,10 @@ import { reducers as apiReducer, APIMiddleware } from 'foremanReact/redux/API';
 import ConfirmModal, {
   reducers as confirmModalReducers,
 } from 'foremanReact/components/ConfirmModal';
-import { getForemanContext } from 'foremanReact/Root/Context/ForemanContext';
+
+const { getForemanContext } = jest.requireActual(
+  'foremanReact/Root/Context/ForemanContext'
+);
 
 const reducers = combineReducers({ ...apiReducer, ...confirmModalReducers });
 

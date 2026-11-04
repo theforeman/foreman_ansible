@@ -51,6 +51,15 @@ Facts must contain the output of `ansible -m setup $HOSTNAME`, plus a '_type' an
 
 After that request, you should have a host registered in Foreman with the Ansible facts. It takes into account some facter and ohai facts if these are available on the system as well.
 
+### JavaScript testing and linting
+
+Run the plugin's JavaScript checks from the Foreman core checkout, which provides the shared test and lint tools:
+
+```sh
+npm run test:plugins foreman_ansible
+npm run lint:plugins foreman_ansible
+```
+
 ## Copyright
 
 Copyright (c) Daniel Lobato Garcia
