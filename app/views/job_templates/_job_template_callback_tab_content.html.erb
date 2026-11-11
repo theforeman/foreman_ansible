@@ -1,4 +1,5 @@
 <div class="tab-pane" id="ansible_callback_enabled">
   <%= checkbox_f f, :ansible_callback_enabled, :label => _('Enable Ansible Callback'), :disabled => @template.locked? %>
   <%= checkbox_f f, :ansible_check_mode, :label => _('Enable Ansible Check Mode'), :disabled => @template.locked? %>
+  <%= checkbox_f f, :ansible_diff_mode, :label => _('Enable Ansible Diff Mode'), :disabled => @template.locked? %>
 </div>
