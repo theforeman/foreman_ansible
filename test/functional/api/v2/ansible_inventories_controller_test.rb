@@ -22,6 +22,22 @@ module Api
         hosts_inventory_assertions(hosts)
       end
 
+      test 'user with inventory permission should show inventory for hosts' do
+        user = user_with_permissions(:view_ansible_inventory)
+
+        get :hosts, :params => { :host_ids => [@host1.id] }, :session => set_session_user(user)
+
+        assert_response :success
+      end
+
+      test 'user with only view hosts permission should not show inventory for hosts' do
+        user = user_with_permissions(:view_hosts)
+
+        get :hosts, :params => { :host_ids => [@host1.id] }, :session => set_session_user(user)
+
+        assert_response :forbidden
+      end
+
       test 'should show inventory for hostgroup by GET' do
         get :hostgroups, :params => { :hostgroup_ids => [@hostgroup.id] }, :session => set_session_user
         hosts_inventory_assertions(@hostgroup.hosts)
@@ -42,6 +58,14 @@ module Api
       end
 
       private
+
+      def user_with_permissions(*permissions)
+        role = FactoryBot.create(:role)
+        role.add_permissions!(permissions)
+        user = FactoryBot.create(:user)
+        user.roles << role
+        user
+      end
 
       def hosts_inventory_assertions(hosts)
         response = JSON.parse(@response.body)
