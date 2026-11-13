@@ -20,6 +20,9 @@ const variableId = 66;
 
 const barVariableGlobalId = 'MDE6QW5zaWJsZVZhcmlhYmxlLTU3Mw==';
 const barVariableId = 573;
+const mergedArrayVariableGlobalId = 'MDE6QW5zaWJsZVZhcmlhYmxlLTY4MA==';
+const mergedArrayVariableId = 680;
+const mergedArrayLookupValueId = 'MDE6TG9va3VwVmFsdWUtOTc=';
 
 const withFqdnOverride = canEdit => ({
   __typename: 'OverridenAnsibleVariable',
@@ -124,7 +127,7 @@ export const mocks = [
         host: {
           id: hostGlobalId,
           ansibleVariablesWithOverrides: {
-            totalCount: 8,
+            totalCount: 9,
             nodes: [
               withFqdnOverride(true),
               {
@@ -143,15 +146,7 @@ export const mocks = [
                 validatorRule: 'a,b,c',
                 required: true,
                 lookupValues: {
-                  nodes: [
-                    {
-                      __typename: 'LookupValue',
-                      id: 'MDE6TG9va3VwVmFsdWUtODE=',
-                      match,
-                      value: 'b',
-                      omit: false,
-                    },
-                  ],
+                  nodes: [],
                 },
                 currentValue: null,
               },
@@ -287,6 +282,39 @@ export const mocks = [
                 },
                 currentValue: null,
               },
+              {
+                __typename: 'OverridenAnsibleVariable',
+                meta: {
+                  __typename: 'Meta',
+                  canEdit: true,
+                },
+                id: mergedArrayVariableGlobalId,
+                key: 'stars',
+                path: '/ansible/ansible_variables/18/edit',
+                defaultValue: [],
+                parameterType: 'array',
+                ansibleRoleName: 'test.role',
+                validatorType: '',
+                validatorRule: null,
+                required: false,
+                lookupValues: {
+                  nodes: [
+                    {
+                      __typename: 'LookupValue',
+                      id: mergedArrayLookupValueId,
+                      match,
+                      value: ['host value'],
+                      omit: false,
+                    },
+                  ],
+                },
+                currentValue: {
+                  __typename: 'AnsibleVariableOverride',
+                  value: ['hostgroup value', 'host value'],
+                  element: 'hostgroup',
+                  elementName: 'parent hostgroup',
+                },
+              },
             ],
           },
         },
@@ -323,15 +351,24 @@ export const deleteMocks = [
   },
 ];
 
-const updateMockFactory = (variableValue, returnValue, errors = []) => {
+const updateMockFactory = (
+  variableValue,
+  returnValue,
+  errors = [],
+  {
+    lookupValueId = overrideUpdateDeleteId,
+    variableGlobalId = ansibleVariableId,
+    variableId: updatedVariableId = variableId,
+  } = {}
+) => {
   const mockArray = [
     {
       request: {
         query: updateAnsibleVariableOverride,
         variables: {
-          id: overrideUpdateDeleteId,
+          id: lookupValueId,
           hostId,
-          ansibleVariableId: variableId,
+          ansibleVariableId: updatedVariableId,
           value: variableValue,
           match: `fqdn=${hostAttrs.name}`,
         },
@@ -342,7 +379,7 @@ const updateMockFactory = (variableValue, returnValue, errors = []) => {
             __typename: 'UpdateAnsibleVariableOverrideMutationPayload',
             overridenAnsibleVariable: {
               __typename: 'OverridenAnsibleVariable',
-              id: ansibleVariableId,
+              id: variableGlobalId,
               lookupValues: {
                 __typename: 'LookupValueConnection',
                 nodes: [
@@ -421,6 +458,16 @@ const createMockFactory = (variableValue, returnValue, errors = []) => {
 };
 
 export const updateMocks = updateMockFactory('2177', 2177);
+export const mergedArrayUpdateMocks = updateMockFactory(
+  '["updated"]',
+  ['updated'],
+  [],
+  {
+    lookupValueId: mergedArrayLookupValueId,
+    variableGlobalId: mergedArrayVariableGlobalId,
+    variableId: mergedArrayVariableId,
+  }
+);
 export const createMocks = createMockFactory('b', 'b');
 export const updateErrorMocks = updateMockFactory('2177', 21, [
   {
