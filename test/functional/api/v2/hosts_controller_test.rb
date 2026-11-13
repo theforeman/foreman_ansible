@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
 require 'test_plugin_helper'
+require 'ansible_role_assertions'
 
 module Api
   module V2
     # Tests for the extra methods to play roles on a Host
     class HostsControllerTest < ActionController::TestCase
+      include AnsibleRoleAssertions
+
       setup do
         @ansible_role1 = FactoryBot.create(:ansible_role)
         @ansible_role2 = FactoryBot.create(:ansible_role)
@@ -115,6 +118,35 @@ module Api
                :session => set_session_user
         assert_response :success
         assert_equal assigns('host').ansible_roles, [@ansible_role3, @ansible_role1]
+      end
+
+      # Migrated from Robottelo TestAnsibleCfgMgmt::test_positive_ansible_roles_inherited_from_hostgroup
+      test 'should update inherited role flags when moving a host between nested hostgroups' do
+        parent_hg = FactoryBot.create(:hostgroup, :ansible_roles => [@ansible_role2])
+        child_hg = FactoryBot.create(:hostgroup, :parent => parent_hg, :ansible_roles => [@ansible_role3])
+        host = FactoryBot.create(:host, :managed => false, :ansible_roles => [@ansible_role1, @ansible_role3])
+
+        get :ansible_roles, :params => { :id => host.id }
+        assert_response :success
+        assert_ansible_roles JSON.parse(response.body), :directly_assigned => [@ansible_role1, @ansible_role3], :inherited => []
+
+        put :update,
+            :params => { :id => host.id, :host => { :hostgroup_id => child_hg.id } },
+            :session => set_session_user
+        assert_response :success
+        assert_equal child_hg.id, host.reload.hostgroup_id
+        get :ansible_roles, :params => { :id => host.id }
+        assert_response :success
+        assert_ansible_roles JSON.parse(response.body), :directly_assigned => [@ansible_role1, @ansible_role3], :inherited => [@ansible_role2, @ansible_role3]
+
+        put :update,
+            :params => { :id => host.id, :host => { :hostgroup_id => parent_hg.id } },
+            :session => set_session_user
+        assert_response :success
+        assert_equal parent_hg.id, host.reload.hostgroup_id
+        get :ansible_roles, :params => { :id => host.id }
+        assert_response :success
+        assert_ansible_roles JSON.parse(response.body), :directly_assigned => [@ansible_role1, @ansible_role3], :inherited => [@ansible_role2]
       end
     end
   end

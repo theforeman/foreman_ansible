@@ -27,6 +27,7 @@ def assert_job_invocation_is_ok(response, targets)
   assert_equal 'Ansible Playbook', response['job_category']
   assert_response :created
 end
+
 plugin_factories_path = File.join(__dir__, 'factories')
 rex_factories_path = "#{ForemanRemoteExecution::Engine.root}/test/factories"
 FactoryBot.definition_file_paths << rex_factories_path
